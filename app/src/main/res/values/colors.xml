@@ -5,6 +5,39 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#414141</color>
+    <color name="colorPrimaryLight">#dfe5d7</color>
+    <color name="colorPrimaryLighter">#ebeff0</color>
+    <color name="colorLightPurple">#a192aa</color>
+    <color name="colorAccent">#ff6461</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="grayLight">#a4a2ab</color>
+    <color name="grayLighter">#C5C4CC</color>
+    <color name="grayMedium">#777579</color>
+    <color name="grayDark">#424242</color>
+    <color name="transparent">#00424242</color>
+    <color name="colorOrange">#ffab00</color>
+    <color name="colorYellow">#f1c02b</color>
+    <color name="colorBlue">#2c78e9</color>
+    <color name="colorBlueLight">#8DC6F3</color>
+    <color name="colorGreen">#4caf50</color>
+    <color name="colorPurple">#673AB7</color>
+    <color name="colorPurpleLight">#D8C9F3</color>
+    <color name="colorRed">#f44336</color>
+    <color name="colorRedDark">#D62013</color>
+    <color name="colorRedLight">#ECC1C1</color>
+    <color name="colorTransparent">#00FFB2B2</color>
+    <color name="colorGreenLight">#31ce5a</color>
+
+    <color name="colorGolden">#ffe45d</color>
+    <color name="colorSilver">#c5c6cb</color>
+    <color name="colorBronze">#d8c897</color>
+    <color name="colorBlueBic">#5980d4</color>
+
+    <color name="actionBar">#424242</color>
+    <color name="navigationBar">#424242</color>
+    <color name="textColorLight">#f3f3f3</color>
+    <color name="pageBackground">#eff7ea</color>
 </resources>
