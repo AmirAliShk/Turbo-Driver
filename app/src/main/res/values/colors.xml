@@ -10,13 +10,13 @@
     <color name="colorPrimaryLight">#dfe5d7</color>
     <color name="colorPrimaryLighter">#ebeff0</color>
     <color name="colorLightPurple">#a192aa</color>
-    <color name="colorAccent">#ff6461</color>
+    <color name="colorAccent">#cb9a44</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
     <color name="grayLight">#a4a2ab</color>
-    <color name="grayLighter">#C5C4CC</color>
-    <color name="grayMedium">#777579</color>
-    <color name="grayDark">#424242</color>
+    <color name="grayLighter">#eeeeee</color>
+    <color name="grayMedium">#acabac</color>
+    <color name="grayDark">#373737</color>
     <color name="transparent">#00424242</color>
     <color name="colorOrange">#ffab00</color>
     <color name="colorYellow">#f1c02b</color>
@@ -36,8 +36,8 @@
     <color name="colorBronze">#d8c897</color>
     <color name="colorBlueBic">#5980d4</color>
 
-    <color name="actionBar">#424242</color>
+    <color name="actionBar">#373737</color>
     <color name="navigationBar">#424242</color>
     <color name="textColorLight">#f3f3f3</color>
-    <color name="pageBackground">#eff7ea</color>
+    <color name="pageBackground">#dadada</color>
 </resources>

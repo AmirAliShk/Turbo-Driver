@@ -15,22 +15,27 @@
     </style>
 
     <style name="text_title_white">
-        <item name="android:textColor">@color/textColorLight</item>
-        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textColor">@color/grayLighter</item>
+        <item name="android:textSize">@dimen/_20ssp</item>
     </style>
 
     <style name="text_title_black">
         <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
     </style>
 
-    <style name="item_title">
+    <style name="item_title_black">
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:textSize">@dimen/_16ssp</item>
     </style>
 
+    <style name="item_title_white">
+        <item name="android:textColor">@color/grayLighter</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+    </style>
+
     <style name="item_value">
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/grayMedium</item>
         <item name="android:textSize">@dimen/_16ssp</item>
     </style>
 

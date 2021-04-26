@@ -1,82 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back"
-    android:orientation="vertical"
+    android:background="@color/actionBar"
     tools:context=".activity.SplashActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="top|center_horizontal"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.35"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1.25"
-            android:src="@mipmap/logo" />
+            android:layout_weight="2"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/splash_background" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:textColor="@color/grayLighter"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="400px"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:src="@mipmap/logo_type" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="نسخه مدیریت کاربران"
-            android:textColor="@color/grayLighter"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
-
-        <TextView
-            android:id="@+id/txtAppVersion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/grayLighter"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
-
-        <com.wang.avi.AVLoadingIndicatorView
-            android:layout_width="30dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="10dp"/>
-
-        <!--        <View-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="0dp"-->
-        <!--            android:layout_weight="0.5"/>-->
+            android:layout_weight="0.75"/>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtVersion"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:visibility="gone"
-        android:textColor="@color/grayLighter"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.35" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1.25"
+                android:src="@mipmap/logo" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="@color/grayLighter"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="400px"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/logo_type" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="نسخه مدیریت کاربران"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/grayLighter" />
+
+            <TextView
+                android:id="@+id/txtAppVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/grayLighter" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp" />
+
+            <!--        <View-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="0dp"-->
+            <!--            android:layout_weight="0.5"/>-->
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/grayLighter"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>
