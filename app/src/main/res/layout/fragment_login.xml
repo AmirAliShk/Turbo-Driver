@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/login_header" />
+        android:src="@mipmap/login" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,6 +52,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:orientation="vertical"
                 android:layout_weight="1">
 
                 <EditText
@@ -61,19 +62,12 @@
                     android:hint="رمزعبور"
                     android:padding="@dimen/_10sdp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
                 <TextView
-                    style="@style/text_title_white"
+                    style="@style/item_title_white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_10sdp"
-                    android:text="ورود با شماره همراه" />
+                    android:text="ورود با شماره همراه"/>
 
             </LinearLayout>
 
@@ -81,14 +75,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal">
+                android:gravity="center">
 
                 <Button
                     style="@style/text_title_white"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background3"
-                    android:text="ورود" />
+                    android:text="ورود"
+                    android:layout_marginRight="@dimen/_30sdp"
+                    android:layout_marginLeft="@dimen/_30sdp"/>
 
             </LinearLayout>
 

@@ -16,7 +16,7 @@
     <color name="grayLight">#a4a2ab</color>
     <color name="grayLighter">#eeeeee</color>
     <color name="grayMedium">#acabac</color>
-    <color name="grayDark">#373737</color>
+    <color name="grayDark">#161516</color>
     <color name="transparent">#00424242</color>
     <color name="colorOrange">#ffab00</color>
     <color name="colorYellow">#f1c02b</color>
@@ -36,7 +36,7 @@
     <color name="colorBronze">#d8c897</color>
     <color name="colorBlueBic">#5980d4</color>
 
-    <color name="actionBar">#373737</color>
+    <color name="actionBar">#161516</color>
     <color name="navigationBar">#424242</color>
     <color name="textColorLight">#f3f3f3</color>
     <color name="pageBackground">#dadada</color>
