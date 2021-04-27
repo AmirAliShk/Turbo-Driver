@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_profile" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_service_history" />
 
         <TextView
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_news" />
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_message" />
 
         <TextView
@@ -136,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_operator" />
 
         <TextView
