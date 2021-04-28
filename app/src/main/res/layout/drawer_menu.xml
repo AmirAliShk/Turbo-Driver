@@ -9,21 +9,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.85"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="@dimen/_10sdp"
+            android:layout_weight="0.55"
+            android:padding="@dimen/_15sdp"
             android:src="@drawable/ic_profile" />
 
         <TextView
             style="@style/item_title_white"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.15"
             android:gravity="center"
             android:text="@string/profile" />
 
@@ -39,14 +39,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.85"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="@dimen/_10sdp"
+            android:layout_weight="0.65"
+            android:padding="@dimen/_11sdp"
             android:src="@drawable/ic_service_history" />
 
         <TextView
@@ -69,14 +69,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.85"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="@dimen/_10sdp"
+            android:layout_weight="0.65"
+            android:padding="@dimen/_11sdp"
             android:src="@drawable/ic_news" />
 
         <TextView
@@ -99,14 +99,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.85"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="@dimen/_10sdp"
+            android:layout_weight="0.65"
+            android:padding="@dimen/_11sdp"
             android:src="@drawable/ic_message" />
 
         <TextView
@@ -129,14 +129,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.85"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="@dimen/_10sdp"
+            android:layout_weight="0.75"
+            android:padding="@dimen/_11sdp"
             android:src="@drawable/ic_operator" />
 
         <TextView
@@ -161,12 +161,15 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
-
+<View
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_weight="2"/>
         <TextView
             style="@style/item_title_white"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.75"
             android:gravity="bottom|center_horizontal"
             android:padding="@dimen/_5sdp"
             android:text="1.0.0" />

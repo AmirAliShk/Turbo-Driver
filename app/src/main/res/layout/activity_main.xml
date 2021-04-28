@@ -23,7 +23,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginBottom="@dimen/_65sdp"
                 android:layout_weight="1"
                 android:background="@color/grayDark"
                 android:elevation="@dimen/_65sdp"
@@ -88,8 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"
-                android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/_35sdp">
+                android:orientation="horizontal">
 
                 <View
                     android:layout_width="0dp"
@@ -105,7 +103,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.25"
                         android:gravity="bottom|center_horizontal">
 
                         <com.kyleduo.switchbutton.SwitchButton
@@ -115,8 +113,8 @@
                             android:textColor="@color/grayLighter"
                             app:kswAnimationDuration="300"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff="غیرفعال"
-                            app:kswTextOn="فعال"
+                            app:kswTextOff="               غیرفعال"
+                            app:kswTextOn="   فعال"
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
                             app:kswThumbMargin="@dimen/_5sdp"
@@ -143,7 +141,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:padding="@dimen/_5sdp"
                             android:src="@drawable/ic_map" />
 
@@ -151,9 +149,10 @@
                             style="@style/text_title_black"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.75"
                             android:gravity="center"
-                            android:text="@string/map" />
+                            android:text="@string/map"
+                            android:layout_marginBottom="8dp"/>
 
                     </LinearLayout>
 
@@ -175,17 +174,18 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:padding="@dimen/_5sdp"
+                            android:layout_weight="2"
+                            android:padding="@dimen/_2sdp"
                             android:src="@drawable/ic_free" />
 
                         <TextView
                             style="@style/text_title_black"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.75"
                             android:gravity="center"
-                            android:text="@string/free" />
+                            android:text="@string/free"
+                            android:layout_marginBottom="8dp"/>
 
                     </LinearLayout>
 
@@ -214,7 +214,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.25"
                         android:gravity="bottom|center_horizontal">
 
                         <com.kyleduo.switchbutton.SwitchButton
@@ -224,13 +224,14 @@
                             android:textColor="@color/grayLighter"
                             app:kswAnimationDuration="300"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff="ثبت نمحدوده"
-                            app:kswTextOn="ثبت محدوده"
+                            app:kswTextOff="   ثبت نمحدوده "
+                            app:kswTextOn="      ثبت محدوده"
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
                             app:kswThumbMargin="@dimen/_5sdp"
                             app:kswThumbRangeRatio="1.4"
-                            app:kswThumbWidth="@dimen/_25sdp" />
+                            app:kswThumbWidth="@dimen/_25sdp"
+                            />
 
                     </LinearLayout>
 
@@ -252,17 +253,19 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:padding="@dimen/_5sdp"
+
                             android:src="@drawable/ic_service_management" />
 
                         <TextView
                             style="@style/text_title_black"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.75"
                             android:gravity="center"
-                            android:text="@string/service_management" />
+                            android:text="@string/service_management"
+                          android:layout_marginBottom="8dp"/>
 
                     </LinearLayout>
 
@@ -284,7 +287,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:padding="@dimen/_5sdp"
                             android:src="@drawable/ic_financial" />
 
@@ -292,9 +295,10 @@
                             style="@style/text_title_black"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.75"
                             android:gravity="center"
-                            android:text="@string/financial" />
+                            android:text="@string/financial"
+                            android:layout_marginBottom="8dp"/>
 
                     </LinearLayout>
 
@@ -323,7 +327,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.65" />
+                android:layout_weight="0.85" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -352,7 +356,7 @@
                     <ImageView
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_60sdp"
-                        android:src="@mipmap/ariana"
+                        android:src="@mipmap/logoariana"
                         />
 
                     <TextView
@@ -360,7 +364,9 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:background="@drawable/bg_badge"
-                        android:elevation="@dimen/_5sdp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="7dp"
+                        android:elevation="@dimen/_10sdp"
                         android:gravity="center"
                         android:text="99"
                         android:textColor="@color/colorWhite"

@@ -63,11 +63,12 @@
                     android:padding="@dimen/_10sdp" />
 
                 <TextView
-                    style="@style/item_title_white"
+                    style="@style/text_title_white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_10sdp"
-                    android:text="ورود با شماره همراه"/>
+                    android:text="ورود با شماره همراه"
+                    android:layout_marginBottom="@dimen/_10sdp"/>
 
             </LinearLayout>
 
@@ -75,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center_horizontal">
 
                 <Button
                     style="@style/text_title_white"
