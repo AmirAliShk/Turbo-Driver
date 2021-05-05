@@ -224,14 +224,13 @@
                             android:textColor="@color/grayLighter"
                             app:kswAnimationDuration="300"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff="   ثبت نمحدوده "
-                            app:kswTextOn="      ثبت محدوده"
+                            app:kswTextOff="  ثبت نمحدوده "
+                            app:kswTextOn="     ثبت محدوده"
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
                             app:kswThumbMargin="@dimen/_5sdp"
                             app:kswThumbRangeRatio="1.4"
-                            app:kswThumbWidth="@dimen/_25sdp"
-                            />
+                            app:kswThumbWidth="@dimen/_25sdp" />
 
                     </LinearLayout>
 
@@ -356,8 +355,7 @@
                     <ImageView
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_60sdp"
-                        android:src="@mipmap/logoariana"
-                        />
+                        android:src="@mipmap/logoariana"/>
 
                     <TextView
                         android:id="@+id/txtBadgeCount"
