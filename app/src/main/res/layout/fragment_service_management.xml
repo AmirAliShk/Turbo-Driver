@@ -322,14 +322,16 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_red"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/_8sdp">
 
                 <TextView
                     style="@style/text_title_white"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/cancle" />
+                    android:text="@string/cancle"
+                    android:paddingRight="@dimen/_5sdp"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -341,7 +343,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="@dimen/_10sdp"
+                android:layout_width="@dimen/_7sdp"
                 android:layout_height="match_parent" />
 
 
@@ -351,14 +353,16 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_green"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/_8sdp">
 
                 <TextView
                     style="@style/text_title_white"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/call" />
+                    android:text="@string/call"
+                    android:paddingRight="@dimen/_5sdp"/>
 
                 <ImageView
                     android:layout_width="0dp"
@@ -370,7 +374,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="@dimen/_10sdp"
+                android:layout_width="@dimen/_7sdp"
                 android:layout_height="match_parent" />
 
 
@@ -380,14 +384,16 @@
                 android:layout_weight="1"
                 android:background="@drawable/background3"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/_8sdp">
 
                 <TextView
                     style="@style/text_title_white"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/Conversation" />
+                    android:text="@string/Conversation"
+                    android:paddingRight="@dimen/_5sdp"/>
 
                 <ImageView
                     android:layout_width="0dp"

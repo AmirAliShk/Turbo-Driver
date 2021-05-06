@@ -35,12 +35,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.65"
                     android:padding="@dimen/_5sdp"
-                    android:src="@drawable/ic_menu" />
+                    android:src="@drawable/ic_menu"
+                    android:layout_marginBottom="@dimen/_3sdp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
+                    android:layout_weight="2.85"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -48,13 +49,16 @@
                         style="@style/text_title_white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="سارا بنی اسدی" />
+                        android:text="سارا بنی اسدی"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/_10sdp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_10sdp">
 
                         <TextView
                             style="@style/item_value"
@@ -68,7 +72,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/_10sdp"
                             android:gravity="left"
-                            android:text="77,334" />
+                            android:text="77,334"
+                            android:textStyle="bold"/>
 
                         <TextView
                             style="@style/item_value"
@@ -113,8 +118,8 @@
                             android:textColor="@color/grayLighter"
                             app:kswAnimationDuration="300"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff="           غیرفعال"
-                            app:kswTextOn="   فعال    "
+                            app:kswTextOff="    غیرفعال     "
+                            app:kswTextOn="    فعال    "
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
                             app:kswThumbMargin="@dimen/_5sdp"
@@ -342,9 +347,9 @@
                     android:background="@drawable/background2"
                     android:elevation="@dimen/_5sdp"
                     android:paddingLeft="@dimen/_20sdp"
-                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingTop="@dimen/_8sdp"
                     android:paddingRight="@dimen/_20sdp"
-                    android:paddingBottom="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_8sdp"
                     android:text="شما ثبت محدوده نکرده اید" />
 
                 <RelativeLayout
