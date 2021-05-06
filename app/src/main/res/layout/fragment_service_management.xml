@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pageBackground"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/actionBar"
+        android:layoutDirection="ltr">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            style="@style/page_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/service_management"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background1"
+        android:orientation="vertical"
+        android:padding="@dimen/_15sdp">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:50" />
+
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sendTime" />
+
+            <View
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="بنی اسدی" />
+
+            <View
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customerName" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:text="امیریه 31. آراسته 1. مج سهند" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_origin" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="12dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:text="جلال آل احمد 68 . پلاک   208 " />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_destination" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="38905328" />
+
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customerTell" />
+
+            <View
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="09307278878" />
+
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customerMobile" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محصولات کشاورزی" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Load_type" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="800,000" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Load_cost" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="مبدا" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Settlement_side" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محصولات کشاورزی" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_ticke" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_red"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title_white"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cancle" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_cancle" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_green"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title_white"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/call" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_call" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="match_parent" />
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:background="@drawable/background3"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_title_white"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Conversation" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_conversation" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+
+        <TextView
+                style="@style/text_title_white"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:text="@string/Place"
+                android:textStyle="bold"
+               android:background="@drawable/bg_grye"
+                android:gravity="center"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

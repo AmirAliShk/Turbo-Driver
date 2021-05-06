@@ -26,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/chat"
-            style="@style/page_header"/>
+            style="@style/page_header"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 

@@ -2,25 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/pageBackground"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/rlActionBar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="@color/grayDark">
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/actionBar"
+        android:layoutDirection="ltr">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"/>
+            android:id="@+id/imgBack"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@drawable/ic_back" />
 
         <TextView
+            style="@style/page_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="مدیریت سرویس"
-            android:textColor="@color/colorWhite"/>
+            android:layout_centerInParent="true"
+            android:text="@string/service_management"
+            android:textStyle="bold" />
 
-    </LinearLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_active_services"/>
 
 </LinearLayout>

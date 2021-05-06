@@ -21,10 +21,10 @@ import ir.team_x.ariana.driver.push.AvaCrashReporter;
 
 import static android.content.Context.ALARM_SERVICE;
 
-public class DataGatheringManager extends BroadcastReceiver implements LocationAssistant.Listener {
+public class DataGatheringManager extends BroadcastReceiver {  //TODO implement from LocationAssistant
   public final String TAG = DataGatheringManager.class.getSimpleName();
   Context mContext;
-  LocationAssistant assistant;
+//  LocationAssistant assistant;
   boolean isMock = false;
 
   @Override
@@ -162,44 +162,44 @@ public class DataGatheringManager extends BroadcastReceiver implements LocationA
 //    Log.i(TAG, "stopAlarmManager: ");
   }
 
-  @Override
-  public void onNeedLocationPermission() {
-
-  }
-
-  @Override
-  public void onExplainLocationPermission() {
-
-  }
-
-  @Override
-  public void onLocationPermissionPermanentlyDeclined(View.OnClickListener fromView, DialogInterface.OnClickListener fromDialog) {
-
-  }
-
-  @Override
-  public void onNeedLocationSettingsChange() {
-
-  }
-
-  @Override
-  public void onFallBackToSystemSettings(View.OnClickListener fromView, DialogInterface.OnClickListener fromDialog) {
-
-  }
-
-  @Override
-  public void onNewLocationAvailable(Location location) {
-
-  }
-
-  @Override
-  public void onMockLocationsDetected(View.OnClickListener fromView, DialogInterface.OnClickListener fromDialog) {
-//    MyApplication.prefManager.setCheckMockLoction(true);   // TODO‌ uncomment this
-    Log.i(TAG, "onMockLocationsDetected: Mock Is On");
-  }
-
-  @Override
-  public void onError(LocationAssistant.ErrorType type, String message) {
-
-  }
+//  @Override
+//  public void onNeedLocationPermission() {
+//
+//  }
+//
+//  @Override
+//  public void onExplainLocationPermission() {
+//
+//  }
+//
+//  @Override
+//  public void onLocationPermissionPermanentlyDeclined(View.OnClickListener fromView, DialogInterface.OnClickListener fromDialog) {
+//
+//  }
+//
+//  @Override
+//  public void onNeedLocationSettingsChange() {
+//
+//  }
+//
+//  @Override
+//  public void onFallBackToSystemSettings(View.OnClickListener fromView, DialogInterface.OnClickListener fromDialog) {
+//
+//  }
+//
+//  @Override
+//  public void onNewLocationAvailable(Location location) {
+//
+//  }
+//
+//  @Override
+//  public void onMockLocationsDetected(View.OnClickListener fromView, DialogInterface.OnClickListener fromDialog) {
+////    MyApplication.prefManager.setCheckMockLoction(true);   // TODO‌ uncomment this
+//    Log.i(TAG, "onMockLocationsDetected: Mock Is On");
+//  }
+//
+//  @Override
+//  public void onError(LocationAssistant.ErrorType type, String message) {
+//
+//  }
 }
