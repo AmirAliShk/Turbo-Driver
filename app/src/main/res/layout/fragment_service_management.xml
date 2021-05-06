@@ -38,11 +38,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/background1"
         android:orientation="vertical"
-        android:padding="@dimen/_15sdp">
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
+        android:padding="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp">
 
 
         <LinearLayout
@@ -53,40 +51,37 @@
 
             <TextView
                 style="@style/Details_answer"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
                 android:layout_height="wrap_content"
                 android:text="12:50" />
-
-            <View
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="match_parent" />
 
 
             <TextView
                 style="@style/title_details"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
                 android:layout_height="wrap_content"
                 android:text="@string/sendTime" />
 
             <View
-                android:layout_width="@dimen/_60sdp"
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
                 android:layout_height="match_parent" />
 
 
             <TextView
                 style="@style/Details_answer"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
                 android:layout_height="wrap_content"
                 android:text="بنی اسدی" />
-
-            <View
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="match_parent" />
 
 
             <TextView
                 style="@style/title_details"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
                 android:layout_height="wrap_content"
                 android:text="@string/customerName" />
 
@@ -157,40 +152,37 @@
 
             <TextView
                 style="@style/Details_answer"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="38905328" />
-
-            <View
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="match_parent" />
 
 
             <TextView
                 style="@style/title_details"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:text="@string/customerTell" />
 
             <View
-                android:layout_width="@dimen/_60sdp"
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
                 android:layout_height="match_parent" />
 
 
             <TextView
                 style="@style/Details_answer"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="09307278878" />
-
-            <View
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="match_parent" />
 
 
             <TextView
                 style="@style/title_details"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:text="@string/customerMobile" />
 
@@ -422,9 +414,6 @@
                android:background="@drawable/bg_grye"
                 android:gravity="center"/>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
 
 
     </LinearLayout>
