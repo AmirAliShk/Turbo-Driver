@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/pageBackground">
+
+    <RelativeLayout
+        android:id="@+id/rlActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/actionBar"
+        android:layoutDirection="ltr">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            style="@style/page_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/free"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       tools:listitem="@layout/item_free_loads"/>
+
+</LinearLayout>

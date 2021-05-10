@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/actionBar"
+        android:layoutDirection="ltr">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="?android:attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            style="@style/page_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/profile"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_13sdp"
+        android:padding="@dimen/_15sdp"
+        android:background="@drawable/background2"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="سارابنی اسدی" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محسن" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/father_name" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0925510564" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/id" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0925510564" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/National_code" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="732456912875302156" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Shaba_number" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_grye"
+    android:padding="@dimen/_12sdp"
+    android:layout_margin="@dimen/_13sdp"
+    >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:text="درباره ما"
+        android:textSize="@dimen/_15sdp"
+        android:textColor="@color/colorWhite"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/smallogo"/>
+
+
+</LinearLayout>
+
+</LinearLayout>

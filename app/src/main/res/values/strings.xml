@@ -7,11 +7,13 @@
     <string name="free">بارهای آزاد</string>
     <string name="service_management">مدیریت سرویس</string>
     <string name="financial">مالی</string>
+    <string name="Service_history">تاریخچه سرویس</string>
     <string name="profile">حساب کاربری</string>
     <string name="service_history">تاریخچه سرویس</string>
     <string name="news">اخبار</string>
     <string name="support">پشتیبانی</string>
     <string name="Load_type">نوع بار</string>
+    <string name="Range">محدوده</string>
     <string name="customerName">نام مشتری</string>
     <string name="sendTime">ساعت اعزام</string>
     <string name="customerTell">تلفن </string>
@@ -21,7 +23,16 @@
     <string name="Conversation">مکالمه</string>
     <string name="call">تماس</string>
     <string name="cancle">لغو</string>
+    <string name="canclee">لغوشده</string>
     <string name="Place">به محل بار رسیدم</string>
+    <string name="accept">قبول میکنم</string>
+    <string name="Tracking_Code">کدپیگیری</string>
+    <string name="expense">هزینه</string>
+    <string name="name">نام</string>
+    <string name="father_name">نام پدر</string>
+    <string name="id">شمارشناسنامه</string>
+    <string name="National_code">کد ملی</string>
+    <string name="Shaba_number">شماره شبا</string>
 
 
 </resources>
