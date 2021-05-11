@@ -6,6 +6,8 @@
     <string name="map">نقشه</string>
     <string name="free">بارهای آزاد</string>
     <string name="service_management">مدیریت سرویس</string>
+    <string name="account_report">گزارش حساب</string>
+    <string name="online_payment">پرداخت آنلاین</string>
     <string name="financial">مالی</string>
     <string name="Service_history">تاریخچه سرویس</string>
     <string name="profile">حساب کاربری</string>
