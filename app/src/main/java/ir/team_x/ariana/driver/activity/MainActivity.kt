@@ -3,20 +3,15 @@ package ir.team_x.ariana.driver.activity
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.widget.Toast
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.gms.maps.MapFragment
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
-import ir.team_x.ariana.driver.fragment.AnnouncementFragment
-import ir.team_x.ariana.driver.fragment.FinancialFragment
-import ir.team_x.ariana.driver.fragment.FreeLoadsFragment
-import ir.team_x.ariana.driver.fragment.ServiceManagementFragment
+import ir.team_x.ariana.driver.fragment.*
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
@@ -41,11 +36,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.llMap.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, MapFragment()).replace()
+            Toast.makeText(MyApplication.context, "map ", Toast.LENGTH_SHORT).show()
         }
 
         binding.llServiceManagement.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceManagementFragment())
+            FragmentHelper.toFragment(MyApplication.currentActivity, ManageServiceFragment())
                 .replace()
         }
 
@@ -63,4 +58,23 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        MyApplication.currentActivity = this
+    }
+
+    override fun onStart() {
+        super.onStart()
+        MyApplication.currentActivity = this
+    }
+
+    override fun onBackPressed() {
+        if (fragmentManager.backStackEntryCount > 0 || supportFragmentManager.backStackEntryCount > 0) {
+            super.onBackPressed()
+        } else {
+            finish()
+        }
+    }
+
 }

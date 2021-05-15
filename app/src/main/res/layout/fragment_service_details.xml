@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/service_management"
+            android:text="@string/service_details"
             android:textStyle="bold" />
 
     </RelativeLayout>
@@ -44,12 +44,18 @@
         android:layout_marginLeft="@dimen/_12sdp"
         android:layout_marginRight="@dimen/_12sdp">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:orientation="horizontal">
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/sendTime" />
 
             <TextView
                 style="@style/Details_answer"
@@ -58,27 +64,10 @@
                 android:layout_height="wrap_content"
                 android:text="12:50" />
 
-
-            <TextView
-                style="@style/title_details"
-                android:layout_width="0dp"
-                android:layout_weight="0.75"
-                android:layout_height="wrap_content"
-                android:text="@string/sendTime" />
-
             <View
                 android:layout_width="0dp"
                 android:layout_weight="0.25"
                 android:layout_height="match_parent" />
-
-
-            <TextView
-                style="@style/Details_answer"
-                android:layout_width="0dp"
-                android:layout_weight="0.75"
-                android:layout_height="wrap_content"
-                android:text="بنی اسدی" />
-
 
             <TextView
                 style="@style/title_details"
@@ -87,6 +76,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/customerName" />
 
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:text="بنی اسدی" />
 
         </LinearLayout>
 
@@ -94,12 +89,16 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_origin" />
 
             <TextView
                 style="@style/Details_answer"
@@ -108,24 +107,22 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:text="امیریه 31. آراسته 1. مج سهند" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_origin" />
-
-
         </LinearLayout>
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="12dp" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_destination" />
 
             <TextView
                 style="@style/Details_answer"
@@ -134,12 +131,6 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:text="جلال آل احمد 68 . پلاک   208 " />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_destination" />
-
-
         </LinearLayout>
 
         <View
@@ -151,14 +142,6 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:orientation="horizontal">
-
-            <TextView
-                style="@style/Details_answer"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="38905328" />
-
 
             <TextView
                 style="@style/title_details"
@@ -167,19 +150,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/customerTell" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
-                android:layout_height="match_parent" />
-
-
             <TextView
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="09307278878" />
+                android:text="38905328" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:layout_height="match_parent" />
 
             <TextView
                 style="@style/title_details"
@@ -188,6 +169,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/customerMobile" />
 
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="09307278878" />
 
         </LinearLayout>
 
@@ -200,17 +187,6 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:orientation="horizontal">
-
-            <TextView
-                style="@style/Details_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="محصولات کشاورزی" />
-
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
-
 
             <TextView
                 style="@style/title_details"
@@ -218,79 +194,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Load_type" />
 
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Details_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="800,000" />
-
             <View
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="match_parent" />
-
-
-            <TextView
-                style="@style/title_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Load_cost" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/Details_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="مبدا" />
-
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
-
-
-            <TextView
-                style="@style/title_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Settlement_side" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
 
             <TextView
                 style="@style/Details_answer"
@@ -298,14 +204,88 @@
                 android:layout_height="wrap_content"
                 android:text="محصولات کشاورزی" />
 
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Load_cost" />
+
             <View
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="match_parent" />
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="800,000" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Settlement_side" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="مبدا" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_ticke" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="محصولات کشاورزی" />
 
         </LinearLayout>
 
@@ -327,6 +307,12 @@
                 android:orientation="horizontal"
                 android:paddingRight="@dimen/_8sdp">
 
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_canclee" />
+
                 <TextView
                     style="@style/text_title_white"
                     android:layout_width="0dp"
@@ -335,19 +321,11 @@
                     android:text="@string/cancle"
                     android:paddingRight="@dimen/_5sdp"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/ic_canclee" />
-
-
             </LinearLayout>
 
             <View
                 android:layout_width="@dimen/_7sdp"
                 android:layout_height="match_parent" />
-
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -358,6 +336,12 @@
                 android:orientation="horizontal"
                 android:paddingRight="@dimen/_8sdp">
 
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_call" />
+
                 <TextView
                     style="@style/text_title_white"
                     android:layout_width="0dp"
@@ -366,19 +350,11 @@
                     android:text="@string/call"
                     android:paddingRight="@dimen/_5sdp"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/ic_call" />
-
-
             </LinearLayout>
 
             <View
                 android:layout_width="@dimen/_7sdp"
                 android:layout_height="match_parent" />
-
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -389,6 +365,12 @@
                 android:orientation="horizontal"
                 android:paddingRight="@dimen/_8sdp">
 
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_conversation" />
+
                 <TextView
                     style="@style/text_title_white"
                     android:layout_width="0dp"
@@ -397,13 +379,6 @@
                     android:text="@string/Conversation"
                     android:paddingRight="@dimen/_5sdp"/>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/ic_conversation" />
-
-
             </LinearLayout>
 
         </LinearLayout>
@@ -411,7 +386,6 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="20dp" />
-
 
         <TextView
                 style="@style/text_title_white"
@@ -422,9 +396,6 @@
                android:background="@drawable/bg_grye"
                 android:gravity="center"/>
 
-
-
     </LinearLayout>
-
 
 </LinearLayout>

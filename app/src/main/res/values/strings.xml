@@ -35,6 +35,7 @@
     <string name="id">شمارشناسنامه</string>
     <string name="National_code">کد ملی</string>
     <string name="Shaba_number">شماره شبا</string>
+    <string name="service_details">جزییات سفر</string>
 
 
 </resources>
