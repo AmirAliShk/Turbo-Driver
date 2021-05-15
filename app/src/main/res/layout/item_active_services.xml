@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -16,31 +17,26 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35"/>
-
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/title_header">
+                android:layout_weight="2"
+                android:paddingRight="@dimen/_10sdp"
+                android:background="@drawable/title_header"
+                android:orientation="horizontal">
 
                 <TextView
                     style="@style/text_title_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
                     android:text="16اردیبهشت   12:50"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/_10sdp"/>
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="5dp"
@@ -51,12 +47,18 @@
                     style="@style/text_title_white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
                     android:text="بنی اسدی"
-                    android:textStyle="bold"
-                    android:layout_marginRight="@dimen/_10sdp"/>
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35" />
+
         </LinearLayout>
 
         <View
@@ -66,25 +68,24 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginRight="@dimen/_20sdp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:paddingRight="@dimen/_10sdp"
                 android:orientation="horizontal">
 
                 <TextView
                     style="@style/Details_answer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="محصولات کشاورزی"/>
+                    android:text="محصولات کشاورزی" />
 
                 <View
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="match_parent" />
-
 
                 <TextView
                     style="@style/title_details"
@@ -92,19 +93,23 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Load_type" />
 
-
             </LinearLayout>
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp" />
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:paddingRight="@dimen/_10sdp"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_origin" />
 
                 <TextView
                     style="@style/Details_answer"
@@ -113,24 +118,23 @@
                     android:layout_marginRight="@dimen/_10sdp"
                     android:text="امیریه 31. آراسته 1. مج سهند" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_origin" />
-
-
             </LinearLayout>
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="12dp" />
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:paddingRight="@dimen/_10sdp"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_destination" />
 
                 <TextView
                     style="@style/Details_answer"
@@ -139,22 +143,14 @@
                     android:layout_marginRight="@dimen/_10sdp"
                     android:text="جلال آل احمد 68 . پلاک   208 " />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_destination" />
-
-
             </LinearLayout>
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp" />
 
-
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

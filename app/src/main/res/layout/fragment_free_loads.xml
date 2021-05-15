@@ -4,18 +4,19 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:layoutDirection="rtl"
     android:background="@color/pageBackground">
 
     <RelativeLayout
         android:id="@+id/rlActionBar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/actionBar"
-        android:layoutDirection="ltr">
+        android:background="@color/actionBar">
 
         <ImageView
             android:id="@+id/imgBack"
             android:layout_width="?android:attr/actionBarSize"
+            android:layout_alignParentLeft="true"
             android:layout_height="match_parent"
             android:padding="15dp"
             android:src="@drawable/ic_back" />
