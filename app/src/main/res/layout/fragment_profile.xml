@@ -48,7 +48,8 @@
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="سارابنی اسدی" />
+                android:text="سارابنی اسدی"
+                android:textStyle="bold"/>
 
             <View
                 android:layout_width="@dimen/_25sdp"
