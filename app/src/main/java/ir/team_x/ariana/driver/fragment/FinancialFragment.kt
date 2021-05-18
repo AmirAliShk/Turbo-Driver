@@ -5,13 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ir.team_x.ariana.driver.R
-import ir.team_x.ariana.driver.databinding.FragmentAccountReportBinding
-import ir.team_x.ariana.driver.databinding.FragmentAnnouncementBinding
-import ir.team_x.ariana.driver.databinding.FragmentFinancialMenuBinding
+import ir.team_x.ariana.driver.databinding.FragmentFinancialBinding
 
 class FinancialFragment : Fragment() {
- private lateinit var binding : FragmentFinancialMenuBinding
+ private lateinit var binding : FragmentFinancialBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -22,7 +19,7 @@ class FinancialFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding =  FragmentFinancialMenuBinding.inflate(inflater, container, false)
+        binding =  FragmentFinancialBinding.inflate(inflater, container, false)
 
 
 

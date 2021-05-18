@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import ir.team_x.ariana.driver.databinding.*
 
-class ServiceManagementFragment : Fragment() {
- private lateinit var binding : FragmentServiceManagementBinding
+class ServiceDetailsFragment : Fragment() {
+ private lateinit var binding : FragmentServiceDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -19,7 +19,7 @@ class ServiceManagementFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding =  FragmentServiceManagementBinding.inflate(inflater, container, false)
+        binding =  FragmentServiceDetailsBinding.inflate(inflater, container, false)
 
 
 

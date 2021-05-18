@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/actionBar"
     android:orientation="vertical"
+    android:clickable="true"
+    android:layoutDirection="rtl"
     tools:context=".fragment.LoginFragment">
 
     <ImageView

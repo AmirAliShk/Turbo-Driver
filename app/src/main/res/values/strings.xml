@@ -35,8 +35,12 @@
     <string name="id">شمارشناسنامه</string>
     <string name="National_code">کد ملی</string>
     <string name="Shaba_number">شماره شبا</string>
+<<<<<<< HEAD
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
+    <string name="service_details">جزییات سفر</string>
+>>>>>>> 73dd088c650a8db0867b3ddc0c4d3c0127a63a74
 
 
 </resources>
