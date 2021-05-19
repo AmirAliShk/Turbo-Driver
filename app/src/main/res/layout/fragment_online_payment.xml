@@ -226,7 +226,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bg_green"
-            android:text="پرداخت" />
+            android:text="پرداخت"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="@dimen/_15sdp"/>
 
         <View
             android:layout_width="0dp"
