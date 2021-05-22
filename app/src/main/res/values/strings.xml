@@ -8,10 +8,12 @@
     <string name="service_management">مدیریت سرویس</string>
     <string name="account_report">گزارش حساب</string>
     <string name="online_payment">پرداخت آنلاین</string>
+    <string name="card_to_card">کارت به کارت</string>
     <string name="financial">مالی</string>
     <string name="Service_history">تاریخچه سرویس</string>
     <string name="profile">حساب کاربری</string>
     <string name="service_history">تاریخچه سرویس</string>
+    <string name="payment_report">گزارش پرداخت</string>
     <string name="news">اخبار</string>
     <string name="support">پشتیبانی</string>
     <string name="Load_type">نوع بار</string>
@@ -35,12 +37,18 @@
     <string name="id">شمارشناسنامه</string>
     <string name="National_code">کد ملی</string>
     <string name="Shaba_number">شماره شبا</string>
-<<<<<<< HEAD
+    <
+    <
+    <
+    <
+    <
+    <
+    < HEAD
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-=======
+    =======
     <string name="service_details">جزییات سفر</string>
->>>>>>> 73dd088c650a8db0867b3ddc0c4d3c0127a63a74
+    >>>>>>> 73dd088c650a8db0867b3ddc0c4d3c0127a63a74
 
 
 </resources>
