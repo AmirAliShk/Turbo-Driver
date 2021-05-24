@@ -86,38 +86,38 @@ public class ErrorDialog {
 //    LinearLayout llParent=dialog.findViewById(R.id.llParent);
 //    llParent.setLayoutParams(new LinearLayout.LayoutParams(300, 150));
 
-        TextView txtMessage = (TextView) dialog.findViewById(R.id.txtMessage);
-        txtMessage.setText(messageText);
-
-        TextView title = (TextView) dialog.findViewById(R.id.txtTitle);
-        if (titleText == null || titleText.isEmpty()) {
-            title.setVisibility(View.GONE);
-        } else {
-            title.setVisibility(View.VISIBLE);
-            title.setText(titleText);
-        }
-
-        Button btnClose = dialog.findViewById(R.id.btnClose);
-        Button btnTryAgain = dialog.findViewById(R.id.btnTryAgain);
-
-        btnClose.setText(closeText);
-        btnTryAgain.setText(tryAgainText);
-
-        if (bodyRunnable != null)
-            bodyRunnable.run();
-
-        btnClose.setOnClickListener(v -> {
-            if (closeRunnable != null)
-                closeRunnable.run();
-            else
-                dismiss();
-        });
-
-        btnTryAgain.setOnClickListener(v -> {
-            if (tryAgainRunnable != null)
-                tryAgainRunnable.run();
-            dismiss();
-        });
+//        TextView txtMessage = (TextView) dialog.findViewById(R.id.txtMessage);
+//        txtMessage.setText(messageText);
+//
+//        TextView title = (TextView) dialog.findViewById(R.id.txtTitle);
+//        if (titleText == null || titleText.isEmpty()) {
+//            title.setVisibility(View.GONE);
+//        } else {
+//            title.setVisibility(View.VISIBLE);
+//            title.setText(titleText);
+//        }
+//
+//        Button btnClose = dialog.findViewById(R.id.btnClose);
+//        Button btnTryAgain = dialog.findViewById(R.id.btnTryAgain);
+//
+//        btnClose.setText(closeText);
+//        btnTryAgain.setText(tryAgainText);
+//
+//        if (bodyRunnable != null)
+//            bodyRunnable.run();
+//
+//        btnClose.setOnClickListener(v -> {
+//            if (closeRunnable != null)
+//                closeRunnable.run();
+//            else
+//                dismiss();
+//        });
+//
+//        btnTryAgain.setOnClickListener(v -> {
+//            if (tryAgainRunnable != null)
+//                tryAgainRunnable.run();
+//            dismiss();
+//        });
 
         dialog.setOnDismissListener(dialogInterface -> {
             Log.i("GENERAL", "onDismiss General dialog");

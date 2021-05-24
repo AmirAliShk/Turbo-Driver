@@ -34,11 +34,11 @@ data class Dialog(
 //        dialog.window?.let { TypeFaceUtil.overrideFont(it.decorView) }
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(cancelable)
-
-        binding.txtTitle.text = title
-        binding.txtMessage.text = message
-        binding.btnNegative.setOnClickListener { negativeBtn?.run() }
-        binding.btnPositive.setOnClickListener { positiveBtn?.run() }
+//
+//        binding.txtTitle.text = title
+//        binding.txtMessage.text = message
+//        binding.btnNegative.setOnClickListener { negativeBtn?.run() }
+//        binding.btnPositive.setOnClickListener { positiveBtn?.run() }
 
         dialog.show()
     }
