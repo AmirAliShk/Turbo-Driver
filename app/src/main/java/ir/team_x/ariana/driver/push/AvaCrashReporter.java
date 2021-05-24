@@ -36,7 +36,7 @@ public class AvaCrashReporter {
       customeData.put("CATCH_LINE_NUMBER", AvaSocket.getSocketParams());
       customeData.put("CATCH_ID", arg.length > 0 ? arg[0] : 0);
       customeData.put("CATCH_INPUT_PARAMS", arg.length > 1 ? arg[1] : 0);
-      RequestHelper.builder(EndPoint.Companion.getCRASH_REPORT())
+      RequestHelper.builder(EndPoint.CRASH_REPORT)
               .addParam("APP_VERSION_CODE", new AppVersionHelper(MyApplication.context).getVersionCode())
               .addParam("APP_VERSION_NAME", new AppVersionHelper(MyApplication.context).getVersionName())
               .addParam("PACKAGE_NAME", MyApplication.context.getPackageName())

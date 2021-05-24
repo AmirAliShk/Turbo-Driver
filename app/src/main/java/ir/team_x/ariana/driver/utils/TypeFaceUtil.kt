@@ -13,7 +13,7 @@ class TypeFaceUtil {
         fun overrideFont(v: View) {
             try {
                 if (v is ViewGroup) {
-                    for (i in 0..v.childCount) {
+                    for (i in 0 until v.childCount) {
                         val child = v.getChildAt(i)
                         overrideFont(child)
                     }
@@ -29,7 +29,7 @@ class TypeFaceUtil {
         fun overrideFont(v: View, typeFace:Typeface) {
             try {
                 if (v is ViewGroup) {
-                    for (i in 0..v.childCount) {
+                    for (i in 0 until v.childCount) {
                         val child = v.getChildAt(i)
                         overrideFont(child)
                     }

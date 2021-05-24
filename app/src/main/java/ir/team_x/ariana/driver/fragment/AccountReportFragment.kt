@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ir.team_x.ariana.driver.R
+import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentAccountReportBinding
 import ir.team_x.ariana.driver.databinding.FragmentAnnouncementBinding
 
@@ -23,7 +24,7 @@ class AccountReportFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =  FragmentAccountReportBinding.inflate(inflater, container, false)
 
-
+        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
         return binding.root
     }

@@ -1,5 +1,6 @@
 package ir.team_x.ariana.driver.activity
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.llMap.setOnClickListener {
-            Toast.makeText(MyApplication.context, "map ", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(MyApplication.currentActivity, MapActivity::class.java))
         }
 
         binding.llServiceManagement.setOnClickListener {

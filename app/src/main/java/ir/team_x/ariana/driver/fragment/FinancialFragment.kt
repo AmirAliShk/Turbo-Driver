@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ReportFragment
+import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentFinancialBinding
+import ir.team_x.ariana.driver.utils.FragmentHelper
+import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class FinancialFragment : Fragment() {
- private lateinit var binding : FragmentFinancialBinding
+    private lateinit var binding: FragmentFinancialBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -18,10 +22,31 @@ class FinancialFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding =  FragmentFinancialBinding.inflate(inflater, container, false)
+        binding = FragmentFinancialBinding.inflate(inflater, container, false)
+        TypeFaceUtil.overrideFont(binding.root)
 
+        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
+        binding.llOnlinePayment.setOnClickListener {
+            FragmentHelper.toFragment(
+                MyApplication.currentActivity,
+                OnlinePaymentFragment()
+            ).replace()
+        }
+
+        binding.llCardToCard.setOnClickListener {
+            FragmentHelper.toFragment(
+                MyApplication.currentActivity,
+                CardToCardFragment()
+            ).replace()
+        }
+
+        binding.llReport.setOnClickListener {
+            FragmentHelper.toFragment(
+                MyApplication.currentActivity,
+                AccountReportFragment()
+            ).replace()
+        }
 
         return binding.root
     }

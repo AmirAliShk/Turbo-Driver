@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentFreeLoadsBinding
 import ir.team_x.ariana.driver.databinding.FragmentManageServicesBinding
 
@@ -22,7 +23,9 @@ class ManageServiceFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =  FragmentManageServicesBinding.inflate(inflater, container, false)
 
-
+        binding.imgBack.setOnClickListener {
+            MyApplication.currentActivity.onBackPressed()
+        }
 
         return binding.root
     }

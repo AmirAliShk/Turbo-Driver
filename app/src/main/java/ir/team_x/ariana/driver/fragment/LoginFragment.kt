@@ -24,6 +24,4 @@ class LoginFragment : Fragment() {
         return view
     }
 
-    companion object {
-    }
 }

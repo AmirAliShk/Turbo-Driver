@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.Window
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.DialogGeneralBinding
+import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 
 data class Dialog(
@@ -31,14 +32,13 @@ data class Dialog(
         dialog = Dialog(MyApplication.currentActivity)
         dialog.setContentView(binding.root)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-//        dialog.window?.let { TypeFaceUtil.overrideFont(it.decorView) }
+        dialog.window?.let { TypeFaceUtil.overrideFont(it.decorView) }
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(cancelable)
 //
-//        binding.txtTitle.text = title
-//        binding.txtMessage.text = message
-//        binding.btnNegative.setOnClickListener { negativeBtn?.run() }
-//        binding.btnPositive.setOnClickListener { positiveBtn?.run() }
+        binding.txtMessage.text = message
+        binding.btnNegative.setOnClickListener { negativeBtn?.run() }
+        binding.btnPositive.setOnClickListener { positiveBtn?.run() }
 
         dialog.show()
     }
