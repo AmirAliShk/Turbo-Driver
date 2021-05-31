@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:background="@color/pageBackground"
     android:layoutDirection="rtl"
-    android:background="@color/pageBackground">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/rlActionBar"
@@ -16,8 +16,8 @@
         <ImageView
             android:id="@+id/imgBack"
             android:layout_width="?android:attr/actionBarSize"
-            android:layout_alignParentLeft="true"
             android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
             android:padding="15dp"
             android:src="@drawable/ic_back" />
 
@@ -26,11 +26,77 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="جزییات خبر"
+            android:text="خبر"
             android:textStyle="bold" />
 
     </RelativeLayout>
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="rtl"
+        android:padding="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_18sdp"
+            android:background="@drawable/bg_grye"
+            android:elevation="@dimen/_5sdp"
+            android:padding="@dimen/_6sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.13"
+                android:src="@drawable/ic_news" />
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:background="@drawable/background2"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:padding="@dimen/_20sdp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                >
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10sdp"
+                    android:layout_marginTop="@dimen/_5sdp" />
+
+
+                <TextView
+                    style="@style/Details_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="همکاران توجه کنند گزینه ای در قسمت پشتیبانی نرم افزار شده است به نام دکمه ی در اختیار که کاربرد ان زمان است که سرویس برای مهمان اعزام شده و مجدد تماس میگیرد.مقصد من تغییر کرده است. دارای چندیدن مقصد هستم. خیلی ساده سرویس در اختیار برای راننده خانم نداریم اگرمسافر اعلام نمود سرویسی میخواهم که خانم باشد ودر اختیار اعلام کنید نداریم سرویس اقا باید بفرستیم.  خیلی ساده سرویس در اختیار برای راننده خانم نداریم.
+همکاران توجه کنند گزینه ای در قسمت پشتیبانی نرم افزار شده است به نام دکمه ی در اختیار که کاربرد ان زمان است که سرویس برای مهمان اعزام شده و مجدد تماس میگیرد.مقصد من تغییر کرده است. دارای چندیدن مقصد هستم. خیلی ساده سرویس در اختیار برای راننده خانم نداریم اگرمسافر اعلام نمود سرویسی میخواهم که خانم باشد ودر اختیار اعلام کنید نداریم سرویس اقا باید بفرستیم.  خیلی ساده سرویس در اختیار برای راننده خانم نداریم.
+همکاران توجه کنند گزینه ای در قسمت پشتیبانی نرم افزار شده است به نام دکمه ی در اختیار که کاربرد ان زمان است که سرویس برای مهمان اعزام شده و مجدد تماس میگیرد.مقصد من تغییر کرده است. دارای چندیدن مقصد هستم. خیلی ساده سرویس در اختیار برای راننده خانم نداریم اگرمسافر اعلام نمود سرویسی میخواهم که خانم باشد ودر اختیار اعلام کنید نداریم سرویس اقا باید بفرستیم.  خیلی ساده سرویس در اختیار برای راننده خانم نداریم.
+همکاران توجه کنند گزینه ای در قسمت پشتیبانی نرم افزار شده است به نام دکمه ی در اختیار که کاربرد ان زمان است که سرویس برای مهمان اعزام شده و مجدد تماس میگیرد.مقصد من تغییر کرده است. دارای چندیدن مقصد هستم. خیلی ساده سرویس در اختیار برای راننده خانم نداریم اگرمسافر اعلام نمود سرویسی میخواهم که خانم باشد ودر اختیار اعلام کنید نداریم سرویس اقا باید بفرستیم.  خیلی ساده سرویس در اختیار برای راننده خانم نداریم."
+                    android:gravity="center"
+                    android:textSize="@dimen/_15sdp"/>
+
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
 
 </LinearLayout>

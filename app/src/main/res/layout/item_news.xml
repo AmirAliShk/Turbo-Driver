@@ -3,16 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    android:layout_margin="@dimen/_13sdp">
+    android:padding="@dimen/_10sdp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/background2"
+        android:layout_marginRight="@dimen/_18sdp"
+        android:background="@drawable/bg_grye"
         android:elevation="@dimen/_5sdp"
-        android:padding="@dimen/_9sdp"
-        android:layout_marginRight="@dimen/_85sdp"
-        android:layout_marginLeft="@dimen/_85sdp">
+        android:padding="@dimen/_6sdp">
 
         <ImageView
             android:layout_width="0dp"
@@ -21,59 +20,37 @@
             android:src="@drawable/ic_news" />
 
 
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_13sdp"
-        android:padding="@dimen/_15sdp"
         android:background="@drawable/background2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_16sdp">
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:layout_marginTop="@dimen/_10sdp"/>
+            android:layout_marginTop="@dimen/_5sdp" />
 
-
-
-            <TextView
-                style="@style/Details_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:text="1خرداد  12:20" />
-
-
-
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
 
         <TextView
             style="@style/Details_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/_10sdp"
-            android:text="1420-5121-7788-1234" />
+            android:text="همکاران توجه کنند گزینه ای در قسمت پشتیبانی نرم افزار
+شده است به نام دکمه ی در اختیار که کاربرد ان زمان
+است که سرویس برای مهمان اعزام شده و مجدد تماس
+میگیرد.
+دارای چندیدن  ........." />
 
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="20dp" />
-
-        <TextView
-            style="@style/Details_answer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:text="200/000  تومان" />
-
-
-
 
 
     </LinearLayout>
