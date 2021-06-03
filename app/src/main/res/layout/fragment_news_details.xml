@@ -42,13 +42,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/_18sdp"
-            android:background="@drawable/bg_grye"
+            android:background="@drawable/background2"
             android:elevation="@dimen/_5sdp"
-            android:padding="@dimen/_6sdp">
+            android:padding="@dimen/_8sdp">
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_11sdp"
+                android:layout_marginRight="@dimen/_11sdp"
                 android:layout_weight="0.13"
                 android:src="@drawable/ic_news" />
 
@@ -66,14 +68,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <View
                     android:layout_width="wrap_content"
-                    android:layout_height="10sdp"
+                    android:layout_height="1dp"
                     android:layout_marginTop="@dimen/_5sdp" />
+
+                <TextView
+                    style="@style/Details_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="شرکت اریانا"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    android:layout_margin="@dimen/_10sdp"/>
 
 
                 <TextView
@@ -87,6 +96,18 @@
                     android:gravity="center"
                     android:textSize="@dimen/_15sdp"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ariana"
+                    android:layout_gravity="left"/>
+
+                </LinearLayout>
 
                 <View
                     android:layout_width="wrap_content"
