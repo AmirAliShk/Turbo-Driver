@@ -17,6 +17,10 @@ class PrefManager {
         editor = sharedPreferences.edit()
     }
 
+    private val USER_NAME = "userName"
+    private val SIP_PASSWORD = "sipPassword"
+    private val SIP_SERVER = "sipServer"
+    private val SIP_NUMBER = "sipNumber"
     private val REFRESH_TOKEN = "refreshToken"
     private val AUTHORIZATION = "authorixation"
     private val ID_TOKEN = "idToken"
@@ -55,6 +59,42 @@ class PrefManager {
 
     fun setLastNotification(v: String?) {
         editor.putString(LAST_NOTIFICATION, v)
+        editor.commit()
+    }
+
+    fun getSipNumber(): String? {
+        return sharedPreferences.getString(SIP_NUMBER, "")
+    }
+
+    fun setSipNumber(sipNumber: String) {
+        editor.putString(SIP_NUMBER, sipNumber)
+        editor.commit()
+    }
+
+    fun getSipPassword(): String? {
+        return sharedPreferences.getString(SIP_PASSWORD, "")
+    }
+
+    fun setSipPassword(sipPassword: String) {
+        editor.putString(SIP_PASSWORD, sipPassword)
+        editor.commit()
+    }
+
+    fun getSipServer(): String? {
+        return sharedPreferences.getString(SIP_SERVER, "")
+    }
+
+    fun setSipServer(sipServer: String) {
+        editor.putString(SIP_SERVER, sipServer)
+        editor.commit()
+    }
+
+    fun getUserName(): String? {
+        return sharedPreferences.getString(USER_NAME, "")
+    }
+
+    fun setUserName(userName: String) {
+        editor.putString(USER_NAME, userName)
         editor.commit()
     }
 

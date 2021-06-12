@@ -15,6 +15,7 @@ import ir.team_x.ariana.driver.app.Constant
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivitySplashBinding
 import ir.team_x.ariana.driver.utils.AppVersionHelper
+import ir.team_x.ariana.driver.webServices.GetAppInfo
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class SplashActivity : AppCompatActivity() {
@@ -51,12 +52,10 @@ class SplashActivity : AppCompatActivity() {
                     Constant.LINPHONE_PERMISSION_REQ_CODE
                 )
             } else {
-                startActivity(Intent(MyApplication.currentActivity, MainActivity::class.java))
-                MyApplication.currentActivity.finish()
+                GetAppInfo().callAppInfoAPI()
             }
         }else{
-            startActivity(Intent(MyApplication.currentActivity, MainActivity::class.java))
-            MyApplication.currentActivity.finish()
+            GetAppInfo().callAppInfoAPI()
         }
     }
 

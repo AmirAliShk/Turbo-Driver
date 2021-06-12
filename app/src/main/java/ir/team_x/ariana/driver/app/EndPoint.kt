@@ -17,7 +17,8 @@ public class EndPoint {
         const val CRASH_REPORT = "http://turbotaxi.ir:6061/api/v1/crashReport"
 
         const val BASE_PATH = "/api/driver/v1"
-        const val FINANCIAL_PATH = "$BASE_PATH /financial"
+        const val FINANCIAL_PATH = "$BASE_PATH/financial"
+        const val SERVICE_PATH = "$BASE_PATH/service"
 
         /******************************** refresh token Api *********************************/
         const val REFRESH_TOKEN: String = "token"
@@ -40,6 +41,7 @@ public class EndPoint {
         const val ADD_DRIVER_CHARGE: String = "$FINANCIAL_PATH/addDriverCharge"
         const val GET_FINANCIAL: String = "$FINANCIAL_PATH/getFinancial"
 
+        const val ACTIVES: String = "$FINANCIAL_PATH/actives"
 
     }
 

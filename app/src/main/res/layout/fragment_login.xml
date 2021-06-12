@@ -78,16 +78,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:orientation="horizontal"
                 android:gravity="center_horizontal">
 
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
                 <Button
+                    android:id="@+id/btnLogin"
                     style="@style/text_title_white"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background3"
-                    android:text="ورود"
-                    android:layout_marginRight="@dimen/_30sdp"
-                    android:layout_marginLeft="@dimen/_30sdp"/>
+                    android:text="ورود"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
 
             </LinearLayout>
 
