@@ -5,6 +5,12 @@ import android.app.Application
 import android.content.Context
 import android.graphics.Typeface
 import android.os.Handler
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
+import ir.team_x.ariana.driver.R
+import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class MyApplication : Application() {
 
@@ -19,6 +25,22 @@ class MyApplication : Application() {
         lateinit var iranSansTF: Typeface
         lateinit var iranSansBoldTF: Typeface
         lateinit var iranSansMediumTF: Typeface
+
+        fun Toast(message: String?, duration: Int) {
+            handler.post(Runnable {
+                val layoutInflater = LayoutInflater.from(currentActivity)
+                val v = layoutInflater.inflate(R.layout.item_toast, null)
+                TypeFaceUtil.overrideFont(v)
+                val text = v.findViewById<View>(R.id.text) as TextView
+                text.text = message
+                val toast = android.widget.Toast(currentActivity)
+                toast.setGravity(Gravity.CENTER, 0, 0)
+                toast.duration = duration
+                toast.view = v
+                toast.show()
+            })
+        }
+
     }
 
     override fun onCreate() {
