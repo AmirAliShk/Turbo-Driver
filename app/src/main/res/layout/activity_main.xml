@@ -33,10 +33,10 @@
                     android:id="@+id/imgMenu"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/_3sdp"
                     android:layout_weight="0.65"
                     android:padding="@dimen/_5sdp"
-                    android:src="@drawable/ic_menu"
-                    android:layout_marginBottom="@dimen/_3sdp"/>
+                    android:src="@drawable/ic_menu" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -46,19 +46,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/text_title_white"
+                        style="@style/page_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:text="سارا بنی اسدی"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="@dimen/_10sdp"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_10sdp">
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:orientation="horizontal">
 
                         <TextView
                             style="@style/item_value"
@@ -67,13 +67,13 @@
                             android:text="شارژ" />
 
                         <TextView
-                            style="@style/text_title_white"
+                            style="@style/page_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/_10sdp"
                             android:gravity="left"
                             android:text="77,334"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             style="@style/item_value"
@@ -116,10 +116,11 @@
                             android:layout_height="@dimen/_40sdp"
                             android:checked="true"
                             android:textColor="@color/grayLighter"
+                            android:textSize="@dimen/_16ssp"
                             app:kswAnimationDuration="300"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff="    غیرفعال     "
-                            app:kswTextOn="    فعال    "
+                            app:kswTextOff="    غیرفعال  "
+                            app:kswTextOn="  فعال   "
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
                             app:kswThumbMargin="@dimen/_5sdp"
@@ -152,13 +153,13 @@
                             android:src="@drawable/ic_map" />
 
                         <TextView
-                            style="@style/text_title_black"
+                            style="@style/text_main_black"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginBottom="8dp"
                             android:layout_weight="0.75"
                             android:gravity="center"
-                            android:text="@string/map"
-                            android:layout_marginBottom="8dp"/>
+                            android:text="@string/map" />
 
                     </LinearLayout>
 
@@ -186,13 +187,13 @@
                             android:src="@drawable/ic_free" />
 
                         <TextView
-                            style="@style/text_title_black"
+                            style="@style/text_main_black"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginBottom="8dp"
                             android:layout_weight="0.75"
                             android:gravity="center"
-                            android:text="@string/free"
-                            android:layout_marginBottom="8dp"/>
+                            android:text="@string/free" />
 
                     </LinearLayout>
 
@@ -229,10 +230,11 @@
                             android:layout_height="@dimen/_40sdp"
                             android:checked="true"
                             android:textColor="@color/grayLighter"
+                            android:textSize="@dimen/_16ssp"
                             app:kswAnimationDuration="300"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff="  ثبت نمحدوده "
-                            app:kswTextOn="  ثبت محدوده   "
+                            app:kswTextOff=" ثبت نمحدوده "
+                            app:kswTextOn="ثبت محدوده"
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
                             app:kswThumbMargin="@dimen/_5sdp"
@@ -265,13 +267,13 @@
                             android:src="@drawable/ic_service_management" />
 
                         <TextView
-                            style="@style/text_title_black"
+                            style="@style/text_main_black"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginBottom="8dp"
                             android:layout_weight="0.75"
                             android:gravity="center"
-                            android:text="@string/service_management"
-                          android:layout_marginBottom="8dp"/>
+                            android:text="@string/service_management" />
 
                     </LinearLayout>
 
@@ -299,13 +301,13 @@
                             android:src="@drawable/ic_financial" />
 
                         <TextView
-                            style="@style/text_title_black"
+                            style="@style/text_main_black"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginBottom="8dp"
                             android:layout_weight="0.75"
                             android:gravity="center"
-                            android:text="@string/financial"
-                            android:layout_marginBottom="8dp"/>
+                            android:text="@string/financial" />
 
                     </LinearLayout>
 
@@ -364,15 +366,15 @@
                         android:id="@+id/imgAnnouncement"
                         android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_60sdp"
-                        android:src="@mipmap/logoariana"/>
+                        android:src="@mipmap/logoariana" />
 
                     <TextView
                         android:id="@+id/txtBadgeCount"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:background="@drawable/bg_red"
                         android:layout_marginTop="7dp"
                         android:layout_marginRight="7dp"
+                        android:background="@drawable/bg_red"
                         android:elevation="@dimen/_10sdp"
                         android:gravity="center"
                         android:text="99"
@@ -405,6 +407,6 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

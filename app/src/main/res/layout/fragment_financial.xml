@@ -71,14 +71,14 @@
                     android:paddingRight="@dimen/_5sdp"/>
 
                 <TextView
+                  style="@style/page_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_weight="1"
                     android:text="140,000"
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold"
-                    android:gravity="left"
-                    android:textSize="@dimen/_15sdp"/>
+                    android:gravity="left"/>
 
                 <TextView
                     style="@style/item_value"

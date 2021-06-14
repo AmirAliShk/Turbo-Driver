@@ -54,8 +54,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.imgAnnouncement.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, AnnouncementFragment())
-                .replace()
         }
 
     }
