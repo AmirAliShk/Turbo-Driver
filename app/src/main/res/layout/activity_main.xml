@@ -112,15 +112,15 @@
                         android:gravity="bottom|center_horizontal">
 
                         <com.kyleduo.switchbutton.SwitchButton
-                            android:layout_width="@dimen/_100sdp"
+                            android:layout_width="@dimen/_140sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:checked="true"
                             android:textColor="@color/grayLighter"
                             android:textSize="@dimen/_16ssp"
                             app:kswAnimationDuration="300"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff="    غیرفعال  "
-                            app:kswTextOn="  فعال   "
+                            app:kswTextOff="   غیرفعال     "
+                            app:kswTextOn="    فعال    "
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
                             app:kswThumbMargin="@dimen/_5sdp"
@@ -226,14 +226,14 @@
                         android:gravity="bottom|center_horizontal">
 
                         <com.kyleduo.switchbutton.SwitchButton
-                            android:layout_width="@dimen/_100sdp"
+                            android:layout_width="@dimen/_140sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:checked="true"
                             android:textColor="@color/grayLighter"
                             android:textSize="@dimen/_16ssp"
                             app:kswAnimationDuration="300"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff=" ثبت نمحدوده "
+                            app:kswTextOff="  ثبت نمحدوده "
                             app:kswTextOn="ثبت محدوده"
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
