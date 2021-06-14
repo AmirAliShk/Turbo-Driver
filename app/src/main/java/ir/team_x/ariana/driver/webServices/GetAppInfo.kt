@@ -54,7 +54,7 @@ public class GetAppInfo {
                     .addParam("versionCode", AppVersionHelper(MyApplication.context).versionCode)
                     .addParam("deviceInfo", deviceInfo)
                     .listener(getAppInfoCallBack)
-                    .post();
+                    .post()
             }
         } catch (e: Exception) {
 
