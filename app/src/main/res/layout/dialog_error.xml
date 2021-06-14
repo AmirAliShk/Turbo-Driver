@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:realtimeBlurRadius="20dp"
-        app:realtimeOverlayColor="#fff" />
+        app:realtimeOverlayColor="#2fff" />
 
     <RelativeLayout
         android:layout_width="match_parent"
