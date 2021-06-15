@@ -124,6 +124,7 @@
             android:text="قبول سرویس"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
+            android:textSize="@dimen/_18ssp"/>
 
         <ImageView
             android:layout_width="45dp"
