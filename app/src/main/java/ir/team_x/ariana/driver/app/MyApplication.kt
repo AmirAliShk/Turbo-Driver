@@ -3,6 +3,7 @@ package ir.team_x.ariana.driver.app
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Typeface
 import android.os.Handler
 import android.view.Gravity
@@ -12,6 +13,7 @@ import android.widget.TextView
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.push.AvaFactory
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
+import java.util.*
 
 class MyApplication : Application() {
 
@@ -47,10 +49,11 @@ class MyApplication : Application() {
             if (prefManager.getAvaPID() === 0) return
             if (prefManager.getAvaToken() == null) return
             AvaFactory.getInstance(context)
-                .setProjectID(10)
-                .setToken("arianaDriverAABMoh")
+                .setUserID("1")
+                .setProjectID(prefManager.getAvaPID())
+                .setToken("arianaDriverAABMohsenX") // TODO change value
                 .setAddress(EndPoint.PUSH_ADDRESS)
-                .start()
+                .start();
         }
 
     }
@@ -63,6 +66,13 @@ class MyApplication : Application() {
         initTypeFace()
 
         prefManager = PrefManager(context)
+
+        val languageToLoad = "fa_IR"
+        val locale = Locale(languageToLoad)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        context.resources.updateConfiguration(config, context.resources.displayMetrics)
 
         avaStart()
 

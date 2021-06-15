@@ -161,8 +161,8 @@ public class AvaSocket {
               Settings.Secure.ANDROID_ID);
       getPrefInstance().setDeviceId(deviceID);
 
-      opts.query = "channelInfo=" + getUserID() + "," + getProjectID() + "," + getToken() + "," + BuildConfig.VERSION_CODE + "," + getDeviceID() + "," + context.getPackageName();
-
+      //TODO change version code when release
+      opts.query = "channelInfo=" + getUserID() + "," + getProjectID() + "," + getToken() + ",9" + BuildConfig.VERSION_CODE + "," + getDeviceID() + "," + context.getPackageName();
 
 //      List<String> SocketLinuxAddress = getPrefInstance().getAddress();
       AvaLog.e(opts.query);

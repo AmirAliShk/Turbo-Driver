@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
         }
         TypeFaceUtil.overrideFont(binding.root, MyApplication.iranSansMediumTF)
 
-        MyApplication.prefManager.setAvaPID(10)
-        MyApplication.prefManager.setAvaToken("")
+        MyApplication.prefManager.setAvaPID(10)//TODO move to splash response
+        MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value
 
         binding.imgMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)

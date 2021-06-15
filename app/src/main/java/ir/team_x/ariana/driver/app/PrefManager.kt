@@ -48,7 +48,7 @@ class PrefManager {
     }
 
     fun isAppRun(): Boolean {
-        return sharedPreferences.getBoolean(KEY_APP_STATUS, false)
+        return sharedPreferences.getBoolean(KEY_APP_STATUS, true)
     }
 
     fun getAvaPID(): Int {

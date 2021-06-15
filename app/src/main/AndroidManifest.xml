@@ -37,6 +37,38 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB_licMGBhWU7REU-ekCVJgO-3W2JaKRsg" />
 
+        <service android:name=".gps.DataGatheringService"/>
+
+        <receiver android:name=".push.AutoStart"
+            android:exported="true"
+            android:enabled="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".push.AvaService"
+            android:exported="false"
+            android:enabled="true"/>
+
+        <receiver android:name=".push_notification.OnMessageReceiveAvaListener"
+            android:exported="false"
+            android:enabled="true"
+            >
+            <intent-filter android:priority="10000">
+                <action android:name="ir.taxi1880.driver.ACTION_RECEIVE_MESSAGE"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".push_notification.OnMessageReceiver"
+            android:exported="false"
+            android:enabled="true"
+            />
+
+
     </application>
 
 </manifest>

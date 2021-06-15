@@ -12,6 +12,7 @@ import com.google.android.gms.maps.model.LatLng
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
+import ir.team_x.ariana.driver.databinding.ActivityGetServiceBinding
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
 import ir.team_x.ariana.driver.fragment.FinancialFragment
 import ir.team_x.ariana.driver.fragment.FreeLoadsFragment
@@ -26,7 +27,7 @@ class GetServiceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivityGetServiceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

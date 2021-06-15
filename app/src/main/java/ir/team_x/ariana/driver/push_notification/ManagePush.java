@@ -42,7 +42,7 @@ import ir.team_x.ariana.operator.dialog.GetServiceDialog;
 public class ManagePush {
 
     private static final String TAG = ManagePush.class.getSimpleName();
-
+//    {"messageId":6725706,"message":"2^13:00:00^29286045^0^محدوده^احمداباد بابک 7 پ 55^مجد4^10000","projectId":3,"userId":"7650"}
     public void manage(final Context context, String pushMessage) {
         Log.i(TAG, "onPushReceived: message received node : " + pushMessage);
         String[] dataArray = pushMessage.split("\\^");
