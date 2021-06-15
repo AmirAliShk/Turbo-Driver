@@ -11,15 +11,19 @@
     <RelativeLayout
         android:id="@+id/rlActionBar"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/actionBar">
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/actionBar"
+            android:layout_height="@dimen/_40sdp"/>
 
         <ImageView
-            android:layout_width="?android:attr/actionBarSize"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:layout_centerInParent="true"
             android:src="@mipmap/arianaa" />
-
 
     </RelativeLayout>
 
@@ -28,13 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_15sdp"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/_15sdp">
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_40sdp" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,8 +63,6 @@
                 android:layout_marginRight="@dimen/_10sdp"/>
 
         </LinearLayout>
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,7 +89,6 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -141,16 +142,16 @@
 
         <View
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_170sdp" />
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
-        <Button
-            android:layout_width="@dimen/_50sdp"
+        <ImageButton
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/hohooh"
             android:background="@drawable/bg_red"
-            android:text="بستن"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_13ssp"
+            android:src="@drawable/ic_canclee"
             android:textStyle="bold"
             android:layout_gravity="left"/>
 

@@ -13,130 +13,135 @@
         app:realtimeOverlayColor="#2fff" />
 
     <RelativeLayout
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btnGetService"
+        <LinearLayout
+            android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/hohooh"
-            android:background="@drawable/bg_green2"
-            android:text="قبول سرویس"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"/>
+            android:padding="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/hohooh"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/background5"
+                android:orientation="vertical"
+                android:padding="@dimen/_15sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_origin" />
+
+                    <TextView
+                        android:id="@+id/txtOriginAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="0.35"
+                        android:gravity="center"
+                        android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_destination" />
+
+                    <TextView
+                        android:id="@+id/txtDestAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="0.35"
+                        android:gravity="center"
+                        android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/ic_mony" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="0.35"
+                        android:gravity="center"
+                        android:text="هزینه سرویس :"
+                        android:textColor="@color/navigationBar"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_weight="0.35"
+                        android:gravity="center"
+                        android:text="150.000 تومان"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnGetService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/hohooh"
+                android:background="@drawable/bg_green2"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="قبول سرویس"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
 
         <ImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_200sdp"
             android:background="@drawable/bg_red"
             android:elevation="@dimen/_3sdp"
             android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_canclee" />
-
-        <LinearLayout
-            android:id="@+id/hohooh"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_centerInParent="true"
-            android:layout_margin="@dimen/_15sdp"
-            android:layout_marginLeft="@dimen/_50sdp"
-            android:background="@drawable/background5"
-            android:elevation="@dimen/_5sdp"
-            android:orientation="vertical"
-            android:padding="@dimen/_15sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_origin" />
-
-                <TextView
-                    android:id="@+id/txtOriginAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_weight="0.35"
-                    android:gravity="center"
-                    android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_destination" />
-
-                <TextView
-                    android:id="@+id/txtDestAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_weight="0.35"
-                    android:gravity="center"
-                    android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:src="@drawable/ic_mony" />
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_weight="0.35"
-                    android:gravity="center"
-                    android:text="هزینه سرویس :"
-                    android:textColor="@color/navigationBar"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtPrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_weight="0.35"
-                    android:gravity="center"
-                    android:text="150.000 تومان"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
 
     </RelativeLayout>
 
