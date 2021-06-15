@@ -1,25 +1,16 @@
 package ir.team_x.ariana.driver.gps;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.util.Log;
-import android.view.View;
 
 import org.json.JSONObject;
 
-import ir.team_x.ariana.driver.app.Constant;
-import ir.team_x.ariana.driver.app.EndPoint;
 import ir.team_x.ariana.driver.app.MyApplication;
-import ir.team_x.ariana.driver.dialog.GeneralDialog;
 import ir.team_x.ariana.driver.okHttp.RequestHelper;
 import ir.team_x.ariana.driver.push.AvaCrashReporter;
-
-import static android.content.Context.ALARM_SERVICE;
 
 public class DataGatheringManager extends BroadcastReceiver {  //TODO implement from LocationAssistant
   public final String TAG = DataGatheringManager.class.getSimpleName();

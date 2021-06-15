@@ -161,15 +161,22 @@ public class AvaSocket {
               Settings.Secure.ANDROID_ID);
       getPrefInstance().setDeviceId(deviceID);
 
-      opts.query = "channelInfo=" + getUserID() + "," + getProjectID() + "," + getToken() + ",9" + BuildConfig.VERSION_CODE + "," + getDeviceID() + "," + context.getPackageName();
+      opts.query = "channelInfo=" + getUserID() + "," + getProjectID() + "," + getToken() + "," + BuildConfig.VERSION_CODE + "," + getDeviceID() + "," + context.getPackageName();
 
+
+//      List<String> SocketLinuxAddress = getPrefInstance().getAddress();
       AvaLog.e(opts.query);
-      mSocket = IO.socket(EndPoint.Companion.getPUSH_IP(), opts);
+//      if (getPrefInstance().getIpRow() < SocketLinuxAddress.size()) {
+//        mSocket = IO.socket(SocketLinuxAddress.get(getPrefInstance().getIpRow()), opts);
+      mSocket = IO.socket(EndPoint.Companion.getPUSH_ADDRESS(), opts);
       mSocket.connect();
       AvaLog.i("create new socket connection");
       openListener(mSocket);
       getPrefInstance().increaseIpRow();
       return mSocket;
+//      } else {
+//        instance.disconnectSocket();
+//      }
 
     } catch (Exception e1) {
       AvaCrashReporter.send(e1, 102);
@@ -274,6 +281,7 @@ public class AvaSocket {
     @Override
     public void call(Object... args) {
       String result = args[0].toString();
+      AvaLog.i("Message receive : " + result);
       AvaReporter.Message(context, Keys.PUSH_RECEIVE, result);
       try {
         socket.emit(Keys.EVENT_PUSH, new JSONObject(result));
@@ -283,6 +291,9 @@ public class AvaSocket {
       }
     }
   };
+
+
+
 
   void openListener(Socket socket) {
     if (!socket.hasListeners(Socket.EVENT_RECONNECT_ATTEMPT))

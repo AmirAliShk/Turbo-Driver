@@ -2,7 +2,6 @@ package ir.team_x.ariana.driver.app
 
 import android.content.Context
 import android.content.SharedPreferences
-import ir.team_x.ariana.driver.app.MyApplication
 
 class PrefManager {
 
@@ -25,9 +24,49 @@ class PrefManager {
     private val AUTHORIZATION = "authorixation"
     private val ID_TOKEN = "idToken"
     private val LAST_NOTIFICATION = "lastNotification"
+    private val KEY_AVA_PID = "AvaPID"
+    private val KEY_AVA_TOKEN = "AvaToken"
+    private val KEY_USE_ALARM_MANAGER = "userAlarmManager"
+    private val KEY_APP_STATUS = "AppStatus"
 
     fun getRefreshToken(): String? {
         return sharedPreferences.getString(REFRESH_TOKEN, "")
+    }
+
+    fun useAlarmManager(): Boolean {
+        return sharedPreferences.getBoolean(KEY_USE_ALARM_MANAGER, true)
+    }
+
+    fun setUseAlarmManager(v: Boolean) {
+        editor.putBoolean(KEY_USE_ALARM_MANAGER, v)
+        editor.commit()
+    }
+
+    fun setAppRun(v: Boolean) {
+        editor.putBoolean(KEY_APP_STATUS, v)
+        editor.commit()
+    }
+
+    fun isAppRun(): Boolean {
+        return sharedPreferences.getBoolean(KEY_APP_STATUS, false)
+    }
+
+    fun getAvaPID(): Int {
+        return sharedPreferences.getInt(KEY_AVA_PID, 10)
+    }
+
+    fun setAvaPID(v: Int) {
+        editor.putInt(KEY_AVA_PID, v)
+        editor.commit()
+    }
+
+    fun getAvaToken(): String? {
+        return sharedPreferences.getString(KEY_AVA_TOKEN, null)
+    }
+
+    fun setAvaToken(v: String?) {
+        editor.putString(KEY_AVA_TOKEN, v)
+        editor.commit()
     }
 
     fun setRefreshToken(refreshToken: String) {

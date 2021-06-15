@@ -8,17 +8,19 @@ class EndPoint {
 
         val IP = "http://turbotaxi.ir"
         val HAWKEYE_IP = "http://turbotaxi.ir"
-        val PUSH_IP = "http://turbotaxi.ir"
+        val PUSH_IP = "http://turbotaxi.ir:6060"
 
         val IP_PORT = "1810"
         val HAWKEYE_PORT = "1890"
 
         const val CRASH_REPORT = "http://turbotaxi.ir:6061/api/v1/crashReport"
 
+        val PUSH_ADDRESS = "http://turbotaxi.ir:6060"
         val BASE_PATH = "$IP:$IP_PORT/api/driver/v1"
-        private val SYSTEM_PATH = "$IP:$IP_PORT/api/driver/v1/system"
+        private val SYSTEM_PATH = "$BASE_PATH/system"
         val FINANCIAL_PATH = "$BASE_PATH/financial"
         val SERVICE_PATH = "$BASE_PATH/service"
+        val STATION_PATH = "$BASE_PATH/station"
 
         /******************************** refresh token Api *********************************/
         const val REFRESH_TOKEN = "token"
@@ -44,6 +46,9 @@ class EndPoint {
         val ACTIVES = "$SERVICE_PATH/actives"
 
         val ENTER_EXIT = "$SYSTEM_PATH/enterExit"
+
+        val REGISTER = "$STATION_PATH/register"
+        val EXIT = "$STATION_PATH/exit"
 
     }
 

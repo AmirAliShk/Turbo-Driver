@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import ir.team_x.ariana.driver.R
+import ir.team_x.ariana.driver.push.AvaFactory
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class MyApplication : Application() {
@@ -22,6 +23,7 @@ class MyApplication : Application() {
         val iranSans = "fonts/IRANSans.otf"
         val iranSansBold = "fonts/IRANSANS_BOLD.TTF"
         val iranSansMedium = "fonts/IRANSANS_MEDIUM.TTF"
+        val SOUND = "android.resource://ir.team_x.ariana.driver/";
         lateinit var iranSansTF: Typeface
         lateinit var iranSansBoldTF: Typeface
         lateinit var iranSansMediumTF: Typeface
@@ -41,6 +43,16 @@ class MyApplication : Application() {
             })
         }
 
+        fun avaStart() {
+            if (prefManager.getAvaPID() === 0) return
+            if (prefManager.getAvaToken() == null) return
+            AvaFactory.getInstance(context)
+                .setProjectID(10)
+                .setToken("arianaDriverAABMoh")
+                .setAddress(EndPoint.PUSH_ADDRESS)
+                .start()
+        }
+
     }
 
     override fun onCreate() {
@@ -51,6 +63,8 @@ class MyApplication : Application() {
         initTypeFace()
 
         prefManager = PrefManager(context)
+
+        avaStart()
 
     }
 

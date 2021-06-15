@@ -226,6 +226,7 @@
                         android:gravity="bottom|center_horizontal">
 
                         <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/swStationRegister"
                             android:layout_width="@dimen/_140sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:checked="true"

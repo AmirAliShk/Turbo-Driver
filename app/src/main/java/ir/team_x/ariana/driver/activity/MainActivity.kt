@@ -2,24 +2,29 @@ package ir.team_x.ariana.driver.activity
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import com.google.android.gms.maps.model.LatLng
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
-import ir.team_x.ariana.driver.fragment.*
+import ir.team_x.ariana.driver.fragment.FinancialFragment
+import ir.team_x.ariana.driver.fragment.FreeLoadsFragment
+import ir.team_x.ariana.driver.fragment.ManageServiceFragment
+import ir.team_x.ariana.driver.fragment.NewsFragment
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
+
+    var lastLocation = LatLng(0.0, 0.0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +39,9 @@ class MainActivity : AppCompatActivity() {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
         TypeFaceUtil.overrideFont(binding.root, MyApplication.iranSansMediumTF)
+
+        MyApplication.prefManager.setAvaPID(10)
+        MyApplication.prefManager.setAvaToken("")
 
         binding.imgMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)
@@ -64,6 +72,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.swStationRegister.setOnCheckedChangeListener { compoundButton, b ->
+            if(b){
+                stationRegister()
+            }else{
+                exitStation()
+            }
+        }
+
         binding.imgAnnouncement.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
         }
@@ -88,7 +104,82 @@ class MainActivity : AppCompatActivity() {
                     if (success) {
                         val dataArr = jsonObject.getJSONArray("data")
                         val dataObj = dataArr.getJSONObject(0)
-                        val status = dataObj.getBoolean("status")
+                        val status = dataObj.getBoolean("result")
+                        if (status) {
+                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
+                        }
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+
+            }
+        }
+    }
+
+    private fun stationRegister() {
+        RequestHelper.builder(EndPoint.REGISTER)
+            .listener(stationRegisterCallBack)
+            .addParam("lat", "36.298536")
+            .addParam("lng", "59.572962")
+            .post()
+    }
+
+    private val stationRegisterCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+
+                    if (success) {
+                        val dataArr = jsonObject.getJSONArray("data")
+                        val dataObj = dataArr.getJSONObject(0)
+                        val status = dataObj.getBoolean("result")
+                        if (status) {
+                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
+                        }
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+
+            }
+        }
+    }
+
+    private fun exitStation() {
+        RequestHelper.builder(EndPoint.EXIT)
+            .addParam("","")
+            .listener(exitStationCallBack)
+            .put()
+    }
+
+    private val exitStationCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+
+                    if (success) {
+                        val dataArr = jsonObject.getJSONArray("data")
+                        val dataObj = dataArr.getJSONObject(0)
+                        val status = dataObj.getBoolean("result")
                         if (status) {
                             MyApplication.Toast(message, Toast.LENGTH_SHORT)
                         }

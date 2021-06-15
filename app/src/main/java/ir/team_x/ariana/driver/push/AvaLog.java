@@ -3,7 +3,7 @@ package ir.team_x.ariana.driver.push;
 import android.util.Log;
 
 public class AvaLog {
-  public static void e(String message, Exception e){
+  public static void e(String message,Exception e){
     Log.e(Keys.TAG, message,e);
     AvaReporter.MessageLog(message);
   }

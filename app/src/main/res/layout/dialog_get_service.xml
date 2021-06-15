@@ -16,8 +16,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/btnGetService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/hohooh"
+            android:background="@drawable/bg_green2"
+            android:text="قبول سرویس"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_200sdp"
+            android:background="@drawable/bg_red"
+            android:elevation="@dimen/_3sdp"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/ic_canclee" />
+
         <LinearLayout
-            android:id="hohooh"
+            android:id="@+id/hohooh"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_centerInParent="true"
@@ -41,7 +62,7 @@
                     android:src="@drawable/ic_origin" />
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/txtOriginAddress"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_weight="0.35"
@@ -66,6 +87,7 @@
                     android:src="@drawable/ic_destination" />
 
                 <TextView
+                    android:id="@+id/txtDestAddress"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_weight="0.35"
@@ -100,7 +122,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-
+                    android:id="@+id/txtPrice"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_weight="0.35"
@@ -115,26 +137,6 @@
 
 
         </LinearLayout>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/hohooh"
-            android:background="@drawable/bg_green2"
-            android:text="قبول سرویس"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_200sdp"
-            android:background="@drawable/bg_red"
-            android:elevation="@dimen/_3sdp"
-            android:padding="@dimen/_10sdp"
-            android:src="@drawable/ic_canclee" />
 
     </RelativeLayout>
 

@@ -34,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
         TypeFaceUtil.overrideFont(binding.root)
 
         binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
-
+        MyApplication.avaStart()
         MyApplication.handler.postDelayed(Runnable {
             checkPermission()
         }, 1500)
@@ -54,7 +54,7 @@ class SplashActivity : AppCompatActivity() {
             } else {
                 GetAppInfo().callAppInfoAPI()
             }
-        }else{
+        } else {
             GetAppInfo().callAppInfoAPI()
         }
     }

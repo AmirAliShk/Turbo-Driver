@@ -45,10 +45,6 @@ public class AvaFactory {
     instance.token = token;
     return instance;
   }
-  public AvaFactory readMissingPush() {
-    new ReadUnreadMessage().getUnreadPush(true,instance.context);
-    return instance;
-  }
 
   public static Context getContext() {
     return instance.context;
@@ -73,7 +69,7 @@ public class AvaFactory {
             StrictMode.ThreadPolicy.Builder().permitAll().build();
     StrictMode.setThreadPolicy(policy);
 //    instance.status = false;
-    //after 1 second start push service
+    //after 1 min start push service
     //wait this time for first time app init is completed
     MyApplication.handler.postDelayed(new Runnable() {
       @Override
@@ -96,8 +92,6 @@ public class AvaFactory {
 
     return status;
   }
-
-
 
 
 }
