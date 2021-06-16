@@ -1,0 +1,28 @@
+package ir.team_x.ariana.driver.model
+
+data class ServiceDataModel(
+  var id:Int,
+  var customerId:Int,
+  var sourceAddressId:Int,
+  var destinationAddressId:Int,
+  var count:Int,
+  var description:String,
+  var carType:Int,
+  var stopTime:Int,
+  var driverHelp:Int,
+  var saveDate:String,
+  var weight:Int,
+  var userId:Int,
+  var costId:Int,
+  var paymentSide:Int,
+  var cargoId:Int,
+  var status:Int,
+  var driverId:Int,
+  var finishDate:String,
+  var voipId:String,
+  var acceptDate:String,
+  var price:String,
+  var customerName:String,
+  var phoneNumber:String,
+  var mobile:String,
+)

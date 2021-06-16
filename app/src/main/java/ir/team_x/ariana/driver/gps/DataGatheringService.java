@@ -25,16 +25,11 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import ir.team_x.ariana.driver.R;
 import ir.team_x.ariana.driver.app.AppStatusHelper;
 import ir.team_x.ariana.driver.app.EndPoint;
 import ir.team_x.ariana.driver.app.MyApplication;
 import ir.team_x.ariana.driver.app.PrefManager;
-import ir.team_x.ariana.driver.dialog.GeneralDialog;
-import ir.team_x.ariana.driver.fragment.ManageServiceFragment;
 import ir.team_x.ariana.driver.okHttp.RequestHelper;
-import ir.team_x.ariana.driver.utils.FragmentHelper;
-import ir.team_x.ariana.driver.utils.SoundHelper;
 
 /***
  * Created by mohsen mostafaei  on 12/07/2016.

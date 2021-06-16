@@ -1,27 +1,14 @@
 package ir.team_x.ariana.driver.activity
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import com.google.android.gms.maps.model.LatLng
 import ir.team_x.ariana.driver.R
-import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityGetServiceBinding
-import ir.team_x.ariana.driver.databinding.ActivityMainBinding
-import ir.team_x.ariana.driver.fragment.FinancialFragment
-import ir.team_x.ariana.driver.fragment.FreeLoadsFragment
-import ir.team_x.ariana.driver.fragment.ManageServiceFragment
-import ir.team_x.ariana.driver.fragment.NewsFragment
-import ir.team_x.ariana.driver.okHttp.RequestHelper
-import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
-import org.json.JSONObject
 
 class GetServiceActivity : AppCompatActivity() {
 

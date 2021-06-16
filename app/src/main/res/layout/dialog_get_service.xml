@@ -10,19 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:realtimeBlurRadius="20dp"
-        app:realtimeOverlayColor="#2fff" />
+        app:realtimeOverlayColor="#22F40101" />
 
     <RelativeLayout
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
 
         <LinearLayout
-            android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_15sdp"
-            android:orientation="vertical">
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:padding="@dimen/_15sdp">
 
             <LinearLayout
                 android:id="@+id/hohooh"
@@ -120,24 +120,38 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnGetService"
+            <ViewFlipper
+                android:id="@+id/vfAcceptService"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/hohooh"
-                android:background="@drawable/bg_green2"
+                android:layout_height="50dp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="قبول سرویس"
-                android:textColor="@color/colorWhite"
-                android:textStyle="bold"/>
+                android:background="@drawable/bg_green2">
+
+                <Button
+                    android:id="@+id/btnGetService"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/hohooh"
+                    android:background="@color/transparent"
+                    android:text="قبول سرویس"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colorWhite" />
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    app:indicatorColor="@color/colorWhite" />
+
+            </ViewFlipper>
 
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/imgClose"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/_15sdp"
             android:background="@drawable/bg_red"
             android:elevation="@dimen/_3sdp"
             android:padding="@dimen/_10sdp"

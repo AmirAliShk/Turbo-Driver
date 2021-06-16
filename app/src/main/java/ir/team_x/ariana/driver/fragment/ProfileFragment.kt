@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ir.team_x.ariana.driver.databinding.FragmentFreeLoadsBinding
-import ir.team_x.ariana.driver.databinding.FragmentManageServicesBinding
-import ir.team_x.ariana.driver.databinding.FragmentOnlinePaymentBinding
 import ir.team_x.ariana.driver.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {

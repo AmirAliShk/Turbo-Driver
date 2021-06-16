@@ -15,7 +15,7 @@ import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
 import ir.team_x.ariana.driver.fragment.FinancialFragment
 import ir.team_x.ariana.driver.fragment.FreeLoadsFragment
-import ir.team_x.ariana.driver.fragment.ManageServiceFragment
+import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
 import ir.team_x.ariana.driver.fragment.NewsFragment
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.llServiceManagement.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, ManageServiceFragment())
+            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
                 .replace()
         }
 
@@ -81,9 +81,39 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.imgAnnouncement.setOnClickListener {
+//            RequestHelper.builder(EndPoint.ATM) //TODO remove this in own fragment
+//                .listener(ATMCallBack)
+//                .addParam("driverCode", 1)
+//                .addParam("cardNumber", 1)
+//                .addParam("bankName", 1)
+//                .addParam("trackingCode", 3322)
+//                .addParam("price", "100000")
+//                .addParam("description", "noori")
+//                .post()
             FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
         }
 
+    }
+
+    private val ATMCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+
+            }
+        }
     }
 
     private fun enterExit(status: Int) {
