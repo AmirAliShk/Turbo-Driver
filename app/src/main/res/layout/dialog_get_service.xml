@@ -124,7 +124,7 @@
                 android:id="@+id/vfAcceptService"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:background="@drawable/bg_green2">
 
                 <Button
@@ -149,8 +149,8 @@
 
         <ImageView
             android:id="@+id/imgClose"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_alignParentLeft="true"
             android:background="@drawable/bg_red"
             android:elevation="@dimen/_3sdp"
