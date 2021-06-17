@@ -70,7 +70,7 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_35sdp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_red"
+                    android:background="@drawable/bg_redd"
                     android:elevation="@dimen/_3sdp"
                     android:padding="@dimen/_10sdp"
                     android:src="@drawable/ic_canclee" />

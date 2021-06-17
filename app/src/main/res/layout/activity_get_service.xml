@@ -146,10 +146,13 @@
             android:layout_weight="1"/>
 
         <ImageButton
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
+            android:paddingRight="@dimen/_10sdp"
+            android:paddingLeft="@dimen/_10sdp"
             android:layout_alignBottom="@id/hohooh"
-            android:background="@drawable/bg_red"
+            android:background="@drawable/bg_redd"
             android:textColor="@color/colorWhite"
             android:src="@drawable/ic_canclee"
             android:textStyle="bold"
