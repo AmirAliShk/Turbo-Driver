@@ -345,6 +345,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/txtStatus"
                     style="@style/text_title_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -355,8 +356,7 @@
                     android:paddingLeft="@dimen/_20sdp"
                     android:paddingTop="@dimen/_8sdp"
                     android:paddingRight="@dimen/_20sdp"
-                    android:paddingBottom="@dimen/_8sdp"
-                    android:text="شما ثبت محدوده نکرده اید" />
+                    android:paddingBottom="@dimen/_8sdp"/>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"

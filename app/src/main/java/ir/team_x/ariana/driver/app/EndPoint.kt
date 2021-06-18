@@ -17,7 +17,6 @@ class EndPoint {
 
         val PUSH_ADDRESS = "http://turbotaxi.ir:6060"
         val BASE_PATH = "$IP:$IP_PORT/api/driver/v1"
-        private val SYSTEM_PATH = "$BASE_PATH/system"
         val FINANCIAL_PATH = "$BASE_PATH/financial"
         val FINANCIAL_PAY_PATH = "$BASE_PATH/financial/pay"
         val SERVICE_PATH = "$BASE_PATH/service"
@@ -39,18 +38,19 @@ class EndPoint {
         val GET_FINISH_SERVICE = "$BASE_PATH/getFinishService"
         val GET_NEWS = "$BASE_PATH/getNews"
         val GET_NEWS_DETAILS = "$BASE_PATH/getNewsDetail"
-        val GET_WAITING_SERVICE = "$BASE_PATH/getWaitingService"
+        val STATUS = "$BASE_PATH/status"
+        val ENTER_EXIT = "$BASE_PATH/enterExit"
 
+        val GET_WAITING_SERVICE = "$BASE_PATH/getWaitingService"
         val ADD_DRIVER_CHARGE = "$FINANCIAL_PATH/addDriverCharge"
         val GET_FINANCIAL = "$FINANCIAL_PATH/getFinancial"
-        val ATM = "$FINANCIAL_PAY_PATH/ATM"
 
+        val ATM = "$FINANCIAL_PAY_PATH/ATM"
         val ACTIVES = "$SERVICE_PATH/actives"
         val ACCEPT = "$SERVICE_PATH/accept"
         val FINISH = "$SERVICE_PATH/finish"
-        val CANCEL = "$SERVICE_PATH/cancel"
 
-        val ENTER_EXIT = "$SYSTEM_PATH/enterExit"
+        val CANCEL = "$SERVICE_PATH/cancel"
 
         val REGISTER = "$STATION_PATH/register"
         val EXIT = "$STATION_PATH/exit"

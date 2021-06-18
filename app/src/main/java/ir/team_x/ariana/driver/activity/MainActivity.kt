@@ -13,22 +13,28 @@ import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
+import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
 import ir.team_x.ariana.driver.fragment.FinancialFragment
 import ir.team_x.ariana.driver.fragment.FreeLoadsFragment
-import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
 import ir.team_x.ariana.driver.fragment.NewsFragment
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
+import ir.team_x.ariana.driver.webServices.GetDriverStatus
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var binding: ActivityMainBinding
     var lastLocation = LatLng(0.0, 0.0)
+    private var timer = Timer()
+    private val STATUS_PERIOD: Long = 20000
+    var driverStatus = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -42,6 +48,12 @@ class MainActivity : AppCompatActivity() {
 
         MyApplication.prefManager.setAvaPID(10)//TODO move to splash response
         MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value
+
+        if (MyApplication.prefManager.getDriverStatus()) {
+            driverEnable()
+        } else {
+            driverDisable()
+        }
 
         binding.imgMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)
@@ -66,16 +78,18 @@ class MainActivity : AppCompatActivity() {
 
         binding.swEnterExit.setOnCheckedChangeListener { compoundButton, b ->
             if (b) {
+                binding.swStationRegister.visibility = View.VISIBLE
                 enterExit(1)
             } else {
+                binding.swStationRegister.visibility = View.INVISIBLE
                 enterExit(0)
             }
         }
 
         binding.swStationRegister.setOnCheckedChangeListener { compoundButton, b ->
-            if(b){
+            if (b) {
                 stationRegister()
-            }else{
+            } else {
                 exitStation()
             }
         }
@@ -117,6 +131,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun enterExit(status: Int) {
+        driverStatus = status
         RequestHelper.builder(EndPoint.ENTER_EXIT)
             .listener(enterExitCallBack)
             .addParam("status", status)
@@ -136,7 +151,12 @@ class MainActivity : AppCompatActivity() {
                         val dataObj = dataArr.getJSONObject(0)
                         val status = dataObj.getBoolean("result")
                         if (status) {
-                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
+                            if (driverStatus == 0) {
+                                driverDisable()
+                            } else {
+                                driverEnable()
+                            }
+                            getStatus()
                         }
                     }
 
@@ -161,39 +181,40 @@ class MainActivity : AppCompatActivity() {
             .post()
     }
 
-    private val stationRegisterCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
-        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
-            MyApplication.handler.post {
-                try {
-                    val jsonObject = JSONObject(args[0].toString())
-                    val success = jsonObject.getBoolean("success")
-                    val message = jsonObject.getString("message")
+    private val stationRegisterCallBack: RequestHelper.Callback =
+        object : RequestHelper.Callback() {
+            override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+                MyApplication.handler.post {
+                    try {
+                        val jsonObject = JSONObject(args[0].toString())
+                        val success = jsonObject.getBoolean("success")
+                        val message = jsonObject.getString("message")
 
-                    if (success) {
-                        val dataArr = jsonObject.getJSONArray("data")
-                        val dataObj = dataArr.getJSONObject(0)
-                        val status = dataObj.getBoolean("result")
-                        if (status) {
-                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
+                        if (success) {
+                            val dataArr = jsonObject.getJSONArray("data")
+                            val dataObj = dataArr.getJSONObject(0)
+                            val status = dataObj.getBoolean("result")
+                            if (status) {
+                                MyApplication.Toast(message, Toast.LENGTH_SHORT)
+                            }
                         }
-                    }
 
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+
+            override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+                MyApplication.handler.post {
+
                 }
             }
         }
 
-        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
-            MyApplication.handler.post {
-
-            }
-        }
-    }
-
     private fun exitStation() {
         RequestHelper.builder(EndPoint.EXIT)
-            .addParam("","")
+            .addParam("", "")
             .listener(exitStationCallBack)
             .put()
     }
@@ -228,15 +249,144 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private val timerTask: TimerTask = object : TimerTask() {
+        override fun run() {
+            getStatus()
+        }
+    }
 
+    private fun startGetStatus() { //TODO where I have to call this fun? which one is better?
+        try {
+            timer = Timer()
+            timer.scheduleAtFixedRate(
+                timerTask,
+                0,
+                STATUS_PERIOD
+            )
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun stopGetStatus() {
+        try {
+            if (timer != null) {
+                timerTask.cancel()
+                timer.cancel()
+            }
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun getStatus() {
+        RequestHelper.builder(EndPoint.STATUS)
+            .listener(statusCallBack)
+            .get()
+    }
+
+    private val statusCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+//                    {"success":true,"message":"عملیات با موفقیت انجام شد.","data":[{"active":1,"stationId":2,"distance":10,"stationName":"کلاهدوز","stationLat":36.29866,"stationLong":59.572666,"borderLimit":200}]}
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+
+                    if (success) {
+                        val dataArr = jsonObject.getJSONArray("data")
+                        val dataObj = dataArr.getJSONObject(0)
+                        val active = dataObj.getInt("active")
+                        val stationId = dataObj.getInt("stationId")
+                        val distance = dataObj.getInt("distance")
+                        val stationName = dataObj.getString("stationName")
+                        val borderLimit = dataObj.getString("borderLimit")
+
+                        binding.txtStatus.text = "$stationName  $stationId"
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+            }
+        }
+    }
+
+    fun driverDisable() {
+        binding.swStationRegister.visibility = View.INVISIBLE
+        binding.swEnterExit.isChecked = false
+        binding.txtStatus.text = "لطفا فعال شوید"
+        // disable GPS service here
+        MyApplication.prefManager.setDriverStatus(false)
+        MyApplication.Toast("با موفقیت غیرفعال شدید", Toast.LENGTH_SHORT)
+    }
+
+    fun driverEnable() {
+        binding.swStationRegister.visibility = View.VISIBLE
+        binding.swEnterExit.isChecked = true
+        binding.txtStatus.text = "درحال بروزرسانی وضعیت"
+        // enable GPS service here
+        MyApplication.prefManager.setDriverStatus(true)
+        MyApplication.Toast("با موفقیت فعال شدید", Toast.LENGTH_SHORT)
+    }
+
+    //    private fun exitStation() { //TODO add this
+//        RequestHelper.builder(EndPoint.EXIT)
+//            .addParam("","")
+//            .listener(exitStationCallBack)
+//            .put()
+//    }
+//
+//    private val exitStationCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+//        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+//            MyApplication.handler.post {
+//                try {
+//                    val jsonObject = JSONObject(args[0].toString())
+//                    val success = jsonObject.getBoolean("success")
+//                    val message = jsonObject.getString("message")
+//
+//                    if (success) {
+//                        val dataArr = jsonObject.getJSONArray("data")
+//                        val dataObj = dataArr.getJSONObject(0)
+//                        val status = dataObj.getBoolean("result")
+//                        if (status) {
+//                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
+//                        }
+//                    }
+//
+//                } catch (e: Exception) {
+//                    e.printStackTrace()
+//                }
+//            }
+//        }
+//
+//        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+//            MyApplication.handler.post {
+//
+//            }
+//        }
+//    }
+//
     override fun onResume() {
         super.onResume()
         MyApplication.currentActivity = this
+        startGetStatus()
     }
 
     override fun onStart() {
         super.onStart()
         MyApplication.currentActivity = this
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopGetStatus()
     }
 
     override fun onBackPressed() {
