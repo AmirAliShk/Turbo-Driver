@@ -31,6 +31,7 @@ class AcceptService {
                     val message = jsonObject.getString("message")
 
                     if(success){
+                        //TODO check other type in this response
                         listener.onSuccess()
                     }
 

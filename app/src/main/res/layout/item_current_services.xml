@@ -45,6 +45,7 @@
 
 
                 <TextView
+                    android:id="@+id/txtCustomerName"
                     style="@style/text_title_white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -79,20 +80,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/Details_answer"
+                    style="@style/title_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="محصولات کشاورزی" />
+                    android:text="@string/Load_type" />
 
                 <View
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="match_parent" />
 
                 <TextView
-                    style="@style/title_details"
+                    android:id="@+id/txtCargoType"
+                    style="@style/Details_answer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Load_type" />
+                    android:text="محصولات کشاورزی" />
 
             </LinearLayout>
 
@@ -113,6 +115,7 @@
                     android:src="@drawable/ic_origin" />
 
                 <TextView
+                    android:id="@+id/txtOriginAddress"
                     style="@style/Details_answer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -138,6 +141,7 @@
                     android:src="@drawable/ic_destination" />
 
                 <TextView
+                    android:id="@+id/txtDestAddress"
                     style="@style/Details_answer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

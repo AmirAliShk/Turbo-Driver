@@ -11,6 +11,7 @@ import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentCurrentServicesBinding
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
 class CurrentServiceFragment : Fragment() {
@@ -28,6 +29,7 @@ class CurrentServiceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCurrentServicesBinding.inflate(inflater, container, false)
+        TypeFaceUtil.overrideFont(binding.root)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
@@ -46,6 +48,7 @@ class CurrentServiceFragment : Fragment() {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
                 try {
+                    serviceModels.clear()
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -77,7 +80,20 @@ class CurrentServiceFragment : Fragment() {
                                 dataObj.getString("price"),
                                 dataObj.getString("customerName"),
                                 dataObj.getString("phoneNumber"),
-                                dataObj.getString("mobile")
+                                dataObj.getString("mobile"),
+                                dataObj.getString("statusStr"),
+                                dataObj.getString("cargoName"),
+                                dataObj.getString("costName"),
+                                dataObj.getString("weightName"),
+                                dataObj.getString("carTypeName"),
+                                dataObj.getString("sourceAddress"),
+                                dataObj.getString("destinationAddress"),
+                                dataObj.getString("discount"),
+                                dataObj.getString("priceService"),
+                                dataObj.getString("tax"),
+                                dataObj.getString("priceCustomer"),
+                                dataObj.getString("finalPrice"),
+                                dataObj.getString("commission"),
                             )
 
                             serviceModels.add(model)

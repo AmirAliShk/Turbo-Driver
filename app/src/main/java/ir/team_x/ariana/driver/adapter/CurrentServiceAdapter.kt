@@ -40,8 +40,12 @@ class CurrentServiceAdapter(list: ArrayList<ServiceDataModel>) :
                 )
             )
         )
+        holder.binding.txtCustomerName.text=model.customerName
+        holder.binding.txtOriginAddress.text=model.sourceAddress
+        holder.binding.txtDestAddress.text=model.destinationAddress
+        holder.binding.txtCargoType.text=model.cargoName
         holder.itemView.setOnClickListener{
-            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceDetailsFragment()).replace()
+            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceDetailsFragment(model)).add()
         }
     }
 

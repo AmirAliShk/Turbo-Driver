@@ -140,12 +140,12 @@ public class GeneralDialog {
         if (firstBtn == null) {
             binding.btnPositive.setVisibility(View.GONE);
         } else {
-            binding.btnPositive.setImageResource(R.drawable.ic_completed);
+            binding.btnPositive.setText(firstBtn.text);
         }
         if (secondBtn == null) {
             binding.btnNegative.setVisibility(View.GONE);
         } else {
-            binding.btnNegative.setImageResource(R.drawable.ic_canclee);
+            binding.btnNegative.setText(secondBtn.text);
         }
 
         if (firstBtn == null && secondBtn == null && thirdBtn == null) {

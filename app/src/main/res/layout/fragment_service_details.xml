@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/pageBackground"
     android:clickable="true"
     android:layoutDirection="rtl"
@@ -17,8 +18,8 @@
             android:id="@+id/imgBack"
             android:layout_width="?android:attr/actionBarSize"
             android:layout_height="match_parent"
-            android:padding="15dp"
             android:layout_alignParentLeft="true"
+            android:padding="15dp"
             android:src="@drawable/ic_back" />
 
         <TextView
@@ -38,11 +39,11 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp"
         android:background="@drawable/background1"
         android:orientation="vertical"
-        android:padding="@dimen/_15sdp"
-        android:layout_marginLeft="@dimen/_12sdp"
-        android:layout_marginRight="@dimen/_12sdp">
+        android:padding="@dimen/_15sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,34 +54,31 @@
             <TextView
                 style="@style/title_details"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/sendTime" />
 
             <TextView
+                android:id="@+id/txtSendDate"
                 style="@style/Details_answer"
                 android:layout_width="0dp"
-                android:layout_weight="0.75"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.75"
                 android:text="12:50" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
-                android:layout_height="match_parent" />
 
             <TextView
                 style="@style/title_details"
                 android:layout_width="0dp"
-                android:layout_weight="0.75"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.75"
                 android:text="@string/customerName" />
 
             <TextView
+                android:id="@+id/txtCustomerName"
                 style="@style/Details_answer"
                 android:layout_width="0dp"
-                android:layout_weight="0.75"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.75"
                 android:text="بنی اسدی" />
 
         </LinearLayout>
@@ -101,6 +99,7 @@
                 android:src="@drawable/ic_origin" />
 
             <TextView
+                android:id="@+id/txtOriginAddress"
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -125,6 +124,7 @@
                 android:src="@drawable/ic_destination" />
 
             <TextView
+                android:id="@+id/txtDestAddress"
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,34 +146,36 @@
             <TextView
                 style="@style/title_details"
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:text="@string/customerTell" />
 
             <TextView
+                android:id="@+id/txtTell"
                 style="@style/Details_answer"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="38905328" />
 
             <View
                 android:layout_width="0dp"
-                android:layout_weight="0.25"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.25" />
 
             <TextView
                 style="@style/title_details"
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:text="@string/customerMobile" />
 
             <TextView
+                android:id="@+id/txtMobile"
                 style="@style/Details_answer"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="09307278878" />
 
         </LinearLayout>
@@ -199,6 +201,7 @@
                 android:layout_height="match_parent" />
 
             <TextView
+                android:id="@+id/txtCargoType"
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -227,6 +230,7 @@
                 android:layout_height="match_parent" />
 
             <TextView
+                android:id="@+id/txtCargoCost"
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -255,6 +259,7 @@
                 android:layout_height="match_parent" />
 
             <TextView
+                android:id="@+id/txtPaymentSide"
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -273,6 +278,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/imgDriverHelp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_ticke" />
@@ -285,7 +291,7 @@
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="محصولات کشاورزی" />
+                android:text="راننده کمک کند" />
 
         </LinearLayout>
 
@@ -299,6 +305,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/llCancel"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
@@ -318,8 +325,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/cancle"
-                    android:paddingRight="@dimen/_5sdp"/>
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text="@string/cancle" />
 
             </LinearLayout>
 
@@ -328,6 +335,7 @@
                 android:layout_height="match_parent" />
 
             <LinearLayout
+                android:id="@+id/llCall"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
@@ -347,12 +355,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/call"
-                    android:paddingRight="@dimen/_5sdp"/>
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text="@string/call" />
 
             </LinearLayout>
-
-
 
         </LinearLayout>
 
@@ -360,14 +366,28 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp" />
 
-        <TextView
+        <ViewFlipper
+            android:id="@+id/vfEndService"
+            android:background="@drawable/bg_grye"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+            <TextView
+                android:id="@+id/txtFinish"
                 style="@style/text_title_white"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
-                android:text="@string/Place"
-                android:textStyle="bold"
-               android:background="@drawable/bg_grye"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:text="@string/finish"
+                android:textStyle="bold" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                app:indicatorColor="@color/colorWhite" />
+
+        </ViewFlipper>
 
     </LinearLayout>
 
