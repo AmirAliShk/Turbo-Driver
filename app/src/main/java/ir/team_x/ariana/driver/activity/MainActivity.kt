@@ -147,6 +147,7 @@ class MainActivity : AppCompatActivity() {
                     val message = jsonObject.getString("message")
 
                     if (success) {
+                        getStatus()
                         val dataArr = jsonObject.getJSONArray("data")
                         val dataObj = dataArr.getJSONObject(0)
                         val status = dataObj.getBoolean("result")
@@ -191,10 +192,12 @@ class MainActivity : AppCompatActivity() {
                         val message = jsonObject.getString("message")
 
                         if (success) {
+                            getStatus()
                             val dataArr = jsonObject.getJSONArray("data")
                             val dataObj = dataArr.getJSONObject(0)
                             val status = dataObj.getBoolean("result")
                             if (status) {
+                                MyApplication.prefManager.setStationRegisterStatus(true)
                                 MyApplication.Toast(message, Toast.LENGTH_SHORT)
                             }
                         }
@@ -232,6 +235,7 @@ class MainActivity : AppCompatActivity() {
                         val dataObj = dataArr.getJSONObject(0)
                         val status = dataObj.getBoolean("result")
                         if (status) {
+                            MyApplication.prefManager.setStationRegisterStatus(false)
                             MyApplication.Toast(message, Toast.LENGTH_SHORT)
                         }
                     }
@@ -303,7 +307,13 @@ class MainActivity : AppCompatActivity() {
                         val stationName = dataObj.getString("stationName")
                         val borderLimit = dataObj.getString("borderLimit")
 
-                        binding.txtStatus.text = "$stationName  $stationId"
+                        if (active == 0) {
+                            binding.txtStatus.text = "لطفا فعال شوید"
+                        } else if (active == 1 && stationId == 0) {
+                            binding.txtStatus.text = "لطفا ثبت محدوده کنید"
+                        } else {
+                            binding.txtStatus.text = "شما در محدوده $stationName ثبت هستید"
+                        }
                     }
 
                 } catch (e: Exception) {
@@ -328,6 +338,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun driverEnable() {
+        binding.swStationRegister.isChecked = MyApplication.prefManager.getStationRegisterStatus()
         binding.swStationRegister.visibility = View.VISIBLE
         binding.swEnterExit.isChecked = true
         binding.txtStatus.text = "درحال بروزرسانی وضعیت"

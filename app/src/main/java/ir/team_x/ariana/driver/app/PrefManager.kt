@@ -29,6 +29,7 @@ class PrefManager {
     private val KEY_USE_ALARM_MANAGER = "userAlarmManager"
     private val KEY_APP_STATUS = "AppStatus"
     private val DRIVER_STATUS = "driverStatus"
+    private val STATION_REGISTER_STATUS = "stationRegisterStatus"
 
     fun getRefreshToken(): String? {
         return sharedPreferences.getString(REFRESH_TOKEN, "")
@@ -40,6 +41,15 @@ class PrefManager {
 
     fun setDriverStatus(v: Boolean) {
         editor.putBoolean(DRIVER_STATUS, v)
+        editor.commit()
+    }
+
+    fun getStationRegisterStatus(): Boolean {
+        return sharedPreferences.getBoolean(STATION_REGISTER_STATUS, false)
+    }
+
+    fun setStationRegisterStatus(v: Boolean) {
+        editor.putBoolean(STATION_REGISTER_STATUS, v)
         editor.commit()
     }
 
