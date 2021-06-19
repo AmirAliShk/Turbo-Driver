@@ -25,11 +25,12 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="300dip"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background5"
                 android:clickable="true"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:elevation="@dimen/_5sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -45,50 +46,51 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:gravity="right"
                         android:text="فاکتور"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/colorBlack" />
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="5dp"/>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="17dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="17dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@color/colorRedDark" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center">
+                        android:gravity="center"
+                      >
 
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:padding="5dp"
-                            android:src="@drawable/ic_origin" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:orientation="horizontal"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_weight="0.25"
+                                android:layout_height="25dp"
+                                android:padding="3dp"
+                                android:src="@drawable/ic_origin" />
+
 
                             <TextView
-                                android:layout_width="120dp"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.5"
                                 android:layout_height="wrap_content"
                                 android:gravity="right"
                                 android:text="مبلغ:"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/colorBlack" />
+                                android:textColor="@color/colorBlack"
+                                android:layout_marginRight="@dimen/_10sdp"/>
 
                             <TextView
                                 android:id="@+id/txtTotalAmount"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/colorBlack" />
@@ -129,19 +131,22 @@
                                 android:gravity="right"
                                 android:orientation="horizontal"
                                 android:paddingLeft="10dp"
-                                android:paddingRight="10dp">
+                                android:layout_marginRight="@dimen/_10sdp">
+
 
                                 <TextView
-                                    android:layout_width="120dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"
-                                    android:text="عوارض شهرداری:"
+                                    android:text="تخفیفات:"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/colorBlack" />
 
                                 <TextView
                                     android:id="@+id/txtTax"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/colorBlack" />
@@ -155,20 +160,22 @@
                                 android:layout_marginBottom="10dp"
                                 android:gravity="right"
                                 android:orientation="horizontal"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp">
+                                android:paddingLeft="10dp">
 
                                 <TextView
-                                    android:layout_width="120dp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:gravity="right"
-                                    android:text="سهم شرکت:"
+                                    android:text="عوارض مالیات شهرداری:"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="@color/colorBlack" />
+                                    android:textColor="@color/colorBlack"
+                                    android:layout_marginRight="@dimen/_10sdp"/>
 
                                 <TextView
                                     android:id="@+id/txtCompanyShare"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="0.5"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/colorBlack" />
@@ -195,10 +202,12 @@
                             android:gravity="right"
                             android:orientation="horizontal"
                             android:paddingLeft="10dp"
-                            android:paddingRight="10dp">
+                            android:layout_marginRight="@dimen/_10sdp">
+
 
                             <TextView
-                                android:layout_width="120dp"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
                                 android:gravity="right"
                                 android:text="سهم راننده:"
@@ -207,7 +216,8 @@
 
                             <TextView
                                 android:id="@+id/txtDriverShare"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/colorBlack" />
@@ -222,23 +232,33 @@
                         android:layout_marginTop="10dp"
                         android:gravity="right"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="35dp">
+                        android:paddingLeft="10dp">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:padding="3dp"
+                            android:src="@drawable/ic_destination" />
+
 
                         <TextView
-                            android:layout_width="120dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="تخفیف:"
+                            android:text="سهم شرکت:"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginRight="@dimen/_10sdp"/>
 
                         <TextView
                             android:id="@+id/txtDiscount"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginBottom="@dimen/_10sdp"/>
 
                     </LinearLayout>
 
@@ -246,23 +266,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:background="@drawable/background3"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        android:padding="5dp"
+                        android:background="@drawable/bg_stroke">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:text="دریافتی از مسافر : "
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/colorBlack"
-                            android:textSize="16dp" />
+                            android:textSize="17dp"
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/txtCustomerPrice"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:textColor="@color/colorRedDark"
@@ -286,9 +309,9 @@
                         android:id="@+id/btnEndTrip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_green"
+                        android:background="@drawable/bg_grye"
                         android:gravity="center"
-                        android:text="پایان سفر"
+                        android:text="پایان سرویس"
                         android:textColor="@color/colorWhite"
                         android:textSize="24sp" />
 
@@ -296,11 +319,12 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnClose"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/ic_cancle" />
+            <ImageView
+                android:id="@+id/imgClose"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="18dp"
+                android:src="@drawable/ic_cancle" />
 
         </LinearLayout>
 
