@@ -233,19 +233,19 @@ public class ManagePush {
         String time = dataArray[1];
         String serviceId = dataArray[2];
         String serviceType = dataArray[3];
-        String originStName = dataArray[4];
-        String originAddress = dataArray[5];
-        String destinationAddress = dataArray[6];
-        String price = dataArray[7];
+//        String originStName = dataArray[4];// TODO delete this params
+        String originAddress = dataArray[4];
+        String destinationAddress = dataArray[5];
+        String price = dataArray[6];
 
         Log.i(TAG, "getSerivceInfo:\n 1:time: " + time + "\n‌" + "2:sericeId: " + serviceId + "\n" + "3:serviceType: " + serviceType + "\n"
-                + "4:originName: " + originStName + "\n" + "5:originAddress: " + originAddress + "\n" + "6:destinationAddress: " + destinationAddress + "\n" + "7:price: " + price);
+              + "5:originAddress: " + originAddress + "\n" + "6:destinationAddress: " + destinationAddress + "\n" + "7:price: " + price);
 
         ServiceModel serviceModel = new ServiceModel();
         serviceModel.setCallTime(time);
         serviceModel.setServiceID(serviceId);
         serviceModel.setInService(serviceType.trim().equals("1"));
-        serviceModel.setOrginDesc(originStName);
+//        serviceModel.setOrginDesc(originStName);
         serviceModel.setOriginAddress(originAddress);
         serviceModel.setDestinationDesc(destinationAddress);
         serviceModel.setServicePrice(price);

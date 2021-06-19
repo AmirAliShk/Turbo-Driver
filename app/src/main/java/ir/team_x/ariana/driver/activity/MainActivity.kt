@@ -332,8 +332,9 @@ class MainActivity : AppCompatActivity() {
         binding.swStationRegister.visibility = View.INVISIBLE
         binding.swEnterExit.isChecked = false
         binding.txtStatus.text = "لطفا فعال شوید"
-        // disable GPS service here
+        // TODO disable GPS service here
         MyApplication.prefManager.setDriverStatus(false)
+        MyApplication.prefManager.setStationRegisterStatus(false)
         MyApplication.Toast("با موفقیت غیرفعال شدید", Toast.LENGTH_SHORT)
     }
 
@@ -342,7 +343,7 @@ class MainActivity : AppCompatActivity() {
         binding.swStationRegister.visibility = View.VISIBLE
         binding.swEnterExit.isChecked = true
         binding.txtStatus.text = "درحال بروزرسانی وضعیت"
-        // enable GPS service here
+        //TODO enable GPS service here
         MyApplication.prefManager.setDriverStatus(true)
         MyApplication.Toast("با موفقیت فعال شدید", Toast.LENGTH_SHORT)
     }

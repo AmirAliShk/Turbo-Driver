@@ -78,7 +78,7 @@ public class ErrorDialog {
 //    wlp.windowAnimations = R.style.ExpandAnimation;
         dialog.getWindow().setAttributes(wlp);
 
-        dialog.setCancelable(cancelable);
+        dialog.setCancelable(true);
 
 //    LinearLayout llParent=dialog.findViewById(R.id.llParent);
 //    llParent.setLayoutParams(new LinearLayout.LayoutParams(300, 150));
