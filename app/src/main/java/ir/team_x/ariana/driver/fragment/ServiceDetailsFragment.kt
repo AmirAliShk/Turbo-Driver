@@ -40,8 +40,8 @@ class ServiceDetailsFragment(serviceModel: ServiceDataModel) : Fragment() {
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtCustomerName.text = serviceModel.acceptDate
         binding.txtCustomerName.text = serviceModel.customerName
-        binding.txtOriginAddress.text = serviceModel.sourceAddressId.toString()
-        binding.txtDestAddress.text = serviceModel.destinationAddressId.toString()
+        binding.txtOriginAddress.text = serviceModel.sourceAddress
+        binding.txtDestAddress.text = serviceModel.destinationAddress
         binding.txtTell.text = serviceModel.phoneNumber
         binding.txtMobile.text = serviceModel.mobile
         binding.txtCargoType.text = serviceModel.cargoName
