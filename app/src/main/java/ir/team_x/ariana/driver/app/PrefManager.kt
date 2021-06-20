@@ -2,6 +2,7 @@ package ir.team_x.ariana.driver.app
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.android.gms.maps.model.LatLng
 
 class PrefManager {
 
@@ -30,9 +31,33 @@ class PrefManager {
     private val KEY_APP_STATUS = "AppStatus"
     private val DRIVER_STATUS = "driverStatus"
     private val STATION_REGISTER_STATUS = "stationRegisterStatus"
+    private val KEY_LAST_LAT = "lastLat"
+    private val KEY_LAST_LNG = "lastLang"
+    private val API_REQUEST_TIME = "requestTime"
 
     fun getRefreshToken(): String? {
         return sharedPreferences.getString(REFRESH_TOKEN, "")
+    }
+
+    fun setApiRequestTime(i: Long) {
+        editor.putLong(API_REQUEST_TIME, i)
+        editor.commit()
+    }
+
+    fun getApiRequestTime(): Long {
+        return sharedPreferences.getLong(API_REQUEST_TIME, 0)
+    }
+
+    fun getLastLocation(): LatLng {
+        return LatLng(
+            sharedPreferences.getFloat(KEY_LAST_LAT, 36.317265F).toDouble(), sharedPreferences.getFloat(KEY_LAST_LNG, 59.562635F).toDouble()
+        )
+    }
+
+    fun setLastLocation(location: LatLng) {
+        editor.putFloat(KEY_LAST_LNG, location.longitude.toFloat())
+        editor.putFloat(KEY_LAST_LAT, location.latitude.toFloat())
+        editor.commit()
     }
 
     fun getDriverStatus(): Boolean {

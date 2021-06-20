@@ -17,9 +17,10 @@ import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
 import ir.team_x.ariana.driver.fragment.FinancialFragment
 import ir.team_x.ariana.driver.fragment.FreeLoadsFragment
 import ir.team_x.ariana.driver.fragment.NewsFragment
+import ir.team_x.ariana.driver.gps.DataGatheringService
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
-import ir.team_x.ariana.driver.webServices.GetDriverStatus
+import ir.team_x.ariana.driver.utils.ServiceHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
@@ -49,11 +50,7 @@ class MainActivity : AppCompatActivity() {
         MyApplication.prefManager.setAvaPID(10)//TODO move to splash response
         MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value
 
-        if (MyApplication.prefManager.getDriverStatus()) {
-            driverEnable()
-        } else {
-            driverDisable()
-        }
+        handleStatus()
 
         binding.imgMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)
@@ -299,6 +296,7 @@ class MainActivity : AppCompatActivity() {
                     val message = jsonObject.getString("message")
 
                     if (success) {
+                        handleStatus()
                         val dataArr = jsonObject.getJSONArray("data")
                         val dataObj = dataArr.getJSONObject(0)
                         val active = dataObj.getInt("active")
@@ -307,13 +305,8 @@ class MainActivity : AppCompatActivity() {
                         val stationName = dataObj.getString("stationName")
                         val borderLimit = dataObj.getString("borderLimit")
 
-                        if (active == 0) {
-                            binding.txtStatus.text = "لطفا فعال شوید"
-                        } else if (active == 1 && stationId == 0) {
-                            binding.txtStatus.text = "لطفا ثبت محدوده کنید"
-                        } else {
-                            binding.txtStatus.text = "شما در محدوده $stationName ثبت هستید"
-                        }
+                        //TODO get message and set to textView
+                        setStatusText(stationName)
                     }
 
                 } catch (e: Exception) {
@@ -332,7 +325,7 @@ class MainActivity : AppCompatActivity() {
         binding.swStationRegister.visibility = View.INVISIBLE
         binding.swEnterExit.isChecked = false
         binding.txtStatus.text = "لطفا فعال شوید"
-        // TODO disable GPS service here
+        stopService()
         MyApplication.prefManager.setDriverStatus(false)
         MyApplication.prefManager.setStationRegisterStatus(false)
         MyApplication.Toast("با موفقیت غیرفعال شدید", Toast.LENGTH_SHORT)
@@ -343,10 +336,40 @@ class MainActivity : AppCompatActivity() {
         binding.swStationRegister.visibility = View.VISIBLE
         binding.swEnterExit.isChecked = true
         binding.txtStatus.text = "درحال بروزرسانی وضعیت"
-        //TODO enable GPS service here
+        startService()
         MyApplication.prefManager.setDriverStatus(true)
         MyApplication.Toast("با موفقیت فعال شدید", Toast.LENGTH_SHORT)
     }
+
+    private fun startService() {
+        ServiceHelper.start(MyApplication.currentActivity, DataGatheringService::class.java)
+    }
+
+    private fun stopService() {
+        ServiceHelper.stop(MyApplication.currentActivity, DataGatheringService::class.java)
+    }
+
+    private fun isDriverActive(): Boolean {
+        return ServiceHelper.isRunning(
+            MyApplication.currentActivity,
+            DataGatheringService::class.java
+        )
+    }
+
+    private fun handleStatus() {
+        if (MyApplication.prefManager.getDriverStatus()) {
+            if (!isDriverActive())
+                driverEnable()
+        } else {
+            if (isDriverActive())
+                driverDisable()
+        }
+    }
+
+    private fun setStatusText(statusText: String) {
+        binding.txtStatus.text = statusText
+    }
+
 
     //    private fun exitStation() { //TODO add this
 //        RequestHelper.builder(EndPoint.EXIT)

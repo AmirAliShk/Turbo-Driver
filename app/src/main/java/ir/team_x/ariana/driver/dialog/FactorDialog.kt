@@ -38,7 +38,7 @@ class FactorDialog {
         dialog.window?.attributes = wlp
         dialog.setCancelable(true)
 
-        binding.btnClose.setOnClickListener { dismiss() }
+        binding.imgClose.setOnClickListener { dismiss() }
         binding.btnEndTrip.setOnClickListener { finish(serviceModel.id, serviceModel.priceService) }
         binding.txtTotalAmount.text = serviceModel.priceService
         binding.txtTax.text = serviceModel.tax

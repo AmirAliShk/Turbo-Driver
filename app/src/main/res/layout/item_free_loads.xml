@@ -1,50 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:text="@string/accept"
-        android:background="@drawable/bg_grye"
-        android:textStyle="bold"
-        android:layout_marginRight="@dimen/_30sdp"
-        android:layout_marginLeft="@dimen/_30sdp"/>
-
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="rtl">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_13sdp"
         android:background="@drawable/background1"
-        android:elevation="@dimen/_5sdp"
         android:gravity="center"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="20dp" />
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="right|center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                style="@style/Details_answer"
+            <ImageView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="احمد آباد" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_weight="0.10"
-                android:layout_height="match_parent" />
-
+                android:layout_weight="0.25"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_to_inform" />
 
             <TextView
                 style="@style/title_details"
@@ -53,34 +34,27 @@
                 android:layout_weight="0.35"
                 android:text="@string/Range" />
 
-            <ImageView
+            <TextView
+                android:id="@+id/txtRange"
+                style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:src="@drawable/ic_to_inform" />
+                android:layout_weight="1"
+                android:text="احمد آباد" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/_20sdp">
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal">
 
-
-
-            <TextView
-                style="@style/Details_answer"
+            <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="محصولات کشاورزی" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.10"/>
+                android:layout_weight="0.25" />
 
             <TextView
                 style="@style/title_details"
@@ -89,14 +63,59 @@
                 android:layout_weight="0.35"
                 android:text="@string/Load_type" />
 
-            <ImageView
+            <TextView
+                android:id="@+id/txtCargoType"
+                style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5" />
+                android:layout_weight="1"
+                android:text="محصولات کشاورزی" />
 
         </LinearLayout>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+        <ViewFlipper
+            android:id="@+id/vfAccept"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_grye"
+            android:layout_weight="2">
+
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/accept"
+                android:background="@color/transparent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                app:indicatorColor="@color/colorWhite" />
+
+        </ViewFlipper>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
 
 </RelativeLayout>

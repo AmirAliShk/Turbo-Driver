@@ -19,7 +19,7 @@ import ir.team_x.ariana.driver.webServices.GetAppInfo
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class SplashActivity : AppCompatActivity() {
-    private val permission = arrayOf(Manifest.permission.RECORD_AUDIO)
+    private val permission = arrayOf(Manifest.permission.RECORD_AUDIO,Manifest.permission.ACCESS_FINE_LOCATION)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,7 @@ class SplashActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= 23) {
             val hasAudioPermission =
                 ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
-            if (hasAudioPermission != PackageManager.PERMISSION_GRANTED) {
+            if (hasAudioPermission != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 //TODO show dialog later
                 ActivityCompat.requestPermissions(
                     this,

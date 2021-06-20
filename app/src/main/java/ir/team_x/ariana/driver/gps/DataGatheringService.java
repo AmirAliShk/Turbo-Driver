@@ -77,7 +77,7 @@ public class DataGatheringService extends Service {
 
 //        SEND_DATA_TO_VIEW = prefManager.getGpsTimeInterval() * 1000;// TODO uncomment
         SEND_DATA_TO_VIEW = 15000;
-        startSendDataToActivty();
+        startSendDataToActivity();
 
         // if service restart on background we must fill the variable with current context
         if (MyApplication.context == null) {
@@ -105,7 +105,7 @@ public class DataGatheringService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        stopSendDataToActivty();
+        stopSendDataToActivity();
 
         //sometime locationListener is Null i don't know when is do
         try {
@@ -114,11 +114,11 @@ public class DataGatheringService extends Service {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Log.i(TAG, "onDestroy: turbo driver");
+        Log.i(TAG, "onDestroy: ariana driver");
     }
 
     // Send Data to View with BroadCast
-    static final public String GDS_RESULT = "ir.taxi1880.driver.DataGatheringService";
+    static final public String GDS_RESULT = "ir.team_x.ariana.DataGatheringService";
     static final public String GDS_SPEED = "Service_SPD";
     static final public String GDS_LAT = "Service_lat";
     static final public String GDS_LON = "Service_lon";
@@ -142,8 +142,9 @@ public class DataGatheringService extends Service {
                 broadcaster.sendBroadcast(intent);
 
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-//                MyApplication.prefManager.setLastLocation(latLng); // TODO uncomment
+                MyApplication.prefManager.setLastLocation(latLng);
 
+                // TODO uncomment
 //                if (prefManager.getPickUpGuestTime() < Calendar.getInstance().getTimeInMillis() && prefManager.getPickUpGuestTime() != 0 //TODO uncomment (if)
 //                        && !MyApplication.prefManager.getServiceIdForCancelDialog().equals("0")) {
 //                    MyApplication.handler.post(() -> {
@@ -201,14 +202,10 @@ public class DataGatheringService extends Service {
                     return;
                 }
 
-//                if (prefManager.getApiRequestTime() + 5000 > Calendar.getInstance().getTimeInMillis())
-//                    return;
-                if (1000 + 5000 > Calendar.getInstance().getTimeInMillis())
+                if (prefManager.getApiRequestTime() + 5000 > Calendar.getInstance().getTimeInMillis())
                     return;
 
-                //TODO uncomment
-
-//                prefManager.setApiRequestTime(Calendar.getInstance().getTimeInMillis());
+                prefManager.setApiRequestTime(Calendar.getInstance().getTimeInMillis());
 
                 // send to server
                 emitToServer.run();
@@ -227,23 +224,21 @@ public class DataGatheringService extends Service {
                 LocationManager service = (LocationManager) MyApplication.context.getSystemService(MyApplication.context.LOCATION_SERVICE);
                 boolean isTurnOnGPS = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-                RequestHelper requestHelper = RequestHelper.loadBalancingBuilder(EndPoint.Companion.getBASE_PATH()) //TODO change url
+                RequestHelper requestHelper = RequestHelper.loadBalancingBuilder(EndPoint.Companion.getSAVE_LOCATION())
                         .setErrorHandling(false)
-                        .addParam("enCityName", "mashhad")
-//                        .addParam("enCityName", MyApplication.prefManager.getCityLName()) //TODO uncomment
                         .listener(saveListener);
 
                 if (!isTurnOnGPS) {
                     //location from network
                     requestHelper.addParam("lat", -1)
-                            .addParam("lon", -1)
+                            .addParam("lng", -1)
                             .addParam("speed", 0)
                             .addParam("bearing", 0);
 
                 } else {
                     //location from GPS
                     requestHelper.addParam("lat", tempLocation.getLatitude())
-                            .addParam("lon", tempLocation.getLongitude())
+                            .addParam("lng", tempLocation.getLongitude())
                             .addParam("speed", tempLocation.getSpeed())
                             .addParam("bearing", tempLocation.getBearing());
                 }
@@ -253,13 +248,10 @@ public class DataGatheringService extends Service {
                 e.printStackTrace();
             }
 
-            Log.i(TAG, "send gps to server your location :" + params);
-
-
         }
     };
 
-    public void startSendDataToActivty() {
+    public void startSendDataToActivity() {
         if (timer != null) {
             return;
         }
@@ -267,7 +259,7 @@ public class DataGatheringService extends Service {
         timer.scheduleAtFixedRate(timerTask, 0, SEND_DATA_TO_VIEW);
     }
 
-    public void stopSendDataToActivty() {
+    public void stopSendDataToActivity() {
         if (timer == null) return;
         timer.cancel();
         timer = null;
@@ -281,12 +273,9 @@ public class DataGatheringService extends Service {
 
         @Override
         public void onFailure(Runnable reCall, Exception e) {
-            MyApplication.handler.post(new Runnable() {
-                @Override
-                public void run() {
+            MyApplication.handler.post(() -> {
 //                    if (AppStatusHelper.appIsRun(context))  //TODO uncomment
 //                        MyApplication.NetErrorToast();
-                }
             });
         }
     };

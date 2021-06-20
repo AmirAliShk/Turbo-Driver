@@ -5,13 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ir.team_x.ariana.driver.adapter.CurrentServiceAdapter
+import ir.team_x.ariana.driver.adapter.WaitingLoadsAdapter
+import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentFreeLoadsBinding
+import ir.team_x.ariana.driver.model.ServiceDataModel
+import ir.team_x.ariana.driver.model.WaitingLoadsModel
+import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
+import org.json.JSONObject
 
 class FreeLoadsFragment : Fragment() {
 
- private lateinit var binding : FragmentFreeLoadsBinding
+    private lateinit var binding: FragmentFreeLoadsBinding
+    var waitingServiceModels: ArrayList<WaitingLoadsModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,15 +30,79 @@ class FreeLoadsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding =  FragmentFreeLoadsBinding.inflate(inflater, container, false)
+        binding = FragmentFreeLoadsBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        waiting()
 
         return binding.root
     }
 
-    companion object {
-
+    private fun waiting() {
+        RequestHelper.builder(EndPoint.WAITING)
+            .listener(waitingCallBack)
+            .get()
     }
+
+    private val waitingCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+                    waitingServiceModels.clear()
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+                    if (success) {
+                        val dataArr = jsonObject.getJSONArray("data")
+                        for (i in 0 until dataArr.length()) {
+                            val dataObj = dataArr.getJSONObject(i)
+                            val model = WaitingLoadsModel(
+                                dataObj.getInt("id"),
+                                dataObj.getInt("customerId"),
+                                dataObj.getInt("sourceAddressId"),
+                                dataObj.getInt("destinationAddressId"),
+                                dataObj.getInt("count"),
+                                dataObj.getString("description"),
+                                dataObj.getInt("carType"),
+                                dataObj.getInt("stopTime"),
+                                dataObj.getInt("driverHelp"),
+                                dataObj.getString("saveDate"),
+                                dataObj.getInt("weight"),
+                                dataObj.getInt("userId"),
+                                dataObj.getInt("costId"),
+                                dataObj.getInt("paymentSide"),
+                                dataObj.getInt("cargoId"),
+                                dataObj.getInt("status"),
+                                dataObj.getInt("driverId"),
+                                dataObj.getString("finishDate"),
+                                dataObj.getString("voipId"),
+                                dataObj.getString("acceptDate"),
+                                dataObj.getString("price"),
+                                dataObj.getString("customerName"),
+                                dataObj.getString("phoneNumber"),
+                                dataObj.getString("mobile")
+                            )
+
+                            waitingServiceModels.add(model)
+                        }
+
+                        val adapter = WaitingLoadsAdapter(waitingServiceModels)
+                        binding.listWaitingLoads.adapter = adapter
+
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+
+            }
+        }
+    }
+
 }

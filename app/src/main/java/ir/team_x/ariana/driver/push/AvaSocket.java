@@ -168,7 +168,7 @@ public class AvaSocket {
       AvaLog.e(opts.query);
 //      if (getPrefInstance().getIpRow() < SocketLinuxAddress.size()) {
 //        mSocket = IO.socket(SocketLinuxAddress.get(getPrefInstance().getIpRow()), opts);
-      mSocket = IO.socket(EndPoint.Companion.getPUSH_ADDRESS(), opts);
+      mSocket = IO.socket(EndPoint.PUSH_ADDRESS, opts);
       mSocket.connect();
       AvaLog.i("create new socket connection");
       openListener(mSocket);

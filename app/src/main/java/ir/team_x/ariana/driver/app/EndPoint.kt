@@ -15,12 +15,13 @@ class EndPoint {
 
         const val CRASH_REPORT = "http://turbotaxi.ir:6061/api/v1/crashReport"
 
-        val PUSH_ADDRESS = "http://turbotaxi.ir:6060"
+        const val PUSH_ADDRESS = "http://turbotaxi.ir:6060"
         val BASE_PATH = "$IP:$IP_PORT/api/driver/v1"
-        val FINANCIAL_PATH = "$BASE_PATH/financial"
-        val FINANCIAL_PAY_PATH = "$BASE_PATH/financial/pay"
-        val SERVICE_PATH = "$BASE_PATH/service"
-        val STATION_PATH = "$BASE_PATH/station"
+        private val FINANCIAL_PATH = "$BASE_PATH/financial"
+        private val FINANCIAL_PAY_PATH = "$BASE_PATH/financial/pay"
+        private val SERVICE_PATH = "$BASE_PATH/service"
+        private val STATION_PATH = "$BASE_PATH/station"
+        val LOCATION_PATH = "$BASE_PATH/location/car"
 
         /******************************** refresh token Api *********************************/
         const val REFRESH_TOKEN = "token"
@@ -49,11 +50,13 @@ class EndPoint {
         val ACTIVES = "$SERVICE_PATH/actives"
         val ACCEPT = "$SERVICE_PATH/accept"
         val FINISH = "$SERVICE_PATH/finish"
-
         val CANCEL = "$SERVICE_PATH/cancel"
+        val WAITING = "$SERVICE_PATH/waiting"
 
         val REGISTER = "$STATION_PATH/register"
         val EXIT = "$STATION_PATH/exit"
+
+        val SAVE_LOCATION = "$LOCATION_PATH/save"
 
     }
 
