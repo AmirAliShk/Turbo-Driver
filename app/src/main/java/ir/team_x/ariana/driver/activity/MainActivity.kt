@@ -294,19 +294,21 @@ class MainActivity : AppCompatActivity() {
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
-
                     if (success) {
-                        handleStatus()
-                        val dataArr = jsonObject.getJSONArray("data")
-                        val dataObj = dataArr.getJSONObject(0)
-                        val active = dataObj.getInt("active")
-                        val stationId = dataObj.getInt("stationId")
-                        val distance = dataObj.getInt("distance")
-                        val stationName = dataObj.getString("stationName")
-                        val borderLimit = dataObj.getString("borderLimit")
-
-                        //TODO get message and set to textView
-                        setStatusText(stationName)
+                        val dataObj = jsonObject.getJSONObject("data")
+                        val statusObj = dataObj.getJSONObject("status")
+                        val active = statusObj.getBoolean("active")
+                        val register = statusObj.getBoolean("register")
+                        val statusMessage = statusObj.getString("message")
+                        val stationObj = statusObj.getJSONObject("station")
+                        binding.txtStatus.text = statusMessage
+                        if (active && register) {
+                            val distance = stationObj.getInt("distance")
+                            val lat = stationObj.getDouble("lat")
+                            val lng = stationObj.getDouble("lng")
+                            val code = stationObj.getInt("code")
+                            val borderLimit = stationObj.getInt("borderLimit")
+                        }
                     }
 
                 } catch (e: Exception) {

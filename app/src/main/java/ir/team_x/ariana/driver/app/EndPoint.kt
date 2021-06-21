@@ -6,7 +6,7 @@ class EndPoint {
 
     companion object {
 
-        val IP = "http://turbotaxi.ir"
+        val IP = "http://192.168.1.44"
         val HAWKEYE_IP = "http://turbotaxi.ir"
         val PUSH_IP = "http://turbotaxi.ir:6060"
 
