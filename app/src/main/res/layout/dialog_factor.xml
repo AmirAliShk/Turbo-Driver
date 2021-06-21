@@ -297,23 +297,47 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_height="@dimen/_40sdp"
                     android:gravity="center"
+                    android:layout_margin="@dimen/_10sdp"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/btnEndTrip"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"/>
+
+                    <ViewFlipper
+                        android:id="@+id/vfEndService"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
                         android:background="@drawable/bg_grye"
-                        android:gravity="center"
-                        android:text="پایان سرویس"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="24sp" />
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/btnEndTrip"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/transparent"
+                            android:gravity="center"
+                            android:text="پایان سرویس"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="24sp" />
+
+                        <com.wang.avi.AVLoadingIndicatorView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:indicatorColor="@color/colorWhite"
+                            app:indicatorName="BallBeatIndicator" />
+
+                    </ViewFlipper>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"/>
+
 
                 </LinearLayout>
 

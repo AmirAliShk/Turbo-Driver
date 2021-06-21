@@ -12,10 +12,14 @@ import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
-class CurrentServiceAdapter(list: ArrayList<ServiceDataModel>) :
+class CurrentServiceAdapter() :
     RecyclerView.Adapter<CurrentServiceAdapter.ViewHolder>() {
 
-    private val models = list
+    private var models : ArrayList<ServiceDataModel> = ArrayList()
+
+    constructor (list: ArrayList<ServiceDataModel>) : this() {
+        this.models = list
+    }
 
     class ViewHolder(val binding: ItemCurrentServicesBinding) :
         RecyclerView.ViewHolder(binding.root) {}
@@ -40,12 +44,13 @@ class CurrentServiceAdapter(list: ArrayList<ServiceDataModel>) :
                 )
             )
         )
-        holder.binding.txtCustomerName.text=model.customerName
-        holder.binding.txtOriginAddress.text=model.sourceAddress
-        holder.binding.txtDestAddress.text=model.destinationAddress
-        holder.binding.txtCargoType.text=model.cargoName
-        holder.itemView.setOnClickListener{
-            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceDetailsFragment(model)).add()
+        holder.binding.txtCustomerName.text = model.customerName
+        holder.binding.txtOriginAddress.text = model.sourceAddress
+        holder.binding.txtDestAddress.text = model.destinationAddress
+        holder.binding.txtCargoType.text = model.cargoName
+        holder.itemView.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceDetailsFragment(model))
+                .replace()
         }
     }
 

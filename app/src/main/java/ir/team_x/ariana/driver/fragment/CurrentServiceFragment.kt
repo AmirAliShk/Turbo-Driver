@@ -18,6 +18,7 @@ class CurrentServiceFragment : Fragment() {
 
     private lateinit var binding: FragmentCurrentServicesBinding
     val serviceModels: ArrayList<ServiceDataModel> = ArrayList()
+    var adapter = CurrentServiceAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +40,7 @@ class CurrentServiceFragment : Fragment() {
     }
 
     private fun getActiveService() {
+        binding.vfCurrentService.displayedChild = 0
         RequestHelper.builder(EndPoint.ACTIVES)
             .listener(activeServiceCallBack)
             .get()
@@ -99,22 +101,30 @@ class CurrentServiceFragment : Fragment() {
                             serviceModels.add(model)
                         }
 
-                        val adapter = CurrentServiceAdapter(serviceModels)
-                        binding.listCurrentService.adapter = adapter
-
+                        if (serviceModels.size == 0) {
+                            binding.vfCurrentService.displayedChild = 1
+                        } else {
+                            binding.vfCurrentService.displayedChild = 3
+                            adapter = CurrentServiceAdapter(serviceModels)
+                            binding.listCurrentService.adapter = adapter
+                        }
                     }
-
                 } catch (e: Exception) {
                     e.printStackTrace()
+                    binding.vfCurrentService.displayedChild = 2
                 }
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-
+                binding.vfCurrentService.displayedChild = 2
             }
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
+    }
 }

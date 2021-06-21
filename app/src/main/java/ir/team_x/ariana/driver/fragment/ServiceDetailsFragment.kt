@@ -58,7 +58,7 @@ class ServiceDetailsFragment(serviceModel: ServiceDataModel) : Fragment() {
                 .show()
         }
         binding.llCall.setOnClickListener {
-            CallDialog().show()
+            CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
         }
         binding.txtFinish.setOnClickListener {
             FactorDialog().show(serviceModel)
@@ -68,6 +68,7 @@ class ServiceDetailsFragment(serviceModel: ServiceDataModel) : Fragment() {
     }
 
     private fun cancel(serviceId: Int, reasonCancelId: Int) {
+        binding.vfCancel.displayedChild = 1
         RequestHelper.builder(EndPoint.CANCEL)
             .listener(cancelCallBack)
             .addParam("serviceId", serviceId)
@@ -79,6 +80,7 @@ class ServiceDetailsFragment(serviceModel: ServiceDataModel) : Fragment() {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
                 try {
+                    binding.vfCancel.displayedChild = 0
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -87,18 +89,20 @@ class ServiceDetailsFragment(serviceModel: ServiceDataModel) : Fragment() {
                         val result = dataArr.getJSONObject(0).getBoolean("result")
                         if (result) {
                             MyApplication.Toast(message, Toast.LENGTH_SHORT)
+                            MyApplication.currentActivity.onBackPressed()
                         }
                     }
 
                 } catch (e: Exception) {
                     e.printStackTrace()
+                    binding.vfCancel.displayedChild = 0
                 }
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-
+                binding.vfCancel.displayedChild = 0
             }
         }
     }

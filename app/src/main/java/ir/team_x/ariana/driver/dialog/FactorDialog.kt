@@ -52,6 +52,7 @@ class FactorDialog {
     }
 
     private fun finish(serviceId: Int, price: String) {
+        binding.vfEndService.displayedChild = 1
         RequestHelper.builder(EndPoint.FINISH)
             .listener(finishCallBack)
             .addParam("serviceId", serviceId)
@@ -63,6 +64,7 @@ class FactorDialog {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
                 try {
+                    binding.vfEndService.displayedChild = 0
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -78,13 +80,14 @@ class FactorDialog {
 
                 } catch (e: Exception) {
                     e.printStackTrace()
+                    binding.vfEndService.displayedChild = 0
                 }
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-
+                binding.vfEndService.displayedChild = 0
             }
         }
     }

@@ -16,6 +16,7 @@ import ir.team_x.ariana.driver.databinding.DialogFactorBinding
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.push.AvaCrashReporter
+import ir.team_x.ariana.driver.utils.CallHelper
 import ir.team_x.ariana.driver.utils.KeyBoardHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
@@ -23,9 +24,9 @@ import org.json.JSONObject
 class CallDialog {
 
     lateinit var dialog: Dialog
-    lateinit var binding:DialogCallBinding
+    lateinit var binding: DialogCallBinding
 
-    fun show() {
+    fun show(number1: String, number2: String) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DialogCallBinding.inflate(LayoutInflater.from(MyApplication.context))
@@ -40,6 +41,16 @@ class CallDialog {
         dialog.setCancelable(true)
 
         binding.imgClose.setOnClickListener { dismiss() }
+        binding.txtNumber1.text = number1
+        binding.txtNumber2.text = number2
+
+        binding.llNumber1.setOnClickListener {
+            CallHelper.make(if (number1.startsWith("0")) number1 else "0$number1")
+        }
+
+        binding.llNumber2.setOnClickListener {
+            CallHelper.make(if (number2.startsWith("0")) number2 else "0$number2")
+        }
 
         dialog.show()
 
