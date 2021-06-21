@@ -16,6 +16,9 @@ import ir.team_x.ariana.driver.dialog.FactorDialog
 import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.utils.DateHelper
+import ir.team_x.ariana.driver.utils.StringHelper
+import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
@@ -35,10 +38,17 @@ class ServiceDetailsFragment(serviceModel: ServiceDataModel) : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
-        TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtilJava.overrideFonts(binding.root)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
-        binding.txtCustomerName.text = serviceModel.acceptDate
+        binding.txtSendDate.text = StringHelper.toPersianDigits(
+            DateHelper.strPersianEghit(
+                DateHelper.parseFormat(
+                    serviceModel.acceptDate + "",
+                    null
+                )
+            )
+        )
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtOriginAddress.text = serviceModel.sourceAddress
         binding.txtDestAddress.text = serviceModel.destinationAddress

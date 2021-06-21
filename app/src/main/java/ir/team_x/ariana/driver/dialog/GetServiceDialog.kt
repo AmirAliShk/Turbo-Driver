@@ -13,6 +13,7 @@ import ir.team_x.ariana.driver.model.ServiceModel
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.SoundHelper
 import ir.team_x.ariana.driver.utils.StringHelper
+import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.AcceptService
 import ir.team_x.ariana.driver.webServices.AcceptService.Listener
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
@@ -30,7 +31,7 @@ class GetServiceDialog() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         binding = DialogGetServiceBinding.inflate(LayoutInflater.from(MyApplication.context))
         dialog.setContentView(binding.root)
-        TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtilJava.overrideFonts(binding.root)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(false)
 

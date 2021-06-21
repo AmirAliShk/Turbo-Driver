@@ -48,7 +48,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
@@ -63,8 +63,7 @@
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.75"
-                android:text="12:50" />
+                android:layout_weight="0.75"/>
 
             <TextView
                 style="@style/title_details"
@@ -78,14 +77,9 @@
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.75"
-                android:text="بنی اسدی" />
+                android:layout_weight="0.75" />
 
         </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,8 +97,7 @@
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:text="امیریه 31. آراسته 1. مج سهند" />
+                android:layout_marginRight="@dimen/_10sdp"/>
 
         </LinearLayout>
 
@@ -128,8 +121,7 @@
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:text="جلال آل احمد 68 . پلاک   208 " />
+                android:layout_marginRight="@dimen/_10sdp"/>
 
         </LinearLayout>
 
@@ -155,8 +147,7 @@
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="38905328" />
+                android:layout_weight="1"/>
 
             <View
                 android:layout_width="0dp"
@@ -175,8 +166,7 @@
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="09307278878" />
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
@@ -204,8 +194,7 @@
                 android:id="@+id/txtCargoType"
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="محصولات کشاورزی" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -233,8 +222,7 @@
                 android:id="@+id/txtCargoCost"
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="800,000" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -262,8 +250,7 @@
                 android:id="@+id/txtPaymentSide"
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="مبدا" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

@@ -50,7 +50,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_weight="0.35"
-                        android:gravity="center"
+                        android:gravity="right|center_vertical"
                         android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp" />
@@ -74,7 +74,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_weight="0.35"
-                        android:gravity="center"
+                        android:gravity="right|center_vertical"
                         android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp" />
