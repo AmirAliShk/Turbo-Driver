@@ -35,8 +35,8 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
 
-        holder.binding.txtCargoType.text=model.cargoId.toString()
-        holder.binding.txtRange.text="station name"
+        holder.binding.txtCargoType.text=model.cargoName
+        holder.binding.txtRange.text=model.sourceStationName
         holder.binding.btnAccept.setOnClickListener {
             holder.binding.vfAccept.displayedChild = 1
             AcceptService().accept(model.id.toString(), object : AcceptService.Listener {

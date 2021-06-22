@@ -82,7 +82,9 @@ class FreeLoadsFragment : Fragment() {
                                 dataObj.getString("price"),
                                 dataObj.getString("customerName"),
                                 dataObj.getString("phoneNumber"),
-                                dataObj.getString("mobile")
+                                dataObj.getString("mobile"),
+                                dataObj.getString("stationName"),
+                                dataObj.getString("cargoName")
                             )
 
                             waitingServiceModels.add(model)

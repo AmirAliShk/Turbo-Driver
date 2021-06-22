@@ -25,4 +25,6 @@ data class WaitingLoadsModel(
     var customerName:String,
     var phoneNumber:String,
     var mobile:String,
+    var sourceStationName:String,
+    var cargoName:String,
 )
