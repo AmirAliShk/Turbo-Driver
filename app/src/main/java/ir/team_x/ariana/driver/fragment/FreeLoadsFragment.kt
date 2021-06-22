@@ -40,6 +40,7 @@ class FreeLoadsFragment : Fragment() {
     }
 
     private fun waiting() {
+        binding.vfFreeLoads.displayedChild = 0
         RequestHelper.builder(EndPoint.WAITING)
             .listener(waitingCallBack)
             .get()
@@ -87,20 +88,25 @@ class FreeLoadsFragment : Fragment() {
                             waitingServiceModels.add(model)
                         }
 
-                        val adapter = WaitingLoadsAdapter(waitingServiceModels)
-                        binding.listWaitingLoads.adapter = adapter
-
+                        if (waitingServiceModels.size==0){
+                            binding.vfFreeLoads.displayedChild = 1
+                        }else{
+                            binding.vfFreeLoads.displayedChild = 3
+                            val adapter = WaitingLoadsAdapter(waitingServiceModels)
+                            binding.listWaitingLoads.adapter = adapter
+                        }
                     }
 
                 } catch (e: Exception) {
                     e.printStackTrace()
+                    binding.vfFreeLoads.displayedChild = 2
                 }
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-
+                binding.vfFreeLoads.displayedChild = 2
             }
         }
     }

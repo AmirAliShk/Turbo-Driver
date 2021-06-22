@@ -52,6 +52,8 @@ class MainActivity : AppCompatActivity() {
 
         handleStatus()
 
+        getCharge()
+
         binding.imgMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)
         }
@@ -235,6 +237,40 @@ class MainActivity : AppCompatActivity() {
                             MyApplication.prefManager.setStationRegisterStatus(false)
                             MyApplication.Toast(message, Toast.LENGTH_SHORT)
                         }
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+
+            }
+        }
+    }
+
+    private fun getCharge() { //TODO  where should i call this?
+        RequestHelper.builder(EndPoint.CHARGE)
+            .listener(getChargeCallBack)
+            .get()
+    }
+
+    private val getChargeCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+
+                    if (success) {
+                        val dataArr = jsonObject.getJSONArray("data")
+                        val dataObj = dataArr.getJSONObject(0)
+                        val charge = dataObj.getString("charge")
+                        binding.txtCharge.text = charge
                     }
 
                 } catch (e: Exception) {

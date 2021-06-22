@@ -45,6 +45,7 @@ class EndPoint {
         val GET_WAITING_SERVICE = "$BASE_PATH/getWaitingService"
         val ADD_DRIVER_CHARGE = "$FINANCIAL_PATH/addDriverCharge"
         val GET_FINANCIAL = "$FINANCIAL_PATH/getFinancial"
+        val CHARGE = "$FINANCIAL_PATH/charge"
 
         val ATM = "$FINANCIAL_PAY_PATH/ATM"
         val ACTIVES = "$SERVICE_PATH/actives"

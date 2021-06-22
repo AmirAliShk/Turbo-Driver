@@ -50,7 +50,7 @@ class CurrentServiceAdapter() :
         holder.binding.txtCargoType.text = model.cargoName
         holder.itemView.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, ServiceDetailsFragment(model))
-                .replace()
+                .add()
         }
     }
 

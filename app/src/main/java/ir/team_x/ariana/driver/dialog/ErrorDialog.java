@@ -4,18 +4,21 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import ir.team_x.ariana.driver.R;
 import ir.team_x.ariana.driver.app.MyApplication;
+import ir.team_x.ariana.driver.databinding.DialogErrorBinding;
+import ir.team_x.ariana.driver.databinding.DialogFactorBinding;
 import ir.team_x.ariana.driver.push.AvaCrashReporter;
 import ir.team_x.ariana.operator.utils.TypeFaceUtil;
 
-
 public class ErrorDialog {
     static Dialog dialog;
+    DialogErrorBinding binding;
     private Runnable closeRunnable;
     private Runnable tryAgainRunnable;
     private Runnable bodyRunnable;
@@ -69,9 +72,9 @@ public class ErrorDialog {
         dialog = new Dialog(MyApplication.currentActivity);
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 //        dialog.getWindow().getAttributes().windowAnimations = R.style.ExpandAnimation;  //TODO‌ fix this animation
-        dialog.setContentView(R.layout.dialog_error);
-
-        TypeFaceUtil.Companion.overrideFont(dialog.getWindow().getDecorView());
+        binding = DialogErrorBinding.inflate(LayoutInflater.from(MyApplication.context));
+        dialog.setContentView(binding.getRoot());
+        TypeFaceUtil.Companion.overrideFont(binding.getRoot());
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         WindowManager.LayoutParams wlp = dialog.getWindow().getAttributes();
         wlp.width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -80,44 +83,20 @@ public class ErrorDialog {
 
         dialog.setCancelable(true);
 
-//    LinearLayout llParent=dialog.findViewById(R.id.llParent);
-//    llParent.setLayoutParams(new LinearLayout.LayoutParams(300, 150));
+        binding.imgClose.setOnClickListener(v -> {
+            if (closeRunnable != null)
+                closeRunnable.run();
+            else
+                dismiss();
+        });
 
-//        TextView txtMessage = (TextView) dialog.findViewById(R.id.txtMessage);
-//        txtMessage.setText(messageText);
-//
-//        TextView title = (TextView) dialog.findViewById(R.id.txtTitle);
-//        if (titleText == null || titleText.isEmpty()) {
-//            title.setVisibility(View.GONE);
-//        } else {
-//            title.setVisibility(View.VISIBLE);
-//            title.setText(titleText);
-//        }
-//
-//        Button btnClose = dialog.findViewById(R.id.btnClose);
-//        Button btnTryAgain = dialog.findViewById(R.id.btnTryAgain);
-//
-//        btnClose.setText(closeText);
-//        btnTryAgain.setText(tryAgainText);
-//
-//        if (bodyRunnable != null)
-//            bodyRunnable.run();
-//
-//        btnClose.setOnClickListener(v -> {
-//            if (closeRunnable != null)
-//                closeRunnable.run();
-//            else
-//                dismiss();
-//        });
-//
-//        btnTryAgain.setOnClickListener(v -> {
-//            if (tryAgainRunnable != null)
-//                tryAgainRunnable.run();
-//            dismiss();
-//        });
+        binding.imgTryAgain.setOnClickListener(v -> {
+            if (tryAgainRunnable != null)
+                tryAgainRunnable.run();
+            dismiss();
+        });
 
         dialog.setOnDismissListener(dialogInterface -> {
-            Log.i("GENERAL", "onDismiss General dialog");
             if (dismissRunnable != null)
                 dismissRunnable.run();
         });

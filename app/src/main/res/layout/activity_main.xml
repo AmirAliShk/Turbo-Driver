@@ -66,6 +66,7 @@
                             android:text="شارژ" />
 
                         <TextView
+                            android:id="@+id/txtCharge"
                             style="@style/page_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
