@@ -2,6 +2,7 @@ package ir.team_x.ariana.driver.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ItemCurrentServicesBinding
@@ -15,7 +16,8 @@ import ir.team_x.ariana.operator.utils.TypeFaceUtil
 class CurrentServiceAdapter() :
     RecyclerView.Adapter<CurrentServiceAdapter.ViewHolder>() {
 
-    private var models : ArrayList<ServiceDataModel> = ArrayList()
+    private var models: ArrayList<ServiceDataModel> = ArrayList()
+    var position = 0
 
     constructor (list: ArrayList<ServiceDataModel>) : this() {
         this.models = list
@@ -49,7 +51,23 @@ class CurrentServiceAdapter() :
         holder.binding.txtDestAddress.text = model.destinationAddress
         holder.binding.txtCargoType.text = model.cargoName
         holder.itemView.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceDetailsFragment(model))
+            this.position = position
+            FragmentHelper.toFragment(
+                MyApplication.currentActivity,
+                ServiceDetailsFragment(
+                    model,
+                    object : ServiceDetailsFragment.CancelServiceListener {
+                        override fun onCanceled(isCancel: Boolean) {
+                            if (isCancel) {
+                                MyApplication.Toast("canceled", Toast.LENGTH_SHORT)
+                                models.removeAt(position)
+                                notifyDataSetChanged()
+                            } else {
+                                MyApplication.Toast("not canceled", Toast.LENGTH_SHORT)
+                            }
+                        }
+                    })
+            )
                 .add()
         }
     }
