@@ -224,7 +224,8 @@ public class DataGatheringService extends Service {
                 LocationManager service = (LocationManager) MyApplication.context.getSystemService(MyApplication.context.LOCATION_SERVICE);
                 boolean isTurnOnGPS = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-                RequestHelper requestHelper = RequestHelper.loadBalancingBuilder(EndPoint.Companion.getSAVE_LOCATION())
+                // TODO check path
+                RequestHelper requestHelper = RequestHelper.loadBalancingBuilder("http://turbotaxi.ir:1810/api/driver/v1/location/car/save")
                         .setErrorHandling(false)
                         .listener(saveListener);
 

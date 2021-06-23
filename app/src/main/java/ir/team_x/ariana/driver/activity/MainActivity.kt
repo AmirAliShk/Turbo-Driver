@@ -13,6 +13,7 @@ import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
+import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
 import ir.team_x.ariana.driver.fragment.FinancialFragment
 import ir.team_x.ariana.driver.fragment.FreeLoadsFragment
@@ -52,6 +53,12 @@ class MainActivity : AppCompatActivity() {
 
         MyApplication.prefManager.setAvaPID(10)//TODO move to splash response
         MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value
+
+        if(!isDriverActive()){
+            binding.txtStatus.text= "برای فعال شدن ورود را بزنید"
+            binding.swStationRegister.visibility = View.INVISIBLE
+            binding.swEnterExit.isChecked = false
+        }
 
         handleStatusByServer()
 
@@ -159,10 +166,10 @@ class MainActivity : AppCompatActivity() {
                                 driverEnable()
                             }
                             getStatus()
-                        }else{
+                        } else {
                             binding.swEnterExit.isChecked = !binding.swEnterExit.isChecked
                         }
-                    }else{
+                    } else {
                         binding.swEnterExit.isChecked = !binding.swEnterExit.isChecked
                     }
 
@@ -203,11 +210,13 @@ class MainActivity : AppCompatActivity() {
                             if (status) {
                                 MyApplication.prefManager.setStationRegisterStatus(true)
                                 MyApplication.Toast(message, Toast.LENGTH_SHORT)
-                            }else{
-                                binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
+                            } else {
+                                binding.swStationRegister.isChecked =
+                                    !binding.swStationRegister.isChecked
                             }
-                        }else{
-                            binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
+                        } else {
+                            binding.swStationRegister.isChecked =
+                                !binding.swStationRegister.isChecked
                         }
 
                     } catch (e: Exception) {
@@ -245,8 +254,9 @@ class MainActivity : AppCompatActivity() {
                             getStatus()
                             MyApplication.prefManager.setStationRegisterStatus(false)
                             MyApplication.Toast(message, Toast.LENGTH_SHORT)
-                        }else{
-                            binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
+                        } else {
+                            binding.swStationRegister.isChecked =
+                                !binding.swStationRegister.isChecked
                         }
                     } else {
                         binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
@@ -350,6 +360,7 @@ class MainActivity : AppCompatActivity() {
                         val register = statusObj.getBoolean("register")
                         val statusMessage = statusObj.getString("message")
                         val stationObj = statusObj.getJSONObject("station")
+                        MyApplication.prefManager.setDriverStatus(active)
                         handleStatusByServer()
                         binding.txtStatus.text = statusMessage
                         if (active && register) {
@@ -431,6 +442,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         MyApplication.currentActivity = this
+        startGetStatus()
     }
 
     override fun onDestroy() {
@@ -442,7 +454,13 @@ class MainActivity : AppCompatActivity() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
         } else {
-            finish()
+            GeneralDialog()
+                .message("آیا از خروج خود اطمینان دارید؟")
+                .firstButton("بله") {
+                    finish()
+                }
+                .secondButton("خیر") {}
+                .show()
         }
     }
 
