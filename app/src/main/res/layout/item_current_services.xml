@@ -28,7 +28,8 @@
                 android:layout_weight="2"
                 android:paddingRight="@dimen/_10sdp"
                 android:background="@drawable/title_header"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="@dimen/_3sdp">
 
                 <TextView
                     android:id="@+id/txtDate"
@@ -51,7 +52,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:text="بنی اسدی"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:layout_marginLeft="@dimen/_10sdp"/>
 
 
             </LinearLayout>
@@ -59,7 +62,7 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.35" />
+                android:layout_weight="0.25" />
 
         </LinearLayout>
 
@@ -81,26 +84,22 @@
 
                 <TextView
                     style="@style/title_details"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
                     android:text="@string/Load_type" />
 
-                <View
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="match_parent" />
 
                 <TextView
                     android:id="@+id/txtCargoType"
                     style="@style/Details_answer"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
                     android:layout_height="wrap_content"
                     android:text="محصولات کشاورزی" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -126,7 +125,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="12dp" />
+                android:layout_height="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

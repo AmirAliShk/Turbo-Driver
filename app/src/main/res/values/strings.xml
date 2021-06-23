@@ -16,15 +16,14 @@
     <string name="payment_report">گزارش پرداخت</string>
     <string name="news">اخبار</string>
     <string name="support">پشتیبانی</string>
-    <string name="Load_type">نوع بار</string>
-    <string name="Range">محدوده</string>
-    <string name="customerName">نام مشتری</string>
-    <string name="sendTime">ساعت اعزام</string>
-    <string name="customerTell">تلفن </string>
-    <string name="customerMobile"> همراه</string>
-    <string name="Load_cost"> ارزش بار</string>
-    <string name="Settlement_side">طرف تسویه</string>
-    <string name="Conversation">مکالمه</string>
+    <string name="Load_type">نوع بار :</string>
+    <string name="Range">محدوده :</string>
+    <string name="customerName">نام مشتری :</string>
+    <string name="sendTime">ساعت اعزام :</string>
+    <string name="customerTell">تلفن : </string>
+    <string name="customerMobile">همراه :</string>
+    <string name="Load_cost">ارزش بار :</string>
+    <string name="Settlement_side">طرف تسویه :</string>
     <string name="call">تماس</string>
     <string name="cancle">لغو</string>
     <string name="canclee">لغوشده</string>
@@ -38,7 +37,6 @@
     <string name="National_code">کد ملی</string>
     <string name="Shaba_number">شماره شبا</string>
     <string name="update_driver_status">در حال بروزرسانی وضعیت راننده...</string>
-
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

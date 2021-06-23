@@ -51,19 +51,6 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                style="@style/title_details"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/sendTime" />
-
-            <TextView
-                android:id="@+id/txtSendDate"
-                style="@style/Details_answer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75"/>
 
             <TextView
                 style="@style/title_details"
@@ -78,6 +65,21 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75" />
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sendTime" />
+
+            <TextView
+                android:id="@+id/txtSendDate"
+                style="@style/Details_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"/>
+
 
         </LinearLayout>
 
@@ -103,7 +105,7 @@
 
         <View
             android:layout_width="wrap_content"
-            android:layout_height="12dp" />
+            android:layout_height="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,10 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25" />
+
 
             <TextView
                 style="@style/title_details"
@@ -186,9 +185,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Load_type" />
 
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
 
             <TextView
                 android:id="@+id/txtCargoType"
@@ -214,9 +210,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Load_cost" />
 
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
 
             <TextView
                 android:id="@+id/txtCargoCost"
@@ -242,9 +235,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Settlement_side" />
 
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
 
             <TextView
                 android:id="@+id/txtPaymentSide"
@@ -303,22 +293,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingRight="@dimen/_8sdp">
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/ic_canclee" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.5"-->
+<!--                        android:src="@drawable/ic_canclee" />-->
 
                     <TextView
                         style="@style/text_title_white"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingRight="@dimen/_5sdp"
-                        android:text="@string/cancle" />
+                        android:text="@string/cancle"
+                        android:gravity="center"/>
 
                 </LinearLayout>
 
@@ -342,22 +330,20 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_green"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingRight="@dimen/_8sdp">
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/ic_call" />
+<!--                <ImageView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0.5"-->
+<!--                    android:src="@drawable/ic_call" />-->
 
                 <TextView
                     style="@style/text_title_white"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingRight="@dimen/_5sdp"
-                    android:text="@string/call" />
+                    android:text="@string/call"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
