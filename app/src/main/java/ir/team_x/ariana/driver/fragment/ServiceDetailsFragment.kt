@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ir.team_x.ariana.driver.R
-import ir.team_x.ariana.driver.adapter.CurrentServiceAdapter
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.*
@@ -17,15 +16,27 @@ import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.DateHelper
+import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
-import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
-class ServiceDetailsFragment(serviceModel: ServiceDataModel) : Fragment() {
-    val serviceModel = serviceModel
+class ServiceDetailsFragment(
+    serviceModel: ServiceDataModel,
+    cancelServiceListener: CancelServiceListener
+) : Fragment() {
+    companion object {
+        val TAG = ServiceDetailsFragment::class.java.simpleName
+    }
 
+    private val serviceModel = serviceModel
     private lateinit var binding: FragmentServiceDetailsBinding
+
+    interface CancelServiceListener {
+        fun onCanceled(isCancel: Boolean)
+    }
+
+    val cancelServiceListener: CancelServiceListener = cancelServiceListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,12 +106,16 @@ class ServiceDetailsFragment(serviceModel: ServiceDataModel) : Fragment() {
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
                     if (success) {
-                        val dataArr = jsonObject.getJSONArray("data")
-                        val result = dataArr.getJSONObject(0).getBoolean("result")
+                        val dataObj = jsonObject.getJSONObject("data")
+                        val result = dataObj.getBoolean("result")
                         if (result) {
-                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
-                            MyApplication.currentActivity.onBackPressed()
+                            FragmentHelper.taskFragment(MyApplication.currentActivity, TAG).remove()
+                            cancelServiceListener.onCanceled(true)
+                        } else {
+                            cancelServiceListener.onCanceled(false)
                         }
+                    } else {
+                        cancelServiceListener.onCanceled(false)
                     }
 
                 } catch (e: Exception) {
