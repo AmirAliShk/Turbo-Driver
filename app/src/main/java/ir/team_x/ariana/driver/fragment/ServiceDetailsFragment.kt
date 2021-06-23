@@ -42,7 +42,7 @@ class ServiceDetailsFragment(serviceModel: ServiceDataModel) : Fragment() {
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtSendDate.text = StringHelper.toPersianDigits(
-            DateHelper.strPersianEghit(
+            DateHelper.strPersianFour1(
                 DateHelper.parseFormat(
                     serviceModel.acceptDate + "",
                     null
