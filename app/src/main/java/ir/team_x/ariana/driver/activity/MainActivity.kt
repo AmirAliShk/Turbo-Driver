@@ -21,6 +21,7 @@ import ir.team_x.ariana.driver.gps.DataGatheringService
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.ServiceHelper
+import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     private var timer = Timer()
     private val STATUS_PERIOD: Long = 20000
     var driverStatus = 0
+    var active = false
+    var register = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         MyApplication.prefManager.setAvaPID(10)//TODO move to splash response
         MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value
 
-        handleStatus()
+        handleStatusByServer()
 
         getCharge()
 
@@ -147,8 +150,7 @@ class MainActivity : AppCompatActivity() {
 
                     if (success) {
                         getStatus()
-                        val dataArr = jsonObject.getJSONArray("data")
-                        val dataObj = dataArr.getJSONObject(0)
+                        val dataObj = jsonObject.getJSONObject("data")
                         val status = dataObj.getBoolean("result")
                         if (status) {
                             if (driverStatus == 0) {
@@ -157,7 +159,11 @@ class MainActivity : AppCompatActivity() {
                                 driverEnable()
                             }
                             getStatus()
+                        }else{
+                            binding.swEnterExit.isChecked = !binding.swEnterExit.isChecked
                         }
+                    }else{
+                        binding.swEnterExit.isChecked = !binding.swEnterExit.isChecked
                     }
 
                 } catch (e: Exception) {
@@ -192,13 +198,16 @@ class MainActivity : AppCompatActivity() {
 
                         if (success) {
                             getStatus()
-                            val dataArr = jsonObject.getJSONArray("data")
-                            val dataObj = dataArr.getJSONObject(0)
+                            val dataObj = jsonObject.getJSONObject("data")
                             val status = dataObj.getBoolean("result")
                             if (status) {
                                 MyApplication.prefManager.setStationRegisterStatus(true)
                                 MyApplication.Toast(message, Toast.LENGTH_SHORT)
+                            }else{
+                                binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
                             }
+                        }else{
+                            binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
                         }
 
                     } catch (e: Exception) {
@@ -230,13 +239,17 @@ class MainActivity : AppCompatActivity() {
                     val message = jsonObject.getString("message")
 
                     if (success) {
-                        val dataArr = jsonObject.getJSONArray("data")
-                        val dataObj = dataArr.getJSONObject(0)
+                        val dataObj = jsonObject.getJSONObject("data")
                         val status = dataObj.getBoolean("result")
                         if (status) {
+                            getStatus()
                             MyApplication.prefManager.setStationRegisterStatus(false)
                             MyApplication.Toast(message, Toast.LENGTH_SHORT)
+                        }else{
+                            binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
                         }
+                    } else {
+                        binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
                     }
 
                 } catch (e: Exception) {
@@ -267,10 +280,10 @@ class MainActivity : AppCompatActivity() {
                     val message = jsonObject.getString("message")
 
                     if (success) {
-                        val dataArr = jsonObject.getJSONArray("data")
-                        val dataObj = dataArr.getJSONObject(0)
+                        val dataObj = jsonObject.getJSONObject("data")
                         val charge = dataObj.getString("charge")
-                        binding.txtCharge.text = charge
+                        binding.txtCharge.text =
+                            StringHelper.toPersianDigits(StringHelper.setComma(charge))
                     }
 
                 } catch (e: Exception) {
@@ -337,6 +350,7 @@ class MainActivity : AppCompatActivity() {
                         val register = statusObj.getBoolean("register")
                         val statusMessage = statusObj.getString("message")
                         val stationObj = statusObj.getJSONObject("station")
+                        handleStatusByServer()
                         binding.txtStatus.text = statusMessage
                         if (active && register) {
                             val distance = stationObj.getInt("distance")
@@ -362,21 +376,21 @@ class MainActivity : AppCompatActivity() {
     fun driverDisable() {
         binding.swStationRegister.visibility = View.INVISIBLE
         binding.swEnterExit.isChecked = false
-        binding.txtStatus.text = "لطفا فعال شوید"
+        active = false
+        register = false
+        binding.txtStatus.setText(R.string.update_driver_status)
         stopService()
         MyApplication.prefManager.setDriverStatus(false)
         MyApplication.prefManager.setStationRegisterStatus(false)
-        MyApplication.Toast("با موفقیت غیرفعال شدید", Toast.LENGTH_SHORT)
     }
 
     fun driverEnable() {
         binding.swStationRegister.isChecked = MyApplication.prefManager.getStationRegisterStatus()
         binding.swStationRegister.visibility = View.VISIBLE
         binding.swEnterExit.isChecked = true
-        binding.txtStatus.text = "درحال بروزرسانی وضعیت"
+        binding.txtStatus.setText(R.string.update_driver_status)
         startService()
         MyApplication.prefManager.setDriverStatus(true)
-        MyApplication.Toast("با موفقیت فعال شدید", Toast.LENGTH_SHORT)
     }
 
     private fun startService() {
@@ -394,7 +408,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private fun handleStatus() {
+    private fun handleStatusByServer() {
         if (MyApplication.prefManager.getDriverStatus()) {
             if (!isDriverActive())
                 driverEnable()
@@ -408,44 +422,6 @@ class MainActivity : AppCompatActivity() {
         binding.txtStatus.text = statusText
     }
 
-
-    //    private fun exitStation() { //TODO add this
-//        RequestHelper.builder(EndPoint.EXIT)
-//            .addParam("","")
-//            .listener(exitStationCallBack)
-//            .put()
-//    }
-//
-//    private val exitStationCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
-//        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
-//            MyApplication.handler.post {
-//                try {
-//                    val jsonObject = JSONObject(args[0].toString())
-//                    val success = jsonObject.getBoolean("success")
-//                    val message = jsonObject.getString("message")
-//
-//                    if (success) {
-//                        val dataArr = jsonObject.getJSONArray("data")
-//                        val dataObj = dataArr.getJSONObject(0)
-//                        val status = dataObj.getBoolean("result")
-//                        if (status) {
-//                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
-//                        }
-//                    }
-//
-//                } catch (e: Exception) {
-//                    e.printStackTrace()
-//                }
-//            }
-//        }
-//
-//        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
-//            MyApplication.handler.post {
-//
-//            }
-//        }
-//    }
-//
     override fun onResume() {
         super.onResume()
         MyApplication.currentActivity = this
