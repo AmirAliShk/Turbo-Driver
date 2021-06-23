@@ -120,8 +120,8 @@
                             android:textSize="@dimen/_16ssp"
                             app:kswAnimationDuration="300"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff="       فعال     "
-                            app:kswTextOn="       فعال     "
+                            app:kswTextOff="    فعال      "
+                            app:kswTextOn="     فعال     "
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
                             app:kswThumbMargin="@dimen/_5sdp"
@@ -231,13 +231,13 @@
                             android:layout_width="@dimen/_140sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:checked="false"
-                            android:visibility="invisible"
                             android:textColor="@color/grayLighter"
                             android:textSize="@dimen/_16ssp"
                             app:kswAnimationDuration="300"
+                            android:visibility="invisible"
                             app:kswBackDrawable="@drawable/switch_background"
-                            app:kswTextOff=" محدوده"
-                            app:kswTextOn=" محدوده"
+                            app:kswTextOff="    محدوده   "
+                            app:kswTextOn="    محدوده   "
                             app:kswThumbColor="@color/grayLighter"
                             app:kswThumbHeight="@dimen/_25sdp"
                             app:kswThumbMargin="@dimen/_5sdp"
@@ -365,7 +365,8 @@
                         android:paddingLeft="@dimen/_20sdp"
                         android:paddingTop="@dimen/_8sdp"
                         android:paddingRight="@dimen/_20sdp"
-                        android:paddingBottom="@dimen/_8sdp"/>
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:gravity="center|center_horizontal"/>
 
                 </LinearLayout>
 

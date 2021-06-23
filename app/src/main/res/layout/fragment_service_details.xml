@@ -57,21 +57,22 @@
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.75"
-                    android:text="@string/customerName" />
+                    android:layout_weight="1"
+                    android:text="@string/customerName"
+                    android:gravity="right"/>
 
                 <TextView
                     android:id="@+id/txtCustomerName"
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.75" />
+                    android:layout_weight="0.5" />
 
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.85"
+                    android:layout_weight="1"
                     android:text="@string/sendTime" />
 
                 <TextView
@@ -79,7 +80,7 @@
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.75" />
+                    android:layout_weight="0.5" />
 
 
             </LinearLayout>
@@ -137,14 +138,13 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp"
-                >
+                android:layout_marginTop="@dimen/_10sdp">
 
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
+                    android:layout_weight="0.5"
                     android:text="@string/customerTell" />
 
                 <TextView
@@ -152,14 +152,14 @@
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.5" />
 
 
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.35"
+                    android:layout_weight="0.5"
                     android:text="@string/customerMobile" />
 
                 <TextView
@@ -167,7 +167,7 @@
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.5" />
 
             </LinearLayout>
 
@@ -232,8 +232,34 @@
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1.15"
+                    android:text="@string/Load_weight" />
+
+
+                <TextView
+
+                    style="@style/Details_answer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <TextView
+                    style="@style/title_details"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/Settlement_side" />
 
 
@@ -242,7 +268,7 @@
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3" />
+                    android:layout_weight="2" />
 
             </LinearLayout>
 

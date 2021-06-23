@@ -23,7 +23,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.25"
+                android:layout_weight="0.15"
                 android:padding="@dimen/_5sdp"
                 android:src="@drawable/ic_to_inform" />
 
@@ -39,7 +39,7 @@
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:text="احمد آباد" />
 
         </LinearLayout>
@@ -54,7 +54,9 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.25" />
+                android:layout_weight="0.15"
+                android:padding="@dimen/_5sdp" />
+
 
             <TextView
                 style="@style/title_details"
@@ -68,7 +70,7 @@
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:text="محصولات کشاورزی" />
 
         </LinearLayout>

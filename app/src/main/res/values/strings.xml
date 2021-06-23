@@ -23,14 +23,15 @@
     <string name="customerTell">تلفن : </string>
     <string name="customerMobile">همراه :</string>
     <string name="Load_cost">ارزش بار :</string>
+    <string name="Load_weight">وزن بار :</string>
     <string name="Settlement_side">طرف تسویه :</string>
     <string name="call">تماس</string>
     <string name="cancle">لغو</string>
     <string name="canclee">لغوشده</string>
     <string name="Place">به محل بار رسیدم</string>
     <string name="accept">قبول میکنم</string>
-    <string name="Tracking_Code">کدپیگیری</string>
-    <string name="expense">هزینه</string>
+    <string name="Tracking_Code">کد پیگیری :</string>
+    <string name="expense">هزینه :</string>
     <string name="name">نام</string>
     <string name="father_name">نام پدر</string>
     <string name="id">شمارشناسنامه</string>
