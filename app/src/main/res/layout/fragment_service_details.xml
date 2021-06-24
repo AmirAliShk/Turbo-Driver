@@ -34,64 +34,77 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_margin="@dimen/_13sdp"
             android:background="@drawable/background1"
-            android:orientation="vertical"
-            android:padding="@dimen/_15sdp">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_weight="4"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_15sdp">
 
-
-                <TextView
-                    style="@style/title_details"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/customerName"
-                    android:gravity="right"/>
+                    android:layout_weight="10"
+                    android:background="@drawable/title_header"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_3sdp">
 
-                <TextView
-                    android:id="@+id/txtCustomerName"
-                    style="@style/Details_answer"
+                    <TextView
+                        android:id="@+id/txtCustomerName"
+                        style="@style/text_title_white"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_8sdp"
+                        android:layout_weight="1"
+                        android:text="بنی اسدی"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/txtDate"
+                        style="@style/text_title_white"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="16اردیبهشت  12:50"
+                        android:textStyle="bold"
+                        android:gravity="left"
+                        android:layout_marginLeft="@dimen/_5sdp" />
+
+
+                </LinearLayout>
+
+                <View
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5" />
-
-                <TextView
-                    style="@style/title_details"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/sendTime" />
-
-                <TextView
-                    android:id="@+id/txtSendDate"
-                    style="@style/Details_answer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5" />
-
+                    android:layout_height="1dp"
+                    android:layout_weight="0.40" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:orientation="horizontal">
+                android:layout_weight="3"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp">
 
                 <ImageView
                     android:layout_width="0dp"
@@ -112,10 +125,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="right"
+                android:layout_weight="3"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_marginBottom="@dimen/_10sdp">
 
                 <ImageView
                     android:layout_width="0dp"
@@ -136,15 +149,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="3"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_marginBottom="@dimen/_10sdp">
 
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.21"
                     android:text="@string/customerTell" />
 
                 <TextView
@@ -152,14 +166,14 @@
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5" />
-
+                    android:layout_weight="0.5"
+                    android:gravity="right"/>
 
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.25"
                     android:text="@string/customerMobile" />
 
                 <TextView
@@ -167,82 +181,83 @@
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5" />
+                    android:layout_weight="0.5"
+                    android:layout_gravity="right"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="right"
+                android:layout_weight="3"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_marginBottom="@dimen/_10sdp">
 
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.15"
+                    android:layout_weight="0.85"
                     android:text="@string/Load_type" />
-
 
                 <TextView
                     android:id="@+id/txtCargoType"
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3" />
+                    android:layout_weight="3"
+                    android:gravity="right"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="right"
+                android:layout_weight="3"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_marginBottom="@dimen/_10sdp">
 
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.15"
+                    android:layout_weight="0.85"
                     android:text="@string/Load_cost" />
-
 
                 <TextView
                     android:id="@+id/txtCargoCost"
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3" />
+                    android:layout_weight="3"
+                    android:gravity="right"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="right"
+                android:layout_weight="3"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_marginBottom="@dimen/_10sdp">
 
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.15"
+                    android:layout_weight="0.85"
                     android:text="@string/Load_weight" />
-
 
                 <TextView
 
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3" />
+                    android:layout_weight="3"
+                    android:gravity="right" />
 
             </LinearLayout>
 
@@ -250,57 +265,59 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="right"
+                android:layout_weight="3"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_marginBottom="@dimen/_10sdp">
 
                 <TextView
                     style="@style/title_details"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="right"
                     android:text="@string/Settlement_side" />
-
 
                 <TextView
                     android:id="@+id/txtPaymentSide"
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2" />
+                    android:layout_weight="2"
+                    android:gravity="right"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="3"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_marginBottom="@dimen/_10sdp">
 
                 <ImageView
                     android:id="@+id/imgDriverHelp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.25"
                     android:src="@drawable/ic_ticke" />
-
 
                 <TextView
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
+                    android:paddingRight="@dimen/_8sdp"
                     android:text="راننده کمک کند" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:orientation="horizontal">
 
                 <ViewFlipper
                     android:id="@+id/vfCancel"
@@ -370,33 +387,36 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="15dp" />
-
-            <ViewFlipper
-                android:id="@+id/vfEndService"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:background="@drawable/bg_grye">
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:gravity="center">
 
-                <TextView
-                    android:id="@+id/txtFinish"
-                    style="@style/text_title_white"
+                <ViewFlipper
+                    android:id="@+id/vfEndService"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:gravity="center"
-                    android:text="@string/finish"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_grye">
 
-                <com.wang.avi.AVLoadingIndicatorView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    app:indicatorColor="@color/colorWhite" />
+                    <TextView
+                        android:id="@+id/txtFinish"
+                        style="@style/text_title_white"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:gravity="center"
+                        android:text="@string/finish"
+                        android:textStyle="bold" />
 
-            </ViewFlipper>
+                    <com.wang.avi.AVLoadingIndicatorView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:indicatorColor="@color/colorWhite" />
 
+                </ViewFlipper>
+            </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

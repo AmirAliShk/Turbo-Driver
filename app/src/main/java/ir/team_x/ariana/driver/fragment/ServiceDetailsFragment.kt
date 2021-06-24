@@ -52,14 +52,14 @@ class ServiceDetailsFragment(
         TypeFaceUtilJava.overrideFonts(binding.root)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
-        binding.txtSendDate.text = StringHelper.toPersianDigits(
-            DateHelper.strPersianFour1(
-                DateHelper.parseFormat(
-                    serviceModel.acceptDate + "",
-                    null
-                )
-            )
-        )
+//        binding.txtSendDate.text = StringHelper.toPersianDigits(
+//            DateHelper.strPersianFour1(
+//                DateHelper.parseFormat(
+//                    serviceModel.acceptDate + "",
+//                    null
+//                )
+//            )
+//        )
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtOriginAddress.text = serviceModel.sourceAddress
         binding.txtDestAddress.text = serviceModel.destinationAddress

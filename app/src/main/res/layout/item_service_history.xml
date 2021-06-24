@@ -41,25 +41,28 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_13sdp"
-        android:padding="@dimen/_15sdp"
+        android:padding="@dimen/_10sdp"
         android:background="@drawable/background2"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
+        <TextView
+            style="@style/title_details"
+            android:layout_width="wrap_content"
+            android:layout_weight="2.5"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:gravity="center_horizontal"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_10sdp">
+            android:layout_marginBottom="@dimen/_10sdp">
 
             <ImageView
                 android:layout_width="0dp"
@@ -80,10 +83,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_10sdp">
+            android:layout_marginBottom="@dimen/_10sdp">
 
             <ImageView
                 android:layout_width="0dp"
@@ -104,10 +107,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_10sdp">
+            android:layout_marginBottom="@dimen/_10sdp">
 
             <TextView
                 style="@style/title_details"
@@ -128,10 +131,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_10sdp">
+            android:layout_marginBottom="@dimen/_5sdp">
 
             <TextView
                 style="@style/title_details"
