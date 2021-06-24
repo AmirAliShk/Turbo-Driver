@@ -11,6 +11,7 @@ import ir.team_x.ariana.driver.fragment.ServiceDetailsFragment
 import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.SoundHelper
+import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.AcceptService
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
@@ -28,7 +29,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
             parent,
             false
         )
-        TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtilJava.overrideFonts(binding.root,MyApplication.iranSansMediumTF)
         return ViewHolder(binding)
     }
 

@@ -52,18 +52,18 @@ class ServiceDetailsFragment(
         TypeFaceUtilJava.overrideFonts(binding.root,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
-//        binding.txtSendDate.text = StringHelper.toPersianDigits(
-//            DateHelper.strPersianFour1(
-//                DateHelper.parseFormat(
-//                    serviceModel.acceptDate + "",
-//                    null
-//                )
-//            )
-//        )
+        binding.txtDate.text = StringHelper.toPersianDigits(
+            DateHelper.strPersianEghit(
+                DateHelper.parseFormat(
+                    serviceModel.acceptDate + "",
+                    null
+                )
+            )
+        )
         binding.txtCustomerName.text = serviceModel.customerName
-//        binding.txtCargoWeight.text=StringHelper.toPersianDigits(serviceModel.weightName) //TODO uncomment
-        binding.txtOriginAddress.text = serviceModel.sourceAddress
-        binding.txtDestAddress.text = serviceModel.destinationAddress
+        binding.txtCargoWeight.text=StringHelper.toPersianDigits(serviceModel.weightName) //TODO uncomment
+        binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
+        binding.txtDestAddress.text = StringHelper.toPersianDigits(serviceModel.destinationAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
         binding.txtCargoType.text = serviceModel.cargoName

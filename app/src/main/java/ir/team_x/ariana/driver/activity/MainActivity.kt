@@ -23,6 +23,7 @@ import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.ServiceHelper
 import ir.team_x.ariana.driver.utils.StringHelper
+import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
@@ -49,7 +50,10 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
-        TypeFaceUtil.overrideFont(binding.root, MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtilJava.overrideFonts(binding.txtCharge,MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtDriverName,MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtStatus,MyApplication.iranSansMediumTF)
 
         MyApplication.prefManager.setAvaPID(10)//TODO move to splash response
         MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value

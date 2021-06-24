@@ -11,6 +11,7 @@ import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.utils.DateHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
+import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class CurrentServiceAdapter() :
@@ -32,7 +33,7 @@ class CurrentServiceAdapter() :
             parent,
             false
         )
-        TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtilJava.overrideFonts(binding.root,MyApplication.iranSansMediumTF)
         return ViewHolder(binding)
     }
 
@@ -47,8 +48,8 @@ class CurrentServiceAdapter() :
             )
         )
         holder.binding.txtCustomerName.text = model.customerName
-        holder.binding.txtOriginAddress.text = model.sourceAddress
-        holder.binding.txtDestAddress.text = model.destinationAddress
+        holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
+        holder.binding.txtDestAddress.text = StringHelper.toPersianDigits(model.destinationAddress)
         holder.binding.txtCargoType.text = model.cargoName
         holder.itemView.setOnClickListener {
             this.position = position

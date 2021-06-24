@@ -1,85 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layoutDirection="rtl">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_13sdp"
-        android:background="@drawable/background1"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/_10sdp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right|center_vertical"
-            android:orientation="horizontal">
+            android:layout_margin="@dimen/_13sdp"
+            android:background="@drawable/background1"
+            android:elevation="@dimen/_5sdp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
 
-            <ImageView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.15"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/ic_to_inform" />
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
-                style="@style/title_details"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.35"
-                android:text="@string/Range" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_weight="0.5"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_to_inform" />
 
-            <TextView
-                android:id="@+id/txtRange"
-                style="@style/Details_answer"
-                android:layout_width="0dp"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Range"
+                    android:textColor="@color/title_detailes"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:id="@+id/txtRange"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textColor="@color/grayDark"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="احمد آباد" />
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:padding="@dimen/_5sdp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Load_type"
+                    android:textColor="@color/title_detailes"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:id="@+id/txtCargoType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textColor="@color/grayDark"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_30sdp"
-            android:gravity="right|center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.15"
-                android:padding="@dimen/_5sdp" />
-
-
-            <TextView
-                style="@style/title_details"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.35"
-                android:text="@string/Load_type" />
-
-            <TextView
-                android:id="@+id/txtCargoType"
-                style="@style/Details_answer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="محصولات کشاورزی" />
-
-        </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="@dimen/_35sdp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
@@ -92,16 +99,16 @@
             android:id="@+id/vfAccept"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_grye"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:background="@drawable/bg_grye">
 
             <Button
                 android:id="@+id/btnAccept"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/accept"
                 android:background="@color/transparent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/accept"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold" />
 
