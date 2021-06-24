@@ -59,10 +59,10 @@ class CurrentServiceAdapter() :
                     object : ServiceDetailsFragment.CancelServiceListener {
                         override fun onCanceled(isCancel: Boolean) {
                             if (isCancel) {
-                                MyApplication.Toast("canceled", Toast.LENGTH_SHORT)
                                 models.removeAt(position)
                                 notifyDataSetChanged()
                             } else {
+                                //TODO what to do here?
                                 MyApplication.Toast("not canceled", Toast.LENGTH_SHORT)
                             }
                         }
