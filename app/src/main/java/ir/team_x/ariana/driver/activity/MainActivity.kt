@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
                 enterExit(1)
             } else {
                 binding.swStationRegister.visibility = View.INVISIBLE
+                binding.swStationRegister.isChecked=false
                 enterExit(0)
             }
         }
@@ -213,7 +214,6 @@ class MainActivity : AppCompatActivity() {
                             val status = dataObj.getBoolean("result")
                             if (status) {
                                 MyApplication.prefManager.setStationRegisterStatus(true)
-                                MyApplication.Toast(message, Toast.LENGTH_SHORT)
                             } else {
                                 binding.swStationRegister.isChecked =
                                     !binding.swStationRegister.isChecked
@@ -257,7 +257,6 @@ class MainActivity : AppCompatActivity() {
                         if (status) {
                             getStatus()
                             MyApplication.prefManager.setStationRegisterStatus(false)
-                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
                         } else {
                             binding.swStationRegister.isChecked =
                                 !binding.swStationRegister.isChecked

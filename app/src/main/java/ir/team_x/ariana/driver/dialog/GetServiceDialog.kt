@@ -31,7 +31,7 @@ class GetServiceDialog() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         binding = DialogGetServiceBinding.inflate(LayoutInflater.from(MyApplication.context))
         dialog.setContentView(binding.root)
-        TypeFaceUtilJava.overrideFonts(binding.root)
+        TypeFaceUtilJava.overrideFonts(binding.root,MyApplication.iranSansMediumTF)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(false)
 

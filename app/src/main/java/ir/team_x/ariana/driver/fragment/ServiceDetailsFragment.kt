@@ -34,6 +34,7 @@ class ServiceDetailsFragment(
 
     interface CancelServiceListener {
         fun onCanceled(isCancel: Boolean)
+        fun onFinishSerice(isFinish: Boolean)
     }
 
     val cancelServiceListener: CancelServiceListener = cancelServiceListener
@@ -83,7 +84,12 @@ class ServiceDetailsFragment(
             CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
         }
         binding.txtFinish.setOnClickListener {
-            FactorDialog().show(serviceModel)
+            FactorDialog().show(serviceModel, object:FactorDialog.FinishServiceListener{
+                override fun onFinishService(isFinish: Boolean) {
+                    cancelServiceListener.onFinishSerice(isFinish)
+                }
+
+            })
         }
 
         return binding.root
