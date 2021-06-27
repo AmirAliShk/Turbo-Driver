@@ -15,14 +15,14 @@
 
         <View
             android:layout_width="match_parent"
-            android:background="@color/actionBar"
-            android:layout_height="@dimen/_40sdp"/>
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/actionBar" />
 
         <ImageView
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
-            android:layout_marginTop="@dimen/_30sdp"
             android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_30sdp"
             android:src="@mipmap/arianaa" />
 
     </RelativeLayout>
@@ -43,7 +43,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="top|right"
             android:orientation="horizontal">
 
             <ImageView
@@ -52,22 +52,21 @@
                 android:src="@drawable/ic_origin" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/txtOriginAddress"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:layout_weight="0.35"
-                android:gravity="right|center"
-                android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
+                android:gravity="right|center_vertical"
                 android:textColor="@color/colorBlack"
-                android:textSize="17sp"
-                android:layout_marginRight="@dimen/_10sdp"/>
+                android:textSize="17sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="top|right"
             android:orientation="horizontal">
 
             <ImageView
@@ -76,13 +75,13 @@
                 android:src="@drawable/ic_destination" />
 
             <TextView
+                android:id="@+id/txtDestinationAddress"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:gravity="right|center"
-                android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:gravity="right|center_vertical"
                 android:textColor="@color/colorBlack"
-                android:textSize="17sp"
-                android:layout_marginRight="@dimen/_10sdp"/>
+                android:textSize="17sp" />
 
         </LinearLayout>
 
@@ -102,27 +101,22 @@
                 android:src="@drawable/ic_mony" />
 
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_weight="0.35"
                 android:gravity="right|center"
                 android:text="هزینه سرویس :"
                 android:textColor="@color/navigationBar"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="19sp"/>
 
             <TextView
-
+                android:id="@+id/txtPrice"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_weight="0.35"
                 android:gravity="center"
-                android:text="150.000 تومان"
                 android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
+                android:textSize="17sp"/>
 
         </LinearLayout>
 
@@ -131,35 +125,28 @@
             android:layout_height="@dimen/_40sdp" />
 
         <Button
+            android:id="@+id/btnAccept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/hohooh"
             android:background="@drawable/bg_green1"
             android:text="قبول سرویس"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold" />
+            android:textSize="17sp"/>
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.25"
-            android:paddingRight="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:layout_alignBottom="@id/hohooh"
+            android:id="@+id/btnClose"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
             android:background="@drawable/bg_redd"
-            android:textColor="@color/colorWhite"
-            android:src="@drawable/ic_canclee"
-            android:textStyle="bold"
-            android:layout_gravity="left"/>
-
+            android:src="@drawable/ic_canclee" />
 
     </LinearLayout>
-
 
 </LinearLayout>

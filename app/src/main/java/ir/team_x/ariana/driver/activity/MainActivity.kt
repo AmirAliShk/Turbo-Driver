@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.gms.maps.model.LatLng
@@ -51,15 +50,15 @@ class MainActivity : AppCompatActivity() {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
         TypeFaceUtil.overrideFont(binding.root)
-        TypeFaceUtilJava.overrideFonts(binding.txtCharge,MyApplication.iranSansMediumTF)
-        TypeFaceUtilJava.overrideFonts(binding.txtDriverName,MyApplication.iranSansMediumTF)
-        TypeFaceUtilJava.overrideFonts(binding.txtStatus,MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtCharge, MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtDriverName, MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtStatus, MyApplication.iranSansMediumTF)
 
         MyApplication.prefManager.setAvaPID(10)//TODO move to splash response
         MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value
 
-        if(!isDriverActive()){
-            binding.txtStatus.text= "برای فعال شدن ورود را بزنید"
+        if (!isDriverActive()) {
+            binding.txtStatus.text = "برای فعال شدن ورود را بزنید"
             binding.swStationRegister.visibility = View.INVISIBLE
             binding.swEnterExit.isChecked = false
         }
@@ -95,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                 enterExit(1)
             } else {
                 binding.swStationRegister.visibility = View.INVISIBLE
-                binding.swStationRegister.isChecked=false
+                binding.swStationRegister.isChecked = false
                 enterExit(0)
             }
         }
@@ -439,6 +438,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         MyApplication.currentActivity = this
+        MyApplication.prefManager.setAppRun(true)
         startGetStatus()
     }
 
@@ -446,6 +446,11 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         MyApplication.currentActivity = this
         startGetStatus()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MyApplication.prefManager.setAppRun(false)
     }
 
     override fun onDestroy() {

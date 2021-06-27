@@ -32,13 +32,28 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
 
+    }
 
+    override fun onResume() {
+        super.onResume()
+        MyApplication.prefManager.setAppRun(true)
+        MyApplication.currentActivity = this
+    }
+
+    override fun onStart() {
+        super.onStart()
+        MyApplication.currentActivity = this
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MyApplication.prefManager.setAppRun(false)
     }
 
     override fun onMapReady(p0: GoogleMap?) {
         if (p0 != null) {
             googleMap = p0
-            googleMap.mapType=GoogleMap.MAP_TYPE_NORMAL
+            googleMap.mapType = GoogleMap.MAP_TYPE_NORMAL
         }
     }
 

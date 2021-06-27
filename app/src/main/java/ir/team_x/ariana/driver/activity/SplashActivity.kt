@@ -72,11 +72,17 @@ class SplashActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         MyApplication.currentActivity = this
+        MyApplication.prefManager.setAppRun(true)
     }
 
     override fun onStart() {
         super.onStart()
         MyApplication.currentActivity = this
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MyApplication.prefManager.setAppRun(false)
     }
 
     override fun onBackPressed() {

@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ir.team_x.ariana.driver.R;
+import ir.team_x.ariana.driver.activity.CancelServiceActivity;
 import ir.team_x.ariana.driver.activity.GetServiceActivity;
 import ir.team_x.ariana.driver.activity.SplashActivity;
 import ir.team_x.ariana.driver.app.AppStatusHelper;
@@ -72,7 +73,7 @@ public class ManagePush {
                 break;
             case "2":
                 // getServiceTurbo info
-//                if (!MyApplication.prefManager.isActiveTurboService()) { // TODO what is this?
+//                if (!MyApplication.prefManager.isActiveTurboService()) { // TODO this is for what?
                     SoundHelper.ringing(context, R.raw.service, false);
                     if (MyApplication.prefManager.isAppRun()) {
                         Log.i(TAG, "manage: app is running");
@@ -110,21 +111,21 @@ public class ManagePush {
                 // cancel
                 String cancelMessage = dataArray[1];
 
-//                MyApplication.prefManager.setActiveServiceTurbo(false);
-//                if (AppStatusHelper.appIsRun(context)) { //TODO uncomment this
-//                    Intent in = new Intent(MyApplication.currentActivity, CancelServiceActivity.class);
-//                    in.putExtra("cancelMessage", cancelMessage);
-//
-//                    MyApplication.currentActivity.finish();
-//                    MyApplication.currentActivity.startActivity(in);
-//                } else {
-//                    Intent in = new Intent(MyApplication.context, CancelServiceActivity.class);
-//                    in.putExtra("cancelMessage", cancelMessage);
-//
-//                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                    MyApplication.context.startActivity(in);
-//                }
+//                MyApplication.prefManager.setActiveServiceTurbo(false); // TODO this is for waht?
+                if (AppStatusHelper.appIsRun(context)) { //TODO uncomment this
+                    Intent in = new Intent(MyApplication.currentActivity, CancelServiceActivity.class);
+                    in.putExtra("cancelMessage", cancelMessage);
+
+                    MyApplication.currentActivity.finish();
+                    MyApplication.currentActivity.startActivity(in);
+                } else {
+                    Intent in = new Intent(MyApplication.context, CancelServiceActivity.class);
+                    in.putExtra("cancelMessage", cancelMessage);
+
+                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    MyApplication.context.startActivity(in);
+                }
 
                 break;
             case "4":
@@ -218,7 +219,7 @@ public class ManagePush {
             notificationBuilder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.logoariana));
             if (isHighPriority) notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
             notificationBuilder.setAutoCancel(true);
-            notificationBuilder.setSound(Uri.parse("android.resource://ir.taxi1880.customer/" + R.raw.notification));
+            notificationBuilder.setSound(Uri.parse("android.resource://ir.team_x.ariana.driver/" + R.raw.notification));
             notificationBuilder.setContentIntent(pendingIntent);
 
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -360,42 +361,6 @@ public class ManagePush {
         }
     }
 
-//    private void editServiceTurbo(JSONObject object) {
-//        try {
-//            int serviceId = object.getInt("serviceId");
-//            String msg = object.getString("msg");
-//
-//            if (AppStatusHelper.appIsRun(MyApplication.context)) {
-//                if (InServiceActivityTurbo.isActivityRuning) {
-//                    VibratorHelper.setVibrator(MyApplication.context, new long[]{0, 300, 100}, -1);
-////        SoundHelper.ringing(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
-//                    SoundHelper.ringing(MyApplication.context, R.raw.edit_sound, false);
-//
-//                    new GeneralDialog()
-//                            .messageText("بسیار مهم")
-//                            .messageBody(msg)
-//                            .negativeRunnable(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    SoundHelper.stop();
-//                                }
-//                            })
-//                            .negativeText("بسیار خب")
-//                            .hideSecondButton(true)
-//                            .cancelable(false)
-//                            .show();
-//                    getServiceInfo(serviceId);
-//                } else {
-//                    showGeneralNoti("تــوربــو", msg, MyApplication.context, false);
-//                }
-//            } else {
-//                showGeneralNoti("تــوربــو", msg, MyApplication.context, false);
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     public void getServiceInfo(int serviceId) {
 //        LoadingDialog.makeLoader();
 //        RequestHelper.loadBalancingBuilder(EndPoints.TRIP_INFO)
@@ -420,44 +385,6 @@ public class ManagePush {
 //                    }
 //                })
 //                .get();
-    }
-
-    private void paymentServiceTurbo(JSONObject object) {
-//        try {
-//            int serviceId = object.getInt("serviceId");
-////      String msg = object.getString("msg");
-//            String msg = "هزینه سرویس شما توسط مشتری به صورت پرداخت الکترونیک انجام پذیرفت";
-//
-//            if (AppStatusHelper.appIsRun(MyApplication.context)) {
-//                if (InServiceActivityTurbo.isActivityRuning) {
-//                    VibratorHelper.setVibrator(MyApplication.context, new long[]{0, 300, 100}, -1);
-////        SoundHelper.ringing(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
-//                    SoundHelper.ringing(MyApplication.context, R.raw.edit_sound, false);
-//
-//                    new GeneralDialog()
-//                            .title("بسیار مهم")
-//                            .message(msg)
-//                            .negativeRunnable(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    SoundHelper.stop();
-//                                }
-//                            })
-//                            .negativeText("بسیار خب")
-//                            .hideSecondButton(true)
-//                            .cancelable(false)
-//                            .show();
-//                    getServiceInfo(serviceId);
-//                } else {
-//                    showGeneralNoti("تــوربــو", msg, MyApplication.context, false);
-//                }
-//
-//            } else {
-//                showGeneralNoti("تــوربــو", msg, MyApplication.context, false);
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
     }
 
     public static void showServiceNoti(int acceptTime, String serviceId, Context context, boolean cancelable) {
