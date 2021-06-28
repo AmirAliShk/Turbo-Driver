@@ -363,9 +363,9 @@
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:background="@drawable/background2"
                         android:elevation="@dimen/_5sdp"
-                        android:paddingLeft="@dimen/_20sdp"
+                        android:paddingLeft="@dimen/_5sdp"
                         android:paddingTop="@dimen/_8sdp"
-                        android:paddingRight="@dimen/_20sdp"
+                        android:paddingRight="@dimen/_5sdp"
                         android:paddingBottom="@dimen/_8sdp"
                         android:gravity="center|center_horizontal"/>
 

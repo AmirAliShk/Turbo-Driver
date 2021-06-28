@@ -21,7 +21,7 @@
 
     <style name="text_title_black">
         <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
     </style>
 
     <style name="item_title_black">
