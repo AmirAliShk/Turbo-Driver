@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="top|right"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -48,12 +48,12 @@
                     <TextView
                         android:id="@+id/txtOriginAddress"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="0.35"
                         android:gravity="right|center_vertical"
-                        android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
                         android:textColor="@color/colorBlack"
-                        android:textSize="17sp" />
+                        android:paddingRight="@dimen/_10sdp"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="top|right"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -72,12 +72,12 @@
                     <TextView
                         android:id="@+id/txtDestAddress"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="0.35"
                         android:gravity="right|center_vertical"
-                        android:text=" امیریه 31 . آراسته1 . مجتمع سهند"
                         android:textColor="@color/colorBlack"
-                        android:textSize="17sp" />
+                        android:paddingRight="@dimen/_10sdp"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -94,27 +94,24 @@
                         android:src="@drawable/ic_mony" />
 
                     <TextView
-
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:layout_weight="0.35"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="هزینه سرویس :"
                         android:textColor="@color/navigationBar"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtPrice"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:layout_weight="0.35"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="150.000 تومان"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
-
 
                 </LinearLayout>
 

@@ -12,6 +12,7 @@ import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.DialogFactorBinding
+import ir.team_x.ariana.driver.fragment.ServiceDetailsFragment
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.push.AvaCrashReporter
@@ -24,7 +25,14 @@ class FactorDialog {
     lateinit var dialog: Dialog
     lateinit var binding: DialogFactorBinding
 
-    fun show(serviceModel: ServiceDataModel) {
+
+    interface FinishServiceListener {
+        fun onFinishService(isFinish: Boolean)
+    }
+
+    private lateinit var finishServiceListener:FinishServiceListener
+
+    fun show(serviceModel: ServiceDataModel, finishServiceListener: FinishServiceListener) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DialogFactorBinding.inflate(LayoutInflater.from(MyApplication.context))
@@ -37,6 +45,8 @@ class FactorDialog {
         wlp?.windowAnimations = R.style.ExpandAnimation
         dialog.window?.attributes = wlp
         dialog.setCancelable(true)
+
+        this.finishServiceListener = finishServiceListener
 
         binding.imgClose.setOnClickListener { dismiss() }
         binding.btnEndTrip.setOnClickListener { finish(serviceModel.id, serviceModel.priceService) }
@@ -69,13 +79,19 @@ class FactorDialog {
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
                     if (success) {
-                        val dataArr = jsonObject.getJSONArray("data")
-                        val result = dataArr.getJSONObject(0).getBoolean("result")
+                        val dataObj = jsonObject.getJSONObject("data")
+                        val result = dataObj.getBoolean("result")
                         if (result) {
+                            finishServiceListener.onFinishService(true)
                             MyApplication.Toast(message, Toast.LENGTH_SHORT)
                             dismiss()
                             MyApplication.currentActivity.onBackPressed()
+                        }else{
+                            finishServiceListener.onFinishService(false)
                         }
+                    }
+                    else{
+                        finishServiceListener.onFinishService(false)
                     }
 
                 } catch (e: Exception) {

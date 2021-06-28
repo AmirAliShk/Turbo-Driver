@@ -64,7 +64,17 @@ class CurrentServiceAdapter() :
                                 notifyDataSetChanged()
                             } else {
                                 //TODO what to do here?
-                                MyApplication.Toast("not canceled", Toast.LENGTH_SHORT)
+                                MyApplication.Toast("not canceled error", Toast.LENGTH_SHORT)
+                            }
+                        }
+
+                        override fun onFinishSerice(isFinish: Boolean) {
+                            if (isFinish) {
+                                models.removeAt(position)
+                                notifyDataSetChanged()
+                            } else {
+                                //TODO what to do here?
+                                MyApplication.Toast("not finished error", Toast.LENGTH_SHORT)
                             }
                         }
                     })
