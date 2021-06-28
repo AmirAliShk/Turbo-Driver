@@ -19,7 +19,7 @@
             android:layout_width="@dimen/_250sdp"
             android:layout_height="180dp"
             android:layout_centerInParent="true"
-            android:background="@drawable/bg_grye"
+            android:background="@drawable/background4"
             android:orientation="vertical">
 
 
@@ -34,7 +34,7 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:text="خطای عدم اتصال به اینترنت لطفا پس از بررسی ارتباط خود به اینترنت مجدد چک کنید"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorBlack"
                 android:textSize="17sp" />
 
             <LinearLayout
@@ -47,7 +47,7 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1.3" />
+                    android:layout_weight="0.25" />
 
                 <ImageView
                     android:id="@+id/imgTryAgain"
@@ -63,7 +63,7 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1.3" />
+                    android:layout_weight="0.25" />
 
 
                 <ImageView
@@ -80,7 +80,7 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1.3" />
+                    android:layout_weight="0.25" />
 
 
             </LinearLayout>
@@ -91,7 +91,7 @@
             android:layout_width="50dp"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_190sdp"
+            android:layout_marginTop="@dimen/_210sdp"
             android:src="@drawable/ic_error" />
 
     </RelativeLayout>
