@@ -2,6 +2,7 @@ package ir.team_x.ariana.driver.webServices
 
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
+import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import org.json.JSONObject
 
@@ -30,9 +31,17 @@ class AcceptService {
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
 
-                    if(success){
+                    if (success) {
+                        val dataObj = jsonObject.getJSONObject("data")
+                        val msg = dataObj.getString("message")
+                        val typeOut = dataObj.getInt("typeOut")
+                        if(typeOut==1){
+                            listener.onSuccess()
+                        }else{
+                            listener.onFailure()
+                            GeneralDialog().message(msg).secondButton("باشه") {}.show()
+                        }
                         //TODO check other type in this response
-                        listener.onSuccess()
                     }
 
                 } catch (e: Exception) {

@@ -73,7 +73,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/_10sdp"
                             android:gravity="left"
-                            android:text="77,334"
                             android:textStyle="bold" />
 
                         <TextView

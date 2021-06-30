@@ -50,9 +50,11 @@ class GetServiceActivity : AppCompatActivity() {
                 MyApplication.currentActivity.finish()
             }
 
-            binding.btnAccept.setOnClickListener {
+            binding.btnGetService.setOnClickListener {
+                binding.vfAcceptService.displayedChild = 1
                 AcceptService().accept(serviceId!!, object : AcceptService.Listener {
                     override fun onSuccess() {
+                        binding.vfAcceptService.displayedChild = 0
                         FragmentHelper.toFragment(
                             MyApplication.currentActivity,
                             CurrentServiceFragment()
@@ -62,7 +64,7 @@ class GetServiceActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure() {
-
+                        binding.vfAcceptService.displayedChild = 0
                     }
                 })
             }

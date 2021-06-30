@@ -60,17 +60,12 @@
                 android:padding="@dimen/_10sdp"
                 android:elevation="@dimen/_3sdp"/>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.25" />
-
-
             <Button
                 android:id="@+id/btnPositive"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_weight="1"
+                android:layout_marginRight="@dimen/_15sdp"
                 android:textColor="@color/colorWhite"
                 android:background="@drawable/bg_green"
                 android:padding="@dimen/_8sdp"

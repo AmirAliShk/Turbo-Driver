@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
     android:clickable="true"
     android:layoutDirection="rtl"
@@ -124,15 +125,31 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_40sdp" />
 
+
+        <ViewFlipper
+            android:id="@+id/vfAcceptService"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@drawable/bg_green">
+
         <Button
-            android:id="@+id/btnAccept"
+            android:id="@+id/btnGetService"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/hohooh"
-            android:background="@drawable/bg_green1"
+            android:background="@color/transparent"
             android:text="قبول سرویس"
-            android:textColor="@color/colorWhite"
-            android:textSize="17sp"/>
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorWhite" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            app:indicatorColor="@color/colorWhite" />
+
+        </ViewFlipper>
 
         <View
             android:layout_width="wrap_content"
