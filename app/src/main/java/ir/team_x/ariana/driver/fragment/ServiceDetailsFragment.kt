@@ -119,6 +119,7 @@ class ServiceDetailsFragment(
                             FragmentHelper.taskFragment(MyApplication.currentActivity, TAG).remove()
                             cancelServiceListener.onCanceled(true)
                         } else {
+                            GeneralDialog().message(message).secondButton("باشه"){}.show()
                             cancelServiceListener.onCanceled(false)
                         }
                     } else {

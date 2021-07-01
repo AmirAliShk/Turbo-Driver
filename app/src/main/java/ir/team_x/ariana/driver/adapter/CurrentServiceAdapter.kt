@@ -64,7 +64,7 @@ class CurrentServiceAdapter() :
                                 notifyDataSetChanged()
                             } else {
                                 //TODO what to do here?
-                                MyApplication.Toast("not canceled error", Toast.LENGTH_SHORT)
+//                                MyApplication.Toast("not canceled error", Toast.LENGTH_SHORT)
                             }
                         }
 
@@ -74,7 +74,7 @@ class CurrentServiceAdapter() :
                                 notifyDataSetChanged()
                             } else {
                                 //TODO what to do here?
-                                MyApplication.Toast("not finished error", Toast.LENGTH_SHORT)
+                                MyApplication.Toast("خطایی پیش امده، لطفا مجدد امتحان کنید", Toast.LENGTH_SHORT)
                             }
                         }
                     })
