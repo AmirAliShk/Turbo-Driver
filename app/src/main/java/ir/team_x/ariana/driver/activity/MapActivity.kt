@@ -15,10 +15,11 @@ import ir.team_x.ariana.driver.databinding.ActivityMapBinding
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var googleMap: GoogleMap
+    lateinit var binding: ActivityMapBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMapBinding.inflate(layoutInflater)
+        binding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.map.onCreate(savedInstanceState)
         MapsInitializer.initialize(MyApplication.context)
@@ -38,6 +39,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onResume()
         MyApplication.prefManager.setAppRun(true)
         MyApplication.currentActivity = this
+        binding.map.onResume()
     }
 
     override fun onStart() {
@@ -48,6 +50,12 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onPause() {
         super.onPause()
         MyApplication.prefManager.setAppRun(false)
+        binding.map.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.map.onDestroy()
     }
 
     override fun onMapReady(p0: GoogleMap?) {

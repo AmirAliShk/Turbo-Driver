@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value
 
         if (!isDriverActive()) {
-            binding.txtStatus.text = "برای فعال شدن ورود را بزنید"
+            binding.txtStatus.text = "برای وارد شدن فعال را بزنید"
             binding.swStationRegister.visibility = View.INVISIBLE
             binding.swEnterExit.isChecked = false
         }
@@ -313,7 +313,9 @@ class MainActivity : AppCompatActivity() {
 
     private val timerTask: TimerTask = object : TimerTask() {
         override fun run() {
-            getStatus()
+            runOnUiThread(Runnable {
+                getStatus()
+            })
         }
     }
 
