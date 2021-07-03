@@ -3,6 +3,7 @@ package ir.team_x.ariana.driver.activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +14,7 @@ import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
 import ir.team_x.ariana.driver.dialog.GeneralDialog
-import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
-import ir.team_x.ariana.driver.fragment.FinancialFragment
-import ir.team_x.ariana.driver.fragment.FreeLoadsFragment
-import ir.team_x.ariana.driver.fragment.NewsFragment
+import ir.team_x.ariana.driver.fragment.*
 import ir.team_x.ariana.driver.gps.DataGatheringService
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
@@ -80,6 +78,11 @@ class MainActivity : AppCompatActivity() {
                 .replace()
         }
 
+        binding.imgAnnouncement.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment())
+                .replace()
+        }
+
         binding.llFreeLoads.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment()).replace()
         }
@@ -107,8 +110,29 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.imgAnnouncement.setOnClickListener {
-//            RequestHelper.builder(EndPoint.ATM) //TODO remove this in own fragment
+        binding.llAccount.setOnClickListener {
+            Log.i("TAG", "onCreate: ")
+            FragmentHelper.toFragment(MyApplication.currentActivity, AccountReportFragment()).replace()
+        }
+
+        binding.llServiceHistory.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment()).replace()
+        }
+
+        binding.llNews.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
+        }
+
+        binding.llChat.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, ChatFragment()).replace()
+        }
+
+        binding.llSupport.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, SupportFragment()).replace()
+        }
+
+    }
+    //            RequestHelper.builder(EndPoint.ATM) //TODO remove this in own fragment
 //                .listener(ATMCallBack)
 //                .addParam("driverCode", 1)
 //                .addParam("cardNumber", 1)
@@ -117,11 +141,6 @@ class MainActivity : AppCompatActivity() {
 //                .addParam("price", "100000")
 //                .addParam("description", "noori")
 //                .post()
-            FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
-        }
-
-    }
-
     private val ATMCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {

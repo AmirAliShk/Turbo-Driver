@@ -104,7 +104,8 @@
                 android:id="@+id/txtOriginAddress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp" android:textSize="@dimen/_12ssp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:textSize="@dimen/_12ssp"
                 android:textColor="@color/grayDark"
                 android:layout_weight="3"/>
 

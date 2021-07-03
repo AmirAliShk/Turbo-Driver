@@ -51,6 +51,7 @@ class EndPoint {
         val ACTIVES = "$SERVICE_PATH/actives"
         val ACCEPT = "$SERVICE_PATH/accept"
         val FINISH = "$SERVICE_PATH/finish"
+        val FINISHED = "$SERVICE_PATH/finished"
         val CANCEL = "$SERVICE_PATH/cancel"
         val WAITING = "$SERVICE_PATH/waiting"
 
