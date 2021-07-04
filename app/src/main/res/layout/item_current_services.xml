@@ -33,7 +33,7 @@
 
                 <TextView
                     android:id="@+id/txtCustomerName"
-                    android:textSize="@dimen/_12ssp"
+                    android:textSize="@dimen/_15ssp"
                     android:textColor="@color/grayLighter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
 
                 <TextView
                     android:id="@+id/txtDate"
-                    android:textSize="@dimen/_12ssp"
+                    android:textSize="@dimen/_15ssp"
                     android:textColor="@color/grayLighter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:paddingRight="@dimen/_10sdp">
 
             <TextView
-                android:textSize="@dimen/_12ssp"
+                style="@style/title_details"
                 android:textColor="@color/title_detailes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
 
             <TextView
                 android:id="@+id/txtCargoType"
-                android:textSize="@dimen/_12ssp"
+                style="@style/Details_answer"
                 android:textColor="@color/grayDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,10 +102,10 @@
 
             <TextView
                 android:id="@+id/txtOriginAddress"
+                style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:textSize="@dimen/_12ssp"
                 android:textColor="@color/grayDark"
                 android:layout_weight="3"/>
 
@@ -127,10 +127,10 @@
 
             <TextView
                 android:id="@+id/txtDestAddress"
+                style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:textSize="@dimen/_12ssp"
                 android:textColor="@color/grayDark"
                 android:layout_weight="3"/>
 
