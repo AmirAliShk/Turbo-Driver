@@ -17,10 +17,7 @@ import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.fragment.*
 import ir.team_x.ariana.driver.gps.DataGatheringService
 import ir.team_x.ariana.driver.okHttp.RequestHelper
-import ir.team_x.ariana.driver.utils.FragmentHelper
-import ir.team_x.ariana.driver.utils.ServiceHelper
-import ir.team_x.ariana.driver.utils.StringHelper
-import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
+import ir.team_x.ariana.driver.utils.*
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
@@ -112,11 +109,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.llAccount.setOnClickListener {
             Log.i("TAG", "onCreate: ")
-            FragmentHelper.toFragment(MyApplication.currentActivity, AccountReportFragment()).replace()
+            FragmentHelper.toFragment(MyApplication.currentActivity, AccountReportFragment())
+                .replace()
         }
 
         binding.llServiceHistory.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment()).replace()
+            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment())
+                .replace()
         }
 
         binding.llNews.setOnClickListener {
@@ -131,35 +130,6 @@ class MainActivity : AppCompatActivity() {
             FragmentHelper.toFragment(MyApplication.currentActivity, SupportFragment()).replace()
         }
 
-    }
-    //            RequestHelper.builder(EndPoint.ATM) //TODO remove this in own fragment
-//                .listener(ATMCallBack)
-//                .addParam("driverCode", 1)
-//                .addParam("cardNumber", 1)
-//                .addParam("bankName", 1)
-//                .addParam("trackingCode", 3322)
-//                .addParam("price", "100000")
-//                .addParam("description", "noori")
-//                .post()
-    private val ATMCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
-        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
-            MyApplication.handler.post {
-                try {
-                    val jsonObject = JSONObject(args[0].toString())
-                    val success = jsonObject.getBoolean("success")
-                    val message = jsonObject.getString("message")
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-
-        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
-            MyApplication.handler.post {
-
-            }
-        }
     }
 
     private fun enterExit(status: Int) {
@@ -392,6 +362,15 @@ class MainActivity : AppCompatActivity() {
                             val lng = stationObj.getDouble("lng")
                             val code = stationObj.getInt("code")
                             val borderLimit = stationObj.getInt("borderLimit")
+                            binding.swEnterExit.isChecked = true
+                            binding.swStationRegister.isChecked = true
+                            binding.swStationRegister.visibility=View.VISIBLE
+                        } else if (active && !register) {
+                            binding.swStationRegister.isChecked = false
+                        } else if (!active && !register) {
+                            binding.swEnterExit.isChecked = false
+                            binding.swStationRegister.isChecked = false
+                            binding.swStationRegister.visibility=View.INVISIBLE
                         }
                     }
 
@@ -480,6 +459,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        KeyBoardHelper.hideKeyboard()
         if (supportFragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
         } else {
