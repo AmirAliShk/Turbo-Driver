@@ -18,10 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".activity.CancelServiceActivity"
             android:label="@string/title_activity_cancel_service"
-            android:theme="@style/NoActionBar"></activity>
+            android:theme="@style/NoActionBar"/>
         <activity
             android:name=".activity.MapActivity"
             android:screenOrientation="portrait" />

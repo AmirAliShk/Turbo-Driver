@@ -41,8 +41,8 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
         val time = DateHelper.strPersianFour1(DateHelper.parseFormat( model.saveDate + "", null))
 
         holder.binding.txtDate.text =  StringHelper.toPersianDigits("$date $time")
-        holder.binding.txtOriginAddress.text = model.sourceAddress
-        holder.binding.txtDestAddress.text = model.destinationAddress
+        holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
+        holder.binding.txtDestAddress.text = StringHelper.toPersianDigits(model.destinationAddress)
         holder.binding.txtTraking.text = StringHelper.toPersianDigits(model.id.toString())
         holder.binding.txtPrice.text =  StringHelper.toPersianDigits(StringHelper.setComma(model.price))
         holder.binding.txtStatus.text = model.statusDes

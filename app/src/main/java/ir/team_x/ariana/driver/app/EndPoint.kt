@@ -1,6 +1,5 @@
 package ir.team_x.ariana.driver.app
 
-import ir.team_x.ariana.driver.BuildConfig
 
 class EndPoint {
 

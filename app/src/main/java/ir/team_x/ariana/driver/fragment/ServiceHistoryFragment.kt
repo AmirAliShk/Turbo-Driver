@@ -38,7 +38,7 @@ class ServiceHistoryFragment : Fragment() {
     }
 
     private fun serviceHistory() {
-//        binding.vfFreeLoads.displayedChild = 0
+        binding.vfServiceHistory.displayedChild = 0
         RequestHelper.builder(EndPoint.FINISHED)
             .listener(serviceHistoryCallBack)
             .get()
@@ -74,9 +74,9 @@ class ServiceHistoryFragment : Fragment() {
                             finishedModels.add(model)
                         }
                         if (finishedModels.size == 0) {
-//                            binding.vfFreeLoads.displayedChild = 1
+                            binding.vfServiceHistory.displayedChild = 1
                         } else {
-//                            binding.vfFreeLoads.displayedChild = 3
+                            binding.vfServiceHistory.displayedChild = 3
                             val adapter = FinishedAdapter(finishedModels)
                             binding.listFinished.adapter = adapter
                         }
@@ -84,14 +84,14 @@ class ServiceHistoryFragment : Fragment() {
 
                 } catch (e: Exception) {
                     e.printStackTrace()
-//                    binding.vfFreeLoads.displayedChild = 2
+                    binding.vfServiceHistory.displayedChild = 2
                 }
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-//                binding.vfFreeLoads.displayedChild = 2
+                binding.vfServiceHistory.displayedChild = 2
             }
         }
     }

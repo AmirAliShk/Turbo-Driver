@@ -17,6 +17,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+//    47421ArianA47421
+//    ariana
+
     buildTypes {
         release {
             minifyEnabled false
