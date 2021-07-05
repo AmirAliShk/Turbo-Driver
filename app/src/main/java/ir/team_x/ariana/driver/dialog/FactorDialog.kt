@@ -17,6 +17,7 @@ import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.driver.utils.KeyBoardHelper
+import ir.team_x.ariana.driver.webServices.UpdateCharge
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
@@ -82,6 +83,11 @@ class FactorDialog {
                         val dataObj = jsonObject.getJSONObject("data")
                         val result = dataObj.getBoolean("result")
                         if (result) {
+                            UpdateCharge().update(object: UpdateCharge.ChargeListener{
+                                override fun getCharge(charge: String) {
+                                }
+                            })
+
                             finishServiceListener.onFinishService(true)
                             MyApplication.Toast(message, Toast.LENGTH_SHORT)
                             dismiss()

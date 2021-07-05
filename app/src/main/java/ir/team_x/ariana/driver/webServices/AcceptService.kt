@@ -36,6 +36,11 @@ class AcceptService {
                         val msg = dataObj.getString("message")
                         val typeOut = dataObj.getInt("typeOut")
                         if(typeOut==1){
+                            UpdateCharge().update(object:UpdateCharge.ChargeListener{
+                                override fun getCharge(charge: String) {
+                                }
+                            })
+
                             listener.onSuccess()
                         }else{
                             listener.onFailure()

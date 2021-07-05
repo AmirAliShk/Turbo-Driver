@@ -32,8 +32,7 @@ class UpdateCharge {
                         val dataObj = jsonObject.getJSONObject("data")
                         val charge = dataObj.getString("charge")
                         listener.getCharge(charge)
-//                        binding.txtCharge.text =
-//                            StringH
+                        MyApplication.prefManager.setCharge(charge)
                     }else{
                         listener.getCharge("")
                     }

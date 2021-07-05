@@ -8,8 +8,10 @@ import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityCancelServiceBinding
 import ir.team_x.ariana.driver.utils.SoundHelper
+import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.utils.VibratorHelper
+import ir.team_x.ariana.driver.webServices.UpdateCharge
 
 class CancelServiceActivity : AppCompatActivity() {
 
@@ -32,6 +34,11 @@ class CancelServiceActivity : AppCompatActivity() {
             val message = getIntentExtra.extras!!.getString("cancelMessage", "سرویس شما کنسل گردید")
             binding.txtDescription.text = message
         }
+
+        UpdateCharge().update(object: UpdateCharge.ChargeListener{
+            override fun getCharge(charge: String) {
+            }
+        })
 
 //        val intent = Intent(MyApplication.currentActivity, ActivitySplash::class.java)
 //        startActivity(intent)

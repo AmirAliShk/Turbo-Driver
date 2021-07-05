@@ -34,6 +34,7 @@ class PrefManager {
     private val KEY_LAST_LAT = "lastLat"
     private val KEY_LAST_LNG = "lastLang"
     private val API_REQUEST_TIME = "requestTime"
+    private val CHARGE = "charge"
 
     fun getRefreshToken(): String? {
         return sharedPreferences.getString(REFRESH_TOKEN, "")
@@ -125,6 +126,15 @@ class PrefManager {
 
     fun setAuthorization(authorization: String?) {
         editor.putString(AUTHORIZATION, authorization)
+        editor.commit()
+    }
+
+    fun getCharge(): String? {
+        return sharedPreferences.getString(CHARGE, "")
+    }
+
+    fun setCharge(charge: String?) {
+        editor.putString(CHARGE, charge)
         editor.commit()
     }
 
