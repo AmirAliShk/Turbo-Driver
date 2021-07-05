@@ -17,8 +17,8 @@
             android:id="@+id/imgBack"
             android:layout_width="?android:attr/actionBarSize"
             android:layout_height="match_parent"
-            android:padding="15dp"
             android:layout_alignParentLeft="true"
+            android:padding="15dp"
             android:src="@drawable/ic_back" />
 
         <TextView
@@ -43,8 +43,8 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <View
@@ -67,18 +67,19 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:text="تومان"
-                    android:paddingRight="@dimen/_5sdp"/>
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text="تومان" />
 
                 <TextView
-                  style="@style/page_title"
+                    android:id="@+id/txtCharge"
+                    style="@style/page_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="140,000"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:gravity="left"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     style="@style/item_value"
@@ -99,24 +100,26 @@
                 android:id="@+id/llOnlinePayment"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="0.75"
                 android:background="@drawable/background1"
-                android:elevation="@dimen/_5sdp"
+                android:elevation="@dimen/_3sdp"
+
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
                     android:src="@drawable/ic_online_payment" />
 
                 <TextView
+                    style="@style/item_title_black"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="پرداخت آنلاین"
-                    style="@style/item_title_black"/>
+                    android:layout_weight="1"
+                    android:text="پرداخت آنلاین" />
 
             </LinearLayout>
 
@@ -129,24 +132,25 @@
                 android:id="@+id/llCardToCard"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="0.75"
                 android:background="@drawable/background1"
-                android:elevation="@dimen/_5sdp"
+                android:elevation="@dimen/_3sdp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
                     android:src="@drawable/ic_card_to_card" />
 
                 <TextView
+                    style="@style/item_title_black"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="کارت به کارت"
-                    style="@style/item_title_black" />
+                    android:layout_weight="1"
+                    android:text="کارت به کارت" />
 
             </LinearLayout>
 
@@ -159,9 +163,10 @@
                 android:id="@+id/llReport"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_weight="0.75"
                 android:background="@drawable/background1"
-                android:elevation="@dimen/_5sdp"
+                android:elevation="@dimen/_2sdp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -172,11 +177,11 @@
                     android:src="@drawable/ic_account_report" />
 
                 <TextView
+                    style="@style/item_title_black"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="گزارش حساب"
-                    style="@style/item_title_black" />
+                    android:layout_weight="1"
+                    android:text="گزارش حساب" />
 
             </LinearLayout>
 

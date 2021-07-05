@@ -39,7 +39,6 @@
             android:textColor="@color/colorWhite"
             android:gravity="center"/>
 
-
     </RelativeLayout>
 
     <ScrollView
@@ -56,8 +55,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
 
@@ -85,8 +83,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_10sdp"
                 android:orientation="vertical"
                 android:gravity="center">
 
@@ -114,8 +112,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_10sdp"
                 android:orientation="vertical"
                 android:gravity="center">
 
@@ -143,8 +141,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_10sdp"
                 android:orientation="vertical"
                 android:gravity="center">
 
@@ -172,9 +170,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingVertical="@dimen/_15sdp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -185,7 +183,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -196,6 +194,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:hint="مبالغ دیگر"
+                        android:text="10,000"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorBlack"
                         android:inputType="number"
@@ -214,20 +213,21 @@
             <ir.team_x.ariana.driver.custom_view.GridRadioGroup
                 android:id="@+id/priceGroup"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/_10sdp">
 
                 <TableRow>
 
                     <RadioButton
-                        android:id="@+id/tenTH"
+                        android:id="@+id/ten"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:background="@drawable/background1"
+                        android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
                         android:checked="true"
                         android:elevation="3dp"
@@ -238,31 +238,31 @@
                         android:textStyle="bold" />
 
                     <RadioButton
-                        android:id="@+id/twentyTH"
+                        android:id="@+id/fifteen"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:background="@drawable/background1"
+                        android:background="@drawable/bg_radio"
+                        android:button="@android:color/transparent"
+                        android:elevation="3dp"
+                        android:gravity="center"
+                        android:text="15,000"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold" />
+
+                    <RadioButton
+                        android:id="@+id/twenty"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
                         android:elevation="3dp"
                         android:gravity="center"
                         android:text="20,000"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold"/>
-
-                    <RadioButton
-                        android:id="@+id/thirtyTH"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background1"
-                        android:button="@android:color/transparent"
-                        android:elevation="3dp"
-                        android:gravity="center"
-                        android:text="30,000"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorBlack"
                         android:textStyle="bold" />
@@ -271,66 +271,64 @@
                 <TableRow>
 
                     <RadioButton
-                        android:id="@+id/fourTH"
+                        android:id="@+id/twentyFive"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:background="@drawable/background1"
+                        android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
                         android:elevation="3dp"
                         android:gravity="center"
-                        android:text="40,000"
+                        android:text="25,000"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <RadioButton
-                        android:id="@+id/fiveTH"
+                        android:id="@+id/thirty"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:background="@drawable/background1"
+                        android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
                         android:elevation="3dp"
                         android:gravity="center"
-                        android:text="50,000"
+                        android:text="30,000"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <RadioButton
-                        android:id="@+id/sexTH"
+                        android:id="@+id/thirtyFive"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
-                        android:background="@drawable/background1"
+                        android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
                         android:elevation="3dp"
                         android:gravity="center"
-                        android:text="60,000"
+                        android:text="35,000"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
                 </TableRow>
 
             </ir.team_x.ariana.driver.custom_view.GridRadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="bottom"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <ViewFlipper
                     android:id="@+id/vfSubmit"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_3sdp"
-                    android:layout_weight="1"
                     android:background="@drawable/bg_green">
 
                     <Button

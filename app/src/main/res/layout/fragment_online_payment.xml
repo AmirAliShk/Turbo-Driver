@@ -62,10 +62,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="مبالغ دیگر"
+                android:text="10,000"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorBlack"
                 android:inputType="number"
-                android:textColorHint="@color/colorBlack" />
+                android:textColorHint="@color/grayMedium" />
 
         </LinearLayout>
 
@@ -76,7 +77,7 @@
             android:src="@drawable/ic_plus" />
 
     </LinearLayout>
-
+    
     <ir.team_x.ariana.driver.custom_view.GridRadioGroup
         android:id="@+id/priceGroup"
         android:layout_width="match_parent"
@@ -90,12 +91,12 @@
         <TableRow>
 
             <RadioButton
-                android:id="@+id/tenTH"
+                android:id="@+id/ten"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/background1"
+                android:background="@drawable/bg_radio"
                 android:button="@android:color/transparent"
                 android:checked="true"
                 android:elevation="3dp"
@@ -106,31 +107,31 @@
                 android:textStyle="bold" />
 
             <RadioButton
-                android:id="@+id/twentyTH"
+                android:id="@+id/fifteen"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/background1"
+                android:background="@drawable/bg_radio"
+                android:button="@android:color/transparent"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:text="15,000"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/twenty"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_radio"
                 android:button="@android:color/transparent"
                 android:elevation="3dp"
                 android:gravity="center"
                 android:text="20,000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold"/>
-
-            <RadioButton
-                android:id="@+id/thirtyTH"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/background1"
-                android:button="@android:color/transparent"
-                android:elevation="3dp"
-                android:gravity="center"
-                android:text="30,000"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold" />
@@ -139,53 +140,53 @@
         <TableRow>
 
             <RadioButton
-                android:id="@+id/fourTH"
+                android:id="@+id/twentyFive"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/background1"
+                android:background="@drawable/bg_radio"
                 android:button="@android:color/transparent"
                 android:elevation="3dp"
                 android:gravity="center"
-                android:text="40,000"
+                android:text="25,000"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorBlack"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RadioButton
-                android:id="@+id/fiveTH"
+                android:id="@+id/thirty"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/background1"
+                android:background="@drawable/bg_radio"
                 android:button="@android:color/transparent"
                 android:elevation="3dp"
                 android:gravity="center"
-                android:text="50,000"
+                android:text="30,000"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorBlack"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RadioButton
-                android:id="@+id/sexTH"
+                android:id="@+id/thirtyFive"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/background1"
+                android:background="@drawable/bg_radio"
                 android:button="@android:color/transparent"
                 android:elevation="3dp"
                 android:gravity="center"
-                android:text="60,000"
+                android:text="35,000"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorBlack"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </TableRow>
 
     </ir.team_x.ariana.driver.custom_view.GridRadioGroup>
-
+    
     <View
         android:layout_width="wrap_content"
         android:layout_height="0dp"

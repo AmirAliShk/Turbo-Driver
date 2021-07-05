@@ -18,6 +18,7 @@ import ir.team_x.ariana.driver.fragment.*
 import ir.team_x.ariana.driver.gps.DataGatheringService
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.*
+import ir.team_x.ariana.driver.webServices.UpdateCharge
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
@@ -60,7 +61,13 @@ class MainActivity : AppCompatActivity() {
 
         handleStatusByServer()
 
-        getCharge()
+        UpdateCharge().update(object:UpdateCharge.ChargeListener{
+            override fun getCharge(charge: String) {
+                if(charge.isNotEmpty()){
+                    binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(charge))
+                }
+            }
+        })
 
         binding.imgMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)

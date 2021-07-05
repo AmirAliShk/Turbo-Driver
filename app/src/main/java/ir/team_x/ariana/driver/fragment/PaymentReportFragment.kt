@@ -43,9 +43,7 @@ class PaymentReportFragment : Fragment() {
         return binding.root
     }
 
-    private fun getReport(
-
-    ) {
+    private fun getReport() {
         binding.vfReport.displayedChild = 1
         RequestHelper.builder(EndPoint.GET_ATM)
             .listener(getReportCallBack)

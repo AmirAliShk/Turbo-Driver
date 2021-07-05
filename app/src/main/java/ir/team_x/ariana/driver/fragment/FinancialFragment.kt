@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentFinancialBinding
 import ir.team_x.ariana.driver.utils.FragmentHelper
+import ir.team_x.ariana.driver.utils.StringHelper
+import ir.team_x.ariana.driver.webServices.UpdateCharge
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class FinancialFragment : Fragment() {
@@ -25,6 +27,14 @@ class FinancialFragment : Fragment() {
         TypeFaceUtil.overrideFont(binding.root)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+
+        UpdateCharge().update(object: UpdateCharge.ChargeListener{
+            override fun getCharge(charge: String) {
+                if(charge.isNotEmpty()){
+                    binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(charge))
+                }
+            }
+        })
 
         binding.llOnlinePayment.setOnClickListener {
             FragmentHelper.toFragment(
@@ -50,7 +60,5 @@ class FinancialFragment : Fragment() {
         return binding.root
     }
 
-    companion object {
 
-    }
 }

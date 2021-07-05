@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layoutDirection="rtl"
     android:orientation="vertical">
 
@@ -10,40 +10,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@drawable/background2"
-        android:padding="@dimen/_17sdp"
+        android:padding="@dimen/_13sdp"
         android:layout_margin="@dimen/_13sdp">
 
         <TextView
+            android:id="@+id/txtDate"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:layout_height="wrap_content"
-            android:text="7دی ماه"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/_12sdp"/>
 
         <TextView
+            android:id="@+id/txtType"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:text="12:40"
-            android:textColor="@color/colorBlack"
-            android:gravity="right"
-            android:textSize="@dimen/_12sdp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="پورسانت"
             android:textColor="@color/colorGreen"
             android:textStyle="bold"
             android:textSize="@dimen/_12sdp"/>
 
         <TextView
+            android:id="@+id/txtPrice"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:layout_height="wrap_content"
-            android:text="12,000 تومان"
             android:textColor="@color/colorBlack"
             android:gravity="left"
             android:textSize="@dimen/_12sdp"/>

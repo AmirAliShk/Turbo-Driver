@@ -47,6 +47,7 @@ class EndPoint {
         val GET_FINANCIAL = "$FINANCIAL_PATH/getFinancial"
         val CHARGE = "$FINANCIAL_PATH/charge"
 
+        val ACCOUNT_REP = "$FINANCIAL_PATH"
         val ATM = "$FINANCIAL_PAY_PATH/ATM"
         val GET_ATM = "$FINANCIAL_PAYS_PATH/ATM"
         val ACTIVES = "$SERVICE_PATH/actives"

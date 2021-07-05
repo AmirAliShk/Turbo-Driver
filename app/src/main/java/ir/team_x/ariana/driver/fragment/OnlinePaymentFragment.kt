@@ -28,16 +28,16 @@ class OnlinePaymentFragment : Fragment() {
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
-        binding.priceGroup.check(R.id.tenTH)
+        binding.priceGroup.check(R.id.ten)
         binding.priceGroup.setOnItemClickListener { selectedId ->
             var price = "30000"
             when (selectedId) {
-                R.id.tenTH -> price = "10000"
-                R.id.twentyTH -> price = "20000"
-                R.id.thirtyTH -> price = "30000"
-                R.id.fourTH -> price = "40000"
-                R.id.fiveTH -> price = "50000"
-                R.id.sexTH -> price = "60000"
+                R.id.ten -> price = "10000"
+                R.id.fifteen -> price = "15000"
+                R.id.twenty -> price = "20000"
+                R.id.twentyFive -> price = "25000"
+                R.id.thirty -> price = "30000"
+                R.id.thirtyFive -> price = "35000"
             }
             binding.edtValueCredit.setText(StringHelper.setComma(price))
         }
