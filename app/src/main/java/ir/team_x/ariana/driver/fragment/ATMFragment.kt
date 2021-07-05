@@ -9,31 +9,32 @@ import androidx.fragment.app.Fragment
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
-import ir.team_x.ariana.driver.databinding.FragmentCardToCardBinding
+import ir.team_x.ariana.driver.databinding.FragmentAtmBinding
 import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import org.json.JSONObject
 
-class CardToCardFragment : Fragment() {
+class ATMFragment : Fragment() {
 
-    private lateinit var binding: FragmentCardToCardBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var binding: FragmentAtmBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCardToCardBinding.inflate(inflater, container, false)
+        binding = FragmentAtmBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+
+        binding.txtReport.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, PaymentReportFragment())
+                .replace()
+        }
 
         binding.priceGroup.setOnItemClickListener { selectedId ->
             var price = "30000"
@@ -48,7 +49,7 @@ class CardToCardFragment : Fragment() {
             binding.edtValueCredit.setText(StringHelper.setComma(price))
         }
 
-        StringHelper.setCharAfterOnTime(binding.edtCardNumber,"-",4)
+        StringHelper.setCharAfterOnTime(binding.edtCardNumber, "-", 4)
 
         binding.btnSubmit.setOnClickListener {
             val cardNumber = binding.edtCardNumber.text.trim().toString()
@@ -88,7 +89,7 @@ class CardToCardFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            atmPayment(cardNumber, bankName, tracking,price,desc)
+            atmPayment(cardNumber, bankName, tracking, price, desc)
         }
 
         return binding.root
@@ -102,7 +103,7 @@ class CardToCardFragment : Fragment() {
         dest: String
     ) {
         binding.vfSubmit.displayedChild = 1
-        RequestHelper.builder(EndPoint.ATM) //TODO remove this in own fragment
+        RequestHelper.builder(EndPoint.ATM)
             .listener(ATMCallBack)
             .addParam("cardNumber", cardNumber)
             .addParam("bankName", bankName)
@@ -120,14 +121,14 @@ class CardToCardFragment : Fragment() {
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
-                    if(success){
-                        val dataObj=jsonObject.getJSONObject("data")
-                        val backStatus=dataObj.getInt("backStatus")
-                        val msg=dataObj.getString("message")
-                        if(backStatus==1) {
+                    if (success) {
+                        val dataObj = jsonObject.getJSONObject("data")
+                        val backStatus = dataObj.getInt("backStatus")
+                        val msg = dataObj.getString("message")
+                        if (backStatus == 1) {
                             GeneralDialog().message(msg).firstButton("باشه") {}.show()
-                        }else{
-                            GeneralDialog().message(msg).secondButton("باشه"){}.show()
+                        } else {
+                            GeneralDialog().message(msg).secondButton("باشه") {}.show()
                         }
                     }
 

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
-import ir.team_x.ariana.driver.databinding.FragmentCardToCardBinding
 import ir.team_x.ariana.driver.databinding.FragmentNewsDetailsBinding
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 

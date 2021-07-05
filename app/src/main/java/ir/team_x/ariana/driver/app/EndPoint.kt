@@ -18,6 +18,7 @@ class EndPoint {
         val BASE_PATH = "$IP:$IP_PORT/api/driver/v1"
         private val FINANCIAL_PATH = "$BASE_PATH/financial"
         private val FINANCIAL_PAY_PATH = "$BASE_PATH/financial/pay"
+        private val FINANCIAL_PAYS_PATH = "$BASE_PATH/financial/pays"
         private val SERVICE_PATH = "$BASE_PATH/service"
         private val STATION_PATH = "$BASE_PATH/station"
         val LOCATION_PATH = ":1810/api/driver/v1/location/car"
@@ -47,6 +48,7 @@ class EndPoint {
         val CHARGE = "$FINANCIAL_PATH/charge"
 
         val ATM = "$FINANCIAL_PAY_PATH/ATM"
+        val GET_ATM = "$FINANCIAL_PAYS_PATH/ATM"
         val ACTIVES = "$SERVICE_PATH/actives"
         val ACCEPT = "$SERVICE_PATH/accept"
         val FINISH = "$SERVICE_PATH/finish"

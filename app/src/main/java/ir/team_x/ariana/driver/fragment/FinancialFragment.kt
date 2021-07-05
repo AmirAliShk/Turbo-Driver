@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ReportFragment
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentFinancialBinding
 import ir.team_x.ariana.driver.utils.FragmentHelper
@@ -37,7 +36,7 @@ class FinancialFragment : Fragment() {
         binding.llCardToCard.setOnClickListener {
             FragmentHelper.toFragment(
                 MyApplication.currentActivity,
-                CardToCardFragment()
+                ATMFragment()
             ).replace()
         }
 

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layoutDirection="rtl"
     android:layout_margin="@dimen/_13sdp">
 
     <LinearLayout
+        android:id="@+id/llStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_redd"
@@ -21,6 +22,7 @@
             android:src="@drawable/ic_canclee" />
 
         <TextView
+            android:id="@+id/txtStatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -36,8 +38,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_13sdp"
         android:padding="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_13sdp"
         android:background="@drawable/background2"
         android:orientation="vertical">
 
@@ -46,46 +48,38 @@
             android:layout_height="20dp"
             android:layout_marginTop="@dimen/_10sdp"/>
 
-
-
             <TextView
+                android:id="@+id/txtDate"
                 style="@style/Details_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:text="1خرداد  12:20" />
 
-
-
-
         <View
             android:layout_width="wrap_content"
             android:layout_height="20dp" />
 
         <TextView
+            android:id="@+id/txtCardNo"
             style="@style/Details_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/_10sdp"
             android:text="1420-5121-7788-1234" />
 
-
         <View
             android:layout_width="wrap_content"
             android:layout_height="20dp" />
 
         <TextView
+            android:id="@+id/txtPrice"
             style="@style/Details_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/_10sdp"
             android:text="200/000  تومان" />
 
-
-
-
-
     </LinearLayout>
-
 
 </RelativeLayout>
