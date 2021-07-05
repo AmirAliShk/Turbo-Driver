@@ -2,83 +2,109 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layoutDirection="rtl"
-    android:layout_margin="@dimen/_13sdp">
+    android:layout_margin="@dimen/_13sdp"
+    android:layoutDirection="rtl">
 
     <LinearLayout
         android:id="@+id/llStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_85sdp"
+        android:layout_marginRight="@dimen/_85sdp"
         android:background="@drawable/bg_redd"
         android:elevation="@dimen/_5sdp"
-        android:padding="@dimen/_9sdp"
-        android:layout_marginRight="@dimen/_85sdp"
-        android:layout_marginLeft="@dimen/_85sdp">
+        android:padding="@dimen/_9sdp">
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.13"
-            android:src="@drawable/ic_canclee" />
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_weight="0.23"
+            android:src="@drawable/ic_canceled" />
 
         <TextView
             android:id="@+id/txtStatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/canclee"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_15sdp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_13sdp"
+        android:padding="@dimen/_10sdp"
         android:background="@drawable/background2"
         android:orientation="vertical">
 
-        <View
+        <TextView
+            style="@style/title_details"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginTop="@dimen/_10sdp"/>
+            android:layout_weight="2.5"
+            android:layout_height="0dp"
+            android:gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
 
             <TextView
                 android:id="@+id/txtDate"
-                style="@style/Details_answer"
-                android:layout_width="wrap_content"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grayDark"
+                android:layout_width="0dp"
+                android:layout_weight="3"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:text="1خرداد  12:20" />
+                android:layout_marginRight="@dimen/_10sdp"/>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtCardNo"
-            style="@style/Details_answer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:text="1420-5121-7788-1234" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
+            <TextView
+                android:id="@+id/txtCardNo"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grayDark"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"/>
 
-        <TextView
-            android:id="@+id/txtPrice"
-            style="@style/Details_answer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:text="200/000  تومان" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grayDark"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
