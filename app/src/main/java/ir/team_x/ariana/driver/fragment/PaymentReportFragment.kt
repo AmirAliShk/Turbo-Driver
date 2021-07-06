@@ -44,7 +44,7 @@ class PaymentReportFragment : Fragment() {
     }
 
     private fun getReport() {
-        binding.vfReport.displayedChild = 1
+        binding.vfReport.displayedChild = 0
         RequestHelper.builder(EndPoint.GET_ATM)
             .listener(getReportCallBack)
             .get()
@@ -54,7 +54,6 @@ class PaymentReportFragment : Fragment() {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
                 try {
-                    binding.vfReport.displayedChild = 0
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -88,14 +87,14 @@ class PaymentReportFragment : Fragment() {
 
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    binding.vfReport.displayedChild = 0
+                    binding.vfReport.displayedChild = 2
                 }
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-                binding.vfReport.displayedChild = 0
+                binding.vfReport.displayedChild = 2
             }
         }
     }

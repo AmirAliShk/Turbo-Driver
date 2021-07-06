@@ -6,36 +6,6 @@
     android:layoutDirection="rtl">
 
     <LinearLayout
-        android:id="@+id/llStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_85sdp"
-        android:layout_marginRight="@dimen/_85sdp"
-        android:background="@drawable/bg_redd"
-        android:elevation="@dimen/_5sdp"
-        android:padding="@dimen/_9sdp">
-
-        <ImageView
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_weight="0.23"
-            android:src="@drawable/ic_canceled" />
-
-        <TextView
-            android:id="@+id/txtStatus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/canclee"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_15sdp"
-            android:textStyle="bold" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_13sdp"
@@ -46,7 +16,7 @@
         <TextView
             style="@style/title_details"
             android:layout_width="wrap_content"
-            android:layout_weight="2.5"
+            android:layout_weight="2"
             android:layout_height="0dp"
             android:gravity="center_horizontal"/>
 
@@ -56,6 +26,7 @@
             android:layout_weight="2"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:layout_marginRight="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_10sdp">
 
             <TextView
@@ -64,8 +35,7 @@
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
                 android:layout_weight="3"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"/>
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -75,6 +45,7 @@
             android:layout_weight="2"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:layout_marginRight="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_10sdp">
 
             <TextView
@@ -83,8 +54,7 @@
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
                 android:layout_weight="3"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"/>
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -94,6 +64,7 @@
             android:layout_weight="2"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:layout_marginRight="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_10sdp">
 
             <TextView
@@ -105,6 +76,49 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:id="@+id/llStatus"
+            android:layout_width="0dp"
+            android:layout_weight="1.4"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp">
+
+            <ImageView
+                android:id="@+id/imgStatus"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_20sdp"/>
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

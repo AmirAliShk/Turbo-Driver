@@ -47,7 +47,11 @@ class AccountReportAdapter(list: ArrayList<AccountReportModel>) :
         holder.binding.txtDate.text =  StringHelper.toPersianDigits("$date $time")
         holder.binding.txtType.text = model.paymentTypeName
         holder.binding.txtPrice.text = StringHelper.toPersianDigits(StringHelper.setComma(model.price)) + "تومان"
-
+        if(model.type==1){
+            holder.binding.txtType.setTextColor(MyApplication.currentActivity.resources.getColor(R.color.colorGreen))
+        }else{
+            holder.binding.txtType.setTextColor(MyApplication.currentActivity.resources.getColor(R.color.colorRed))
+        }
 
     }
 
