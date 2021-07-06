@@ -44,6 +44,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:fillViewport="true"
+        android:scrollbars="none"
         android:paddingHorizontal="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_height="match_parent">

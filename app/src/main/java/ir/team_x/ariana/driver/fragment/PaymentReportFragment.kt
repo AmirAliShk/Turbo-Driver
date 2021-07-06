@@ -36,6 +36,9 @@ class PaymentReportFragment : Fragment() {
     ): View? {
 
         binding = FragmentPaymentReportBinding.inflate(inflater, container, false)
+        binding.imgBack.setOnClickListener {
+            MyApplication.currentActivity.onBackPressed()
+        }
         TypeFaceUtil.overrideFont(binding.root)
 
         getReport()
@@ -76,9 +79,9 @@ class PaymentReportFragment : Fragment() {
                             )
                             models.add(paymentReportModel)
                         }
-                        if (models.size==0){
+                        if (models.size == 0) {
                             binding.vfReport.displayedChild = 1
-                        }else{
+                        } else {
                             binding.vfReport.displayedChild = 3
                             val adapter = PaymentReportAdapter(models)
                             binding.listReport.adapter = adapter
