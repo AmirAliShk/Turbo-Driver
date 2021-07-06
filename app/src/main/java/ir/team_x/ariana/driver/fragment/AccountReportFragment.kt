@@ -1,6 +1,7 @@
 package ir.team_x.ariana.driver.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import ir.team_x.ariana.driver.databinding.FragmentAccountReportBinding
 import ir.team_x.ariana.driver.model.AccountReportModel
 import ir.team_x.ariana.driver.model.PaymentReportModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.utils.DateHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
@@ -37,16 +39,17 @@ class AccountReportFragment : Fragment() {
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
         getReport()
-
         return binding.root
     }
 
     private fun getReport() {
         binding.vfReport.displayedChild = 0
+        Log.i("TAG", "getCurrentGregorianDate: ${DateHelper.strPersianFive(DateHelper.getCurrentGregorianDate().time).substring(0,10)}")
+        Log.i("TAG", "getBeforeDays: ${DateHelper.strPersianFive(DateHelper.getBeforeDays(7).time).substring(0,10)}")
         RequestHelper.builder(EndPoint.ACCOUNT_REP)
             .listener(getReportCallBack)
-            .addParam("fromDate","2020-06-29")
-            .addParam("toDate","2021-07-29")
+            .addParam("fromDate",DateHelper.strPersianFive(DateHelper.getBeforeDays(10).time).substring(0,10))
+            .addParam("toDate",DateHelper.strPersianFive(DateHelper.getCurrentGregorianDate().time).substring(0,10))
             .post()
     }
 

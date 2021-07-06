@@ -16,6 +16,7 @@
     <color name="grayLight">#a4a2ab</color>
     <color name="grayLighter">#eeeeee</color>
     <color name="grayMedium">#acabac</color>
+    <color name="grayTransparent">#B5656265</color>
     <color name="grayDark">#161516</color>
     <color name="transparent">#00424242</color>
     <color name="colorOrange">#ffab00</color>
