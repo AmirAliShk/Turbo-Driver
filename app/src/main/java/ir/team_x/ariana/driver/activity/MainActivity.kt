@@ -61,10 +61,11 @@ class MainActivity : AppCompatActivity() {
 
         handleStatusByServer()
 
-        UpdateCharge().update(object:UpdateCharge.ChargeListener{
+        UpdateCharge().update(object : UpdateCharge.ChargeListener {
             override fun getCharge(charge: String) {
-                if(charge.isNotEmpty()){
-                    binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(charge))
+                if (charge.isNotEmpty()) {
+                    binding.txtCharge.text =
+                        StringHelper.toPersianDigits(StringHelper.setComma(charge))
                 }
             }
         })
@@ -371,13 +372,13 @@ class MainActivity : AppCompatActivity() {
                             val borderLimit = stationObj.getInt("borderLimit")
                             binding.swEnterExit.isChecked = true
                             binding.swStationRegister.isChecked = true
-                            binding.swStationRegister.visibility=View.VISIBLE
+                            binding.swStationRegister.visibility = View.VISIBLE
                         } else if (active && !register) {
                             binding.swStationRegister.isChecked = false
                         } else if (!active && !register) {
                             binding.swEnterExit.isChecked = false
                             binding.swStationRegister.isChecked = false
-                            binding.swStationRegister.visibility=View.INVISIBLE
+                            binding.swStationRegister.visibility = View.INVISIBLE
                         }
                     }
 

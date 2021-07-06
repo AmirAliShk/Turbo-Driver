@@ -450,7 +450,6 @@
                 android:background="@color/grayLight" />
 
             <LinearLayout
-                android:id="@+id/llServiceHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -462,6 +461,7 @@
                     android:paddingTop="@dimen/_10sdp"/>
 
                 <TextView
+                    android:id="@+id/llServiceHistory"
                     style="@style/item_title_white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
