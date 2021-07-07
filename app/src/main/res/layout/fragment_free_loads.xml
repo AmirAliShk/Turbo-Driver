@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="هم اکنون هیچ سفر فعالی ندارید"
+            android:text="سرویسی موجود نیست"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorBlack" />
 

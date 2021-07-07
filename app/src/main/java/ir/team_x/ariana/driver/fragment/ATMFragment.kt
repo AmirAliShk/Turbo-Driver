@@ -127,6 +127,7 @@ class ATMFragment : Fragment() {
                         val backStatus = dataObj.getInt("backStatus")
                         val msg = dataObj.getString("message")
                         if (backStatus == 1) {
+                            clearPage()
                             GeneralDialog().message(msg).firstButton("باشه") {}.show()
                         } else {
                             GeneralDialog().message(msg).secondButton("باشه") {}.show()
@@ -147,5 +148,12 @@ class ATMFragment : Fragment() {
         }
     }
 
+private fun clearPage(){
+    binding.edtCardNumber.setText("")
+    binding.edtBankName.setText("")
+    binding.edtTrackingCode.setText("")
+    binding.edtDesc.setText("")
+
+}
 
 }

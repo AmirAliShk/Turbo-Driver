@@ -44,6 +44,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:visibility="invisible"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -71,6 +72,7 @@
         </LinearLayout>
 
         <ImageView
+            android:visibility="invisible"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

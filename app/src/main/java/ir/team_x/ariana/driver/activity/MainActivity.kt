@@ -120,23 +120,23 @@ class MainActivity : AppCompatActivity() {
             FragmentHelper.toFragment(MyApplication.currentActivity, AccountReportFragment())
                 .replace()
         }
-
-        binding.llServiceHistory.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment())
-                .replace()
-        }
-
-        binding.llNews.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
-        }
-
-        binding.llChat.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, ChatFragment()).replace()
-        }
-
-        binding.llSupport.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, SupportFragment()).replace()
-        }
+//
+//        binding.llServiceHistory.setOnClickListener {
+//            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment())
+//                .replace()
+//        }
+//
+//        binding.llNews.setOnClickListener {
+//            FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
+//        }
+//
+//        binding.llChat.setOnClickListener {
+//            FragmentHelper.toFragment(MyApplication.currentActivity, ChatFragment()).replace()
+//        }
+//
+//        binding.llSupport.setOnClickListener {
+//            FragmentHelper.toFragment(MyApplication.currentActivity, SupportFragment()).replace()
+//        }
 
     }
 

@@ -44,11 +44,9 @@ class AccountReportFragment : Fragment() {
 
     private fun getReport() {
         binding.vfReport.displayedChild = 0
-        Log.i("TAG", "getCurrentGregorianDate: ${DateHelper.strPersianFive(DateHelper.getCurrentGregorianDate().time).substring(0,10)}")
-        Log.i("TAG", "getBeforeDays: ${DateHelper.strPersianFive(DateHelper.getBeforeDays(7).time).substring(0,10)}")
         RequestHelper.builder(EndPoint.ACCOUNT_REP)
             .listener(getReportCallBack)
-            .addParam("fromDate",DateHelper.strPersianFive(DateHelper.getBeforeDays(10).time).substring(0,10))
+            .addParam("fromDate",DateHelper.strPersianFive(DateHelper.getBeforeDays(7).time).substring(0,10))
             .addParam("toDate",DateHelper.strPersianFive(DateHelper.getCurrentGregorianDate().time).substring(0,10))
             .post()
     }
