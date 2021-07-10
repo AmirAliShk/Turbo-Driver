@@ -30,7 +30,7 @@ class ChatFragment : Fragment() {
 
 
 
-        return view
+        return binding.root
     }
 
 }

@@ -517,35 +517,35 @@
 
                         </LinearLayout>
 
-                        <View
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/_1sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
-                            android:background="@color/grayLight" />
+<!--                        <View-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="@dimen/_1sdp"-->
+<!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                            android:layout_marginRight="@dimen/_10sdp"-->
+<!--                            android:background="@color/grayLight" />-->
 
-                        <LinearLayout
-                            android:id="@+id/llChat"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/llChat"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical">-->
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="@dimen/_10sdp"
-                                android:src="@drawable/ic_message" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:paddingTop="@dimen/_10sdp"-->
+<!--                                android:src="@drawable/ic_message" />-->
 
-                            <TextView
-                                style="@style/item_title_white"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:paddingTop="@dimen/_10sdp"
-                                android:paddingBottom="@dimen/_10sdp"
-                                android:text="@string/chat" />
+<!--                            <TextView-->
+<!--                                style="@style/item_title_white"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:paddingTop="@dimen/_10sdp"-->
+<!--                                android:paddingBottom="@dimen/_10sdp"-->
+<!--                                android:text="@string/chat" />-->
 
-                        </LinearLayout>
+<!--                        </LinearLayout>-->
 
                         <View
                             android:layout_width="wrap_content"

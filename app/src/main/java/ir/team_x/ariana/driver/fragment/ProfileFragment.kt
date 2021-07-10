@@ -25,11 +25,11 @@ class ProfileFragment : Fragment() {
         TypeFaceUtil.overrideFont(binding.root)
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
+        binding.llAboutUs.setOnClickListener {
+
+        }
 
         return binding.root
     }
 
-    companion object {
-
-    }
 }

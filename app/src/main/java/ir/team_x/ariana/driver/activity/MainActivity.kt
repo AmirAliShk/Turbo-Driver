@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.imgAnnouncement.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment())
+            FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment())
                 .replace()
         }
 
@@ -132,11 +132,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.llNews.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
-            binding.drawerLayout.closeDrawers()
-        }
-
-        binding.llChat.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, ChatFragment()).replace()
             binding.drawerLayout.closeDrawers()
         }
 
