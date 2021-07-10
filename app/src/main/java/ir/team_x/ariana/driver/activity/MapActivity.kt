@@ -49,7 +49,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             this,
             LocationAssistant.Accuracy.HIGH,
             100,
-            false
+            true
         )
 
         binding.imgBack.setOnClickListener {
@@ -137,29 +137,29 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     }
 
     override fun onNeedLocationPermission() {
-        TODO("Not yet implemented")
+        
     }
 
     override fun onExplainLocationPermission() {
-        TODO("Not yet implemented")
+        
     }
 
     override fun onLocationPermissionPermanentlyDeclined(
         fromView: View.OnClickListener?,
         fromDialog: DialogInterface.OnClickListener?
     ) {
-        TODO("Not yet implemented")
+        
     }
 
     override fun onNeedLocationSettingsChange() {
-        TODO("Not yet implemented")
+        
     }
 
     override fun onFallBackToSystemSettings(
         fromView: View.OnClickListener?,
         fromDialog: DialogInterface.OnClickListener?
     ) {
-        TODO("Not yet implemented")
+        
     }
 
     override fun onNewLocationAvailable(location: Location?) {
@@ -170,11 +170,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         fromView: View.OnClickListener?,
         fromDialog: DialogInterface.OnClickListener?
     ) {
-        TODO("Not yet implemented")
+        
     }
 
     override fun onError(type: LocationAssistant.ErrorType?, message: String?) {
-        TODO("Not yet implemented")
+        
     }
 
 

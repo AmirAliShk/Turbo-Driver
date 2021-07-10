@@ -21,7 +21,7 @@ class EndPoint {
         private val FINANCIAL_PAYS_PATH = "$BASE_PATH/financial/pays"
         private val SERVICE_PATH = "$BASE_PATH/service"
         private val STATION_PATH = "$BASE_PATH/station"
-        val LOCATION_PATH = ":1810/api/driver/v1/location/car"
+        val LOCATION_PATH = "$IP:$IP_PORT/api/driver/v1/location/car"
 
         /******************************** refresh token Api *********************************/
         const val REFRESH_TOKEN = "token"

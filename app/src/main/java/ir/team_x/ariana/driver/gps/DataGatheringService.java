@@ -225,7 +225,7 @@ public class DataGatheringService extends Service {
                 boolean isTurnOnGPS = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
                 // TODO check path
-                RequestHelper requestHelper = RequestHelper.loadBalancingBuilder("http://turbotaxi.ir:1810/api/driver/v1/location/car/save")
+                RequestHelper requestHelper = RequestHelper.builder(EndPoint.Companion.getSAVE_LOCATION())
                         .setErrorHandling(false)
                         .listener(saveListener);
 
@@ -270,6 +270,7 @@ public class DataGatheringService extends Service {
         @Override
         public void onResponse(Runnable reCall, Object... args) {
             MyApplication.Companion.avaStart();
+            Log.i(TAG, "onResponse saveListener :" + args[0]);
         }
 
         @Override
