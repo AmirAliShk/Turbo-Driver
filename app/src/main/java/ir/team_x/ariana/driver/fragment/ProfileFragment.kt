@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentProfileBinding
+import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class ProfileFragment : Fragment() {
- private lateinit var binding : FragmentProfileBinding
+    private lateinit var binding: FragmentProfileBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -19,8 +21,9 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding =  FragmentProfileBinding.inflate(inflater, container, false)
-
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        TypeFaceUtil.overrideFont(binding.root)
+        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
 
         return binding.root

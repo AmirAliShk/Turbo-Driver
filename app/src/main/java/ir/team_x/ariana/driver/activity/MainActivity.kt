@@ -64,8 +64,11 @@ class MainActivity : AppCompatActivity() {
         UpdateCharge().update(object : UpdateCharge.ChargeListener {
             override fun getCharge(charge: String) {
                 if (charge.isNotEmpty()) {
+                    binding.vfCharge.displayedChild = 1
                     binding.txtCharge.text =
                         StringHelper.toPersianDigits(StringHelper.setComma(charge))
+                } else {
+                    binding.vfCharge.displayedChild = 0
                 }
             }
         })
@@ -116,27 +119,31 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.llAccount.setOnClickListener {
-            Log.i("TAG", "onCreate: ")
-            FragmentHelper.toFragment(MyApplication.currentActivity, AccountReportFragment())
+            FragmentHelper.toFragment(MyApplication.currentActivity, ProfileFragment())
                 .replace()
+            binding.drawerLayout.closeDrawers()
         }
-//
-//        binding.llServiceHistory.setOnClickListener {
-//            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment())
-//                .replace()
-//        }
-//
-//        binding.llNews.setOnClickListener {
-//            FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
-//        }
-//
-//        binding.llChat.setOnClickListener {
-//            FragmentHelper.toFragment(MyApplication.currentActivity, ChatFragment()).replace()
-//        }
-//
-//        binding.llSupport.setOnClickListener {
-//            FragmentHelper.toFragment(MyApplication.currentActivity, SupportFragment()).replace()
-//        }
+
+        binding.llServiceHistory.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment())
+                .replace()
+            binding.drawerLayout.closeDrawers()
+        }
+
+        binding.llNews.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
+            binding.drawerLayout.closeDrawers()
+        }
+
+        binding.llChat.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, ChatFragment()).replace()
+            binding.drawerLayout.closeDrawers()
+        }
+
+        binding.llSupport.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, SupportFragment()).replace()
+            binding.drawerLayout.closeDrawers()
+        }
 
     }
 
@@ -259,40 +266,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     } else {
                         binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
-                    }
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-
-        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
-            MyApplication.handler.post {
-
-            }
-        }
-    }
-
-    private fun getCharge() { //TODO  where should i call this?
-        RequestHelper.builder(EndPoint.CHARGE)
-            .listener(getChargeCallBack)
-            .get()
-    }
-
-    private val getChargeCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
-        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
-            MyApplication.handler.post {
-                try {
-                    val jsonObject = JSONObject(args[0].toString())
-                    val success = jsonObject.getBoolean("success")
-                    val message = jsonObject.getString("message")
-
-                    if (success) {
-                        val dataObj = jsonObject.getJSONObject("data")
-                        val charge = dataObj.getString("charge")
-                        binding.txtCharge.text =
-                            StringHelper.toPersianDigits(StringHelper.setComma(charge))
                     }
 
                 } catch (e: Exception) {
@@ -447,6 +420,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         MyApplication.currentActivity = this
         MyApplication.prefManager.setAppRun(true)
+        binding.txtCharge.text = MyApplication.prefManager.getCharge()
         startGetStatus()
     }
 

@@ -43,7 +43,8 @@ import ir.team_x.ariana.operator.dialog.GetServiceDialog;
 public class ManagePush {
 
     private static final String TAG = ManagePush.class.getSimpleName();
-//    {"messageId":6725706,"message":"2^13:00:00^29286045^0^محدوده^احمداباد بابک 7 پ 55^مجد4^10000","projectId":3,"userId":"7650"}
+
+    //    {"messageId":6725706,"message":"2^13:00:00^29286045^0^محدوده^احمداباد بابک 7 پ 55^مجد4^10000","projectId":3,"userId":"7650"}
     public void manage(final Context context, String pushMessage) {
         Log.i(TAG, "onPushReceived: message received node : " + pushMessage);
         String[] dataArray = pushMessage.split("\\^");
@@ -74,36 +75,36 @@ public class ManagePush {
             case "2":
                 // getServiceTurbo info
 //                if (!MyApplication.prefManager.isActiveTurboService()) { // TODO this is for what?
-                    SoundHelper.ringing(context, R.raw.service, false);
-                    if (MyApplication.prefManager.isAppRun()) {
-                        Log.i(TAG, "manage: app is running");
-                        GetServiceDialog dialog = new GetServiceDialog();
-                        dialog.show(getSerivceInfo(dataArray));
-                    } else {
-                        Log.i(TAG, "manage: app is not running");
+                SoundHelper.ringing(context, R.raw.service, false);
+                if (MyApplication.prefManager.isAppRun()) {
+                    Log.i(TAG, "manage: app is running");
+                    GetServiceDialog dialog = new GetServiceDialog();
+                    dialog.show(getSerivceInfo(dataArray));
+                } else {
+                    Log.i(TAG, "manage: app is not running");
 
-                        if (MyApplication.currentActivity != null) {
-                            MyApplication.currentActivity.finish();
-                        }
-                        VibratorHelper.setVibrator(context, new long[]{700, 800, 700, 800, 700, 800, 700, 800, 700, 800, 700, 800}, -1);
-                        Intent in = new Intent(context, GetServiceActivity.class);
-                        in.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                        in.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                        in.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        ServiceModel mdoel = getSerivceInfo(dataArray);
-                        in.putExtra("CallTime", mdoel.getCallTime());
-                        in.putExtra("ServiceType", mdoel.getServiceType());
-                        in.putExtra("ServiceID", mdoel.getServiceID());
-                        in.putExtra("OrginDesc", mdoel.getOrginDesc());
-                        in.putExtra("originAddress", mdoel.getOriginAddress());
-                        in.putExtra("destinationAddress", mdoel.getDestinationDesc());
-                        in.putExtra("price", mdoel.getServicePrice());
-                        in.putExtra("inService", mdoel.isInService());
-                        context.startActivity(in);
-                        sendNotification("سرویسی در انتظار تایید دارید", context, true, 2, true);
+                    if (MyApplication.currentActivity != null) {
+                        MyApplication.currentActivity.finish();
                     }
+                    VibratorHelper.setVibrator(context, new long[]{700, 800, 700, 800, 700, 800, 700, 800, 700, 800, 700, 800}, -1);
+                    Intent in = new Intent(context, GetServiceActivity.class);
+                    in.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                    in.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                    in.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    ServiceModel mdoel = getSerivceInfo(dataArray);
+                    in.putExtra("CallTime", mdoel.getCallTime());
+                    in.putExtra("ServiceType", mdoel.getServiceType());
+                    in.putExtra("ServiceID", mdoel.getServiceID());
+                    in.putExtra("OrginDesc", mdoel.getOrginDesc());
+                    in.putExtra("originAddress", mdoel.getOriginAddress());
+                    in.putExtra("destinationAddress", mdoel.getDestinationDesc());
+                    in.putExtra("price", mdoel.getServicePrice());
+                    in.putExtra("inService", mdoel.isInService());
+                    context.startActivity(in);
+                    sendNotification("سرویسی در انتظار تایید دارید", context, true, 2, true);
+                }
 //                }
                 break;
 
@@ -111,28 +112,32 @@ public class ManagePush {
                 // cancel
                 String cancelMessage = dataArray[1];
 
-//                MyApplication.prefManager.setActiveServiceTurbo(false); // TODO this is for waht?
-                if (AppStatusHelper.appIsRun(context)) { //TODO uncomment this
-                    Intent in = new Intent(MyApplication.currentActivity, CancelServiceActivity.class);
-                    in.putExtra("cancelMessage", cancelMessage);
+                new GeneralDialog().message(cancelMessage).firstButton("ok", null).show();
 
-                    MyApplication.currentActivity.finish();
-                    MyApplication.currentActivity.startActivity(in);
-                } else {
-                    Intent in = new Intent(MyApplication.context, CancelServiceActivity.class);
-                    in.putExtra("cancelMessage", cancelMessage);
-
-                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    MyApplication.context.startActivity(in);
-                }
+////                MyApplication.prefManager.setActiveServiceTurbo(false); // TODO this is for waht?
+//                if (AppStatusHelper.appIsRun(context)) { //TODO uncomment this
+//                    Intent in = new Intent(MyApplication.currentActivity, CancelServiceActivity.class);
+//                    in.putExtra("cancelMessage", cancelMessage);
+//
+//                    MyApplication.currentActivity.finish();
+//                    MyApplication.currentActivity.startActivity(in);
+//                } else {
+//                    Intent in = new Intent(MyApplication.context, CancelServiceActivity.class);
+//                    in.putExtra("cancelMessage", cancelMessage);
+//
+//                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//                    MyApplication.context.startActivity(in);
+//                }
 
                 break;
             case "4":
                 // freeService
 //                if (!MyApplication.prefManager.isActiveTurboService()) {
 //
-//                    String freeService = dataArray[1];
+                String freeService = dataArray[1];
+                new GeneralDialog().message(freeService).firstButton("ok", null).show();
+
 //                    if (MyApplication.prefManager.isAppRun()) {
 //
 //                        if (!prefManager.isMuteFreeServiceAlarm()) {
@@ -240,7 +245,7 @@ public class ManagePush {
         String price = dataArray[6];
 
         Log.i(TAG, "getSerivceInfo:\n 1:time: " + time + "\n‌" + "2:sericeId: " + serviceId + "\n" + "3:serviceType: " + serviceType + "\n"
-              + "5:originAddress: " + originAddress + "\n" + "6:destinationAddress: " + destinationAddress + "\n" + "7:price: " + price);
+                + "5:originAddress: " + originAddress + "\n" + "6:destinationAddress: " + destinationAddress + "\n" + "7:price: " + price);
 
         ServiceModel serviceModel = new ServiceModel();
         serviceModel.setCallTime(time);

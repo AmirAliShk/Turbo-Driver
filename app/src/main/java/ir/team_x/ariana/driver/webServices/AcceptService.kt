@@ -38,6 +38,7 @@ class AcceptService {
                         if(typeOut==1){
                             UpdateCharge().update(object:UpdateCharge.ChargeListener{
                                 override fun getCharge(charge: String) {
+                                    MyApplication.prefManager.setCharge(charge)
                                 }
                             })
 

@@ -19,6 +19,7 @@ import ir.team_x.ariana.driver.utils.DateHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
+import ir.team_x.ariana.driver.webServices.UpdateCharge
 import org.json.JSONObject
 
 class ServiceDetailsFragment(
@@ -118,6 +119,11 @@ class ServiceDetailsFragment(
                         if (result) {
                             FragmentHelper.taskFragment(MyApplication.currentActivity, TAG).remove()
                             cancelServiceListener.onCanceled(true)
+                            UpdateCharge().update(object: UpdateCharge.ChargeListener{
+                                override fun getCharge(charge: String) {
+                                    MyApplication.prefManager.setCharge(charge)
+                                }
+                            })
                         } else {
                             GeneralDialog().message(message).secondButton("باشه"){}.show()
                             cancelServiceListener.onCanceled(false)

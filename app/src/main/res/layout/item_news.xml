@@ -21,7 +21,6 @@
             android:layout_weight="0.13"
             android:src="@drawable/ic_news" />
 
-
     </LinearLayout>
 
     <LinearLayout
@@ -38,25 +37,20 @@
             android:layout_marginTop="@dimen/_5sdp" />
 
         <TextView
+            android:id="@+id/txtTitle"
             style="@style/Details_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="شرکت اریانا"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
             android:layout_margin="@dimen/_8sdp"/>
 
         <TextView
+            android:id="@+id/txtNews"
             style="@style/Details_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:text="همکاران توجه کنند گزینه ای در قسمت پشتیبانی نرم افزار
-شده است به نام دکمه ی در اختیار که کاربرد ان زمان
-است که سرویس برای مهمان اعزام شده و مجدد تماس
-میگیرد.
-دارای چندیدن  ........." />
-
+            android:layout_marginRight="@dimen/_10sdp"/>
 
         <View
             android:layout_width="wrap_content"

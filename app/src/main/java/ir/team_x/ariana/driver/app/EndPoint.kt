@@ -37,8 +37,7 @@ class EndPoint {
         val FINISH_SERVICE = "$BASE_PATH/finishService"
         val GET_ACTIVE_SERVICE = "$BASE_PATH/getActiveService"
         val GET_FINISH_SERVICE = "$BASE_PATH/getFinishService"
-        val GET_NEWS = "$BASE_PATH/getNews"
-        val GET_NEWS_DETAILS = "$BASE_PATH/getNewsDetail"
+        val GET_NEWS = "$BASE_PATH/news"
         val STATUS = "$BASE_PATH/status"
         val ENTER_EXIT = "$BASE_PATH/enterExit"
 

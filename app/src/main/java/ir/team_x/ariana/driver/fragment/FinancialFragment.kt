@@ -14,6 +14,7 @@ import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class FinancialFragment : Fragment() {
     private lateinit var binding: FragmentFinancialBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,7 +32,10 @@ class FinancialFragment : Fragment() {
         UpdateCharge().update(object: UpdateCharge.ChargeListener{
             override fun getCharge(charge: String) {
                 if(charge.isNotEmpty()){
+                    binding.vfCharge.displayedChild=1
                     binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(charge))
+                }else{
+                    binding.vfCharge.displayedChild=0
                 }
             }
         })

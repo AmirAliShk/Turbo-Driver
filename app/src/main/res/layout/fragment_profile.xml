@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pageBackground"
     android:clickable="true"
     android:layoutDirection="rtl"
     android:orientation="vertical">
@@ -14,9 +15,9 @@
 
         <ImageView
             android:id="@+id/imgBack"
-            android:layout_alignParentLeft="true"
             android:layout_width="?android:attr/actionBarSize"
             android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
             android:padding="15dp"
             android:src="@drawable/ic_back" />
 
@@ -31,14 +32,12 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_13sdp"
-        android:padding="@dimen/_15sdp"
         android:background="@drawable/background2"
-        android:orientation="vertical">
-
-
+        android:orientation="vertical"
+        android:padding="@dimen/_15sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,173 +46,139 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/Details_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="سارابنی اسدی"
-                android:textStyle="bold"/>
-
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
-
-
-            <TextView
                 style="@style/title_details"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.6"
                 android:text="@string/name" />
 
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="سارابنی اسدی" />
 
         </LinearLayout>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
-
         <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:orientation="horizontal">
 
             <TextView
-                style="@style/Details_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="محسن" />
-
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
-
-
-            <TextView
                 style="@style/title_details"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.6"
                 android:text="@string/father_name" />
 
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="محسن" />
 
         </LinearLayout>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
-
         <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:orientation="horizontal">
 
             <TextView
-                style="@style/Details_answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0925510564" />
-
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
-
-
-            <TextView
                 style="@style/title_details"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.6"
                 android:text="@string/id" />
 
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
-
             <TextView
                 style="@style/Details_answer"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="0925510564" />
 
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
-
-
-            <TextView
-                style="@style/title_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/National_code" />
-
-
         </LinearLayout>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp" />
-
         <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:orientation="horizontal">
 
             <TextView
-                style="@style/Details_answer"
-                android:layout_width="wrap_content"
+                style="@style/title_details"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="732456912875302156" />
-
-            <View
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="match_parent" />
-
+                android:layout_weight="0.6"
+                android:text="@string/National_code" />
 
             <TextView
-                style="@style/title_details"
-                android:layout_width="wrap_content"
+                style="@style/Details_answer"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/Shaba_number" />
-
+                android:layout_weight="1"
+                android:text="0925510564" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/title_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:text="@string/Shaba_number" />
+
+            <TextView
+                style="@style/Details_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="732456912875302156" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:background="@drawable/bg_grye"
-    android:padding="@dimen/_12sdp"
-    android:layout_margin="@dimen/_13sdp"
-    >
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_weight="2"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="درباره ما"
-        android:textSize="@dimen/_15sdp"
-        android:textColor="@color/colorWhite"/>
+        android:layout_margin="@dimen/_13sdp"
+        android:background="@drawable/bg_grye"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/_12sdp">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_weight="0.5"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/smallogo"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="درباره ما"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_15sdp" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:src="@mipmap/smallogo" />
 
 
-</LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
