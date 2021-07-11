@@ -22,17 +22,26 @@
         <activity
             android:name=".activity.CancelServiceActivity"
             android:label="@string/title_activity_cancel_service"
+            android:launchMode="singleInstance"
             android:theme="@style/NoActionBar"/>
+
         <activity
+            android:launchMode="singleInstance"
             android:name=".activity.MapActivity"
             android:screenOrientation="portrait" />
+
         <activity
+            android:launchMode="singleInstance"
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait" />
+
         <activity
+            android:launchMode="singleInstance"
             android:name=".activity.GetServiceActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.SplashActivity">
+
+        <activity android:name=".activity.SplashActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -86,8 +86,8 @@
                         style="@style/title_details"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
-                        android:text="@string/time" />
+                        android:layout_weight="1.6"
+                        android:text="@string/date_time" />
 
                     <TextView
                         android:id="@+id/txtDate"

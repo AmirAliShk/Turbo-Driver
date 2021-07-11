@@ -44,6 +44,7 @@
     <string name="service_details">جزییات سرویس</string>
     <string name="finish">پایان سرویس</string>
     <string name="time">ساعت : </string>
+    <string name="date_time">تاریخ و ساعت : </string>
     <string name="title_activity_cancel_service">CancelServiceActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

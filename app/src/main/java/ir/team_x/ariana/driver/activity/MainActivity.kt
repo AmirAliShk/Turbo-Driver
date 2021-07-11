@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
+
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtilJava.overrideFonts(binding.txtCharge, MyApplication.iranSansMediumTF)
         TypeFaceUtilJava.overrideFonts(binding.txtDriverName, MyApplication.iranSansMediumTF)
@@ -415,7 +416,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         MyApplication.currentActivity = this
         MyApplication.prefManager.setAppRun(true)
-        binding.txtCharge.text = MyApplication.prefManager.getCharge()
+        binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
         startGetStatus()
     }
 
@@ -436,6 +437,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
         KeyBoardHelper.hideKeyboard()
         if (supportFragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
