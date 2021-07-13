@@ -2,7 +2,7 @@ package ir.team_x.ariana.driver.activity
 
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Color
+import android.graphics.Bitmap
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
@@ -15,9 +15,18 @@ import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
 import ir.team_x.ariana.driver.R
+import ir.team_x.ariana.driver.app.DataHolder
+import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMapBinding
 import ir.team_x.ariana.driver.gps.LocationAssistant
+import ir.team_x.ariana.driver.model.StationModel
+import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.utils.WriteTextOnDrawable
+import org.json.JSONObject
+import kotlin.math.atan2
+import kotlin.math.sin
+import kotlin.math.sqrt
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.Listener {
 
@@ -27,6 +36,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     lateinit var lastLocation: Location
     lateinit var myLocationMarker: Marker
     lateinit var stationCircle: Circle
+    private val markerList: ArrayList<StationModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +53,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
+
+        getStation()
 
         locationAssistant = LocationAssistant(
             MyApplication.context,
@@ -128,7 +140,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 
     private fun refreshLocation() {
         val bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.pin)
-        myLocationMarker = googleMap.addMarker(MarkerOptions()
+        myLocationMarker = googleMap.addMarker(
+            MarkerOptions()
                 .icon(bitmapDescriptor)
                 .rotation(lastLocation.bearing)
 //                .title(messageMyLocationMarker)
@@ -136,30 +149,162 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         )
     }
 
+    fun hideStation() {
+        if (markerList == null || markerList.isEmpty()) {
+            return
+        }
+        for (i in markerList.indices) {
+            val marker: Marker? = markerList[i].marker
+            if (marker != null) {
+                if (marker.isVisible) marker.remove()
+            }
+        }
+    }
+
+    fun distFrom(
+        lat1: Double,
+        lng1: Double,
+        lat2: Double,
+        lng2: Double
+    ): Float {
+        val earthRadius = 6371000.0 //meters
+        val dLat = Math.toRadians(lat2 - lat1)
+        val dLng = Math.toRadians(lng2 - lng1)
+        val a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(
+            Math.toRadians(
+                lat2
+            )
+        ) *
+                sin(dLng / 2) * sin(dLng / 2)
+        val c =
+            2 * atan2(sqrt(a), sqrt(1 - a))
+        return (earthRadius * c).toFloat()
+    }
+
+    fun showStation() {
+        val mUpCameraPosition: CameraPosition = googleMap.cameraPosition
+        val center = LatLng(mUpCameraPosition.target.latitude, mUpCameraPosition.target.longitude)
+        for (i in 0 until markerList.size) {
+//            if (distFrom(
+//                    markerList[i].latLng.latitude,
+//                    markerList[i].latLng.longitude,
+//                    center.latitude,
+//                    center.longitude
+//                ) < 3000
+//            ) {
+//                addStationMarker(
+//                    LatLng(
+//                        markerList[i].latLng.latitude,
+//                        markerList[i].latLng.longitude
+//                    ), markerList[i].code
+//                )
+//            }
+        }
+    }
+
+//    private fun addStationMarker(latLng: LatLng, value: String) {
+//        val bmp: Bitmap = WriteTextOnDrawable.write(R.mipmap.green_marker, value, 18, 2)
+//        try {
+//            val model = StationModel(
+//                0,
+//                "",
+//                latLng,
+//                value.toInt(),
+//                googleMap.addMarker(
+//                    MarkerOptions()
+//                        .icon(BitmapDescriptorFactory.fromBitmap(bmp))
+//                        .position(latLng)
+//                )
+//            )
+//            markerList.add(model)
+//        } catch (e: java.lang.Exception) {
+//            e.printStackTrace()
+//        }
+//    }
+
+    private fun getStation() {
+        RequestHelper.builder(EndPoint.STATION)
+            .listener(stationCallBack)
+            .get()
+    }
+
+    private val stationCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+//                    {stationCode: 1,stationName: "غدیر",lat: 36.257052,long: 59.619728,countService: 7}
+
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+                    if (success) {
+                        val dataArr = jsonObject.getJSONArray("data")
+                        for (i in 0 until dataArr.length()) {
+                            val dataObj = dataArr.getJSONObject(i)
+                            val bmp: Bitmap = WriteTextOnDrawable.write(
+                                R.mipmap.green_marker,
+                                dataObj.getInt("countService").toString(),
+                                18,
+                                2
+                            )
+                            val model = StationModel(
+                                dataObj.getInt("stationCode"),
+                                dataObj.getString("stationName"),
+                                LatLng(dataObj.getDouble("lat"), dataObj.getDouble("long")),
+                                dataObj.getInt("countService"),
+                                googleMap.addMarker(
+                                    MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(bmp))
+                                        .position(
+                                            LatLng(
+                                                dataObj.getDouble("lat"),
+                                                dataObj.getDouble("long")
+                                            )
+                                        )
+                                )
+                            )
+                            markerList.add(model)
+                        }
+//                        showStation()
+                        DataHolder.instance?.stationArr = dataArr
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+            }
+        }
+    }
+
     override fun onNeedLocationPermission() {
-        
+
     }
 
     override fun onExplainLocationPermission() {
-        
+
     }
 
     override fun onLocationPermissionPermanentlyDeclined(
         fromView: View.OnClickListener?,
         fromDialog: DialogInterface.OnClickListener?
     ) {
-        
+
     }
 
     override fun onNeedLocationSettingsChange() {
-        
+
     }
 
     override fun onFallBackToSystemSettings(
         fromView: View.OnClickListener?,
         fromDialog: DialogInterface.OnClickListener?
     ) {
-        
+
     }
 
     override fun onNewLocationAvailable(location: Location?) {
@@ -170,11 +315,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         fromView: View.OnClickListener?,
         fromDialog: DialogInterface.OnClickListener?
     ) {
-        
+
     }
 
     override fun onError(type: LocationAssistant.ErrorType?, message: String?) {
-        
+
     }
 
 

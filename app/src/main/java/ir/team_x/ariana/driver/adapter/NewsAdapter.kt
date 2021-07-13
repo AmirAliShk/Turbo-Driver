@@ -44,7 +44,7 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
         val time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.saveDate + "", null))
 
         holder.binding.txtTitle.text = model.title
-        holder.binding.txtNews.text = model.message.substring(0,20)
+        holder.binding.txtNews.text = model.message
 
         holder.itemView.setOnClickListener {
             //TODO call details API here

@@ -416,7 +416,9 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         MyApplication.currentActivity = this
         MyApplication.prefManager.setAppRun(true)
-        binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
+        if (MyApplication.prefManager.getCharge() != "")
+            binding.txtCharge.text =
+                StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
         startGetStatus()
     }
 
@@ -437,7 +439,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
+        binding.txtCharge.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
         KeyBoardHelper.hideKeyboard()
         if (supportFragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()

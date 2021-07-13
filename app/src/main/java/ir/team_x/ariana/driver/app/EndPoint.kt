@@ -58,6 +58,7 @@ class EndPoint {
 
         val REGISTER = "$STATION_PATH/register"
         val EXIT = "$STATION_PATH/exit"
+        val STATION = "$STATION_PATH/countService"
 
         val SAVE_LOCATION = "$LOCATION_PATH/save"
 
