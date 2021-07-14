@@ -32,7 +32,7 @@ class FactorDialog {
 
     private lateinit var finishServiceListener:FinishServiceListener
 
-    fun show(serviceModel: ServiceDataModel, finishServiceListener: FinishServiceListener) {
+    fun show(priceObj: JSONObject,serId: Int, finishServiceListener: FinishServiceListener) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DialogFactorBinding.inflate(LayoutInflater.from(MyApplication.context))
@@ -49,13 +49,13 @@ class FactorDialog {
         this.finishServiceListener = finishServiceListener
 
         binding.imgClose.setOnClickListener { dismiss() }
-        binding.btnEndTrip.setOnClickListener { finish(serviceModel.id, serviceModel.priceService) }
-        binding.txtTotalAmount.text = serviceModel.priceService
-        binding.txtTax.text = serviceModel.tax
-        binding.txtCompanyShare.text = serviceModel.commission
-        binding.txtDiscount.text = serviceModel.discount
-        binding.txtDriverShare.text = serviceModel.finalPrice
-        binding.txtCustomerPrice.text = serviceModel.priceCustomer
+        binding.btnEndTrip.setOnClickListener { finish(serId, priceObj.getString("priceService")) }
+        binding.txtTotalAmount.text = priceObj.getString("priceService")
+        binding.txtTax.text = priceObj.getString("tax")
+        binding.txtCompanyShare.text = priceObj.getString("Commission")
+        binding.txtDiscount.text = priceObj.getString("discount")
+        binding.txtDriverShare.text = priceObj.getString("finalPrice")
+        binding.txtCustomerPrice.text = priceObj.getString("finalPrice")
 
         dialog.show()
 

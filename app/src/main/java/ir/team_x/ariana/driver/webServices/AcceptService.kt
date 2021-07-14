@@ -47,6 +47,7 @@ class AcceptService {
                             listener.onSuccess()
                         }else{
                             listener.onFailure()
+
                             GeneralDialog().message(msg).secondButton("باشه") {}.show()
                         }
                         //TODO check other type in this response

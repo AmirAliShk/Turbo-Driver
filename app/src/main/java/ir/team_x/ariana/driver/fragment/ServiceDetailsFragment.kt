@@ -50,7 +50,7 @@ class ServiceDetailsFragment(
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
-        TypeFaceUtilJava.overrideFonts(binding.root,MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtDate.text = StringHelper.toPersianDigits(
@@ -62,7 +62,8 @@ class ServiceDetailsFragment(
             )
         )
         binding.txtCustomerName.text = serviceModel.customerName
-        binding.txtCargoWeight.text=StringHelper.toPersianDigits(serviceModel.weightName) //TODO uncomment
+        binding.txtCargoWeight.text =
+            StringHelper.toPersianDigits(serviceModel.weightName) //TODO uncomment
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
         binding.txtDestAddress.text = StringHelper.toPersianDigits(serviceModel.destinationAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
@@ -84,12 +85,7 @@ class ServiceDetailsFragment(
             CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
         }
         binding.txtFinish.setOnClickListener {
-            FactorDialog().show(serviceModel, object:FactorDialog.FinishServiceListener{
-                override fun onFinishService(isFinish: Boolean) {
-                    cancelServiceListener.onFinishSerice(isFinish)
-                }
-
-            })
+            bill(serviceModel.id, "10000")//TODO change price
         }
 
         return binding.root
@@ -118,13 +114,13 @@ class ServiceDetailsFragment(
                         if (result) {
                             FragmentHelper.taskFragment(MyApplication.currentActivity, TAG).remove()
                             cancelServiceListener.onCanceled(true)
-                            UpdateCharge().update(object: UpdateCharge.ChargeListener{
+                            UpdateCharge().update(object : UpdateCharge.ChargeListener {
                                 override fun getCharge(charge: String) {
                                     MyApplication.prefManager.setCharge(charge)
                                 }
                             })
                         } else {
-                            GeneralDialog().message(message).secondButton("باشه"){}.show()
+                            GeneralDialog().message(message).secondButton("باشه") {}.show()
                             cancelServiceListener.onCanceled(false)
                         }
                     } else {
@@ -141,6 +137,53 @@ class ServiceDetailsFragment(
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
                 binding.vfCancel.displayedChild = 0
+            }
+        }
+    }
+
+    private fun bill(serviceId: Int, price: String) {
+        binding.vfEndService.displayedChild = 1
+        RequestHelper.builder(EndPoint.BILL)
+            .listener(billCallBack)
+            .addPath( serviceId.toString())
+            .addPath( price)
+            .get()
+    }
+
+    private val billCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+                    binding.vfEndService.displayedChild = 0
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+                    if (success) {
+                        val dataObj = jsonObject.getJSONObject("data")
+
+                        FactorDialog().show(
+                            dataObj, serviceModel.id,
+                            object : FactorDialog.FinishServiceListener {
+                                override fun onFinishService(isFinish: Boolean) {
+                                    cancelServiceListener.onFinishSerice(isFinish)
+                                }
+
+                            })
+
+                    } else {
+                        cancelServiceListener.onCanceled(false)
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    binding.vfEndService.displayedChild = 0
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+                binding.vfEndService.displayedChild = 0
             }
         }
     }
