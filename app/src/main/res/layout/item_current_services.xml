@@ -107,7 +107,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:textColor="@color/grayDark"
-                android:layout_weight="3"/>
+                android:layout_weight="3"
+                android:layout_marginLeft="@dimen/_10sdp" />
 
         </LinearLayout>
 
@@ -132,7 +133,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:textColor="@color/grayDark"
-                android:layout_weight="3"/>
+                android:layout_weight="3"
+                android:layout_marginLeft="@dimen/_10sdp"/>
 
         </LinearLayout>
 
