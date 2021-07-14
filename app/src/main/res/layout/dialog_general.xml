@@ -19,8 +19,7 @@
         android:layout_centerInParent="true"
         android:background="@drawable/background4"
         android:orientation="vertical"
-        android:elevation="@dimen/_5sdp"
-        android:layout_margin="@dimen/_15sdp">
+        android:elevation="@dimen/_5sdp">
 
 
         <TextView
@@ -38,7 +37,6 @@
             android:textSize="17sp" />
 
         <LinearLayout
-            android:id="@+id/llBtnView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.25"
@@ -51,16 +49,6 @@
                 android:layout_weight="0.25" />
 
             <Button
-                android:id="@+id/btnNegative"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_weight="1"
-                android:textColor="@color/colorWhite"
-                android:background="@drawable/bg_redd"
-                android:padding="@dimen/_10sdp"
-                android:elevation="@dimen/_3sdp"/>
-
-            <Button
                 android:id="@+id/btnPositive"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_35sdp"
@@ -71,6 +59,24 @@
                 android:padding="@dimen/_8sdp"
                 android:elevation="@dimen/_3sdp"/>
 
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.25" />
+
+
+            <Button
+                android:id="@+id/btnNegative"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_weight="1"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/bg_redd"
+                android:padding="@dimen/_10sdp"
+                android:elevation="@dimen/_3sdp"/>
+
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -78,6 +84,7 @@
 
 
         </LinearLayout>
+
 
     </LinearLayout>
 
