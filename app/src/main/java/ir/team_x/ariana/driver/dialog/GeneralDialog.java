@@ -139,11 +139,13 @@ public class GeneralDialog {
         }
         if (firstBtn == null) {
             binding.btnPositive.setVisibility(View.GONE);
+            binding.vMiddle.setVisibility(View.GONE);
         } else {
             binding.btnPositive.setText(firstBtn.text);
         }
         if (secondBtn == null) {
             binding.btnNegative.setVisibility(View.GONE);
+            binding.vMiddle.setVisibility(View.GONE);
         } else {
             binding.btnNegative.setText(secondBtn.text);
         }

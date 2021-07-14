@@ -35,6 +35,8 @@ class PrefManager {
     private val KEY_LAST_LNG = "lastLang"
     private val API_REQUEST_TIME = "requestTime"
     private val CHARGE = "charge"
+    private val LOCK_STATUS = "LockStatus"
+    private val LOCK_REASONES = "lockReasons"
 
     fun getRefreshToken(): String? {
         return sharedPreferences.getString(REFRESH_TOKEN, "")
@@ -67,6 +69,24 @@ class PrefManager {
 
     fun setDriverStatus(v: Boolean) {
         editor.putBoolean(DRIVER_STATUS, v)
+        editor.commit()
+    }
+
+    fun getLockStatus(): Int {
+        return sharedPreferences.getInt(LOCK_STATUS, 0)
+    }
+
+    fun setLockStatus(v: Int) {
+        editor.putInt(LOCK_STATUS, v)
+        editor.commit()
+    }
+
+    fun getLockReasons(): String {
+        return sharedPreferences.getString(LOCK_REASONES,"").toString()
+    }
+
+    fun setLockReasons(v: String) {
+        editor.putString(LOCK_REASONES, v)
         editor.commit()
     }
 

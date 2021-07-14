@@ -30,7 +30,7 @@ class EndPoint {
         const val CHECK = "check"
 
         /******************************** Driver Path *********************************/
-        val GET_APP_INFO = "$BASE_PATH/getAppInfo"
+        val GET_APP_INFO = "$BASE_PATH/appInfo"
         val ACCEPT_SERVICE = "$BASE_PATH/acceptService"
         val STATION_REGISTER = "$BASE_PATH/stationRegister"
         val EXIT_STATION = "$BASE_PATH/exitStationRegister"

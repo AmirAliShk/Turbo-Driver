@@ -54,7 +54,6 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_weight="1"
-                android:layout_marginRight="@dimen/_15sdp"
                 android:textColor="@color/colorWhite"
                 android:background="@drawable/bg_green"
                 android:padding="@dimen/_8sdp"
@@ -62,6 +61,7 @@
 
 
             <View
+                android:id="@+id/vMiddle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="0.25" />

@@ -3,8 +3,10 @@ package ir.team_x.ariana.operator.dialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.Window
+import android.view.WindowManager
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.DialogGetServiceBinding
@@ -16,7 +18,6 @@ import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.AcceptService
 import ir.team_x.ariana.driver.webServices.AcceptService.Listener
-import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 
 class GetServiceDialog() {
@@ -33,6 +34,11 @@ class GetServiceDialog() {
         dialog.setContentView(binding.root)
         TypeFaceUtilJava.overrideFonts(binding.root,MyApplication.iranSansMediumTF)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val wlp = dialog.window!!.attributes
+        wlp.gravity = Gravity.CENTER
+        wlp.width = WindowManager.LayoutParams.MATCH_PARENT
+        wlp.windowAnimations = R.style.ExpandAnimation
+        dialog.window!!.attributes = wlp
         dialog.setCancelable(false)
 
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.originAddress)

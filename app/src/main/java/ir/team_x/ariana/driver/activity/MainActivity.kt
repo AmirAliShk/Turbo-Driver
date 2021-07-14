@@ -60,6 +60,8 @@ class MainActivity : AppCompatActivity() {
             binding.swEnterExit.isChecked = false
         }
 
+        binding.txtLock.isSelected = true;
+
         handleStatusByServer()
 
         UpdateCharge().update(object : UpdateCharge.ChargeListener {
@@ -73,6 +75,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        if(MyApplication.prefManager.getLockStatus()==1){
+            binding.txtLock.visibility = View.VISIBLE
+            binding.txtLock.setTextColor(resources.getColor(R.color.colorWhite))
+            binding.txtLock.background = resources.getDrawable(R.color.colorRed)
+            binding.txtLock.text = "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي به شما وجود ندارد."
+        }else{
+            binding.txtLock.visibility = View.INVISIBLE
+        }
 
         binding.imgMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)

@@ -351,10 +351,29 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/txtLock"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorRed"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:freezesText="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:paddingLeft="15dip"
+                android:paddingTop="5dp"
+                android:visibility="invisible"
+                android:paddingRight="15dip"
+                android:paddingBottom="5dp"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.85" />
+                android:layout_weight="0.65" />
 
             <LinearLayout
                 android:layout_width="match_parent"
