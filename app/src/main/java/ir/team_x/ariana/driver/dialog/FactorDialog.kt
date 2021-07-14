@@ -7,7 +7,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Toast
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
@@ -87,9 +86,8 @@ class FactorDialog {
                                 override fun getCharge(charge: String) {
                                 }
                             })
-
+                            GeneralDialog().message(message).firstButton("باشه"){}.show()
                             finishServiceListener.onFinishService(true)
-                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
                             dismiss()
                             MyApplication.currentActivity.onBackPressed()
                         }else{
