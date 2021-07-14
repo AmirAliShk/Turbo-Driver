@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:orientation="vertical"
-            android:padding="@dimen/_15sdp">
+            android:padding="@dimen/_10sdp">
 
             <LinearLayout
                 android:id="@+id/hohooh"
@@ -96,12 +96,13 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
+                        android:layout_weight="1.5"
+                        android:gravity="center|right"
                         android:text="هزینه سرویس :"
                         android:textColor="@color/navigationBar"
                         android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:paddingRight="@dimen/_5sdp"/>
 
                     <TextView
                         android:id="@+id/txtPrice"
