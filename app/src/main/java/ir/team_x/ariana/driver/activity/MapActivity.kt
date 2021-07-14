@@ -19,6 +19,7 @@ import ir.team_x.ariana.driver.app.DataHolder
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMapBinding
+import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.gps.LocationAssistant
 import ir.team_x.ariana.driver.gps.MyLocation
 import ir.team_x.ariana.driver.model.StationModel
@@ -70,6 +71,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         }
 
         binding.imgGps.setOnClickListener {
+            if (lastLocation.latitude == null || lastLocation.latitude == 0.0 || lastLocation.longitude == 0.0 || lastLocation.longitude == null) {
+                GeneralDialog().message("متاسفانه موقعیت در دسترس نمیباشد پس از چند لحظه مجدد امتحان کنید")
+                    .firstButton("باشه") {}.show()
+            }
             myLocationMarker.remove()
             stationCircle.remove()
             animateToLocation(lastLocation.latitude, lastLocation.longitude)
@@ -210,7 +215,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         val earthRadius = 6371000.0 //meters
         val dLat = Math.toRadians(lat2 - lat1)
         val dLng = Math.toRadians(lng2 - lng1)
-        val a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * sin(dLng / 2) * sin(dLng / 2)
+        val a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lat1)) * Math.cos(
+            Math.toRadians(lat2)
+        ) * sin(dLng / 2) * sin(dLng / 2)
         val c = 2 * atan2(sqrt(a), sqrt(1 - a))
         return (earthRadius * c).toFloat()
     }
@@ -234,19 +241,31 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 //                        center.longitude
 //                    ) < 3000
 //                ) {
-                    addStationMarker(
-                        latLng,
-                        count.toString(),
-                        code,
-                        name
-                    )
+                addStationMarker(
+                    latLng,
+                    count.toString(),
+                    code,
+                    name
+                )
 //                }
             }
         }
     }
 
     private fun addStationMarker(latLng: LatLng, count: String, code: Int, name: String) {
-        val bmp: Bitmap = WriteTextOnDrawable.write(R.mipmap.green_marker, count, 18, 2)
+        var bmp: Bitmap = WriteTextOnDrawable.write(R.mipmap.green_marker, count, 18, 2)
+        when {
+            count in 1..2 -> {
+                bmp = WriteTextOnDrawable.write(R.mipmap.green_marker, count, 18, 2)
+            }
+            count in 3..5 -> {
+                bmp = WriteTextOnDrawable.write(R.mipmap.yellow_marker, count, 18, 2)
+            }
+            count > 5.toString() -> {
+                bmp = WriteTextOnDrawable.write(R.mipmap.red_marker, count, 18, 2)
+            }
+        }
+
         try {
             val model = StationModel(
                 code,
