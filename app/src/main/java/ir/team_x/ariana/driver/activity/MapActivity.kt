@@ -20,6 +20,7 @@ import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMapBinding
 import ir.team_x.ariana.driver.gps.LocationAssistant
+import ir.team_x.ariana.driver.gps.MyLocation
 import ir.team_x.ariana.driver.model.StationModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.WriteTextOnDrawable
@@ -47,8 +48,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         MapsInitializer.initialize(MyApplication.context)
         binding.map.getMapAsync(this)
 
-        lastLocation=MyApplication.prefManager.getLastLocation()
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -56,8 +55,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
-
-//        getStation()
 
         locationAssistant = LocationAssistant(
             MyApplication.context,
@@ -77,10 +74,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             stationCircle.remove()
             animateToLocation(lastLocation.latitude, lastLocation.longitude)
         }
-
-        MyApplication.handler.postDelayed({
-            animateToLocation(lastLocation.latitude, lastLocation.longitude)
-        }, 500)
 
     }
 
@@ -109,14 +102,36 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         locationAssistant.stop()
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(MyApplication.currentActivity, MainActivity::class.java))
+        finish()
+    }
+
     override fun onMapReady(p0: GoogleMap?) {
         if (p0 != null) {
             googleMap = p0
             googleMap.mapType = GoogleMap.MAP_TYPE_NORMAL
 
-//            if (lastLocation.latitude in 20.0..40.0) {
-//                animateToLocation(lastLocation.latitude, lastLocation.longitude)
-//            }
+            val locationResult: MyLocation.LocationResult = object : MyLocation.LocationResult() {
+                override fun gotLocation(location: Location?) {
+                    if (location == null) {
+                        return
+                    }
+                    try {
+                        lastLocation = location
+
+                        if (lastLocation.latitude in 20.0..40.0) {
+                            animateToLocation(lastLocation.latitude, lastLocation.longitude)
+                        }
+//                        refreshMyLocationMarker()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+
+            val myLocation = MyLocation()
+            myLocation.getLocation(MyApplication.currentActivity, locationResult)
 
             MyApplication.handler.postDelayed({
                 if (DataHolder.instance().stationArr == null) {
@@ -128,14 +143,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 
             googleMap.setOnCameraChangeListener {
                 try {
-                    val mUpCameraPosition: CameraPosition = googleMap.getCameraPosition()
-                    val temp = LatLng(
-                        mUpCameraPosition.target.latitude,
-                        mUpCameraPosition.target.longitude
-                    )
                     hideStation()
                     DataHolder.instance().stationArr?.let { it1 -> showStation(it1) }
                 } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
 
@@ -199,15 +210,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         val earthRadius = 6371000.0 //meters
         val dLat = Math.toRadians(lat2 - lat1)
         val dLng = Math.toRadians(lng2 - lng1)
-        val a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(Math.toRadians(lat1)) * Math.cos(
-            Math.toRadians(
-                lat2
-            )
-        ) *
-                sin(dLng / 2) * sin(dLng / 2)
-        val c =
-            2 * atan2(sqrt(a), sqrt(1 - a))
+        val a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * sin(dLng / 2) * sin(dLng / 2)
+        val c = 2 * atan2(sqrt(a), sqrt(1 - a))
         return (earthRadius * c).toFloat()
     }
 
@@ -223,20 +227,20 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
                 val latLng = LatLng(dataObj.getDouble("lat"), dataObj.getDouble("long"))
                 val count = dataObj.getInt("countService")
 
-                if (distFrom(
-                        latLng.longitude,
-                        latLng.longitude,
-                        center.latitude,
-                        center.longitude
-                    ) < 3000
-                ) {
+//                if (distFrom(
+//                        latLng.longitude,
+//                        latLng.longitude,
+//                        center.latitude,
+//                        center.longitude
+//                    ) < 3000
+//                ) {
                     addStationMarker(
                         latLng,
                         count.toString(),
                         code,
                         name
                     )
-                }
+//                }
             }
         }
     }

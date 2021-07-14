@@ -22,12 +22,12 @@
             android:src="@drawable/ic_news" />
 
         <TextView
+            android:id="@+id/txtDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="23 تبر 09:06"
-            android:textColor="@color/colorBlack"
-           android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_8sdp"/>
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:textColor="@color/colorBlack" />
 
     </LinearLayout>
 
@@ -40,29 +40,28 @@
         android:padding="@dimen/_8sdp">
 
         <TextView
-            android:id="@+id/txtDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
             android:gravity="left"
-            android:textColor="@color/grayMedium"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginTop="@dimen/_5sdp" />
+            android:textColor="@color/grayMedium" />
 
         <TextView
             android:id="@+id/txtTitle"
             style="@style/Details_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
             android:textSize="@dimen/_15sdp"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/_8sdp"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtNews"
             style="@style/Details_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_10sdp"/>
+            android:layout_marginRight="@dimen/_10sdp" />
 
         <View
             android:layout_width="wrap_content"

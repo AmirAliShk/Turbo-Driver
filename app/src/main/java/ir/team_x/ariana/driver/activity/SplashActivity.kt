@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.Constant
+import ir.team_x.ariana.driver.app.DataHolder
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivitySplashBinding
 import ir.team_x.ariana.driver.utils.AppVersionHelper
@@ -19,7 +20,8 @@ import ir.team_x.ariana.driver.webServices.GetAppInfo
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class SplashActivity : AppCompatActivity() {
-    private val permission = arrayOf(Manifest.permission.RECORD_AUDIO,Manifest.permission.ACCESS_FINE_LOCATION)
+    private val permission =
+        arrayOf(Manifest.permission.RECORD_AUDIO, Manifest.permission.ACCESS_FINE_LOCATION)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +37,9 @@ class SplashActivity : AppCompatActivity() {
 
         binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
         MyApplication.avaStart()
-        MyApplication.handler.postDelayed(Runnable {
+        DataHolder.instance().stationArr = null
+
+        MyApplication.handler.postDelayed({
             checkPermission()
         }, 1500)
     }
@@ -44,7 +48,11 @@ class SplashActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= 23) {
             val hasAudioPermission =
                 ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
-            if (hasAudioPermission != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (hasAudioPermission != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 //TODO show dialog later
                 ActivityCompat.requestPermissions(
                     this,

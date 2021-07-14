@@ -79,7 +79,7 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
                         val dataObj = jsonObject.getJSONObject("data")
                         FragmentHelper.toFragment(
                             MyApplication.currentActivity,
-                            NewsDetailsFragment()
+                            NewsDetailsFragment(dataObj.getString("title"), dataObj.getString("message"))
                         ).add()
                     }
 
