@@ -52,6 +52,7 @@ class NewsFragment : Fragment() {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
                 try {
+                    newsModels.clear()
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -91,6 +92,5 @@ class NewsFragment : Fragment() {
             }
         }
     }
-
 
 }
