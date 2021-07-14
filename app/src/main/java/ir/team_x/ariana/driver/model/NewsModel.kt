@@ -5,5 +5,5 @@ data class NewsModel(
  var image:String,
  var saveDate:String,
  var title:String,
- var message:String
+ var newMessage:Int
 )

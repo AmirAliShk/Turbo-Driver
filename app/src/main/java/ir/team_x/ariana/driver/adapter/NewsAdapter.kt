@@ -3,6 +3,7 @@ package ir.team_x.ariana.driver.adapter
 import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
@@ -47,8 +48,12 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
         val time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.saveDate + "", null))
 
         holder.binding.txtTitle.text = StringHelper.toPersianDigits(model.title)
-        holder.binding.txtNews.text = StringHelper.toPersianDigits(model.message)
         holder.binding.txtDate.text = StringHelper.toPersianDigits("$date $time")
+        if (model.newMessage == 1) {
+            holder.binding.txtNew.visibility = View.VISIBLE
+        } else {
+            holder.binding.txtNew.visibility = View.INVISIBLE
+        }
 
         holder.itemView.setOnClickListener {
             newsDetails(model.id)
@@ -79,7 +84,10 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
                         val dataObj = jsonObject.getJSONObject("data")
                         FragmentHelper.toFragment(
                             MyApplication.currentActivity,
-                            NewsDetailsFragment(dataObj.getString("title"), dataObj.getString("message"))
+                            NewsDetailsFragment(
+                                dataObj.getString("title"),
+                                dataObj.getString("message")
+                            )
                         ).add()
                     }
 
