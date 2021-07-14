@@ -23,6 +23,7 @@ import ir.team_x.ariana.driver.gps.LocationAssistant
 import ir.team_x.ariana.driver.model.StationModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.WriteTextOnDrawable
+import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.math.atan2
 import kotlin.math.sin
@@ -46,6 +47,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         MapsInitializer.initialize(MyApplication.context)
         binding.map.getMapAsync(this)
 
+        lastLocation=MyApplication.prefManager.getLastLocation()
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -54,7 +57,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
 
-        getStation()
+//        getStation()
 
         locationAssistant = LocationAssistant(
             MyApplication.context,
@@ -110,6 +113,32 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         if (p0 != null) {
             googleMap = p0
             googleMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+
+//            if (lastLocation.latitude in 20.0..40.0) {
+//                animateToLocation(lastLocation.latitude, lastLocation.longitude)
+//            }
+
+            MyApplication.handler.postDelayed({
+                if (DataHolder.instance().stationArr == null) {
+                    getStation()
+                } else {
+                    DataHolder.instance().stationArr?.let { showStation(it) }
+                }
+            }, 500)
+
+            googleMap.setOnCameraChangeListener {
+                try {
+                    val mUpCameraPosition: CameraPosition = googleMap.getCameraPosition()
+                    val temp = LatLng(
+                        mUpCameraPosition.target.latitude,
+                        mUpCameraPosition.target.longitude
+                    )
+                    hideStation()
+                    DataHolder.instance().stationArr?.let { it1 -> showStation(it1) }
+                } catch (e: Exception) {
+                }
+            }
+
         }
     }
 
@@ -149,7 +178,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         )
     }
 
-    fun hideStation() {
+    private fun hideStation() {
         if (markerList == null || markerList.isEmpty()) {
             return
         }
@@ -161,7 +190,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         }
     }
 
-    fun distFrom(
+    private fun distFrom(
         lat1: Double,
         lng1: Double,
         lat2: Double,
@@ -182,46 +211,55 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         return (earthRadius * c).toFloat()
     }
 
-    fun showStation() {
+    private fun showStation(stationArr: JSONArray) {
         val mUpCameraPosition: CameraPosition = googleMap.cameraPosition
         val center = LatLng(mUpCameraPosition.target.latitude, mUpCameraPosition.target.longitude)
-        for (i in 0 until markerList.size) {
-//            if (distFrom(
-//                    markerList[i].latLng.latitude,
-//                    markerList[i].latLng.longitude,
-//                    center.latitude,
-//                    center.longitude
-//                ) < 3000
-//            ) {
-//                addStationMarker(
-//                    LatLng(
-//                        markerList[i].latLng.latitude,
-//                        markerList[i].latLng.longitude
-//                    ), markerList[i].code
-//                )
-//            }
+
+        MyApplication.handler.post {
+            for (i in 0 until stationArr.length()) {
+                val dataObj = stationArr.getJSONObject(i)
+                val code = dataObj.getInt("stationCode")
+                val name = dataObj.getString("stationName")
+                val latLng = LatLng(dataObj.getDouble("lat"), dataObj.getDouble("long"))
+                val count = dataObj.getInt("countService")
+
+                if (distFrom(
+                        latLng.longitude,
+                        latLng.longitude,
+                        center.latitude,
+                        center.longitude
+                    ) < 3000
+                ) {
+                    addStationMarker(
+                        latLng,
+                        count.toString(),
+                        code,
+                        name
+                    )
+                }
+            }
         }
     }
 
-//    private fun addStationMarker(latLng: LatLng, value: String) {
-//        val bmp: Bitmap = WriteTextOnDrawable.write(R.mipmap.green_marker, value, 18, 2)
-//        try {
-//            val model = StationModel(
-//                0,
-//                "",
-//                latLng,
-//                value.toInt(),
-//                googleMap.addMarker(
-//                    MarkerOptions()
-//                        .icon(BitmapDescriptorFactory.fromBitmap(bmp))
-//                        .position(latLng)
-//                )
-//            )
-//            markerList.add(model)
-//        } catch (e: java.lang.Exception) {
-//            e.printStackTrace()
-//        }
-//    }
+    private fun addStationMarker(latLng: LatLng, count: String, code: Int, name: String) {
+        val bmp: Bitmap = WriteTextOnDrawable.write(R.mipmap.green_marker, count, 18, 2)
+        try {
+            val model = StationModel(
+                code,
+                name,
+                latLng,
+                count.toInt(),
+                googleMap.addMarker(
+                    MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromBitmap(bmp))
+                        .position(latLng)
+                )
+            )
+            markerList.add(model)
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+    }
 
     private fun getStation() {
         RequestHelper.builder(EndPoint.STATION)
@@ -234,39 +272,13 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             MyApplication.handler.post {
                 try {
 //                    {stationCode: 1,stationName: "غدیر",lat: 36.257052,long: 59.619728,countService: 7}
-
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
                     if (success) {
                         val dataArr = jsonObject.getJSONArray("data")
-                        for (i in 0 until dataArr.length()) {
-                            val dataObj = dataArr.getJSONObject(i)
-                            val bmp: Bitmap = WriteTextOnDrawable.write(
-                                R.mipmap.green_marker,
-                                dataObj.getInt("countService").toString(),
-                                18,
-                                2
-                            )
-                            val model = StationModel(
-                                dataObj.getInt("stationCode"),
-                                dataObj.getString("stationName"),
-                                LatLng(dataObj.getDouble("lat"), dataObj.getDouble("long")),
-                                dataObj.getInt("countService"),
-                                googleMap.addMarker(
-                                    MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(bmp))
-                                        .position(
-                                            LatLng(
-                                                dataObj.getDouble("lat"),
-                                                dataObj.getDouble("long")
-                                            )
-                                        )
-                                )
-                            )
-                            markerList.add(model)
-                        }
-//                        showStation()
-                        DataHolder.instance?.stationArr = dataArr
+                        DataHolder.instance().stationArr = dataArr
+                        showStation(dataArr)
                     }
 
                 } catch (e: Exception) {
