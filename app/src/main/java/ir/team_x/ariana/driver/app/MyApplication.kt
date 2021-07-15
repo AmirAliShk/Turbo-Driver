@@ -46,12 +46,12 @@ class MyApplication : Application() {
         }
 
         fun avaStart() {
-            if (prefManager.getAvaPID() === 0) return
+            if (prefManager.getAvaPID() == 0) return
             if (prefManager.getAvaToken() == null) return
             AvaFactory.getInstance(context)
-                .setUserID("1")
+                .setUserID("1") // TODO cahge user id
                 .setProjectID(prefManager.getAvaPID())
-                .setToken("arianaDriverAABMohsenX") // TODO change value
+                .setToken(prefManager.getAvaToken())
                 .setAddress(EndPoint.PUSH_ADDRESS)
                 .start();
         }

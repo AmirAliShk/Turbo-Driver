@@ -51,16 +51,14 @@ class MainActivity : AppCompatActivity() {
         TypeFaceUtilJava.overrideFonts(binding.txtDriverName, MyApplication.iranSansMediumTF)
         TypeFaceUtilJava.overrideFonts(binding.txtStatus, MyApplication.iranSansMediumTF)
 
-        MyApplication.prefManager.setAvaPID(10)//TODO move to splash response
-        MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value
-
         if (!isDriverActive()) {
             binding.txtStatus.text = "برای وارد شدن فعال را بزنید"
             binding.swStationRegister.visibility = View.INVISIBLE
             binding.swEnterExit.isChecked = false
         }
 
-        binding.txtLock.isSelected = true;
+        binding.txtLock.isSelected = true
+        binding.txtDriverName.text=MyApplication.prefManager.getUserName()
 
         handleStatusByServer()
 
@@ -424,13 +422,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        super.onResume()
         MyApplication.currentActivity = this
         MyApplication.prefManager.setAppRun(true)
         if (MyApplication.prefManager.getCharge() != "")
             binding.txtCharge.text =
                 StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
         startGetStatus()
+        super.onResume()
     }
 
     override fun onStart() {

@@ -30,6 +30,10 @@ class ProfileFragment : Fragment() {
             FragmentHelper.toFragment(MyApplication.currentActivity,AboutUsFragment()).replace()
         }
 
+        binding.txtName.text=MyApplication.prefManager.getUserName()
+        binding.txtIben.text=MyApplication.prefManager.getIban()
+        binding.txtNationalCode.text=MyApplication.prefManager.getNational()
+
         return binding.root
     }
 

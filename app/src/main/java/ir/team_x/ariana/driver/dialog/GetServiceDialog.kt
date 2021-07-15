@@ -71,6 +71,7 @@ class GetServiceDialog() {
 
                 override fun onFailure() {
                     binding.vfAcceptService.displayedChild = 0
+                    dismiss()
                 }
             })
         }

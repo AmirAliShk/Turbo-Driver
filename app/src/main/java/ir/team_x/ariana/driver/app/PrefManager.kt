@@ -18,9 +18,6 @@ class PrefManager {
     }
 
     private val USER_NAME = "userName"
-    private val SIP_PASSWORD = "sipPassword"
-    private val SIP_SERVER = "sipServer"
-    private val SIP_NUMBER = "sipNumber"
     private val REFRESH_TOKEN = "refreshToken"
     private val AUTHORIZATION = "authorixation"
     private val ID_TOKEN = "idToken"
@@ -37,6 +34,8 @@ class PrefManager {
     private val CHARGE = "charge"
     private val LOCK_STATUS = "LockStatus"
     private val LOCK_REASONES = "lockReasons"
+    private val IBAN = "iban"
+    private val NATIONAL_CODE = "nationlCode"
 
     fun getRefreshToken(): String? {
         return sharedPreferences.getString(REFRESH_TOKEN, "")
@@ -53,7 +52,8 @@ class PrefManager {
 
     fun getLastLocation(): LatLng {
         return LatLng(
-            sharedPreferences.getFloat(KEY_LAST_LAT, 36.317265F).toDouble(), sharedPreferences.getFloat(KEY_LAST_LNG, 59.562635F).toDouble()
+            sharedPreferences.getFloat(KEY_LAST_LAT, 36.317265F).toDouble(),
+            sharedPreferences.getFloat(KEY_LAST_LNG, 59.562635F).toDouble()
         )
     }
 
@@ -82,11 +82,29 @@ class PrefManager {
     }
 
     fun getLockReasons(): String {
-        return sharedPreferences.getString(LOCK_REASONES,"").toString()
+        return sharedPreferences.getString(LOCK_REASONES, "").toString()
     }
 
     fun setLockReasons(v: String) {
         editor.putString(LOCK_REASONES, v)
+        editor.commit()
+    }
+
+    fun getIban(): String {
+        return sharedPreferences.getString(IBAN, "").toString()
+    }
+
+    fun setIban(v: String) {
+        editor.putString(IBAN, v)
+        editor.commit()
+    }
+
+    fun getNational(): String {
+        return sharedPreferences.getString(NATIONAL_CODE, "").toString()
+    }
+
+    fun setNational(v: String) {
+        editor.putString(NATIONAL_CODE, v)
         editor.commit()
     }
 
@@ -173,33 +191,6 @@ class PrefManager {
 
     fun setLastNotification(v: String?) {
         editor.putString(LAST_NOTIFICATION, v)
-        editor.commit()
-    }
-
-    fun getSipNumber(): String? {
-        return sharedPreferences.getString(SIP_NUMBER, "")
-    }
-
-    fun setSipNumber(sipNumber: String) {
-        editor.putString(SIP_NUMBER, sipNumber)
-        editor.commit()
-    }
-
-    fun getSipPassword(): String? {
-        return sharedPreferences.getString(SIP_PASSWORD, "")
-    }
-
-    fun setSipPassword(sipPassword: String) {
-        editor.putString(SIP_PASSWORD, sipPassword)
-        editor.commit()
-    }
-
-    fun getSipServer(): String? {
-        return sharedPreferences.getString(SIP_SERVER, "")
-    }
-
-    fun setSipServer(sipServer: String) {
-        editor.putString(SIP_SERVER, sipServer)
         editor.commit()
     }
 

@@ -21,12 +21,12 @@ public class GetAppInfo {
     @SuppressLint("HardwareIds")
     fun callAppInfoAPI() {
         try {
-            if (MyApplication.prefManager.getRefreshToken().equals("")) {
-                FragmentHelper
-                    .toFragment(MyApplication.currentActivity, LoginFragment())
-                    .setAddToBackStack(false)
-                    .add()
-            } else {
+//            if (MyApplication.prefManager.getRefreshToken().equals("")) {
+//                FragmentHelper
+//                    .toFragment(MyApplication.currentActivity, LoginFragment())
+//                    .setAddToBackStack(false)
+//                    .add()
+//            } else {
             val android_id = Settings.Secure.getString(
                 MyApplication.currentActivity.contentResolver,
                 Settings.Secure.ANDROID_ID
@@ -59,7 +59,7 @@ public class GetAppInfo {
                 .addParam("deviceInfo", deviceInfo)
                 .listener(getAppInfoCallBack)
                 .post()
-            }
+//            }
         } catch (e: Exception) {
 
         }
@@ -69,10 +69,6 @@ public class GetAppInfo {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
                 try {
-//                    {"isLock":0,"reasonDescription":"","isActive":1,"notActiveMessage":""
-                    //                    ,"updateAvialable":0,"forceUpdate":0,"updateUrl":"",
-                    //                    "firstName":"سعید","lastName":"نیابتی","IBAN":"2122",
-                    //                    "charge":1606757}}
                     val splashJson = JSONObject(args[0].toString())
                     val success = splashJson.getBoolean("success")
                     val message = splashJson.getString("message")
@@ -92,17 +88,23 @@ public class GetAppInfo {
                         )
                         MyApplication.prefManager.setLockStatus(isLock)
                         MyApplication.prefManager.setLockReasons(reasonDescription)
+                        MyApplication.prefManager.setIban(dataObject.getString("IBAN"))
+                        MyApplication.prefManager.setCharge(dataObject.getString("charge"))
+                        MyApplication.prefManager.setNational(dataObject.getString("nationalCode"))
+                        MyApplication.prefManager.setAvaPID(dataObject.getInt("pushId"))
+                        MyApplication.prefManager.setAvaToken(dataObject.getString("pushToken"))
 
-                        if (isActive == 1) {
-                            GeneralDialog()
-                                .message("اکانت شما توسط سیستم مسدود شده است")
-                                .secondButton("خروج از برنامه") {
-                                    MyApplication.currentActivity.finish()
-                                }
-                                .show()
-                            return@post
-                        }
+//                        if (isActive == 1) { // TODO uncomment this
+//                            GeneralDialog()
+//                                .message("اکانت شما توسط سیستم مسدود شده است")
+//                                .secondButton("خروج از برنامه") {
+//                                    MyApplication.currentActivity.finish()
+//                                }
+//                                .show()
+//                            return@post
+//                        }
 
+                        MyApplication.avaStart()
                         MyApplication.currentActivity.startActivity(
                             Intent(
                                 MyApplication.currentActivity,

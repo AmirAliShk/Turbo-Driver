@@ -51,6 +51,7 @@ class ServiceDetailsFragment(
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtPageTitle)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtDate.text = StringHelper.toPersianDigits(
@@ -85,7 +86,7 @@ class ServiceDetailsFragment(
             CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
         }
         binding.txtFinish.setOnClickListener {
-            bill(serviceModel.id, "10000")//TODO change price
+            bill(serviceModel.id, serviceModel.priceService)//TODO change price
         }
 
         return binding.root

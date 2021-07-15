@@ -32,10 +32,5 @@ data class ServiceDataModel(
   var carTypeName:String,
   var sourceAddress:String,
   var destinationAddress:String,
-  var discount:String,
-  var priceService:String,
-  var tax:String,
-  var priceCustomer:String,
-  var finalPrice:String,
-  var commission:String,
+  var priceService:String
 )

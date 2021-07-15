@@ -52,7 +52,7 @@ class FactorDialog {
         binding.btnEndTrip.setOnClickListener { finish(serId, priceObj.getString("priceService")) }
         binding.txtTotalAmount.text = priceObj.getString("priceService")
         binding.txtTax.text = priceObj.getString("tax")
-        binding.txtCompanyShare.text = priceObj.getString("Commission")
+        binding.txtCompanyShare.text = priceObj.getString("commission")
         binding.txtDiscount.text = priceObj.getString("discount")
         binding.txtDriverShare.text = priceObj.getString("finalPrice")
         binding.txtCustomerPrice.text = priceObj.getString("finalPrice")

@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -37,7 +38,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     lateinit var binding: ActivityMapBinding
     lateinit var locationAssistant: LocationAssistant
     lateinit var lastLocation: Location
-    lateinit var myLocationMarker: Marker
+    var myLocationMarker: Marker? = null
     lateinit var stationCircle: Circle
     private val markerList: ArrayList<StationModel> = ArrayList()
 
@@ -71,11 +72,12 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         }
 
         binding.imgGps.setOnClickListener {
+            Log.i("TAG", "onCreate: $lastLocation")
             if (lastLocation.latitude == null || lastLocation.latitude == 0.0 || lastLocation.longitude == 0.0 || lastLocation.longitude == null) {
                 GeneralDialog().message("متاسفانه موقعیت در دسترس نمیباشد پس از چند لحظه مجدد امتحان کنید")
                     .firstButton("باشه") {}.show()
+                return@setOnClickListener
             }
-            myLocationMarker.remove()
             stationCircle.remove()
             animateToLocation(lastLocation.latitude, lastLocation.longitude)
         }
@@ -139,11 +141,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             myLocation.getLocation(MyApplication.currentActivity, locationResult)
 
             MyApplication.handler.postDelayed({
-                if (DataHolder.instance().stationArr == null) {
+//                if (DataHolder.instance().stationArr == null) {
                     getStation()
-                } else {
-                    DataHolder.instance().stationArr?.let { showStation(it) }
-                }
+//                } else {
+//                    DataHolder.instance().stationArr?.let { showStation(it) }
+//                }
             }, 500)
 
             googleMap.setOnCameraChangeListener {
@@ -184,6 +186,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     }
 
     private fun refreshLocation() {
+        myLocationMarker?.remove()
         val bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.pin)
         myLocationMarker = googleMap.addMarker(
             MarkerOptions()
