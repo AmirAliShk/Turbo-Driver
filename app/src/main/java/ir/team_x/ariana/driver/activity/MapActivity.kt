@@ -32,6 +32,7 @@ import kotlin.math.atan2
 import kotlin.math.sin
 import kotlin.math.sqrt
 
+
 class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.Listener {
 
     private lateinit var googleMap: GoogleMap
@@ -148,6 +149,13 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 //                }
             }, 500)
 
+            val cameraPosition = CameraPosition.Builder()
+                .target(MyApplication.prefManager.getLastLocation())
+                .zoom(12f)
+                .build()
+
+            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
             googleMap.setOnCameraChangeListener {
                 try {
                     hideStation()
@@ -246,7 +254,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 //                ) {
                 addStationMarker(
                     latLng,
-                    count.toString(),
+                    count,
                     code,
                     name
                 )
@@ -255,17 +263,17 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         }
     }
 
-    private fun addStationMarker(latLng: LatLng, count: String, code: Int, name: String) {
-        var bmp: Bitmap = WriteTextOnDrawable.write(R.mipmap.green_marker, count, 18, 2)
+    private fun addStationMarker(latLng: LatLng, count: Int, code: Int, name: String) {
+        var bmp: Bitmap = WriteTextOnDrawable.write(R.mipmap.green_marker, count.toString(), 18, 2)
         when {
             count in 1..2 -> {
-                bmp = WriteTextOnDrawable.write(R.mipmap.green_marker, count, 18, 2)
+                bmp = WriteTextOnDrawable.write(R.mipmap.green_marker, count.toString(), 18, 2)
             }
             count in 3..5 -> {
-                bmp = WriteTextOnDrawable.write(R.mipmap.yellow_marker, count, 18, 2)
+                bmp = WriteTextOnDrawable.write(R.mipmap.yellow_marker, count.toString(), 18, 2)
             }
-            count > 5.toString() -> {
-                bmp = WriteTextOnDrawable.write(R.mipmap.red_marker, count, 18, 2)
+            count > 5 -> {
+                bmp = WriteTextOnDrawable.write(R.mipmap.red_marker, count.toString(), 18, 2)
             }
         }
 

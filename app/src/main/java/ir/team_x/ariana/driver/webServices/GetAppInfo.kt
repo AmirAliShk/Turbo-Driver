@@ -2,6 +2,7 @@ package ir.team_x.ariana.driver.webServices
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import ir.team_x.ariana.driver.activity.MainActivity
@@ -15,8 +16,7 @@ import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.ScreenHelper
 import org.json.JSONObject
 
-
-public class GetAppInfo {
+class GetAppInfo {
 
     @SuppressLint("HardwareIds")
     fun callAppInfoAPI() {
@@ -81,6 +81,7 @@ public class GetAppInfo {
                         val updateAvialable = dataObject.getInt("updateAvialable")
                         val forceUpdate = dataObject.getInt("forceUpdate")
                         val updateUrl = dataObject.getString("updateUrl")
+                        val driverId = dataObject.getInt("driverId")
                         MyApplication.prefManager.setUserName(
                             dataObject.getString("firstName") + " " + dataObject.getString(
                                 "lastName"
@@ -94,6 +95,10 @@ public class GetAppInfo {
                         MyApplication.prefManager.setAvaPID(dataObject.getInt("pushId"))
                         MyApplication.prefManager.setAvaToken(dataObject.getString("pushToken"))
 
+                        if (updateAvialable == 1) {
+                            update(forceUpdate == 1, updateUrl)
+                            return@post
+                        }
 //                        if (isActive == 1) { // TODO uncomment this
 //                            GeneralDialog()
 //                                .message("اکانت شما توسط سیستم مسدود شده است")
@@ -126,4 +131,37 @@ public class GetAppInfo {
             }
         }
     }
+
+    fun update(isForce: Boolean, url: String) {
+        if (isForce) {
+            GeneralDialog()
+                .message("برای برنامه نسخه جدیدی موجود است لطفا برنامه را به روز رسانی کنید")
+                .firstButton("به روز رسانی") {
+                    val i = Intent(Intent.ACTION_VIEW)
+                    i.data = Uri.parse(url)
+                    MyApplication.currentActivity.startActivity(i)
+                    MyApplication.currentActivity.finish()
+                }.secondButton("بستن") {
+                    MyApplication.currentActivity.finish()
+                }.cancelable(false).show()
+        } else {
+            GeneralDialog()
+                .message("برای برنامه نسخه جدیدی موجود است در صورت تمایل میتوانید برنامه را به روز رسانی کنید")
+                .firstButton("به روز رسانی") {
+                    val i = Intent(Intent.ACTION_VIEW)
+                    i.data = Uri.parse(url)
+                    MyApplication.currentActivity.startActivity(i)
+                    MyApplication.currentActivity.finish()
+                }.secondButton("فعلا نه") {
+                    MyApplication.currentActivity.startActivity(
+                        Intent(
+                            MyApplication.currentActivity,
+                            MainActivity::class.java
+                        )
+                    )
+                    MyApplication.currentActivity.finish()
+                }.cancelable(false).show()
+        }
+    }
+
 }
