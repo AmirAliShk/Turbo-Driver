@@ -88,7 +88,7 @@ public class AuthenticationInterceptor implements Interceptor {
             }
             RequestBody body = RequestBody.create(jsonType, json.toString());
             Request request = new Request.Builder()
-                    .url(EndPoint.REFRESH_TOKEN)
+                    .url(EndPoint.Companion.getREFRESH_TOKEN())
                     .post(body)
                     .build();
 

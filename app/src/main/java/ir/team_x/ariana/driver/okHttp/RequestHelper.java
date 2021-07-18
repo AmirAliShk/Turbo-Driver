@@ -18,6 +18,7 @@ import ir.team_x.ariana.driver.app.EndPoint;
 import ir.team_x.ariana.driver.app.MyApplication;
 import ir.team_x.ariana.driver.dialog.ErrorDialog;
 import ir.team_x.ariana.driver.dialog.GeneralDialog;
+import ir.team_x.ariana.driver.fragment.login.VerificationFragment;
 import ir.team_x.ariana.driver.push.AvaCrashReporter;
 import ir.team_x.ariana.driver.utils.FragmentHelper;
 import ir.team_x.ariana.driver.utils.StringHelper;
@@ -493,7 +494,7 @@ public class RequestHelper implements okhttp3.Callback {
     private void logout() {
         MyApplication.handler.post(() -> {
             FragmentHelper
-                    .toFragment(MyApplication.currentActivity, new LoginFragment())
+                    .toFragment(MyApplication.currentActivity, new VerificationFragment())
                     .setStatusBarColor(MyApplication.currentActivity.getResources().getColor(R.color.colorPrimary))
                     .setAddToBackStack(false)
                     .replace();

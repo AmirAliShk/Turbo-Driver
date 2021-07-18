@@ -36,6 +36,17 @@ class PrefManager {
     private val LOCK_REASONES = "lockReasons"
     private val IBAN = "iban"
     private val NATIONAL_CODE = "nationlCode"
+    private val REPEAT_TIME = "repeatTime"
+    private val KEY_ACTIVATION_REMAINING_TIME = "activationRemainingTime"
+
+    fun setActivationRemainingTime(v: Long) {
+        editor.putLong(KEY_ACTIVATION_REMAINING_TIME, v)
+        editor.commit()
+    }
+
+    fun getActivationRemainingTime(): Long {
+        return sharedPreferences.getLong(KEY_ACTIVATION_REMAINING_TIME, 60000)
+    }
 
     fun getRefreshToken(): String? {
         return sharedPreferences.getString(REFRESH_TOKEN, "")
@@ -69,6 +80,15 @@ class PrefManager {
 
     fun setDriverStatus(v: Boolean) {
         editor.putBoolean(DRIVER_STATUS, v)
+        editor.commit()
+    }
+
+    fun getRepetitionTime(): Int {
+        return sharedPreferences.getInt(REPEAT_TIME, 0)
+    }
+
+    fun setRepetitionTime(v: Int) {
+        editor.putInt(REPEAT_TIME, v)
         editor.commit()
     }
 

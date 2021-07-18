@@ -10,6 +10,7 @@ import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.fragment.LoginFragment
+import ir.team_x.ariana.driver.fragment.login.VerificationFragment
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.AppVersionHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
@@ -21,12 +22,12 @@ class GetAppInfo {
     @SuppressLint("HardwareIds")
     fun callAppInfoAPI() {
         try {
-//            if (MyApplication.prefManager.getRefreshToken().equals("")) {
-//                FragmentHelper
-//                    .toFragment(MyApplication.currentActivity, LoginFragment())
-//                    .setAddToBackStack(false)
-//                    .add()
-//            } else {
+            if (MyApplication.prefManager.getRefreshToken().equals("")) {
+                FragmentHelper
+                    .toFragment(MyApplication.currentActivity, VerificationFragment())
+                    .setAddToBackStack(false)
+                    .add()
+            } else {
             val android_id = Settings.Secure.getString(
                 MyApplication.currentActivity.contentResolver,
                 Settings.Secure.ANDROID_ID
@@ -59,7 +60,7 @@ class GetAppInfo {
                 .addParam("deviceInfo", deviceInfo)
                 .listener(getAppInfoCallBack)
                 .post()
-//            }
+            }
         } catch (e: Exception) {
 
         }

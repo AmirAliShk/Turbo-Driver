@@ -72,6 +72,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             finish()
         }
 
+        binding.imgRefresh.setOnClickListener {
+            getStation()
+        }
+
         binding.imgGps.setOnClickListener {
             Log.i("TAG", "onCreate: $lastLocation")
             if (lastLocation.latitude == null || lastLocation.latitude == 0.0 || lastLocation.longitude == 0.0 || lastLocation.longitude == null) {

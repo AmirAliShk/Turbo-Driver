@@ -10,7 +10,7 @@ class EndPoint {
         val PUSH_IP = "http://turbotaxi.ir:6060"
 
         val IP_PORT = "1810"
-        val HAWKEYE_PORT = "1890"
+        val HAWKEYE_PORT = "1813"
 
         const val CRASH_REPORT = "http://turbotaxi.ir:6061/api/v1/crashReport"
 
@@ -21,13 +21,15 @@ class EndPoint {
         private val FINANCIAL_PAYS_PATH = "$BASE_PATH/financial/pays"
         private val SERVICE_PATH = "$BASE_PATH/service"
         private val STATION_PATH = "$BASE_PATH/station"
-        val LOCATION_PATH = "$IP:$IP_PORT/api/driver/v1/location/car"
+        private val LOCATION_PATH = "$IP:$IP_PORT/api/driver/v1/location/car"
+
+        private val HAWKEYE_TOKEN_PATH = "${HAWKEYE_IP}:${HAWKEYE_PORT}/api/user/v1/"
+        private val HAWKEYE_LOGIN_PATH = "${HAWKEYE_IP}:${HAWKEYE_PORT}/api/user/v1/login/phone/"
 
         /******************************** refresh token Api *********************************/
-        const val REFRESH_TOKEN = "token"
-        const val LOGIN = "login"
-        const val VERIFICATION = "verification"
-        const val CHECK = "check"
+        val REFRESH_TOKEN = "${HAWKEYE_TOKEN_PATH}token"
+        val CHECK = "${HAWKEYE_LOGIN_PATH}check"
+        val VERIFICATION = "${HAWKEYE_LOGIN_PATH}verification"
 
         /******************************** Driver Path *********************************/
         val GET_APP_INFO = "$BASE_PATH/appInfo"
