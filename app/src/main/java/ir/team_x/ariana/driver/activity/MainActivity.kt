@@ -3,7 +3,6 @@ package ir.team_x.ariana.driver.activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +14,7 @@ import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
 import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.fragment.*
+import ir.team_x.ariana.driver.fragment.financial.FinancialFragment
 import ir.team_x.ariana.driver.gps.DataGatheringService
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.*

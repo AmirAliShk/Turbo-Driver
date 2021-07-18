@@ -38,6 +38,7 @@ class PrefManager {
     private val NATIONAL_CODE = "nationlCode"
     private val REPEAT_TIME = "repeatTime"
     private val KEY_ACTIVATION_REMAINING_TIME = "activationRemainingTime"
+    private val DRIVER_ID = "driverId"
 
     fun setActivationRemainingTime(v: Long) {
         editor.putLong(KEY_ACTIVATION_REMAINING_TIME, v)
@@ -89,6 +90,15 @@ class PrefManager {
 
     fun setRepetitionTime(v: Int) {
         editor.putInt(REPEAT_TIME, v)
+        editor.commit()
+    }
+
+    fun getDriverId(): Int {
+        return sharedPreferences.getInt(DRIVER_ID, 0)
+    }
+
+    fun setDriverId(v: Int) {
+        editor.putInt(DRIVER_ID, v)
         editor.commit()
     }
 

@@ -10,9 +10,15 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import ir.team_x.ariana.driver.BuildConfig
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.push.AvaFactory
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
+import org.acra.ACRA
+import org.acra.config.CoreConfigurationBuilder
+import org.acra.config.HttpSenderConfigurationBuilder
+import org.acra.data.StringFormat
+import org.acra.sender.HttpSender
 import java.util.*
 
 class MyApplication : Application() {
@@ -49,7 +55,7 @@ class MyApplication : Application() {
             if (prefManager.getAvaPID() == 0) return
             if (prefManager.getAvaToken() == null) return
             AvaFactory.getInstance(context)
-                .setUserID("1") // TODO cahge user id
+                .setUserID(prefManager.getDriverId().toString())
                 .setProjectID(prefManager.getAvaPID())
                 .setToken(prefManager.getAvaToken())
                 .setAddress(EndPoint.PUSH_ADDRESS)
@@ -75,7 +81,27 @@ class MyApplication : Application() {
         context.resources.updateConfiguration(config, context.resources.displayMetrics)
 
         avaStart()
+        initACRA()
 
+    }
+
+    private fun initACRA() {
+        val authHeaderMap: MutableMap<String, String?> = HashMap()
+        authHeaderMap["Authorization"] = prefManager.getAuthorization()
+        authHeaderMap["id_token"] = prefManager.getIdToken()
+        val builder: CoreConfigurationBuilder = CoreConfigurationBuilder(this)
+            .setBuildConfigClass(BuildConfig::class.java)
+            .setReportFormat(StringFormat.JSON)
+        val httpPluginConfigBuilder: HttpSenderConfigurationBuilder =
+            builder.getPluginConfigurationBuilder(
+                HttpSenderConfigurationBuilder::class.java
+            )
+                .setUri(EndPoint.CRASH_REPORT)
+                .setHttpMethod(HttpSender.Method.POST)
+                .setHttpHeaders(authHeaderMap)
+                .setEnabled(true)
+        //        if (!BuildConfig.DEBUG)
+        ACRA.init(this, builder)
     }
 
     fun initTypeFace() {

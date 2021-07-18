@@ -75,7 +75,6 @@ class VerificationFragment : Fragment() {
                     val success = resObj.getBoolean("success")
                     val message = resObj.getString("message")
                     if (success) {
-                        MyApplication.Toast(message, Toast.LENGTH_SHORT)
                         val objData = resObj.getJSONObject("data")
                         val repetitionTime = objData.getInt("repetitionTime")
                         MyApplication.prefManager.setRepetitionTime(repetitionTime)
@@ -86,6 +85,7 @@ class VerificationFragment : Fragment() {
                             .setArguments(bundle)
                             .setAddToBackStack(false)
                             .replace()
+                        MyApplication.Toast(message, Toast.LENGTH_SHORT)
                     } else {
                         GeneralDialog().message(message).secondButton("باشه") {}.cancelable(false)
                             .show()

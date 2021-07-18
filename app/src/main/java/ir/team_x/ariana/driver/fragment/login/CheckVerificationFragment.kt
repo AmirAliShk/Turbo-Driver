@@ -28,7 +28,6 @@ class CheckVerificationFragment : Fragment() {
     lateinit var phoneNumber: String
     private lateinit var countDownTimer: CountDownTimer
     lateinit var code: String
-    lateinit var mobileNumber: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +65,7 @@ class CheckVerificationFragment : Fragment() {
             code = binding.pin.text.toString()
 
             if (code.isEmpty()) {
-                MyApplication.Toast("", Toast.LENGTH_SHORT)
+                MyApplication.Toast("کد را وارد کنید", Toast.LENGTH_SHORT)
                 return@setOnClickListener
             }
             checkVerification()

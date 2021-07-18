@@ -95,6 +95,7 @@ class GetAppInfo {
                         MyApplication.prefManager.setNational(dataObject.getString("nationalCode"))
                         MyApplication.prefManager.setAvaPID(dataObject.getInt("pushId"))
                         MyApplication.prefManager.setAvaToken(dataObject.getString("pushToken"))
+                        MyApplication.prefManager.setDriverId(driverId)
 
                         if (updateAvialable == 1) {
                             update(forceUpdate == 1, updateUrl)

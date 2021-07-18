@@ -1,4 +1,4 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.financial
 
 import android.os.Bundle
 import android.view.LayoutInflater

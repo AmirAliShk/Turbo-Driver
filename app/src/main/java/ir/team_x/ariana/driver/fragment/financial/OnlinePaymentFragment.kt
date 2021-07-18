@@ -1,4 +1,4 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.financial
 
 import android.content.Intent
 import android.net.Uri
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint

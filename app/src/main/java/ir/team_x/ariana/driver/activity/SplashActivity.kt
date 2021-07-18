@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import ir.team_x.ariana.driver.R
+import ir.team_x.ariana.driver.app.AppKeys.Companion.PUSH_PROJECT_ID
 import ir.team_x.ariana.driver.app.Constant
 import ir.team_x.ariana.driver.app.DataHolder
 import ir.team_x.ariana.driver.app.MyApplication
@@ -18,6 +19,7 @@ import ir.team_x.ariana.driver.databinding.ActivitySplashBinding
 import ir.team_x.ariana.driver.utils.AppVersionHelper
 import ir.team_x.ariana.driver.webServices.GetAppInfo
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
+import org.acra.ACRA
 
 class SplashActivity : AppCompatActivity() {
     private val permission =
@@ -34,6 +36,10 @@ class SplashActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.colorBlack)
         }
         TypeFaceUtil.overrideFont(binding.root)
+
+        ACRA.getErrorReporter().putCustomData("LineCode", MyApplication.prefManager.getDriverId().toString())
+        ACRA.getErrorReporter().putCustomData("DriverName", MyApplication.prefManager.getUserName())
+        ACRA.getErrorReporter().putCustomData("projectId", "$PUSH_PROJECT_ID") // 10
 
         binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
         MyApplication.avaStart()

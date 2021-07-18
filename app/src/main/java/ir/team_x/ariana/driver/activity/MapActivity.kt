@@ -123,6 +123,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         if (p0 != null) {
             googleMap = p0
             googleMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+            googleMap.uiSettings.isMapToolbarEnabled = false;
+            googleMap.uiSettings.isZoomControlsEnabled = false;
+            googleMap.uiSettings.isRotateGesturesEnabled = false;
 
             val locationResult: MyLocation.LocationResult = object : MyLocation.LocationResult() {
                 override fun gotLocation(location: Location?) {
@@ -160,14 +163,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 
             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-            googleMap.setOnCameraChangeListener {
-                try {
-                    hideStation()
-                    DataHolder.instance().stationArr?.let { it1 -> showStation(it1) }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
+//            googleMap.setOnCameraChangeListener {
+//                try {
+//                    hideStation()
+//                    DataHolder.instance().stationArr?.let { it1 -> showStation(it1) }
+//                } catch (e: Exception) {
+//                    e.printStackTrace()
+//                }
+//            }
 
         }
     }
@@ -210,7 +213,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     }
 
     private fun hideStation() {
-        if (markerList == null || markerList.isEmpty()) {
+        if (markerList.isEmpty()) {
             return
         }
         for (i in markerList.indices) {
@@ -238,6 +241,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     }
 
     private fun showStation(stationArr: JSONArray) {
+        hideStation()
         val mUpCameraPosition: CameraPosition = googleMap.cameraPosition
         val center = LatLng(mUpCameraPosition.target.latitude, mUpCameraPosition.target.longitude)
 
