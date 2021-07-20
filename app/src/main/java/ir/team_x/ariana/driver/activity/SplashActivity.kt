@@ -46,14 +46,7 @@ class SplashActivity : AppCompatActivity() {
         DataHolder.instance().stationArr = null
 
         MyApplication.handler.postDelayed({
-            MyApplication.currentActivity.startActivity(
-                Intent(
-                    MyApplication.currentActivity,
-                    MainActivity::class.java
-                )
-            )
-            MyApplication.currentActivity.finish()
-//            checkPermission() // TODO ucomment this line
+            checkPermission()
         }, 1500)
     }
 

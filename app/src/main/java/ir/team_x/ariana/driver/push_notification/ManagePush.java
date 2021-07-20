@@ -28,6 +28,7 @@ import ir.team_x.ariana.driver.app.AppStatusHelper;
 import ir.team_x.ariana.driver.app.MyApplication;
 import ir.team_x.ariana.driver.app.PrefManager;
 import ir.team_x.ariana.driver.dialog.GeneralDialog;
+import ir.team_x.ariana.driver.fragment.ToastFragment;
 import ir.team_x.ariana.driver.model.RegisterModel;
 import ir.team_x.ariana.driver.model.ServiceModel;
 import ir.team_x.ariana.driver.push.PushDataHolder;
@@ -136,7 +137,7 @@ public class ManagePush {
 //                if (!MyApplication.prefManager.isActiveTurboService()) {
 //
                 String freeService = dataArray[1];
-                new GeneralDialog().message(freeService).firstButton("ok", null).show();
+                new GeneralDialog().message(freeService).firstButton("باشه", null).show();
 
 //                    if (MyApplication.prefManager.isAppRun()) {
 //
@@ -147,7 +148,7 @@ public class ManagePush {
 //                                Animation anim = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_in_out);
 //                                anim.setRepeatCount(10);
 //                                MainFragment.cRed.startAnimation(anim);
-//
+////
 //                                anim.setAnimationListener(new Animation.AnimationListener() {
 //                                    @Override
 //                                    public void onAnimationStart(Animation animation) {

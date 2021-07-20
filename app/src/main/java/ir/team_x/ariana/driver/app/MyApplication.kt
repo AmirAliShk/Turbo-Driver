@@ -106,7 +106,7 @@ class MyApplication : Application() {
         ACRA.init(this)
     }
 
-    private fun initTypeFace() {
+    fun initTypeFace() {
         iranSansTF = Typeface.createFromAsset(assets, iranSans)
         iranSansBoldTF = Typeface.createFromAsset(assets, iranSansBold)
         iranSansMediumTF = Typeface.createFromAsset(assets, iranSansMedium)

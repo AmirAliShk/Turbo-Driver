@@ -72,7 +72,11 @@ class GetAppInfo {
                     val splashJson = JSONObject(args[0].toString())
                     val success = splashJson.getBoolean("success")
                     val message = splashJson.getString("message")
-
+//                    {"success":true,"message":"عملیات با موفقیت انجام شد.","data":{"isActive":1,"isLock":0,
+//                    "reasonDescription":"","updateAvialable":0
+//                    ,"forceUpdate":0,"updateUrl":"www.","driverId":1
+//                    ,"firstName":"سعید","lastName":"نیابتی","IBAN":"2122",
+//                    "charge":557467,"asnationalCode":"1241241","pushId":10,"pushToken":"arianaDriverAABMohse","countNews":0,"isEnter":1}}
                     if (success) {
                         val dataObject = splashJson.getJSONObject("data")
                         val isActive = dataObject.getInt("isActive")
@@ -95,6 +99,7 @@ class GetAppInfo {
                         MyApplication.prefManager.setAvaPID(dataObject.getInt("pushId"))
                         MyApplication.prefManager.setAvaToken(dataObject.getString("pushToken"))
                         MyApplication.prefManager.setDriverId(driverId)
+                        MyApplication.prefManager.setDriverStatus(dataObject.getInt("isEnter")==1)
 
                         if (updateAvialable == 1) {
                             update(forceUpdate == 1, updateUrl)

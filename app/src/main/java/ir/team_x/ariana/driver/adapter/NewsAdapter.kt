@@ -66,8 +66,7 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
     }
 
     private fun newsDetails(id: Int) {
-        RequestHelper.builder(EndPoint.GET_NEWS)
-            .addPath(id.toString())
+        RequestHelper.builder( "http://192.168.1.44:1810/api/driver/v1/news/15")
             .listener(newsDetailsCallBack)
             .get()
     }
