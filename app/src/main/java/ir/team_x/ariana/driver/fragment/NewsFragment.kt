@@ -1,5 +1,6 @@
 package ir.team_x.ariana.driver.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -93,4 +94,19 @@ class NewsFragment : Fragment() {
         }
     }
 
+    private var refreshListener: RefreshNotificationCount? = null
+
+    interface RefreshNotificationCount {
+        fun refreshNotification()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        refreshListener = context as RefreshNotificationCount
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        refreshListener?.refreshNotification()
+    }
 }

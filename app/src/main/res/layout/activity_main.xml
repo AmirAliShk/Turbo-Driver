@@ -427,9 +427,7 @@
                             android:background="@drawable/bg_red"
                             android:elevation="@dimen/_10sdp"
                             android:gravity="center"
-                            android:text="99"
-                            android:textColor="@color/colorWhite"
-                            android:visibility="invisible" />
+                            android:textColor="@color/colorWhite" />
 
                     </RelativeLayout>
 

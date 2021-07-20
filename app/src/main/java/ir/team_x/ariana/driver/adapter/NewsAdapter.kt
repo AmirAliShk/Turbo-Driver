@@ -28,6 +28,7 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     private val models = list
+    var pos = 0
 
     class ViewHolder(val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {}
@@ -56,6 +57,7 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
         }
 
         holder.itemView.setOnClickListener {
+            this.pos = position
             newsDetails(model.id)
         }
 
@@ -66,7 +68,8 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
     }
 
     private fun newsDetails(id: Int) {
-        RequestHelper.builder( "http://192.168.1.44:1810/api/driver/v1/news/15")
+        RequestHelper.builder(EndPoint.GET_NEWS)
+            .addPath(id.toString())
             .listener(newsDetailsCallBack)
             .get()
     }
@@ -81,6 +84,8 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
                     val message = jsonObject.getString("message")
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
+                        if (MyApplication.prefManager.getCountNotification() > 0 && models[pos].newMessage == 1)
+                            MyApplication.prefManager.setCountNotification(MyApplication.prefManager.getCountNotification() - 1)
                         FragmentHelper.toFragment(
                             MyApplication.currentActivity,
                             NewsDetailsFragment(

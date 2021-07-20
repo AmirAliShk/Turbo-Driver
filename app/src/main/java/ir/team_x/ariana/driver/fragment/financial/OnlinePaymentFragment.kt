@@ -16,7 +16,7 @@ import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 
 
 class OnlinePaymentFragment : Fragment() {
- private lateinit var binding : FragmentOnlinePaymentBinding
+    private lateinit var binding: FragmentOnlinePaymentBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,7 +26,7 @@ class OnlinePaymentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding =  FragmentOnlinePaymentBinding.inflate(inflater, container, false)
+        binding = FragmentOnlinePaymentBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
@@ -67,7 +67,8 @@ class OnlinePaymentFragment : Fragment() {
             try {
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse(EndPoint.PAYMENT + StringHelper.toEnglishDigits(price) + "/" + 1)) // TODO put driver code
+                    Uri.parse(EndPoint.PAYMENT + StringHelper.toEnglishDigits(price) + "/" + MyApplication.prefManager.getDriverId())
+                )
                 startActivity(browserIntent)
             } catch (e: Exception) {
                 e.printStackTrace()

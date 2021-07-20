@@ -23,7 +23,7 @@ import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount {
 
     lateinit var binding: ActivityMainBinding
     var lastLocation = LatLng(0.0, 0.0)
@@ -429,6 +429,14 @@ class MainActivity : AppCompatActivity() {
             binding.txtCharge.text =
                 StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
         startGetStatus()
+        if (MyApplication.prefManager.getCountNotification() == 0) {
+            binding.txtBadgeCount.visibility = View.GONE
+        } else {
+            binding.txtBadgeCount.visibility = View.VISIBLE
+            binding.txtBadgeCount.text = StringHelper.toPersianDigits(
+                MyApplication.prefManager.getCountNotification().toString() + ""
+            )
+        }
     }
 
     override fun onStart() {
@@ -464,4 +472,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun refreshNotification() {
+        if (MyApplication.prefManager.getCountNotification() == 0) {
+            binding.txtBadgeCount.visibility = View.GONE
+        } else {
+            binding.txtBadgeCount.visibility = View.VISIBLE
+            binding.txtBadgeCount.text = StringHelper.toPersianDigits(
+                MyApplication.prefManager.getCountNotification().toString()
+            )
+        }
+    }
 }

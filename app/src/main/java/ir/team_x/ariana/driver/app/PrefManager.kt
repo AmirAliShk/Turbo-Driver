@@ -39,6 +39,16 @@ class PrefManager {
     private val REPEAT_TIME = "repeatTime"
     private val KEY_ACTIVATION_REMAINING_TIME = "activationRemainingTime"
     private val DRIVER_ID = "driverId"
+    private val KEY_COUNT_NOTIFICATION = "countNotification"
+
+    fun setCountNotification(count: Int) {
+        editor.putInt(KEY_COUNT_NOTIFICATION, count)
+        editor.commit()
+    }
+
+    fun getCountNotification(): Int {
+        return sharedPreferences.getInt(KEY_COUNT_NOTIFICATION, 0)
+    }
 
     fun setActivationRemainingTime(v: Long) {
         editor.putLong(KEY_ACTIVATION_REMAINING_TIME, v)

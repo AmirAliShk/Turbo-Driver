@@ -27,38 +27,38 @@ class GetAppInfo {
                     .setAddToBackStack(false)
                     .add()
             } else {
-            val android_id = Settings.Secure.getString(
-                MyApplication.currentActivity.contentResolver,
-                Settings.Secure.ANDROID_ID
-            )
-            var deviceInfo: JSONObject? = null
-            deviceInfo?.put("MODEL", Build.MODEL);
-            deviceInfo?.put("HARDWARE", Build.HARDWARE);
-            deviceInfo?.put("BRAND", Build.BRAND);
-            deviceInfo?.put("DISPLAY", Build.DISPLAY);
-            deviceInfo?.put("BOARD", Build.BOARD);
-            deviceInfo?.put("SDK_INT", Build.VERSION.SDK_INT);
-            deviceInfo?.put("BOOTLOADER", Build.BOOTLOADER);
-            deviceInfo?.put("DEVICE", Build.DEVICE);
-            deviceInfo?.put(
-                "DISPLAY_HEIGHT",
-                ScreenHelper.getRealDeviceSizeInPixels(MyApplication.currentActivity).height
-            )
-            deviceInfo?.put(
-                "DISPLAY_WIDTH",
-                ScreenHelper.getRealDeviceSizeInPixels(MyApplication.currentActivity).width
-            )
-            deviceInfo?.put(
-                "DISPLAY_SIZE",
-                ScreenHelper.getScreenSize(MyApplication.currentActivity)
-            )
-            deviceInfo?.put("ANDROID_ID", android_id)
+                val android_id = Settings.Secure.getString(
+                    MyApplication.currentActivity.contentResolver,
+                    Settings.Secure.ANDROID_ID
+                )
+                var deviceInfo: JSONObject? = null
+                deviceInfo?.put("MODEL", Build.MODEL);
+                deviceInfo?.put("HARDWARE", Build.HARDWARE);
+                deviceInfo?.put("BRAND", Build.BRAND);
+                deviceInfo?.put("DISPLAY", Build.DISPLAY);
+                deviceInfo?.put("BOARD", Build.BOARD);
+                deviceInfo?.put("SDK_INT", Build.VERSION.SDK_INT);
+                deviceInfo?.put("BOOTLOADER", Build.BOOTLOADER);
+                deviceInfo?.put("DEVICE", Build.DEVICE);
+                deviceInfo?.put(
+                    "DISPLAY_HEIGHT",
+                    ScreenHelper.getRealDeviceSizeInPixels(MyApplication.currentActivity).height
+                )
+                deviceInfo?.put(
+                    "DISPLAY_WIDTH",
+                    ScreenHelper.getRealDeviceSizeInPixels(MyApplication.currentActivity).width
+                )
+                deviceInfo?.put(
+                    "DISPLAY_SIZE",
+                    ScreenHelper.getScreenSize(MyApplication.currentActivity)
+                )
+                deviceInfo?.put("ANDROID_ID", android_id)
 
-            RequestHelper.builder(EndPoint.GET_APP_INFO)
-                .addParam("versionCode", AppVersionHelper(MyApplication.context).versionCode)
-                .addParam("deviceInfo", deviceInfo)
-                .listener(getAppInfoCallBack)
-                .post()
+                RequestHelper.builder(EndPoint.GET_APP_INFO)
+                    .addParam("versionCode", AppVersionHelper(MyApplication.context).versionCode)
+                    .addParam("deviceInfo", deviceInfo)
+                    .listener(getAppInfoCallBack)
+                    .post()
             }
         } catch (e: Exception) {
 
@@ -99,7 +99,8 @@ class GetAppInfo {
                         MyApplication.prefManager.setAvaPID(dataObject.getInt("pushId"))
                         MyApplication.prefManager.setAvaToken(dataObject.getString("pushToken"))
                         MyApplication.prefManager.setDriverId(driverId)
-                        MyApplication.prefManager.setDriverStatus(dataObject.getInt("isEnter")==1)
+                        MyApplication.prefManager.setDriverStatus(dataObject.getInt("isEnter") == 1)
+                        MyApplication.prefManager.setCountNotification(dataObject.getInt("countNews"))
 
                         if (updateAvialable == 1) {
                             update(forceUpdate == 1, updateUrl)
