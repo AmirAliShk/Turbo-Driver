@@ -7,8 +7,7 @@
     android:background="@color/actionBar"
     android:clickable="true"
     android:layoutDirection="rtl"
-    android:orientation="vertical"
-    tools:context=".fragment.LoginFragment">
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"

@@ -38,7 +38,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     private lateinit var googleMap: GoogleMap
     lateinit var binding: ActivityMapBinding
     lateinit var locationAssistant: LocationAssistant
-    lateinit var lastLocation: Location
+    var lastLocation= Location("provider");
     var myLocationMarker: Marker? = null
     lateinit var stationCircle: Circle
     private val markerList: ArrayList<StationModel> = ArrayList()
@@ -77,14 +77,15 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         }
 
         binding.imgGps.setOnClickListener {
-            Log.i("TAG", "onCreate: $lastLocation")
-            if (lastLocation.latitude == null || lastLocation.latitude == 0.0 || lastLocation.longitude == 0.0 || lastLocation.longitude == null) {
+            if (lastLocation.latitude == 0.0 || lastLocation.longitude == 0.0) {
                 GeneralDialog().message("متاسفانه موقعیت در دسترس نمیباشد پس از چند لحظه مجدد امتحان کنید")
                     .firstButton("باشه") {}.show()
                 return@setOnClickListener
             }
-            stationCircle.remove()
-            animateToLocation(lastLocation.latitude, lastLocation.longitude)
+            animateToLocation(
+                MyApplication.prefManager.getLastLocation().latitude,
+                MyApplication.prefManager.getLastLocation().longitude
+            )
         }
 
     }
@@ -123,9 +124,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         if (p0 != null) {
             googleMap = p0
             googleMap.mapType = GoogleMap.MAP_TYPE_NORMAL
-            googleMap.uiSettings.isMapToolbarEnabled = false;
-            googleMap.uiSettings.isZoomControlsEnabled = false;
-            googleMap.uiSettings.isRotateGesturesEnabled = false;
+            googleMap.uiSettings.isMapToolbarEnabled = false
+            googleMap.uiSettings.isZoomControlsEnabled = false
+            googleMap.uiSettings.isRotateGesturesEnabled = false
+
+            val cameraPosition = CameraPosition.Builder()
+                .target(MyApplication.prefManager.getLastLocation())
+                .zoom(12f)
+                .build()
 
             val locationResult: MyLocation.LocationResult = object : MyLocation.LocationResult() {
                 override fun gotLocation(location: Location?) {
@@ -150,18 +156,13 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 
             MyApplication.handler.postDelayed({
 //                if (DataHolder.instance().stationArr == null) {
-                    getStation()
+                getStation()
 //                } else {
 //                    DataHolder.instance().stationArr?.let { showStation(it) }
 //                }
             }, 500)
 
-            val cameraPosition = CameraPosition.Builder()
-                .target(MyApplication.prefManager.getLastLocation())
-                .zoom(12f)
-                .build()
-
-            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
 //            googleMap.setOnCameraChangeListener {
 //                try {
@@ -196,7 +197,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             .fillColor(MyApplication.currentActivity.resources.getColor(R.color.grayTransparent)) //default
             .strokeColor(MyApplication.currentActivity.resources.getColor(R.color.grayDark))
             .strokeWidth(5f)
-
+        if (this::stationCircle.isInitialized)
+            stationCircle.remove()
         stationCircle = googleMap.addCircle(circleOptions)
     }
 
@@ -363,6 +365,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 
     override fun onNewLocationAvailable(location: Location?) {
         this.lastLocation = location!!
+        MyApplication.prefManager.setLastLocation(LatLng(location.latitude, location.longitude))
     }
 
     override fun onMockLocationsDetected(

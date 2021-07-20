@@ -9,7 +9,6 @@ import ir.team_x.ariana.driver.activity.MainActivity
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.dialog.GeneralDialog
-import ir.team_x.ariana.driver.fragment.LoginFragment
 import ir.team_x.ariana.driver.fragment.login.VerificationFragment
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.AppVersionHelper

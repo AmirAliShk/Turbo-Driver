@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     var lastLocation = LatLng(0.0, 0.0)
-    private var timer = Timer()
+    private lateinit var timer: Timer
     private val STATUS_PERIOD: Long = 20000
     var driverStatus = 0
     var active = false
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.txtLock.isSelected = true
-        binding.txtDriverName.text=MyApplication.prefManager.getUserName()
+        binding.txtDriverName.text = MyApplication.prefManager.getUserName()
 
         handleStatusByServer()
 
@@ -74,12 +74,13 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        if(MyApplication.prefManager.getLockStatus()==1){
+        if (MyApplication.prefManager.getLockStatus() == 1) {
             binding.txtLock.visibility = View.VISIBLE
             binding.txtLock.setTextColor(resources.getColor(R.color.colorWhite))
             binding.txtLock.background = resources.getDrawable(R.color.colorRed)
-            binding.txtLock.text = "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي به شما وجود ندارد."
-        }else{
+            binding.txtLock.text =
+                "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي به شما وجود ندارد."
+        } else {
             binding.txtLock.visibility = View.INVISIBLE
         }
 
@@ -294,11 +295,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun startGetStatus() { //TODO where I have to call this fun? which one is better?
+    private fun startGetStatus() {
         try {
             timer = Timer()
             timer.scheduleAtFixedRate(
-                timerTask,
+                object : TimerTask() {
+                    override fun run() {
+                        runOnUiThread {
+                            getStatus()
+                        }
+                    }
+                },
                 0,
                 STATUS_PERIOD
             )
@@ -309,10 +316,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun stopGetStatus() {
         try {
-            if (timer != null) {
-                timerTask.cancel()
-                timer.cancel()
-            }
+            timer.cancel()
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
@@ -417,18 +421,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setStatusText(statusText: String) {
-        binding.txtStatus.text = statusText
-    }
-
     override fun onResume() {
+        super.onResume()
         MyApplication.currentActivity = this
         MyApplication.prefManager.setAppRun(true)
         if (MyApplication.prefManager.getCharge() != "")
             binding.txtCharge.text =
                 StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
         startGetStatus()
-        super.onResume()
     }
 
     override fun onStart() {

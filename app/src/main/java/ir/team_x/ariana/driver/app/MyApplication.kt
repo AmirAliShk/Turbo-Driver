@@ -15,12 +15,14 @@ import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.push.AvaFactory
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.acra.ACRA
+import org.acra.annotation.AcraHttpSender
 import org.acra.config.CoreConfigurationBuilder
 import org.acra.config.HttpSenderConfigurationBuilder
 import org.acra.data.StringFormat
 import org.acra.sender.HttpSender
 import java.util.*
 
+@AcraHttpSender(uri = "http://turbotaxi.ir:6061/api/crashReport", httpMethod = HttpSender.Method.POST)
 class MyApplication : Application() {
 
     companion object {
@@ -86,25 +88,25 @@ class MyApplication : Application() {
     }
 
     private fun initACRA() {
-        val authHeaderMap: MutableMap<String, String?> = HashMap()
-        authHeaderMap["Authorization"] = prefManager.getAuthorization()
-        authHeaderMap["id_token"] = prefManager.getIdToken()
-        val builder: CoreConfigurationBuilder = CoreConfigurationBuilder(this)
-            .setBuildConfigClass(BuildConfig::class.java)
-            .setReportFormat(StringFormat.JSON)
-        val httpPluginConfigBuilder: HttpSenderConfigurationBuilder =
-            builder.getPluginConfigurationBuilder(
-                HttpSenderConfigurationBuilder::class.java
-            )
-                .setUri(EndPoint.CRASH_REPORT)
-                .setHttpMethod(HttpSender.Method.POST)
-                .setHttpHeaders(authHeaderMap)
-                .setEnabled(true)
+//        val authHeaderMap: MutableMap<String, String?> = HashMap()
+//        authHeaderMap["Authorization"] = prefManager.getAuthorization()
+//        authHeaderMap["id_token"] = prefManager.getIdToken()
+//        val builder: CoreConfigurationBuilder = CoreConfigurationBuilder(this)
+//            .setBuildConfigClass(BuildConfig::class.java)
+//            .setReportFormat(StringFormat.JSON)
+//        val httpPluginConfigBuilder: HttpSenderConfigurationBuilder =
+//            builder.getPluginConfigurationBuilder(
+//                HttpSenderConfigurationBuilder::class.java
+//            )
+//                .setUri(EndPoint.CRASH_REPORT)
+//                .setHttpMethod(HttpSender.Method.POST)
+//                .setHttpHeaders(authHeaderMap)
+//                .setEnabled(true)
         //        if (!BuildConfig.DEBUG)
-        ACRA.init(this, builder)
+        ACRA.init(this)
     }
 
-    fun initTypeFace() {
+    private fun initTypeFace() {
         iranSansTF = Typeface.createFromAsset(assets, iranSans)
         iranSansBoldTF = Typeface.createFromAsset(assets, iranSansBold)
         iranSansMediumTF = Typeface.createFromAsset(assets, iranSansMedium)

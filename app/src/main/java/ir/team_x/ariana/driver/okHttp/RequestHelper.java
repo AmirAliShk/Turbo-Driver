@@ -22,7 +22,6 @@ import ir.team_x.ariana.driver.fragment.login.VerificationFragment;
 import ir.team_x.ariana.driver.push.AvaCrashReporter;
 import ir.team_x.ariana.driver.utils.FragmentHelper;
 import ir.team_x.ariana.driver.utils.StringHelper;
-import ir.team_x.ariana.driver.fragment.LoginFragment;
 import okhttp3.Call;
 import okhttp3.Headers;
 import okhttp3.HttpUrl;
