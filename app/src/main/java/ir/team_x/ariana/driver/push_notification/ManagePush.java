@@ -137,7 +137,7 @@ public class ManagePush {
 //                if (!MyApplication.prefManager.isActiveTurboService()) {
 //
                 String freeService = dataArray[1];
-                new GeneralDialog().message(freeService).firstButton("باشه", null).show();
+//                new GeneralDialog().message(freeService).firstButton("باشه", null).show();
 
 //                    if (MyApplication.prefManager.isAppRun()) {
 //
@@ -169,8 +169,9 @@ public class ManagePush {
 //                            }
 //
 //                        } else {
-//                            SoundHelper.ringing(context, R.raw.short_notification, false);
+                            SoundHelper.ringing(context, R.raw.short_notification, false);
 //                            new ToastFragment().addToast(freeService, MyApplication.currentActivity);
+                            MyApplication.Companion.showSnackBar(freeService);
 //                        }
 //                    } else {
 //                        SoundHelper.ringing(context, R.raw.short_notification, !prefManager.isMuteFreeServiceAlarm());

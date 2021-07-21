@@ -4,25 +4,29 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Handler
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import ir.team_x.ariana.driver.BuildConfig
+import com.google.android.material.snackbar.Snackbar
 import ir.team_x.ariana.driver.R
+import ir.team_x.ariana.driver.fragment.services.FreeLoadsFragment
 import ir.team_x.ariana.driver.push.AvaFactory
+import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.acra.ACRA
 import org.acra.annotation.AcraHttpSender
-import org.acra.config.CoreConfigurationBuilder
-import org.acra.config.HttpSenderConfigurationBuilder
-import org.acra.data.StringFormat
 import org.acra.sender.HttpSender
 import java.util.*
 
-@AcraHttpSender(uri = "http://turbotaxi.ir:6061/api/crashReport", httpMethod = HttpSender.Method.POST)
+
+@AcraHttpSender(
+    uri = "http://turbotaxi.ir:6061/api/crashReport",
+    httpMethod = HttpSender.Method.POST
+)
 class MyApplication : Application() {
 
     companion object {
@@ -37,6 +41,28 @@ class MyApplication : Application() {
         lateinit var iranSansTF: Typeface
         lateinit var iranSansBoldTF: Typeface
         lateinit var iranSansMediumTF: Typeface
+
+        fun showSnackBar(text: String) {
+            val coordinatorLayout = currentActivity.findViewById(android.R.id.content) as View
+
+            val snackBar =
+                Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_LONG).setAction("مشاهده") {
+                    FragmentHelper.toFragment(currentActivity, FreeLoadsFragment())
+                        .setAddToBackStack(true)
+                        .replace()
+                }
+            snackBar.setActionTextColor(Color.WHITE)
+            val snackBarView = snackBar.view
+            snackBarView.setBackgroundColor(currentActivity.resources.getColor(R.color.colorPink))
+            val textView =
+                snackBarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+            textView.setTextColor(Color.WHITE)
+            textView.text = text
+            textView.gravity=Gravity.RIGHT
+            textView.textSize = 20f
+            TypeFaceUtil.overrideFont(snackBarView)
+            snackBar.show()
+        }
 
         fun Toast(message: String?, duration: Int) {
             handler.post(Runnable {

@@ -6,13 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ItemCurrentServicesBinding
 import ir.team_x.ariana.driver.dialog.GeneralDialog
-import ir.team_x.ariana.driver.fragment.ServiceDetailsFragment
+import ir.team_x.ariana.driver.fragment.services.ServiceDetailsFragment
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.utils.DateHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
-import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class CurrentServiceAdapter() :
     RecyclerView.Adapter<CurrentServiceAdapter.ViewHolder>() {

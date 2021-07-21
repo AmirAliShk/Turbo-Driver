@@ -15,12 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import ir.team_x.ariana.driver.R;
 import ir.team_x.ariana.driver.app.MyApplication;
 import ir.team_x.ariana.driver.databinding.FreeToastBinding;
+import ir.team_x.ariana.driver.fragment.services.FreeLoadsFragment;
 import ir.team_x.ariana.driver.utils.FragmentHelper;
 import ir.team_x.ariana.operator.utils.TypeFaceUtil;
 
@@ -125,7 +124,7 @@ public class ToastFragment extends Fragment {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.setCustomAnimations(R.animator.slide_up, R.animator.slide_down);
 
-                Fragment currentFrag = getFragmentManager().findFragmentById(R.id.toast_container);
+                Fragment currentFrag = getFragmentManager().findFragmentById(android.R.id.content);
                 transaction.remove(currentFrag).commit();
             }
         } catch (Exception e) {
@@ -152,7 +151,7 @@ public class ToastFragment extends Fragment {
             FragmentManager fragmentManager = MyApplication.currentActivity.getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.setCustomAnimations(R.animator.slide_up, R.animator.slide_down);
-            fragmentTransaction.add(R.id.toast_container,fragment, ToastFragment.TAG);
+            fragmentTransaction.add(android.R.id.content,fragment, ToastFragment.TAG);
             fragmentTransaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

@@ -9,13 +9,9 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
-import ir.team_x.ariana.driver.databinding.ItemFreeLoadsBinding
 import ir.team_x.ariana.driver.databinding.ItemServiceHistoryBinding
-import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
 import ir.team_x.ariana.driver.model.FinishedModel
-import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.utils.*
-import ir.team_x.ariana.driver.webServices.AcceptService
 
 class FinishedAdapter(list: ArrayList<FinishedModel>) :
     RecyclerView.Adapter<FinishedAdapter.ViewHolder>() {

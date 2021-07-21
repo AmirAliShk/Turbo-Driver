@@ -1,4 +1,4 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.news
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

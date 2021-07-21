@@ -15,6 +15,10 @@ import ir.team_x.ariana.driver.databinding.ActivityMainBinding
 import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.fragment.*
 import ir.team_x.ariana.driver.fragment.financial.FinancialFragment
+import ir.team_x.ariana.driver.fragment.news.NewsFragment
+import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
+import ir.team_x.ariana.driver.fragment.services.FreeLoadsFragment
+import ir.team_x.ariana.driver.fragment.services.ServiceHistoryFragment
 import ir.team_x.ariana.driver.gps.DataGatheringService
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.*

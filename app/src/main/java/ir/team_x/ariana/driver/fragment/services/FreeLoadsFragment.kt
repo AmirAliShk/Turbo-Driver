@@ -1,16 +1,14 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ir.team_x.ariana.driver.adapter.CurrentServiceAdapter
 import ir.team_x.ariana.driver.adapter.WaitingLoadsAdapter
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentFreeLoadsBinding
-import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil

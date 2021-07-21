@@ -6,14 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ItemFreeLoadsBinding
-import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
-import ir.team_x.ariana.driver.fragment.ServiceDetailsFragment
+import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
 import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.SoundHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.AcceptService
-import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     RecyclerView.Adapter<WaitingLoadsAdapter.ViewHolder>() {

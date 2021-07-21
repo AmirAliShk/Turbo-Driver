@@ -1,27 +1,16 @@
 package ir.team_x.ariana.driver.adapter
 
-import android.graphics.Color
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
-import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
-import ir.team_x.ariana.driver.databinding.ItemFreeLoadsBinding
 import ir.team_x.ariana.driver.databinding.ItemNewsBinding
-import ir.team_x.ariana.driver.databinding.ItemServiceHistoryBinding
-import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
-import ir.team_x.ariana.driver.fragment.NewsDetailsFragment
-import ir.team_x.ariana.driver.model.FinishedModel
+import ir.team_x.ariana.driver.fragment.news.NewsDetailsFragment
 import ir.team_x.ariana.driver.model.NewsModel
-import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.*
-import ir.team_x.ariana.driver.webServices.AcceptService
 import org.json.JSONObject
 
 class NewsAdapter(list: ArrayList<NewsModel>) :

@@ -1,24 +1,13 @@
 package ir.team_x.ariana.driver.adapter
 
-import android.graphics.Color
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Switch
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
-import ir.team_x.ariana.driver.databinding.ItemFreeLoadsBinding
 import ir.team_x.ariana.driver.databinding.ItemPeymentReportBinding
-import ir.team_x.ariana.driver.databinding.ItemServiceHistoryBinding
-import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
-import ir.team_x.ariana.driver.model.FinishedModel
 import ir.team_x.ariana.driver.model.PaymentReportModel
-import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.utils.*
-import ir.team_x.ariana.driver.webServices.AcceptService
 
 class PaymentReportAdapter(list: ArrayList<PaymentReportModel>) :
     RecyclerView.Adapter<PaymentReportAdapter.ViewHolder>() {
