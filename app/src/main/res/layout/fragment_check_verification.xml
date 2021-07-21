@@ -74,6 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:orientation="vertical"
                 android:gravity="center">
 
                 <com.chaos.view.PinView
@@ -100,6 +101,40 @@
                     app:lineColor="@color/grayMedium"
                     app:lineWidth="0dp"
                     app:viewType="rectangle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cbRules"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:buttonTint="@color/colorAccent" />
+
+                    <LinearLayout
+                        android:id="@+id/llRules"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtRules"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="2dp"
+                            android:gravity="center_vertical"
+                            android:text="قبول شرایط و قوانین"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/colorWhite" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 

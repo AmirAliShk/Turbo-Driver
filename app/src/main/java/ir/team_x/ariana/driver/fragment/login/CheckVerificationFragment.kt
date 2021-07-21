@@ -6,6 +6,7 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ir.team_x.ariana.driver.app.AppKeys
@@ -16,6 +17,7 @@ import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.driver.utils.FragmentHelper
+import ir.team_x.ariana.driver.utils.KeyBoardHelper
 import ir.team_x.ariana.driver.webServices.GetAppInfo
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
@@ -49,6 +51,29 @@ class CheckVerificationFragment : Fragment() {
 
         startWaitingTime()
 
+        binding.pin.setOnEditorActionListener { v, actionId, event ->
+            if (actionId === EditorInfo.IME_ACTION_DONE) {
+                code = binding.pin.text.toString()
+                when {
+                    code.isEmpty() -> {
+                        MyApplication.Toast("کد را وارد کنید", Toast.LENGTH_SHORT)
+                    }
+                    !binding.cbRules.isChecked -> {
+                        MyApplication.Toast(
+                            "لطفا قوانین و مقررات را قبول نمایید",
+                            Toast.LENGTH_SHORT
+                        )
+                    }
+                    else -> {
+                        checkVerification()
+                    }
+                }
+                KeyBoardHelper.hideKeyboard()
+                return@setOnEditorActionListener true
+            }
+            false
+        }
+
         binding.llResendCode.setOnClickListener {
             verification(phoneNumber)
         }
@@ -68,6 +93,12 @@ class CheckVerificationFragment : Fragment() {
                 MyApplication.Toast("کد را وارد کنید", Toast.LENGTH_SHORT)
                 return@setOnClickListener
             }
+
+            if (!binding.cbRules.isChecked) {
+                MyApplication.Toast("لطفا قوانین و مقررات را قبول نمایید", Toast.LENGTH_SHORT)
+                return@setOnClickListener
+            }
+
             checkVerification()
         }
 
