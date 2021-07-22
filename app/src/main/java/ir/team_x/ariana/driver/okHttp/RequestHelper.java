@@ -34,13 +34,11 @@ import okhttp3.Response;
 /**
  * add to your BuildGradle
  * implementation 'com.squareup.okhttp3:okhttp:3.10.0'
- ***************** version changes *******************
- * @version 1.1.0 : create project
- * @version 1.0.1 : fix bug run reCall with returnValue
+ * **************** version changes *******************
+ *
  * @version 1.1.0 : added Interceptor for append header to all api
- ****************** Readme *******************
+ * ***************** Readme *******************
  * @auther Amirreza Erfanian on 2018/01/12.
-
  */
 public class RequestHelper implements okhttp3.Callback {
 
@@ -308,7 +306,7 @@ public class RequestHelper implements okhttp3.Callback {
             final String bodyStr;
             try {
                 bodyStr = parseXML(response.body().string());
-                log("request result : " + bodyStr);
+                log(" url: " + response.request().url() + ", request result : " + bodyStr);
 
                 if (response.isSuccessful()) {
                     if (object == null)
