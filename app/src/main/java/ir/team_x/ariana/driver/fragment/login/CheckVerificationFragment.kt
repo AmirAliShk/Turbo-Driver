@@ -1,6 +1,8 @@
 package ir.team_x.ariana.driver.fragment.login
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -84,6 +86,12 @@ class CheckVerificationFragment : Fragment() {
                 .toFragment(MyApplication.currentActivity, VerificationFragment())
                 .setAddToBackStack(false)
                 .replace()
+        }
+
+        binding.llRules.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(EndPoint.RULL)
+            MyApplication.currentActivity.startActivity(i)
         }
 
         binding.btnLogin.setOnClickListener {

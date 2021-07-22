@@ -13,6 +13,7 @@ class EndPoint {
         val HAWKEYE_PORT = "1813"
 
         const val CRASH_REPORT = "http://turbotaxi.ir:6061/api/v1/crashReport"
+        val RULL = "http://turbotaxi.ir:1812/rule/driver"
 
         const val PUSH_ADDRESS = "http://turbotaxi.ir:6060"
         val BASE_PATH = "$IP:$IP_PORT/api/driver/v1"

@@ -75,6 +75,7 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
                         val dataObj = jsonObject.getJSONObject("data")
                         if (MyApplication.prefManager.getCountNotification() > 0 && models[pos].newMessage == 1)
                             MyApplication.prefManager.setCountNotification(MyApplication.prefManager.getCountNotification() - 1)
+
                         FragmentHelper.toFragment(
                             MyApplication.currentActivity,
                             NewsDetailsFragment(
@@ -82,6 +83,9 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
                                 dataObj.getString("message")
                             )
                         ).add()
+
+                        models[pos].newMessage = 0
+                        notifyDataSetChanged()
                     }
 
                 } catch (e: Exception) {
