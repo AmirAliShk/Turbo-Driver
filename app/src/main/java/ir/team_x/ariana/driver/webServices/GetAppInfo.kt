@@ -97,7 +97,7 @@ class GetAppInfo {
                         MyApplication.prefManager.setDriverStatus(dataObject.getInt("isEnter") == 1)
                         MyApplication.prefManager.setCountNotification(dataObject.getInt("countNews"))
 
-                        if (isActive == 1) {
+                        if (isActive == 0) {
                             GeneralDialog()
                                 .message("اکانت شما توسط سیستم مسدود شده است")
                                 .secondButton("خروج از برنامه") {
