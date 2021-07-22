@@ -72,11 +72,6 @@ class GetAppInfo {
                     val splashJson = JSONObject(args[0].toString())
                     val success = splashJson.getBoolean("success")
                     val message = splashJson.getString("message")
-//                    {"success":true,"message":"عملیات با موفقیت انجام شد.","data":{"isActive":1,"isLock":0,
-//                    "reasonDescription":"","updateAvialable":0
-//                    ,"forceUpdate":0,"updateUrl":"www.","driverId":1
-//                    ,"firstName":"سعید","lastName":"نیابتی","IBAN":"2122",
-//                    "charge":557467,"asnationalCode":"1241241","pushId":10,"pushToken":"arianaDriverAABMohse","countNews":0,"isEnter":1}}
                     if (success) {
                         val dataObject = splashJson.getJSONObject("data")
                         val isActive = dataObject.getInt("isActive")
@@ -102,19 +97,20 @@ class GetAppInfo {
                         MyApplication.prefManager.setDriverStatus(dataObject.getInt("isEnter") == 1)
                         MyApplication.prefManager.setCountNotification(dataObject.getInt("countNews"))
 
+                        if (isActive == 1) {
+                            GeneralDialog()
+                                .message("اکانت شما توسط سیستم مسدود شده است")
+                                .secondButton("خروج از برنامه") {
+                                    MyApplication.currentActivity.finish()
+                                }
+                                .show()
+                            return@post
+                        }
+
                         if (updateAvialable == 1) {
                             update(forceUpdate == 1, updateUrl)
                             return@post
                         }
-//                        if (isActive == 1) { // TODO uncomment this
-//                            GeneralDialog()
-//                                .message("اکانت شما توسط سیستم مسدود شده است")
-//                                .secondButton("خروج از برنامه") {
-//                                    MyApplication.currentActivity.finish()
-//                                }
-//                                .show()
-//                            return@post
-//                        }
 
                         MyApplication.avaStart()
                         MyApplication.currentActivity.startActivity(
