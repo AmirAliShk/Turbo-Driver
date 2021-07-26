@@ -49,12 +49,6 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                         )
                     }, 2000)
 
-                    FragmentHelper.toFragment(
-                        MyApplication.currentActivity,
-                        CurrentServiceFragment()
-                    )
-                        .setStatusBarColor(MyApplication.context.resources.getColor(R.color.colorBlack))
-                        .replace()
                 }
 
                 override fun onFailure() {

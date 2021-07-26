@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".app.MyApplication"
@@ -21,36 +22,37 @@
 
         <activity
             android:name=".activity.CancelServiceActivity"
-            android:label="@string/title_activity_cancel_service"
             android:launchMode="singleInstance"
-            android:theme="@style/NoActionBar"/>
+            android:screenOrientation="portrait"  />
 
         <activity
-            android:launchMode="singleInstance"
             android:name=".activity.MapActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <activity
-            android:launchMode="singleInstance"
             android:name=".activity.MainActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <activity
-            android:launchMode="singleInstance"
             android:name=".activity.GetServiceActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.SplashActivity"
+        <activity
+            android:name=".activity.SplashActivity"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <action android:name="android.intent.action.VIEW"/>
-                <data android:scheme="teamx.ariana.driver"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="teamx.ariana.driver" />
             </intent-filter>
         </activity>
 

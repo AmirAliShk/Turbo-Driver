@@ -43,8 +43,8 @@ class AcceptService {
                                     MyApplication.prefManager.setCharge(charge)
                                 }
                             })
-
                             listener.onSuccess()
+                            GeneralDialog().message(msg).firstButton("باشه") {}.show()
                         }else{
                             listener.onFailure()
 

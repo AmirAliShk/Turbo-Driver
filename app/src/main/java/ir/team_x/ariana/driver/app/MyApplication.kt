@@ -47,8 +47,9 @@ class MyApplication : Application() {
 
             val snackBar =
                 Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_LONG).setAction("مشاهده") {
+                    if (FreeLoadsFragment.isRunning)
+                        return@setAction
                     FragmentHelper.toFragment(currentActivity, FreeLoadsFragment())
-                        .setAddToBackStack(true)
                         .replace()
                 }
             snackBar.setActionTextColor(Color.WHITE)
@@ -58,7 +59,7 @@ class MyApplication : Application() {
                 snackBarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
             textView.setTextColor(Color.WHITE)
             textView.text = text
-            textView.gravity=Gravity.RIGHT
+            textView.gravity = Gravity.RIGHT
             textView.textSize = 20f
             TypeFaceUtil.overrideFont(snackBarView)
             snackBar.show()

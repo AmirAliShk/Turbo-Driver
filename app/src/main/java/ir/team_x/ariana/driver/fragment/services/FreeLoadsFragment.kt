@@ -1,20 +1,27 @@
 package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import ir.team_x.ariana.driver.adapter.WaitingLoadsAdapter
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentFreeLoadsBinding
+import ir.team_x.ariana.driver.fragment.news.NewsFragment
 import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
+
 class FreeLoadsFragment : Fragment() {
+
+    companion object {
+        val TAG = FreeLoadsFragment::class.java.simpleName
+        var isRunning = false
+    }
 
     private lateinit var binding: FragmentFreeLoadsBinding
     var waitingServiceModels: ArrayList<WaitingLoadsModel> = ArrayList()
@@ -88,9 +95,9 @@ class FreeLoadsFragment : Fragment() {
                             waitingServiceModels.add(model)
                         }
 
-                        if (waitingServiceModels.size==0){
+                        if (waitingServiceModels.size == 0) {
                             binding.vfFreeLoads.displayedChild = 1
-                        }else{
+                        } else {
                             binding.vfFreeLoads.displayedChild = 3
                             val adapter = WaitingLoadsAdapter(waitingServiceModels)
                             binding.listWaitingLoads.adapter = adapter
@@ -111,4 +118,18 @@ class FreeLoadsFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        isRunning = true
+    }
+
+    override fun onStart() {
+        super.onStart()
+        isRunning = true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        isRunning = false
+    }
 }
