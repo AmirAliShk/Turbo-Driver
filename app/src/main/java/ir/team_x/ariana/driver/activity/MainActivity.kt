@@ -348,6 +348,7 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
                         val statusMessage = statusObj.getString("message")
                         val stationObj = statusObj.getJSONObject("station")
                         MyApplication.prefManager.setDriverStatus(active)
+                        MyApplication.prefManager.setStationRegisterStatus(register)
                         handleStatusByServer()
                         binding.txtStatus.text = statusMessage
                         if (active && register) {
@@ -360,7 +361,9 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
                             binding.swStationRegister.isChecked = true
                             binding.swStationRegister.visibility = View.VISIBLE
                         } else if (active && !register) {
+                            binding.swEnterExit.isChecked = true
                             binding.swStationRegister.isChecked = false
+                            binding.swStationRegister.visibility=View.VISIBLE
                         } else if (!active && !register) {
                             binding.swEnterExit.isChecked = false
                             binding.swStationRegister.isChecked = false

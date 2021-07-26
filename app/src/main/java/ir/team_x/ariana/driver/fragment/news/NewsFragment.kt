@@ -64,7 +64,7 @@ class NewsFragment : Fragment() {
                                 dataObj.getString("image"),
                                 dataObj.getString("saveDate"),
                                 dataObj.getString("title"),
-                                1
+                                dataObj.getInt("newMessage")
                             )
 
                             newsModels.add(model)

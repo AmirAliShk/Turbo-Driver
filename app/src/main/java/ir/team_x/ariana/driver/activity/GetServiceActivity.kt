@@ -1,5 +1,6 @@
 package ir.team_x.ariana.driver.activity
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -53,12 +54,10 @@ class GetServiceActivity : AppCompatActivity() {
                 AcceptService().accept(serviceId!!, object : AcceptService.Listener {
                     override fun onSuccess() {
                         binding.vfAcceptService.displayedChild = 0
-                        FragmentHelper.toFragment(
-                            MyApplication.currentActivity,
-                            CurrentServiceFragment()
-                        )
-                            .setStatusBarColor(MyApplication.context.resources.getColor(R.color.colorBlack))
-                            .replace()
+                        val intent = Intent(MyApplication.context, SplashActivity::class.java)
+                        startActivity(intent)
+
+                        finish()
                     }
 
                     override fun onFailure() {
