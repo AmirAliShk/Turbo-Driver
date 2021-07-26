@@ -12,9 +12,8 @@ import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class AboutUsFragment : Fragment() {
     private lateinit var binding: FragmentAboutUsBinding
-    val aboutUs =
-        "سرعت، اطمینان و لذت یک سفر درون شهری را با ما تجربه کنید. در توربو با چند کلیک نزدیکترین تاکسی به خود را انتخاب و مسیر و قیمت سفر را آنلاین مشاهده نمایید. با این روش علاوه بر سادگی و سهولت گرفتن تاکسی از خدمات و تخفیف های ویژه ما بهرمند شوید. \n" +
-                "اپلیکیشن توربو به عنوان پلی میان ما و شما می باشد با ارسال نظرات خویش ما را در ارائه خدمات بهتر یاری رسانید. "
+    val aboutUs = "با توجه به سند ملی سیستم های حمل و نقل هوشمند در ایران و نیز نقش و اهمیت فناوری اطلاعات در کسب و کارها، این مجموعه بر آن است تا از طریق توسعه و راه اندازی نرم افزارهای تخصصی تحت وب و مبتنی بر تلفن همراه به سهم خود گامی در جهت تحقق شعار شهر هوشمند و شهروند الکترونیک در حوزه ی حمل و نقل درون شهری و برون شهری بردارد.\n" +
+            "پیک موتوری آریانا با بیش از ۱۴ سال سابقه و ۱۵۰ نفر نیرو یکی از قدیمی\u200C\u200Cترین مجموعه\u200Cهای حمل و نقل درون شهری در شهر مقدّس مشهد می \u200Cباشد."
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +28,7 @@ class AboutUsFragment : Fragment() {
         TypeFaceUtil.overrideFont(binding.root)
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
-        binding.txtAboutUs.text = "$aboutUs $aboutUs $aboutUs $aboutUs $aboutUs $aboutUs" // TODO change the passage
+        binding.txtAboutUs.text = "$aboutUs"
 
         return binding.root
     }
