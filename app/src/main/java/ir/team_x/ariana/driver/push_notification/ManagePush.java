@@ -113,23 +113,20 @@ public class ManagePush {
                 // cancel
                 String cancelMessage = dataArray[1];
 
-                new GeneralDialog().message(cancelMessage).firstButton("ok", null).show();
+                if (AppStatusHelper.appIsRun(context)) {
+                    Intent in = new Intent(MyApplication.currentActivity, CancelServiceActivity.class);
+                    in.putExtra("cancelMessage", cancelMessage);
 
-////                MyApplication.prefManager.setActiveServiceTurbo(false); // TODO this is for waht?
-//                if (AppStatusHelper.appIsRun(context)) { //TODO uncomment this
-//                    Intent in = new Intent(MyApplication.currentActivity, CancelServiceActivity.class);
-//                    in.putExtra("cancelMessage", cancelMessage);
-//
-//                    MyApplication.currentActivity.finish();
-//                    MyApplication.currentActivity.startActivity(in);
-//                } else {
-//                    Intent in = new Intent(MyApplication.context, CancelServiceActivity.class);
-//                    in.putExtra("cancelMessage", cancelMessage);
-//
-//                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                    MyApplication.context.startActivity(in);
-//                }
+                    MyApplication.currentActivity.finish();
+                    MyApplication.currentActivity.startActivity(in);
+                } else {
+                    Intent in = new Intent(MyApplication.context, CancelServiceActivity.class);
+                    in.putExtra("cancelMessage", cancelMessage);
+
+                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    MyApplication.context.startActivity(in);
+                }
 
                 break;
             case "4":

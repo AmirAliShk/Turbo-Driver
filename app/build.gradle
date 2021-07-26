@@ -68,4 +68,6 @@ dependencies {
     implementation 'com.github.mmin18:realtimeblurview:1.2.1'
     implementation 'ch.acra:acra-http:5.5.0'
     implementation 'com.chaos.view:pinview:1.4.4'
+
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
 }
