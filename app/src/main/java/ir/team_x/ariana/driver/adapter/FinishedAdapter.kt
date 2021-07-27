@@ -33,14 +33,23 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
-        val date = DateHelper.strPersianTen(DateHelper.parseFormat( model.saveDate + "", null))
-        val time = DateHelper.strPersianFour1(DateHelper.parseFormat( model.saveDate + "", null))
+        var date : String
+        var time : String
 
-        holder.binding.txtDate.text =  StringHelper.toPersianDigits("$date $time")
+        if (model.finishDate == "0000-00-00 00:00:00") {
+            date = DateHelper.strPersianTen(DateHelper.parseFormat(model.cancelDate + "", null))
+            time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.cancelDate + "", null))
+        } else {
+            date = DateHelper.strPersianTen(DateHelper.parseFormat(model.finishDate + "", null))
+            time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.finishDate + "", null))
+        }
+
+        holder.binding.txtDate.text = StringHelper.toPersianDigits("$date $time")
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.binding.txtDestAddress.text = StringHelper.toPersianDigits(model.destinationAddress)
         holder.binding.txtTraking.text = StringHelper.toPersianDigits(model.id.toString())
-        holder.binding.txtPrice.text =  StringHelper.toPersianDigits(StringHelper.setComma(model.price))
+        holder.binding.txtPrice.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(model.price))
         holder.binding.txtStatus.text = model.statusDes
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

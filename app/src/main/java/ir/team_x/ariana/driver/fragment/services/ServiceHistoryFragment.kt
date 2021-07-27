@@ -67,7 +67,8 @@ class ServiceHistoryFragment : Fragment() {
                                 dataObj.getString("statusDes"),
                                 dataObj.getString("sourceAddress"),
                                 dataObj.getString("destinationAddress"),
-                                dataObj.getString("statusColor")
+                                dataObj.getString("statusColor"),
+                                dataObj.getString("cancelDate"),
                             )
 
                             finishedModels.add(model)
