@@ -61,8 +61,6 @@ class CurrentServiceAdapter() :
                             if (isCancel) {
                                 models.removeAt(position)
                                 notifyDataSetChanged()
-                            } else {
-                                //TODO what to do here?
                             }
                         }
 
@@ -71,7 +69,6 @@ class CurrentServiceAdapter() :
                                 models.removeAt(position)
                                 notifyDataSetChanged()
                             } else {
-                                //TODO what to do here?
                                 GeneralDialog()
                                     .message("خطایی پیش امده، لطفا مجدد امتحان کنی")
                                     .secondButton("باشه") {}

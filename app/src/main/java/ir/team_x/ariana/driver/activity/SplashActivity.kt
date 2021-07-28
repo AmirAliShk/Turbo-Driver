@@ -17,6 +17,7 @@ import ir.team_x.ariana.driver.app.DataHolder
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivitySplashBinding
 import ir.team_x.ariana.driver.utils.AppVersionHelper
+import ir.team_x.ariana.driver.utils.KeyBoardHelper
 import ir.team_x.ariana.driver.webServices.GetAppInfo
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.acra.ACRA
@@ -85,6 +86,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        KeyBoardHelper.hideKeyboard()
         MyApplication.currentActivity = this
         MyApplication.prefManager.setAppRun(true)
     }

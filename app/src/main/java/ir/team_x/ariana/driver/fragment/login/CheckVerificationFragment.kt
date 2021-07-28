@@ -2,6 +2,7 @@ package ir.team_x.ariana.driver.fragment.login
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -44,6 +45,8 @@ class CheckVerificationFragment : Fragment() {
     ): View? {
         binding = FragmentCheckVerificationBinding.inflate(layoutInflater)
         TypeFaceUtil.overrideFont(binding.root)
+
+        binding.txtRules.paintFlags = (Paint.UNDERLINE_TEXT_FLAG)
 
         val bundle = arguments
         if (bundle != null) {
@@ -157,7 +160,7 @@ class CheckVerificationFragment : Fragment() {
     }
 
     private fun checkVerification() {
-        binding.vfSubmit.displayedChild=1
+        binding.vfSubmit.displayedChild = 1
         RequestHelper.builder(EndPoint.CHECK)
             .addParam("phoneNumber", phoneNumber)
             .addParam("scope", AppKeys.SCOPE)
@@ -171,7 +174,7 @@ class CheckVerificationFragment : Fragment() {
             override fun onResponse(reCall: Runnable, vararg args: Any) {
                 MyApplication.handler.post {
                     try {
-                        binding.vfSubmit.displayedChild=0
+                        binding.vfSubmit.displayedChild = 0
 //                  {"success":true,"message":"با موفقیت وارد شدید","data":{"id_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzLCJ1c2VybmFtZSI6IjEyMzQiLCJpYXQiOjE2MDkzMjg2NTYsImV4cCI6MTYwOTMyODk1Nn0.u_twFCxWzu73CMkPtb73Q0WdgzozgWKbgZYSmzlIgHg","access_token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3R1cmJvdGF4aS5pciIsImF1ZCI6IlVzZXJzIiwiZXhwIjoxNjA5MzI4OTU2LCJzY29wZSI6Im9wZXJhdG9yIiwic3ViIjoidHVyYm90YXhpIiwianRpIjoiNkQ0OTc3ODI3NzFGN0ZEMSIsImFsZyI6IkhTMjU2IiwiaWF0IjoxNjA5MzI4NjU2fQ.8Ssz4-AhK10cy8ma1635iIgquj9gtHHB4S1ETyioRN4","refresh_token":"kTDDNxxc4tQVrN1qQhQFBXZE5qFu3mbelgEbExnsnUElmZv0fFUDpOilLVeOegN5nDCX92mlahXHxP7hWjN52AoOZnZbDG7nz7mcqjowrpxiAgjWsHw5DeOW0RBvadgnRXGEYYS9YByTrYwTL3C4VZEY0DzeTzVyfZsRG2D8LX1jeE87yDx7Afe8D0em4htKfM1KvMWlptdMQbrZrE6yZRuvofubZAFgHgazoi8EDfiWtanu5jNiW86KuPJgbC0r"}}
                         val resObj = JSONObject(args[0].toString())
                         val success = resObj.getBoolean("success")
@@ -187,7 +190,7 @@ class CheckVerificationFragment : Fragment() {
                             GeneralDialog().message(message).secondButton("باشه") {}.show()
                         }
                     } catch (e: java.lang.Exception) {
-                        binding.vfSubmit.displayedChild=0
+                        binding.vfSubmit.displayedChild = 0
                         e.printStackTrace()
                         AvaCrashReporter.send(
                             e,
@@ -199,7 +202,7 @@ class CheckVerificationFragment : Fragment() {
 
             override fun onFailure(reCall: Runnable, e: java.lang.Exception) {
                 MyApplication.handler.post {
-                    binding.vfSubmit.displayedChild=0
+                    binding.vfSubmit.displayedChild = 0
                 }
             }
         }

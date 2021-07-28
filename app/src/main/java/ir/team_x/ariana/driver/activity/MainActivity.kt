@@ -430,6 +430,7 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
 
     override fun onResume() {
         super.onResume()
+        KeyBoardHelper.hideKeyboard()
         MyApplication.currentActivity = this
         MyApplication.prefManager.setAppRun(true)
         if (MyApplication.prefManager.getCharge() != "")

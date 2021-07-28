@@ -53,7 +53,6 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
 
                 override fun onFailure() {
                     holder.binding.vfAccept.displayedChild = 0
-                    //TODO print the error
                 }
             })
         }

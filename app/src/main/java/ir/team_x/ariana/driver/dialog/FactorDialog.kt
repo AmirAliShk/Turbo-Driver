@@ -64,7 +64,7 @@ class FactorDialog {
         RequestHelper.builder(EndPoint.FINISH)
             .listener(finishCallBack)
             .addParam("serviceId", serviceId)
-            .addParam("price", "10000") //TODO change price
+            .addParam("price", price)
             .post()
     }
 

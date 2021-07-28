@@ -71,7 +71,7 @@ public class ErrorDialog {
             return;
         dialog = new Dialog(MyApplication.currentActivity);
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-//        dialog.getWindow().getAttributes().windowAnimations = R.style.ExpandAnimation;  //TODO‌ fix this animation
+//        dialog.getWindow().getAttributes().windowAnimations = R.style.ExpandAnimation;
         binding = DialogErrorBinding.inflate(LayoutInflater.from(MyApplication.context));
         dialog.setContentView(binding.getRoot());
         TypeFaceUtil.Companion.overrideFont(binding.getRoot());

@@ -64,7 +64,7 @@ class ServiceDetailsFragment(
         )
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtCargoWeight.text =
-            StringHelper.toPersianDigits(serviceModel.weightName) //TODO uncomment
+            StringHelper.toPersianDigits(serviceModel.weightName)
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
         binding.txtDestAddress.text = StringHelper.toPersianDigits(serviceModel.destinationAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
@@ -86,7 +86,7 @@ class ServiceDetailsFragment(
             CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
         }
         binding.txtFinish.setOnClickListener {
-            bill(serviceModel.id, serviceModel.priceService)//TODO change price
+            bill(serviceModel.id, serviceModel.priceService)
         }
 
         return binding.root
@@ -125,6 +125,7 @@ class ServiceDetailsFragment(
                             cancelServiceListener.onCanceled(false)
                         }
                     } else {
+                        GeneralDialog().message(message).secondButton("باشه") {}.show()
                         cancelServiceListener.onCanceled(false)
                     }
 

@@ -25,6 +25,7 @@ import ir.team_x.ariana.driver.gps.LocationAssistant
 import ir.team_x.ariana.driver.gps.MyLocation
 import ir.team_x.ariana.driver.model.StationModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.utils.KeyBoardHelper
 import ir.team_x.ariana.driver.utils.WriteTextOnDrawable
 import org.json.JSONArray
 import org.json.JSONObject
@@ -92,6 +93,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 
     override fun onResume() {
         super.onResume()
+        KeyBoardHelper.hideKeyboard()
         MyApplication.prefManager.setAppRun(true)
         MyApplication.currentActivity = this
         binding.map.onResume()

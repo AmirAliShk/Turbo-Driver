@@ -75,7 +75,6 @@ public class ManagePush {
                 break;
             case "2":
                 // getServiceTurbo info
-//                if (!MyApplication.prefManager.isActiveTurboService()) { // TODO this is for what?
                 SoundHelper.ringing(context, R.raw.service, false);
                 if (MyApplication.prefManager.isAppRun()) {
                     Log.i(TAG, "manage: app is running");
@@ -106,7 +105,6 @@ public class ManagePush {
                     context.startActivity(in);
                     sendNotification("سرویسی در انتظار تایید دارید", context, true, 2, true);
                 }
-//                }
                 break;
 
             case "3":
@@ -238,7 +236,6 @@ public class ManagePush {
         String time = dataArray[1];
         String serviceId = dataArray[2];
         String serviceType = dataArray[3];
-//        String originStName = dataArray[4];// TODO delete this params
         String originAddress = dataArray[4];
         String destinationAddress = dataArray[5];
         String price = dataArray[6];
@@ -250,7 +247,6 @@ public class ManagePush {
         serviceModel.setCallTime(time);
         serviceModel.setServiceID(serviceId);
         serviceModel.setInService(serviceType.trim().equals("1"));
-//        serviceModel.setOrginDesc(originStName);
         serviceModel.setOriginAddress(originAddress);
         serviceModel.setDestinationDesc(destinationAddress);
         serviceModel.setServicePrice(price);
@@ -278,9 +274,6 @@ public class ManagePush {
 
     private void getServiceTurbo(JSONObject object) {
 
-//        if (GetServiceActivityTurbo.isRunning) {  //TODO uncomment this
-//            return;
-//        }
 
         try {
             int acceptTime = object.getInt("acceptTime");
