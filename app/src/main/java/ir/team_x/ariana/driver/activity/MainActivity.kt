@@ -1,13 +1,16 @@
 package ir.team_x.ariana.driver.activity
 
+import android.content.DialogInterface
 import android.content.Intent
+import android.location.Location
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import com.google.android.gms.maps.model.LatLng
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
@@ -19,7 +22,7 @@ import ir.team_x.ariana.driver.fragment.news.NewsFragment
 import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
 import ir.team_x.ariana.driver.fragment.services.FreeLoadsFragment
 import ir.team_x.ariana.driver.fragment.services.ServiceHistoryFragment
-import ir.team_x.ariana.driver.gps.DataGatheringService
+import ir.team_x.ariana.driver.gps.*
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.*
 import ir.team_x.ariana.driver.webServices.UpdateCharge
@@ -27,10 +30,13 @@ import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
 
-class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount {
+class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
+    LocationAssistant.Listener {
 
     lateinit var binding: ActivityMainBinding
-    var lastLocation = LatLng(0.0, 0.0)
+    lateinit var locationAssistant: LocationAssistant
+    private lateinit var lastLocation: Location
+    private lateinit var locFromMyLoc: Location
     private lateinit var timer: Timer
     private val STATUS_PERIOD: Long = 20000
     var driverStatus = 0
@@ -49,11 +55,32 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
+        locationAssistant = LocationAssistant(
+            MyApplication.context,
+            this,
+            LocationAssistant.Accuracy.HIGH,
+            100,
+            true
+        )
 
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtilJava.overrideFonts(binding.txtCharge, MyApplication.iranSansMediumTF)
         TypeFaceUtilJava.overrideFonts(binding.txtDriverName, MyApplication.iranSansMediumTF)
         TypeFaceUtilJava.overrideFonts(binding.txtStatus, MyApplication.iranSansMediumTF)
+
+        val locationResult: MyLocation.LocationResult =
+            object : MyLocation.LocationResult() {
+                override fun gotLocation(location: Location) {
+                    try {
+                        locFromMyLoc = location
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+        val myLocation = MyLocation()
+        myLocation.getLocation(MyApplication.currentActivity, locationResult)
+
 
         if (!isDriverActive()) {
             binding.txtStatus.text = "برای وارد شدن فعال را بزنید"
@@ -107,7 +134,8 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
         }
 
         binding.llFreeLoads.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment()).replace()
+            FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment())
+                .replace()
         }
 
         binding.llFinancial.setOnClickListener {
@@ -127,7 +155,24 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
 
         binding.swStationRegister.setOnCheckedChangeListener { compoundButton, b ->
             if (b) {
-                stationRegister()
+
+                MyApplication.handler.postDelayed({
+
+                    if ((locFromMyLoc.latitude == 0.0) || (locFromMyLoc.longitude == 0.0)) {
+                        if ((lastLocation.latitude == 0.0) || (lastLocation.longitude == 0.0)) {
+                            MyApplication.Toast(
+                                "درحال دریافت موقعیت لطفا بعد از چند ثانیه مجدد امتحان کنید",
+                                Toast.LENGTH_SHORT
+                            )
+                        } else {
+                            stationRegister(lastLocation)
+                        }
+                    } else {
+                        stationRegister(locFromMyLoc)
+                    }
+
+                }, 300)
+
             } else {
                 exitStation()
             }
@@ -157,6 +202,10 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
 
     }
 
+    private fun turnOnGPSDialog() {
+
+    }
+
     private fun enterExit(status: Int) {
         driverStatus = status
         RequestHelper.builder(EndPoint.ENTER_EXIT)
@@ -183,7 +232,6 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
                             } else {
                                 driverEnable()
                             }
-                            getStatus()
                         } else {
                             binding.swEnterExit.isChecked = !binding.swEnterExit.isChecked
                         }
@@ -204,11 +252,11 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
         }
     }
 
-    private fun stationRegister() {
+    private fun stationRegister(location: Location) {
         RequestHelper.builder(EndPoint.REGISTER)
             .listener(stationRegisterCallBack)
-            .addParam("lat", "36.298536")
-            .addParam("lng", "59.572962")
+            .addParam("lat", location.latitude)
+            .addParam("lng", location.longitude)
             .post()
     }
 
@@ -310,7 +358,7 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
                         }
                     }
                 },
-                0,
+                1000,
                 STATUS_PERIOD
             )
         } catch (e: java.lang.Exception) {
@@ -363,7 +411,7 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
                         } else if (active && !register) {
                             binding.swEnterExit.isChecked = true
                             binding.swStationRegister.isChecked = false
-                            binding.swStationRegister.visibility=View.VISIBLE
+                            binding.swStationRegister.visibility = View.VISIBLE
                         } else if (!active && !register) {
                             binding.swEnterExit.isChecked = false
                             binding.swStationRegister.isChecked = false
@@ -433,6 +481,7 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
         KeyBoardHelper.hideKeyboard()
         MyApplication.currentActivity = this
         MyApplication.prefManager.setAppRun(true)
+        locationAssistant.start()
         if (MyApplication.prefManager.getCharge() != "")
             binding.txtCharge.text =
                 StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
@@ -445,12 +494,22 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
                 MyApplication.prefManager.getCountNotification().toString() + ""
             )
         }
+        if (!GPSEnable.isOn()) {
+            GeneralDialog()
+                .message("لطفا موقعیت مکانی خود را روشن نمایید")
+                .firstButton("فعال سازی") {
+                    val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                    startActivity(intent)
+                }
+                .secondButton("انصراف") {}
+                .cancelable(false)
+                .show()
+        }
     }
 
     override fun onStart() {
         super.onStart()
         MyApplication.currentActivity = this
-        startGetStatus()
     }
 
     override fun onPause() {
@@ -461,6 +520,7 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
     override fun onDestroy() {
         super.onDestroy()
         stopGetStatus()
+        locationAssistant.stop()
     }
 
     override fun onBackPressed() {
@@ -490,4 +550,38 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount 
             )
         }
     }
+
+    override fun onNeedLocationPermission() {
+    }
+
+    override fun onExplainLocationPermission() {}
+
+    override fun onLocationPermissionPermanentlyDeclined(
+        fromView: View.OnClickListener?,
+        fromDialog: DialogInterface.OnClickListener?
+    ) {
+    }
+
+    override fun onNeedLocationSettingsChange() {
+    }
+
+    override fun onFallBackToSystemSettings(
+        fromView: View.OnClickListener?,
+        fromDialog: DialogInterface.OnClickListener?
+    ) {
+    }
+
+    override fun onNewLocationAvailable(location: Location?) {
+        if (location != null) {
+            this.lastLocation = location
+        }
+    }
+
+    override fun onMockLocationsDetected(
+        fromView: View.OnClickListener?,
+        fromDialog: DialogInterface.OnClickListener?
+    ) {
+    }
+
+    override fun onError(type: LocationAssistant.ErrorType?, message: String?) {}
 }
