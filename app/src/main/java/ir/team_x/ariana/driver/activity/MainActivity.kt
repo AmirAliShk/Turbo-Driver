@@ -1,8 +1,12 @@
 package ir.team_x.ariana.driver.activity
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
+import android.location.GpsStatus.GPS_EVENT_STARTED
+import android.location.GpsStatus.GPS_EVENT_STOPPED
 import android.location.Location
+import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -16,13 +20,17 @@ import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
 import ir.team_x.ariana.driver.dialog.GeneralDialog
-import ir.team_x.ariana.driver.fragment.*
+import ir.team_x.ariana.driver.fragment.ProfileFragment
+import ir.team_x.ariana.driver.fragment.SupportFragment
 import ir.team_x.ariana.driver.fragment.financial.FinancialFragment
 import ir.team_x.ariana.driver.fragment.news.NewsFragment
 import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
 import ir.team_x.ariana.driver.fragment.services.FreeLoadsFragment
 import ir.team_x.ariana.driver.fragment.services.ServiceHistoryFragment
-import ir.team_x.ariana.driver.gps.*
+import ir.team_x.ariana.driver.gps.DataGatheringService
+import ir.team_x.ariana.driver.gps.GPSEnable
+import ir.team_x.ariana.driver.gps.LocationAssistant
+import ir.team_x.ariana.driver.gps.MyLocation
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.*
 import ir.team_x.ariana.driver.webServices.UpdateCharge
@@ -30,19 +38,20 @@ import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
 
+
 class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
     LocationAssistant.Listener {
 
     lateinit var binding: ActivityMainBinding
     lateinit var locationAssistant: LocationAssistant
     private lateinit var lastLocation: Location
-    private lateinit var locFromMyLoc: Location
     private lateinit var timer: Timer
     private val STATUS_PERIOD: Long = 20000
     var driverStatus = 0
     var active = false
     var register = false
 
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -67,20 +76,6 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
         TypeFaceUtilJava.overrideFonts(binding.txtCharge, MyApplication.iranSansMediumTF)
         TypeFaceUtilJava.overrideFonts(binding.txtDriverName, MyApplication.iranSansMediumTF)
         TypeFaceUtilJava.overrideFonts(binding.txtStatus, MyApplication.iranSansMediumTF)
-
-        val locationResult: MyLocation.LocationResult =
-            object : MyLocation.LocationResult() {
-                override fun gotLocation(location: Location) {
-                    try {
-                        locFromMyLoc = location
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-            }
-        val myLocation = MyLocation()
-        myLocation.getLocation(MyApplication.currentActivity, locationResult)
-
 
         if (!isDriverActive()) {
             binding.txtStatus.text = "برای وارد شدن فعال را بزنید"
@@ -143,10 +138,15 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
         }
 
         binding.swEnterExit.setOnCheckedChangeListener { compoundButton, b ->
-            if (b) {
+            if (!GPSEnable.isOn()) {
+                turnOnGPSDialog()
+                binding.swEnterExit.isChecked = (!binding.swEnterExit.isChecked)
+                return@setOnCheckedChangeListener
+            }
+            if (b) { // i start to send driver location to server every 20 sec here
                 binding.swStationRegister.visibility = View.VISIBLE
                 enterExit(1)
-            } else {
+            } else {// i stop to send location here
                 binding.swStationRegister.visibility = View.INVISIBLE
                 binding.swStationRegister.isChecked = false
                 enterExit(0)
@@ -154,25 +154,37 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
         }
 
         binding.swStationRegister.setOnCheckedChangeListener { compoundButton, b ->
+            if (!GPSEnable.isOn()) {
+                turnOnGPSDialog()
+                binding.swStationRegister.isChecked = (!binding.swStationRegister.isChecked)
+                return@setOnCheckedChangeListener
+            }
             if (b) {
-
                 MyApplication.handler.postDelayed({
-
-                    if ((locFromMyLoc.latitude == 0.0) || (locFromMyLoc.longitude == 0.0)) {
-                        if ((lastLocation.latitude == 0.0) || (lastLocation.longitude == 0.0)) {
-                            MyApplication.Toast(
-                                "درحال دریافت موقعیت لطفا بعد از چند ثانیه مجدد امتحان کنید",
-                                Toast.LENGTH_SHORT
-                            )
-                        } else {
-                            stationRegister(lastLocation)
+                    val locationResult: MyLocation.LocationResult =
+                        object : MyLocation.LocationResult() {
+                            override fun gotLocation(location: Location) {
+                                try {
+                                    if ((location.latitude == 0.0) || (location.longitude == 0.0)) {
+                                        if ((lastLocation.latitude == 0.0) || (lastLocation.longitude == 0.0)) {
+                                            MyApplication.Toast(
+                                                "درحال دریافت موقعیت لطفا بعد از چند ثانیه مجدد امتحان کنید",
+                                                Toast.LENGTH_SHORT
+                                            )
+                                        } else {
+                                            stationRegister(lastLocation)
+                                        }
+                                    } else {
+                                        stationRegister(location)
+                                    }
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
+                                }
+                            }
                         }
-                    } else {
-                        stationRegister(locFromMyLoc)
-                    }
-
+                    val myLocation = MyLocation()
+                    myLocation.getLocation(MyApplication.currentActivity, locationResult)
                 }, 300)
-
             } else {
                 exitStation()
             }
@@ -203,7 +215,15 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
     }
 
     private fun turnOnGPSDialog() {
-
+        GeneralDialog()
+            .message("لطفا موقعیت مکانی خود را روشن نمایید")
+            .firstButton("فعال سازی") {
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+            }
+            .secondButton("انصراف") {}
+            .cancelable(false)
+            .show()
     }
 
     private fun enterExit(status: Int) {
@@ -495,15 +515,7 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
             )
         }
         if (!GPSEnable.isOn()) {
-            GeneralDialog()
-                .message("لطفا موقعیت مکانی خود را روشن نمایید")
-                .firstButton("فعال سازی") {
-                    val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-                    startActivity(intent)
-                }
-                .secondButton("انصراف") {}
-                .cancelable(false)
-                .show()
+            turnOnGPSDialog()
         }
     }
 

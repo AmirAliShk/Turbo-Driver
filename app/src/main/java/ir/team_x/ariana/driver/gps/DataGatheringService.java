@@ -221,7 +221,7 @@ public class DataGatheringService extends Service {
             Location tempLocation = location;
             JSONObject params = new JSONObject();
             try {
-                LocationManager service = (LocationManager) MyApplication.context.getSystemService(MyApplication.context.LOCATION_SERVICE);
+                LocationManager service = (LocationManager) MyApplication.context.getSystemService(Context.LOCATION_SERVICE);
                 boolean isTurnOnGPS = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
                 RequestHelper requestHelper = RequestHelper.builder(EndPoint.Companion.getSAVE_LOCATION())
