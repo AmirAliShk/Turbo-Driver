@@ -31,6 +31,8 @@ class ServiceHistoryFragment : Fragment() {
         binding = FragmentServiceHistoryBinding.inflate(inflater, container, false)
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+
         serviceHistory()
 
         return binding.root

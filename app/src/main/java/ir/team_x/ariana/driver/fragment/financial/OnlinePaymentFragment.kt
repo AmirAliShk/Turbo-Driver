@@ -13,6 +13,7 @@ import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentOnlinePaymentBinding
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
+import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 
 class OnlinePaymentFragment : Fragment() {
@@ -28,6 +29,7 @@ class OnlinePaymentFragment : Fragment() {
     ): View? {
         binding = FragmentOnlinePaymentBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 

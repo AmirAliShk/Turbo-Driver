@@ -26,6 +26,8 @@ class AboutUsFragment : Fragment() {
     ): View? {
         binding = FragmentAboutUsBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
         binding.txtAboutUs.text = "$aboutUs"

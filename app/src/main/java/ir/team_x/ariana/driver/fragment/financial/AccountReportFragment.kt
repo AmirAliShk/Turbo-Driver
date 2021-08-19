@@ -31,6 +31,7 @@ class AccountReportFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =  FragmentAccountReportBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 

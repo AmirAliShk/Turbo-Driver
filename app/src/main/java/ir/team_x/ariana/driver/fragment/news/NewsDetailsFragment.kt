@@ -29,6 +29,7 @@ class NewsDetailsFragment(title: String, text: String) : Fragment() {
     ): View? {
         binding = FragmentNewsDetailsBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtPageTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtTitle.text = StringHelper.toPersianDigits(newsTitle)

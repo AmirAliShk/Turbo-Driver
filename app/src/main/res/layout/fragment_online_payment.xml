@@ -23,6 +23,7 @@
             android:src="@drawable/ic_back" />
 
         <TextView
+            android:id="@+id/txtTitle"
             style="@style/page_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,8 +39,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_20sdp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -83,8 +84,8 @@
     <ir.team_x.ariana.driver.custom_view.GridRadioGroup
         android:id="@+id/priceGroup"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_10sdp"
         android:gravity="center"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -188,15 +189,10 @@
         </TableRow>
 
     </ir.team_x.ariana.driver.custom_view.GridRadioGroup>
-    
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="3" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_15sdp"
         android:layout_weight="1"
         android:gravity="bottom"

@@ -26,6 +26,7 @@ class FinancialFragment : Fragment() {
     ): View? {
         binding = FragmentFinancialBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 

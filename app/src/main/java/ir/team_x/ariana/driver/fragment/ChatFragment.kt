@@ -26,9 +26,8 @@ class ChatFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentChatBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
-
-
 
         return binding.root
     }

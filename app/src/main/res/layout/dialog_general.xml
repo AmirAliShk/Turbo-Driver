@@ -12,29 +12,25 @@
         app:realtimeBlurRadius="20dp"
         app:realtimeOverlayColor="#2fff"/>
 
-
     <LinearLayout
         android:layout_width="@dimen/_280sdp"
-        android:layout_height="180dp"
+        android:layout_height="160dp"
         android:layout_centerInParent="true"
         android:background="@drawable/background4"
         android:orientation="vertical"
         android:elevation="@dimen/_5sdp">
 
-
         <TextView
             android:id="@+id/txtMessage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.25"
+            android:layout_weight="0.2"
             android:gravity="bottom|center_horizontal"
             android:paddingLeft="10dp"
-            android:paddingTop="4dp"
             android:paddingRight="10dp"
-            android:paddingBottom="10dp"
             android:text="خطای عدم اتصال به اینترنت لطفا پس از بررسی ارتباط خود به اینترنت مجدد چک کنید"
             android:textColor="@color/colorBlack"
-            android:textSize="17sp" />
+            android:textSize="19sp" />
 
         <LinearLayout
             android:id="@+id/llBtnView"
@@ -56,7 +52,8 @@
                 android:layout_weight="1"
                 android:textColor="@color/colorWhite"
                 android:background="@drawable/bg_green"
-                android:padding="@dimen/_8sdp"
+                android:textSize="@dimen/_17sdp"
+                android:padding="@dimen/_5sdp"
                 android:elevation="@dimen/_3sdp"/>
 
 
@@ -74,7 +71,8 @@
                 android:layout_weight="1"
                 android:textColor="@color/colorWhite"
                 android:background="@drawable/bg_redd"
-                android:padding="@dimen/_10sdp"
+                android:textSize="@dimen/_17sdp"
+                android:padding="@dimen/_5sdp"
                 android:elevation="@dimen/_3sdp"/>
 
 
@@ -85,7 +83,6 @@
 
 
         </LinearLayout>
-
 
     </LinearLayout>
 

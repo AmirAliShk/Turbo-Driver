@@ -129,6 +129,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             googleMap.uiSettings.isMapToolbarEnabled = false
             googleMap.uiSettings.isZoomControlsEnabled = false
             googleMap.uiSettings.isRotateGesturesEnabled = false
+            googleMap.setMinZoomPreference(11.0f)
 
             val cameraPosition = CameraPosition.Builder()
                 .target(MyApplication.prefManager.getLastLocation())

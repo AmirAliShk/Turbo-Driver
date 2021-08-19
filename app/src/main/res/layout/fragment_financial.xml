@@ -23,6 +23,7 @@
             android:src="@drawable/ic_back" />
 
         <TextView
+            android:id="@+id/txtTitle"
             style="@style/page_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,17 +81,16 @@
 
                     <TextView
                         style="@style/item_value"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.45"
+                        android:paddingHorizontal="@dimen/_5sdp"
                         android:text="شارژ" />
 
                     <TextView
                         android:id="@+id/txtCharge"
                         style="@style/page_title"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:gravity="center"
                         android:layout_marginHorizontal="@dimen/_5sdp"
                         android:textColor="@color/colorWhite"
@@ -98,9 +98,8 @@
 
                     <TextView
                         style="@style/item_value"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
                         android:paddingRight="@dimen/_5sdp"
                         android:text="تومان" />
 

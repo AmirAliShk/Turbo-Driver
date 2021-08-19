@@ -31,6 +31,7 @@ class CurrentServiceFragment : Fragment() {
     ): View? {
         binding = FragmentCurrentServicesBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 

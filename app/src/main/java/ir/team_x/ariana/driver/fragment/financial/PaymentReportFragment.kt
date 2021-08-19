@@ -36,6 +36,7 @@ class PaymentReportFragment : Fragment() {
             MyApplication.currentActivity.onBackPressed()
         }
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         getReport()
 

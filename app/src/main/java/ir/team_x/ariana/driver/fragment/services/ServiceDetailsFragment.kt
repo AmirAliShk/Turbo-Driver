@@ -51,7 +51,6 @@ class ServiceDetailsFragment(
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
-        TypeFaceUtilJava.overrideFonts(binding.txtPageTitle)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtDate.text = StringHelper.toPersianDigits(
