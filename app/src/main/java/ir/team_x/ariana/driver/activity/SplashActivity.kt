@@ -24,7 +24,7 @@ import org.acra.ACRA
 
 class SplashActivity : AppCompatActivity() {
     private val permission =
-        arrayOf(Manifest.permission.RECORD_AUDIO, Manifest.permission.ACCESS_FINE_LOCATION)
+        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,8 @@ class SplashActivity : AppCompatActivity() {
         }
         TypeFaceUtil.overrideFont(binding.root)
 
-        ACRA.getErrorReporter().putCustomData("LineCode", MyApplication.prefManager.getDriverId().toString())
+        ACRA.getErrorReporter()
+            .putCustomData("LineCode", MyApplication.prefManager.getDriverId().toString())
         ACRA.getErrorReporter().putCustomData("DriverName", MyApplication.prefManager.getUserName())
         ACRA.getErrorReporter().putCustomData("projectId", "$PUSH_PROJECT_ID") // 10
 
@@ -54,12 +55,8 @@ class SplashActivity : AppCompatActivity() {
     private fun checkPermission() {
         if (Build.VERSION.SDK_INT >= 23) {
             val hasAudioPermission =
-                ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
-            if (hasAudioPermission != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            if (hasAudioPermission != PackageManager.PERMISSION_GRANTED) {
                 //TODO show dialog later
                 ActivityCompat.requestPermissions(
                     this,

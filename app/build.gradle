@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 28
     defaultConfig {
         applicationId "ir.team_x.ariana.driver"
         minSdkVersion 19
-        targetSdkVersion 19
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
