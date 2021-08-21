@@ -71,7 +71,7 @@ class ServiceDetailsFragment(
         binding.txtCargoType.text = serviceModel.cargoName
         binding.txtCargoCost.text = StringHelper.toPersianDigits(serviceModel.costName)
         binding.txtPaymentSide.text = if (serviceModel.paymentSide == 0) "مقصد" else "مبدا"
-        binding.imgDriverHelp.setImageResource(if (serviceModel.driverHelp == 1) R.drawable.ic_completed else R.drawable.ic_cancle)
+        binding.imgDriverHelp.setImageResource(if (serviceModel.driverHelp == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         binding.llCancel.setOnClickListener {
             GeneralDialog()
                 .message("از لغو سرویس اطمینان دارید؟")

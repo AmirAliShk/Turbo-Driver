@@ -59,14 +59,14 @@ class GetServiceDialog() {
                             R.raw.accpet,
                             false
                         )
-                    }, 2000)
+                    }, 1000)
 
-                    FragmentHelper.toFragment(
-                        MyApplication.currentActivity,
-                        CurrentServiceFragment()
-                    )
-                        .setStatusBarColor(MyApplication.context.resources.getColor(R.color.colorBlack))
-                        .replace()
+//                    FragmentHelper.toFragment(
+//                        MyApplication.currentActivity,
+//                        CurrentServiceFragment()
+//                    )
+//                        .setStatusBarColor(MyApplication.context.resources.getColor(R.color.colorBlack))
+//                        .replace()
                 }
 
                 override fun onFailure() {
