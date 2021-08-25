@@ -1,4 +1,4 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,20 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ir.team_x.ariana.driver.adapter.CurrentServiceAdapter
-import ir.team_x.ariana.driver.adapter.WaitingLoadsAdapter
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
-import ir.team_x.ariana.driver.databinding.FragmentFreeLoadsBinding
+import ir.team_x.ariana.driver.databinding.FragmentCurrentServicesBinding
 import ir.team_x.ariana.driver.model.ServiceDataModel
-import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
-class FreeLoadsFragment : Fragment() {
+class CurrentServiceFragment : Fragment() {
 
-    private lateinit var binding: FragmentFreeLoadsBinding
-    var waitingServiceModels: ArrayList<WaitingLoadsModel> = ArrayList()
+    private lateinit var binding: FragmentCurrentServicesBinding
+    val serviceModels: ArrayList<ServiceDataModel> = ArrayList()
+    var adapter = CurrentServiceAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,27 +29,29 @@ class FreeLoadsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFreeLoadsBinding.inflate(inflater, container, false)
+        binding = FragmentCurrentServicesBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
-        waiting()
+
+        getActiveService()
 
         return binding.root
     }
 
-    private fun waiting() {
-        binding.vfFreeLoads.displayedChild = 0
-        RequestHelper.builder(EndPoint.WAITING)
-            .listener(waitingCallBack)
+    private fun getActiveService() {
+        binding.vfCurrentService.displayedChild = 0
+        RequestHelper.builder(EndPoint.ACTIVES)
+            .listener(activeServiceCallBack)
             .get()
     }
 
-    private val waitingCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+    private val activeServiceCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
                 try {
-                    waitingServiceModels.clear()
+                    serviceModels.clear()
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -58,7 +59,7 @@ class FreeLoadsFragment : Fragment() {
                         val dataArr = jsonObject.getJSONArray("data")
                         for (i in 0 until dataArr.length()) {
                             val dataObj = dataArr.getJSONObject(i)
-                            val model = WaitingLoadsModel(
+                            val model = ServiceDataModel(
                                 dataObj.getInt("id"),
                                 dataObj.getInt("customerId"),
                                 dataObj.getInt("sourceAddressId"),
@@ -83,34 +84,43 @@ class FreeLoadsFragment : Fragment() {
                                 dataObj.getString("customerName"),
                                 dataObj.getString("phoneNumber"),
                                 dataObj.getString("mobile"),
-                                dataObj.getString("stationName"),
-                                dataObj.getString("cargoName")
+                                dataObj.getString("statusStr"),
+                                dataObj.getString("cargoName"),
+                                dataObj.getString("costName"),
+                                dataObj.getString("weightName"),
+                                dataObj.getString("carTypeName"),
+                                dataObj.getString("sourceAddress"),
+                                dataObj.getString("destinationAddress"),
+                                dataObj.getString("priceService")
                             )
 
-                            waitingServiceModels.add(model)
+                            serviceModels.add(model)
                         }
 
-                        if (waitingServiceModels.size==0){
-                            binding.vfFreeLoads.displayedChild = 1
-                        }else{
-                            binding.vfFreeLoads.displayedChild = 3
-                            val adapter = WaitingLoadsAdapter(waitingServiceModels)
-                            binding.listWaitingLoads.adapter = adapter
+                        if (serviceModels.size == 0) {
+                            binding.vfCurrentService.displayedChild = 1
+                        } else {
+                            binding.vfCurrentService.displayedChild = 3
+                            adapter = CurrentServiceAdapter(serviceModels)
+                            binding.listCurrentService.adapter = adapter
                         }
                     }
-
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    binding.vfFreeLoads.displayedChild = 2
+                    binding.vfCurrentService.displayedChild = 2
                 }
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-                binding.vfFreeLoads.displayedChild = 2
+                binding.vfCurrentService.displayedChild = 2
             }
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
+    }
 }

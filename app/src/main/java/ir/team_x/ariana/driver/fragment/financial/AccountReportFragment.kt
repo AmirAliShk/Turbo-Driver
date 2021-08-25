@@ -1,28 +1,23 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.financial
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ir.team_x.ariana.driver.R
-import ir.team_x.ariana.driver.adapter.PaymentReportAdapter
-import ir.team_x.ariana.driver.adapter.WaitingLoadsAdapter
+import ir.team_x.ariana.driver.adapter.AccountReportAdapter
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
-import ir.team_x.ariana.driver.databinding.FragmentFinancialBinding
-import ir.team_x.ariana.driver.databinding.FragmentPaymentReportBinding
-import ir.team_x.ariana.driver.dialog.GeneralDialog
-import ir.team_x.ariana.driver.model.PaymentReportModel
+import ir.team_x.ariana.driver.databinding.FragmentAccountReportBinding
+import ir.team_x.ariana.driver.model.AccountReportModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.utils.DateHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
-class PaymentReportFragment : Fragment() {
-
-
-    private lateinit var binding: FragmentPaymentReportBinding
-    var models: ArrayList<PaymentReportModel> = ArrayList()
+class AccountReportFragment : Fragment() {
+ private lateinit var binding : FragmentAccountReportBinding
+    var models: ArrayList<AccountReportModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,27 +25,27 @@ class PaymentReportFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        binding = FragmentPaymentReportBinding.inflate(inflater, container, false)
-        binding.imgBack.setOnClickListener {
-            MyApplication.currentActivity.onBackPressed()
-        }
+        // Inflate the layout for this fragment
+        binding =  FragmentAccountReportBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+
+        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
         getReport()
-
         return binding.root
     }
 
     private fun getReport() {
         binding.vfReport.displayedChild = 0
-        RequestHelper.builder(EndPoint.GET_ATM)
+        RequestHelper.builder(EndPoint.ACCOUNT_REP)
             .listener(getReportCallBack)
-            .get()
+            .addParam("fromDate",DateHelper.strPersianFive(DateHelper.getBeforeDays(7).time).substring(0,10))
+            .addParam("toDate",DateHelper.strPersianFive(DateHelper.getCurrentGregorianDate().time).substring(0,10))
+            .post()
     }
 
     private val getReportCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
@@ -64,26 +59,27 @@ class PaymentReportFragment : Fragment() {
                         val dataArr = jsonObject.getJSONArray("data")
                         for (i in 0 until dataArr.length()) {
                             val dataObj = dataArr.getJSONObject(i)
-                            val paymentReportModel = PaymentReportModel(
+                            val accountReportModel = AccountReportModel(
                                 dataObj.getInt("id"),
                                 dataObj.getInt("driverId"),
                                 dataObj.getString("saveDate"),
+                                dataObj.getInt("userId"),
+                                dataObj.getString("updateDate"),
+                                dataObj.getString("updateUserId"),
                                 dataObj.getString("price"),
-                                dataObj.getString("cardNumber"),
-                                dataObj.getString("bankName"),
+                                dataObj.getInt("type"),
                                 dataObj.getString("description"),
-                                dataObj.getString("trackingCode"),
-                                dataObj.getInt("replyStatus"),
-                                dataObj.getString("replyDate"),
-                                dataObj.getString("trackingAccept")
+                                dataObj.getString("paymentDate"),
+                                dataObj.getString("serviceId"),
+                                dataObj.getString("paymentTypeName")
                             )
-                            models.add(paymentReportModel)
+                            models.add(accountReportModel)
                         }
-                        if (models.size == 0) {
+                        if (models.size==0){
                             binding.vfReport.displayedChild = 1
-                        } else {
+                        }else{
                             binding.vfReport.displayedChild = 3
-                            val adapter = PaymentReportAdapter(models)
+                            val adapter = AccountReportAdapter(models)
                             binding.listReport.adapter = adapter
                         }
                     }

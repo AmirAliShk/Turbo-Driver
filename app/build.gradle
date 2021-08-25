@@ -4,13 +4,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "30.0.3"
-
+    compileSdkVersion 28
     defaultConfig {
         applicationId "ir.team_x.ariana.driver"
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -22,7 +20,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -66,5 +64,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
     implementation 'com.github.mmin18:realtimeblurview:1.2.1'
+    implementation 'ch.acra:acra-http:5.5.0'
+    implementation 'com.chaos.view:pinview:1.4.4'
 
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
 }

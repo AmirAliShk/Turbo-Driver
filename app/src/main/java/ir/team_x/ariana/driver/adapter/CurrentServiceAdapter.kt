@@ -2,17 +2,16 @@ package ir.team_x.ariana.driver.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ItemCurrentServicesBinding
-import ir.team_x.ariana.driver.fragment.ServiceDetailsFragment
+import ir.team_x.ariana.driver.dialog.GeneralDialog
+import ir.team_x.ariana.driver.fragment.services.ServiceDetailsFragment
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.utils.DateHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
-import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class CurrentServiceAdapter() :
     RecyclerView.Adapter<CurrentServiceAdapter.ViewHolder>() {
@@ -62,9 +61,6 @@ class CurrentServiceAdapter() :
                             if (isCancel) {
                                 models.removeAt(position)
                                 notifyDataSetChanged()
-                            } else {
-                                //TODO what to do here?
-//                                MyApplication.Toast("not canceled error", Toast.LENGTH_SHORT)
                             }
                         }
 
@@ -73,8 +69,10 @@ class CurrentServiceAdapter() :
                                 models.removeAt(position)
                                 notifyDataSetChanged()
                             } else {
-                                //TODO what to do here?
-                                MyApplication.Toast("خطایی پیش امده، لطفا مجدد امتحان کنید", Toast.LENGTH_SHORT)
+                                GeneralDialog()
+                                    .message("خطایی پیش امده، لطفا مجدد امتحان کنی")
+                                    .secondButton("باشه") {}
+                                    .show()
                             }
                         }
                     })

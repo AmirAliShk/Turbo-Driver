@@ -1,4 +1,4 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ir.team_x.ariana.driver.adapter.FinishedAdapter
-import ir.team_x.ariana.driver.adapter.WaitingLoadsAdapter
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.*
 import ir.team_x.ariana.driver.model.FinishedModel
-import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
@@ -33,6 +31,8 @@ class ServiceHistoryFragment : Fragment() {
         binding = FragmentServiceHistoryBinding.inflate(inflater, container, false)
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+
         serviceHistory()
 
         return binding.root
@@ -69,7 +69,8 @@ class ServiceHistoryFragment : Fragment() {
                                 dataObj.getString("statusDes"),
                                 dataObj.getString("sourceAddress"),
                                 dataObj.getString("destinationAddress"),
-                                dataObj.getString("statusColor")
+                                dataObj.getString("statusColor"),
+                                dataObj.getString("cancelDate"),
                             )
 
                             finishedModels.add(model)

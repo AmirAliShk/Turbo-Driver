@@ -4,17 +4,29 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Handler
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import com.google.android.material.snackbar.Snackbar
 import ir.team_x.ariana.driver.R
+import ir.team_x.ariana.driver.fragment.services.FreeLoadsFragment
 import ir.team_x.ariana.driver.push.AvaFactory
+import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
+import org.acra.ACRA
+import org.acra.annotation.AcraHttpSender
+import org.acra.sender.HttpSender
 import java.util.*
 
+
+@AcraHttpSender(
+    uri = "http://turbotaxi.ir:6061/api/crashReport",
+    httpMethod = HttpSender.Method.POST
+)
 class MyApplication : Application() {
 
     companion object {
@@ -29,6 +41,29 @@ class MyApplication : Application() {
         lateinit var iranSansTF: Typeface
         lateinit var iranSansBoldTF: Typeface
         lateinit var iranSansMediumTF: Typeface
+
+        fun showSnackBar(text: String) {
+            val coordinatorLayout = currentActivity.findViewById(android.R.id.content) as View
+
+            val snackBar =
+                Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_LONG).setAction("مشاهده") {
+                    if (FreeLoadsFragment.isRunning)
+                        return@setAction
+                    FragmentHelper.toFragment(currentActivity, FreeLoadsFragment())
+                        .replace()
+                }
+            snackBar.setActionTextColor(Color.WHITE)
+            val snackBarView = snackBar.view
+            snackBarView.setBackgroundColor(currentActivity.resources.getColor(R.color.colorPink))
+            val textView =
+                snackBarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+            textView.setTextColor(Color.WHITE)
+            textView.text = text
+            textView.gravity = Gravity.RIGHT
+            textView.textSize = 20f
+            TypeFaceUtil.overrideFont(snackBarView)
+            snackBar.show()
+        }
 
         fun Toast(message: String?, duration: Int) {
             handler.post(Runnable {
@@ -46,12 +81,12 @@ class MyApplication : Application() {
         }
 
         fun avaStart() {
-            if (prefManager.getAvaPID() === 0) return
+            if (prefManager.getAvaPID() == 0) return
             if (prefManager.getAvaToken() == null) return
             AvaFactory.getInstance(context)
-                .setUserID("1")
+                .setUserID(prefManager.getDriverId().toString())
                 .setProjectID(prefManager.getAvaPID())
-                .setToken("arianaDriverAABMohsenX") // TODO change value
+                .setToken(prefManager.getAvaToken())
                 .setAddress(EndPoint.PUSH_ADDRESS)
                 .start();
         }
@@ -75,7 +110,27 @@ class MyApplication : Application() {
         context.resources.updateConfiguration(config, context.resources.displayMetrics)
 
         avaStart()
+        initACRA()
 
+    }
+
+    private fun initACRA() {
+//        val authHeaderMap: MutableMap<String, String?> = HashMap()
+//        authHeaderMap["Authorization"] = prefManager.getAuthorization()
+//        authHeaderMap["id_token"] = prefManager.getIdToken()
+//        val builder: CoreConfigurationBuilder = CoreConfigurationBuilder(this)
+//            .setBuildConfigClass(BuildConfig::class.java)
+//            .setReportFormat(StringFormat.JSON)
+//        val httpPluginConfigBuilder: HttpSenderConfigurationBuilder =
+//            builder.getPluginConfigurationBuilder(
+//                HttpSenderConfigurationBuilder::class.java
+//            )
+//                .setUri(EndPoint.CRASH_REPORT)
+//                .setHttpMethod(HttpSender.Method.POST)
+//                .setHttpHeaders(authHeaderMap)
+//                .setEnabled(true)
+        //        if (!BuildConfig.DEBUG)
+        ACRA.init(this)
     }
 
     fun initTypeFace() {

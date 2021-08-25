@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -19,9 +20,12 @@ import ir.team_x.ariana.driver.app.DataHolder
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMapBinding
+import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.gps.LocationAssistant
+import ir.team_x.ariana.driver.gps.MyLocation
 import ir.team_x.ariana.driver.model.StationModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.utils.KeyBoardHelper
 import ir.team_x.ariana.driver.utils.WriteTextOnDrawable
 import org.json.JSONArray
 import org.json.JSONObject
@@ -29,13 +33,14 @@ import kotlin.math.atan2
 import kotlin.math.sin
 import kotlin.math.sqrt
 
+
 class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.Listener {
 
     private lateinit var googleMap: GoogleMap
     lateinit var binding: ActivityMapBinding
     lateinit var locationAssistant: LocationAssistant
-    lateinit var lastLocation: Location
-    lateinit var myLocationMarker: Marker
+    var lastLocation= Location("provider");
+    var myLocationMarker: Marker? = null
     lateinit var stationCircle: Circle
     private val markerList: ArrayList<StationModel> = ArrayList()
 
@@ -47,8 +52,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         MapsInitializer.initialize(MyApplication.context)
         binding.map.getMapAsync(this)
 
-        lastLocation=MyApplication.prefManager.getLastLocation()
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -56,8 +59,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
-
-//        getStation()
 
         locationAssistant = LocationAssistant(
             MyApplication.context,
@@ -72,20 +73,27 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             finish()
         }
 
-        binding.imgGps.setOnClickListener {
-            myLocationMarker.remove()
-            stationCircle.remove()
-            animateToLocation(lastLocation.latitude, lastLocation.longitude)
+        binding.imgRefresh.setOnClickListener {
+            getStation()
         }
 
-        MyApplication.handler.postDelayed({
-            animateToLocation(lastLocation.latitude, lastLocation.longitude)
-        }, 500)
+        binding.imgGps.setOnClickListener {
+            if (lastLocation.latitude == 0.0 || lastLocation.longitude == 0.0) {
+                GeneralDialog().message("متاسفانه موقعیت در دسترس نمیباشد پس از چند لحظه مجدد امتحان کنید")
+                    .firstButton("باشه") {}.show()
+                return@setOnClickListener
+            }
+            animateToLocation(
+                MyApplication.prefManager.getLastLocation().latitude,
+                MyApplication.prefManager.getLastLocation().longitude
+            )
+        }
 
     }
 
     override fun onResume() {
         super.onResume()
+        KeyBoardHelper.hideKeyboard()
         MyApplication.prefManager.setAppRun(true)
         MyApplication.currentActivity = this
         binding.map.onResume()
@@ -109,35 +117,64 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         locationAssistant.stop()
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(MyApplication.currentActivity, MainActivity::class.java))
+        finish()
+    }
+
     override fun onMapReady(p0: GoogleMap?) {
         if (p0 != null) {
             googleMap = p0
             googleMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+            googleMap.uiSettings.isMapToolbarEnabled = false
+            googleMap.uiSettings.isZoomControlsEnabled = false
+            googleMap.uiSettings.isRotateGesturesEnabled = false
+            googleMap.setMinZoomPreference(11.0f)
 
-//            if (lastLocation.latitude in 20.0..40.0) {
-//                animateToLocation(lastLocation.latitude, lastLocation.longitude)
-//            }
+            val cameraPosition = CameraPosition.Builder()
+                .target(MyApplication.prefManager.getLastLocation())
+                .zoom(12f)
+                .build()
 
-            MyApplication.handler.postDelayed({
-                if (DataHolder.instance().stationArr == null) {
-                    getStation()
-                } else {
-                    DataHolder.instance().stationArr?.let { showStation(it) }
-                }
-            }, 500)
+            val locationResult: MyLocation.LocationResult = object : MyLocation.LocationResult() {
+                override fun gotLocation(location: Location?) {
+                    if (location == null) {
+                        return
+                    }
+                    try {
+                        lastLocation = location
 
-            googleMap.setOnCameraChangeListener {
-                try {
-                    val mUpCameraPosition: CameraPosition = googleMap.getCameraPosition()
-                    val temp = LatLng(
-                        mUpCameraPosition.target.latitude,
-                        mUpCameraPosition.target.longitude
-                    )
-                    hideStation()
-                    DataHolder.instance().stationArr?.let { it1 -> showStation(it1) }
-                } catch (e: Exception) {
+                        if (lastLocation.latitude in 20.0..40.0) {
+                            animateToLocation(lastLocation.latitude, lastLocation.longitude)
+                        }
+//                        refreshMyLocationMarker()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
             }
+
+            val myLocation = MyLocation()
+            myLocation.getLocation(MyApplication.currentActivity, locationResult)
+
+            MyApplication.handler.postDelayed({
+//                if (DataHolder.instance().stationArr == null) {
+                getStation()
+//                } else {
+//                    DataHolder.instance().stationArr?.let { showStation(it) }
+//                }
+            }, 500)
+
+            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+
+//            googleMap.setOnCameraChangeListener {
+//                try {
+//                    hideStation()
+//                    DataHolder.instance().stationArr?.let { it1 -> showStation(it1) }
+//                } catch (e: Exception) {
+//                    e.printStackTrace()
+//                }
+//            }
 
         }
     }
@@ -163,11 +200,13 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             .fillColor(MyApplication.currentActivity.resources.getColor(R.color.grayTransparent)) //default
             .strokeColor(MyApplication.currentActivity.resources.getColor(R.color.grayDark))
             .strokeWidth(5f)
-
+        if (this::stationCircle.isInitialized)
+            stationCircle.remove()
         stationCircle = googleMap.addCircle(circleOptions)
     }
 
     private fun refreshLocation() {
+        myLocationMarker?.remove()
         val bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.pin)
         myLocationMarker = googleMap.addMarker(
             MarkerOptions()
@@ -179,7 +218,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     }
 
     private fun hideStation() {
-        if (markerList == null || markerList.isEmpty()) {
+        if (markerList.isEmpty()) {
             return
         }
         for (i in markerList.indices) {
@@ -199,19 +238,15 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         val earthRadius = 6371000.0 //meters
         val dLat = Math.toRadians(lat2 - lat1)
         val dLng = Math.toRadians(lng2 - lng1)
-        val a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(Math.toRadians(lat1)) * Math.cos(
-            Math.toRadians(
-                lat2
-            )
-        ) *
-                sin(dLng / 2) * sin(dLng / 2)
-        val c =
-            2 * atan2(sqrt(a), sqrt(1 - a))
+        val a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lat1)) * Math.cos(
+            Math.toRadians(lat2)
+        ) * sin(dLng / 2) * sin(dLng / 2)
+        val c = 2 * atan2(sqrt(a), sqrt(1 - a))
         return (earthRadius * c).toFloat()
     }
 
     private fun showStation(stationArr: JSONArray) {
+        hideStation()
         val mUpCameraPosition: CameraPosition = googleMap.cameraPosition
         val center = LatLng(mUpCameraPosition.target.latitude, mUpCameraPosition.target.longitude)
 
@@ -223,26 +258,38 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
                 val latLng = LatLng(dataObj.getDouble("lat"), dataObj.getDouble("long"))
                 val count = dataObj.getInt("countService")
 
-                if (distFrom(
-                        latLng.longitude,
-                        latLng.longitude,
-                        center.latitude,
-                        center.longitude
-                    ) < 3000
-                ) {
-                    addStationMarker(
-                        latLng,
-                        count.toString(),
-                        code,
-                        name
-                    )
-                }
+//                if (distFrom(
+//                        latLng.longitude,
+//                        latLng.longitude,
+//                        center.latitude,
+//                        center.longitude
+//                    ) < 3000
+//                ) {
+                addStationMarker(
+                    latLng,
+                    count,
+                    code,
+                    name
+                )
+//                }
             }
         }
     }
 
-    private fun addStationMarker(latLng: LatLng, count: String, code: Int, name: String) {
-        val bmp: Bitmap = WriteTextOnDrawable.write(R.mipmap.green_marker, count, 18, 2)
+    private fun addStationMarker(latLng: LatLng, count: Int, code: Int, name: String) {
+        var bmp: Bitmap = WriteTextOnDrawable.write(R.mipmap.green_marker, count.toString(), 18, 2)
+        when {
+            count in 1..2 -> {
+                bmp = WriteTextOnDrawable.write(R.mipmap.green_marker, count.toString(), 18, 2)
+            }
+            count in 3..5 -> {
+                bmp = WriteTextOnDrawable.write(R.mipmap.yellow_marker, count.toString(), 18, 2)
+            }
+            count > 5 -> {
+                bmp = WriteTextOnDrawable.write(R.mipmap.red_marker, count.toString(), 18, 2)
+            }
+        }
+
         try {
             val model = StationModel(
                 code,
@@ -321,6 +368,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 
     override fun onNewLocationAvailable(location: Location?) {
         this.lastLocation = location!!
+        MyApplication.prefManager.setLastLocation(LatLng(location.latitude, location.longitude))
     }
 
     override fun onMockLocationsDetected(

@@ -42,15 +42,15 @@ public class AuthenticationInterceptor implements Interceptor {
         request = builder.build();
         Response response = chain.proceed(request);
         if (response.code() == 401 || response.code() == 403 || response.code() == 402) {
-            Log.w(TAG, "Request responses code: " + response.code());
-            Log.w(TAG, "Request responses url: " + response.request().url());
+            Log.w(TAG, "Request responses code: " + response.code() + " responses url " + response.request().url());
+//            Log.w(TAG, "Request responses url: " + response.request().url());
 //            synchronized (this) {
             boolean statusCode = refreshToken();
             if (statusCode) {
                 setAuthHeader(builder, MyApplication.prefManager.getAuthorization(), MyApplication.prefManager.getIdToken());
                 request = builder.build();
                 Response responseRetry = chain.proceed(request);
-                Log.i(TAG, "Request responses new url: " + responseRetry.request().url());
+                Log.i(TAG, "Request responses new url: " + responseRetry.request().url() + "Request responses code: " + responseRetry.code());
                 return responseRetry;
             } else {
                 JSONObject object = null;
@@ -82,13 +82,13 @@ public class AuthenticationInterceptor implements Interceptor {
             MediaType jsonType = MediaType.parse("application/json; charset=utf-8");
             JSONObject json = new JSONObject();
             try {
-                json.put("token",MyApplication.prefManager.getRefreshToken());
+                json.put("token", MyApplication.prefManager.getRefreshToken());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             RequestBody body = RequestBody.create(jsonType, json.toString());
             Request request = new Request.Builder()
-                    .url(EndPoint.REFRESH_TOKEN)
+                    .url(EndPoint.Companion.getREFRESH_TOKEN())
                     .post(body)
                     .build();
 
@@ -97,8 +97,8 @@ public class AuthenticationInterceptor implements Interceptor {
             try {
                 response = client.newCall(request).execute();
 
-                Log.i(TAG, "refreshToken : input " + json.toString());
-                Log.i(TAG, "refreshToken : url " + request.url().toString());
+                Log.i(TAG, " url " + request.url().toString() + "refreshToken : input " + json.toString());
+
 
                 if (response != null) {
                     if (response.code() == 200) {
@@ -107,7 +107,7 @@ public class AuthenticationInterceptor implements Interceptor {
                             boolean success = jsonBody.getBoolean("success");
                             String message = jsonBody.getString("message");
 
-                            Log.i(TAG, "refreshToken : jsonBody " + jsonBody.toString());
+                            Log.i(TAG, "refreshToken : url " + request.url().toString() + ", refreshToken : jsonBody " + jsonBody.toString());
 
                             if (success) {
                                 JSONObject objData = jsonBody.getJSONObject("data");

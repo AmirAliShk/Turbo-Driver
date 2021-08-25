@@ -13,5 +13,6 @@ data class FinishedModel(
     var statusDes:String,
     var sourceAddress:String,
     var destinationAddress:String,
-    var statusColor:String
+    var statusColor:String,
+    var cancelDate:String
 )

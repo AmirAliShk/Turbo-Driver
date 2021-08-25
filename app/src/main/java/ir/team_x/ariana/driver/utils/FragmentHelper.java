@@ -202,6 +202,7 @@ public class FragmentHelper {
      */
     public void replace() {
         try {
+            KeyBoardHelper.hideKeyboard();
             MyApplication.handler.postDelayed(() -> {
                 if (instance.fragment != null) {
                     FragmentTransaction fragmentTransaction = instance.fragmentManager.beginTransaction();

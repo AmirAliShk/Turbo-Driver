@@ -55,7 +55,7 @@
             <TextView
                 android:id="@+id/txtOriginAddress"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_weight="0.35"
                 android:gravity="right|center_vertical"
@@ -78,7 +78,7 @@
             <TextView
                 android:id="@+id/txtDestinationAddress"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:gravity="right|center_vertical"
                 android:textColor="@color/colorBlack"

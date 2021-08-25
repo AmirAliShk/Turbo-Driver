@@ -1,10 +1,9 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
@@ -51,7 +50,7 @@ class ServiceDetailsFragment(
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
-        TypeFaceUtilJava.overrideFonts(binding.root,MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtDate.text = StringHelper.toPersianDigits(
@@ -63,7 +62,8 @@ class ServiceDetailsFragment(
             )
         )
         binding.txtCustomerName.text = serviceModel.customerName
-        binding.txtCargoWeight.text=StringHelper.toPersianDigits(serviceModel.weightName) //TODO uncomment
+        binding.txtCargoWeight.text =
+            StringHelper.toPersianDigits(serviceModel.weightName)
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
         binding.txtDestAddress.text = StringHelper.toPersianDigits(serviceModel.destinationAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
@@ -71,7 +71,7 @@ class ServiceDetailsFragment(
         binding.txtCargoType.text = serviceModel.cargoName
         binding.txtCargoCost.text = StringHelper.toPersianDigits(serviceModel.costName)
         binding.txtPaymentSide.text = if (serviceModel.paymentSide == 0) "مقصد" else "مبدا"
-        binding.imgDriverHelp.setImageResource(if (serviceModel.driverHelp == 1) R.drawable.ic_completed else R.drawable.ic_cancle)
+        binding.imgDriverHelp.setImageResource(if (serviceModel.driverHelp == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         binding.llCancel.setOnClickListener {
             GeneralDialog()
                 .message("از لغو سرویس اطمینان دارید؟")
@@ -85,12 +85,7 @@ class ServiceDetailsFragment(
             CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
         }
         binding.txtFinish.setOnClickListener {
-            FactorDialog().show(serviceModel, object:FactorDialog.FinishServiceListener{
-                override fun onFinishService(isFinish: Boolean) {
-                    cancelServiceListener.onFinishSerice(isFinish)
-                }
-
-            })
+            bill(serviceModel.id, serviceModel.priceService)
         }
 
         return binding.root
@@ -119,16 +114,17 @@ class ServiceDetailsFragment(
                         if (result) {
                             FragmentHelper.taskFragment(MyApplication.currentActivity, TAG).remove()
                             cancelServiceListener.onCanceled(true)
-                            UpdateCharge().update(object: UpdateCharge.ChargeListener{
+                            UpdateCharge().update(object : UpdateCharge.ChargeListener {
                                 override fun getCharge(charge: String) {
                                     MyApplication.prefManager.setCharge(charge)
                                 }
                             })
                         } else {
-                            GeneralDialog().message(message).secondButton("باشه"){}.show()
+                            GeneralDialog().message(message).secondButton("باشه") {}.show()
                             cancelServiceListener.onCanceled(false)
                         }
                     } else {
+                        GeneralDialog().message(message).secondButton("باشه") {}.show()
                         cancelServiceListener.onCanceled(false)
                     }
 
@@ -142,6 +138,53 @@ class ServiceDetailsFragment(
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
                 binding.vfCancel.displayedChild = 0
+            }
+        }
+    }
+
+    private fun bill(serviceId: Int, price: String) {
+        binding.vfEndService.displayedChild = 1
+        RequestHelper.builder(EndPoint.BILL)
+            .listener(billCallBack)
+            .addPath( serviceId.toString())
+            .addPath( price)
+            .get()
+    }
+
+    private val billCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+                    binding.vfEndService.displayedChild = 0
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+                    if (success) {
+                        val dataObj = jsonObject.getJSONObject("data")
+
+                        FactorDialog().show(
+                            dataObj, serviceModel.id,
+                            object : FactorDialog.FinishServiceListener {
+                                override fun onFinishService(isFinish: Boolean) {
+                                    cancelServiceListener.onFinishSerice(isFinish)
+                                }
+
+                            })
+
+                    } else {
+                        cancelServiceListener.onCanceled(false)
+                    }
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    binding.vfEndService.displayedChild = 0
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+                binding.vfEndService.displayedChild = 0
             }
         }
     }

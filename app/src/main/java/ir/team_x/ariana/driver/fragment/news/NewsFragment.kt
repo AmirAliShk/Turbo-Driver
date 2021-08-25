@@ -1,16 +1,15 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.news
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ir.team_x.ariana.driver.adapter.FinishedAdapter
 import ir.team_x.ariana.driver.adapter.NewsAdapter
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentNewsBinding
-import ir.team_x.ariana.driver.model.FinishedModel
 import ir.team_x.ariana.driver.model.NewsModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
@@ -32,6 +31,7 @@ class NewsFragment : Fragment() {
     ): View? {
         binding = FragmentNewsBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
@@ -65,7 +65,7 @@ class NewsFragment : Fragment() {
                                 dataObj.getString("image"),
                                 dataObj.getString("saveDate"),
                                 dataObj.getString("title"),
-                                dataObj.getString("newMessage")
+                                dataObj.getInt("newMessage")
                             )
 
                             newsModels.add(model)
@@ -93,4 +93,19 @@ class NewsFragment : Fragment() {
         }
     }
 
+    private var refreshListener: RefreshNotificationCount? = null
+
+    interface RefreshNotificationCount {
+        fun refreshNotification()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        refreshListener = context as RefreshNotificationCount
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        refreshListener?.refreshNotification()
+    }
 }

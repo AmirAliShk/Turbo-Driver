@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pageBackground"
+    android:clickable="true"
     android:layoutDirection="rtl"
     android:orientation="vertical">
 
@@ -22,6 +23,7 @@
             android:src="@drawable/ic_back" />
 
         <TextView
+            android:id="@+id/txtTitle"
             style="@style/page_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,10 +33,9 @@
 
     </RelativeLayout>
 
-
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
@@ -53,8 +54,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:src="@drawable/ic_calll" />
 
             <TextView
@@ -71,17 +72,7 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1" />
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:src="@mipmap/ariana"
-            android:layout_gravity="left"
-            android:layout_margin="@dimen/_5sdp"/>
-
+            android:layout_weight="1.5" />
 
     </LinearLayout>
 

@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/actionBar"
     android:orientation="vertical"
     android:clickable="true"
-    android:layoutDirection="rtl"
-    tools:context=".fragment.LoginFragment">
+    android:layoutDirection="rtl">
 
     <ImageView
         android:layout_width="match_parent"
@@ -43,34 +43,14 @@
                 android:gravity="center">
 
                 <EditText
+                    android:id="@+id/edtMobilNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background2"
-                    android:hint="نام کاربری"
+                    android:inputType="number"
+                    android:hint="شماره موبایل"
+                    android:gravity="center"
                     android:padding="@dimen/_10sdp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                android:layout_weight="1">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/background2"
-                    android:hint="رمزعبور"
-                    android:padding="@dimen/_10sdp" />
-
-                <TextView
-                    style="@style/text_title_white"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp"
-                    android:text="ورود با شماره همراه"
-                    android:layout_marginBottom="@dimen/_10sdp"/>
 
             </LinearLayout>
 
@@ -86,14 +66,28 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
 
-                <Button
-                    android:id="@+id/btnLogin"
-                    style="@style/page_title"
+                <ViewFlipper
+                    android:id="@+id/vfSubmit"
                     android:layout_width="0dp"
                     android:layout_weight="4"
-                    android:layout_height="wrap_content"
                     android:background="@drawable/background3"
-                    android:text="ورود"/>
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        style="@style/page_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:text="ارسال کد"/>
+
+                    <com.wang.avi.AVLoadingIndicatorView
+                        android:layout_width="30sp"
+                        android:layout_height="30sp"
+                        android:layout_gravity="center"
+                        app:indicatorColor="@color/grayLighter" />
+
+                </ViewFlipper>
 
                 <View
                     android:layout_width="0dp"

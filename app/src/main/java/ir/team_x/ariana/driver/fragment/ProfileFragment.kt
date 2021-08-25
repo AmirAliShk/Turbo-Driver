@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentProfileBinding
+import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 
 class ProfileFragment : Fragment() {
@@ -23,11 +24,17 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
         binding.llAboutUs.setOnClickListener {
-
+            FragmentHelper.toFragment(MyApplication.currentActivity,AboutUsFragment()).replace()
         }
+
+        binding.txtName.text=MyApplication.prefManager.getUserName()
+        binding.txtIben.text=MyApplication.prefManager.getIban()
+        binding.txtNationalCode.text=MyApplication.prefManager.getNational()
 
         return binding.root
     }

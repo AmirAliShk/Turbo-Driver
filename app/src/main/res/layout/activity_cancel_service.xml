@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,10 +8,41 @@
     android:layoutDirection="rtl"
     tools:context=".activity.CancelServiceActivity">
 
-    <TextView
-        android:id="@+id/txtDescription"
+    <com.skyfishjy.library.RippleBackground
+        android:id="@+id/rbContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@color/colorBlack" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="30dp"
+        app:rb_color="#EF5350"
+        app:rb_duration="1000"
+        app:rb_radius="25dp"
+        app:rb_rippleAmount="1"
+        app:rb_scale="8">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorBlack" />
+
+    </com.skyfishjy.library.RippleBackground>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:background="@drawable/bg_redd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:textColor="@color/colorWhite"
+        android:text="متوجه شدم"/>
+
+</RelativeLayout>

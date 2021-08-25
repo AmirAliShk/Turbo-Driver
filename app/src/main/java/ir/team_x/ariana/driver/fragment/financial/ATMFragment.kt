@@ -1,4 +1,4 @@
-package ir.team_x.ariana.driver.fragment
+package ir.team_x.ariana.driver.fragment.financial
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +15,7 @@ import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
+import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
 class ATMFragment : Fragment() {
@@ -28,6 +29,7 @@ class ATMFragment : Fragment() {
     ): View? {
         binding = FragmentAtmBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 

@@ -27,10 +27,8 @@ public class AvaCrashReporter {
 
     try {
       JSONObject customeData = new JSONObject();
-//      customeData.put("SmartCode", MyApplication.prefManager.getSmartCode());// TODO check commented param
-//      customeData.put("CarCode", MyApplication.prefManager.gegetSmode());
-//      customeData.put("LineCode", MyApplication.prefManager.ggetSmeCode());
-//      customeData.put("DriverName", MyApplication.prefManagergetSmriverName());
+      customeData.put("LineCode", MyApplication.prefManager.getDriverId());
+      customeData.put("DriverName", MyApplication.prefManager.getUserName());
       customeData.put("IS_CATCH", true);
       customeData.put("CATCH_LINE_NUMBER", AvaSocket.getSocketParams());
       customeData.put("CATCH_ID", arg.length > 0 ? arg[0] : 0);

@@ -22,6 +22,7 @@
             android:src="@drawable/ic_back" />
 
         <TextView
+            android:id="@+id/txtTitle"
             style="@style/page_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,22 +50,22 @@
                 style="@style/title_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.6"
+                android:layout_weight="0.5"
                 android:text="@string/name" />
 
             <TextView
+                android:id="@+id/txtName"
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="سارابنی اسدی" />
+                android:layout_weight="1" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="right"
             android:orientation="horizontal">
 
@@ -72,68 +73,22 @@
                 style="@style/title_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:text="@string/father_name" />
-
-            <TextView
-                style="@style/Details_answer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="محسن" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/title_details"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:text="@string/id" />
-
-            <TextView
-                style="@style/Details_answer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0925510564" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/title_details"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
+                android:layout_weight="0.5"
                 android:text="@string/National_code" />
 
             <TextView
+                android:id="@+id/txtNationalCode"
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="0925510564" />
+                android:layout_weight="1" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="right"
             android:orientation="horizontal">
 
@@ -141,15 +96,15 @@
                 style="@style/title_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.6"
+                android:layout_weight="0.5"
                 android:text="@string/Shaba_number" />
 
             <TextView
+                android:id="@+id/txtIben"
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="732456912875302156" />
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -159,8 +114,8 @@
         android:id="@+id/llAboutUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:layout_marginRight="@dimen/_13sdp"
         android:layout_marginLeft="@dimen/_13sdp"
+        android:layout_marginRight="@dimen/_13sdp"
         android:background="@drawable/bg_grye"
         android:gravity="center"
         android:orientation="horizontal"

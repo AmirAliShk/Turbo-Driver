@@ -5,10 +5,6 @@ import android.location.LocationManager;
 
 import ir.team_x.ariana.driver.app.MyApplication;
 
-/**
- * Created by mohsen on 14/11/2016.
- */
-
 public class GPSEnable {
 
   public static boolean isOn() {

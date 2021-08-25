@@ -7,13 +7,10 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Toast
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.DialogFactorBinding
-import ir.team_x.ariana.driver.fragment.ServiceDetailsFragment
-import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.driver.utils.KeyBoardHelper
@@ -33,7 +30,7 @@ class FactorDialog {
 
     private lateinit var finishServiceListener:FinishServiceListener
 
-    fun show(serviceModel: ServiceDataModel, finishServiceListener: FinishServiceListener) {
+    fun show(priceObj: JSONObject,serId: Int, finishServiceListener: FinishServiceListener) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DialogFactorBinding.inflate(LayoutInflater.from(MyApplication.context))
@@ -50,13 +47,13 @@ class FactorDialog {
         this.finishServiceListener = finishServiceListener
 
         binding.imgClose.setOnClickListener { dismiss() }
-        binding.btnEndTrip.setOnClickListener { finish(serviceModel.id, serviceModel.priceService) }
-        binding.txtTotalAmount.text = serviceModel.priceService
-        binding.txtTax.text = serviceModel.tax
-        binding.txtCompanyShare.text = serviceModel.commission
-        binding.txtDiscount.text = serviceModel.discount
-        binding.txtDriverShare.text = serviceModel.finalPrice
-        binding.txtCustomerPrice.text = serviceModel.priceCustomer
+        binding.btnEndTrip.setOnClickListener { finish(serId, priceObj.getString("priceService")) }
+        binding.txtTotalAmount.text = priceObj.getString("priceService")
+        binding.txtTax.text = priceObj.getString("tax")
+        binding.txtCompanyShare.text = priceObj.getString("commission")
+        binding.txtDiscount.text = priceObj.getString("discount")
+        binding.txtDriverShare.text = priceObj.getString("finalPrice")
+        binding.txtCustomerPrice.text = priceObj.getString("finalPrice")
 
         dialog.show()
 
@@ -67,7 +64,7 @@ class FactorDialog {
         RequestHelper.builder(EndPoint.FINISH)
             .listener(finishCallBack)
             .addParam("serviceId", serviceId)
-            .addParam("price", "10000") //TODO change price
+            .addParam("price", price)
             .post()
     }
 
@@ -87,9 +84,8 @@ class FactorDialog {
                                 override fun getCharge(charge: String) {
                                 }
                             })
-
+                            GeneralDialog().message(message).firstButton("باشه"){}.show()
                             finishServiceListener.onFinishService(true)
-                            MyApplication.Toast(message, Toast.LENGTH_SHORT)
                             dismiss()
                             MyApplication.currentActivity.onBackPressed()
                         }else{

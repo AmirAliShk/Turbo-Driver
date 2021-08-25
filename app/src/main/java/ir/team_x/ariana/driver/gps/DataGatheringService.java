@@ -144,8 +144,8 @@ public class DataGatheringService extends Service {
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 MyApplication.prefManager.setLastLocation(latLng);
 
-                // TODO uncomment
-//                if (prefManager.getPickUpGuestTime() < Calendar.getInstance().getTimeInMillis() && prefManager.getPickUpGuestTime() != 0 //TODO uncomment (if)
+                // TODO uncomment (if)
+//                if (prefManager.getPickUpGuestTime() < Calendar.getInstance().getTimeInMillis() && prefManager.getPickUpGuestTime() != 0
 //                        && !MyApplication.prefManager.getServiceIdForCancelDialog().equals("0")) {
 //                    MyApplication.handler.post(() -> {
 //                        SoundHelper.ringing(R.raw.beep_sound);
@@ -221,10 +221,9 @@ public class DataGatheringService extends Service {
             Location tempLocation = location;
             JSONObject params = new JSONObject();
             try {
-                LocationManager service = (LocationManager) MyApplication.context.getSystemService(MyApplication.context.LOCATION_SERVICE);
+                LocationManager service = (LocationManager) MyApplication.context.getSystemService(Context.LOCATION_SERVICE);
                 boolean isTurnOnGPS = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-                // TODO check path
                 RequestHelper requestHelper = RequestHelper.builder(EndPoint.Companion.getSAVE_LOCATION())
                         .setErrorHandling(false)
                         .listener(saveListener);

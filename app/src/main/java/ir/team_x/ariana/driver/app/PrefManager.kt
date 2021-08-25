@@ -18,9 +18,6 @@ class PrefManager {
     }
 
     private val USER_NAME = "userName"
-    private val SIP_PASSWORD = "sipPassword"
-    private val SIP_SERVER = "sipServer"
-    private val SIP_NUMBER = "sipNumber"
     private val REFRESH_TOKEN = "refreshToken"
     private val AUTHORIZATION = "authorixation"
     private val ID_TOKEN = "idToken"
@@ -35,6 +32,32 @@ class PrefManager {
     private val KEY_LAST_LNG = "lastLang"
     private val API_REQUEST_TIME = "requestTime"
     private val CHARGE = "charge"
+    private val LOCK_STATUS = "LockStatus"
+    private val LOCK_REASONES = "lockReasons"
+    private val IBAN = "iban"
+    private val NATIONAL_CODE = "nationlCode"
+    private val REPEAT_TIME = "repeatTime"
+    private val KEY_ACTIVATION_REMAINING_TIME = "activationRemainingTime"
+    private val DRIVER_ID = "driverId"
+    private val KEY_COUNT_NOTIFICATION = "countNotification"
+
+    fun setCountNotification(count: Int) {
+        editor.putInt(KEY_COUNT_NOTIFICATION, count)
+        editor.commit()
+    }
+
+    fun getCountNotification(): Int {
+        return sharedPreferences.getInt(KEY_COUNT_NOTIFICATION, 0)
+    }
+
+    fun setActivationRemainingTime(v: Long) {
+        editor.putLong(KEY_ACTIVATION_REMAINING_TIME, v)
+        editor.commit()
+    }
+
+    fun getActivationRemainingTime(): Long {
+        return sharedPreferences.getLong(KEY_ACTIVATION_REMAINING_TIME, 60000)
+    }
 
     fun getRefreshToken(): String? {
         return sharedPreferences.getString(REFRESH_TOKEN, "")
@@ -51,7 +74,8 @@ class PrefManager {
 
     fun getLastLocation(): LatLng {
         return LatLng(
-            sharedPreferences.getFloat(KEY_LAST_LAT, 36.317265F).toDouble(), sharedPreferences.getFloat(KEY_LAST_LNG, 59.562635F).toDouble()
+            sharedPreferences.getFloat(KEY_LAST_LAT, 36.317265F).toDouble(),
+            sharedPreferences.getFloat(KEY_LAST_LNG, 59.562635F).toDouble()
         )
     }
 
@@ -67,6 +91,60 @@ class PrefManager {
 
     fun setDriverStatus(v: Boolean) {
         editor.putBoolean(DRIVER_STATUS, v)
+        editor.commit()
+    }
+
+    fun getRepetitionTime(): Int {
+        return sharedPreferences.getInt(REPEAT_TIME, 0)
+    }
+
+    fun setRepetitionTime(v: Int) {
+        editor.putInt(REPEAT_TIME, v)
+        editor.commit()
+    }
+
+    fun getDriverId(): Int {
+        return sharedPreferences.getInt(DRIVER_ID, 0)
+    }
+
+    fun setDriverId(v: Int) {
+        editor.putInt(DRIVER_ID, v)
+        editor.commit()
+    }
+
+    fun getLockStatus(): Int {
+        return sharedPreferences.getInt(LOCK_STATUS, 0)
+    }
+
+    fun setLockStatus(v: Int) {
+        editor.putInt(LOCK_STATUS, v)
+        editor.commit()
+    }
+
+    fun getLockReasons(): String {
+        return sharedPreferences.getString(LOCK_REASONES, "").toString()
+    }
+
+    fun setLockReasons(v: String) {
+        editor.putString(LOCK_REASONES, v)
+        editor.commit()
+    }
+
+    fun getIban(): String {
+        return sharedPreferences.getString(IBAN, "").toString()
+    }
+
+    fun setIban(v: String) {
+        editor.putString(IBAN, v)
+        editor.commit()
+    }
+
+    fun getNational(): String {
+        return sharedPreferences.getString(NATIONAL_CODE, "").toString()
+    }
+
+    fun setNational(v: String) {
+        editor.putString(NATIONAL_CODE, v)
         editor.commit()
     }
 
@@ -153,33 +231,6 @@ class PrefManager {
 
     fun setLastNotification(v: String?) {
         editor.putString(LAST_NOTIFICATION, v)
-        editor.commit()
-    }
-
-    fun getSipNumber(): String? {
-        return sharedPreferences.getString(SIP_NUMBER, "")
-    }
-
-    fun setSipNumber(sipNumber: String) {
-        editor.putString(SIP_NUMBER, sipNumber)
-        editor.commit()
-    }
-
-    fun getSipPassword(): String? {
-        return sharedPreferences.getString(SIP_PASSWORD, "")
-    }
-
-    fun setSipPassword(sipPassword: String) {
-        editor.putString(SIP_PASSWORD, sipPassword)
-        editor.commit()
-    }
-
-    fun getSipServer(): String? {
-        return sharedPreferences.getString(SIP_SERVER, "")
-    }
-
-    fun setSipServer(sipServer: String) {
-        editor.putString(SIP_SERVER, sipServer)
         editor.commit()
     }
 

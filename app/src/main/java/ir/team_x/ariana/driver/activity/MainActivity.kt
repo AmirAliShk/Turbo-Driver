@@ -1,21 +1,36 @@
 package ir.team_x.ariana.driver.activity
 
+import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
+import android.location.GpsStatus.GPS_EVENT_STARTED
+import android.location.GpsStatus.GPS_EVENT_STOPPED
+import android.location.Location
+import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import android.provider.Settings
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import com.google.android.gms.maps.model.LatLng
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityMainBinding
 import ir.team_x.ariana.driver.dialog.GeneralDialog
-import ir.team_x.ariana.driver.fragment.*
+import ir.team_x.ariana.driver.fragment.ProfileFragment
+import ir.team_x.ariana.driver.fragment.SupportFragment
+import ir.team_x.ariana.driver.fragment.financial.FinancialFragment
+import ir.team_x.ariana.driver.fragment.news.NewsFragment
+import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
+import ir.team_x.ariana.driver.fragment.services.FreeLoadsFragment
+import ir.team_x.ariana.driver.fragment.services.ServiceHistoryFragment
 import ir.team_x.ariana.driver.gps.DataGatheringService
+import ir.team_x.ariana.driver.gps.GPSEnable
+import ir.team_x.ariana.driver.gps.LocationAssistant
+import ir.team_x.ariana.driver.gps.MyLocation
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.*
 import ir.team_x.ariana.driver.webServices.UpdateCharge
@@ -23,16 +38,20 @@ import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
+    LocationAssistant.Listener {
 
     lateinit var binding: ActivityMainBinding
-    var lastLocation = LatLng(0.0, 0.0)
-    private var timer = Timer()
+    lateinit var locationAssistant: LocationAssistant
+    private lateinit var lastLocation: Location
+    private lateinit var timer: Timer
     private val STATUS_PERIOD: Long = 20000
     var driverStatus = 0
     var active = false
     var register = false
 
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -45,20 +64,27 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
+        locationAssistant = LocationAssistant(
+            MyApplication.context,
+            this,
+            LocationAssistant.Accuracy.HIGH,
+            100,
+            true
+        )
 
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtilJava.overrideFonts(binding.txtCharge, MyApplication.iranSansMediumTF)
         TypeFaceUtilJava.overrideFonts(binding.txtDriverName, MyApplication.iranSansMediumTF)
         TypeFaceUtilJava.overrideFonts(binding.txtStatus, MyApplication.iranSansMediumTF)
 
-        MyApplication.prefManager.setAvaPID(10)//TODO move to splash response
-        MyApplication.prefManager.setAvaToken("arianaDriverAABMohsenX")  // TODO change value
-
         if (!isDriverActive()) {
             binding.txtStatus.text = "برای وارد شدن فعال را بزنید"
             binding.swStationRegister.visibility = View.INVISIBLE
             binding.swEnterExit.isChecked = false
         }
+
+        binding.txtLock.isSelected = true
+        binding.txtDriverName.text = MyApplication.prefManager.getUserName()
 
         handleStatusByServer()
 
@@ -73,6 +99,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        if (MyApplication.prefManager.getLockStatus() == 1) {
+            binding.txtLock.visibility = View.VISIBLE
+            binding.txtLock.setTextColor(resources.getColor(R.color.colorWhite))
+            binding.txtLock.background = resources.getDrawable(R.color.colorRed)
+            binding.txtLock.text =
+                "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي به شما وجود ندارد."
+        } else {
+            binding.txtLock.visibility = View.INVISIBLE
+        }
 
         binding.imgMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)
@@ -93,7 +129,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.llFreeLoads.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment()).replace()
+            FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment())
+                .replace()
         }
 
         binding.llFinancial.setOnClickListener {
@@ -101,10 +138,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.swEnterExit.setOnCheckedChangeListener { compoundButton, b ->
-            if (b) {
+            if (!GPSEnable.isOn()) {
+                turnOnGPSDialog()
+                binding.swEnterExit.isChecked = (!binding.swEnterExit.isChecked)
+                return@setOnCheckedChangeListener
+            }
+            if (b) { // i start to send driver location to server every 20 sec here
                 binding.swStationRegister.visibility = View.VISIBLE
                 enterExit(1)
-            } else {
+            } else {// i stop to send location here
                 binding.swStationRegister.visibility = View.INVISIBLE
                 binding.swStationRegister.isChecked = false
                 enterExit(0)
@@ -112,8 +154,37 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.swStationRegister.setOnCheckedChangeListener { compoundButton, b ->
+            if (!GPSEnable.isOn()) {
+                turnOnGPSDialog()
+                binding.swStationRegister.isChecked = (!binding.swStationRegister.isChecked)
+                return@setOnCheckedChangeListener
+            }
             if (b) {
-                stationRegister()
+                MyApplication.handler.postDelayed({
+                    val locationResult: MyLocation.LocationResult =
+                        object : MyLocation.LocationResult() {
+                            override fun gotLocation(location: Location) {
+                                try {
+                                    if ((location.latitude == 0.0) || (location.longitude == 0.0)) {
+                                        if ((lastLocation.latitude == 0.0) || (lastLocation.longitude == 0.0)) {
+                                            MyApplication.Toast(
+                                                "درحال دریافت موقعیت لطفا بعد از چند ثانیه مجدد امتحان کنید",
+                                                Toast.LENGTH_SHORT
+                                            )
+                                        } else {
+                                            stationRegister(lastLocation)
+                                        }
+                                    } else {
+                                        stationRegister(location)
+                                    }
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
+                                }
+                            }
+                        }
+                    val myLocation = MyLocation()
+                    myLocation.getLocation(MyApplication.currentActivity, locationResult)
+                }, 300)
             } else {
                 exitStation()
             }
@@ -143,6 +214,18 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun turnOnGPSDialog() {
+        GeneralDialog()
+            .message("لطفا موقعیت مکانی خود را روشن نمایید")
+            .firstButton("فعال سازی") {
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+            }
+            .secondButton("انصراف") {}
+            .cancelable(false)
+            .show()
+    }
+
     private fun enterExit(status: Int) {
         driverStatus = status
         RequestHelper.builder(EndPoint.ENTER_EXIT)
@@ -169,7 +252,6 @@ class MainActivity : AppCompatActivity() {
                             } else {
                                 driverEnable()
                             }
-                            getStatus()
                         } else {
                             binding.swEnterExit.isChecked = !binding.swEnterExit.isChecked
                         }
@@ -190,11 +272,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun stationRegister() {
+    private fun stationRegister(location: Location) {
         RequestHelper.builder(EndPoint.REGISTER)
             .listener(stationRegisterCallBack)
-            .addParam("lat", "36.298536")
-            .addParam("lng", "59.572962")
+            .addParam("lat", location.latitude)
+            .addParam("lng", location.longitude)
             .post()
     }
 
@@ -285,12 +367,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun startGetStatus() { //TODO where I have to call this fun? which one is better?
+    private fun startGetStatus() {
         try {
             timer = Timer()
             timer.scheduleAtFixedRate(
-                timerTask,
-                0,
+                object : TimerTask() {
+                    override fun run() {
+                        runOnUiThread {
+                            getStatus()
+                        }
+                    }
+                },
+                1000,
                 STATUS_PERIOD
             )
         } catch (e: java.lang.Exception) {
@@ -300,10 +388,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun stopGetStatus() {
         try {
-            if (timer != null) {
-                timerTask.cancel()
-                timer.cancel()
-            }
+            timer.cancel()
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
@@ -331,6 +416,7 @@ class MainActivity : AppCompatActivity() {
                         val statusMessage = statusObj.getString("message")
                         val stationObj = statusObj.getJSONObject("station")
                         MyApplication.prefManager.setDriverStatus(active)
+                        MyApplication.prefManager.setStationRegisterStatus(register)
                         handleStatusByServer()
                         binding.txtStatus.text = statusMessage
                         if (active && register) {
@@ -343,7 +429,9 @@ class MainActivity : AppCompatActivity() {
                             binding.swStationRegister.isChecked = true
                             binding.swStationRegister.visibility = View.VISIBLE
                         } else if (active && !register) {
+                            binding.swEnterExit.isChecked = true
                             binding.swStationRegister.isChecked = false
+                            binding.swStationRegister.visibility = View.VISIBLE
                         } else if (!active && !register) {
                             binding.swEnterExit.isChecked = false
                             binding.swStationRegister.isChecked = false
@@ -408,24 +496,32 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setStatusText(statusText: String) {
-        binding.txtStatus.text = statusText
-    }
-
     override fun onResume() {
         super.onResume()
+        KeyBoardHelper.hideKeyboard()
         MyApplication.currentActivity = this
         MyApplication.prefManager.setAppRun(true)
+        locationAssistant.start()
         if (MyApplication.prefManager.getCharge() != "")
             binding.txtCharge.text =
                 StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
         startGetStatus()
+        if (MyApplication.prefManager.getCountNotification() == 0) {
+            binding.txtBadgeCount.visibility = View.GONE
+        } else {
+            binding.txtBadgeCount.visibility = View.VISIBLE
+            binding.txtBadgeCount.text = StringHelper.toPersianDigits(
+                MyApplication.prefManager.getCountNotification().toString() + ""
+            )
+        }
+        if (!GPSEnable.isOn()) {
+            turnOnGPSDialog()
+        }
     }
 
     override fun onStart() {
         super.onStart()
         MyApplication.currentActivity = this
-        startGetStatus()
     }
 
     override fun onPause() {
@@ -436,6 +532,7 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         stopGetStatus()
+        locationAssistant.stop()
     }
 
     override fun onBackPressed() {
@@ -455,4 +552,48 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun refreshNotification() {
+        if (MyApplication.prefManager.getCountNotification() == 0) {
+            binding.txtBadgeCount.visibility = View.GONE
+        } else {
+            binding.txtBadgeCount.visibility = View.VISIBLE
+            binding.txtBadgeCount.text = StringHelper.toPersianDigits(
+                MyApplication.prefManager.getCountNotification().toString()
+            )
+        }
+    }
+
+    override fun onNeedLocationPermission() {
+    }
+
+    override fun onExplainLocationPermission() {}
+
+    override fun onLocationPermissionPermanentlyDeclined(
+        fromView: View.OnClickListener?,
+        fromDialog: DialogInterface.OnClickListener?
+    ) {
+    }
+
+    override fun onNeedLocationSettingsChange() {
+    }
+
+    override fun onFallBackToSystemSettings(
+        fromView: View.OnClickListener?,
+        fromDialog: DialogInterface.OnClickListener?
+    ) {
+    }
+
+    override fun onNewLocationAvailable(location: Location?) {
+        if (location != null) {
+            this.lastLocation = location
+        }
+    }
+
+    override fun onMockLocationsDetected(
+        fromView: View.OnClickListener?,
+        fromDialog: DialogInterface.OnClickListener?
+    ) {
+    }
+
+    override fun onError(type: LocationAssistant.ErrorType?, message: String?) {}
 }

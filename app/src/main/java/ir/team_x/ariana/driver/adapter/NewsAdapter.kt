@@ -1,32 +1,23 @@
 package ir.team_x.ariana.driver.adapter
 
-import android.graphics.Color
-import android.os.Build
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
-import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
-import ir.team_x.ariana.driver.databinding.ItemFreeLoadsBinding
 import ir.team_x.ariana.driver.databinding.ItemNewsBinding
-import ir.team_x.ariana.driver.databinding.ItemServiceHistoryBinding
-import ir.team_x.ariana.driver.fragment.CurrentServiceFragment
-import ir.team_x.ariana.driver.fragment.NewsDetailsFragment
-import ir.team_x.ariana.driver.model.FinishedModel
+import ir.team_x.ariana.driver.fragment.news.NewsDetailsFragment
 import ir.team_x.ariana.driver.model.NewsModel
-import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.*
-import ir.team_x.ariana.driver.webServices.AcceptService
 import org.json.JSONObject
 
 class NewsAdapter(list: ArrayList<NewsModel>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     private val models = list
+    var pos = 0
 
     class ViewHolder(val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {}
@@ -47,10 +38,15 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
         val time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.saveDate + "", null))
 
         holder.binding.txtTitle.text = StringHelper.toPersianDigits(model.title)
-        holder.binding.txtNews.text = StringHelper.toPersianDigits(model.message)
         holder.binding.txtDate.text = StringHelper.toPersianDigits("$date $time")
+        if (model.newMessage == 1) {
+            holder.binding.txtNew.visibility = View.VISIBLE
+        } else {
+            holder.binding.txtNew.visibility = View.INVISIBLE
+        }
 
         holder.itemView.setOnClickListener {
+            this.pos = position
             newsDetails(model.id)
         }
 
@@ -77,10 +73,19 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
                     val message = jsonObject.getString("message")
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
+                        if (MyApplication.prefManager.getCountNotification() > 0 && models[pos].newMessage == 1)
+                            MyApplication.prefManager.setCountNotification(MyApplication.prefManager.getCountNotification() - 1)
+
                         FragmentHelper.toFragment(
                             MyApplication.currentActivity,
-                            NewsDetailsFragment()
+                            NewsDetailsFragment(
+                                dataObj.getString("title"),
+                                dataObj.getString("message")
+                            )
                         ).add()
+
+                        models[pos].newMessage = 0
+                        notifyDataSetChanged()
                     }
 
                 } catch (e: Exception) {

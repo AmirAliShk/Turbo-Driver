@@ -21,10 +21,6 @@ class GetDriverStatus {
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
 
-                    if(success){
-                        //TODO check other type in this response
-                    }
-
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

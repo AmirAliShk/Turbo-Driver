@@ -28,6 +28,7 @@ import ir.team_x.ariana.driver.app.AppStatusHelper;
 import ir.team_x.ariana.driver.app.MyApplication;
 import ir.team_x.ariana.driver.app.PrefManager;
 import ir.team_x.ariana.driver.dialog.GeneralDialog;
+import ir.team_x.ariana.driver.fragment.ToastFragment;
 import ir.team_x.ariana.driver.model.RegisterModel;
 import ir.team_x.ariana.driver.model.ServiceModel;
 import ir.team_x.ariana.driver.push.PushDataHolder;
@@ -74,7 +75,6 @@ public class ManagePush {
                 break;
             case "2":
                 // getServiceTurbo info
-//                if (!MyApplication.prefManager.isActiveTurboService()) { // TODO this is for what?
                 SoundHelper.ringing(context, R.raw.service, false);
                 if (MyApplication.prefManager.isAppRun()) {
                     Log.i(TAG, "manage: app is running");
@@ -105,30 +105,26 @@ public class ManagePush {
                     context.startActivity(in);
                     sendNotification("سرویسی در انتظار تایید دارید", context, true, 2, true);
                 }
-//                }
                 break;
 
             case "3":
                 // cancel
                 String cancelMessage = dataArray[1];
 
-                new GeneralDialog().message(cancelMessage).firstButton("ok", null).show();
+                if (AppStatusHelper.appIsRun(context)) {
+                    Intent in = new Intent(MyApplication.currentActivity, CancelServiceActivity.class);
+                    in.putExtra("cancelMessage", cancelMessage);
 
-////                MyApplication.prefManager.setActiveServiceTurbo(false); // TODO this is for waht?
-//                if (AppStatusHelper.appIsRun(context)) { //TODO uncomment this
-//                    Intent in = new Intent(MyApplication.currentActivity, CancelServiceActivity.class);
-//                    in.putExtra("cancelMessage", cancelMessage);
-//
-//                    MyApplication.currentActivity.finish();
-//                    MyApplication.currentActivity.startActivity(in);
-//                } else {
-//                    Intent in = new Intent(MyApplication.context, CancelServiceActivity.class);
-//                    in.putExtra("cancelMessage", cancelMessage);
-//
-//                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                    MyApplication.context.startActivity(in);
-//                }
+                    MyApplication.currentActivity.finish();
+                    MyApplication.currentActivity.startActivity(in);
+                } else {
+                    Intent in = new Intent(MyApplication.context, CancelServiceActivity.class);
+                    in.putExtra("cancelMessage", cancelMessage);
+
+                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    MyApplication.context.startActivity(in);
+                }
 
                 break;
             case "4":
@@ -136,7 +132,7 @@ public class ManagePush {
 //                if (!MyApplication.prefManager.isActiveTurboService()) {
 //
                 String freeService = dataArray[1];
-                new GeneralDialog().message(freeService).firstButton("ok", null).show();
+//                new GeneralDialog().message(freeService).firstButton("باشه", null).show();
 
 //                    if (MyApplication.prefManager.isAppRun()) {
 //
@@ -147,7 +143,7 @@ public class ManagePush {
 //                                Animation anim = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_in_out);
 //                                anim.setRepeatCount(10);
 //                                MainFragment.cRed.startAnimation(anim);
-//
+////
 //                                anim.setAnimationListener(new Animation.AnimationListener() {
 //                                    @Override
 //                                    public void onAnimationStart(Animation animation) {
@@ -168,8 +164,9 @@ public class ManagePush {
 //                            }
 //
 //                        } else {
-//                            SoundHelper.ringing(context, R.raw.short_notification, false);
+                            SoundHelper.ringing(context, R.raw.short_notification, false);
 //                            new ToastFragment().addToast(freeService, MyApplication.currentActivity);
+                            MyApplication.Companion.showSnackBar(freeService);
 //                        }
 //                    } else {
 //                        SoundHelper.ringing(context, R.raw.short_notification, !prefManager.isMuteFreeServiceAlarm());
@@ -239,7 +236,6 @@ public class ManagePush {
         String time = dataArray[1];
         String serviceId = dataArray[2];
         String serviceType = dataArray[3];
-//        String originStName = dataArray[4];// TODO delete this params
         String originAddress = dataArray[4];
         String destinationAddress = dataArray[5];
         String price = dataArray[6];
@@ -251,7 +247,6 @@ public class ManagePush {
         serviceModel.setCallTime(time);
         serviceModel.setServiceID(serviceId);
         serviceModel.setInService(serviceType.trim().equals("1"));
-//        serviceModel.setOrginDesc(originStName);
         serviceModel.setOriginAddress(originAddress);
         serviceModel.setDestinationDesc(destinationAddress);
         serviceModel.setServicePrice(price);
@@ -279,9 +274,6 @@ public class ManagePush {
 
     private void getServiceTurbo(JSONObject object) {
 
-//        if (GetServiceActivityTurbo.isRunning) {  //TODO uncomment this
-//            return;
-//        }
 
         try {
             int acceptTime = object.getInt("acceptTime");

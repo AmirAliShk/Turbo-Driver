@@ -18,10 +18,10 @@ import ir.team_x.ariana.driver.app.EndPoint;
 import ir.team_x.ariana.driver.app.MyApplication;
 import ir.team_x.ariana.driver.dialog.ErrorDialog;
 import ir.team_x.ariana.driver.dialog.GeneralDialog;
+import ir.team_x.ariana.driver.fragment.login.VerificationFragment;
 import ir.team_x.ariana.driver.push.AvaCrashReporter;
 import ir.team_x.ariana.driver.utils.FragmentHelper;
 import ir.team_x.ariana.driver.utils.StringHelper;
-import ir.team_x.ariana.driver.fragment.LoginFragment;
 import okhttp3.Call;
 import okhttp3.Headers;
 import okhttp3.HttpUrl;
@@ -34,13 +34,11 @@ import okhttp3.Response;
 /**
  * add to your BuildGradle
  * implementation 'com.squareup.okhttp3:okhttp:3.10.0'
- ***************** version changes *******************
- * @version 1.1.0 : create project
- * @version 1.0.1 : fix bug run reCall with returnValue
+ * **************** version changes *******************
+ *
  * @version 1.1.0 : added Interceptor for append header to all api
- ****************** Readme *******************
+ * ***************** Readme *******************
  * @auther Amirreza Erfanian on 2018/01/12.
-
  */
 public class RequestHelper implements okhttp3.Callback {
 
@@ -308,7 +306,7 @@ public class RequestHelper implements okhttp3.Callback {
             final String bodyStr;
             try {
                 bodyStr = parseXML(response.body().string());
-                log("request result : " + bodyStr);
+                log(" url: " + response.request().url() + ", request result : " + bodyStr);
 
                 if (response.isSuccessful()) {
                     if (object == null)
@@ -493,7 +491,7 @@ public class RequestHelper implements okhttp3.Callback {
     private void logout() {
         MyApplication.handler.post(() -> {
             FragmentHelper
-                    .toFragment(MyApplication.currentActivity, new LoginFragment())
+                    .toFragment(MyApplication.currentActivity, new VerificationFragment())
                     .setStatusBarColor(MyApplication.currentActivity.getResources().getColor(R.color.colorPrimary))
                     .setAddToBackStack(false)
                     .replace();

@@ -144,7 +144,7 @@
                                     android:textColor="@color/colorBlack" />
 
                                 <TextView
-                                    android:id="@+id/txtTax"
+                                    android:id="@+id/txtDiscount"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -252,7 +252,7 @@
                             android:textColor="@color/colorBlack" />
 
                         <TextView
-                            android:id="@+id/txtDiscount"
+                            android:id="@+id/txtTax"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/_10sdp"
