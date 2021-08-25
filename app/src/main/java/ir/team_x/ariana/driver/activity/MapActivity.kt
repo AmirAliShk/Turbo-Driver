@@ -1,4 +1,4 @@
-package ir.team_x.ariana.driver.activity
+git package ir.team_x.ariana.driver.activity
 
 import android.content.DialogInterface
 import android.content.Intent
