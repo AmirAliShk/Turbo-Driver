@@ -60,7 +60,7 @@ class FactorDialog {
         binding.txtDriverShare.text =
             StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("finalPrice")))
         binding.txtCustomerPrice.text =
-            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("finalPrice")))
+            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("priceService")))
 
         dialog.show()
 
