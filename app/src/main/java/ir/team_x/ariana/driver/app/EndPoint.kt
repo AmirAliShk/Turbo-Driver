@@ -4,18 +4,16 @@ package ir.team_x.ariana.driver.app
 class EndPoint {
 
     companion object {
-
-        val IP = "http://turbotaxi.ir"
-        val HAWKEYE_IP = "http://turbotaxi.ir"
-        val PUSH_IP = "http://turbotaxi.ir:6060"
+        val IP = "http://api.arianadelivery.ir/"
+        val HAWKEYE_IP = "http://api.arianadelivery.ir"
 
         val IP_PORT = "1810"
         val HAWKEYE_PORT = "1813"
 
-        const val CRASH_REPORT = "http://turbotaxi.ir:6061/api/v1/crashReport"
-        val RULL = "http://turbotaxi.ir:1812/rule/driver"
+        const val CRASH_REPORT = "http://api.arianadelivery.ir:6061/api/v1/crashReport"
+        val RULL = "http://api.arianadelivery.ir:1812/rule/delivery"
 
-        const val PUSH_ADDRESS = "http://turbotaxi.ir:6060"
+        const val PUSH_ADDRESS = "http://api.arianadelivery.ir:6060"
         val BASE_PATH = "$IP:$IP_PORT/api/driver/v1"
         private val FINANCIAL_PATH = "$BASE_PATH/financial"
         private val FINANCIAL_PAY_PATH = "$BASE_PATH/financial/pay"
