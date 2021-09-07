@@ -44,6 +44,7 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
             time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.finishDate + "", null))
         }
 
+        holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtDate.text = StringHelper.toPersianDigits("$date $time")
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.binding.txtDestAddress.text = StringHelper.toPersianDigits(model.destinationAddress)

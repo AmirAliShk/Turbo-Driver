@@ -118,6 +118,31 @@
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/title_detailes"
                 android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:layout_height="wrap_content"
+                android:text="@string/customerName" />
+
+            <TextView
+                android:id="@+id/txtCustomerName"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grayDark"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <TextView
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/title_detailes"
+                android:layout_width="0dp"
                 android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:text="@string/Tracking_Code" />

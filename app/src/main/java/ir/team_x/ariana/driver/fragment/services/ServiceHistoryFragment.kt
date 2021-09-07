@@ -1,6 +1,7 @@
 package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +53,7 @@ class ServiceHistoryFragment : Fragment() {
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
+                    Log.i("TAF" ,jsonObject.toString())
                     if (success) {
                         val dataArr = jsonObject.getJSONArray("data")
                         for (i in 0 until dataArr.length()) {
@@ -59,6 +61,7 @@ class ServiceHistoryFragment : Fragment() {
                             val model = FinishedModel(
                                 dataObj.getInt("id"),
                                 dataObj.getInt("customerId"),
+                                dataObj.getString("name"),
                                 dataObj.getInt("sourceAddressId"),
                                 dataObj.getInt("destinationAddressId"),
                                 dataObj.getString("saveDate"),
