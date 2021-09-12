@@ -58,6 +58,7 @@ class ServiceHistoryFragment : Fragment() {
                         val dataArr = jsonObject.getJSONArray("data")
                         for (i in 0 until dataArr.length()) {
                             val dataObj = dataArr.getJSONObject(i)
+                            Log.i("TAF",dataObj.toString())
                             val model = FinishedModel(
                                 dataObj.getInt("id"),
                                 dataObj.getInt("customerId"),
@@ -90,6 +91,8 @@ class ServiceHistoryFragment : Fragment() {
                 } catch (e: Exception) {
                     e.printStackTrace()
                     binding.vfServiceHistory.displayedChild = 2
+                    Log.i("TAF","catch")
+
                 }
             }
         }
@@ -97,6 +100,8 @@ class ServiceHistoryFragment : Fragment() {
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
                 binding.vfServiceHistory.displayedChild = 2
+                Log.i("TAF","onFailure $e")
+
             }
         }
     }

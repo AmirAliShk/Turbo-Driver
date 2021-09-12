@@ -12,6 +12,7 @@ import ir.team_x.ariana.driver.databinding.*
 import ir.team_x.ariana.driver.dialog.CallDialog
 import ir.team_x.ariana.driver.dialog.FactorDialog
 import ir.team_x.ariana.driver.dialog.GeneralDialog
+import ir.team_x.ariana.driver.model.DestinationModel
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.DateHelper
@@ -26,7 +27,7 @@ class ServiceDetailsFragment(
     cancelServiceListener: CancelServiceListener
 ) : Fragment() {
     companion object {
-        val TAG = ServiceDetailsFragment::class.java.simpleName
+        val TAG: String = ServiceDetailsFragment::class.java.simpleName
     }
 
     private val serviceModel = serviceModel
@@ -62,10 +63,34 @@ class ServiceDetailsFragment(
             )
         )
         binding.txtCustomerName.text = serviceModel.customerName
-        binding.txtCargoWeight.text =
-            StringHelper.toPersianDigits(serviceModel.weightName)
+        binding.txtCargoWeight.text = StringHelper.toPersianDigits(serviceModel.weightName)
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
-        binding.txtDestAddress.text = StringHelper.toPersianDigits(serviceModel.destinationAddress)
+        val destinations : ArrayList<String> = ArrayList()
+        for ( i in 0 until serviceModel.destinationAddress.length())
+        {
+            val destinationOBJ = serviceModel.destinationAddress.getJSONObject(i)
+            val dest = destinationOBJ.getString("destination")
+            destinations.add(dest)
+        }
+        if (destinations.size == 1)
+        {
+            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
+        }
+        if (destinations.size == 2)
+        {
+            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
+            binding.llSecondDest.visibility = View.VISIBLE
+            binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
+        }
+        if(destinations.size == 3)
+        {
+            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
+            binding.llSecondDest.visibility = View.VISIBLE
+            binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
+            binding.llThirdDest.visibility = View.VISIBLE
+            binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
+        }
+
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
         binding.txtCargoType.text = serviceModel.cargoName

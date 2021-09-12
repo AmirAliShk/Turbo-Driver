@@ -131,7 +131,7 @@
                     android:src="@drawable/ic_destination" />
 
                 <TextView
-                    android:id="@+id/txtDestAddress"
+                    android:id="@+id/txtFirstDestAddress"
                     style="@style/Details_answer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -139,6 +139,58 @@
                     android:layout_weight="3" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSecondDest"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:gravity="right|top"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/ic_destination" />
+
+                <TextView
+                    android:id="@+id/txtSecondDestAddress"
+                    style="@style/Details_answer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_weight="3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llThirdDest"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:gravity="right|top"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:src="@drawable/ic_destination" />
+
+                <TextView
+                    android:id="@+id/txtThirdDestAddress"
+                    style="@style/Details_answer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_weight="3" />
+
+            </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
