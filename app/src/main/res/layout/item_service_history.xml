@@ -97,7 +97,59 @@
                 android:src="@drawable/ic_destination" />
 
             <TextView
-                android:id="@+id/txtDestAddress"
+                android:id="@+id/txtFirstDestAddress"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grayDark"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSecondDest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|right"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_destination" />
+
+            <TextView
+                android:id="@+id/txtSecondDestAddress"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grayDark"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llThirdDest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|right"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_destination" />
+
+            <TextView
+                android:id="@+id/txtThirdDestAddress"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"

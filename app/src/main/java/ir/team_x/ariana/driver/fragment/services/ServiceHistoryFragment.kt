@@ -72,7 +72,7 @@ class ServiceHistoryFragment : Fragment() {
                                 dataObj.getString("price"),
                                 dataObj.getString("statusDes"),
                                 dataObj.getString("sourceAddress"),
-                                dataObj.getString("destinationAddress"),
+                                dataObj.getJSONArray("destinationAddress"),
                                 dataObj.getString("statusColor"),
                                 dataObj.getString("cancelDate"),
                             )

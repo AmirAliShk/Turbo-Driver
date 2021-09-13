@@ -6,7 +6,6 @@ data class ServiceDataModel(
   var id:Int,
   var customerId:Int,
   var sourceAddressId:Int,
-  var destinationAddressId:Int,
   var count:Int,
   var description:String,
   var carType:Int,
@@ -33,6 +32,6 @@ data class ServiceDataModel(
   var weightName:String,
   var carTypeName:String,
   var sourceAddress:String,
-  var destinationAddress:JSONArray,
+  var destinationAddress:String,
   var priceService:String
 )

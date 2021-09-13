@@ -14,6 +14,7 @@ import ir.team_x.ariana.driver.utils.DateHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
+import org.json.JSONArray
 
 class CurrentServiceAdapter() :
     RecyclerView.Adapter<CurrentServiceAdapter.ViewHolder>() {
@@ -41,10 +42,11 @@ class CurrentServiceAdapter() :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = serviceModels[position]
         val destinations : ArrayList<String> = ArrayList()
-        for ( i in 0 until model.destinationAddress.length())
+        val destJArr = JSONArray(model.destinationAddress)
+        for ( i in 0 until destJArr.length())
         {
-            val destinationOBJ = model.destinationAddress.getJSONObject(i)
-            val dest = destinationOBJ.getString("destinationAddress")
+            val destinationOBJ = destJArr.getJSONObject(i)
+            val dest = destinationOBJ.getString("address")
             destinations.add(dest)
         }
         if (destinations.size == 1)

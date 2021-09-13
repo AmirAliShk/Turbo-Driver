@@ -1,6 +1,7 @@
 package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,6 +61,7 @@ class FreeLoadsFragment : Fragment() {
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
+                    Log.i("TAF",jsonObject.toString())
                     if (success) {
                         val dataArr = jsonObject.getJSONArray("data")
                         for (i in 0 until dataArr.length()) {
@@ -68,7 +70,6 @@ class FreeLoadsFragment : Fragment() {
                                 dataObj.getInt("id"),
                                 dataObj.getInt("customerId"),
                                 dataObj.getInt("sourceAddressId"),
-                                dataObj.getInt("destinationAddressId"),
                                 dataObj.getInt("count"),
                                 dataObj.getString("description"),
                                 dataObj.getInt("carType"),
@@ -107,6 +108,7 @@ class FreeLoadsFragment : Fragment() {
 
                 } catch (e: Exception) {
                     e.printStackTrace()
+                    Log.i("TAF","catch $e")
                     binding.vfFreeLoads.displayedChild = 2
                 }
             }
@@ -114,6 +116,7 @@ class FreeLoadsFragment : Fragment() {
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
+                Log.i("TAF","OnFailure $e")
                 binding.vfFreeLoads.displayedChild = 2
             }
         }

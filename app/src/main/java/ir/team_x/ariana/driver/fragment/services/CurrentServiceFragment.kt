@@ -66,7 +66,6 @@ class CurrentServiceFragment : Fragment() {
                                 dataObj.getInt("id"),
                                 dataObj.getInt("customerId"),
                                 dataObj.getInt("sourceAddressId"),
-                                dataObj.getInt("destinationAddressId"),
                                 dataObj.getInt("count"),
                                 dataObj.getString("description"),
                                 dataObj.getInt("carType"),
@@ -93,7 +92,7 @@ class CurrentServiceFragment : Fragment() {
                                 dataObj.getString("weightName"),
                                 dataObj.getString("carTypeName"),
                                 dataObj.getString("sourceAddress"),
-                                dataObj.getJSONArray("destinationAddress"),
+                                dataObj.getString("destinationAddress"),
                                 dataObj.getString("priceService")
                             )
                             serviceModels.add(model)
@@ -109,7 +108,6 @@ class CurrentServiceFragment : Fragment() {
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    val ee =e.toString()
                     binding.vfCurrentService.displayedChild = 2
                     Log.i("TAF","catch  $e" )
 

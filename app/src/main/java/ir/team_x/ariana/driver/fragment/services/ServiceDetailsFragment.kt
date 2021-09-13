@@ -20,6 +20,7 @@ import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.UpdateCharge
+import org.json.JSONArray
 import org.json.JSONObject
 
 class ServiceDetailsFragment(
@@ -62,14 +63,13 @@ class ServiceDetailsFragment(
                 )
             )
         )
-        binding.txtCustomerName.text = serviceModel.customerName
-        binding.txtCargoWeight.text = StringHelper.toPersianDigits(serviceModel.weightName)
-        binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
+
         val destinations : ArrayList<String> = ArrayList()
-        for ( i in 0 until serviceModel.destinationAddress.length())
+        val destJAArr = JSONArray(serviceModel.destinationAddress)
+        for ( i in 0 until destJAArr.length())
         {
-            val destinationOBJ = serviceModel.destinationAddress.getJSONObject(i)
-            val dest = destinationOBJ.getString("destination")
+            val destinationOBJ = destJAArr.getJSONObject(i)
+            val dest = destinationOBJ.getString("address")
             destinations.add(dest)
         }
         if (destinations.size == 1)
@@ -90,7 +90,9 @@ class ServiceDetailsFragment(
             binding.llThirdDest.visibility = View.VISIBLE
             binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
         }
-
+        binding.txtCustomerName.text = serviceModel.customerName
+        binding.txtCargoWeight.text = StringHelper.toPersianDigits(serviceModel.weightName)
+        binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
         binding.txtCargoType.text = serviceModel.cargoName

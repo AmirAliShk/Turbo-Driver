@@ -4,7 +4,6 @@ data class WaitingLoadsModel(
     var id:Int,
     var customerId:Int,
     var sourceAddressId:Int,
-    var destinationAddressId:Int,
     var count:Int,
     var description:String,
     var carType:Int,

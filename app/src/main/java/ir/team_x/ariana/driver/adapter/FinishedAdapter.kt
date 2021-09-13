@@ -3,6 +3,7 @@ package ir.team_x.ariana.driver.adapter
 import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
@@ -17,6 +18,7 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
     RecyclerView.Adapter<FinishedAdapter.ViewHolder>() {
 
     private val models = list
+
 
     class ViewHolder(val binding: ItemServiceHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {}
@@ -43,11 +45,36 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
             date = DateHelper.strPersianTen(DateHelper.parseFormat(model.finishDate + "", null))
             time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.finishDate + "", null))
         }
+        val destinations : ArrayList<String> = ArrayList()
+        for ( i in 0 until model.destinationAddress.length())
+        {
+            val destinationOBJ = model.destinationAddress.getJSONObject(i)
+            val dest = destinationOBJ.getString("address")
+            destinations.add(dest)
+        }
+        if (destinations.size == 1)
+        {
+            holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
+        }
+        if (destinations.size == 2)
+        {
+            holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
+            holder.binding.llSecondDest.visibility = View.VISIBLE
+            holder.binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
+        }
+        if(destinations.size == 3)
+        {
+            holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
+            holder.binding.llSecondDest.visibility = View.VISIBLE
+            holder.binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
+            holder.binding.llThirdDest.visibility = View.VISIBLE
+            holder.binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
+        }
 
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtDate.text = StringHelper.toPersianDigits("$date $time")
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
-        holder.binding.txtDestAddress.text = StringHelper.toPersianDigits(model.destinationAddress)
+//        holder.binding.txtDestAddress.text = StringHelper.toPersianDigits(model.destinationAddress)
         holder.binding.txtTraking.text = StringHelper.toPersianDigits(model.id.toString())
         holder.binding.txtPrice.text =
             StringHelper.toPersianDigits(StringHelper.setComma(model.price))
