@@ -94,13 +94,14 @@
                 android:layout_width="0dp"
                 android:layout_weight="0.25"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_destination" />
+                android:src="@drawable/ic_destination_one" />
 
             <TextView
                 android:id="@+id/txtFirstDestAddress"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
+                android:layout_gravity="center"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"/>
@@ -120,13 +121,14 @@
                 android:layout_width="0dp"
                 android:layout_weight="0.25"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_destination" />
+                android:src="@drawable/ic_destination_two" />
 
             <TextView
                 android:id="@+id/txtSecondDestAddress"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
+                android:layout_gravity="center"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"/>
@@ -146,7 +148,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="0.25"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_destination" />
+                android:src="@drawable/ic_destination_three" />
 
             <TextView
                 android:id="@+id/txtThirdDestAddress"
@@ -154,6 +156,7 @@
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
                 android:layout_weight="3"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"/>
 

@@ -124,7 +124,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.25"
-                android:src="@drawable/ic_destination" />
+                android:src="@drawable/ic_destination_one" />
 
             <TextView
                 android:id="@+id/txtFirstDestAddress"
@@ -152,7 +152,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.25"
-                android:src="@drawable/ic_destination" />
+                android:src="@drawable/ic_destination_two" />
 
             <TextView
                 android:id="@+id/txtSecondDestAddress"
@@ -180,7 +180,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.25"
-                android:src="@drawable/ic_destination" />
+                android:src="@drawable/ic_destination_three" />
 
             <TextView
                 android:id="@+id/txtThirdDestAddress"

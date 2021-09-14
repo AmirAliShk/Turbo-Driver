@@ -128,12 +128,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
-                    android:src="@drawable/ic_destination" />
+                    android:src="@drawable/ic_destination_one" />
 
                 <TextView
                     android:id="@+id/txtFirstDestAddress"
                     style="@style/Details_answer"
                     android:layout_width="0dp"
+                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:layout_weight="3" />
@@ -153,12 +154,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
-                    android:src="@drawable/ic_destination" />
+                    android:src="@drawable/ic_destination_two" />
 
                 <TextView
                     android:id="@+id/txtSecondDestAddress"
                     style="@style/Details_answer"
                     android:layout_width="0dp"
+                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:layout_weight="3" />
@@ -178,12 +180,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
-                    android:src="@drawable/ic_destination" />
+                    android:src="@drawable/ic_destination_three" />
 
                 <TextView
                     android:id="@+id/txtThirdDestAddress"
                     style="@style/Details_answer"
                     android:layout_width="0dp"
+                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:layout_weight="3" />
