@@ -1,6 +1,7 @@
 package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,6 +53,7 @@ class ServiceDetailsFragment(
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
+        Log.i("TAF", serviceModel.toString())
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
@@ -98,7 +100,9 @@ class ServiceDetailsFragment(
         binding.txtCargoType.text = serviceModel.cargoName
         binding.txtCargoCost.text = StringHelper.toPersianDigits(serviceModel.costName)
         binding.txtPaymentSide.text = if (serviceModel.paymentSide == 0) "مقصد" else "مبدا"
+        binding.txtDescriptionDetail.text = serviceModel.description
         binding.imgDriverHelp.setImageResource(if (serviceModel.driverHelp == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
+        binding.imgReturnBack.setImageResource(if (serviceModel.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         binding.llCancel.setOnClickListener {
             GeneralDialog()
                 .message("از لغو سرویس اطمینان دارید؟")
@@ -114,6 +118,8 @@ class ServiceDetailsFragment(
         binding.txtFinish.setOnClickListener {
             bill(serviceModel.id, serviceModel.priceService)
         }
+
+
 
         return binding.root
     }

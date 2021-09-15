@@ -93,7 +93,8 @@ class CurrentServiceFragment : Fragment() {
                                 dataObj.getString("carTypeName"),
                                 dataObj.getString("sourceAddress"),
                                 dataObj.getString("destinationAddress"),
-                                dataObj.getString("priceService")
+                                dataObj.getString("priceService"),
+                                dataObj.getInt("returnBack")
                             )
                             serviceModels.add(model)
                         }
