@@ -93,14 +93,18 @@ class ServiceDetailsFragment(
             binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
         }
         binding.txtCustomerName.text = serviceModel.customerName
-        binding.txtCargoWeight.text = StringHelper.toPersianDigits(serviceModel.weightName)
+//        binding.txtCargoWeight.text = StringHelper.toPersianDigits(serviceModel.weightName)
+        binding.txtCargoWeight.text = if (serviceModel.weightName == "null") "ثبت نشده" else serviceModel.weightName
+
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
-        binding.txtCargoType.text = serviceModel.cargoName
+//        binding.txtCargoType.text = serviceModel.cargoName
+        binding.txtCargoType.text = if (serviceModel.carType == null) "ثبت نشده" else serviceModel.cargoName
         binding.txtCargoCost.text = StringHelper.toPersianDigits(serviceModel.costName)
         binding.txtPaymentSide.text = if (serviceModel.paymentSide == 0) "مقصد" else "مبدا"
         binding.txtDescriptionDetail.text = serviceModel.description
+        binding.txtDiscount.text = serviceModel.discount
         binding.imgDriverHelp.setImageResource(if (serviceModel.driverHelp == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         binding.imgReturnBack.setImageResource(if (serviceModel.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         binding.llCancel.setOnClickListener {

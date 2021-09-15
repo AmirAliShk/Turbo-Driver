@@ -34,5 +34,6 @@ data class ServiceDataModel(
   var sourceAddress:String,
   var destinationAddress:String,
   var priceService:String,
-  var returnBack:Int
+  var returnBack:Int,
+  var discount:String
 )
