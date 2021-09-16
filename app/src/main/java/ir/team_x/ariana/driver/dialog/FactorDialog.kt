@@ -14,6 +14,7 @@ import ir.team_x.ariana.driver.databinding.DialogFactorBinding
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.driver.utils.KeyBoardHelper
+import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.webServices.UpdateCharge
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
@@ -28,9 +29,9 @@ class FactorDialog {
         fun onFinishService(isFinish: Boolean)
     }
 
-    private lateinit var finishServiceListener:FinishServiceListener
+    private lateinit var finishServiceListener: FinishServiceListener
 
-    fun show(priceObj: JSONObject,serId: Int, finishServiceListener: FinishServiceListener) {
+    fun show(priceObj: JSONObject, serId: Int, finishServiceListener: FinishServiceListener) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DialogFactorBinding.inflate(LayoutInflater.from(MyApplication.context))
@@ -48,12 +49,18 @@ class FactorDialog {
 
         binding.imgClose.setOnClickListener { dismiss() }
         binding.btnEndTrip.setOnClickListener { finish(serId, priceObj.getString("priceService")) }
-        binding.txtTotalAmount.text = priceObj.getString("priceService")
-        binding.txtTax.text = priceObj.getString("tax")
-        binding.txtCompanyShare.text = priceObj.getString("commission")
-        binding.txtDiscount.text = priceObj.getString("discount")
-        binding.txtDriverShare.text = priceObj.getString("finalPrice")
-        binding.txtCustomerPrice.text = priceObj.getString("finalPrice")
+        binding.txtTotalAmount.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("priceService")))
+        binding.txtTax.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("tax")))
+        binding.txtCompanyShare.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("commission")))
+        binding.txtDiscount.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("discount")))
+        binding.txtDriverShare.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("finalPrice")))
+        binding.txtCustomerPrice.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("priceService")))
 
         dialog.show()
 
@@ -80,19 +87,18 @@ class FactorDialog {
                         val dataObj = jsonObject.getJSONObject("data")
                         val result = dataObj.getBoolean("result")
                         if (result) {
-                            UpdateCharge().update(object: UpdateCharge.ChargeListener{
+                            UpdateCharge().update(object : UpdateCharge.ChargeListener {
                                 override fun getCharge(charge: String) {
                                 }
                             })
-                            GeneralDialog().message(message).firstButton("باشه"){}.show()
+                            GeneralDialog().message(message).firstButton("باشه") {}.show()
                             finishServiceListener.onFinishService(true)
                             dismiss()
                             MyApplication.currentActivity.onBackPressed()
-                        }else{
+                        } else {
                             finishServiceListener.onFinishService(false)
                         }
-                    }
-                    else{
+                    } else {
                         finishServiceListener.onFinishService(false)
                     }
 

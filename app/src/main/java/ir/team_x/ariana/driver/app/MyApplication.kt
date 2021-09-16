@@ -24,7 +24,7 @@ import java.util.*
 
 
 @AcraHttpSender(
-    uri = "http://turbotaxi.ir:6061/api/crashReport",
+    uri = EndPoint.CRASH_REPORT,
     httpMethod = HttpSender.Method.POST
 )
 class MyApplication : Application() {

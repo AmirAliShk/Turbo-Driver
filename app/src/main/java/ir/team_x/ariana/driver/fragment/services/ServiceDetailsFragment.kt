@@ -1,6 +1,7 @@
 package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import ir.team_x.ariana.driver.databinding.*
 import ir.team_x.ariana.driver.dialog.CallDialog
 import ir.team_x.ariana.driver.dialog.FactorDialog
 import ir.team_x.ariana.driver.dialog.GeneralDialog
+import ir.team_x.ariana.driver.model.DestinationModel
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.DateHelper
@@ -19,6 +21,7 @@ import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.UpdateCharge
+import org.json.JSONArray
 import org.json.JSONObject
 
 class ServiceDetailsFragment(
@@ -26,7 +29,7 @@ class ServiceDetailsFragment(
     cancelServiceListener: CancelServiceListener
 ) : Fragment() {
     companion object {
-        val TAG = ServiceDetailsFragment::class.java.simpleName
+        val TAG: String = ServiceDetailsFragment::class.java.simpleName
     }
 
     private val serviceModel = serviceModel
@@ -50,6 +53,7 @@ class ServiceDetailsFragment(
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
+        Log.i("TAF", serviceModel.toString())
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
@@ -61,17 +65,48 @@ class ServiceDetailsFragment(
                 )
             )
         )
+
+        val destinations : ArrayList<String> = ArrayList()
+        val destJAArr = JSONArray(serviceModel.destinationAddress)
+        for ( i in 0 until destJAArr.length())
+        {
+            val destinationOBJ = destJAArr.getJSONObject(i)
+            val dest = destinationOBJ.getString("address")
+            destinations.add(dest)
+        }
+        if (destinations.size == 1)
+        {
+            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
+        }
+        if (destinations.size == 2)
+        {
+            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
+            binding.llSecondDest.visibility = View.VISIBLE
+            binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
+        }
+        if(destinations.size == 3)
+        {
+            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
+            binding.llSecondDest.visibility = View.VISIBLE
+            binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
+            binding.llThirdDest.visibility = View.VISIBLE
+            binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
+        }
         binding.txtCustomerName.text = serviceModel.customerName
-        binding.txtCargoWeight.text =
-            StringHelper.toPersianDigits(serviceModel.weightName)
+//        binding.txtCargoWeight.text = StringHelper.toPersianDigits(serviceModel.weightName)
+        binding.txtCargoWeight.text = if (serviceModel.weightName == "null") "ثبت نشده" else serviceModel.weightName
+
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
-        binding.txtDestAddress.text = StringHelper.toPersianDigits(serviceModel.destinationAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
-        binding.txtCargoType.text = serviceModel.cargoName
+//        binding.txtCargoType.text = serviceModel.cargoName
+        binding.txtCargoType.text = if (serviceModel.carType == null) "ثبت نشده" else serviceModel.cargoName
         binding.txtCargoCost.text = StringHelper.toPersianDigits(serviceModel.costName)
         binding.txtPaymentSide.text = if (serviceModel.paymentSide == 0) "مقصد" else "مبدا"
+        binding.txtDescriptionDetail.text = serviceModel.description
+        binding.txtDiscount.text = serviceModel.discount
         binding.imgDriverHelp.setImageResource(if (serviceModel.driverHelp == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
+        binding.imgReturnBack.setImageResource(if (serviceModel.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         binding.llCancel.setOnClickListener {
             GeneralDialog()
                 .message("از لغو سرویس اطمینان دارید؟")
@@ -87,6 +122,8 @@ class ServiceDetailsFragment(
         binding.txtFinish.setOnClickListener {
             bill(serviceModel.id, serviceModel.priceService)
         }
+
+
 
         return binding.root
     }

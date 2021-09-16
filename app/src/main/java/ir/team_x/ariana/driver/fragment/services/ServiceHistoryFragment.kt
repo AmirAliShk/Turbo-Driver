@@ -1,6 +1,7 @@
 package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,13 +53,16 @@ class ServiceHistoryFragment : Fragment() {
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
+                    Log.i("TAF" ,jsonObject.toString())
                     if (success) {
                         val dataArr = jsonObject.getJSONArray("data")
                         for (i in 0 until dataArr.length()) {
                             val dataObj = dataArr.getJSONObject(i)
+                            Log.i("TAF",dataObj.toString())
                             val model = FinishedModel(
                                 dataObj.getInt("id"),
                                 dataObj.getInt("customerId"),
+                                dataObj.getString("name"),
                                 dataObj.getInt("sourceAddressId"),
                                 dataObj.getInt("destinationAddressId"),
                                 dataObj.getString("saveDate"),
@@ -68,7 +72,7 @@ class ServiceHistoryFragment : Fragment() {
                                 dataObj.getString("price"),
                                 dataObj.getString("statusDes"),
                                 dataObj.getString("sourceAddress"),
-                                dataObj.getString("destinationAddress"),
+                                dataObj.getJSONArray("destinationAddress"),
                                 dataObj.getString("statusColor"),
                                 dataObj.getString("cancelDate"),
                             )
@@ -87,6 +91,8 @@ class ServiceHistoryFragment : Fragment() {
                 } catch (e: Exception) {
                     e.printStackTrace()
                     binding.vfServiceHistory.displayedChild = 2
+                    Log.i("TAF","catch")
+
                 }
             }
         }
@@ -94,6 +100,8 @@ class ServiceHistoryFragment : Fragment() {
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
                 binding.vfServiceHistory.displayedChild = 2
+                Log.i("TAF","onFailure $e")
+
             }
         }
     }

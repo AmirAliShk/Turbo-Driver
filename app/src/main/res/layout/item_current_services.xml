@@ -89,7 +89,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="top|right"
             android:orientation="horizontal"
             android:layout_marginBottom="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp">
@@ -118,16 +118,16 @@
             android:orientation="horizontal"
             android:layout_marginBottom="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
-            android:gravity="center">
+            android:gravity="top|right">
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.25"
-                android:src="@drawable/ic_destination" />
+                android:src="@drawable/ic_destination_one" />
 
             <TextView
-                android:id="@+id/txtDestAddress"
+                android:id="@+id/txtFirstDestAddress"
                 style="@style/Details_answer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -137,6 +137,63 @@
                 android:layout_marginLeft="@dimen/_10sdp"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSecondDest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:gravity="top|right"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:src="@drawable/ic_destination_two" />
+
+            <TextView
+                android:id="@+id/txtSecondDestAddress"
+                style="@style/Details_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:textColor="@color/grayDark"
+                android:layout_weight="3"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llThirdDest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:gravity="top|right"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:src="@drawable/ic_destination_three" />
+
+            <TextView
+                android:id="@+id/txtThirdDestAddress"
+                style="@style/Details_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:textColor="@color/grayDark"
+                android:layout_weight="3"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

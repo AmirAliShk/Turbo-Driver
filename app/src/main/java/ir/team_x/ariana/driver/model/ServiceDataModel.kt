@@ -1,10 +1,11 @@
 package ir.team_x.ariana.driver.model
 
+import org.json.JSONArray
+
 data class ServiceDataModel(
   var id:Int,
   var customerId:Int,
   var sourceAddressId:Int,
-  var destinationAddressId:Int,
   var count:Int,
   var description:String,
   var carType:Int,
@@ -32,5 +33,7 @@ data class ServiceDataModel(
   var carTypeName:String,
   var sourceAddress:String,
   var destinationAddress:String,
-  var priceService:String
+  var priceService:String,
+  var returnBack:Int,
+  var discount:String
 )

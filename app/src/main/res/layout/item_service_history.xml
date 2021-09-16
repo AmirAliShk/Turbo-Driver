@@ -94,16 +94,96 @@
                 android:layout_width="0dp"
                 android:layout_weight="0.25"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_destination" />
+                android:src="@drawable/ic_destination_one" />
 
             <TextView
-                android:id="@+id/txtDestAddress"
+                android:id="@+id/txtFirstDestAddress"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grayDark"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSecondDest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|right"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_destination_two" />
+
+            <TextView
+                android:id="@+id/txtSecondDestAddress"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grayDark"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llThirdDest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|right"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_destination_three" />
+
+            <TextView
+                android:id="@+id/txtThirdDestAddress"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
                 android:layout_weight="3"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <TextView
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/title_detailes"
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:layout_height="wrap_content"
+                android:text="@string/customerName" />
+
+            <TextView
+                android:id="@+id/txtCustomerName"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/grayDark"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
