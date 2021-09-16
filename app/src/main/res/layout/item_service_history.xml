@@ -67,9 +67,10 @@
             android:layout_marginBottom="@dimen/_10sdp">
 
             <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
+                android:layout_width="15dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.20"
+                android:paddingVertical="@dimen/_5sdp"
                 android:src="@drawable/ic_origin" />
 
             <TextView
@@ -78,6 +79,7 @@
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
                 android:layout_weight="3"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/_10sdp"/>
 
@@ -91,9 +93,9 @@
             android:layout_marginBottom="@dimen/_10sdp">
 
             <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
-                android:layout_height="wrap_content"
+                android:layout_width="15dp"
+                android:layout_height="35dp"
+                android:layout_weight="0.20"
                 android:src="@drawable/ic_destination_one" />
 
             <TextView
@@ -118,9 +120,9 @@
             android:layout_marginBottom="@dimen/_10sdp">
 
             <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
-                android:layout_height="wrap_content"
+                android:layout_width="15dp"
+                android:layout_height="35dp"
+                android:layout_weight="0.20"
                 android:src="@drawable/ic_destination_two" />
 
             <TextView
@@ -145,9 +147,9 @@
             android:layout_marginBottom="@dimen/_10sdp">
 
             <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
-                android:layout_height="wrap_content"
+                android:layout_width="15dp"
+                android:layout_height="35dp"
+                android:layout_weight="0.20"
                 android:src="@drawable/ic_destination_three" />
 
             <TextView
