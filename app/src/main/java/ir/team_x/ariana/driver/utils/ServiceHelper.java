@@ -3,12 +3,11 @@ package ir.team_x.ariana.driver.utils;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import ir.team_x.ariana.driver.app.MyApplication;
-
-/***
- * Created by Amirreza Erfanian on 4/8/16.
- */
 
 public class ServiceHelper {
 
@@ -18,6 +17,17 @@ public class ServiceHelper {
       if (activity != null)
         if (!isRunning(activity, serviceClass))
           activity.startService(new Intent(activity, serviceClass));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.O)
+  public static void startForeground(Context activity, Class<?> serviceClass) {
+    try {
+      if (activity != null)
+        if (!isRunning(activity, serviceClass))
+          activity.startForegroundService(new Intent(activity, serviceClass));
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -39,6 +49,13 @@ public class ServiceHelper {
     stop(context, serviceClass);
     //you must set delay between stop and start because maybe conflict together
     MyApplication.handler.postDelayed(()->start(context, serviceClass),500);
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.O)
+  public static void restartForeground(Context context, Class<?> serviceClass) {
+    stop(context, serviceClass);
+    //you must set delay between stop and start because maybe conflict together
+    MyApplication.handler.postDelayed(() -> startForeground(context, serviceClass), 500);
   }
 
   //Check the service is running

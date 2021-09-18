@@ -1,20 +1,31 @@
 package ir.team_x.ariana.driver.gps;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.KeyguardManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationChannelGroup;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -25,6 +36,8 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import ir.team_x.ariana.driver.R;
+import ir.team_x.ariana.driver.activity.SplashActivity;
 import ir.team_x.ariana.driver.app.AppStatusHelper;
 import ir.team_x.ariana.driver.app.EndPoint;
 import ir.team_x.ariana.driver.app.MyApplication;
@@ -47,6 +60,7 @@ public class DataGatheringService extends Service {
     public Location location;
     Context context;
     private PrefManager prefManager;
+    String CHANNEL_ID= "DlDGSForegroundServiceChannel";
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -70,6 +84,10 @@ public class DataGatheringService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startNotification();
+        }
 
 //        MyApplication.prefManager.incrementResetLocationServiceCount();
 
@@ -116,6 +134,34 @@ public class DataGatheringService extends Service {
         }
         Log.i(TAG, "onDestroy: ariana driver");
     }
+
+    @SuppressLint("WrongConstant")
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void startNotification() {
+        Intent intent = new Intent(this, SplashActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        Bitmap iconNotification = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.createNotificationChannelGroup(new NotificationChannelGroup("DGSGroupId", "DGSGroupName"));
+        NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, "DGSChannelName",
+                NotificationManager.IMPORTANCE_MIN);
+        notificationChannel.enableLights(true);
+        notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
+        notificationManager.createNotificationChannel(notificationChannel);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+        builder.setContentTitle(new StringBuilder("شما در ").append(getResources().getString(R.string.app_name)).append(" فعال هستید").toString())
+//                .setTicker(new StringBuilder(getResources().getString(R.string.app_name)).append("service is running").toString())
+//                .setContentText("Touch to open")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setWhen(0)
+                .setOnlyAlertOnce(true)
+                .setOngoing(true)
+//                .setLargeIcon(Bitmap.createScaledBitmap(iconNotification, 128, 128, false))
+                .setContentIntent(pendingIntent);
+        startForeground(1810, builder.build());
+    }
+
 
     // Send Data to View with BroadCast
     static final public String GDS_RESULT = "ir.team_x.ariana.DataGatheringService";

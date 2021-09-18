@@ -472,7 +472,11 @@ class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
     }
 
     private fun startService() {
-        ServiceHelper.start(MyApplication.currentActivity, DataGatheringService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            ServiceHelper.startForeground(MyApplication.context, DataGatheringService::class.java)
+        } else {
+            ServiceHelper.start(MyApplication.context, DataGatheringService::class.java)
+        }
     }
 
     private fun stopService() {
