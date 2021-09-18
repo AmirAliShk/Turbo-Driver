@@ -60,7 +60,7 @@ public class DataGatheringService extends Service {
     public Location location;
     Context context;
     private PrefManager prefManager;
-    String CHANNEL_ID= "DlDGSForegroundServiceChannel";
+    String CHANNEL_ID= "DrDGSForegroundServiceChannel";
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -142,8 +142,8 @@ public class DataGatheringService extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         Bitmap iconNotification = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.createNotificationChannelGroup(new NotificationChannelGroup("DGSGroupId", "DGSGroupName"));
-        NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, "DGSChannelName",
+        notificationManager.createNotificationChannelGroup(new NotificationChannelGroup("DrDGSGroupId", "DrDGSGroupName"));
+        NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, "DrDGSChannelName",
                 NotificationManager.IMPORTANCE_MIN);
         notificationChannel.enableLights(true);
         notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
