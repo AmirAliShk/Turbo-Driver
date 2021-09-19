@@ -176,7 +176,7 @@ class PrefManager {
     }
 
     fun getAvaPID(): Int {
-        return sharedPreferences.getInt(KEY_AVA_PID, 10)
+        return sharedPreferences.getInt(KEY_AVA_PID, 3)
     }
 
     fun setAvaPID(v: Int) {
