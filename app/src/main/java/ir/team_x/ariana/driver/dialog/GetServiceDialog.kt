@@ -42,7 +42,7 @@ class GetServiceDialog() {
         dialog.setCancelable(false)
 
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.originAddress)
-        binding.txtDestAddress.text = StringHelper.toPersianDigits(serviceModel.destinationDesc)
+        binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(serviceModel.destinationDesc)
         binding.txtPrice.text = StringHelper.toPersianDigits(
             StringHelper.setComma(serviceModel.servicePrice).toString() + " تومان"
         )

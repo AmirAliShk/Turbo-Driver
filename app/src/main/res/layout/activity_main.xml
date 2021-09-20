@@ -493,6 +493,7 @@
                             android:background="@color/grayLight" />
 
                         <LinearLayout
+                            android:id="@+id/llServiceHistory"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
@@ -504,7 +505,6 @@
                                 android:src="@drawable/ic_service_history" />
 
                             <TextView
-                                android:id="@+id/llServiceHistory"
                                 style="@style/item_title_white"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

@@ -15,6 +15,7 @@ import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.driver.utils.KeyBoardHelper
 import ir.team_x.ariana.driver.utils.StringHelper
+import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.UpdateCharge
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
@@ -36,7 +37,7 @@ class FactorDialog {
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DialogFactorBinding.inflate(LayoutInflater.from(MyApplication.context))
         dialog.setContentView(binding.root)
-        TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val wlp: WindowManager.LayoutParams? = dialog.window?.attributes
         wlp?.gravity = Gravity.CENTER
@@ -91,10 +92,11 @@ class FactorDialog {
                                 override fun getCharge(charge: String) {
                                 }
                             })
-                            GeneralDialog().message(message).firstButton("باشه") {}.show()
+                            GeneralDialog().message(message).firstButton("باشه"){
+                                MyApplication.currentActivity.onBackPressed()
+                            }.show()
                             finishServiceListener.onFinishService(true)
                             dismiss()
-                            MyApplication.currentActivity.onBackPressed()
                         } else {
                             finishServiceListener.onFinishService(false)
                         }

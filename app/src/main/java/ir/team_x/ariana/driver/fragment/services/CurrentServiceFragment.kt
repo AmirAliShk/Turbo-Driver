@@ -68,6 +68,7 @@ class CurrentServiceFragment : Fragment() {
                                 dataObj.getInt("sourceAddressId"),
                                 dataObj.getInt("count"),
                                 dataObj.getString("description"),
+                                dataObj.getString("fixedMessage"),
                                 dataObj.getInt("carType"),
                                 dataObj.getInt("stopTime"),
                                 dataObj.getInt("driverHelp"),

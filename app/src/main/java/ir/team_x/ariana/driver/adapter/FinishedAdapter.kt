@@ -13,6 +13,7 @@ import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ItemServiceHistoryBinding
 import ir.team_x.ariana.driver.model.FinishedModel
 import ir.team_x.ariana.driver.utils.*
+import org.json.JSONArray
 
 class FinishedAdapter(list: ArrayList<FinishedModel>) :
     RecyclerView.Adapter<FinishedAdapter.ViewHolder>() {
@@ -46,9 +47,10 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
             time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.finishDate + "", null))
         }
         val destinations : ArrayList<String> = ArrayList()
-        for ( i in 0 until model.destinationAddress.length())
+        val destJArr = JSONArray(model.destinationAddress)
+        for ( i in 0 until destJArr.length())
         {
-            val destinationOBJ = model.destinationAddress.getJSONObject(i)
+            val destinationOBJ = destJArr.getJSONObject(i)
             val dest = destinationOBJ.getString("address")
             destinations.add(dest)
         }

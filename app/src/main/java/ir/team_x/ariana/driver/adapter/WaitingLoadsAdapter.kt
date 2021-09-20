@@ -35,7 +35,8 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
 
-        holder.binding.txtCargoType.text = model.cargoName
+        holder.binding.txtCargoType.text =
+            if (model.cargoName == "null") "ثبت نشده" else model.cargoName
         holder.binding.txtRange.text = model.sourceStationName
         holder.binding.btnAccept.setOnClickListener {
             GeneralDialog().message("از دریافت سرویس اطمینان دارید؟")

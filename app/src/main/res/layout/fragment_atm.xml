@@ -78,7 +78,7 @@
                     android:singleLine="true"
                     android:nextFocusDown="@id/edtBankName"
                     android:gravity="left|center_vertical"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:textColor="@color/colorBlack" />
 
             </LinearLayout>

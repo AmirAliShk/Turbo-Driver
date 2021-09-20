@@ -27,7 +27,7 @@
             <LinearLayout
                 android:id="@+id/hohooh"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:background="@drawable/background5"
                 android:orientation="vertical"
@@ -38,18 +38,21 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="top|right"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_4sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
                         android:src="@drawable/ic_origin" />
 
                     <TextView
                         android:id="@+id/txtOriginAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.35"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
                         android:gravity="right|center_vertical"
                         android:textColor="@color/colorBlack"
                         android:paddingRight="@dimen/_10sdp"
@@ -59,25 +62,168 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="top|right"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="top|right">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_destination" />
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/ic_destination_one" />
 
                     <TextView
-                        android:id="@+id/txtDestAddress"
+                        android:id="@+id/txtFirstDestAddress"
+                        style="@style/Details_answer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.35"
-                        android:gravity="right|center_vertical"
-                        android:textColor="@color/colorBlack"
-                        android:paddingRight="@dimen/_10sdp"
-                        android:textSize="15sp" />
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_weight="3"
+                        android:textColor="@color/grayDark" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:background="@drawable/bg_grye"
+                        android:padding="@dimen/_4sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_callll"/>
+
+                        <TextView
+                            style="@style/Details_answer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:textColor="@color/colorWhite"
+                            android:layout_weight="3"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:text="تماس" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="0.25" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSecondDest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="top|right">
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/ic_destination_two" />
+
+                    <TextView
+                        android:id="@+id/txtSecondDestAddress"
+                        style="@style/Details_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grayDark"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/_10sdp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:background="@drawable/bg_grye"
+                        android:padding="@dimen/_4sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_callll"/>
+
+                        <TextView
+                            style="@style/Details_answer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:textColor="@color/colorWhite"
+                            android:layout_weight="3"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:text="تماس" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="0.25" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llThirdDest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:gravity="top|right">
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/ic_destination_three" />
+
+                    <TextView
+                        android:id="@+id/txtThirdDestAddress"
+                        style="@style/Details_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grayDark"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/_10sdp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:background="@drawable/bg_grye"
+                        android:padding="@dimen/_4sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_callll"/>
+
+                        <TextView
+                            style="@style/Details_answer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:textColor="@color/colorWhite"
+                            android:layout_weight="3"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:text="تماس" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="0.25" />
+
 
                 </LinearLayout>
 
@@ -147,12 +293,12 @@
 
         <ImageView
             android:id="@+id/imgClose"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_alignParentLeft="true"
             android:background="@drawable/bg_red"
             android:elevation="@dimen/_3sdp"
-            android:padding="@dimen/_6sdp"
+            android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_canclee" />
 
     </RelativeLayout>

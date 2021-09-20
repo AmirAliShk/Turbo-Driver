@@ -8,6 +8,7 @@ data class ServiceDataModel(
   var sourceAddressId:Int,
   var count:Int,
   var description:String,
+  var fixedDescription:String,
   var carType:Int,
   var stopTime:Int,
   var driverHelp:Int,

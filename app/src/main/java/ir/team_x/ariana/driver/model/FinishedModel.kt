@@ -7,7 +7,6 @@ data class FinishedModel(
     var customerId:Int,
     var customerName: String,
     var sourceAddressId:Int,
-    var destinationAddressId:Int,
     var saveDate:String,
     var status:Int,
     var finishDate:String,
@@ -15,7 +14,7 @@ data class FinishedModel(
     var price:String,
     var statusDes:String,
     var sourceAddress:String,
-    var destinationAddress:JSONArray,
+    var destinationAddress:String,
     var statusColor:String,
     var cancelDate:String
 )

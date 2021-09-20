@@ -41,7 +41,7 @@ class GetServiceActivity : AppCompatActivity() {
             val price = intent.extras!!.getString("price")
             val inService = intent.extras!!.getBoolean("inService")
             binding.txtOriginAddress.text = StringHelper.toPersianDigits(originAddress)
-            binding.txtDestinationAddress.text = StringHelper.toPersianDigits(destinationAddress)
+            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinationAddress)
             binding.txtPrice.text = StringHelper.toPersianDigits(
                 StringHelper.setComma(price).toString() + " تومان"
             )

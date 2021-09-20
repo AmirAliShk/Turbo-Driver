@@ -46,10 +46,12 @@ class CallDialog {
 
         binding.llNumber1.setOnClickListener {
             CallHelper.make(if (number1.startsWith("0")) number1 else "0$number1")
+            dismiss()
         }
 
         binding.llNumber2.setOnClickListener {
             CallHelper.make(if (number2.startsWith("0")) number2 else "0$number2")
+            dismiss()
         }
 
         dialog.show()

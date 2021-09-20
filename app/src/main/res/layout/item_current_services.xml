@@ -95,10 +95,9 @@
             android:paddingRight="@dimen/_10sdp">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.20"
-                android:paddingVertical="@dimen/_5sdp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:paddingVertical="@dimen/_4sdp"
                 android:src="@drawable/ic_origin" />
 
             <TextView
@@ -112,31 +111,57 @@
                 android:layout_weight="3"
                 android:layout_marginLeft="@dimen/_10sdp" />
 
+            <LinearLayout
+                android:id="@+id/llCall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:background="@drawable/bg_grye"
+                android:padding="@dimen/_4sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/ic_callll"/>
+
+                <TextView
+                    style="@style/Details_answer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_weight="3"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:text="تماس" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="top|right"
             android:orientation="horizontal"
             android:layout_marginBottom="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp">
 
             <ImageView
-                android:layout_width="15dp"
+                android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_weight="0.20"
                 android:src="@drawable/ic_destination_one" />
 
             <TextView
                 android:id="@+id/txtFirstDestAddress"
                 style="@style/Details_answer"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:textColor="@color/grayDark"
-                android:layout_weight="3"
-                android:layout_marginLeft="@dimen/_10sdp"/>
+                android:textColor="@color/grayDark" />
 
         </LinearLayout>
 
@@ -147,6 +172,7 @@
             android:orientation="horizontal"
             android:layout_marginBottom="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
+            android:gravity="top|right"
             android:visibility="gone">
 
             <ImageView
@@ -173,6 +199,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="top|right"
             android:layout_marginBottom="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
             android:visibility="gone">

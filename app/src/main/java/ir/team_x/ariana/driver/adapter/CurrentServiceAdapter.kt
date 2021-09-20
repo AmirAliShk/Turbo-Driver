@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ItemCurrentServicesBinding
+import ir.team_x.ariana.driver.dialog.CallDialog
 import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.fragment.services.ServiceDetailsFragment
 import ir.team_x.ariana.driver.model.DestinationModel
@@ -66,6 +67,10 @@ class CurrentServiceAdapter() :
             holder.binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
             holder.binding.llThirdDest.visibility = View.VISIBLE
             holder.binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
+        }
+
+        holder.binding.llCall.setOnClickListener {
+            CallDialog().show(model.phoneNumber, model.mobile)
         }
 
         holder.binding.txtDate.text = StringHelper.toPersianDigits(DateHelper.strPersianEghit(DateHelper.parseFormat(model.saveDate + "", null)))

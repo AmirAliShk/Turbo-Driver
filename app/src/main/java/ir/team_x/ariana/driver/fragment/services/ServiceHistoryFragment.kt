@@ -64,7 +64,6 @@ class ServiceHistoryFragment : Fragment() {
                                 dataObj.getInt("customerId"),
                                 dataObj.getString("name"),
                                 dataObj.getInt("sourceAddressId"),
-                                dataObj.getInt("destinationAddressId"),
                                 dataObj.getString("saveDate"),
                                 dataObj.getInt("status"),
                                 dataObj.getString("finishDate"),
@@ -72,7 +71,7 @@ class ServiceHistoryFragment : Fragment() {
                                 dataObj.getString("price"),
                                 dataObj.getString("statusDes"),
                                 dataObj.getString("sourceAddress"),
-                                dataObj.getJSONArray("destinationAddress"),
+                                dataObj.getString("destinationAddress"),
                                 dataObj.getString("statusColor"),
                                 dataObj.getString("cancelDate"),
                             )
