@@ -35,6 +35,7 @@ class ProfileFragment : Fragment() {
         binding.txtName.text=MyApplication.prefManager.getUserName()
         binding.txtIben.text=MyApplication.prefManager.getIban()
         binding.txtNationalCode.text=MyApplication.prefManager.getNational()
+        binding.txtDriverCode.text=MyApplication.prefManager.getDriverId().toString()
 
         return binding.root
     }
