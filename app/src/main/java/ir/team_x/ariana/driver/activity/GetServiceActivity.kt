@@ -15,6 +15,7 @@ import ir.team_x.ariana.driver.utils.KeyBoardHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.AcceptService
+import org.json.JSONArray
 
 class GetServiceActivity : AppCompatActivity() {
 
@@ -41,10 +42,26 @@ class GetServiceActivity : AppCompatActivity() {
             val price = intent.extras!!.getString("price")
             val inService = intent.extras!!.getBoolean("inService")
             binding.txtOriginAddress.text = StringHelper.toPersianDigits(originAddress)
-            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinationAddress)
             binding.txtPrice.text = StringHelper.toPersianDigits(
                 StringHelper.setComma(price).toString() + " تومان"
             )
+
+            val dataArray: Array<String> = destinationAddress.split("$").toTypedArray()
+            for ( i in dataArray.indices) {
+                when(i){
+                    0->{
+                        binding.txtFirstDestAddress.text =StringHelper.toPersianDigits(dataArray[0])
+                    }
+                    1->{
+                        binding.txtSecondDestAddress.text =StringHelper.toPersianDigits(dataArray[1])
+                        binding.llSecondDest.visibility=View.VISIBLE
+                    }
+                    2->{
+                        binding.txtThirdDestAddress.text =StringHelper.toPersianDigits(dataArray[2])
+                        binding.llThirdDest.visibility=View.VISIBLE
+                    }
+                }
+            }
 
             binding.btnClose.setOnClickListener {
                 MyApplication.currentActivity.finish()

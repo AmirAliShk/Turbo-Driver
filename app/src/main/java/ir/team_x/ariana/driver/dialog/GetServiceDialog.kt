@@ -3,10 +3,7 @@ package ir.team_x.ariana.operator.dialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.Window
-import android.view.WindowManager
+import android.view.*
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.DialogGetServiceBinding
@@ -18,6 +15,7 @@ import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.AcceptService
 import ir.team_x.ariana.driver.webServices.AcceptService.Listener
+import org.json.JSONArray
 
 
 class GetServiceDialog() {
@@ -46,6 +44,23 @@ class GetServiceDialog() {
         binding.txtPrice.text = StringHelper.toPersianDigits(
             StringHelper.setComma(serviceModel.servicePrice).toString() + " تومان"
         )
+
+        val dataArray: Array<String> = serviceModel.destinationDesc.split("$").toTypedArray()
+        for ( i in dataArray.indices) {
+            when(i){
+                0->{
+                    binding.txtFirstDestAddress.text =StringHelper.toPersianDigits(dataArray[0])
+                }
+                1->{
+                    binding.txtSecondDestAddress.text =StringHelper.toPersianDigits(dataArray[1])
+                    binding.llSecondDest.visibility= View.VISIBLE
+                }
+                2->{
+                    binding.txtThirdDestAddress.text =StringHelper.toPersianDigits(dataArray[2])
+                    binding.llThirdDest.visibility= View.VISIBLE
+                }
+            }
+        }
 
         binding.btnGetService.setOnClickListener {
             binding.vfAcceptService.displayedChild = 1
