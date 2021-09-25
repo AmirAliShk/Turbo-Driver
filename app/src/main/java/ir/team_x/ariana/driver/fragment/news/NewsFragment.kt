@@ -93,19 +93,4 @@ class NewsFragment : Fragment() {
         }
     }
 
-    private var refreshListener: RefreshNotificationCount? = null
-
-    interface RefreshNotificationCount {
-        fun refreshNotification()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        refreshListener = context as RefreshNotificationCount
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        refreshListener?.refreshNotification()
-    }
 }

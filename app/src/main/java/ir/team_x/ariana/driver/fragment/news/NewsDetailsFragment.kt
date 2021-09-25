@@ -1,5 +1,6 @@
 package ir.team_x.ariana.driver.fragment.news
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,6 +37,22 @@ class NewsDetailsFragment(title: String, text: String) : Fragment() {
         binding.txtText.text = StringHelper.toPersianDigits(newsText)
 
         return binding.root
+    }
+
+    private var refreshListener: RefreshNotificationCount? = null
+
+    interface RefreshNotificationCount {
+        fun refreshNotification()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        refreshListener = context as RefreshNotificationCount
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        refreshListener?.refreshNotification()
     }
 
 }

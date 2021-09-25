@@ -160,6 +160,7 @@ class ServiceDetailsFragment(
                         val dataObj = jsonObject.getJSONObject("data")
                         val result = dataObj.getBoolean("result")
                         if (result) {
+                            GeneralDialog().message(message).firstButton("باشه") {}.show()
                             FragmentHelper.taskFragment(MyApplication.currentActivity, TAG).remove()
                             cancelServiceListener.onCanceled(true)
                             UpdateCharge().update(object : UpdateCharge.ChargeListener {

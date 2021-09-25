@@ -23,6 +23,7 @@ import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.fragment.ProfileFragment
 import ir.team_x.ariana.driver.fragment.SupportFragment
 import ir.team_x.ariana.driver.fragment.financial.FinancialFragment
+import ir.team_x.ariana.driver.fragment.news.NewsDetailsFragment
 import ir.team_x.ariana.driver.fragment.news.NewsFragment
 import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
 import ir.team_x.ariana.driver.fragment.services.FreeLoadsFragment
@@ -39,7 +40,7 @@ import org.json.JSONObject
 import java.util.*
 
 
-class MainActivity : AppCompatActivity(), NewsFragment.RefreshNotificationCount,
+class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificationCount,
     LocationAssistant.Listener {
 
     lateinit var binding: ActivityMainBinding
