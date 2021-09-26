@@ -53,15 +53,15 @@ class FactorDialog {
         binding.txtTotalAmount.text =
             StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("priceService")))
         binding.txtTax.text =
-            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("tax")))
-        binding.txtCompanyShare.text =
             StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("commission")))
+        binding.txtCompanyShare.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("tax")))
         binding.txtDiscount.text =
             StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("discount")))
         binding.txtDriverShare.text =
             StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("finalPrice")))
         binding.txtCustomerPrice.text =
-            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("priceService")))
+            StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("priceCustomer")))
 
         dialog.show()
 
