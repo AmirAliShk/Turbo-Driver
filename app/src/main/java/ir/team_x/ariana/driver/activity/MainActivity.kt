@@ -510,15 +510,8 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         if (MyApplication.prefManager.getCharge() != "")
             binding.txtCharge.text =
                 StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
+        setBadge()
         startGetStatus()
-        if (MyApplication.prefManager.getCountNotification() == 0) {
-            binding.txtBadgeCount.visibility = View.GONE
-        } else {
-            binding.txtBadgeCount.visibility = View.VISIBLE
-            binding.txtBadgeCount.text = StringHelper.toPersianDigits(
-                MyApplication.prefManager.getCountNotification().toString() + ""
-            )
-        }
         if (!GPSEnable.isOn()) {
             turnOnGPSDialog()
         }
@@ -557,7 +550,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         }
     }
 
-    override fun refreshNotification() {
+    fun setBadge() {
         if (MyApplication.prefManager.getCountNotification() == 0) {
             binding.txtBadgeCount.visibility = View.GONE
         } else {
@@ -566,6 +559,10 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                 MyApplication.prefManager.getCountNotification().toString()
             )
         }
+    }
+
+    override fun refreshNotification() {
+       setBadge()
     }
 
     override fun onNeedLocationPermission() {

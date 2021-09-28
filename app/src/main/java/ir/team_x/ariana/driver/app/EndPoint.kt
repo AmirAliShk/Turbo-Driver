@@ -62,7 +62,7 @@ class EndPoint {
         val STATION = "$STATION_PATH/countService"
 
         val SAVE_LOCATION = "$LOCATION_PATH/save"
-        val PAYMENT = "http://turbotaxi.ir:1812/credit/drivercharge/"
+        val PAYMENT = "http://arianadelivery.ir/credit/drivercharge/"
 
     }
 
