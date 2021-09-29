@@ -10,7 +10,7 @@ class EndPoint {
         val HAWKEYE_PORT = "1813"
 
         const val CRASH_REPORT = "http://api.arianadelivery.ir:6061/api/v1/crashReport"
-        val RULL = "http://api.arianadelivery.ir:1812/rule/delivery"
+        val RULL = "http://arianadelivery.ir/rule/delivery"
 
         const val PUSH_ADDRESS = "http://api.arianadelivery.ir:6060"
         val BASE_PATH = "$IP/api/driver/v1"
