@@ -6,6 +6,7 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ir.team_x.ariana.driver.app.EndPoint;
 import ir.team_x.ariana.driver.app.MyApplication;
 import ir.team_x.ariana.driver.okHttp.RequestHelper;
 import ir.team_x.ariana.driver.utils.AppVersionHelper;
@@ -28,12 +29,13 @@ public class AvaCrashReporter {
     try {
       JSONObject customeData = new JSONObject();
       customeData.put("LineCode", MyApplication.prefManager.getDriverId());
+      customeData.put("projectId", MyApplication.prefManager.getAvaPID());
       customeData.put("DriverName", MyApplication.prefManager.getUserName());
       customeData.put("IS_CATCH", true);
       customeData.put("CATCH_LINE_NUMBER", AvaSocket.getSocketParams());
       customeData.put("CATCH_ID", arg.length > 0 ? arg[0] : 0);
       customeData.put("CATCH_INPUT_PARAMS", arg.length > 1 ? arg[1] : 0);
-      RequestHelper.builder("http://turbotaxi.ir:6061/api/crashReport")
+      RequestHelper.builder(EndPoint.CRASH_REPORT)
               .addParam("APP_VERSION_CODE", new AppVersionHelper(MyApplication.context).getVersionCode())
               .addParam("APP_VERSION_NAME", new AppVersionHelper(MyApplication.context).getVersionName())
               .addParam("PACKAGE_NAME", MyApplication.context.getPackageName())
