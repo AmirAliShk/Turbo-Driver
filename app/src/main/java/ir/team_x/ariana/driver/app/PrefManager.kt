@@ -40,6 +40,27 @@ class PrefManager {
     private val KEY_ACTIVATION_REMAINING_TIME = "activationRemainingTime"
     private val DRIVER_ID = "driverId"
     private val KEY_COUNT_NOTIFICATION = "countNotification"
+    private val CARD_NUMBER = "cardNumber"
+    private val CARD_NAME = "cardName"
+
+    var cardNumber: String
+        get() {
+            return sharedPreferences.getString(CARD_NUMBER, "")
+        }
+        set(cardNumber) {
+            editor.putString(CARD_NUMBER, cardNumber)
+            editor.commit()
+        }
+
+    var cardName: String
+        get() {
+            return sharedPreferences.getString(CARD_NAME, "")
+        }
+        set(cardName) {
+            editor.putString(CARD_NAME, cardName)
+            editor.commit()
+        }
+
 
     fun setCountNotification(count: Int) {
         editor.putInt(KEY_COUNT_NOTIFICATION, count)

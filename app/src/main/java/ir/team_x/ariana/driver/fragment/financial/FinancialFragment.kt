@@ -30,6 +30,9 @@ class FinancialFragment : Fragment() {
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
+        binding.txtCardNumber.text=StringHelper.setCharAfter(MyApplication.prefManager.cardNumber,"-",4 )
+        binding.txtCardName.text=MyApplication.prefManager.cardName
+
         UpdateCharge().update(object: UpdateCharge.ChargeListener{
             override fun getCharge(charge: String) {
                 if(charge.isNotEmpty()){

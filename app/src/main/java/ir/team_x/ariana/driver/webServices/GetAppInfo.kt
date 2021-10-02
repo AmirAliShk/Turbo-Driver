@@ -96,6 +96,8 @@ class GetAppInfo {
                         MyApplication.prefManager.setDriverId(driverId)
                         MyApplication.prefManager.setDriverStatus(dataObject.getInt("isEnter") == 1)
                         MyApplication.prefManager.setCountNotification(dataObject.getInt("countNews"))
+                        MyApplication.prefManager.cardNumber=dataObject.getString("accountCard")
+                        MyApplication.prefManager.cardName=dataObject.getString("accountName")
 
                         if (isActive == 0) {
                             GeneralDialog()
