@@ -38,10 +38,9 @@ class SplashActivity : AppCompatActivity() {
         }
         TypeFaceUtil.overrideFont(binding.root)
 
-        ACRA.getErrorReporter()
-            .putCustomData("LineCode", MyApplication.prefManager.getDriverId().toString())
+        ACRA.getErrorReporter().putCustomData("LineCode", MyApplication.prefManager.getDriverId().toString())
         ACRA.getErrorReporter().putCustomData("DriverName", MyApplication.prefManager.getUserName())
-        ACRA.getErrorReporter().putCustomData("projectId", "$PUSH_PROJECT_ID") // 10
+        ACRA.getErrorReporter().putCustomData("projectId", MyApplication.prefManager.getAvaPID().toString())
 
         binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
         MyApplication.avaStart()

@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
+import ir.team_x.ariana.driver.BuildConfig
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.fragment.services.FreeLoadsFragment
 import ir.team_x.ariana.driver.push.AvaFactory
@@ -19,14 +20,17 @@ import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.acra.ACRA
 import org.acra.annotation.AcraHttpSender
+import org.acra.config.CoreConfigurationBuilder
+import org.acra.config.HttpSenderConfigurationBuilder
+import org.acra.data.StringFormat
 import org.acra.sender.HttpSender
 import java.util.*
 
-
-@AcraHttpSender(
-    uri = EndPoint.CRASH_REPORT,
-    httpMethod = HttpSender.Method.POST
-)
+//
+//@AcraHttpSender(
+//    uri = EndPoint.CRASH_REPORT,
+//    httpMethod = HttpSender.Method.POST
+//)
 class MyApplication : Application() {
 
     companion object {
@@ -115,22 +119,22 @@ class MyApplication : Application() {
     }
 
     private fun initACRA() {
-//        val authHeaderMap: MutableMap<String, String?> = HashMap()
-//        authHeaderMap["Authorization"] = prefManager.getAuthorization()
-//        authHeaderMap["id_token"] = prefManager.getIdToken()
-//        val builder: CoreConfigurationBuilder = CoreConfigurationBuilder(this)
-//            .setBuildConfigClass(BuildConfig::class.java)
-//            .setReportFormat(StringFormat.JSON)
-//        val httpPluginConfigBuilder: HttpSenderConfigurationBuilder =
-//            builder.getPluginConfigurationBuilder(
-//                HttpSenderConfigurationBuilder::class.java
-//            )
-//                .setUri(EndPoint.CRASH_REPORT)
-//                .setHttpMethod(HttpSender.Method.POST)
-//                .setHttpHeaders(authHeaderMap)
-//                .setEnabled(true)
+        val authHeaderMap: MutableMap<String, String?> = HashMap()
+        authHeaderMap["Authorization"] = prefManager.getAuthorization()
+        authHeaderMap["id_token"] = prefManager.getIdToken()
+        val builder: CoreConfigurationBuilder = CoreConfigurationBuilder(this)
+            .setBuildConfigClass(BuildConfig::class.java)
+            .setReportFormat(StringFormat.JSON)
+        val httpPluginConfigBuilder: HttpSenderConfigurationBuilder =
+            builder.getPluginConfigurationBuilder(
+                HttpSenderConfigurationBuilder::class.java
+            )
+                .setUri(EndPoint.CRASH_REPORT)
+                .setHttpMethod(HttpSender.Method.POST)
+                .setHttpHeaders(authHeaderMap)
+                .setEnabled(true)
         //        if (!BuildConfig.DEBUG)
-        ACRA.init(this)
+        ACRA.init(this,builder)
     }
 
     fun initTypeFace() {
