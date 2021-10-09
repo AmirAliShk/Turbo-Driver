@@ -161,7 +161,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                 return@setOnCheckedChangeListener
             }
             if (b) {
-                MyApplication.handler.postDelayed({
+//                MyApplication.handler.postDelayed({
                     val locationResult: MyLocation.LocationResult =
                         object : MyLocation.LocationResult() {
                             override fun gotLocation(location: Location) {
@@ -185,7 +185,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                         }
                     val myLocation = MyLocation()
                     myLocation.getLocation(MyApplication.currentActivity, locationResult)
-                }, 300)
+//                }, 300)
             } else {
                 exitStation()
             }

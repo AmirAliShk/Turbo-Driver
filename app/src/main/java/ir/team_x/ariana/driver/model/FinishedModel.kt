@@ -16,5 +16,6 @@ data class FinishedModel(
     var sourceAddress:String,
     var destinationAddress:String,
     var statusColor:String,
-    var cancelDate:String
+    var cancelDate:String,
+    var isCreditCustomer:String
 )

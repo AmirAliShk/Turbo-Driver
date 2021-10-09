@@ -76,7 +76,7 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtDate.text = StringHelper.toPersianDigits("$date $time")
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
-//        holder.binding.txtDestAddress.text = StringHelper.toPersianDigits(model.destinationAddress)
+        holder.binding.txtCreditCustomer.text = model.isCreditCustomer
         holder.binding.txtTraking.text = StringHelper.toPersianDigits(model.id.toString())
         holder.binding.txtPrice.text =
             StringHelper.toPersianDigits(StringHelper.setComma(model.price))

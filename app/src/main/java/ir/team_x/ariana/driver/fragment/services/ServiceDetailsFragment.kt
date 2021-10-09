@@ -93,7 +93,7 @@ class ServiceDetailsFragment(
             binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
         }
         binding.txtCustomerName.text = serviceModel.customerName
-//        binding.txtCargoWeight.text = StringHelper.toPersianDigits(serviceModel.weightName)
+        binding.txtCreditCustomer.text = "سرویس ${serviceModel.isCreditCustomer} میباشد"
         binding.txtCargoWeight.text = if (serviceModel.weightName == "null") "ثبت نشده" else StringHelper.toPersianDigits(serviceModel.weightName)
 
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)

@@ -75,6 +75,7 @@ class CurrentServiceAdapter() :
 
         holder.binding.txtDate.text = StringHelper.toPersianDigits(DateHelper.strPersianEghit(DateHelper.parseFormat(model.saveDate + "", null)))
         holder.binding.txtCustomerName.text = model.customerName
+        holder.binding.txtCreditCustomer.text = "سرویس ${model.isCreditCustomer} میباشد"
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.binding.txtCargoType.text = model.cargoName
         holder.itemView.setOnClickListener {

@@ -223,6 +223,28 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25" />
+
+            <TextView
+                android:id="@+id/txtCreditCustomer"
+                style="@style/Details_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:paddingRight="@dimen/_8sdp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

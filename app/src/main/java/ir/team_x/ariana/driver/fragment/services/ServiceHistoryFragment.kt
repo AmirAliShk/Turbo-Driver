@@ -74,6 +74,7 @@ class ServiceHistoryFragment : Fragment() {
                                 dataObj.getString("destinationAddress"),
                                 dataObj.getString("statusColor"),
                                 dataObj.getString("cancelDate"),
+                                dataObj.getString("isCreditCustomer")
                             )
 
                             finishedModels.add(model)
