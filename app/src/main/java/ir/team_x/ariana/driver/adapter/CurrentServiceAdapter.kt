@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ItemCurrentServicesBinding
 import ir.team_x.ariana.driver.dialog.CallDialog
@@ -75,7 +76,8 @@ class CurrentServiceAdapter() :
 
         holder.binding.txtDate.text = StringHelper.toPersianDigits(DateHelper.strPersianEghit(DateHelper.parseFormat(model.saveDate + "", null)))
         holder.binding.txtCustomerName.text = model.customerName
-        holder.binding.txtCreditCustomer.text = "سرویس ${model.isCreditCustomer} میباشد"
+        holder.binding.txtCreditCustomer.text =model.isCreditCustomer
+        holder.binding.imgCredit.setImageResource(if(model.isCreditCustomer.contains("نقد")) R.drawable.ic_money else R.drawable.ic_card)
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.binding.txtCargoType.text = model.cargoName
         holder.itemView.setOnClickListener {
@@ -95,7 +97,7 @@ class CurrentServiceAdapter() :
                                 notifyDataSetChanged()
                             } else {
                                 GeneralDialog()
-                                    .message("خطایی پیش امده، لطفا مجدد امتحان کنی")
+                                    .message("خطایی پیش امده، لطفا مجدد امتحان کنید")
                                     .secondButton("باشه") {}
                                     .show()
                             }
