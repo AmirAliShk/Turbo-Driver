@@ -144,6 +144,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                 binding.swEnterExit.isChecked = (!binding.swEnterExit.isChecked)
                 return@setOnCheckedChangeListener
             }
+            binding.swEnterExit.isEnabled = false
             if (b) { // i start to send driver location to server every 20 sec here
                 binding.swStationRegister.visibility = View.VISIBLE
                 enterExit(1)
@@ -160,31 +161,32 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                 binding.swStationRegister.isChecked = (!binding.swStationRegister.isChecked)
                 return@setOnCheckedChangeListener
             }
+            binding.swStationRegister.isEnabled = false
             if (b) {
 //                MyApplication.handler.postDelayed({
-                    val locationResult: MyLocation.LocationResult =
-                        object : MyLocation.LocationResult() {
-                            override fun gotLocation(location: Location) {
-                                try {
-                                    if ((location.latitude == 0.0) || (location.longitude == 0.0)) {
-                                        if ((lastLocation.latitude == 0.0) || (lastLocation.longitude == 0.0)) {
-                                            MyApplication.Toast(
-                                                "درحال دریافت موقعیت لطفا بعد از چند ثانیه مجدد امتحان کنید",
-                                                Toast.LENGTH_SHORT
-                                            )
-                                        } else {
-                                            stationRegister(lastLocation)
-                                        }
+                val locationResult: MyLocation.LocationResult =
+                    object : MyLocation.LocationResult() {
+                        override fun gotLocation(location: Location) {
+                            try {
+                                if ((location.latitude == 0.0) || (location.longitude == 0.0)) {
+                                    if ((lastLocation.latitude == 0.0) || (lastLocation.longitude == 0.0)) {
+                                        MyApplication.Toast(
+                                            "درحال دریافت موقعیت لطفا بعد از چند ثانیه مجدد امتحان کنید",
+                                            Toast.LENGTH_SHORT
+                                        )
                                     } else {
-                                        stationRegister(location)
+                                        stationRegister(lastLocation)
                                     }
-                                } catch (e: Exception) {
-                                    e.printStackTrace()
+                                } else {
+                                    stationRegister(location)
                                 }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
                             }
                         }
-                    val myLocation = MyLocation()
-                    myLocation.getLocation(MyApplication.currentActivity, locationResult)
+                    }
+                val myLocation = MyLocation()
+                myLocation.getLocation(MyApplication.currentActivity, locationResult)
 //                }, 300)
             } else {
                 exitStation()
@@ -239,6 +241,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
                 try {
+                    binding.swEnterExit.isEnabled = true
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -268,7 +271,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-
+                binding.swEnterExit.isEnabled = true
             }
         }
     }
@@ -286,6 +289,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             override fun onResponse(reCall: Runnable?, vararg args: Any?) {
                 MyApplication.handler.post {
                     try {
+                        binding.swStationRegister.isEnabled = true
                         val jsonObject = JSONObject(args[0].toString())
                         val success = jsonObject.getBoolean("success")
                         val message = jsonObject.getString("message")
@@ -313,7 +317,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
             override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
                 MyApplication.handler.post {
-
+                    binding.swStationRegister.isEnabled = true
                 }
             }
         }
@@ -329,6 +333,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
                 try {
+                    binding.swStationRegister.isEnabled = true
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -355,7 +360,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-
+                binding.swStationRegister.isEnabled = true
             }
         }
     }
@@ -562,7 +567,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
     }
 
     override fun refreshNotification() {
-       setBadge()
+        setBadge()
     }
 
     override fun onNeedLocationPermission() {
