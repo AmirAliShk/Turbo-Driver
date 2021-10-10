@@ -37,5 +37,6 @@ data class ServiceDataModel(
   var priceService:String,
   var returnBack:Int,
   var discount:String,
-  var isCreditCustomer:String
+  var isCreditCustomerStr:String,
+  var isCreditCustomer:Int
 )

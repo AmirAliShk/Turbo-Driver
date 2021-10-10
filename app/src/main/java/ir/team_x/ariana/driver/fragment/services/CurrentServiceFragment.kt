@@ -97,7 +97,8 @@ class CurrentServiceFragment : Fragment() {
                                 dataObj.getString("priceService"),
                                 dataObj.getInt("returnBack"),
                                 dataObj.getString("discount"),
-                                dataObj.getString("isCreditCustomer")
+                                dataObj.getString("isCreditCustomerStr"),
+                                dataObj.getInt("isCreditCustomer")
                             )
                             serviceModels.add(model)
                         }

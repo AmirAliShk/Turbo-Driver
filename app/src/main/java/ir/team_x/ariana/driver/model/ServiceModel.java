@@ -10,10 +10,6 @@ import java.util.Date;
 import ir.team_x.ariana.driver.R;
 import ir.team_x.ariana.driver.utils.WriteTextOnDrawable;
 
-/***
- * Created by mohsen mostafaei on 5/22/2016.
- */
-
 public class ServiceModel {
 
   private String serviceID;
