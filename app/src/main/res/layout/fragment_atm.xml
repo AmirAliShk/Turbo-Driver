@@ -68,18 +68,12 @@
                     android:textColor="@color/grayDark"
                     android:layout_marginRight="@dimen/_10sdp"/>
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/edtCardNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:background="@drawable/edit_text_style"
-                    android:padding="@dimen/_8sdp"
-                    android:singleLine="true"
-                    android:nextFocusDown="@id/edtBankName"
-                    android:gravity="left|center_vertical"
-                    android:inputType="phone"
-                    android:textColor="@color/colorBlack" />
+                    android:layout_margin="20dp"
+                    android:hint="1234-1234-1234-1234"/>
 
             </LinearLayout>
 
