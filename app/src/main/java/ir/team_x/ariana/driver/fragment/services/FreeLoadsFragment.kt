@@ -61,7 +61,6 @@ class FreeLoadsFragment : Fragment() {
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
-                    Log.i("TAF",jsonObject.toString())
                     if (success) {
                         val dataArr = jsonObject.getJSONArray("data")
                         for (i in 0 until dataArr.length()) {
