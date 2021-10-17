@@ -47,14 +47,6 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                             holder.binding.vfAccept.displayedChild = 0
 
                             MyApplication.handler.postDelayed({
-                                SoundHelper.ringing(
-                                    MyApplication.context,
-                                    R.raw.accpet,
-                                    false
-                                )
-                            }, 1000)
-
-                            MyApplication.handler.postDelayed({
                                 models.removeAt(position)
                                 notifyDataSetChanged()
                             },100)

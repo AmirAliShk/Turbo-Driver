@@ -33,6 +33,7 @@ class ServiceDetailsFragment(
     }
 
     private val serviceModel = serviceModel
+    val isCreditCustomer = serviceModel.isCreditCustomer
     private lateinit var binding: FragmentServiceDetailsBinding
 
     interface CancelServiceListener {
@@ -53,7 +54,6 @@ class ServiceDetailsFragment(
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
-        Log.i("TAF", serviceModel.toString())
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
@@ -66,26 +66,22 @@ class ServiceDetailsFragment(
             )
         )
 
-        val destinations : ArrayList<String> = ArrayList()
+        val destinations: ArrayList<String> = ArrayList()
         val destJAArr = JSONArray(serviceModel.destinationAddress)
-        for ( i in 0 until destJAArr.length())
-        {
+        for (i in 0 until destJAArr.length()) {
             val destinationOBJ = destJAArr.getJSONObject(i)
             val dest = destinationOBJ.getString("address")
             destinations.add(dest)
         }
-        if (destinations.size == 1)
-        {
+        if (destinations.size == 1) {
             binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
         }
-        if (destinations.size == 2)
-        {
+        if (destinations.size == 2) {
             binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
             binding.llSecondDest.visibility = View.VISIBLE
             binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
         }
-        if(destinations.size == 3)
-        {
+        if (destinations.size == 3) {
             binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
             binding.llSecondDest.visibility = View.VISIBLE
             binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
@@ -100,22 +96,27 @@ class ServiceDetailsFragment(
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
 //        binding.txtCargoType.text = serviceModel.cargoName
-        binding.txtCargoType.text = if (serviceModel.cargoName == "null") "ثبت نشده" else serviceModel.cargoName
+        binding.txtCargoType.text =
+            if (serviceModel.cargoName == "null") "ثبت نشده" else serviceModel.cargoName
         binding.txtCargoCost.text = StringHelper.toPersianDigits(serviceModel.costName)
         binding.txtPaymentSide.text = if (serviceModel.paymentSide == 0) "مقصد" else "مبدا"
         if (serviceModel.description.trim() == "" && serviceModel.fixedDescription.trim() == "") {
             binding.llDesc.visibility = View.GONE
         } else {
             if (serviceModel.description.trim() != "" && serviceModel.fixedDescription.trim() != "") {
-                binding.txtDescriptionDetail.text =
+                binding.txtDescriptionDetail.text = StringHelper.toPersianDigits(
                     "${serviceModel.description} و ${serviceModel.fixedDescription}"
+                )
             } else if (serviceModel.description.trim() != "") {
-                binding.txtDescriptionDetail.text = serviceModel.description
+                binding.txtDescriptionDetail.text =
+                    StringHelper.toPersianDigits(serviceModel.description)
             } else if (serviceModel.fixedDescription.trim() != "") {
-                binding.txtDescriptionDetail.text = serviceModel.fixedDescription
+                binding.txtDescriptionDetail.text =
+                    StringHelper.toPersianDigits(serviceModel.fixedDescription)
             }
         }
-        binding.txtDiscount.text = StringHelper.toPersianDigits(StringHelper.setComma(serviceModel.discount))
+        binding.txtDiscount.text =
+            StringHelper.toPersianDigits(StringHelper.setComma(serviceModel.discount))
         binding.imgDriverHelp.setImageResource(if (serviceModel.driverHelp == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         binding.imgReturnBack.setImageResource(if (serviceModel.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         binding.llCancel.setOnClickListener {
@@ -195,8 +196,8 @@ class ServiceDetailsFragment(
         binding.vfEndService.displayedChild = 1
         RequestHelper.builder(EndPoint.BILL)
             .listener(billCallBack)
-            .addPath( serviceId.toString())
-            .addPath( price)
+            .addPath(serviceId.toString())
+            .addPath(price)
             .get()
     }
 
@@ -211,7 +212,7 @@ class ServiceDetailsFragment(
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
 
-                        FactorDialog().show(
+                        FactorDialog().show(isCreditCustomer,
                             dataObj, serviceModel.id,
                             object : FactorDialog.FinishServiceListener {
                                 override fun onFinishService(isFinish: Boolean) {

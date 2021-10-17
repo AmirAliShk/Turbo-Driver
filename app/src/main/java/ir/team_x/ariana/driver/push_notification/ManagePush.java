@@ -165,12 +165,12 @@ public class ManagePush {
 //                            }
 //
 //                        } else {
-                            SoundHelper.ringing(context, R.raw.short_notification, false);
+                            SoundHelper.ringing(context, R.raw.service, false);
 //                            new ToastFragment().addToast(freeService, MyApplication.currentActivity);
                             MyApplication.Companion.showSnackBar(freeService);
 //                        }
 //                    } else {
-//                        SoundHelper.ringing(context, R.raw.short_notification, !prefManager.isMuteFreeServiceAlarm());
+//                        SoundHelper.ringing(context, R.raw.service, !prefManager.isMuteFreeServiceAlarm());
 //                        PushDataHolder.getInstance().setFreeServiceMessage(freeService);
 //                        sendNotification(freeService, context, false, 0, prefManager.isMuteFreeServiceAlarm());
 //                    }
@@ -204,7 +204,7 @@ public class ManagePush {
                     .setContentText(message)
                     .setAutoCancel(true)
                     .setVibrate(new long[]{2000, 1000, 2000, 1000})
-                    .setSound(Uri.parse("android.resource://ir.taxi1880.customer/" + R.raw.notification))
+                    .setSound(Uri.parse(MyApplication.Companion.getSOUND()  + R.raw.notification))
                     .setContentIntent(pendingIntent);
 
 
@@ -222,7 +222,7 @@ public class ManagePush {
             notificationBuilder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.logoariana));
             if (isHighPriority) notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
             notificationBuilder.setAutoCancel(true);
-            notificationBuilder.setSound(Uri.parse("android.resource://ir.team_x.ariana.driver/" + R.raw.notification));
+            notificationBuilder.setSound(Uri.parse(MyApplication.Companion.getSOUND()  + R.raw.notification));
             notificationBuilder.setContentIntent(pendingIntent);
 
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

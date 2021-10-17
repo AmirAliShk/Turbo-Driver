@@ -32,12 +32,13 @@ class FactorDialog {
 
     private lateinit var finishServiceListener: FinishServiceListener
 
-    fun show(priceObj: JSONObject, serId: Int, finishServiceListener: FinishServiceListener) {
+    fun show( isCreditCustomer: Int,priceObj: JSONObject, serId: Int, finishServiceListener: FinishServiceListener) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DialogFactorBinding.inflate(LayoutInflater.from(MyApplication.context))
         dialog.setContentView(binding.root)
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtCreditType, MyApplication.iranSansTF)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val wlp: WindowManager.LayoutParams? = dialog.window?.attributes
         wlp?.gravity = Gravity.CENTER
@@ -48,6 +49,7 @@ class FactorDialog {
 
         this.finishServiceListener = finishServiceListener
 
+        binding.txtCreditType.text = if (isCreditCustomer == 0) "مبلغ سرویس به صورت نقدی پرداخت میشود" else "مبلغ سرویس به صورت اعتباری پرداخت میشود"
         binding.imgClose.setOnClickListener { dismiss() }
         binding.btnEndTrip.setOnClickListener { finish(serId, priceObj.getString("priceService")) }
         binding.txtTotalAmount.text =

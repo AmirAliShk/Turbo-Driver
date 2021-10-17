@@ -68,20 +68,7 @@ class GetServiceDialog() {
                 override fun onSuccess() {
                     binding.vfAcceptService.displayedChild = 0
                     dismiss()
-                    MyApplication.handler.postDelayed({
-                        SoundHelper.ringing(
-                            MyApplication.context,
-                            R.raw.accpet,
-                            false
-                        )
-                    }, 1000)
 
-//                    FragmentHelper.toFragment(
-//                        MyApplication.currentActivity,
-//                        CurrentServiceFragment()
-//                    )
-//                        .setStatusBarColor(MyApplication.context.resources.getColor(R.color.colorBlack))
-//                        .replace()
                 }
 
                 override fun onFailure() {
