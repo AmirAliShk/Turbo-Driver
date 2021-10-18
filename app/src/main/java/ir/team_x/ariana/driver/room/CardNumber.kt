@@ -1,4 +1,4 @@
-package ir.team_x.ariana.delivery.room
+package ir.team_x.ariana.driver.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

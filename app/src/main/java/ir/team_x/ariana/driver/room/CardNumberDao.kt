@@ -1,6 +1,5 @@
-package ir.team_x.ariana.delivery.room
+package ir.team_x.ariana.driver.room
 
-import android.widget.ArrayAdapter
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -11,6 +10,6 @@ interface CardNumberDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCardNo(vararg cardNo: CardNumber)
 
-    @Query("SELECT * FROM cardNumbers")
-    fun getCardNo(): List<CardNumber>
+    @Query("SELECT cardNo FROM cardNumbers")
+    fun getCardNo(): List<String>
 }

@@ -72,8 +72,13 @@
                     android:id="@+id/edtCardNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:hint="1234-1234-1234-1234"/>
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/edit_text_style"
+                    android:padding="@dimen/_8sdp"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/colorBlack" />
 
             </LinearLayout>
 

@@ -1,14 +1,13 @@
 package ir.team_x.ariana.driver.fragment.financial
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-<<<<<<< HEAD:app/src/main/java/ir/team_x/ariana/driver/fragment/financial/ATMFragment.kt
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
@@ -18,19 +17,8 @@ import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
-=======
-import ir.team_x.ariana.delivery.R
-import ir.team_x.ariana.delivery.app.EndPoint
-import ir.team_x.ariana.delivery.app.MyApplication
-import ir.team_x.ariana.delivery.databinding.FragmentAtmBinding
-import ir.team_x.ariana.delivery.dialog.GeneralDialog
-import ir.team_x.ariana.delivery.okHttp.RequestHelper
-import ir.team_x.ariana.delivery.room.CardNumber
-import ir.team_x.ariana.delivery.room.MyDB
-import ir.team_x.ariana.delivery.utils.FragmentHelper
-import ir.team_x.ariana.delivery.utils.StringHelper
-import ir.team_x.ariana.delivery.utils.TypeFaceUtilJava
->>>>>>> 50b2070 (work on room dataBase, arrayAdapter):app/src/main/java/ir/team_x/ariana/delivery/fragment/financial/ATMFragment.kt
+import ir.team_x.ariana.driver.room.CardNumber
+import ir.team_x.ariana.driver.room.MyDB
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
@@ -115,7 +103,6 @@ class ATMFragment : Fragment() {
                 .firstButton("بله") {
                     dataBase.cardNumberDao()
                         .insertCardNo(CardNumber(cardNo = cardNumber, bankName = bankName))
-                    Log.i("TAG", "onCreateView: ${dataBase.cardNumberDao().getCardNo()[0].cardNo}")
                     atmPayment(cardNumber, bankName, tracking, price, desc)
                 }
                 .secondButton("خیر") {}
@@ -143,20 +130,21 @@ class ATMFragment : Fragment() {
             .post()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun fillCards() {
-        val cardModels: List<CardNumber> = dataBase.cardNumberDao().getCardNo()
-        Log.i("TAG", "fillCards: $cardModels")
-        val cardAdapter = ArrayAdapter(
-            MyApplication.context,
-            android.R.layout.simple_dropdown_item_1line, cardModels
+        val restaurants: List<String> = dataBase.cardNumberDao().getCardNo()
+        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
+            MyApplication.currentActivity,
+            R.layout.item_bank_card,
+            restaurants
         )
-        binding.edtCardNumber.setAdapter(cardAdapter)
-        binding.edtCardNumber.setOnItemClickListener { parent, view, position, id ->
-            val item = parent.getItemAtPosition(position).toString()
-            Log.i("TAG", "fillCards setOnItemClickListener: $item")
-            binding.edtCardNumber.setText(item)
-        }
+        binding.edtCardNumber.threshold = 1
+        binding.edtCardNumber.setAdapter(adapter)
 
+        binding.edtCardNumber.setOnTouchListener { v, event ->
+            binding.edtCardNumber.showDropDown()
+            false
+        }
     }
 
     private val ATMCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
