@@ -11,13 +11,20 @@ import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentNewsDetailsBinding
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
+import android.system.Os.link
 
-class NewsDetailsFragment(title: String, text: String) : Fragment() {
+import android.net.Uri
+
+import android.content.Intent
+import java.lang.Exception
+
+class NewsDetailsFragment(link: String, title: String, text: String) : Fragment() {
 
     private lateinit var binding: FragmentNewsDetailsBinding
 
-    val newsTitle = title
-    val newsText = text
+    private val newsTitle = title
+    private val newsText = text
+    private var link = link
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +37,26 @@ class NewsDetailsFragment(title: String, text: String) : Fragment() {
     ): View? {
         binding = FragmentNewsDetailsBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
-        TypeFaceUtil.overrideFont(binding.txtPageTitle,MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtPageTitle, MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtTitle.text = StringHelper.toPersianDigits(newsTitle)
         binding.txtText.text = StringHelper.toPersianDigits(newsText)
+
+        if (link.trim().isEmpty()) {
+            binding.imgLink.visibility = View.GONE
+        }
+
+        binding.imgLink.setOnClickListener {
+            try {
+                if (!link.startsWith("http://") && !link.startsWith("https://"))
+                    link = "http://$link"
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                startActivity(browserIntent)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
 
         return binding.root
     }

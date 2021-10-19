@@ -78,7 +78,7 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
 
                         FragmentHelper.toFragment(
                             MyApplication.currentActivity,
-                            NewsDetailsFragment(
+                            NewsDetailsFragment(dataObj.getString("link"),
                                 dataObj.getString("title"),
                                 dataObj.getString("message")
                             )
