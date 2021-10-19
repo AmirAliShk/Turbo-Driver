@@ -13,6 +13,7 @@ import ir.team_x.ariana.driver.databinding.FragmentFreeLoadsBinding
 import ir.team_x.ariana.driver.fragment.news.NewsFragment
 import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
@@ -107,15 +108,14 @@ class FreeLoadsFragment : Fragment() {
 
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    Log.i("TAF","catch $e")
                     binding.vfFreeLoads.displayedChild = 2
+                    AvaCrashReporter.send(e,"FreeLoadsFragment,waitingCallBack")
                 }
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-                Log.i("TAF","OnFailure $e")
                 binding.vfFreeLoads.displayedChild = 2
             }
         }

@@ -12,6 +12,7 @@ import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.*
 import ir.team_x.ariana.driver.model.FinishedModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
@@ -53,12 +54,10 @@ class ServiceHistoryFragment : Fragment() {
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
-                    Log.i("TAF" ,jsonObject.toString())
                     if (success) {
                         val dataArr = jsonObject.getJSONArray("data")
                         for (i in 0 until dataArr.length()) {
                             val dataObj = dataArr.getJSONObject(i)
-                            Log.i("TAF",dataObj.toString())
                             val model = FinishedModel(
                                 dataObj.getInt("id"),
                                 dataObj.getInt("customerId"),
@@ -92,8 +91,7 @@ class ServiceHistoryFragment : Fragment() {
                 } catch (e: Exception) {
                     e.printStackTrace()
                     binding.vfServiceHistory.displayedChild = 2
-                    Log.i("TAF","catch")
-
+                    AvaCrashReporter.send(e,"ServiceHistoryFragment,serviceHistoryCallBack")
                 }
             }
         }
@@ -101,7 +99,6 @@ class ServiceHistoryFragment : Fragment() {
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
                 binding.vfServiceHistory.displayedChild = 2
-                Log.i("TAF","onFailure $e")
 
             }
         }

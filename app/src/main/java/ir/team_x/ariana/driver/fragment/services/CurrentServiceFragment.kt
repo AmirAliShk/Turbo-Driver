@@ -13,6 +13,7 @@ import ir.team_x.ariana.driver.databinding.FragmentCurrentServicesBinding
 import ir.team_x.ariana.driver.model.DestinationModel
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
 import org.json.JSONObject
 
@@ -61,7 +62,6 @@ class CurrentServiceFragment : Fragment() {
                         val dataArr = jsonObject.getJSONArray("data")
                         for (i in 0 until dataArr.length()) {
                             val dataObj = dataArr.getJSONObject(i)
-                            Log.i("TAF",jsonObject.toString())
                             val model = ServiceDataModel(
                                 dataObj.getInt("id"),
                                 dataObj.getInt("customerId"),
@@ -114,8 +114,7 @@ class CurrentServiceFragment : Fragment() {
                 } catch (e: Exception) {
                     e.printStackTrace()
                     binding.vfCurrentService.displayedChild = 2
-                    Log.i("TAF","catch  $e" )
-
+                    AvaCrashReporter.send(e,"CurrentServiceFragment,activeServiceCallBack")
                 }
             }
         }
@@ -123,7 +122,6 @@ class CurrentServiceFragment : Fragment() {
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
                 binding.vfCurrentService.displayedChild = 2
-                Log.i("TAF","onFalure")
 
             }
         }

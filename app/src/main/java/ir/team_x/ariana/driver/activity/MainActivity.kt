@@ -120,6 +120,11 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         }
 
         binding.llServiceManagement.setOnClickListener {
+            if (!MyApplication.prefManager.getDriverStatus()) {
+                GeneralDialog().message("لطفا فعال شوید").title("هشدار").firstButton("باشه") {}
+                    .show()
+                return@setOnClickListener
+            }
             FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
                 .replace()
         }
@@ -130,6 +135,11 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         }
 
         binding.llFreeLoads.setOnClickListener {
+            if (!MyApplication.prefManager.getDriverStatus()) {
+                GeneralDialog().message("لطفا فعال شوید").title("هشدار").firstButton("باشه") {}
+                    .show()
+                return@setOnClickListener
+            }
             FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment())
                 .replace()
         }

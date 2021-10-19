@@ -91,7 +91,7 @@ class ServiceDetailsFragment(
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtCreditCustomer.text = serviceModel.isCreditCustomerStr
         binding.imgCredit.setImageResource(if (serviceModel.isCreditCustomer == 0) R.drawable.ic_money else R.drawable.ic_card)
-
+        binding.txtCargoWeight.text = if (serviceModel.weightName == "null") "ثبت نشده" else StringHelper.toPersianDigits(serviceModel.weightName)
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
