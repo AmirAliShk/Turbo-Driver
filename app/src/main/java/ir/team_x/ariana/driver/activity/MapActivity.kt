@@ -93,9 +93,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 
     override fun onResume() {
         super.onResume()
+        MyApplication.currentActivity = this
         KeyBoardHelper.hideKeyboard()
         MyApplication.prefManager.setAppRun(true)
-        MyApplication.currentActivity = this
         binding.map.onResume()
         locationAssistant.start()
     }

@@ -82,8 +82,8 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        KeyBoardHelper.hideKeyboard()
         MyApplication.currentActivity = this
+        KeyBoardHelper.hideKeyboard()
         MyApplication.prefManager.setAppRun(true)
     }
 
