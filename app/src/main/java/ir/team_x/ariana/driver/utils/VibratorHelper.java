@@ -3,11 +3,6 @@ package ir.team_x.ariana.driver.utils;
 import android.content.Context;
 import android.os.Vibrator;
 
-
-/***
- * Created by AmirReza on 2017/06/13.
- */
-
 public class VibratorHelper {
   public static Vibrator vibrator;
 

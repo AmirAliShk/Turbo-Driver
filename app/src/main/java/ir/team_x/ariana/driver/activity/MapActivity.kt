@@ -180,29 +180,31 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     }
 
     private fun animateToLocation(lat: Double, lon: Double) {
-        val latlng = LatLng(lat, lon)
-        val position1 = CameraPosition.builder()
-            .target(latlng)
-            .zoom(14f)
-            .build()
+        MyApplication.currentActivity.runOnUiThread {
+            val latlng = LatLng(lat, lon)
+            val position1 = CameraPosition.builder()
+                .target(latlng)
+                .zoom(14f)
+                .build()
 
-        googleMap.animateCamera(
-            CameraUpdateFactory.newCameraPosition(position1),
-            200,
-            null
-        )
+            googleMap.animateCamera(
+                CameraUpdateFactory.newCameraPosition(position1),
+                200,
+                null
+            )
 
-        refreshLocation()
+            refreshLocation()
 
-        val circleOptions = CircleOptions()
-            .center(LatLng(lastLocation.latitude, lastLocation.longitude)) //set center
-            .radius(200.toDouble()) //set radius in meters
-            .fillColor(MyApplication.currentActivity.resources.getColor(R.color.grayTransparent)) //default
-            .strokeColor(MyApplication.currentActivity.resources.getColor(R.color.grayDark))
-            .strokeWidth(5f)
-        if (this::stationCircle.isInitialized)
-            stationCircle.remove()
-        stationCircle = googleMap.addCircle(circleOptions)
+            val circleOptions = CircleOptions()
+                .center(LatLng(lastLocation.latitude, lastLocation.longitude)) //set center
+                .radius(200.toDouble()) //set radius in meters
+                .fillColor(MyApplication.currentActivity.resources.getColor(R.color.grayTransparent)) //default
+                .strokeColor(MyApplication.currentActivity.resources.getColor(R.color.grayDark))
+                .strokeWidth(5f)
+            if (this::stationCircle.isInitialized)
+                stationCircle.remove()
+            stationCircle = googleMap.addCircle(circleOptions)
+        }
     }
 
     private fun refreshLocation() {

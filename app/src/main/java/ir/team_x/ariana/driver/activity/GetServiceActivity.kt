@@ -9,13 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivityGetServiceBinding
-import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
-import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.KeyBoardHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.AcceptService
-import org.json.JSONArray
+import android.app.KeyguardManager
+import android.content.Context
 
 class GetServiceActivity : AppCompatActivity() {
 
@@ -27,6 +26,10 @@ class GetServiceActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD)
+            window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
             window.navigationBarColor = resources.getColor(R.color.pageBackground)
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
@@ -85,6 +88,10 @@ class GetServiceActivity : AppCompatActivity() {
             }
 
         }, 100)
+
+        val manager = MyApplication.currentActivity.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+        val lock = manager.newKeyguardLock("GetServiceActivityKeyGuard")
+        lock.disableKeyguard()
 
     }
 

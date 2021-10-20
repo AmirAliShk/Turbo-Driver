@@ -1,5 +1,7 @@
 package ir.team_x.ariana.driver.activity
 
+import android.app.KeyguardManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -28,6 +30,10 @@ class CancelServiceActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD)
+            window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
             window.navigationBarColor = resources.getColor(R.color.pageBackground)
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
@@ -38,7 +44,7 @@ class CancelServiceActivity : AppCompatActivity() {
         binding.rbContent.startRippleAnimation();
 
         MyApplication.handler.postDelayed({
-            SoundHelper.ringing(Uri.parse("android.resource://ir.team_x.ariana.driver/" + R.raw.alarm))
+            SoundHelper.ringing(Uri.parse(MyApplication.SOUND + R.raw.alarm))
             VibratorHelper.setVibrator(MyApplication.context)
         }, 500)
 
@@ -53,6 +59,10 @@ class CancelServiceActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        val manager = MyApplication.currentActivity.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+        val lock = manager.newKeyguardLock("CancelServiceActivityKeyGuard")
+        lock.disableKeyguard()
 
         UpdateCharge().update(object : UpdateCharge.ChargeListener {
             override fun getCharge(charge: String) {

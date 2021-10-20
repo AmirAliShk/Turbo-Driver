@@ -36,11 +36,6 @@ import ir.team_x.ariana.driver.utils.SoundHelper;
 import ir.team_x.ariana.driver.utils.VibratorHelper;
 import ir.team_x.ariana.operator.dialog.GetServiceDialog;
 
-
-/**
- * Created by nic on 5/19/17.
- */
-
 public class ManagePush {
 
     private static final String TAG = ManagePush.class.getSimpleName();
@@ -86,7 +81,7 @@ public class ManagePush {
                     if (MyApplication.currentActivity != null) {
                         MyApplication.currentActivity.finish();
                     }
-                    VibratorHelper.setVibrator(context, new long[]{700, 800, 700, 800, 700, 800, 700, 800, 700, 800, 700, 800}, -1);
+                    VibratorHelper.setVibrator(context, new long[]{100, 100, 100}, -1);
                     Intent in = new Intent(context, GetServiceActivity.class);
                     in.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                     in.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
