@@ -78,6 +78,7 @@ class CurrentServiceAdapter() :
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtCreditCustomer.text = model.isCreditCustomerStr
         holder.binding.imgCredit.setImageResource(if (model.isCreditCustomer == 0) R.drawable.ic_money else R.drawable.ic_card)
+        holder.binding.imgReturnBack.setImageResource(if (model.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.binding.txtCargoType.text = model.cargoName
         holder.itemView.setOnClickListener {
