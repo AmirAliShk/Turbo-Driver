@@ -88,6 +88,21 @@ class ServiceDetailsFragment(
             binding.llThirdDest.visibility = View.VISIBLE
             binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
         }
+        binding.txtDate.text = StringHelper.toPersianDigits(
+            DateHelper.strPersianEghit(
+                DateHelper.parseFormat(
+                    serviceModel.acceptDate + "",
+                    null
+                )
+            )
+        )
+
+//        if(serviceModel.checkoutName.isNotEmpty()){
+            binding.txtAttentionCost.text="به احتساب ارزش مرسوله"
+//            binding.llAttentionCost.visibility=View.VISIBLE
+//        }else{
+//            binding.llAttentionCost.visibility=View.GONE
+//        }
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtCreditCustomer.text = serviceModel.isCreditCustomerStr
         binding.imgCredit.setImageResource(if (serviceModel.isCreditCustomer == 0) R.drawable.ic_money else R.drawable.ic_card)
