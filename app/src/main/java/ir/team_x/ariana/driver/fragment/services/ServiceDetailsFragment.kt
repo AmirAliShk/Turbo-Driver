@@ -65,28 +65,22 @@ class ServiceDetailsFragment(
                 )
             )
         )
-
-        val destinations: ArrayList<String> = ArrayList()
-        val destJAArr = JSONArray(serviceModel.destinationAddress)
-        for (i in 0 until destJAArr.length()) {
-            val destinationOBJ = destJAArr.getJSONObject(i)
-            val dest = destinationOBJ.getString("address")
-            destinations.add(dest)
-        }
-        if (destinations.size == 1) {
-            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
-        }
-        if (destinations.size == 2) {
-            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
-            binding.llSecondDest.visibility = View.VISIBLE
-            binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
-        }
-        if (destinations.size == 3) {
-            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
-            binding.llSecondDest.visibility = View.VISIBLE
-            binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
-            binding.llThirdDest.visibility = View.VISIBLE
-            binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
+        val destJArr = JSONArray(serviceModel.destinationAddress)
+        for (i in 0 until destJArr.length()) {
+            val destinationOBJ = destJArr.getJSONObject(i)
+            when (i) {
+                0 -> {
+                    binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                }
+                1 -> {
+                    binding.llSecondDest.visibility = View.VISIBLE
+                    binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                }
+                2 -> {
+                    binding.llThirdDest.visibility = View.VISIBLE
+                    binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                }
+            }
         }
         binding.txtDate.text = StringHelper.toPersianDigits(
             DateHelper.strPersianEghit(
@@ -98,7 +92,7 @@ class ServiceDetailsFragment(
         )
 
 //        if(serviceModel.checkoutName.isNotEmpty()){
-            binding.txtAttentionCost.text="به احتساب ارزش مرسوله"
+        binding.txtAttentionCost.text = "به احتساب ارزش مرسوله"
 //            binding.llAttentionCost.visibility=View.VISIBLE
 //        }else{
 //            binding.llAttentionCost.visibility=View.GONE

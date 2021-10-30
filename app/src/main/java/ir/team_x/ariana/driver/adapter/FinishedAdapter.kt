@@ -46,31 +46,23 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
             date = DateHelper.strPersianTen(DateHelper.parseFormat(model.finishDate + "", null))
             time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.finishDate + "", null))
         }
-        val destinations : ArrayList<String> = ArrayList()
+
         val destJArr = JSONArray(model.destinationAddress)
-        for ( i in 0 until destJArr.length())
-        {
+        for (i in 0 until destJArr.length()) {
             val destinationOBJ = destJArr.getJSONObject(i)
-            val dest = destinationOBJ.getString("address")
-            destinations.add(dest)
-        }
-        if (destinations.size == 1)
-        {
-            holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
-        }
-        if (destinations.size == 2)
-        {
-            holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
-            holder.binding.llSecondDest.visibility = View.VISIBLE
-            holder.binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
-        }
-        if(destinations.size == 3)
-        {
-            holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinations[0])
-            holder.binding.llSecondDest.visibility = View.VISIBLE
-            holder.binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinations[1])
-            holder.binding.llThirdDest.visibility = View.VISIBLE
-            holder.binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinations[2])
+            when (i) {
+                0 -> {
+                    holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                }
+                1 -> {
+                    holder.binding.llSecondDest.visibility = View.VISIBLE
+                    holder.binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                }
+                2 -> {
+                   holder.binding.llThirdDest.visibility = View.VISIBLE
+                   holder.binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                }
+            }
         }
 
         holder.binding.txtCustomerName.text = model.customerName
