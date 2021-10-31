@@ -100,6 +100,7 @@ class CurrentServiceFragment : Fragment() {
                                 dataObj.getString("isCreditCustomerStr"),
                                 dataObj.getInt("isCreditCustomer"),
                                 dataObj.getString("checkoutName"),
+                                dataObj.getString("packageValue")
                             )
                             serviceModels.add(model)
                         }
