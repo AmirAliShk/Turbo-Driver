@@ -60,17 +60,16 @@
 
                     <TextView
                         style="@style/title_details"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
                         android:text="@string/customerName" />
 
                     <TextView
                         android:id="@+id/txtCustomerName"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:gravity="right" />
 
                 </LinearLayout>
@@ -79,22 +78,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="horizontal">
 
                     <TextView
                         style="@style/title_details"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.6"
                         android:text="@string/date_time" />
 
                     <TextView
                         android:id="@+id/txtDate"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:gravity="right" />
 
                 </LinearLayout>
@@ -205,7 +203,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="horizontal">
 
                     <TextView
@@ -220,7 +218,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
-                        android:gravity="center" />
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:gravity="right" />
 
                     <TextView
                         style="@style/title_details"
@@ -233,7 +232,8 @@
                         style="@style/Details_answer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:layout_weight="0.5" />
 
                 </LinearLayout>
@@ -242,22 +242,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="horizontal">
 
                     <TextView
                         style="@style/title_details"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.85"
                         android:text="@string/Load_type" />
 
                     <TextView
                         android:id="@+id/txtCargoType"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:gravity="right" />
 
                 </LinearLayout>
@@ -266,29 +265,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="horizontal">
 
                     <TextView
                         style="@style/title_details"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.85"
                         android:text="@string/Load_cost" />
 
                     <TextView
                         android:id="@+id/txtCargoCost"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:gravity="right" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/llAttentionCost"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
@@ -310,22 +308,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="horizontal">
 
                     <TextView
                         style="@style/title_details"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
                         android:text="@string/checkout_cargo" />
 
                     <TextView
                         android:id="@+id/txtCargoCheckout"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:gravity="right" />
 
                 </LinearLayout>
@@ -334,22 +331,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="horizontal">
 
                     <TextView
                         style="@style/title_details"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.85"
                         android:text="@string/Load_weight" />
 
                     <TextView
                         android:id="@+id/txtCargoWeight"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:gravity="right" />
 
                 </LinearLayout>
@@ -358,23 +354,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="horizontal">
 
                     <TextView
                         style="@style/title_details"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:gravity="right"
                         android:text="@string/Settlement_side" />
 
                     <TextView
                         android:id="@+id/txtPaymentSide"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:gravity="right" />
 
                 </LinearLayout>
@@ -384,23 +379,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="horizontal">
 
                     <TextView
                         style="@style/title_details"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:gravity="right"
                         android:text="توضیحات :" />
 
                     <TextView
                         android:id="@+id/txtDescriptionDetail"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:gravity="right" />
 
                 </LinearLayout>
@@ -409,23 +403,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:orientation="horizontal">
 
                     <TextView
                         style="@style/title_details"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:gravity="right"
                         android:text="تخفیف :" />
 
                     <TextView
                         android:id="@+id/txtDiscount"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:gravity="right" />
 
                 </LinearLayout>
@@ -433,7 +426,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -484,8 +477,8 @@
 
                     <ImageView
                         android:id="@+id/imgReturnBack"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp" />
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp" />
 
                     <TextView
                         style="@style/Details_answer"
