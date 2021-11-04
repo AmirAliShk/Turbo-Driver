@@ -41,7 +41,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     lateinit var locationAssistant: LocationAssistant
     var lastLocation= Location("provider");
     var myLocationMarker: Marker? = null
-    lateinit var stationCircle: Circle
     private val markerList: ArrayList<StationModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -194,16 +193,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
             )
 
             refreshLocation()
-
-            val circleOptions = CircleOptions()
-                .center(LatLng(lastLocation.latitude, lastLocation.longitude)) //set center
-                .radius(200.toDouble()) //set radius in meters
-                .fillColor(MyApplication.currentActivity.resources.getColor(R.color.grayTransparent)) //default
-                .strokeColor(MyApplication.currentActivity.resources.getColor(R.color.grayDark))
-                .strokeWidth(5f)
-            if (this::stationCircle.isInitialized)
-                stationCircle.remove()
-            stationCircle = googleMap.addCircle(circleOptions)
         }
     }
 
