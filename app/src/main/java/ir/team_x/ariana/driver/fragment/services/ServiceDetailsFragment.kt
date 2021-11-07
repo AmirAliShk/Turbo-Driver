@@ -70,15 +70,18 @@ class ServiceDetailsFragment(
             val destinationOBJ = destJArr.getJSONObject(i)
             when (i) {
                 0 -> {
-                    binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                    binding.txtFirstDestAddress.text =
+                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
                 }
                 1 -> {
                     binding.llSecondDest.visibility = View.VISIBLE
-                    binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                    binding.txtSecondDestAddress.text =
+                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
                 }
                 2 -> {
                     binding.llThirdDest.visibility = View.VISIBLE
-                    binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                    binding.txtThirdDestAddress.text =
+                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
                 }
             }
         }
@@ -103,7 +106,10 @@ class ServiceDetailsFragment(
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtCreditCustomer.text = serviceModel.isCreditCustomerStr
         binding.imgCredit.setImageResource(if (serviceModel.isCreditCustomer == 0) R.drawable.ic_money else R.drawable.ic_card)
-        binding.txtCargoWeight.text = if (serviceModel.weightName == "null") "ثبت نشده" else StringHelper.toPersianDigits(serviceModel.weightName)
+        binding.txtCargoWeight.text =
+            if (serviceModel.weightName == "null") "ثبت نشده" else StringHelper.toPersianDigits(
+                serviceModel.weightName
+            )
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
@@ -224,7 +230,7 @@ class ServiceDetailsFragment(
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
 
-                        FactorDialog().show(isCreditCustomer,
+                        FactorDialog().show(serviceModel.packageValue, isCreditCustomer,
                             dataObj, serviceModel.id,
                             object : FactorDialog.FinishServiceListener {
                                 override fun onFinishService(isFinish: Boolean) {

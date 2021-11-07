@@ -73,6 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
+                    android:maxLength="16"
                     android:background="@drawable/edit_text_style"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"

@@ -48,7 +48,7 @@ class SplashActivity : AppCompatActivity() {
 
         MyApplication.handler.postDelayed({
             checkPermission()
-        }, 1500)
+        }, 500)
     }
 
     private fun checkPermission() {

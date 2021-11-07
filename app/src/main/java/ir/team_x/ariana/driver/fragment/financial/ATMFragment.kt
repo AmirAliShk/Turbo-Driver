@@ -59,7 +59,7 @@ class ATMFragment : Fragment() {
             binding.edtValueCredit.setText(StringHelper.setComma(price))
         }
 
-        StringHelper.setCharAfterOnTime(binding.edtCardNumber, "-", 4)
+//        StringHelper.setCharAfterOnTime(binding.edtCardNumber, "-", 4)
 
         binding.btnSubmit.setOnClickListener {
             val cardNumber = binding.edtCardNumber.text.trim().toString()
@@ -70,6 +70,12 @@ class ATMFragment : Fragment() {
 
             if (cardNumber.isEmpty()) {
                 MyApplication.Toast("شماره کارت را وارد کنید", Toast.LENGTH_SHORT)
+                binding.edtCardNumber.requestFocus()
+                return@setOnClickListener
+            }
+
+            if (cardNumber.length<16) {
+                MyApplication.Toast("شماره کارت را اصلاح کنید", Toast.LENGTH_SHORT)
                 binding.edtCardNumber.requestFocus()
                 return@setOnClickListener
             }
