@@ -73,7 +73,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
-                    android:maxLength="16"
+                    android:maxLength="19"
+                    android:nextFocusDown="@id/edtBankName"
                     android:background="@drawable/edit_text_style"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
@@ -187,7 +188,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -198,6 +199,8 @@
                         android:gravity="center"
                         android:hint="مبالغ دیگر"
                         android:text="10,000"
+                        android:background="@drawable/edit_text_style"
+                        android:padding="@dimen/_10sdp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorBlack"
                         android:inputType="number"
