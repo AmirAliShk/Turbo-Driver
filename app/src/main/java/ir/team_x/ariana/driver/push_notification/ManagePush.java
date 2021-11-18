@@ -98,7 +98,6 @@ public class ManagePush {
                     in.putExtra("price", mdoel.getServicePrice());
                     in.putExtra("inService", mdoel.isInService());
                     context.startActivity(in);
-                    sendNotification("سرویسی در انتظار تایید دارید", context, true, 2, true);
                 }
                 break;
 
@@ -130,7 +129,7 @@ public class ManagePush {
                 String freeService = dataArray[1];
 //                new GeneralDialog().message(freeService).firstButton("باشه", null).show();
 
-//                    if (MyApplication.prefManager.isAppRun()) {
+                    if (MyApplication.prefManager.isAppRun()) {
 //
 //                        if (!prefManager.isMuteFreeServiceAlarm()) {
 //                            try {
@@ -164,11 +163,10 @@ public class ManagePush {
 //                            new ToastFragment().addToast(freeService, MyApplication.currentActivity);
                             MyApplication.Companion.showSnackBar(freeService);
 //                        }
-//                    } else {
+                    } else {
 //                        SoundHelper.ringing(context, R.raw.service, !prefManager.isMuteFreeServiceAlarm());
 //                        PushDataHolder.getInstance().setFreeServiceMessage(freeService);
-//                        sendNotification(freeService, context, false, 0, prefManager.isMuteFreeServiceAlarm());
-//                    }
+                        sendNotification("به بخش بار های ازاد مراجه کنید.", context, false, 2, true);                    }
 //                }
                 break;
 
