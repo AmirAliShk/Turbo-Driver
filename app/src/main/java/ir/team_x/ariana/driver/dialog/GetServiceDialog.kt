@@ -1,4 +1,4 @@
-package ir.team_x.ariana.operator.dialog
+package ir.team_x.ariana.driver.dialog
 
 import android.app.Dialog
 import android.graphics.Color
@@ -30,7 +30,7 @@ class GetServiceDialog() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         binding = DialogGetServiceBinding.inflate(LayoutInflater.from(MyApplication.context))
         dialog.setContentView(binding.root)
-        TypeFaceUtilJava.overrideFonts(binding.root,MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val wlp = dialog.window!!.attributes
         wlp.gravity = Gravity.CENTER
@@ -40,24 +40,36 @@ class GetServiceDialog() {
         dialog.setCancelable(false)
 
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.originAddress)
-        binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(serviceModel.destinationDesc)
+        binding.txtFirstDestAddress.text =
+            StringHelper.toPersianDigits(serviceModel.destinationDesc)
         binding.txtPrice.text = StringHelper.toPersianDigits(
             StringHelper.setComma(serviceModel.servicePrice).toString() + " تومان"
         )
 
+        binding.txtCarType.text = serviceModel.carType
+        binding.txtCargoType.text = serviceModel.cargoType
+        if (serviceModel.description.trim().isEmpty()) binding.llDescription.visibility = View.GONE
+        else
+            binding.txtDescription.text = serviceModel.description
+
+        if(serviceModel.returnBack.equals("0"))
+            binding.imgReturnBack.setImageResource(R.drawable.ic_cancle)
+        else
+            binding.imgReturnBack.setImageResource(R.drawable.ic_ticke)
+
         val dataArray: Array<String> = serviceModel.destinationDesc.split("$").toTypedArray()
-        for ( i in dataArray.indices) {
-            when(i){
-                0->{
-                    binding.txtFirstDestAddress.text =StringHelper.toPersianDigits(dataArray[0])
+        for (i in dataArray.indices) {
+            when (i) {
+                0 -> {
+                    binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(dataArray[0])
                 }
-                1->{
-                    binding.txtSecondDestAddress.text =StringHelper.toPersianDigits(dataArray[1])
-                    binding.llSecondDest.visibility= View.VISIBLE
+                1 -> {
+                    binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(dataArray[1])
+                    binding.llSecondDest.visibility = View.VISIBLE
                 }
-                2->{
-                    binding.txtThirdDestAddress.text =StringHelper.toPersianDigits(dataArray[2])
-                    binding.llThirdDest.visibility= View.VISIBLE
+                2 -> {
+                    binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(dataArray[2])
+                    binding.llThirdDest.visibility = View.VISIBLE
                 }
             }
         }

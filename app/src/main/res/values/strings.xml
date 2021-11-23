@@ -58,6 +58,14 @@
     <string name="returnBack">بازگشت به مبدا</string>
     <string name="creditCustomer">نحوه تسویه:</string>
     <string name="checkout_cargo">نحوه تسویه مرسوله :</string>
+    <string name="origin">مبدا : </string>
+    <string name="firstDestination">مقصد : </string>
+    <string name="secondDestination">مقصد۲ : </string>
+    <string name="thirdDestination">مقصد۳ : </string>
+    <string name="carType">نوع خودرو : </string>
+    <string name="cargoType">نوع بار : </string>
+    <string name="priceService">هزینه سرویس : </string>
+    <string name="description">توضیحات : </string>
 
 
 </resources>

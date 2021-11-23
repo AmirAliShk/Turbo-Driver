@@ -9,12 +9,8 @@ import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.util.Log;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import androidx.core.app.NotificationCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,13 +24,12 @@ import ir.team_x.ariana.driver.app.AppStatusHelper;
 import ir.team_x.ariana.driver.app.MyApplication;
 import ir.team_x.ariana.driver.app.PrefManager;
 import ir.team_x.ariana.driver.dialog.GeneralDialog;
-import ir.team_x.ariana.driver.fragment.ToastFragment;
 import ir.team_x.ariana.driver.model.RegisterModel;
 import ir.team_x.ariana.driver.model.ServiceModel;
 import ir.team_x.ariana.driver.push.PushDataHolder;
 import ir.team_x.ariana.driver.utils.SoundHelper;
 import ir.team_x.ariana.driver.utils.VibratorHelper;
-import ir.team_x.ariana.operator.dialog.GetServiceDialog;
+import ir.team_x.ariana.driver.dialog.GetServiceDialog;
 
 public class ManagePush {
 
@@ -59,10 +54,10 @@ public class ManagePush {
                     SoundHelper.ringing(context, R.raw.notification, false);
                     message = dataArray[1];
                     if (MyApplication.prefManager.isAppRun())
-                        new GeneralDialog().message(message);
+                        new GeneralDialog().message(message).firstButton("باشه",null).show();
                     else {
                         PushDataHolder.getInstance().setMessage(message);
-                        sendNotification(message, context, true, 0, true);
+                        sendNotification(message, context, true, 4, true);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -97,6 +92,11 @@ public class ManagePush {
                     in.putExtra("destinationAddress", mdoel.getDestinationDesc());
                     in.putExtra("price", mdoel.getServicePrice());
                     in.putExtra("inService", mdoel.isInService());
+
+                    in.putExtra("carType", mdoel.getCarType());
+                    in.putExtra("cargoType", mdoel.getCargoType());
+                    in.putExtra("description", mdoel.getDescription());
+                    in.putExtra("returnBack", mdoel.getReturnBack());
                     context.startActivity(in);
                 }
                 break;
@@ -196,7 +196,7 @@ public class ManagePush {
                     .setContentTitle(context.getResources().getString(R.string.app_name))
                     .setContentText(message)
                     .setAutoCancel(true)
-                    .setVibrate(new long[]{2000, 1000, 2000, 1000})
+                    .setVibrate(new long[]{2000, 1000})
                     .setSound(Uri.parse(MyApplication.Companion.getSOUND()  + R.raw.notification))
                     .setContentIntent(pendingIntent);
 
@@ -233,9 +233,19 @@ public class ManagePush {
         String originAddress = dataArray[4];
         String destinationAddress = dataArray[5];
         String price = dataArray[6];
+        String carType = dataArray[7];
+        String cargoStr = dataArray[8];
+        String returnBack = dataArray[9];
+        String describeService = dataArray[10];
 
-        Log.i(TAG, "getSerivceInfo:\n 1:time: " + time + "\n‌" + "2:sericeId: " + serviceId + "\n" + "3:serviceType: " + serviceType + "\n"
-                + "5:originAddress: " + originAddress + "\n" + "6:destinationAddress: " + destinationAddress + "\n" + "7:price: " + price);
+        Log.i(TAG, "getSerivceInfo:\n 1:time: " + time + "\n‌" + "2:serviceId: " + serviceId + "\n" + "3:serviceType: " + serviceType + "\n"
+                + "4:originAddress: " + originAddress + "\n" +
+                "5:destinationAddress: " + destinationAddress + "\n" + "6:price: " + price
+                + "\n" + "7:carType: " + carType
+                + "\n" + "8:cargoStr: " + cargoStr
+                + "\n" + "9:returnBack: " + returnBack
+                + "\n" + "10:describeService: " + describeService
+        );
 
         ServiceModel serviceModel = new ServiceModel();
         serviceModel.setCallTime(time);
@@ -244,6 +254,10 @@ public class ManagePush {
         serviceModel.setOriginAddress(originAddress);
         serviceModel.setDestinationDesc(destinationAddress);
         serviceModel.setServicePrice(price);
+        serviceModel.setCarType(carType);
+        serviceModel.setCargoType(cargoStr);
+        serviceModel.setReturnBack(returnBack);
+        serviceModel.setDescription(describeService);
         return serviceModel;
     }
 

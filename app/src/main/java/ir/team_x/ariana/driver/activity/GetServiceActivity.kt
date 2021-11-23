@@ -44,6 +44,10 @@ class GetServiceActivity : AppCompatActivity() {
             val destinationAddress = intent.extras!!.getString("destinationAddress")
             val price = intent.extras!!.getString("price")
             val inService = intent.extras!!.getBoolean("inService")
+            val carType = intent.extras!!.getString("carType")
+            val cargoType = intent.extras!!.getString("cargoType")
+            val description = intent.extras!!.getString("description")
+            val returnBack = intent.extras!!.getString("returnBack")
             binding.txtOriginAddress.text = StringHelper.toPersianDigits(originAddress)
             binding.txtPrice.text = StringHelper.toPersianDigits(
                 StringHelper.setComma(price).toString() + " تومان"
@@ -65,6 +69,18 @@ class GetServiceActivity : AppCompatActivity() {
                     }
                 }
             }
+
+
+            binding.txtCarType.text = carType
+            binding.txtCargoType.text = cargoType
+            if (description.trim().isEmpty()) binding.llDescription.visibility = View.GONE
+            else
+                binding.txtDescription.text = description
+
+            if(returnBack.equals("0"))
+                binding.imgReturnBack.setImageResource(R.drawable.ic_cancle)
+            else
+                binding.imgReturnBack.setImageResource(R.drawable.ic_ticke)
 
             binding.btnClose.setOnClickListener {
                 MyApplication.currentActivity.finish()

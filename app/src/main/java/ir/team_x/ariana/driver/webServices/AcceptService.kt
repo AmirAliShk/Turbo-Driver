@@ -4,7 +4,7 @@ import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.okHttp.RequestHelper
-import ir.team_x.ariana.operator.dialog.GetServiceDialog
+import ir.team_x.ariana.driver.dialog.GetServiceDialog
 import org.json.JSONObject
 
 class AcceptService {

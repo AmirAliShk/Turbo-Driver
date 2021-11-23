@@ -65,6 +65,43 @@ public class ServiceModel {
   private String finalPrice;
   private String discount;
 
+  private String cargoType;
+  private String carType;
+  private String returnBack;
+  private String derviceDescription;
+
+  public String getCargoType() {
+    return cargoType;
+  }
+
+  public void setCargoType(String cargoType) {
+    this.cargoType = cargoType;
+  }
+
+  public String getCarType() {
+    return carType;
+  }
+
+  public void setCarType(String carType) {
+    this.carType = carType;
+  }
+
+  public String getReturnBack() {
+    return returnBack;
+  }
+
+  public void setReturnBack(String returnBack) {
+    this.returnBack = returnBack;
+  }
+
+  public String getDerviceDescription() {
+    return derviceDescription;
+  }
+
+  public void setDerviceDescription(String derviceDescription) {
+    this.derviceDescription = derviceDescription;
+  }
+
   public String getDiscount() {
     return discount;
   }
