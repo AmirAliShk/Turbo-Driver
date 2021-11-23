@@ -1,6 +1,7 @@
 package ir.team_x.ariana.driver.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ir.team_x.ariana.driver.R
@@ -9,9 +10,7 @@ import ir.team_x.ariana.driver.databinding.ItemFreeLoadsBinding
 import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
 import ir.team_x.ariana.driver.model.WaitingLoadsModel
-import ir.team_x.ariana.driver.utils.FragmentHelper
-import ir.team_x.ariana.driver.utils.SoundHelper
-import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
+import ir.team_x.ariana.driver.utils.*
 import ir.team_x.ariana.driver.webServices.AcceptService
 
 class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
@@ -35,9 +34,54 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
 
-        holder.binding.txtCargoType.text =
-            if (model.cargoName == "null") "ثبت نشده" else model.cargoName
-        holder.binding.txtRange.text = model.sourceStationName
+        holder.binding.txtDate.text = StringHelper.toPersianDigits(
+            DateHelper.strPersianEghit(
+                DateHelper.parseFormat(
+                    model.saveDate + "",
+                    null
+                )
+            )
+        )
+
+        holder.binding.txtCargoType.text = model.cargoName
+        holder.binding.txtCargoCost.text = model.costId.toString()
+        holder.binding.txtDescription.text = model.description
+        holder.binding.txtPrice.text =
+            "${StringHelper.toPersianDigits(StringHelper.setComma(model.price))} تومان "
+
+//        if (model.packageValue == "0") {
+//            holder.binding.llAttentionCost.visibility = View.GONE
+//        } else {
+//            holder.binding.txtAttentionCost.text =
+//                StringHelper.toPersianDigits(" مبلغ ${StringHelper.setComma(model.packageValue)} تومان بابت ارزش مرسوله به کرایه اضافه شد ")
+//            holder.binding.llAttentionCost.visibility = View.VISIBLE
+//        }
+
+        holder.binding.imgReturnBack.setImageResource(if (model.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
+
+        if (model.description.trim() == "" && model.fixedMessage.trim() == "") {
+            holder.binding.llDescription.visibility = View.GONE
+        } else {
+            if (model.description.trim() != "" && model.fixedMessage.trim() != "") {
+                holder.binding.txtDescription.text = StringHelper.toPersianDigits(
+                    "${model.description} و ${model.fixedMessage}"
+                )
+            } else if (model.description.trim() != "") {
+                holder.binding.txtDescription.text =
+                    StringHelper.toPersianDigits(model.description)
+            } else if (model.fixedMessage.trim() != "") {
+                holder.binding.txtDescription.text =
+                    StringHelper.toPersianDigits(model.fixedMessage)
+            }
+        }
+
+        if (model.cargoName == "null") {
+            holder.binding.llCargoType.visibility = View.GONE
+        } else {
+            holder.binding.llCargoType.visibility = View.VISIBLE
+            holder.binding.txtCargoType.text = model.cargoName
+        }
+
         holder.binding.btnAccept.setOnClickListener {
             GeneralDialog().message("از دریافت سرویس اطمینان دارید؟")
                 .firstButton("بله") {
@@ -49,7 +93,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                             MyApplication.handler.postDelayed({
                                 models.removeAt(position)
                                 notifyDataSetChanged()
-                            },100)
+                            }, 100)
 
                         }
 
@@ -62,6 +106,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                 .show()
 
         }
+
     }
 
     override fun getItemCount(): Int {

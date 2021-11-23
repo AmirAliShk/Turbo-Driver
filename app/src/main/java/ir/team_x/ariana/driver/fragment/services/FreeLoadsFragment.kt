@@ -39,7 +39,7 @@ class FreeLoadsFragment : Fragment() {
     ): View? {
         binding = FragmentFreeLoadsBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
-        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         waiting()
@@ -91,7 +91,9 @@ class FreeLoadsFragment : Fragment() {
                                 dataObj.getString("phoneNumber"),
                                 dataObj.getString("mobile"),
                                 dataObj.getString("stationName"),
-                                dataObj.getString("cargoName")
+                                dataObj.getString("cargoName"),
+                                dataObj.getString("fixedMessage"),
+                                dataObj.getInt("returnBack")
                             )
 
                             waitingServiceModels.add(model)
@@ -109,7 +111,7 @@ class FreeLoadsFragment : Fragment() {
                 } catch (e: Exception) {
                     e.printStackTrace()
                     binding.vfFreeLoads.displayedChild = 2
-                    AvaCrashReporter.send(e,"FreeLoadsFragment,waitingCallBack")
+                    AvaCrashReporter.send(e, "FreeLoadsFragment,waitingCallBack")
                 }
             }
         }

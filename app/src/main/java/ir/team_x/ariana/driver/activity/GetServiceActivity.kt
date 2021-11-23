@@ -47,6 +47,7 @@ class GetServiceActivity : AppCompatActivity() {
             val carType = intent.extras!!.getString("carType")
             val cargoType = intent.extras!!.getString("cargoType")
             val description = intent.extras!!.getString("description")
+            val fixesDescription = intent.extras!!.getString("fixesDescription")
             val returnBack = intent.extras!!.getString("returnBack")
             binding.txtOriginAddress.text = StringHelper.toPersianDigits(originAddress)
             binding.txtPrice.text = StringHelper.toPersianDigits(
@@ -70,12 +71,24 @@ class GetServiceActivity : AppCompatActivity() {
                 }
             }
 
-
             binding.txtCarType.text = carType
             binding.txtCargoType.text = cargoType
-            if (description.trim().isEmpty()) binding.llDescription.visibility = View.GONE
-            else
-                binding.txtDescription.text = description
+
+            if (description.trim() == "" && fixesDescription.trim() == "") {
+                binding.llDescription.visibility = View.GONE
+            } else {
+                if (description.trim() != "" && fixesDescription.trim() != "") {
+                    binding.txtDescription.text = StringHelper.toPersianDigits(
+                        "$description و $fixesDescription"
+                    )
+                } else if (description.trim() != "") {
+                    binding.txtDescription.text =
+                        StringHelper.toPersianDigits(description)
+                } else if (fixesDescription.trim() != "") {
+                    binding.txtDescription.text =
+                        StringHelper.toPersianDigits(fixesDescription)
+                }
+            }
 
             if(returnBack.equals("0"))
                 binding.imgReturnBack.setImageResource(R.drawable.ic_cancle)
@@ -103,11 +116,7 @@ class GetServiceActivity : AppCompatActivity() {
                 })
             }
 
-        }, 100)
-
-        val manager = MyApplication.currentActivity.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
-        val lock = manager.newKeyguardLock("GetServiceActivityKeyGuard")
-        lock.disableKeyguard()
+        }, 200)
 
     }
 

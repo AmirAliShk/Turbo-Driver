@@ -69,6 +69,15 @@ public class ServiceModel {
   private String carType;
   private String returnBack;
   private String derviceDescription;
+  private String fixedDesc;
+
+  public String getFixedDesc() {
+    return fixedDesc;
+  }
+
+  public void setFixedDesc(String fixedDesc) {
+    this.fixedDesc = fixedDesc;
+  }
 
   public String getCargoType() {
     return cargoType;

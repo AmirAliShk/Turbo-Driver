@@ -92,10 +92,10 @@ public class ManagePush {
                     in.putExtra("destinationAddress", mdoel.getDestinationDesc());
                     in.putExtra("price", mdoel.getServicePrice());
                     in.putExtra("inService", mdoel.isInService());
-
                     in.putExtra("carType", mdoel.getCarType());
                     in.putExtra("cargoType", mdoel.getCargoType());
                     in.putExtra("description", mdoel.getDescription());
+                    in.putExtra("fixesDescription", mdoel.getFixedDesc());
                     in.putExtra("returnBack", mdoel.getReturnBack());
                     context.startActivity(in);
                 }
@@ -237,6 +237,7 @@ public class ManagePush {
         String cargoStr = dataArray[8];
         String returnBack = dataArray[9];
         String describeService = dataArray[10];
+        String fixDescribeService = dataArray[11];
 
         Log.i(TAG, "getSerivceInfo:\n 1:time: " + time + "\n‌" + "2:serviceId: " + serviceId + "\n" + "3:serviceType: " + serviceType + "\n"
                 + "4:originAddress: " + originAddress + "\n" +
@@ -245,6 +246,7 @@ public class ManagePush {
                 + "\n" + "8:cargoStr: " + cargoStr
                 + "\n" + "9:returnBack: " + returnBack
                 + "\n" + "10:describeService: " + describeService
+                + "\n" + "11:fixDescribeService: " + fixDescribeService
         );
 
         ServiceModel serviceModel = new ServiceModel();
@@ -258,6 +260,7 @@ public class ManagePush {
         serviceModel.setCargoType(cargoStr);
         serviceModel.setReturnBack(returnBack);
         serviceModel.setDescription(describeService);
+        serviceModel.setFixedDesc(fixDescribeService);
         return serviceModel;
     }
 

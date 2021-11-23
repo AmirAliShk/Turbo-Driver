@@ -26,4 +26,6 @@ data class WaitingLoadsModel(
     var mobile:String,
     var sourceStationName:String,
     var cargoName:String,
+    var fixedMessage:String,
+    var returnBack:Int
 )

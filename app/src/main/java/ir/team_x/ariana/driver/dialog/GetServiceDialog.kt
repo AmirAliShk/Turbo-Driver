@@ -16,6 +16,7 @@ import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.AcceptService
 import ir.team_x.ariana.driver.webServices.AcceptService.Listener
 import org.json.JSONArray
+import kotlin.concurrent.fixedRateTimer
 
 
 class GetServiceDialog() {
@@ -48,14 +49,27 @@ class GetServiceDialog() {
 
         binding.txtCarType.text = serviceModel.carType
         binding.txtCargoType.text = serviceModel.cargoType
-        if (serviceModel.description.trim().isEmpty()) binding.llDescription.visibility = View.GONE
-        else
-            binding.txtDescription.text = serviceModel.description
 
         if(serviceModel.returnBack.equals("0"))
             binding.imgReturnBack.setImageResource(R.drawable.ic_cancle)
         else
             binding.imgReturnBack.setImageResource(R.drawable.ic_ticke)
+
+        if (serviceModel.description.trim() == "" && serviceModel.fixedDesc.trim() == "") {
+            binding.llDescription.visibility = View.GONE
+        } else {
+            if (serviceModel.description.trim() != "" && serviceModel.fixedDesc.trim() != "") {
+                binding.txtDescription.text = StringHelper.toPersianDigits(
+                    "${serviceModel.description} و ${serviceModel.fixedDesc}"
+                )
+            } else if (serviceModel.description.trim() != "") {
+                binding.txtDescription.text =
+                    StringHelper.toPersianDigits(serviceModel.description)
+            } else if (serviceModel.fixedDesc.trim() != "") {
+                binding.txtDescription.text =
+                    StringHelper.toPersianDigits(serviceModel.fixedDesc)
+            }
+        }
 
         val dataArray: Array<String> = serviceModel.destinationDesc.split("$").toTypedArray()
         for (i in dataArray.indices) {

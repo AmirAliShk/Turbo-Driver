@@ -33,6 +33,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
+        android:paddingBottom="@dimen/_10sdp"
         android:paddingHorizontal="@dimen/_15sdp">
 
         <LinearLayout
@@ -394,7 +395,6 @@
             android:id="@+id/btnGetService"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/hohooh"
             android:background="@color/transparent"
             android:text="قبول سرویس"
             android:textAppearance="?android:attr/textAppearanceMedium"
