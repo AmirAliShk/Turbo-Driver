@@ -177,9 +177,10 @@ class ServiceDetailsFragment(
                     val message = jsonObject.getString("message")
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
+                        val dataMsg = dataObj.getString("message")
                         val result = dataObj.getBoolean("result")
                         if (result) {
-                            GeneralDialog().message(message).firstButton("باشه") {}.show()
+                            GeneralDialog().message(dataMsg).firstButton("باشه") {}.show()
                             FragmentHelper.taskFragment(MyApplication.currentActivity, TAG).remove()
                             cancelServiceListener.onCanceled(true)
                             UpdateCharge().update(object : UpdateCharge.ChargeListener {
@@ -188,7 +189,7 @@ class ServiceDetailsFragment(
                                 }
                             })
                         } else {
-                            GeneralDialog().message(message).secondButton("باشه") {}.show()
+                            GeneralDialog().message(dataMsg).secondButton("باشه") {}.show()
                             cancelServiceListener.onCanceled(false)
                         }
                     } else {
