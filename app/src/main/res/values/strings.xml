@@ -67,5 +67,6 @@
     <string name="priceService">هزینه سرویس : </string>
     <string name="description">توضیحات : </string>
     <string name="cargoCost">ارزش مرسوله : </string>
+    <string name="desCount">تعداد مقصد ها : </string>
 
 </resources>

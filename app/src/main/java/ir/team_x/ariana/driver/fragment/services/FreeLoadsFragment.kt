@@ -78,7 +78,7 @@ class FreeLoadsFragment : Fragment() {
                                 dataObj.getString("saveDate"),
                                 dataObj.getInt("weight"),
                                 dataObj.getInt("userId"),
-                                dataObj.getInt("costId"),
+                                dataObj.getString("costName"),
                                 dataObj.getInt("paymentSide"),
                                 dataObj.getInt("cargoId"),
                                 dataObj.getInt("status"),
@@ -93,7 +93,10 @@ class FreeLoadsFragment : Fragment() {
                                 dataObj.getString("stationName"),
                                 dataObj.getString("cargoName"),
                                 dataObj.getString("fixedMessage"),
-                                dataObj.getInt("returnBack")
+                                dataObj.getInt("returnBack"),
+                                dataObj.getString("packageValue"),
+                                dataObj.getString("sourceAddress"),
+                                dataObj.getString("destinationAddress"),
                             )
 
                             waitingServiceModels.add(model)

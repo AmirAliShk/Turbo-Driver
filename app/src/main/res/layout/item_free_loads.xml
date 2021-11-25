@@ -153,6 +153,64 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llDesCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:gravity="top|right">
+
+                <TextView
+                    style="@style/title_details"
+                    android:textColor="@color/title_detailes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/desCount" />
+
+                <TextView
+                    android:id="@+id/txtDesCount"
+                    style="@style/Details_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|right"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_weight="3"
+                    android:textColor="@color/grayDark" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:background="@drawable/bg_grye"
+                    android:padding="@dimen/_4sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/ic_callll"/>
+
+                    <TextView
+                        style="@style/Details_answer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:textColor="@color/colorWhite"
+                        android:layout_weight="3"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:text="تماس" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="0.25" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/llSecondDest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -264,6 +322,7 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="0.25" />
+
 
             </LinearLayout>
 

@@ -12,6 +12,7 @@ import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
 import ir.team_x.ariana.driver.model.WaitingLoadsModel
 import ir.team_x.ariana.driver.utils.*
 import ir.team_x.ariana.driver.webServices.AcceptService
+import org.json.JSONArray
 
 class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     RecyclerView.Adapter<WaitingLoadsAdapter.ViewHolder>() {
@@ -34,6 +35,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
 
+
         holder.binding.txtDate.text = StringHelper.toPersianDigits(
             DateHelper.strPersianEghit(
                 DateHelper.parseFormat(
@@ -43,19 +45,33 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
             )
         )
 
+        if (model.packageValue == "0") {
+            holder.binding.llAttentionCost.visibility = View.GONE
+        } else {
+            holder.binding.txtAttentionCost.text =
+                StringHelper.toPersianDigits(" مبلغ ${StringHelper.setComma(model.packageValue)} تومان بابت ارزش مرسوله به کرایه اضافه شد ")
+            holder.binding.llAttentionCost.visibility = View.VISIBLE
+
+        }
+
+        holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
+        val destJArr = JSONArray(model.destinationAddress)
+        val destinationOBJ = destJArr.getJSONObject(destJArr.length() - 1)
+        holder.binding.txtFirstDestAddress.text =
+            StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+        holder.binding.txtDesCount.text = StringHelper.toPersianDigits(destJArr.length().toString())
         holder.binding.txtCargoType.text = model.cargoName
-        holder.binding.txtCargoCost.text = model.costId.toString()
+        holder.binding.txtCargoCost.text = StringHelper.toPersianDigits(model.costName)
         holder.binding.txtDescription.text = model.description
         holder.binding.txtPrice.text =
             "${StringHelper.toPersianDigits(StringHelper.setComma(model.price))} تومان "
 
-//        if (model.packageValue == "0") {
-//            holder.binding.llAttentionCost.visibility = View.GONE
-//        } else {
-//            holder.binding.txtAttentionCost.text =
-//                StringHelper.toPersianDigits(" مبلغ ${StringHelper.setComma(model.packageValue)} تومان بابت ارزش مرسوله به کرایه اضافه شد ")
-//            holder.binding.llAttentionCost.visibility = View.VISIBLE
-//        }
+        if (model.cargoName.trim() == "") {
+            holder.binding.llCargoType.visibility = View.GONE
+        } else {
+            holder.binding.llCargoType.visibility = View.VISIBLE
+            holder.binding.txtCargoType.text = model.cargoName
+        }
 
         holder.binding.imgReturnBack.setImageResource(if (model.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
 
@@ -74,14 +90,6 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                     StringHelper.toPersianDigits(model.fixedMessage)
             }
         }
-
-        if (model.cargoName == "null") {
-            holder.binding.llCargoType.visibility = View.GONE
-        } else {
-            holder.binding.llCargoType.visibility = View.VISIBLE
-            holder.binding.txtCargoType.text = model.cargoName
-        }
-
         holder.binding.btnAccept.setOnClickListener {
             GeneralDialog().message("از دریافت سرویس اطمینان دارید؟")
                 .firstButton("بله") {

@@ -12,7 +12,7 @@ data class WaitingLoadsModel(
     var saveDate:String,
     var weight:Int,
     var userId:Int,
-    var costId:Int,
+    var costName:String,
     var paymentSide:Int,
     var cargoId:Int,
     var status:Int,
@@ -27,5 +27,8 @@ data class WaitingLoadsModel(
     var sourceStationName:String,
     var cargoName:String,
     var fixedMessage:String,
-    var returnBack:Int
+    var returnBack:Int,
+    var packageValue:String,
+    var sourceAddress:String,
+    var destinationAddress:String
 )
