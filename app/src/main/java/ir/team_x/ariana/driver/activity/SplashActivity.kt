@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import ir.team_x.ariana.driver.app.Constant
 import ir.team_x.ariana.driver.app.DataHolder
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.ActivitySplashBinding
+import ir.team_x.ariana.driver.dialog.OverlayPermissionDialog
 import ir.team_x.ariana.driver.utils.AppVersionHelper
 import ir.team_x.ariana.driver.utils.KeyBoardHelper
 import ir.team_x.ariana.driver.webServices.GetAppInfo
@@ -55,13 +57,8 @@ class SplashActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= 23) {
             val hasAudioPermission =
                 ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            if (hasAudioPermission != PackageManager.PERMISSION_GRANTED) {
-                //TODO show dialog later
-                ActivityCompat.requestPermissions(
-                    this,
-                    permission,
-                    Constant.LINPHONE_PERMISSION_REQ_CODE
-                )
+            if ((hasAudioPermission != PackageManager.PERMISSION_GRANTED) || !Settings.canDrawOverlays(MyApplication.context)) {
+                OverlayPermissionDialog().show()
             } else {
                 GetAppInfo().callAppInfoAPI()
             }
