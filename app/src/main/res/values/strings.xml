@@ -68,5 +68,6 @@
     <string name="description">توضیحات : </string>
     <string name="cargoCost">ارزش مرسوله : </string>
     <string name="desCount">تعداد مقصد ها : </string>
+    <string name="setting">تنظیمات</string>
 
 </resources>
