@@ -54,9 +54,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.navigationBarColor = resources.getColor(R.color.pageBackground)
-            window.statusBarColor = resources.getColor(R.color.actionBar)
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            window.navigationBarColor = resources.getColor(R.color.colorWhite)
+            window.statusBarColor = resources.getColor(R.color.colorWhite)
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
 
         locationAssistant = LocationAssistant(
