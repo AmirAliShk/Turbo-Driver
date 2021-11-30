@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
         binding.txtLock.isSelected = true
         binding.txtDriverName.text = MyApplication.prefManager.getUserName()
+        binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
 
         handleStatusByServer()
 
