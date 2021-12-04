@@ -7,17 +7,11 @@ import android.view.*
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.DialogGetServiceBinding
-import ir.team_x.ariana.driver.fragment.services.CurrentServiceFragment
 import ir.team_x.ariana.driver.model.ServiceModel
-import ir.team_x.ariana.driver.utils.FragmentHelper
-import ir.team_x.ariana.driver.utils.SoundHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.AcceptService
 import ir.team_x.ariana.driver.webServices.AcceptService.Listener
-import org.json.JSONArray
-import kotlin.concurrent.fixedRateTimer
-
 
 class GetServiceDialog() {
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background4"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:padding="@dimen/_15sdp"
+        android:elevation="@dimen/_5sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="مبلغ دریافتی از مشتری را به تومان وارد کنید : "
+            android:textColor="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/edtPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:gravity="center"
+            android:background="@drawable/edit_text_style"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:padding="@dimen/_8sdp"/>
+
+        <ViewFlipper
+            android:id="@+id/vfEndService"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_grye">
+
+            <Button
+                android:id="@+id/btnEndTrip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:text="پایان سرویس"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:indicatorColor="@color/colorWhite"
+                app:indicatorName="BallBeatIndicator" />
+
+        </ViewFlipper>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgClose"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:padding="18dp"
+        android:src="@drawable/ic_cancle" />
+
+</LinearLayout>

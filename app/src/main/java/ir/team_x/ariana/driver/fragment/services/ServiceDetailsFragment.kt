@@ -11,9 +11,7 @@ import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.*
 import ir.team_x.ariana.driver.dialog.CallDialog
-import ir.team_x.ariana.driver.dialog.FactorDialog
 import ir.team_x.ariana.driver.dialog.GeneralDialog
-import ir.team_x.ariana.driver.model.DestinationModel
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.DateHelper
@@ -21,6 +19,7 @@ import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.UpdateCharge
+import ir.team_x.ariana.delivery.dialog.GetPriceDialog
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -231,9 +230,9 @@ class ServiceDetailsFragment(
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
 
-                        FactorDialog().show(serviceModel.packageValue, isCreditCustomer,
+                        GetPriceDialog().show(serviceModel.packageValue, isCreditCustomer,
                             dataObj, serviceModel.id,
-                            object : FactorDialog.FinishServiceListener {
+                            object : GetPriceDialog.FinishServiceListener {
                                 override fun onFinishService(isFinish: Boolean) {
                                     cancelServiceListener.onFinishSerice(isFinish)
                                 }
