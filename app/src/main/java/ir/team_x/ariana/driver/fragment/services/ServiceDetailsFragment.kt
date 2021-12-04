@@ -1,7 +1,6 @@
 package ir.team_x.ariana.driver.fragment.services
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,9 @@ import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.*
 import ir.team_x.ariana.driver.dialog.CallDialog
+import ir.team_x.ariana.driver.dialog.FactorDialog
 import ir.team_x.ariana.driver.dialog.GeneralDialog
+import ir.team_x.ariana.driver.dialog.GetPriceDialog
 import ir.team_x.ariana.driver.model.ServiceDataModel
 import ir.team_x.ariana.driver.okHttp.RequestHelper
 import ir.team_x.ariana.driver.utils.DateHelper
@@ -19,7 +20,6 @@ import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.driver.webServices.UpdateCharge
-import ir.team_x.ariana.delivery.dialog.GetPriceDialog
 import org.json.JSONArray
 import org.json.JSONObject
 

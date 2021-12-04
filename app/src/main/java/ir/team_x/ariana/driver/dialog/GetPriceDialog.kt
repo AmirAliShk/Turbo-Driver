@@ -1,4 +1,4 @@
-package ir.team_x.ariana.delivery.dialog
+package ir.team_x.ariana.driver.dialog
 
 import android.app.Dialog
 import android.graphics.Color
@@ -7,16 +7,16 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.Window
 import android.view.WindowManager
-import ir.team_x.ariana.delivery.R
-import ir.team_x.ariana.delivery.app.EndPoint
-import ir.team_x.ariana.delivery.app.MyApplication
-import ir.team_x.ariana.delivery.databinding.DialogGetPriceBinding
-import ir.team_x.ariana.delivery.okHttp.RequestHelper
-import ir.team_x.ariana.delivery.push.AvaCrashReporter
-import ir.team_x.ariana.delivery.utils.KeyBoardHelper
-import ir.team_x.ariana.delivery.utils.StringHelper
-import ir.team_x.ariana.delivery.utils.TypeFaceUtilJava
-import ir.team_x.ariana.delivery.webServices.UpdateCharge
+import ir.team_x.ariana.driver.databinding.DialogGetPriceBinding
+import ir.team_x.ariana.driver.R
+import ir.team_x.ariana.driver.app.EndPoint
+import ir.team_x.ariana.driver.app.MyApplication
+import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.push.AvaCrashReporter
+import ir.team_x.ariana.driver.utils.KeyBoardHelper
+import ir.team_x.ariana.driver.utils.StringHelper
+import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
+import ir.team_x.ariana.driver.webServices.UpdateCharge
 import org.json.JSONObject
 
 class GetPriceDialog {
@@ -90,7 +90,7 @@ class GetPriceDialog {
                     binding.vfEndService.displayedChild = 0
                     MyApplication.handler.postDelayed({
                         KeyBoardHelper.hideKeyboard()
-                    }, 50)
+                    }, 100)
 
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
