@@ -110,7 +110,6 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
         holder.binding.txtDesCount.text = StringHelper.toPersianDigits(destJArr.length().toString())
         holder.binding.txtCargoType.text = model.cargoName
         holder.binding.txtCargoCost.text = StringHelper.toPersianDigits(model.costName)
-        holder.binding.txtDescription.text = model.description
         holder.binding.txtPrice.text =
             "${StringHelper.toPersianDigits(StringHelper.setComma(model.price))} تومان "
 
@@ -123,21 +122,13 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
 
         holder.binding.imgReturnBack.setImageResource(if (model.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
 
-        if (model.description.trim() == "" && model.fixedMessage.trim() == "") {
+        if (model.description.trim() == "") {
             holder.binding.llDescription.visibility = View.GONE
         } else {
-            if (model.description.trim() != "" && model.fixedMessage.trim() != "") {
-                holder.binding.txtDescription.text = StringHelper.toPersianDigits(
-                    "${model.description} و ${model.fixedMessage}"
-                )
-            } else if (model.description.trim() != "") {
-                holder.binding.txtDescription.text =
-                    StringHelper.toPersianDigits(model.description)
-            } else if (model.fixedMessage.trim() != "") {
-                holder.binding.txtDescription.text =
-                    StringHelper.toPersianDigits(model.fixedMessage)
-            }
+            holder.binding.txtDescription.text =
+                StringHelper.toPersianDigits(model.description)
         }
+
         holder.binding.btnAccept.setOnClickListener {
             GeneralDialog().message("از دریافت سرویس اطمینان دارید؟")
                 .firstButton("بله") {
