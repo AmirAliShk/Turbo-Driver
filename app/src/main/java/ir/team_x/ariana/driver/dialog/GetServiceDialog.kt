@@ -49,20 +49,11 @@ class GetServiceDialog() {
         else
             binding.imgReturnBack.setImageResource(R.drawable.ic_ticke)
 
-        if (serviceModel.description.trim() == "" && serviceModel.fixedDesc.trim() == "") {
+        if (serviceModel.description.trim() == "") {
             binding.llDescription.visibility = View.GONE
         } else {
-            if (serviceModel.description.trim() != "" && serviceModel.fixedDesc.trim() != "") {
-                binding.txtDescription.text = StringHelper.toPersianDigits(
-                    "${serviceModel.description} و ${serviceModel.fixedDesc}"
-                )
-            } else if (serviceModel.description.trim() != "") {
-                binding.txtDescription.text =
-                    StringHelper.toPersianDigits(serviceModel.description)
-            } else if (serviceModel.fixedDesc.trim() != "") {
-                binding.txtDescription.text =
-                    StringHelper.toPersianDigits(serviceModel.fixedDesc)
-            }
+            binding.txtDescription.text =
+                StringHelper.toPersianDigits(serviceModel.description)
         }
 
         val dataArray: Array<String> = serviceModel.destinationDesc.split("$").toTypedArray()

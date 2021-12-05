@@ -74,20 +74,11 @@ class GetServiceActivity : AppCompatActivity() {
             binding.txtCarType.text = carType
             binding.txtCargoType.text = cargoType
 
-            if (description.trim() == "" && fixesDescription.trim() == "") {
+            if (description.trim() == "") {
                 binding.llDescription.visibility = View.GONE
             } else {
-                if (description.trim() != "" && fixesDescription.trim() != "") {
-                    binding.txtDescription.text = StringHelper.toPersianDigits(
-                        "$description و $fixesDescription"
-                    )
-                } else if (description.trim() != "") {
-                    binding.txtDescription.text =
-                        StringHelper.toPersianDigits(description)
-                } else if (fixesDescription.trim() != "") {
-                    binding.txtDescription.text =
-                        StringHelper.toPersianDigits(fixesDescription)
-                }
+                binding.txtDescription.text =
+                    StringHelper.toPersianDigits(description)
             }
 
             if(returnBack.equals("0"))
