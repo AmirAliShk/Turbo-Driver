@@ -69,5 +69,6 @@
     <string name="cargoCost">ارزش مرسوله : </string>
     <string name="desCount">تعداد مقصد ها : </string>
     <string name="setting">تنظیمات</string>
+    <string name="stopTime">زمان توقف : </string>
 
 </resources>

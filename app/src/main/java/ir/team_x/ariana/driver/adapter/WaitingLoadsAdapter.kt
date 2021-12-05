@@ -18,6 +18,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     RecyclerView.Adapter<WaitingLoadsAdapter.ViewHolder>() {
 
     private val models = list
+    lateinit var stopTime: String
 
     class ViewHolder(val binding: ItemFreeLoadsBinding) :
         RecyclerView.ViewHolder(binding.root) {}
@@ -44,6 +45,53 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                 )
             )
         )
+
+
+        stopTime = "بدون توقف"
+        when (model.stopTime) {
+            0 -> {
+                stopTime = "بدون توقف"
+            }
+            5 -> {
+                stopTime = "۵ دقیقه"
+            }
+            10 -> {
+                stopTime = "۱۰ دقیقه"
+            }
+            20 -> {
+                stopTime = "۲۰ دقیقه"
+            }
+            30 -> {
+                stopTime = "۳۰ دقیقه"
+            }
+            40 -> {
+                stopTime = "۴۰ دقیقه"
+            }
+            50 -> {
+                stopTime = "۵۰ دقیقه"
+            }
+            60 -> {
+                stopTime = "۱ ساعت"
+            }
+            90 -> {
+                stopTime = "۱.۵ ساعت"
+            }
+            120 -> {
+                stopTime = "۲ ساعت"
+            }
+            150 -> {
+                stopTime = "۲.۵ ساعت"
+            }
+            180 -> {
+                stopTime = "۳ ساعت"
+            }
+        }
+
+        if (model.stopTime == 0) {
+            holder.binding.llStopTime.visibility = View.GONE
+        } else {
+            holder.binding.txtStopTime.text = stopTime
+        }
 
         if (model.packageValue == "0") {
             holder.binding.llAttentionCost.visibility = View.GONE
