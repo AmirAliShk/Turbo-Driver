@@ -104,10 +104,26 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
 
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         val destJArr = JSONArray(model.destinationAddress)
-        val destinationOBJ = destJArr.getJSONObject(destJArr.length() - 1)
-        holder.binding.txtFirstDestAddress.text =
-            StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-        holder.binding.txtDesCount.text = StringHelper.toPersianDigits(destJArr.length().toString())
+        for (i in 0 until destJArr.length()) {
+            val destinationOBJ = destJArr.getJSONObject(i)
+            when (i) {
+                0 -> {
+                    holder.binding.txtFirstDestAddress.text =
+                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                }
+                1 -> {
+                    holder.binding.llSecondDest.visibility = View.VISIBLE
+                    holder.binding.txtSecondDestAddress.text =
+                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                }
+                2 -> {
+                    holder.binding.llThirdDest.visibility = View.VISIBLE
+                    holder.binding.txtThirdDestAddress.text =
+                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
+                }
+            }
+        }
+
         holder.binding.txtCargoType.text = model.cargoName
         holder.binding.txtCargoCost.text = StringHelper.toPersianDigits(model.costName)
         holder.binding.txtPrice.text =
