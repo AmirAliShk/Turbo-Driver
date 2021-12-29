@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import ir.team_x.ariana.driver.R
 import ir.team_x.ariana.driver.app.EndPoint
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentOnlinePaymentBinding
+import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
 import ir.team_x.ariana.operator.utils.TypeFaceUtil
@@ -32,7 +34,8 @@ class OnlinePaymentFragment : Fragment() {
         TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
-
+        setCursorEnd(binding.root)
+        StringHelper.setCommaOnTime(binding.edtValueCredit)
         binding.priceGroup.check(R.id.ten)
         binding.priceGroup.setOnItemClickListener { selectedId ->
             var price = "30000"
@@ -80,5 +83,28 @@ class OnlinePaymentFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun setCursorEnd(v: View?) {
+        try {
+            if (v is ViewGroup) {
+                for (i in 0 until v.childCount) {
+                    val child = v.getChildAt(i)
+                    setCursorEnd(child)
+                }
+            } else if (v is EditText) {
+                v.onFocusChangeListener = View.OnFocusChangeListener { view: View?, b: Boolean ->
+                    if (b) MyApplication.handler.postDelayed(
+                        { v.setSelection(v.text.length) },
+                        200
+                    )
+                }
+            }
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+            AvaCrashReporter.send(e, "OnlinePaymentFragment class, setCursorEnd method")
+            // ignore
+        }
+    }
+
 
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ir.team_x.ariana.driver.R
@@ -14,6 +15,7 @@ import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.FragmentAtmBinding
 import ir.team_x.ariana.driver.dialog.GeneralDialog
 import ir.team_x.ariana.driver.okHttp.RequestHelper
+import ir.team_x.ariana.driver.push.AvaCrashReporter
 import ir.team_x.ariana.driver.utils.FragmentHelper
 import ir.team_x.ariana.driver.utils.StringHelper
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
@@ -37,6 +39,9 @@ class ATMFragment : Fragment() {
         TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
 
         fillCards()
+        setCursorEnd(binding.root)
+
+        StringHelper.setCommaOnTime(binding.edtValueCredit)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
@@ -117,6 +122,29 @@ class ATMFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun setCursorEnd(v: View?) {
+        try {
+            if (v is ViewGroup) {
+                for (i in 0 until v.childCount) {
+                    val child = v.getChildAt(i)
+                    setCursorEnd(child)
+                }
+            } else if (v is EditText) {
+                v.onFocusChangeListener = View.OnFocusChangeListener { view: View?, b: Boolean ->
+                    if (b) MyApplication.handler.postDelayed(
+                        { v.setSelection(v.text.length) },
+                        200
+                    )
+                }
+            }
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+            AvaCrashReporter.send(e, "ATMFragment class, setCursorEnd method")
+            // ignore
+        }
+    }
+
 
     private fun atmPayment(
         cardNumber: String,
