@@ -4,11 +4,8 @@ package ir.team_x.ariana.driver.app
 class EndPoint {
 
     companion object {
-        val IP = "http://api.arianadelivery.ir"
-        val HAWKEYE_IP = "http://api.arianadelivery.ir"
-
-        val HAWKEYE_PORT = "1813"
-
+        val IP = "http://api.arianadelivery.ir:1810"
+        val HAWKEYE_IP = "http://api.arianadelivery.ir:1813"
         const val CRASH_REPORT = "http://api.arianadelivery.ir:6061/api/v1/crashReport"
         val RULL = "http://arianadelivery.ir/rule/delivery"
 
@@ -21,8 +18,8 @@ class EndPoint {
         private val STATION_PATH = "$BASE_PATH/station"
         private val LOCATION_PATH = "$IP/api/driver/v1/location/car"
 
-        private val HAWKEYE_TOKEN_PATH = "${HAWKEYE_IP}:${HAWKEYE_PORT}/api/user/v1/"
-        private val HAWKEYE_LOGIN_PATH = "${HAWKEYE_IP}:${HAWKEYE_PORT}/api/user/v1/login/phone/"
+        private val HAWKEYE_TOKEN_PATH = "${HAWKEYE_IP}/api/user/v1/"
+        private val HAWKEYE_LOGIN_PATH = "${HAWKEYE_IP}/api/user/v1/login/phone/"
 
         /******************************** refresh token Api *********************************/
         val REFRESH_TOKEN = "${HAWKEYE_TOKEN_PATH}token"

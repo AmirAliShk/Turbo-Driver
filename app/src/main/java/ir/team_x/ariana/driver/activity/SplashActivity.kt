@@ -57,7 +57,13 @@ class SplashActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= 23) {
             val hasAudioPermission =
                 ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            if ((hasAudioPermission != PackageManager.PERMISSION_GRANTED) || !Settings.canDrawOverlays(MyApplication.context)) {
+            if ((hasAudioPermission != PackageManager.PERMISSION_GRANTED)) {
+                ActivityCompat.requestPermissions(
+                    MyApplication.currentActivity,
+                    permission,
+                    100
+                )
+            } else if (!Settings.canDrawOverlays(MyApplication.context)) {
                 OverlayPermissionDialog().show()
             } else {
                 GetAppInfo().callAppInfoAPI()
@@ -76,6 +82,13 @@ class SplashActivity : AppCompatActivity() {
         checkPermission()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 107) {
+            if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED)
+                GetAppInfo().callAppInfoAPI()
+        }
+    }
 
     override fun onResume() {
         super.onResume()

@@ -59,7 +59,8 @@
 
             <Button
                 android:id="@+id/btnGoToSetting"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="7dp"
                 android:background="@drawable/bg_redd"
@@ -68,6 +69,17 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnDismiss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:text="رد کردن"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
 

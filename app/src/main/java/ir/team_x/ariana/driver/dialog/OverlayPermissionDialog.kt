@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import ir.team_x.ariana.driver.app.MyApplication
 import ir.team_x.ariana.driver.databinding.DialogOverlayPermissionBinding
 import ir.team_x.ariana.driver.utils.TypeFaceUtilJava
+import ir.team_x.ariana.driver.webServices.GetAppInfo
 
 class OverlayPermissionDialog {
 
@@ -40,16 +41,15 @@ class OverlayPermissionDialog {
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.Companion.iranSansMediumTF)
 
         binding.btnGoToSetting.setOnClickListener {
-            ActivityCompat.requestPermissions(
-                MyApplication.currentActivity,
-                permissionsRequired,
-                100
-            )
-
-            val REQUEST_CODE = 101
+            val REQUEST_CODE = 107
             val myIntent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION)
             myIntent.data = Uri.parse("package:" + MyApplication.currentActivity.packageName)
             MyApplication.currentActivity.startActivityForResult(myIntent, REQUEST_CODE)
+            dialog.dismiss()
+        }
+
+        binding.btnDismiss.setOnClickListener {
+            GetAppInfo().callAppInfoAPI()
             dialog.dismiss()
         }
 
