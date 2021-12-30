@@ -84,15 +84,6 @@ class ServiceDetailsFragment(
                 }
             }
         }
-        binding.txtDate.text = StringHelper.toPersianDigits(
-            DateHelper.strPersianEghit(
-                DateHelper.parseFormat(
-                    serviceModel.acceptDate + "",
-                    null
-                )
-            )
-        )
-
         if (serviceModel.packageValue == "0") {
             binding.llAttentionCost.visibility = View.GONE
         } else {

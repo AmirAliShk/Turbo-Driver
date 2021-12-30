@@ -35,8 +35,6 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
-
-
         holder.binding.txtDate.text = StringHelper.toPersianDigits(
             DateHelper.strPersianEghit(
                 DateHelper.parseFormat(
@@ -45,7 +43,6 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                 )
             )
         )
-
 
         stopTime = "بدون توقف"
         when (model.stopTime) {
@@ -124,7 +121,6 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
             }
         }
 
-        holder.binding.txtCargoType.text = model.cargoName
         holder.binding.txtCargoCost.text = StringHelper.toPersianDigits(model.costName)
         holder.binding.txtPrice.text =
             "${StringHelper.toPersianDigits(StringHelper.setComma(model.price))} تومان "
