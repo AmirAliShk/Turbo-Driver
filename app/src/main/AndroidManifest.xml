@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ir.team_x.cloud_transport.driver">
+    package="ir.team_x.cloud_transport.taxi_driver">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
-        android:name="ir.team_x.cloud_transport.driver.app.MyApplication"
+        android:name="ir.team_x.cloud_transport.taxi_driver.app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -24,28 +24,28 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name="ir.team_x.cloud_transport.driver.activity.CancelServiceActivity"
+            android:name="ir.team_x.cloud_transport.taxi_driver.activity.CancelServiceActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"  />
 
         <activity
-            android:name="ir.team_x.cloud_transport.driver.activity.MapActivity"
+            android:name="ir.team_x.cloud_transport.taxi_driver.activity.MapActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="ir.team_x.cloud_transport.driver.activity.MainActivity"
+            android:name="ir.team_x.cloud_transport.taxi_driver.activity.MainActivity"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="ir.team_x.cloud_transport.driver.activity.GetServiceActivity"
+            android:name="ir.team_x.cloud_transport.taxi_driver.activity.GetServiceActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="ir.team_x.cloud_transport.driver.activity.SplashActivity"
+            android:name="ir.team_x.cloud_transport.taxi_driver.activity.SplashActivity"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,10 +64,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB_licMGBhWU7REU-ekCVJgO-3W2JaKRsg" />
 
-        <service android:name="ir.team_x.cloud_transport.driver.gps.DataGatheringService" />
+        <service android:name="ir.team_x.cloud_transport.taxi_driver.gps.DataGatheringService" />
 
         <receiver
-            android:name="ir.team_x.cloud_transport.driver.push.AutoStart"
+            android:name="ir.team_x.cloud_transport.taxi_driver.push.AutoStart"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -77,12 +77,12 @@
         </receiver>
 
         <service
-            android:name="ir.team_x.cloud_transport.driver.push.AvaService"
+            android:name="ir.team_x.cloud_transport.taxi_driver.push.AvaService"
             android:enabled="true"
             android:exported="false" />
 
         <receiver
-            android:name="ir.team_x.cloud_transport.driver.push_notification.OnMessageReceiveAvaListener"
+            android:name="ir.team_x.cloud_transport.taxi_driver.push_notification.OnMessageReceiveAvaListener"
             android:enabled="true"
             android:exported="false">
             <intent-filter android:priority="10000">
@@ -90,7 +90,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="ir.team_x.cloud_transport.driver.push_notification.OnMessageReceiver"
+            android:name="ir.team_x.cloud_transport.taxi_driver.push_notification.OnMessageReceiver"
             android:enabled="true"
             android:exported="false" />
     </application>

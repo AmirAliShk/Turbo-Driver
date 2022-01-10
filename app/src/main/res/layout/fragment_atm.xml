@@ -223,7 +223,7 @@
 
             </LinearLayout>
 
-            <ir.team_x.cloud_transport.driver.custom_view.GridRadioGroup
+            <ir.team_x.cloud_transport.taxi_driver.custom_view.GridRadioGroup
                 android:id="@+id/priceGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -329,7 +329,7 @@
                         android:textStyle="bold" />
                 </TableRow>
 
-            </ir.team_x.cloud_transport.driver.custom_view.GridRadioGroup>
+            </ir.team_x.cloud_transport.taxi_driver.custom_view.GridRadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
