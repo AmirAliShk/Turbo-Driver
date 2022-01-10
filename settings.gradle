@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Cloud Transporter Taxi Driver"
+rootProject.name = "Cloud Transport Taxi Driver"

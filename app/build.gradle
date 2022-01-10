@@ -7,7 +7,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "ir.team_x.ariana.driver"
+        applicationId 'ir.team_x.cloud_transport.driver'
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 5
