@@ -15,7 +15,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPink"
+        android:background="@drawable/bg_stroke"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -28,7 +28,7 @@
             android:clickable="false"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#fff" />
+            android:textColor="@color/colorBlack" />
 
         <Button
             android:id="@+id/getService"
