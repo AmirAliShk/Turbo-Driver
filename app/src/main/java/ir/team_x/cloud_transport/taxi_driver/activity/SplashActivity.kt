@@ -41,7 +41,7 @@ class SplashActivity : AppCompatActivity() {
         ACRA.getErrorReporter().putCustomData("DriverName", MyApplication.prefManager.getUserName())
         ACRA.getErrorReporter().putCustomData("projectId", MyApplication.prefManager.getAvaPID().toString())
 
-        binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
+//        binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
         MyApplication.avaStart()
         DataHolder.instance().stationArr = null
 

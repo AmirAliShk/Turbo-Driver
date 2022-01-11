@@ -191,8 +191,8 @@ public class ManagePush {
 
         if (vibrate) {
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                    .setSmallIcon(R.mipmap.logo_type)
-                    .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.logoariana))
+                    .setSmallIcon(R.drawable.ic_x_blue)
+                    .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_x_blue))
                     .setContentTitle(context.getResources().getString(R.string.app_name))
                     .setContentText(message)
                     .setAutoCancel(true)
@@ -208,11 +208,11 @@ public class ManagePush {
             notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
         } else {
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context);
-            notificationBuilder.setSmallIcon(R.mipmap.logo_type);
+            notificationBuilder.setSmallIcon(R.drawable.ic_x_blue);
             notificationBuilder.setContentTitle(context.getResources().getString(R.string.app_name));
             notificationBuilder.setContentText(message);
 
-            notificationBuilder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.logoariana));
+            notificationBuilder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_x_blue));
             if (isHighPriority) notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
             notificationBuilder.setAutoCancel(true);
             notificationBuilder.setSound(Uri.parse(MyApplication.Companion.getSOUND()  + R.raw.notification));
@@ -407,8 +407,8 @@ public class ManagePush {
         final PendingIntent pendingIntent = PendingIntent.getActivity(context, 100, in, PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.mipmap.ariana)
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.logoariana))
+                .setSmallIcon(R.drawable.ic_x_blue)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_x_blue))
                 .setContentIntent(pendingIntent)
                 .setContentTitle(context.getResources().getString(R.string.app_name))
                 .setContentText("سرویس جدید در انتظار شماست")
@@ -448,8 +448,8 @@ public class ManagePush {
         final PendingIntent pendingIntent = PendingIntent.getActivity(context, 100, intent, PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.mipmap.ariana)
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.logoariana))
+                .setSmallIcon(R.drawable.ic_x_blue)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_x_blue))
                 .setContentTitle(context.getResources().getString(R.string.app_name))
                 .setContentText(message)
                 .setContentIntent(pendingIntent)
