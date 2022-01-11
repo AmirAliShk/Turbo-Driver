@@ -414,20 +414,24 @@
 
                         <ImageView
                             android:id="@+id/imgAnnouncement"
-                            android:layout_width="@dimen/_60sdp"
-                            android:layout_height="@dimen/_60sdp"
-                            android:src="@mipmap/logoariana" />
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:src="@drawable/ic_x"
+                            android:background="@drawable/background2"/>
 
                         <TextView
                             android:id="@+id/txtBadgeCount"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginRight="7dp"
                             android:background="@drawable/bg_red"
                             android:elevation="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:textColor="@color/colorWhite" />
+                            android:textColor="@color/colorWhite"
+                            android:layout_marginTop="@dimen/_3sdp"/>
 
                     </RelativeLayout>
 

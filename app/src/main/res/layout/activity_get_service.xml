@@ -20,11 +20,14 @@
             android:background="@color/actionBar" />
 
         <ImageView
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_x_blue"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:src="@mipmap/arianaa" />
+            android:layout_marginTop="@dimen/_40sdp"
+            android:elevation="@dimen/_10sdp"
+            android:background="@drawable/background2"/>
 
     </RelativeLayout>
 
