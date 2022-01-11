@@ -394,13 +394,14 @@
 
         <ImageView
             android:id="@+id/imgClose"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_alignParentLeft="true"
             android:background="@drawable/bg_red"
             android:elevation="@dimen/_3sdp"
-            android:padding="@dimen/_10sdp"
-            android:src="@drawable/ic_canclee" />
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_canclee"
+            android:layout_marginLeft="@dimen/_5sdp"/>
 
     </RelativeLayout>
 
