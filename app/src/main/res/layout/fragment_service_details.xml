@@ -361,13 +361,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingVertical="@dimen/_5sdp">
+                android:paddingVertical="@dimen/_7sdp">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="0dp" />
+
+                <View
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="match_parent" />
+
 
                 <ViewFlipper
                     android:id="@+id/vfCancel"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_weight="1"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/bg_redd">
 
                     <LinearLayout
@@ -377,18 +387,14 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <!--                    <ImageView-->
-                        <!--                        android:layout_width="0dp"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:layout_weight="0.5"-->
-                        <!--                        android:src="@drawable/ic_canclee" />-->
 
                         <TextView
                             style="@style/text_title_white"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/cancle" />
+                            android:text="@string/cancle"
+                            android:textStyle="bold"/>
 
                     </LinearLayout>
 
@@ -408,24 +414,20 @@
                 <LinearLayout
                     android:id="@+id/llCall"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_weight="1"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/bg_green"
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <!--                <ImageView-->
-                    <!--                    android:layout_width="0dp"-->
-                    <!--                    android:layout_height="wrap_content"-->
-                    <!--                    android:layout_weight="0.5"-->
-                    <!--                    android:src="@drawable/ic_call" />-->
 
                     <TextView
                         style="@style/text_title_white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="@string/call" />
+                        android:text="@string/call"
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
 
@@ -435,11 +437,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:orientation="horizontal"
                 android:paddingVertical="@dimen/_5sdp">
 
                 <ViewFlipper
+
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_grye">
+
+                    <TextView
+
+                        style="@style/text_title_white"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:gravity="center"
+                        android:text="@string/customer"
+                        android:textStyle="bold" />
+
+                    <com.wang.avi.AVLoadingIndicatorView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:indicatorColor="@color/colorWhite" />
+
+                </ViewFlipper>
+
+                <View
+                    android:layout_width="@dimen/_7sdp"
+                    android:layout_height="match_parent" />
+
+                <ViewFlipper
                     android:id="@+id/vfEndService"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_grye">
 
