@@ -369,7 +369,7 @@
                     android:layout_height="0dp" />
 
                 <View
-                    android:layout_width="@dimen/_20sdp"
+                    android:layout_width="@dimen/_19sdp"
                     android:layout_height="match_parent" />
 
 
