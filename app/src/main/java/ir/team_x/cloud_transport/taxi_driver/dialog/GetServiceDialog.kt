@@ -41,14 +41,6 @@ class GetServiceDialog() {
             StringHelper.setComma(serviceModel.servicePrice).toString() + " تومان"
         )
 
-        binding.txtCarType.text = serviceModel.carType
-        binding.txtCargoType.text = serviceModel.cargoType
-
-        if(serviceModel.returnBack.equals("0"))
-            binding.imgReturnBack.setImageResource(R.drawable.ic_cancle)
-        else
-            binding.imgReturnBack.setImageResource(R.drawable.ic_ticke)
-
         if (serviceModel.description.trim() == "") {
             binding.llDescription.visibility = View.GONE
         } else {

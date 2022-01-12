@@ -1,5 +1,6 @@
 package ir.team_x.cloud_transport.taxi_driver.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,28 +41,10 @@ class CurrentServiceAdapter() :
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val model = serviceModels[position]
+    override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
+        val model = serviceModels[holder.adapterPosition]
 
-        val destinations: ArrayList<String> = ArrayList()
-        val destJArr = JSONArray(model.destinationAddress)
-        for (i in 0 until destJArr.length()) {
-            val destinationOBJ = destJArr.getJSONObject(i)
-            when (i) {
-                0 -> {
-                    holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-                1 -> {
-                    holder.binding.llSecondDest.visibility = View.VISIBLE
-                    holder.binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-                2 -> {
-                   holder.binding.llThirdDest.visibility = View.VISIBLE
-                   holder.binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-            }
-        }
-
+        holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(JSONArray(model.destinationAddress).getJSONObject(0).getString("address"))
         holder.binding.llCall.setOnClickListener {
             CallDialog().show(model.phoneNumber, model.mobile)
         }
@@ -70,9 +53,7 @@ class CurrentServiceAdapter() :
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtCreditCustomer.text = model.isCreditCustomerStr
         holder.binding.imgCredit.setImageResource(if (model.isCreditCustomer == 0) R.drawable.ic_money else R.drawable.ic_card)
-        holder.binding.imgReturnBack.setImageResource(if (model.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
-        holder.binding.txtCargoType.text = model.cargoName
         holder.itemView.setOnClickListener {
             this.position = position
             FragmentHelper.toFragment(MyApplication.currentActivity, ServiceDetailsFragment(model,

@@ -64,26 +64,12 @@ class ServiceDetailsFragment(
                 )
             )
         )
-        val destJArr = JSONArray(serviceModel.destinationAddress)
-        for (i in 0 until destJArr.length()) {
-            val destinationOBJ = destJArr.getJSONObject(i)
-            when (i) {
-                0 -> {
-                    binding.txtFirstDestAddress.text =
-                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-                1 -> {
-                    binding.llSecondDest.visibility = View.VISIBLE
-                    binding.txtSecondDestAddress.text =
-                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-                2 -> {
-                    binding.llThirdDest.visibility = View.VISIBLE
-                    binding.txtThirdDestAddress.text =
-                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-            }
-        }
+
+        StringHelper.toPersianDigits(
+            JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address")
+        )
+
+
         if (serviceModel.packageValue == "0") {
             binding.llAttentionCost.visibility = View.GONE
         } else {
