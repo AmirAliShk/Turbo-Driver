@@ -5,12 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.app.EndPoint
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.*
 import ir.team_x.cloud_transport.taxi_driver.dialog.CallDialog
-import ir.team_x.cloud_transport.taxi_driver.dialog.FactorDialog
 import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog
 import ir.team_x.cloud_transport.taxi_driver.dialog.GetPriceDialog
 import ir.team_x.cloud_transport.taxi_driver.model.ServiceDataModel
@@ -37,7 +35,7 @@ class ServiceDetailsFragment(
 
     interface CancelServiceListener {
         fun onCanceled(isCancel: Boolean)
-        fun onFinishSerice(isFinish: Boolean)
+        fun onFinishService(isFinish: Boolean)
     }
 
     val cancelServiceListener: CancelServiceListener = cancelServiceListener
@@ -199,7 +197,7 @@ class ServiceDetailsFragment(
                             dataObj, serviceModel.id,
                             object : GetPriceDialog.FinishServiceListener {
                                 override fun onFinishService(isFinish: Boolean) {
-                                    cancelServiceListener.onFinishSerice(isFinish)
+                                    cancelServiceListener.onFinishService(isFinish)
                                 }
 
                             })

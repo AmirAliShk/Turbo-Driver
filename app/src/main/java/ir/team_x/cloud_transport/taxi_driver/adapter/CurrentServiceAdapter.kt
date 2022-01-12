@@ -52,7 +52,7 @@ class CurrentServiceAdapter() :
         holder.binding.txtDate.text = StringHelper.toPersianDigits(DateHelper.strPersianEghit(DateHelper.parseFormat(model.saveDate + "", null)))
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtCreditCustomer.text = model.isCreditCustomerStr
-        holder.binding.imgCredit.setImageResource(if (model.isCreditCustomer == 0) R.drawable.ic_money else R.drawable.ic_card)
+//        holder.binding.imgCredit.setImageResource(if (model.isCreditCustomer == 0) R.drawable.ic_money else R.drawable.ic_card)
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.itemView.setOnClickListener {
             this.position = position
@@ -65,7 +65,7 @@ class CurrentServiceAdapter() :
                             }
                         }
 
-                        override fun onFinishSerice(isFinish: Boolean) {
+                        override fun onFinishService(isFinish: Boolean) {
                             if (isFinish) {
                                 serviceModels.removeAt(position)
                                 notifyDataSetChanged()
