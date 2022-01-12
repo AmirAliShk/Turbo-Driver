@@ -99,39 +99,12 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
         }
 
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
-        val destJArr = JSONArray(model.destinationAddress)
-        for (i in 0 until destJArr.length()) {
-            val destinationOBJ = destJArr.getJSONObject(i)
-            when (i) {
-                0 -> {
-                    holder.binding.txtFirstDestAddress.text =
-                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-                1 -> {
-                    holder.binding.llSecondDest.visibility = View.VISIBLE
-                    holder.binding.txtSecondDestAddress.text =
-                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-                2 -> {
-                    holder.binding.llThirdDest.visibility = View.VISIBLE
-                    holder.binding.txtThirdDestAddress.text =
-                        StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-            }
-        }
+        holder.binding.txtFirstDestAddress.text =
+                        StringHelper.toPersianDigits(JSONArray(model.destinationAddress).getJSONObject(0).getString("address"))
 
         holder.binding.txtCargoCost.text = StringHelper.toPersianDigits(model.costName)
         holder.binding.txtPrice.text =
             "${StringHelper.toPersianDigits(StringHelper.setComma(model.price))} تومان "
-
-        if (model.cargoName.trim() == "") {
-            holder.binding.llCargoType.visibility = View.GONE
-        } else {
-            holder.binding.llCargoType.visibility = View.VISIBLE
-            holder.binding.txtCargoType.text = model.cargoName
-        }
-
-        holder.binding.imgReturnBack.setImageResource(if (model.returnBack == 1) R.drawable.ic_ticke else R.drawable.ic_cancle)
 
         if (model.description.trim() == "") {
             holder.binding.llDescription.visibility = View.GONE

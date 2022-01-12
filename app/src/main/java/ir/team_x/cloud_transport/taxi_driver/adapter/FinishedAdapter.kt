@@ -36,8 +36,8 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
-        var date : String
-        var time : String
+        var date: String
+        var time: String
 
         if (model.finishDate == "0000-00-00 00:00:00") {
             date = DateHelper.strPersianTen(DateHelper.parseFormat(model.cancelDate + "", null))
@@ -47,23 +47,8 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
             time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.finishDate + "", null))
         }
 
-        val destJArr = JSONArray(model.destinationAddress)
-        for (i in 0 until destJArr.length()) {
-            val destinationOBJ = destJArr.getJSONObject(i)
-            when (i) {
-                0 -> {
-                    holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-                1 -> {
-                    holder.binding.llSecondDest.visibility = View.VISIBLE
-                    holder.binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-                2 -> {
-                   holder.binding.llThirdDest.visibility = View.VISIBLE
-                   holder.binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(destinationOBJ.getString("address"))
-                }
-            }
-        }
+        holder.binding.txtFirstDestAddress.text =
+            StringHelper.toPersianDigits(JSONArray(model.destinationAddress).getJSONObject(0).getString("address"))
 
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtDate.text = StringHelper.toPersianDigits("$date $time")
