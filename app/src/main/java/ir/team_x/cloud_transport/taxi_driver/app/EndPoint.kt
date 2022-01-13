@@ -4,19 +4,20 @@ package ir.team_x.cloud_transport.taxi_driver.app
 class EndPoint {
 
     companion object {
-        val IP = "http://api.arianadelivery.ir:1810"
-        val HAWKEYE_IP = "http://api.arianadelivery.ir:1813"
+        val IP = "http://transport.team-x.ir:7070"
+        val HAWKEYE_IP = "http://transport.team-x.ir:7071"
         const val CRASH_REPORT = "http://api.arianadelivery.ir:6061/api/v1/crashReport"
         val RULL = "http://arianadelivery.ir/rule/delivery"
 
         const val PUSH_ADDRESS = "http://api.arianadelivery.ir:6060"
-        val BASE_PATH = "$IP/api/driver/v1"
+        val BASE_PATH = "$IP/api/taxi/v1"
         private val FINANCIAL_PATH = "$BASE_PATH/financial"
         private val FINANCIAL_PAY_PATH = "$BASE_PATH/financial/pay"
         private val FINANCIAL_PAYS_PATH = "$BASE_PATH/financial/pays"
         private val SERVICE_PATH = "$BASE_PATH/service"
         private val STATION_PATH = "$BASE_PATH/station"
-        private val LOCATION_PATH = "$IP/api/driver/v1/location/car"
+        private val LOCATION_PATH = "$BASE_PATH/location/car"
+//        private val LOCATION_PATH = "$IP/api/driver/v1/location/car"
 
         private val HAWKEYE_TOKEN_PATH = "${HAWKEYE_IP}/api/user/v1/"
         private val HAWKEYE_LOGIN_PATH = "${HAWKEYE_IP}/api/user/v1/login/phone/"
