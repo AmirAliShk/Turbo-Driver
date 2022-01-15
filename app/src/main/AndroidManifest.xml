@@ -62,7 +62,8 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB_licMGBhWU7REU-ekCVJgO-3W2JaKRsg" />
+            android:value="AIzaSyBwhW4gtjID9aO-w7aKi5_XWxc5xBaDNAM" />
+        <!--            android:value="AIzaSyB_licMGBhWU7REU-ekCVJgO-3W2JaKRsg" />-->
 
         <service android:name="ir.team_x.cloud_transport.taxi_driver.gps.DataGatheringService" />
 
