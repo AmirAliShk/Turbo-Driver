@@ -416,7 +416,9 @@
                             android:id="@+id/imgAnnouncement"
                             android:layout_width="@dimen/_50sdp"
                             android:layout_height="@dimen/_50sdp"
-                            android:padding="@dimen/_5sdp"
+                            android:padding="@dimen/_3sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:elevation="@dimen/_5sdp"
                             android:src="@drawable/ic_announcement" />
 
                         <TextView
@@ -426,6 +428,7 @@
                             android:background="@drawable/bg_red"
                             android:elevation="@dimen/_10sdp"
                             android:textColor="@color/colorWhite"
+                            android:layout_marginTop="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_7sdp" />
 
                     </RelativeLayout>
