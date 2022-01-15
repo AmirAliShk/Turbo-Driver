@@ -414,15 +414,10 @@
 
                         <ImageView
                             android:id="@+id/imgAnnouncement"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_5sdp"
-                            android:layout_marginBottom="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
                             android:padding="@dimen/_5sdp"
-                            android:src="@drawable/ic_x"
-                            android:background="@drawable/background2"/>
+                            android:src="@drawable/ic_announcement" />
 
                         <TextView
                             android:id="@+id/txtBadgeCount"
@@ -431,7 +426,7 @@
                             android:background="@drawable/bg_red"
                             android:elevation="@dimen/_10sdp"
                             android:textColor="@color/colorWhite"
-                            android:layout_marginTop="@dimen/_3sdp"/>
+                            android:layout_marginRight="@dimen/_7sdp" />
 
                     </RelativeLayout>
 
