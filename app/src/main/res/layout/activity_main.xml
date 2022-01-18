@@ -203,7 +203,7 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="2"
                                 android:padding="@dimen/_2sdp"
-                                android:src="@drawable/ic_free" />
+                                android:src="@drawable/ic_free_loads" />
 
                             <TextView
                                 style="@style/text_main_black"
