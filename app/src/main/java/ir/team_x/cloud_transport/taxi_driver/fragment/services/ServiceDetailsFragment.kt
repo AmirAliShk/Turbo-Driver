@@ -64,6 +64,7 @@ class ServiceDetailsFragment(
 
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
+        binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address"))
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
         if (serviceModel.description.trim() == "" && serviceModel.fixedDescription.trim() == "") {
