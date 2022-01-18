@@ -52,6 +52,8 @@ class GetServiceActivity : AppCompatActivity() {
                 StringHelper.setComma(price).toString() + " تومان"
             )
 
+            binding.txtFirstDestAddress.text =StringHelper.toPersianDigits(destinationAddress)
+
             binding.btnClose.setOnClickListener {
                 MyApplication.currentActivity.finish()
             }
