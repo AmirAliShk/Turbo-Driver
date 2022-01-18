@@ -69,14 +69,8 @@ class CurrentServiceFragment : Fragment() {
                                 dataObj.getString("fixedMessage"),
                                 dataObj.getInt("carType"),
                                 dataObj.getInt("stopTime"),
-                                dataObj.getInt("driverHelp"),
                                 dataObj.getString("saveDate"),
-                                dataObj.getInt("weight"),
                                 dataObj.getInt("userId"),
-                                dataObj.getInt("costId"),
-                                dataObj.getInt("paymentSide"),
-                                dataObj.getInt("cargoId"),
-                                dataObj.getInt("status"),
                                 dataObj.getInt("driverId"),
                                 dataObj.getString("finishDate"),
                                 dataObj.getString("voipId"),
@@ -85,20 +79,11 @@ class CurrentServiceFragment : Fragment() {
                                 dataObj.getString("customerName"),
                                 dataObj.getString("phoneNumber"),
                                 dataObj.getString("mobile"),
-                                dataObj.getString("statusStr"),
-                                dataObj.getString("cargoName"),
-                                dataObj.getString("costName"),
-                                dataObj.getString("weightName"),
                                 dataObj.getString("carTypeName"),
                                 dataObj.getString("sourceAddress"),
                                 dataObj.getString("destinationAddress"),
                                 dataObj.getString("priceService"),
-                                dataObj.getInt("returnBack"),
-                                dataObj.getString("discount"),
-                                dataObj.getString("isCreditCustomerStr"),
-                                dataObj.getInt("isCreditCustomer"),
-                                dataObj.getString("checkoutName"),
-                                dataObj.getString("packageValue")
+                                dataObj.getString("discount")
                             )
                             serviceModels.add(model)
                         }

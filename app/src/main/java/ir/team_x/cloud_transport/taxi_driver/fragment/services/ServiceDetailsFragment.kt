@@ -30,7 +30,6 @@ class ServiceDetailsFragment(
     }
 
     private val serviceModel = serviceModel
-    val isCreditCustomer = serviceModel.isCreditCustomer
     private lateinit var binding: FragmentServiceDetailsBinding
 
     interface CancelServiceListener {
@@ -40,10 +39,6 @@ class ServiceDetailsFragment(
 
     val cancelServiceListener: CancelServiceListener = cancelServiceListener
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,18 +62,7 @@ class ServiceDetailsFragment(
             JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address")
         )
 
-
-        if (serviceModel.packageValue == "0") {
-            binding.llAttentionCost.visibility = View.GONE
-        } else {
-            binding.txtAttentionCost.text =
-                StringHelper.toPersianDigits(" مبلغ ${StringHelper.setComma(serviceModel.packageValue)} تومان بابت ارزش مرسوله به کرایه اضافه شد ")
-            binding.llAttentionCost.visibility = View.VISIBLE
-        }
-
         binding.txtCustomerName.text = serviceModel.customerName
-//        binding.txtCreditCustomer.text = serviceModel.isCreditCustomerStr
-//        binding.imgCredit.setImageResource(if (serviceModel.isCreditCustomer == 0) R.drawable.ic_money else R.drawable.ic_card)
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
@@ -193,9 +177,7 @@ class ServiceDetailsFragment(
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
 
-                        GetPriceDialog().show(serviceModel.packageValue, isCreditCustomer,
-                            dataObj, serviceModel.id,
-                            object : GetPriceDialog.FinishServiceListener {
+                        GetPriceDialog().show(serviceModel.id, object : GetPriceDialog.FinishServiceListener {
                                 override fun onFinishService(isFinish: Boolean) {
                                     cancelServiceListener.onFinishService(isFinish)
                                 }
