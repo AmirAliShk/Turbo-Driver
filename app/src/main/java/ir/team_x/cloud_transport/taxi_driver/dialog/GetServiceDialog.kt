@@ -40,7 +40,7 @@ class GetServiceDialog() {
         binding.txtPrice.text = StringHelper.toPersianDigits(
             StringHelper.setComma(serviceModel.servicePrice).toString() + " تومان"
         )
-
+        binding.txtFirstDestAddress.text =StringHelper.toPersianDigits(serviceModel.destinationDesc)
         binding.btnGetService.setOnClickListener {
             binding.vfAcceptService.displayedChild = 1
             AcceptService().accept(serviceModel.serviceID, object : Listener {
