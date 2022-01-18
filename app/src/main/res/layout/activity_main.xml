@@ -384,7 +384,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
@@ -408,7 +408,8 @@
                     </LinearLayout>
 
                     <RelativeLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.22"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true">
 
@@ -416,22 +417,23 @@
                             android:id="@+id/imgAnnouncement"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:layout_marginBottom="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:background="@drawable/background2"
                             android:padding="@dimen/_5sdp"
-                            android:src="@drawable/ic_x"
-                            android:background="@drawable/background2"/>
+                            android:src="@drawable/ic_x" />
 
                         <TextView
                             android:id="@+id/txtBadgeCount"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/_3sdp"
                             android:background="@drawable/bg_red"
                             android:elevation="@dimen/_10sdp"
-                            android:textColor="@color/colorWhite"
-                            android:layout_marginTop="@dimen/_3sdp"/>
+                            android:textColor="@color/colorWhite" />
 
                     </RelativeLayout>
 

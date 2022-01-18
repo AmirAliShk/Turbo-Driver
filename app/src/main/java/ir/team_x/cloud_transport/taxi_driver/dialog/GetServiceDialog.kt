@@ -41,30 +41,6 @@ class GetServiceDialog() {
             StringHelper.setComma(serviceModel.servicePrice).toString() + " تومان"
         )
 
-        if (serviceModel.description.trim() == "") {
-            binding.llDescription.visibility = View.GONE
-        } else {
-            binding.txtDescription.text =
-                StringHelper.toPersianDigits(serviceModel.description)
-        }
-
-        val dataArray: Array<String> = serviceModel.destinationDesc.split("$").toTypedArray()
-        for (i in dataArray.indices) {
-            when (i) {
-                0 -> {
-                    binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(dataArray[0])
-                }
-                1 -> {
-                    binding.txtSecondDestAddress.text = StringHelper.toPersianDigits(dataArray[1])
-                    binding.llSecondDest.visibility = View.VISIBLE
-                }
-                2 -> {
-                    binding.txtThirdDestAddress.text = StringHelper.toPersianDigits(dataArray[2])
-                    binding.llThirdDest.visibility = View.VISIBLE
-                }
-            }
-        }
-
         binding.btnGetService.setOnClickListener {
             binding.vfAcceptService.displayedChild = 1
             AcceptService().accept(serviceModel.serviceID, object : Listener {

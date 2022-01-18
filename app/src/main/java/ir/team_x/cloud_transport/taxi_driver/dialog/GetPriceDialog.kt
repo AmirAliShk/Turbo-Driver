@@ -99,6 +99,7 @@ class GetPriceDialog {
                             })
                             GeneralDialog().message(message).firstButton("باشه") {
                                 MyApplication.currentActivity.onBackPressed()
+                                KeyBoardHelper.hideKeyboard()
                             }.show()
                             finishServiceListener.onFinishService(true)
                             dismiss()

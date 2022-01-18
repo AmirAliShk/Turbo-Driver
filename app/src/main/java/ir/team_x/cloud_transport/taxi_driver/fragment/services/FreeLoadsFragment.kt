@@ -72,14 +72,8 @@ class FreeLoadsFragment : Fragment() {
                                 dataObj.getString("description"),
                                 dataObj.getInt("carType"),
                                 dataObj.getInt("stopTime"),
-                                dataObj.getInt("driverHelp"),
                                 dataObj.getString("saveDate"),
-                                dataObj.getInt("weight"),
                                 dataObj.getInt("userId"),
-                                dataObj.getString("costName"),
-                                dataObj.getInt("paymentSide"),
-                                dataObj.getInt("cargoId"),
-                                dataObj.getInt("status"),
                                 dataObj.getInt("driverId"),
                                 dataObj.getString("finishDate"),
                                 dataObj.getString("voipId"),
@@ -89,12 +83,9 @@ class FreeLoadsFragment : Fragment() {
                                 dataObj.getString("phoneNumber"),
                                 dataObj.getString("mobile"),
                                 dataObj.getString("stationName"),
-                                dataObj.getString("cargoName"),
                                 dataObj.getString("fixedMessage"),
-                                dataObj.getInt("returnBack"),
-                                dataObj.getString("packageValue"),
                                 dataObj.getString("sourceAddress"),
-                                dataObj.getString("destinationAddress"),
+                                dataObj.getString("destinationAddress")
                             )
 
                             waitingServiceModels.add(model)
