@@ -311,16 +311,6 @@
                 android:orientation="horizontal"
                 android:paddingVertical="@dimen/_7sdp">
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="0dp" />
-
-                <View
-                    android:layout_width="@dimen/_19sdp"
-                    android:layout_height="match_parent" />
-
-
                 <ViewFlipper
                     android:id="@+id/vfCancel"
                     android:layout_width="0dp"
@@ -334,7 +324,6 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="horizontal">
-
 
                         <TextView
                             style="@style/text_title_white"
@@ -368,7 +357,6 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-
                     <TextView
                         style="@style/text_title_white"
                         android:layout_width="match_parent"
@@ -389,14 +377,13 @@
                 android:paddingVertical="@dimen/_5sdp">
 
                 <ViewFlipper
-
+                    android:visibility="gone"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_grye">
 
                     <TextView
-
                         style="@style/text_title_white"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
@@ -411,10 +398,6 @@
                         app:indicatorColor="@color/colorWhite" />
 
                 </ViewFlipper>
-
-                <View
-                    android:layout_width="@dimen/_7sdp"
-                    android:layout_height="match_parent" />
 
                 <ViewFlipper
                     android:id="@+id/vfEndService"
