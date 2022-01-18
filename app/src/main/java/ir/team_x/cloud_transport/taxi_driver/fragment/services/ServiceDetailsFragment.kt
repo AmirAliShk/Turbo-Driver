@@ -64,7 +64,9 @@ class ServiceDetailsFragment(
 
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
-        binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address"))
+        binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(
+            JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address")
+        )
         binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
         binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
         if (serviceModel.description.trim() == "" && serviceModel.fixedDescription.trim() == "") {
@@ -82,8 +84,14 @@ class ServiceDetailsFragment(
                     StringHelper.toPersianDigits(serviceModel.fixedDescription)
             }
         }
-        binding.txtDiscount.text =
-            StringHelper.toPersianDigits(StringHelper.setComma(serviceModel.discount))
+        if (serviceModel.discount == "0") {
+            binding.llDiscount.visibility = View.GONE
+        } else {
+            binding.llDiscount.visibility = View.VISIBLE
+            binding.txtDiscount.text =
+                StringHelper.toPersianDigits(StringHelper.setComma(serviceModel.discount))
+        }
+
         binding.llCancel.setOnClickListener {
             GeneralDialog()
                 .message("از لغو سرویس اطمینان دارید؟")
@@ -178,7 +186,9 @@ class ServiceDetailsFragment(
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
 
-                        GetPriceDialog().show(serviceModel.id, object : GetPriceDialog.FinishServiceListener {
+                        GetPriceDialog().show(
+                            serviceModel.id,
+                            object : GetPriceDialog.FinishServiceListener {
                                 override fun onFinishService(isFinish: Boolean) {
                                     cancelServiceListener.onFinishService(isFinish)
                                 }
