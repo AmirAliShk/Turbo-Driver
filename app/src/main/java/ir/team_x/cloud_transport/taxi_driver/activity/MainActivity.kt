@@ -218,9 +218,14 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             binding.drawerLayout.closeDrawers()
         }
 
-        binding.llSupport.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, SupportFragment()).replace()
+//        binding.llSupport.setOnClickListener {
+//            FragmentHelper.toFragment(MyApplication.currentActivity, SupportFragment()).replace()
+//            binding.drawerLayout.closeDrawers()
+//        }
+
+        binding.llConnectToSupport.setOnClickListener {
             binding.drawerLayout.closeDrawers()
+            CallHelper.make("05131832")
         }
 
     }

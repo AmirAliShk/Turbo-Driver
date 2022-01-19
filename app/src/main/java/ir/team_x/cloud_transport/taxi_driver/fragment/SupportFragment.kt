@@ -25,9 +25,7 @@ class SupportFragment : Fragment() {
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed()}
 
-        binding.llCall.setOnClickListener {
-            CallHelper.make("05131832")
-        }
+
 
         return binding.root
     }
