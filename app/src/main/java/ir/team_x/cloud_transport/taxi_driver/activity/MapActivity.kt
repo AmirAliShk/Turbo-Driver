@@ -197,7 +197,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
 
     private fun refreshLocation() {
         myLocationMarker?.remove()
-        val bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.pin)
+        val bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.taxi)
         myLocationMarker = googleMap.addMarker(
             MarkerOptions()
                 .icon(bitmapDescriptor)
