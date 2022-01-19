@@ -9,6 +9,7 @@ import ir.team_x.cloud_transport.taxi_driver.app.EndPoint
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.*
 import ir.team_x.cloud_transport.taxi_driver.dialog.CallDialog
+import ir.team_x.cloud_transport.taxi_driver.dialog.FactorDialog
 import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog
 import ir.team_x.cloud_transport.taxi_driver.dialog.GetPriceDialog
 import ir.team_x.cloud_transport.taxi_driver.model.ServiceDataModel
@@ -108,8 +109,6 @@ class ServiceDetailsFragment(
             bill(serviceModel.id, serviceModel.priceService)
         }
 
-
-
         return binding.root
     }
 
@@ -186,9 +185,8 @@ class ServiceDetailsFragment(
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
 
-                        GetPriceDialog().show(
-                            serviceModel.id,
-                            object : GetPriceDialog.FinishServiceListener {
+                        FactorDialog().show(dataObj, serviceModel.id,
+                            object : FactorDialog.FinishServiceListener {
                                 override fun onFinishService(isFinish: Boolean) {
                                     cancelServiceListener.onFinishService(isFinish)
                                 }
