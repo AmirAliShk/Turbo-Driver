@@ -5,19 +5,19 @@ plugins {
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId 'ir.team_x.cloud_transport.taxi_driver'
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 5
-        versionName "1.0.0"
+        targetSdkVersion 29
+        versionCode 1
+        versionName "0.0.1"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-//    47421ArianA47421
-//    ariana
+//    sign key pass = 47421cloudTaxi47421
+//    sign key name = cloudTaxi
 
     buildTypes {
         release {

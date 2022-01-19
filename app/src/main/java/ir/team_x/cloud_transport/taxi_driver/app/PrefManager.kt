@@ -43,7 +43,7 @@ class PrefManager {
     private val CARD_NUMBER = "cardNumber"
     private val CARD_NAME = "cardName"
 
-    var cardNumber: String
+    var cardNumber: String?
         get() {
             return sharedPreferences.getString(CARD_NUMBER, "")
         }
@@ -52,7 +52,7 @@ class PrefManager {
             editor.commit()
         }
 
-    var cardName: String
+    var cardName: String?
         get() {
             return sharedPreferences.getString(CARD_NAME, "")
         }

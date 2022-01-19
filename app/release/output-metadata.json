@@ -4,14 +4,14 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "ir.team_x.ariana.driver",
-  "variantName": "processReleaseResources",
+  "applicationId": "ir.team_x.cloud_transport.taxi_driver",
+  "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 5,
-      "versionName": "1.0.0",
+      "versionCode": 1,
+      "versionName": "0.0.1",
       "outputFile": "app-release.apk"
     }
   ]
