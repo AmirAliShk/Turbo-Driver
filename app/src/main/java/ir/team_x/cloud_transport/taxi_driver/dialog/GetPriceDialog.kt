@@ -30,13 +30,7 @@ class GetPriceDialog {
 
     private lateinit var finishServiceListener: FinishServiceListener
 
-    fun show(
-        packageValue: String,
-        isCreditCustomer: Int,
-        priceObj: JSONObject,
-        serId: Int,
-        finishServiceListener: FinishServiceListener
-    ) {
+    fun show(serId: Int, finishServiceListener: FinishServiceListener) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         binding = DialogGetPriceBinding.inflate(LayoutInflater.from(MyApplication.context))
@@ -105,6 +99,7 @@ class GetPriceDialog {
                             })
                             GeneralDialog().message(message).firstButton("باشه") {
                                 MyApplication.currentActivity.onBackPressed()
+                                KeyBoardHelper.hideKeyboard()
                             }.show()
                             finishServiceListener.onFinishService(true)
                             dismiss()

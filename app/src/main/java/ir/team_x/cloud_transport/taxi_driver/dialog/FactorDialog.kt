@@ -28,7 +28,7 @@ class FactorDialog {
 
     private lateinit var finishServiceListener: FinishServiceListener
 
-    fun show( packageValue:String,isCreditCustomer: Int,priceObj: JSONObject, serId: Int, finishServiceListener: FinishServiceListener) {
+    fun show(priceObj: JSONObject, serId: Int, finishServiceListener: FinishServiceListener) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         binding = DialogFactorBinding.inflate(LayoutInflater.from(MyApplication.context))
@@ -45,15 +45,6 @@ class FactorDialog {
 
         this.finishServiceListener = finishServiceListener
 
-        if (packageValue == "0") {
-            binding.txtAttentionCost.visibility = View.GONE
-        } else {
-            binding.txtAttentionCost.text =
-                StringHelper.toPersianDigits(" مبلغ ${StringHelper.setComma(packageValue)} تومان بابت ارزش مرسوله به کرایه اضافه شد ")
-            binding.txtAttentionCost.visibility = View.VISIBLE
-        }
-
-        binding.txtCreditType.text = if (isCreditCustomer == 0) "مبلغ سرویس به صورت نقدی پرداخت میشود" else "مبلغ سرویس به صورت اعتباری پرداخت میشود"
         binding.imgClose.setOnClickListener { dismiss() }
         binding.btnEndTrip.setOnClickListener { finish(serId, priceObj.getString("priceService")) }
         binding.txtTotalAmount.text =

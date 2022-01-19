@@ -52,37 +52,7 @@ class GetServiceActivity : AppCompatActivity() {
                 StringHelper.setComma(price).toString() + " تومان"
             )
 
-            val dataArray: Array<String> = destinationAddress.split("$").toTypedArray()
-            for ( i in dataArray.indices) {
-                when(i){
-                    0->{
-                        binding.txtFirstDestAddress.text =StringHelper.toPersianDigits(dataArray[0])
-                    }
-                    1->{
-                        binding.txtSecondDestAddress.text =StringHelper.toPersianDigits(dataArray[1])
-                        binding.llSecondDest.visibility=View.VISIBLE
-                    }
-                    2->{
-                        binding.txtThirdDestAddress.text =StringHelper.toPersianDigits(dataArray[2])
-                        binding.llThirdDest.visibility=View.VISIBLE
-                    }
-                }
-            }
-
-            binding.txtCarType.text = carType
-            binding.txtCargoType.text = cargoType
-
-            if (description.trim() == "") {
-                binding.llDescription.visibility = View.GONE
-            } else {
-                binding.txtDescription.text =
-                    StringHelper.toPersianDigits(description)
-            }
-
-            if(returnBack.equals("0"))
-                binding.imgReturnBack.setImageResource(R.drawable.ic_cancle)
-            else
-                binding.imgReturnBack.setImageResource(R.drawable.ic_ticke)
+            binding.txtFirstDestAddress.text =StringHelper.toPersianDigits(destinationAddress)
 
             binding.btnClose.setOnClickListener {
                 MyApplication.currentActivity.finish()

@@ -88,21 +88,10 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
         } else {
             holder.binding.txtStopTime.text = stopTime
         }
-
-        if (model.packageValue == "0") {
-            holder.binding.llAttentionCost.visibility = View.GONE
-        } else {
-            holder.binding.txtAttentionCost.text =
-                StringHelper.toPersianDigits(" مبلغ ${StringHelper.setComma(model.packageValue)} تومان بابت ارزش مرسوله به کرایه اضافه شد ")
-            holder.binding.llAttentionCost.visibility = View.VISIBLE
-
-        }
-
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.binding.txtFirstDestAddress.text =
                         StringHelper.toPersianDigits(JSONArray(model.destinationAddress).getJSONObject(0).getString("address"))
 
-        holder.binding.txtCargoCost.text = StringHelper.toPersianDigits(model.costName)
         holder.binding.txtPrice.text =
             "${StringHelper.toPersianDigits(StringHelper.setComma(model.price))} تومان "
 
