@@ -145,7 +145,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
                         if (lastLocation.latitude in 20.0..40.0) {
                             animateToLocation(lastLocation.latitude, lastLocation.longitude)
                         }
-//                        refreshMyLocationMarker()
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
