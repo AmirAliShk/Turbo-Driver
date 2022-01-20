@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.doOnPreDraw
+import androidx.drawerlayout.widget.DrawerLayout
 import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.ActivityMainBinding
@@ -52,7 +53,6 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
         binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
         binding.txtDriverName.text = MyApplication.prefManager.getUserName()
-        binding.txtCharge.text ="شارژ شما ${StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))} تومان "
 
         MyApplication.handler.postDelayed({
             if (!MainActivity().isFinishing) {
@@ -81,9 +81,18 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             binding.drawerLayout.closeDrawers()
         }
 
-        binding.drawerLayout.doOnPreDraw {
-            Log.i("TAG", "onCreate: doOnPreDraw ")
-        }
+        binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
+
+            override fun onDrawerOpened(drawerView: View) {
+                Log.i("TAG", "onDrawerOpened: ")
+                binding.txtCharge.text ="شارژ شما ${StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))} تومان "
+            }
+
+            override fun onDrawerClosed(drawerView: View) { }
+
+            override fun onDrawerStateChanged(newState: Int) {}
+        })
 
     }
 

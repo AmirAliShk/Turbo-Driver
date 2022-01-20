@@ -220,7 +220,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                     if (lastLocation.latitude in 20.0..40.0) {
                         animateToLocation(lastLocation.latitude, lastLocation.longitude)
                     }
-//                        refreshMyLocationMarker()
+                        refreshMyLocationMarker()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -246,21 +246,35 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 200,
                 null
             )
-
-            refreshLocation()
         }
     }
 
+    fun refreshMyLocationMarker() = try{
+        MyApplication.currentActivity.runOnUiThread {
+            if (::myLocationMarker.isInitialized)
+                myLocationMarker.remove()
+
+            var bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.yellow)
+            if (active && register) {
+                bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.green)
+            } else if (active && !register) {
+                bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.red)
+            } else if (!active && !register) {
+                bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.yellow)
+            }
+            myLocationMarker = googleMap.addMarker(
+                MarkerOptions()
+                    .icon(bitmapDescriptor)
+                    .rotation(lastLocation.bearing)
+                    .position(LatLng(MyApplication.prefManager.getLastLocation().latitude, MyApplication.prefManager.getLastLocation().longitude))
+            )
+        }
+    }catch (e : java.lang.Exception){
+        e.printStackTrace()
+    }
+
     private fun refreshLocation() {
-        if (::myLocationMarker.isInitialized)
-            myLocationMarker.remove()
-        val bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.taxi)
-        myLocationMarker = googleMap.addMarker(
-            MarkerOptions()
-                .icon(bitmapDescriptor)
-                .rotation(lastLocation.bearing)
-                .position(LatLng(MyApplication.prefManager.getLastLocation().latitude, MyApplication.prefManager.getLastLocation().longitude))
-        )
+
     }
 
     private fun enterExit(status: Int) {
@@ -448,13 +462,14 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
                         val statusObj = dataObj.getJSONObject("status")
-                        val active = statusObj.getBoolean("active")
-                        val register = statusObj.getBoolean("register")
+                        active = statusObj.getBoolean("active")
+                        register = statusObj.getBoolean("register")
                         val statusMessage = statusObj.getString("message")
                         val stationObj = statusObj.getJSONObject("station")
                         MyApplication.prefManager.setDriverStatus(active)
                         MyApplication.prefManager.setStationRegisterStatus(register)
                         handleStatusByServer()
+                        refreshMyLocationMarker()
                         binding.txtStatus.text = statusMessage
                         if (::circle.isInitialized)
                             circle.remove()
