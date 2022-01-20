@@ -1,41 +1,25 @@
 package ir.team_x.cloud_transport.taxi_driver.activity
 
 import android.annotation.SuppressLint
-import android.content.DialogInterface
-import android.content.Intent
-import android.location.Location
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.doOnPreDraw
 import ir.team_x.cloud_transport.taxi_driver.R
-import ir.team_x.cloud_transport.taxi_driver.app.EndPoint
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.ActivityMainBinding
 import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog
 import ir.team_x.cloud_transport.taxi_driver.fragment.ProfileFragment
-import ir.team_x.cloud_transport.taxi_driver.fragment.SupportFragment
-import ir.team_x.cloud_transport.taxi_driver.fragment.financial.FinancialFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.news.NewsDetailsFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.news.NewsFragment
-import ir.team_x.cloud_transport.taxi_driver.fragment.services.CurrentServiceFragment
-import ir.team_x.cloud_transport.taxi_driver.fragment.services.FreeLoadsFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.services.ServiceHistoryFragment
-import ir.team_x.cloud_transport.taxi_driver.gps.DataGatheringService
-import ir.team_x.cloud_transport.taxi_driver.gps.GPSEnable
-import ir.team_x.cloud_transport.taxi_driver.gps.LocationAssistant
-import ir.team_x.cloud_transport.taxi_driver.gps.MyLocation
-import ir.team_x.cloud_transport.taxi_driver.okHttp.RequestHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.*
-import ir.team_x.cloud_transport.taxi_driver.webServices.UpdateCharge
 import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
 import ir.team_x.cloud_transport.taxi_driver.fragment.MapFragment
-import org.json.JSONObject
-import java.util.*
 
 
 class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificationCount {
@@ -54,6 +38,9 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtCharge,MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtDriverName,MyApplication.iranSansMediumTF)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
@@ -62,6 +49,10 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
+
+        binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
+        binding.txtDriverName.text = MyApplication.prefManager.getUserName()
+        binding.txtCharge.text ="شارژ شما ${StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))} تومان "
 
         MyApplication.handler.postDelayed({
             if (!MainActivity().isFinishing) {
@@ -85,10 +76,13 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
             binding.drawerLayout.closeDrawers()
         }
-
-        binding.llSupport.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, SupportFragment()).replace()
+        binding.llCall.setOnClickListener {
+          CallHelper.make(MyApplication.prefManager.supportNumber)
             binding.drawerLayout.closeDrawers()
+        }
+
+        binding.drawerLayout.doOnPreDraw {
+            Log.i("TAG", "onCreate: doOnPreDraw ")
         }
 
     }

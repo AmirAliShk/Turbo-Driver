@@ -42,6 +42,16 @@ class PrefManager {
     private val KEY_COUNT_NOTIFICATION = "countNotification"
     private val CARD_NUMBER = "cardNumber"
     private val CARD_NAME = "cardName"
+    private val SUPPORT_NUMBER = "supportNumber"
+
+    var supportNumber: String?
+        get() {
+            return sharedPreferences.getString(SUPPORT_NUMBER, "")
+        }
+        set(supportNumber) {
+            editor.putString(SUPPORT_NUMBER, supportNumber)
+            editor.commit()
+        }
 
     var cardNumber: String?
         get() {

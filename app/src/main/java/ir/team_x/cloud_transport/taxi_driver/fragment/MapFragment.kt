@@ -47,7 +47,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     lateinit var googleMap: GoogleMap
     lateinit var locationAssistant: LocationAssistant
     var lastLocation = Location("provider")
-    var myLocationMarker: Marker? = null
+    lateinit var myLocationMarker: Marker
     private lateinit var timer: Timer
     private val STATUS_PERIOD: Long = 20000
     private lateinit var circle: Circle
@@ -128,6 +128,18 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
 
         binding.llFinancial.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment()).replace()
+        }
+
+        binding.llGPs.setOnClickListener {
+            if (!GPSEnable.isOn()) {
+                turnOnGPSDialog()
+                return@setOnClickListener
+            }
+
+            animateToLocation(
+                MyApplication.prefManager.getLastLocation().latitude,
+                MyApplication.prefManager.getLastLocation().longitude
+            )
         }
 
         binding.swEnterExit.setOnCheckedChangeListener { _, b ->
@@ -240,14 +252,14 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     }
 
     private fun refreshLocation() {
-        myLocationMarker?.remove()
+        if (::myLocationMarker.isInitialized)
+            myLocationMarker.remove()
         val bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.taxi)
         myLocationMarker = googleMap.addMarker(
             MarkerOptions()
                 .icon(bitmapDescriptor)
                 .rotation(lastLocation.bearing)
-//                .title(messageMyLocationMarker)
-                .position(LatLng(lastLocation.latitude, lastLocation.longitude))
+                .position(LatLng(MyApplication.prefManager.getLastLocation().latitude, MyApplication.prefManager.getLastLocation().longitude))
         )
     }
 

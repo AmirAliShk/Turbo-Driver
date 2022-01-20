@@ -17,7 +17,7 @@
         android:layout_height="match_parent" />
 
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="@dimen/_100sdp"
+        android:layout_width="@dimen/_180sdp"
         android:layout_height="match_parent"
         android:layout_gravity="right"
         android:fitsSystemWindows="true">
@@ -29,22 +29,54 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/item_title_white"
+                    android:id="@+id/txtCharge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/_10sdp"/>
+
+                <TextView
+                    style="@style/item_title_white"
+                    android:id="@+id/txtDriverName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="@dimen/_10sdp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:background="@color/grayLight" />
+
+            <LinearLayout
                 android:id="@+id/llAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/_10sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:padding="@dimen/_5sdp"
                     android:src="@drawable/ic_profile" />
 
                 <TextView
                     style="@style/item_title_white"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="right"
                     android:paddingTop="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_10sdp"
                     android:text="@string/profile" />
@@ -53,28 +85,29 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_height="0.5dp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:background="@color/grayLight" />
 
             <LinearLayout
                 android:id="@+id/llServiceHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/_10sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:padding="@dimen/_5sdp"
                     android:src="@drawable/ic_service_history" />
 
                 <TextView
                     style="@style/item_title_white"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="right"
                     android:paddingTop="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_10sdp"
                     android:text="@string/service_history" />
@@ -83,115 +116,71 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_height="0.5dp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:background="@color/grayLight" />
 
             <LinearLayout
                 android:id="@+id/llNewsMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/_10sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:padding="@dimen/_5sdp"
                     android:src="@drawable/ic_news" />
 
                 <TextView
                     style="@style/item_title_white"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="right"
                     android:paddingTop="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_10sdp"
                     android:text="@string/news" />
 
             </LinearLayout>
 
-            <!--                        <View-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="@dimen/_1sdp"-->
-            <!--                            android:layout_marginLeft="@dimen/_10sdp"-->
-            <!--                            android:layout_marginRight="@dimen/_10sdp"-->
-            <!--                            android:background="@color/grayLight" />-->
-
-            <!--                        <LinearLayout-->
-            <!--                            android:id="@+id/llChat"-->
-            <!--                            android:layout_width="match_parent"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:orientation="vertical">-->
-
-            <!--                            <ImageView-->
-            <!--                                android:layout_width="match_parent"-->
-            <!--                                android:layout_height="wrap_content"-->
-            <!--                                android:paddingTop="@dimen/_10sdp"-->
-            <!--                                android:src="@drawable/ic_message" />-->
-
-            <!--                            <TextView-->
-            <!--                                style="@style/item_title_white"-->
-            <!--                                android:layout_width="match_parent"-->
-            <!--                                android:layout_height="wrap_content"-->
-            <!--                                android:gravity="center"-->
-            <!--                                android:paddingTop="@dimen/_10sdp"-->
-            <!--                                android:paddingBottom="@dimen/_10sdp"-->
-            <!--                                android:text="@string/chat" />-->
-
-            <!--                        </LinearLayout>-->
-
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_height="0.5dp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:background="@color/grayLight" />
 
-            <LinearLayout
-                android:id="@+id/llSupport"
+            <TextView
+                android:id="@+id/txtAppVersion"
+                style="@style/item_title_white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:src="@drawable/ic_operator" />
-
-                <TextView
-                    style="@style/item_title_white"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:text="@string/support" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:background="@color/grayLight" />
+                android:layout_weight="1"
+                android:gravity="bottom|center_horizontal"
+                android:text="1.0.0" />
 
             <LinearLayout
+                android:id="@+id/llCall"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:gravity="bottom"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:background="@drawable/bg_green"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/_8sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/ic_calll" />
 
                 <TextView
-                    android:id="@+id/txtAppVersion"
-                    style="@style/item_title_white"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="bottom|center_horizontal"
-                    android:text="1.0.0" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تماس با پشتیبانی"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/_15sdp" />
 
             </LinearLayout>
 
