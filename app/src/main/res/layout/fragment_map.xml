@@ -17,54 +17,80 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imgMenu"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            android:src="@drawable/ic_menu" />
+        <TextView
+            android:id="@+id/txtLock"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@color/colorRed"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:freezesText="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingLeft="15dip"
+            android:paddingTop="5dp"
+            android:visibility="gone"
+            android:paddingRight="15dip"
+            android:paddingBottom="5dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
 
-        <com.kyleduo.switchbutton.SwitchButton
-            android:id="@+id/swEnterExit"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_weight="1"
-            android:checked="false"
-            android:textColor="@color/grayLighter"
-            android:textSize="@dimen/_16ssp"
-            app:kswAnimationDuration="300"
-            app:kswBackDrawable="@drawable/switch_background"
-            app:kswTextOff="    فعال      "
-            app:kswTextOn="     فعال     "
-            app:kswThumbColor="@color/grayLighter"
-            app:kswThumbHeight="@dimen/_25sdp"
-            app:kswThumbMargin="@dimen/_5sdp"
-            app:kswThumbRangeRatio="1.4"
-            app:kswThumbWidth="@dimen/_25sdp" />
+        <LinearLayout
+            android:id="@+id/llSwitches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <com.kyleduo.switchbutton.SwitchButton
-            android:id="@+id/swStationRegister"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_weight="1"
-            android:checked="false"
-            android:textColor="@color/grayLighter"
-            android:textSize="@dimen/_16ssp"
-            android:visibility="visible"
-            app:kswAnimationDuration="300"
-            app:kswBackDrawable="@drawable/switch_background"
-            app:kswTextOff="    محدوده   "
-            app:kswTextOn="    محدوده   "
-            app:kswThumbColor="@color/grayLighter"
-            app:kswThumbHeight="@dimen/_25sdp"
-            app:kswThumbMargin="@dimen/_5sdp"
-            app:kswThumbRangeRatio="1.4"
-            app:kswThumbWidth="@dimen/_25sdp" />
+            <ImageView
+                android:id="@+id/imgMenu"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_menu" />
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@+id/swEnterExit"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_weight="1"
+                android:checked="false"
+                android:textColor="@color/grayLighter"
+                android:textSize="@dimen/_16ssp"
+                app:kswAnimationDuration="300"
+                app:kswBackDrawable="@drawable/switch_background"
+                app:kswTextOff="    فعال      "
+                app:kswTextOn="     فعال     "
+                app:kswThumbColor="@color/grayLighter"
+                app:kswThumbHeight="@dimen/_25sdp"
+                app:kswThumbMargin="@dimen/_5sdp"
+                app:kswThumbRangeRatio="1.4"
+                app:kswThumbWidth="@dimen/_25sdp" />
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@+id/swStationRegister"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_weight="1"
+                android:checked="false"
+                android:textColor="@color/grayLighter"
+                android:textSize="@dimen/_16ssp"
+                android:visibility="invisible"
+                app:kswAnimationDuration="300"
+                app:kswBackDrawable="@drawable/switch_background"
+                app:kswTextOff="    محدوده   "
+                app:kswTextOn="    محدوده   "
+                app:kswThumbColor="@color/grayLighter"
+                app:kswThumbHeight="@dimen/_25sdp"
+                app:kswThumbMargin="@dimen/_5sdp"
+                app:kswThumbRangeRatio="1.4"
+                app:kswThumbWidth="@dimen/_25sdp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -161,12 +187,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/background2"
             android:elevation="@dimen/_5sdp"
-            android:gravity="center|center_horizontal"
+            android:gravity="right|center_vertical"
             android:paddingLeft="@dimen/_5sdp"
             android:paddingTop="@dimen/_8sdp"
             android:paddingRight="@dimen/_5sdp"

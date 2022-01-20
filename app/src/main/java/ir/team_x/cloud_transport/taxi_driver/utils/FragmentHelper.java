@@ -46,8 +46,7 @@ public class FragmentHelper {
 
     private androidx.fragment.app.FragmentManager fragmentManagerX = null;
     private @IdRes
-    int frame = R.id.frame_container;
-
+    int frame = android.R.id.content;
     /**
      * use android.app.fragment library
      * flag parameter and fragmentManger is create in method

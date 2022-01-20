@@ -1,6 +1,8 @@
 package ir.team_x.cloud_transport.taxi_driver.fragment
 
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
@@ -16,6 +18,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
+import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
 import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.activity.MainActivity
 import ir.team_x.cloud_transport.taxi_driver.activity.MainActivity.Companion.openDrawer
@@ -31,6 +34,7 @@ import ir.team_x.cloud_transport.taxi_driver.fragment.services.FreeLoadsFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.services.ServiceHistoryFragment
 import ir.team_x.cloud_transport.taxi_driver.gps.DataGatheringService
 import ir.team_x.cloud_transport.taxi_driver.gps.GPSEnable
+import ir.team_x.cloud_transport.taxi_driver.gps.LocationAssistant
 import ir.team_x.cloud_transport.taxi_driver.gps.MyLocation
 import ir.team_x.cloud_transport.taxi_driver.okHttp.RequestHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
@@ -38,13 +42,15 @@ import ir.team_x.cloud_transport.taxi_driver.utils.ServiceHelper
 import org.json.JSONObject
 import java.util.*
 
-class MapFragment : Fragment(), OnMapReadyCallback {
+class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     private lateinit var binding: FragmentMapBinding
     lateinit var googleMap: GoogleMap
+    lateinit var locationAssistant: LocationAssistant
     var lastLocation = Location("provider")
     var myLocationMarker: Marker? = null
     private lateinit var timer: Timer
     private val STATUS_PERIOD: Long = 20000
+    private lateinit var circle: Circle
     var driverStatus = 0
     var active = false
     var register = false
@@ -59,20 +65,48 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMapBinding.inflate(inflater, container, false)
+        TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtStatus, MyApplication.iranSansMediumTF)
         binding.map.onCreate(savedInstanceState)
         MapsInitializer.initialize(MyApplication.context)
         binding.map.getMapAsync(this)
+
+        locationAssistant = LocationAssistant(
+            MyApplication.context,
+            this,
+            LocationAssistant.Accuracy.HIGH,
+            1000,
+            true
+        )
+
+        if (!isDriverActive()) {
+            binding.txtStatus.text = "برای وارد شدن فعال را بزنید"
+            binding.swStationRegister.visibility = View.INVISIBLE
+            binding.swEnterExit.isChecked = false
+        }
+
+        handleStatusByServer()
+
+        if (MyApplication.prefManager.getLockStatus() == 1) {
+            binding.txtLock.visibility = View.VISIBLE
+            binding.txtLock.setTextColor(resources.getColor(R.color.colorWhite))
+            binding.txtLock.background = resources.getDrawable(R.color.colorRed)
+            binding.txtLock.text =
+                "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي به شما وجود ندارد."
+        } else {
+            binding.txtLock.visibility = View.INVISIBLE
+        }
 
         binding.imgMenu.setOnClickListener {
             openDrawer()
         }
 
         binding.llServiceManagement.setOnClickListener {
-//            if (!MyApplication.prefManager.getDriverStatus()) {
-//                GeneralDialog().message("لطفا فعال شوید").title("هشدار").firstButton("باشه") {}
-//                    .show()
-//                return@setOnClickListener
-//            }
+            if (!MyApplication.prefManager.getDriverStatus()) {
+                GeneralDialog().message("لطفا فعال شوید").title("هشدار").firstButton("باشه") {}
+                    .show()
+                return@setOnClickListener
+            }
             FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
                 .replace()
         }
@@ -83,11 +117,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
 
         binding.llFreeLoads.setOnClickListener {
-//            if (!MyApplication.prefManager.getDriverStatus()) {
-//                GeneralDialog().message("لطفا فعال شوید").title("هشدار").firstButton("باشه") {}
-//                    .show()
-//                return@setOnClickListener
-//            }
+            if (!MyApplication.prefManager.getDriverStatus()) {
+                GeneralDialog().message("لطفا فعال شوید").title("هشدار").firstButton("باشه") {}
+                    .show()
+                return@setOnClickListener
+            }
             FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment())
                 .replace()
         }
@@ -96,7 +130,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment()).replace()
         }
 
-        binding.swEnterExit.setOnCheckedChangeListener { compoundButton, b ->
+        binding.swEnterExit.setOnCheckedChangeListener { _, b ->
             if (!GPSEnable.isOn()) {
                 turnOnGPSDialog()
                 binding.swEnterExit.isChecked = (!binding.swEnterExit.isChecked)
@@ -104,16 +138,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
             binding.swEnterExit.isEnabled = false
             if (b) { // i start to send driver location to server every 20 sec here
-                binding.swStationRegister.visibility = View.VISIBLE
                 enterExit(1)
             } else {// i stop to send location here
-                binding.swStationRegister.visibility = View.INVISIBLE
-                binding.swStationRegister.isChecked = false
                 enterExit(0)
             }
         }
 
-        binding.swStationRegister.setOnCheckedChangeListener { compoundButton, b ->
+        binding.swStationRegister.setOnCheckedChangeListener { _, b ->
             if (!GPSEnable.isOn()) {
                 turnOnGPSDialog()
                 binding.swStationRegister.isChecked = (!binding.swStationRegister.isChecked)
@@ -121,7 +152,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
             binding.swStationRegister.isEnabled = false
             if (b) {
-//                MyApplication.handler.postDelayed({
                 val locationResult: MyLocation.LocationResult =
                     object : MyLocation.LocationResult() {
                         override fun gotLocation(location: Location) {
@@ -145,7 +175,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     }
                 val myLocation = MyLocation()
                 myLocation.getLocation(MyApplication.currentActivity, locationResult)
-//                }, 300)
             } else {
                 exitStation()
             }
@@ -223,6 +252,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun enterExit(status: Int) {
+        driverStatus = status
         RequestHelper.builder(EndPoint.ENTER_EXIT)
             .listener(enterExitCallBack)
             .addParam("status", status)
@@ -244,14 +274,19 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         val status = dataObj.getBoolean("result")
                         if (status) {
                             if (driverStatus == 0) {
+                                binding.swStationRegister.visibility = View.INVISIBLE
+                                binding.swStationRegister.isChecked = false
                                 driverDisable()
                             } else {
+                                binding.swStationRegister.visibility = View.VISIBLE
                                 driverEnable()
                             }
                         } else {
+                            GeneralDialog().message(message).secondButton("باشه") {}.show()
                             binding.swEnterExit.isChecked = !binding.swEnterExit.isChecked
                         }
                     } else {
+                        GeneralDialog().message(message).secondButton("باشه") {}.show()
                         binding.swEnterExit.isChecked = !binding.swEnterExit.isChecked
                     }
 
@@ -331,10 +366,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     val message = jsonObject.getString("message")
 
                     if (success) {
+                        getStatus()
                         val dataObj = jsonObject.getJSONObject("data")
                         val status = dataObj.getBoolean("result")
                         if (status) {
-                            getStatus()
                             MyApplication.prefManager.setStationRegisterStatus(false)
                         } else {
                             binding.swStationRegister.isChecked =
@@ -409,6 +444,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         MyApplication.prefManager.setStationRegisterStatus(register)
                         handleStatusByServer()
                         binding.txtStatus.text = statusMessage
+                        if (::circle.isInitialized)
+                            circle.remove()
                         if (active && register) {
                             val distance = stationObj.getInt("distance")
                             val lat = stationObj.getDouble("lat")
@@ -418,6 +455,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                             binding.swEnterExit.isChecked = true
                             binding.swStationRegister.isChecked = true
                             binding.swStationRegister.visibility = View.VISIBLE
+
+                            val circleOptions = CircleOptions()
+                                .center(LatLng(lat, lng)) //set center
+                                .radius(distance.toDouble()) //set radius in meters
+                                .fillColor(Color.parseColor("#110000ff")) //default
+                                .strokeColor(Color.BLUE)
+                                .strokeWidth(5f)
+                            circle = googleMap.addCircle(circleOptions)
+
                         } else if (active && !register) {
                             binding.swEnterExit.isChecked = true
                             binding.swStationRegister.isChecked = false
@@ -518,13 +564,50 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onDestroyView() {
         super.onDestroyView()
         stopGetStatus()
+        locationAssistant.stop()
         binding.map.onDestroy()
     }
 
     override fun onResume() {
         super.onResume()
         binding.map.onResume()
+        locationAssistant.start()
+        startGetStatus()
+        if (!GPSEnable.isOn()) {
+            turnOnGPSDialog()
+        }
     }
+
+    override fun onNeedLocationPermission() {}
+
+    override fun onExplainLocationPermission() {}
+
+    override fun onLocationPermissionPermanentlyDeclined(
+        fromView: View.OnClickListener?,
+        fromDialog: DialogInterface.OnClickListener?
+    ) {
+    }
+
+    override fun onNeedLocationSettingsChange() {}
+
+    override fun onFallBackToSystemSettings(
+        fromView: View.OnClickListener?,
+        fromDialog: DialogInterface.OnClickListener?
+    ) {
+    }
+
+    override fun onNewLocationAvailable(location: Location?) {
+        this.lastLocation = location!!
+        MyApplication.prefManager.setLastLocation(LatLng(location.latitude, location.longitude))
+    }
+
+    override fun onMockLocationsDetected(
+        fromView: View.OnClickListener?,
+        fromDialog: DialogInterface.OnClickListener?
+    ) {
+    }
+
+    override fun onError(type: LocationAssistant.ErrorType?, message: String?) {}
 
 
 }

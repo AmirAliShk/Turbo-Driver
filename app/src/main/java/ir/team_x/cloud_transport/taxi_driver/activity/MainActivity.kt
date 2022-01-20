@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
         MyApplication.handler.postDelayed({
             if (!MainActivity().isFinishing) {
-                FragmentHelper.toFragment(MyApplication.currentActivity, MapFragment()).replace()
+                FragmentHelper.toFragment(MyApplication.currentActivity, MapFragment()).setFrame(R.id.frame_container).replace()
             }
         }, 100)
 
@@ -116,14 +116,13 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
     override fun onBackPressed() {
         KeyBoardHelper.hideKeyboard()
+
+        if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            return
+        }
+
         if (MapFragment().isInLayout) {
-
-            if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-                return
-            }
-
-
             GeneralDialog()
                 .message("آیا از خروج خود اطمینان دارید؟")
                 .firstButton("بله") {
