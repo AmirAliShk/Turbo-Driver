@@ -29,6 +29,7 @@ class FinancialFragment : Fragment() {
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
         TypeFaceUtil.overrideFont(binding.txtCharge,MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtCardName,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 

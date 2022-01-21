@@ -83,11 +83,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
             }
         }
 
-        if (model.stopTime == 0) {
-            holder.binding.llStopTime.visibility = View.GONE
-        } else {
-            holder.binding.txtStopTime.text = stopTime
-        }
+        holder.binding.txtCustomerName.text = StringHelper.toPersianDigits(model.customerName)
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.binding.txtFirstDestAddress.text =
                         StringHelper.toPersianDigits(JSONArray(model.destinationAddress).getJSONObject(0).getString("address"))

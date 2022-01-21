@@ -134,7 +134,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="فاطمه نوری"
                     android:textColor="@color/colorBlue"
                     android:textSize="@dimen/_16sdp" />
 
@@ -144,8 +143,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="left"
-                    android:text="6037-9975-5877-9865" />
+                    android:gravity="left"/>
 
             </LinearLayout>
 
