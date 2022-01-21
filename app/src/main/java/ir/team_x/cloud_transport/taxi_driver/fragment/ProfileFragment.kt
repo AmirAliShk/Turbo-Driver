@@ -24,13 +24,14 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
-        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtName,MyApplication.iranSansMediumTF)
+//        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
-        binding.llAboutUs.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity,AboutUsFragment()).replace()
-        }
+//        binding.llAboutUs.setOnClickListener {
+//            FragmentHelper.toFragment(MyApplication.currentActivity,AboutUsFragment()).replace()
+//        }
 
         binding.txtName.text=MyApplication.prefManager.getUserName()
         binding.txtIben.text=MyApplication.prefManager.getIban()

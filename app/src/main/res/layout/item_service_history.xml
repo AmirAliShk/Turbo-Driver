@@ -34,13 +34,13 @@
 
         <TextView
             android:id="@+id/txtDate"
-            android:layout_width="0dp"
+            android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="left"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
