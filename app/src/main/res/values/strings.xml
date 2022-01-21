@@ -71,5 +71,11 @@
     <string name="desCount">تعداد مقصد ها : </string>
     <string name="setting">تنظیمات</string>
     <string name="stopTime">زمان توقف : </string>
+    <string name="txt_importance">پرداخت از طریق ثبت واریزی حداکثر پس از 24 ساعت به حساب شما منظور میگردد.</string>
+    <string name="txt_financial_desc">مبالغ کمتر از 20،000 تومان، فقط از طریق پرداخت آنلاین یا حضوری اقدام شود.</string>
+    <string name="txt_increase_charge">شما میتوانید به دو طریق حساب خودرا شارژ نمایید:\n
+    1.پرداخت آنلاین \t
+        2.واریز به کارت \n
+    در صورت واریز به کارت، فیش آن را ثبت نمایید.</string>
 
 </resources>

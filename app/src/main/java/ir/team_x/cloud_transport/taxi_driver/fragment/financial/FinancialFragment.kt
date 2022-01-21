@@ -1,16 +1,17 @@
 package ir.team_x.cloud_transport.taxi_driver.fragment.financial
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.FragmentFinancialBinding
 import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.StringHelper
 import ir.team_x.cloud_transport.taxi_driver.webServices.UpdateCharge
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
 
 class FinancialFragment : Fragment() {
     private lateinit var binding: FragmentFinancialBinding
@@ -27,6 +28,7 @@ class FinancialFragment : Fragment() {
         binding = FragmentFinancialBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtCharge,MyApplication.iranSansMediumTF)
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
@@ -43,6 +45,11 @@ class FinancialFragment : Fragment() {
                 }
             }
         })
+
+        binding.txtNote1.text = StringHelper.toPersianDigits(getString(R.string.txt_increase_charge))
+        binding.txtNote2.text = StringHelper.toPersianDigits(getString(R.string.txt_financial_desc))
+        binding.txtNote3.text = StringHelper.toPersianDigits(getString(R.string.txt_importance))
+
 
         binding.llOnlinePayment.setOnClickListener {
             FragmentHelper.toFragment(
