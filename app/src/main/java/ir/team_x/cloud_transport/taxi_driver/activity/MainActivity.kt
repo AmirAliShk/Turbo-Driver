@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.navigationBarColor = resources.getColor(R.color.pageBackground)
-            window.statusBarColor = resources.getColor(R.color.pageBackground)
+            window.statusBarColor = resources.getColor(R.color.colorBlack)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
 

@@ -266,9 +266,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             if (active && register) {
                 bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.green,120,80))
             } else if (active && !register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,120,80))
-            } else if (!active && !register) {
                 bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.red,120,80))
+            } else if (!active && !register) {
+                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,120,80))
             }
             myLocationMarker = googleMap.addMarker(
                 MarkerOptions()
