@@ -61,7 +61,6 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,33 +86,6 @@
                 android:layout_weight="3"
                 android:layout_marginLeft="@dimen/_10sdp" />
 
-            <LinearLayout
-                android:id="@+id/llCall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:background="@drawable/bg_grye"
-                android:padding="@dimen/_4sdp">
-
-                <ImageView
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:src="@drawable/ic_callll"/>
-
-                <TextView
-                    style="@style/Details_answer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:textColor="@color/colorWhite"
-                    android:layout_weight="3"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:text="تماس" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -138,6 +110,101 @@
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:textColor="@color/grayDark" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|right"
+            android:background="@drawable/bg_voice"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_play"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1.25"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingRight="@dimen/_10sdp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:src="@drawable/ic_money"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25,000"
+                    android:textSize="@dimen/_18sdp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تومان"
+                    android:textSize="@dimen/_15sdp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCall"
+                android:layout_width="0dp"
+                android:layout_weight="0.65"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/bg_grye"
+                android:paddingVertical="@dimen/_8sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:src="@drawable/ic_callll"
+                    android:layout_marginRight="@dimen/_2sdp"/>
+
+                <TextView
+                    style="@style/Details_answer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_marginLeft="@dimen/_2sdp"
+                    android:textColor="@color/colorWhite"
+                    android:layout_weight="0.25"
+                    android:text="تماس با مسافر" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.1" />
 
         </LinearLayout>
 
