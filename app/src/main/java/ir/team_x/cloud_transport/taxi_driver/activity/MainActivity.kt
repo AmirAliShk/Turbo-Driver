@@ -25,10 +25,10 @@ import ir.team_x.cloud_transport.taxi_driver.fragment.MapFragment
 
 class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificationCount {
 
-    companion object{
+    companion object {
         lateinit var binding: ActivityMainBinding
 
-        fun openDrawer(){
+        fun openDrawer() {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)
         }
 
@@ -40,14 +40,14 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         TypeFaceUtil.overrideFont(binding.root)
-        TypeFaceUtil.overrideFont(binding.txtCharge,MyApplication.iranSansMediumTF)
-        TypeFaceUtil.overrideFont(binding.txtDriverName,MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtCharge, MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtDriverName, MyApplication.iranSansMediumTF)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.navigationBarColor = resources.getColor(R.color.pageBackground)
-            window.statusBarColor = resources.getColor(R.color.actionBar)
+            window.statusBarColor = resources.getColor(R.color.pageBackground)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
 
@@ -56,9 +56,15 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
         MyApplication.handler.postDelayed({
             if (!MainActivity().isFinishing) {
-                FragmentHelper.toFragment(MyApplication.currentActivity, MapFragment()).setFrame(R.id.frame_container).replace()
+                FragmentHelper.toFragment(MyApplication.currentActivity, MapFragment()).replace()
             }
         }, 100)
+
+        binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
+        binding.txtAppVersion.setOnClickListener {
+            binding.drawerLayout.closeDrawers()
+        }
 
         binding.llAccount.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, ProfileFragment())
@@ -77,7 +83,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             binding.drawerLayout.closeDrawers()
         }
         binding.llCall.setOnClickListener {
-          CallHelper.make(MyApplication.prefManager.supportNumber)
+            CallHelper.make(MyApplication.prefManager.supportNumber)
             binding.drawerLayout.closeDrawers()
         }
 
@@ -85,11 +91,11 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
 
             override fun onDrawerOpened(drawerView: View) {
-                Log.i("TAG", "onDrawerOpened: ")
-                binding.txtCharge.text ="شارژ شما ${StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))} تومان "
+                binding.txtCharge.text =
+                    "شارژ شما ${StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))} تومان "
             }
 
-            override fun onDrawerClosed(drawerView: View) { }
+            override fun onDrawerClosed(drawerView: View) {}
 
             override fun onDrawerStateChanged(newState: Int) {}
         })
@@ -120,12 +126,16 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
     override fun onBackPressed() {
         KeyBoardHelper.hideKeyboard()
 
-        if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             return
         }
+        var mapFragment = supportFragmentManager.findFragmentByTag(MapFragment.TAG)
+        if (mapFragment == null) return
 
-        if (MapFragment().isInLayout) {
+        if (supportFragmentManager.backStackEntryCount > 0 && !mapFragment.isVisible) {
+            super.onBackPressed()
+        }else if (mapFragment.isVisible) {
             GeneralDialog()
                 .message("آیا از خروج خود اطمینان دارید؟")
                 .firstButton("بله") {
@@ -133,8 +143,6 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                 }
                 .secondButton("خیر") {}
                 .show()
-        } else {
-            super.onBackPressed()
         }
     }
 

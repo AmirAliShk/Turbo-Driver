@@ -44,11 +44,14 @@ import java.util.*
 import android.graphics.Bitmap
 
 import android.graphics.BitmapFactory
-
-
+import android.util.Log
+import android.view.KeyEvent
 
 
 class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
+    companion object{
+        val TAG = MapFragment::class.java.getSimpleName()
+    }
     private lateinit var binding: FragmentMapBinding
     lateinit var googleMap: GoogleMap
     lateinit var locationAssistant: LocationAssistant
@@ -118,8 +121,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         }
 
         binding.llNews.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment())
-                .replace()
+            FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
         }
 
         binding.llFreeLoads.setOnClickListener {
@@ -260,13 +262,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             if (::myLocationMarker.isInitialized)
                 myLocationMarker.remove()
 
-            var bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,150,100))
+            var bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,120,80))
             if (active && register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.green,150,100))
+                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.green,120,80))
             } else if (active && !register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,150,100))
+                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,120,80))
             } else if (!active && !register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.red,150,100))
+                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.red,120,80))
             }
             myLocationMarker = googleMap.addMarker(
                 MarkerOptions()
