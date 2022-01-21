@@ -114,23 +114,31 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="top|right"
+            android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
             android:background="@drawable/bg_voice"
             android:orientation="horizontal"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:paddingRight="@dimen/_10sdp">
+            android:gravity="left">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_play"/>
+                android:layout_width="@dimen/_27sdp"
+                android:layout_height="@dimen/_27sdp"
+                android:src="@drawable/ic_play"
+                android:padding="@dimen/_2sdp"/>
+
+        </LinearLayout>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="0.1" />
+                android:layout_weight="1" />
 
         </LinearLayout>
 
