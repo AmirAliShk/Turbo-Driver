@@ -44,11 +44,6 @@ import ir.team_x.cloud_transport.taxi_driver.app.MyApplication;
 import ir.team_x.cloud_transport.taxi_driver.app.PrefManager;
 import ir.team_x.cloud_transport.taxi_driver.okHttp.RequestHelper;
 
-/***
- * Created by mohsen mostafaei  on 12/07/2016.
- */
-
-
 public class DataGatheringService extends Service {
 
     private static final String TAG = DataGatheringService.class.getSimpleName();
@@ -164,7 +159,7 @@ public class DataGatheringService extends Service {
 
 
     // Send Data to View with BroadCast
-    static final public String GDS_RESULT = "ir.team_x.ariana.DataGatheringService";
+    static final public String GDS_RESULT = "ir.team_x.cloud_transport.DataGatheringService";
     static final public String GDS_SPEED = "Service_SPD";
     static final public String GDS_LAT = "Service_lat";
     static final public String GDS_LON = "Service_lon";
@@ -189,33 +184,6 @@ public class DataGatheringService extends Service {
 
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 MyApplication.prefManager.setLastLocation(latLng);
-
-                // TODO uncomment (if)
-//                if (prefManager.getPickUpGuestTime() < Calendar.getInstance().getTimeInMillis() && prefManager.getPickUpGuestTime() != 0
-//                        && !MyApplication.prefManager.getServiceIdForCancelDialog().equals("0")) {
-//                    MyApplication.handler.post(() -> {
-//                        SoundHelper.ringing(R.raw.beep_sound);
-//                        new GeneralDialog()
-//                                .title("هنوز به مسافر نرسیدی؟؟")
-//                                .message("مسافر در انتظار شماست، پس از سوار شدن مسافر بروی دکمه رسیدن به مسافر ضربه بزنید")
-//                                .firstButton("هنوز نرسیدم", null)
-//                                .secondButton("مسافر سوار شد"
-//                                        , new Runnable() {
-//                                            @Override
-//                                            public void run() {
-//                                                if (!FragmentHelper.taskFragment(MyApplication.currentActivity, ManageServiceFragment.TAG).isVisible()) {
-//                                                    /*This is not needed when the service is working properly*/
-//                                                    FragmentHelper.toFragment(MyApplication.currentActivity, new ManageServiceFragment())
-//                                                            .setFrame(R.id.frame_container)
-//                                                            .setStatusBarColor(MyApplication.context.getResources().getColor(R.color.black))
-//                                                            .replace();
-//                                                }
-//                                            }
-//                                        }).show();
-//                        prefManager.setPickUpGuestTime(0);
-//                    });
-//                }
-
             }
         } catch (NullPointerException e) {
             e.printStackTrace();

@@ -16,6 +16,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.IdRes;
 import androidx.fragment.app.FragmentActivity;
 
+import ir.team_x.cloud_transport.taxi_driver.R;
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication;
 import ir.team_x.cloud_transport.taxi_driver.push.AvaCrashReporter;
 
@@ -45,8 +46,7 @@ public class FragmentHelper {
 
     private androidx.fragment.app.FragmentManager fragmentManagerX = null;
     private @IdRes
-    int frame = android.R.id.content;
-
+    int frame = R.id.frame_container;
     /**
      * use android.app.fragment library
      * flag parameter and fragmentManger is create in method

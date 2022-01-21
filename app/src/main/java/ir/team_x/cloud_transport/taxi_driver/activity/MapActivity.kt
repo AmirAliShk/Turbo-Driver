@@ -145,7 +145,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
                         if (lastLocation.latitude in 20.0..40.0) {
                             animateToLocation(lastLocation.latitude, lastLocation.longitude)
                         }
-//                        refreshMyLocationMarker()
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -196,15 +195,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, LocationAssistant.L
     }
 
     private fun refreshLocation() {
-        myLocationMarker?.remove()
-        val bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.taxi)
-        myLocationMarker = googleMap.addMarker(
-            MarkerOptions()
-                .icon(bitmapDescriptor)
-                .rotation(lastLocation.bearing)
-//                .title(messageMyLocationMarker)
-                .position(LatLng(lastLocation.latitude, lastLocation.longitude))
-        )
+
     }
 
     private fun hideStation() {
