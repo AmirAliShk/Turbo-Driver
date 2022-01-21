@@ -41,6 +41,12 @@ import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.ServiceHelper
 import org.json.JSONObject
 import java.util.*
+import android.graphics.Bitmap
+
+import android.graphics.BitmapFactory
+
+
+
 
 class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     private lateinit var binding: FragmentMapBinding
@@ -238,7 +244,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             val latLng = LatLng(lat, lon)
             val position1 = CameraPosition.builder()
                 .target(latLng)
-                .zoom(14f)
+                .zoom(16f)
                 .build()
 
             googleMap.animateCamera(
@@ -254,13 +260,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             if (::myLocationMarker.isInitialized)
                 myLocationMarker.remove()
 
-            var bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.yellow)
+            var bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,150,100))
             if (active && register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.green)
+                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.green,150,100))
             } else if (active && !register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.red)
+                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,150,100))
             } else if (!active && !register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.yellow)
+                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.red,150,100))
             }
             myLocationMarker = googleMap.addMarker(
                 MarkerOptions()
@@ -273,8 +279,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         e.printStackTrace()
     }
 
-    private fun refreshLocation() {
-
+    private fun resizeBitmap(res: Int, width: Int, height: Int): Bitmap? {
+        val imageBitmap = BitmapFactory.decodeResource(resources, res)
+        return Bitmap.createScaledBitmap(imageBitmap, width, height, false)
     }
 
     private fun enterExit(status: Int) {

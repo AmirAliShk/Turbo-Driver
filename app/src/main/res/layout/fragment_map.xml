@@ -31,13 +31,13 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:paddingLeft="15dip"
             android:paddingTop="5dp"
-            android:visibility="gone"
             android:paddingRight="15dip"
             android:paddingBottom="5dp"
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:textColor="@color/colorWhite"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/llSwitches"
@@ -48,9 +48,12 @@
 
             <ImageView
                 android:id="@+id/imgMenu"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:padding="@dimen/_5sdp"
+                android:elevation="5dp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:background="@drawable/circle_blue"
                 android:src="@drawable/ic_menu" />
 
             <com.kyleduo.switchbutton.SwitchButton
@@ -101,95 +104,102 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <com.dshantanu.androidsquareslib.AndroidSquares
             android:id="@+id/llGPs"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/background1"
-            android:elevation="@dimen/_5sdp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:layout_margin="5dp"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/_5sdp"
+                android:background="@drawable/circle_blue"
+                android:padding="@dimen/_10sdp"
+                android:elevation="3dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:src="@drawable/ic_gps" />
 
-        </LinearLayout>
+        </com.dshantanu.androidsquareslib.AndroidSquares>
 
-        <LinearLayout
-            android:id="@+id/llServiceManagement"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/background1"
-            android:elevation="@dimen/_5sdp"
-            android:gravity="center"
-            android:orientation="vertical">
+        <com.dshantanu.androidsquareslib.AndroidSquares
+            android:id="@+id/llNews"
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:layout_margin="5dp"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/ic_service_management" />
+                android:background="@drawable/circle_blue"
+                android:padding="@dimen/_10sdp"
+                android:elevation="3dp"
+                android:layout_margin="@dimen/_5sdp"
+                android:src="@drawable/ic_news_white" />
 
-        </LinearLayout>
+        </com.dshantanu.androidsquareslib.AndroidSquares>
 
-        <LinearLayout
+        <com.dshantanu.androidsquareslib.AndroidSquares
             android:id="@+id/llFinancial"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/background1"
-            android:elevation="@dimen/_5sdp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:layout_margin="5dp"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/_5sdp"
+                android:background="@drawable/circle_blue"
+                android:padding="@dimen/_8sdp"
+                android:elevation="3dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:src="@drawable/ic_financial" />
 
-        </LinearLayout>
+        </com.dshantanu.androidsquareslib.AndroidSquares>
 
-        <LinearLayout
+        <com.dshantanu.androidsquareslib.AndroidSquares
             android:id="@+id/llFreeLoads"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/background1"
-            android:elevation="@dimen/_5sdp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/_2sdp"
+                android:background="@drawable/circle_blue"
+                android:padding="@dimen/_8sdp"
+                android:elevation="3dp"
+                android:layout_margin="@dimen/_5sdp"
                 android:src="@drawable/ic_free_loads" />
 
-        </LinearLayout>
+        </com.dshantanu.androidsquareslib.AndroidSquares>
 
-        <LinearLayout
-            android:id="@+id/llNews"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/background1"
-            android:elevation="@dimen/_5sdp"
-            android:gravity="center"
-            android:orientation="vertical">
+        <com.dshantanu.androidsquareslib.AndroidSquares
+            android:id="@+id/llServiceManagement"
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:layout_margin="5dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/_2sdp"
-                android:src="@drawable/ic_round_notifications_active_24" />
+                android:background="@drawable/circle_blue"
+                android:padding="@dimen/_8sdp"
+                android:elevation="3dp"
+                android:layout_margin="@dimen/_5sdp"
+                android:src="@drawable/ic_service_management" />
 
-        </LinearLayout>
+        </com.dshantanu.androidsquareslib.AndroidSquares>
 
     </LinearLayout>
 
@@ -206,11 +216,11 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginHorizontal="@dimen/_10sdp"
-            android:paddingHorizontal="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/background2"
             android:elevation="@dimen/_5sdp"
             android:gravity="right|center_vertical"
+            android:paddingHorizontal="@dimen/_10sdp"
             android:paddingLeft="@dimen/_5sdp"
             android:paddingTop="@dimen/_8sdp"
             android:paddingRight="@dimen/_5sdp"
