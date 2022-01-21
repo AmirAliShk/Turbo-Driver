@@ -29,11 +29,6 @@
             android:screenOrientation="portrait"  />
 
         <activity
-            android:name="ir.team_x.cloud_transport.taxi_driver.activity.MapActivity"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name="ir.team_x.cloud_transport.taxi_driver.activity.MainActivity"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustResize"
