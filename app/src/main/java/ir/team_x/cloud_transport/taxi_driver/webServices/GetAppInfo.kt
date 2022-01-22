@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.activity.MainActivity
 import ir.team_x.cloud_transport.taxi_driver.app.EndPoint
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
@@ -25,6 +26,7 @@ class GetAppInfo {
                 FragmentHelper
                     .toFragment(MyApplication.currentActivity, VerificationFragment())
                     .setAddToBackStack(false)
+                    .setFrame(android.R.id.content)
                     .add()
             } else {
                 val android_id = Settings.Secure.getString(

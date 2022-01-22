@@ -83,6 +83,7 @@ class VerificationFragment : Fragment() {
                             .toFragment(MyApplication.currentActivity, CheckVerificationFragment())
                             .setArguments(bundle)
                             .setAddToBackStack(false)
+                            .setFrame(android.R.id.content)
                             .replace()
                         MyApplication.Toast(message, Toast.LENGTH_SHORT)
                     } else {

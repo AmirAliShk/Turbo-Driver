@@ -33,7 +33,7 @@
 
                 <TextView
                     android:id="@+id/txtCustomerName"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:textColor="@color/grayLighter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
 
                 <TextView
                     android:id="@+id/txtDate"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_13ssp"
                     android:textColor="@color/grayLighter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="25,000"
-                    android:textSize="@dimen/_18sdp"
+                    android:textSize="@dimen/_15sdp"
                     android:textColor="@color/colorBlack"
                     android:textStyle="bold"
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -176,7 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="تومان"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textSize="@dimen/_12sdp" />
 
 
             </LinearLayout>
