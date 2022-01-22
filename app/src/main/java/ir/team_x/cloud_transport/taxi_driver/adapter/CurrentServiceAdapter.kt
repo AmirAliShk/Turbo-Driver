@@ -52,6 +52,7 @@ class CurrentServiceAdapter() :
         holder.binding.txtDate.text = StringHelper.toPersianDigits(DateHelper.strPersianEghit(DateHelper.parseFormat(model.saveDate + "", null)))
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
+        holder.binding.txtPrice.text = StringHelper.toPersianDigits(StringHelper.setComma(model.price))
         holder.itemView.setOnClickListener {
             this.position = position
             FragmentHelper.toFragment(MyApplication.currentActivity, ServiceDetailsFragment(model,
