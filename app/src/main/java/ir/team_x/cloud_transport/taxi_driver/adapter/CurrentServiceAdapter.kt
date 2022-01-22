@@ -1,28 +1,57 @@
 package ir.team_x.cloud_transport.taxi_driver.adapter
 
 import android.annotation.SuppressLint
+import android.media.MediaPlayer
+import android.media.MediaPlayer.OnCompletionListener
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.ViewFlipper
 import androidx.recyclerview.widget.RecyclerView
 import ir.team_x.cloud_transport.taxi_driver.R
+import ir.team_x.cloud_transport.taxi_driver.activity.MainActivity.Companion.binding
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.ItemCurrentServicesBinding
 import ir.team_x.cloud_transport.taxi_driver.dialog.CallDialog
 import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog
 import ir.team_x.cloud_transport.taxi_driver.fragment.services.ServiceDetailsFragment
 import ir.team_x.cloud_transport.taxi_driver.model.ServiceDataModel
-import ir.team_x.cloud_transport.taxi_driver.utils.DateHelper
-import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
-import ir.team_x.cloud_transport.taxi_driver.utils.StringHelper
-import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtilJava
+import ir.team_x.cloud_transport.taxi_driver.push.AvaCrashReporter
 import org.json.JSONArray
+import java.io.File
+import java.lang.Error
+import java.lang.Exception
+import java.net.MalformedURLException
+import java.net.URL
+import java.util.*
+import kotlin.collections.ArrayList
+import com.downloader.Error
+import com.downloader.OnDownloadListener
+import com.downloader.PRDownloader
+import ir.team_x.cloud_transport.taxi_driver.sqllite.FindDownloadId
+import ir.team_x.cloud_transport.taxi_driver.sqllite.FinishedDownload
+import ir.team_x.cloud_transport.taxi_driver.sqllite.StartDownload
+import ir.team_x.cloud_transport.taxi_driver.utils.*
 
-class CurrentServiceAdapter() :
-    RecyclerView.Adapter<CurrentServiceAdapter.ViewHolder>() {
+
+class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewHolder>() {
+
+    companion object {
+        val TAG = CurrentServiceAdapter.javaClass.simpleName
+        private var TOTAL_VOICE_DURATION = 0
+    }
+
 
     private var serviceModels: ArrayList<ServiceDataModel> = ArrayList()
     var position = 0
+    var lastTime: Long = 0
+    lateinit var mp: MediaPlayer
+    var timer: Timer? = null
+    lateinit var mHolder: ViewHolder
 
     constructor (serviceList: ArrayList<ServiceDataModel>) : this() {
         this.serviceModels = serviceList
@@ -37,25 +66,36 @@ class CurrentServiceAdapter() :
             parent,
             false
         )
-        TypeFaceUtilJava.overrideFonts(binding.root,MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val model = serviceModels[holder.adapterPosition]
 
-        holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(JSONArray(model.destinationAddress).getJSONObject(0).getString("address"))
+        holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(
+            JSONArray(model.destinationAddress).getJSONObject(0).getString("address")
+        )
         holder.binding.llCall.setOnClickListener {
             CallDialog().show(model.phoneNumber, model.mobile)
         }
 
-        holder.binding.txtDate.text = StringHelper.toPersianDigits(DateHelper.strPersianEghit(DateHelper.parseFormat(model.saveDate + "", null)))
+        holder.binding.txtDate.text = StringHelper.toPersianDigits(
+            DateHelper.strPersianEghit(
+                DateHelper.parseFormat(
+                    model.saveDate + "",
+                    null
+                )
+            )
+        )
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.itemView.setOnClickListener {
+            mHolder = holder
             this.position = position
-            FragmentHelper.toFragment(MyApplication.currentActivity, ServiceDetailsFragment(model,
-                object : ServiceDetailsFragment.CancelServiceListener {
+            FragmentHelper.toFragment(
+                MyApplication.currentActivity, ServiceDetailsFragment(model,
+                    object : ServiceDetailsFragment.CancelServiceListener {
                         override fun onCanceled(isCancel: Boolean) {
                             if (isCancel) {
                                 serviceModels.removeAt(position)
@@ -74,12 +114,189 @@ class CurrentServiceAdapter() :
                                     .show()
                             }
                         }
-                    })).add()
+                    })
+            ).add()
         }
     }
 
     override fun getItemCount(): Int {
         return serviceModels.size
     }
+
+    private fun startDownload(
+        vfDownload: ViewFlipper?,
+        progressBar: ProgressBar,
+        textProgress: TextView,
+        urlString: String,
+        fileName: String
+    ) {
+        if (vfDownload != null) vfDownload.displayedChild = 0
+        Log.i(TAG, "show: $urlString")
+        try {
+            val url = URL(urlString)
+//            String dirPathTemp = MyApplication.DIR_ROOT + "temp/";
+            val dirPath: String = MyApplication.DIR_ROOT
+            val file = File(dirPath + MyApplication.VOICE_FOLDER_NAME + fileName)
+            var downloadId: Int = FindDownloadId.execte(urlString)
+            if (file.exists() && downloadId != -1) {
+                PRDownloader.resume(downloadId)
+            } else {
+                downloadId = PRDownloader.download(url.toString(), dirPath, fileName)
+                    .setHeader("Authorization", MyApplication.prefManager.getAuthorization())
+                    .setHeader("id_token", MyApplication.prefManager.getIdToken())
+                    .build()
+                    .setOnStartOrResumeListener {}
+                    .setOnPauseListener {}
+                    .setOnCancelListener {}
+                    .setOnProgressListener { progress ->
+                        val percent = (progress.currentBytes / progress.totalBytes as Double * 100) as Int
+                        Log.i(TAG, "onProgress: $percent")
+                        progressBar.progress = percent
+                        if (Calendar.getInstance().timeInMillis - lastTime > 500) {
+                            textProgress.text = "$percent %"
+                            lastTime = Calendar.getInstance().timeInMillis
+                        }
+                    }
+                    .start(object : OnDownloadListener() {
+                        fun onDownloadComplete() {
+                            FinishedDownload.execute(urlString)
+                            //                                FileHelper.moveFile(dirPath, fileName, dirPath);
+                            if (vfDownload != null) vfDownload.displayedChild = 1
+                            val file = File(dirPath + fileName)
+                            MyApplication.handler.postDelayed({
+                                initVoice(Uri.fromFile(file))
+                                playVoice()
+                            }, 500)
+                        }
+
+                        fun onError(error: Error) {
+//                    error.getConnectionException().printStackTrace();
+                            Log.e(TAG, "onError: " + error.getResponseCode().toString() + "")
+                            vfDownload!!.displayedChild = 2
+                            FileHelper.deleteFile(dirPath, fileName)
+                        }
+                    })
+                StartDownload.execute(downloadId, url.toString(), dirPath + fileName)
+            }
+        } catch (e: MalformedURLException) {
+            e.printStackTrace()
+            AvaCrashReporter.send(
+                e,
+                TAG + "startDownload MalformedURLException"
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+            AvaCrashReporter.send(
+                e,
+                TAG + "startDownload Exception"
+            )
+        }
+    }
+
+    private fun initVoice(uri: Uri) {
+        try {
+            mp = MediaPlayer.create(MyApplication.context, uri)
+            mp.setOnCompletionListener(OnCompletionListener { mp: MediaPlayer? ->
+                mHolder.binding.skbTimer.setProgress(0F)
+                pauseVoice()
+            })
+            TOTAL_VOICE_DURATION = mp.duration
+            mHolder.binding.skbTimer.max = TOTAL_VOICE_DURATION.toFloat()
+            val strTime = String.format(
+                Locale("en_US"),
+                "%02d:%02d",
+                TOTAL_VOICE_DURATION / 1000 / 60,
+                TOTAL_VOICE_DURATION / 1000 % 60
+            )
+//            mHolder.binding.txtTime.setText(strTime)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            AvaCrashReporter.send(e, TAG + "initVoice")
+        }
+    }
+
+    private fun playVoice() {
+        try {
+            if (mp != null) mp.start()
+//            if (mHolder.binding.vfPlayPause != null)
+            mHolder.binding.vfPlayPause.displayedChild = 1
+        } catch (e: Exception) {
+            e.printStackTrace()
+            AvaCrashReporter.send(e, TAG + "playVoice")
+        }
+        startTimer()
+    }
+
+    private fun startTimer() {
+        if (timer != null) {
+            return
+        }
+        timer = Timer()
+        val task = UpdateSeekBar()
+        timer?.scheduleAtFixedRate(task, 500, 1000)
+    }
+
+    private fun onDestroy() {
+        try {
+            pauseVoice()
+            cancelTimer()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            AvaCrashReporter.send(e, TAG + "onDestroy")
+        }
+    }
+
+    private fun pauseVoice() {
+        try {
+            if (mp != null) mp.pause()
+             mHolder.binding.vfPlayPause.displayedChild = 0
+        } catch (e: Exception) {
+            e.printStackTrace()
+            AvaCrashReporter.send(e, TAG + "pauseVoice")
+        }
+        cancelTimer()
+    }
+
+    private fun cancelTimer() {
+        try {
+            if (timer == null) return;
+            timer?.cancel()
+            timer = null
+        } catch (e: Exception) {
+            e.printStackTrace();
+            AvaCrashReporter.send(e, TAG + "cancelTimer");
+        }
+    }
+
+    private inner class UpdateSeekBar : TimerTask() {
+        override fun run() {
+            if (mp != null) {
+                try {
+                    MyApplication.handler.post {
+                        Log.i(
+                            TAG,
+                            "onStopTrackingTouch run: " + mp.currentPosition
+                        )
+                            mHolder.binding.skbTimer.setProgress(mp.currentPosition.toFloat())
+                        val timeRemaining: Int = mp.getCurrentPosition() / 1000
+                        val strTimeRemaining = String.format(
+                            Locale("en_US"),
+                            "%02d:%02d",
+                            timeRemaining / 60,
+                            timeRemaining % 60
+                        )
+//                        mHolder.binding.txtTimeRemaining.setText(strTimeRemaining)
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    AvaCrashReporter.send(
+                        e,
+                        TAG + "UpdateSeekBar"
+                    )
+                }
+            }
+        }
+    }
+
 
 }

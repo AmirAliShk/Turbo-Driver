@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Environment
 import android.os.Handler
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -23,6 +24,8 @@ import org.acra.config.CoreConfigurationBuilder
 import org.acra.config.HttpSenderConfigurationBuilder
 import org.acra.data.StringFormat
 import org.acra.sender.HttpSender
+import java.io.File
+import java.io.IOException
 import java.util.*
 
 //
@@ -41,6 +44,10 @@ class MyApplication : Application() {
         val iranSansBold = "fonts/IRANSANS_BOLD.TTF"
         val iranSansMedium = "fonts/IRANSANS_MEDIUM.TTF"
         val SOUND = "android.resource://ir.team_x.ariana.driver/";
+
+        val DIR_ROOT = Environment.getExternalStorageDirectory().absolutePath + "/TaxiDriverCloudTransport/"
+        val VOICE_FOLDER_NAME = "voice/"
+
         lateinit var iranSansTF: Typeface
         lateinit var iranSansBoldTF: Typeface
         lateinit var iranSansMediumTF: Typeface
@@ -104,6 +111,13 @@ class MyApplication : Application() {
         initTypeFace()
 
         prefManager = PrefManager(context)
+
+        val file = File(DIR_ROOT + VOICE_FOLDER_NAME + ".nomedia")
+        try {
+            file.createNewFile()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
 
         val languageToLoad = "fa_IR"
         val locale = Locale(languageToLoad)
