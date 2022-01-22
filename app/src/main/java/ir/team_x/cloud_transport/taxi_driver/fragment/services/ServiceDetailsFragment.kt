@@ -65,7 +65,7 @@ class ServiceDetailsFragment(
 
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
-        binding.txtPrice.text = StringHelper.toPersianDigits(StringHelper.setComma(serviceModel.price +" تومان"))
+        binding.txtPrice.text =  "${StringHelper.toPersianDigits(StringHelper.setComma(serviceModel.price))} تومان "
         binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(
             JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address")
         )
