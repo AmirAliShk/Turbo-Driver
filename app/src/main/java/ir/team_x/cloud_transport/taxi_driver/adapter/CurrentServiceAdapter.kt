@@ -23,7 +23,6 @@ import ir.team_x.cloud_transport.taxi_driver.model.ServiceDataModel
 import ir.team_x.cloud_transport.taxi_driver.push.AvaCrashReporter
 import org.json.JSONArray
 import java.io.File
-import java.lang.Error
 import java.lang.Exception
 import java.net.MalformedURLException
 import java.net.URL
@@ -149,7 +148,8 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
                     .setOnPauseListener {}
                     .setOnCancelListener {}
                     .setOnProgressListener { progress ->
-                        val percent = (progress.currentBytes / progress.totalBytes as Double * 100) as Int
+                        val percent =
+                            (progress.currentBytes / progress.totalBytes as Double * 100) as Int
                         Log.i(TAG, "onProgress: $percent")
                         progressBar.progress = percent
                         if (Calendar.getInstance().timeInMillis - lastTime > 500) {
@@ -157,8 +157,8 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
                             lastTime = Calendar.getInstance().timeInMillis
                         }
                     }
-                    .start(object : OnDownloadListener() {
-                        fun onDownloadComplete() {
+                    .start(object : OnDownloadListener {
+                        override fun onDownloadComplete() {
                             FinishedDownload.execute(urlString)
                             //                                FileHelper.moveFile(dirPath, fileName, dirPath);
                             if (vfDownload != null) vfDownload.displayedChild = 1
@@ -169,7 +169,7 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
                             }, 500)
                         }
 
-                        fun onError(error: Error) {
+                        override fun onError(error: Error) {
 //                    error.getConnectionException().printStackTrace();
                             Log.e(TAG, "onError: " + error.getResponseCode().toString() + "")
                             vfDownload!!.displayedChild = 2
@@ -217,7 +217,7 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
 
     private fun playVoice() {
         try {
-            if (mp != null) mp.start()
+            mp.start()
 //            if (mHolder.binding.vfPlayPause != null)
             mHolder.binding.vfPlayPause.displayedChild = 1
         } catch (e: Exception) {
@@ -248,8 +248,8 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
 
     private fun pauseVoice() {
         try {
-            if (mp != null) mp.pause()
-             mHolder.binding.vfPlayPause.displayedChild = 0
+            mp.pause()
+            mHolder.binding.vfPlayPause.displayedChild = 0
         } catch (e: Exception) {
             e.printStackTrace()
             AvaCrashReporter.send(e, TAG + "pauseVoice")
@@ -277,7 +277,7 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
                             TAG,
                             "onStopTrackingTouch run: " + mp.currentPosition
                         )
-                            mHolder.binding.skbTimer.setProgress(mp.currentPosition.toFloat())
+                        mHolder.binding.skbTimer.setProgress(mp.currentPosition.toFloat())
                         val timeRemaining: Int = mp.getCurrentPosition() / 1000
                         val strTimeRemaining = String.format(
                             Locale("en_US"),

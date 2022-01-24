@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import ir.taxi1880.driver.sqliteDB.LocalDBIO;
 
 public class FindDownloadId {
     public static int execte(String url) {
