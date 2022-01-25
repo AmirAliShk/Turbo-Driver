@@ -135,24 +135,39 @@
                     android:layout_height="@dimen/_27sdp">
 
                     <ImageView
-                        android:id="@+id/playVoice"
+                        android:id="@+id/imgPlayVoice"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="@dimen/_2sdp"
                         android:src="@drawable/ic_play" />
 
                     <ImageView
-                        android:id="@+id/pauseVoice"
+                        android:id="@+id/imgPauseVoice"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="@dimen/_2sdp"
-                        android:src="@drawable/ic_puse" />
+                        android:src="@drawable/ic_pause" />
+
+
+                    <com.wang.avi.AVLoadingIndicatorView
+                        android:padding="@dimen/_5sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:indicatorColor="@color/colorAccent"
+                        app:indicatorName="BallBeatIndicator" />
 
                 </ViewFlipper>
 
+                <ViewFlipper
+                    android:id="@+id/vfSkbTimer"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+
                 <com.warkiz.widget.IndicatorSeekBar
                     android:id="@+id/skbTimer"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
                     android:layout_gravity="center"
@@ -165,6 +180,18 @@
                     app:isb_track_background_size="3dp"
                     app:isb_track_progress_color="@color/grayDark"
                     app:isb_track_progress_size="5dp" />
+
+                    <TextView
+                        style="@style/Details_answer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="در حال دانلود"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:textColor="@color/grayDark" />
+
+                </ViewFlipper>
 
             </LinearLayout>
 
@@ -200,7 +227,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_marginRight="@dimen/_10sdp"
-                    android:text="25,000"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_15sdp"
                     android:textStyle="bold" />

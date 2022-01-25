@@ -31,6 +31,7 @@ import kotlin.collections.ArrayList
 import com.downloader.Error
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
+import ir.team_x.cloud_transport.taxi_driver.app.EndPoint
 import ir.team_x.cloud_transport.taxi_driver.sqllite.FindDownloadId
 import ir.team_x.cloud_transport.taxi_driver.sqllite.FinishedDownload
 import ir.team_x.cloud_transport.taxi_driver.sqllite.StartDownload
@@ -70,6 +71,7 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
     }
 
     override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
+
         val model = serviceModels[holder.adapterPosition]
 
         holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(
@@ -87,10 +89,32 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
                 )
             )
         )
+
+
+
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
-        holder.itemView.setOnClickListener {
+        holder.binding.imgPlayVoice.setOnClickListener {
             mHolder = holder
+            val voiceName = "${model.id}.mp3"
+            val file = File(MyApplication.DIR_ROOT + MyApplication.VOICE_FOLDER_NAME + voiceName)
+            if (file.exists()) {
+                initVoice(Uri.fromFile(file))
+                playVoice()
+                holder.binding.vfPlayPause.displayedChild = 1 //todo check shavad
+            } else {
+                startDownload(
+                    holder.binding.vfPlayPause,
+//                holder.binding.progressBar,
+//                holder.binding.textProgress,
+                    "${EndPoint.GET_VOICE}/${model.id}",
+                    voiceName,
+                    mHolder
+                )
+                holder.binding.vfPlayPause.displayedChild = 2 //todo check shavad
+            } }
+
+        holder.itemView.setOnClickListener {
             this.position = position
             FragmentHelper.toFragment(
                 MyApplication.currentActivity, ServiceDetailsFragment(model,
@@ -124,12 +148,12 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
 
     private fun startDownload(
         vfDownload: ViewFlipper?,
-        progressBar: ProgressBar,
-        textProgress: TextView,
+//        progressBar: ProgressBar,
+//        textProgress: TextView,
         urlString: String,
-        fileName: String
-    ) {
-        if (vfDownload != null) vfDownload.displayedChild = 0
+        fileName: String,
+    holder: ViewHolder) {
+        holder.binding.vfPlayPause.displayedChild = 2
         Log.i(TAG, "show: $urlString")
         try {
             val url = URL(urlString)
@@ -151,17 +175,18 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
                         val percent =
                             (progress.currentBytes / progress.totalBytes as Double * 100) as Int
                         Log.i(TAG, "onProgress: $percent")
-                        progressBar.progress = percent
+//                        progressBar.progress = percent //todo checking for progress
                         if (Calendar.getInstance().timeInMillis - lastTime > 500) {
-                            textProgress.text = "$percent %"
-                            lastTime = Calendar.getInstance().timeInMillis
+//                            textProgress.text = "$percent %" //todo checking for progress
+                            lastTime = Calendar.getInstance().timeInMillis // todo try to checking again
                         }
                     }
                     .start(object : OnDownloadListener {
                         override fun onDownloadComplete() {
                             FinishedDownload.execute(urlString)
                             //                                FileHelper.moveFile(dirPath, fileName, dirPath);
-                            if (vfDownload != null) vfDownload.displayedChild = 1
+//                            if (holder.binding.vfPlayPause != null)
+                            holder.binding.vfPlayPause.displayedChild = 0
                             val file = File(dirPath + fileName)
                             MyApplication.handler.postDelayed({
                                 initVoice(Uri.fromFile(file))
@@ -218,7 +243,6 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
     private fun playVoice() {
         try {
             mp.start()
-//            if (mHolder.binding.vfPlayPause != null)
             mHolder.binding.vfPlayPause.displayedChild = 1
         } catch (e: Exception) {
             e.printStackTrace()
