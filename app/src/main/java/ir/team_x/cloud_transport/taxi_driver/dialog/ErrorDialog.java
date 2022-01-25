@@ -78,7 +78,7 @@ public class ErrorDialog {
 //    wlp.windowAnimations = R.style.ExpandAnimation;
         dialog.getWindow().setAttributes(wlp);
 
-        dialog.setCancelable(true);
+        dialog.setCancelable(false);
 
         binding.imgClose.setOnClickListener(v -> {
             if (closeRunnable != null)

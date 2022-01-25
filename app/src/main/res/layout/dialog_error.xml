@@ -5,9 +5,9 @@
     android:layoutDirection="rtl">
 
     <RelativeLayout
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,15 +18,15 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="0.5"/>
+                android:layout_weight="0.5" />
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="5"
                 android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/_15sdp"
+                android:layout_weight="5"
                 android:background="@drawable/background4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_15sdp">
 
                 <TextView
                     android:id="@+id/textView21"
@@ -54,6 +54,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="0.25" />
 
+
                     <ImageView
                         android:id="@+id/imgTryAgain"
                         android:layout_width="0dp"
@@ -62,24 +63,38 @@
                         android:background="@drawable/bg_green"
                         android:elevation="@dimen/_3sdp"
                         android:padding="@dimen/_8sdp"
-                        android:src="@drawable/ic_refresh" />
-
+                        android:src="@drawable/ic_refresh"
+                        android:visibility="gone" />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="0.25" />
+                        android:layout_weight="0.25"
+                        android:visibility="gone" />
 
 
-                    <ImageView
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/imgClose"-->
+                    <!--                        android:layout_width="0dp"-->
+                    <!--                        android:layout_height="@dimen/_35sdp"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:background="@drawable/bg_redd"-->
+                    <!--                        android:elevation="@dimen/_3sdp"-->
+                    <!--                        android:padding="@dimen/_10sdp"-->
+                    <!--                        android:src="@drawable/ic_canclee" />-->
+
+                    <TextView
                         android:id="@+id/imgClose"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_redd"
                         android:elevation="@dimen/_3sdp"
-                        android:padding="@dimen/_10sdp"
-                        android:src="@drawable/ic_canclee" />
+                        android:gravity="center"
+                        android:padding="@dimen/_6sdp"
+                        android:text="بستن"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="17sp" />
 
 
                     <View
@@ -95,7 +110,7 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="0.5"/>
+                android:layout_weight="0.5" />
 
         </LinearLayout>
 
