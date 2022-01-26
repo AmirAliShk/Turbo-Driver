@@ -42,19 +42,24 @@ class GetServiceDialog() {
         )
         binding.txtFirstDestAddress.text =StringHelper.toPersianDigits(serviceModel.destinationDesc)
         binding.btnGetService.setOnClickListener {
-            binding.vfAcceptService.displayedChild = 1
-            AcceptService().accept(serviceModel.serviceID, object : Listener {
-                override fun onSuccess() {
-                    binding.vfAcceptService.displayedChild = 0
-                    dismiss()
+            GeneralDialog()
+                .message("از دریافت سرویس اطمینان دارید؟")
+                .firstButton("بله") {
+                    binding.vfAcceptService.displayedChild = 1
+                    AcceptService().accept(serviceModel.serviceID, object : Listener {
+                        override fun onSuccess() {
+                            binding.vfAcceptService.displayedChild = 0
+                            dismiss()
+                        }
 
+                        override fun onFailure() {
+                            binding.vfAcceptService.displayedChild = 0
+                            dismiss()
+                        }
+                    })
                 }
-
-                override fun onFailure() {
-                    binding.vfAcceptService.displayedChild = 0
-                    dismiss()
-                }
-            })
+                .secondButton("خیر") {}
+                .show()
         }
 
         binding.imgClose.setOnClickListener {

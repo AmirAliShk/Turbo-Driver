@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.ActivityGetServiceBinding
+import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog
 import ir.team_x.cloud_transport.taxi_driver.utils.KeyBoardHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.StringHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtilJava
@@ -59,20 +60,25 @@ class GetServiceActivity : AppCompatActivity() {
             }
 
             binding.btnGetService.setOnClickListener {
-                binding.vfAcceptService.displayedChild = 1
-                AcceptService().accept(serviceId!!, object : AcceptService.Listener {
-                    override fun onSuccess() {
-                        binding.vfAcceptService.displayedChild = 0
-                        val intent = Intent(MyApplication.context, SplashActivity::class.java)
-                        startActivity(intent)
+                GeneralDialog()
+                    .message("از دریافت سرویس اطمینان دارید؟")
+                    .firstButton("بله") {
+                        binding.vfAcceptService.displayedChild = 1
+                        AcceptService().accept(serviceId!!, object : AcceptService.Listener {
+                            override fun onSuccess() {
+                                binding.vfAcceptService.displayedChild = 0
+                                val intent = Intent(MyApplication.context, SplashActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
 
-                        finish()
+                            override fun onFailure() {
+                                binding.vfAcceptService.displayedChild = 0
+                            }
+                        })
                     }
-
-                    override fun onFailure() {
-                        binding.vfAcceptService.displayedChild = 0
-                    }
-                })
+                    .secondButton("خیر") {}
+                    .show()
             }
 
         }, 200)
