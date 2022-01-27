@@ -43,6 +43,18 @@ class PrefManager {
     private val CARD_NUMBER = "cardNumber"
     private val CARD_NAME = "cardName"
     private val SUPPORT_NUMBER = "supportNumber"
+    private val IS_FROM_GET_SERVICE_ACTIVITY = "IsFromGetServiceActivity"
+
+
+    var isFromGetServiceActivity: Boolean
+        get() {
+            return sharedPreferences.getBoolean(IS_FROM_GET_SERVICE_ACTIVITY, false)
+        }
+        set(isFromGetServiceActivity) {
+            editor.putBoolean(IS_FROM_GET_SERVICE_ACTIVITY, isFromGetServiceActivity)
+            editor.commit()
+        }
+
 
     var supportNumber: String?
         get() {

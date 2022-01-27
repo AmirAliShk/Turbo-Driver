@@ -50,7 +50,7 @@ import android.view.KeyEvent
 
 class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     companion object{
-        val TAG = MapFragment::class.java.getSimpleName()
+        val TAG = MapFragment::class.java.simpleName
     }
     private lateinit var binding: FragmentMapBinding
     lateinit var googleMap: GoogleMap
@@ -79,6 +79,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         binding.map.onCreate(savedInstanceState)
         MapsInitializer.initialize(MyApplication.context)
         binding.map.getMapAsync(this)
+
+
+        if (MyApplication.prefManager.isFromGetServiceActivity)
+        {
+            MyApplication.prefManager.isFromGetServiceActivity = false
+            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment()).replace()
+        }
 
         locationAssistant = LocationAssistant(
             MyApplication.context,

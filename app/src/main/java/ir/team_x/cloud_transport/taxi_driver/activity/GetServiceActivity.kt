@@ -3,6 +3,7 @@ package ir.team_x.cloud_transport.taxi_driver.activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -67,6 +68,7 @@ class GetServiceActivity : AppCompatActivity() {
                         AcceptService().accept(serviceId!!, object : AcceptService.Listener {
                             override fun onSuccess() {
                                 binding.vfAcceptService.displayedChild = 0
+                                MyApplication.prefManager.isFromGetServiceActivity = true
                                 val intent = Intent(MyApplication.context, SplashActivity::class.java)
                                 startActivity(intent)
                                 finish()
