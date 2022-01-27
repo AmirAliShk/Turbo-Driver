@@ -7,7 +7,9 @@ import android.view.*
 import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.DialogGetServiceBinding
+import ir.team_x.cloud_transport.taxi_driver.fragment.services.CurrentServiceFragment
 import ir.team_x.cloud_transport.taxi_driver.model.ServiceModel
+import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.StringHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtilJava
 import ir.team_x.cloud_transport.taxi_driver.webServices.AcceptService
@@ -50,6 +52,11 @@ class GetServiceDialog() {
                         override fun onSuccess() {
                             binding.vfAcceptService.displayedChild = 0
                             dismiss()
+                            if (CurrentServiceFragment.isRunning) {
+                                CurrentServiceFragment.getActiveService()
+                            }else {
+                                FragmentHelper.toFragment(MyApplication.currentActivity,CurrentServiceFragment()).replace()
+                            }
                         }
 
                         override fun onFailure() {
