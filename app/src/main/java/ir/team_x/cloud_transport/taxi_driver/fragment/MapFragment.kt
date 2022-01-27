@@ -80,13 +80,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         MapsInitializer.initialize(MyApplication.context)
         binding.map.getMapAsync(this)
 
-
-        if (MyApplication.prefManager.isFromGetServiceActivity)
-        {
-            MyApplication.prefManager.isFromGetServiceActivity = false
-            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment()).replace()
-        }
-
         locationAssistant = LocationAssistant(
             MyApplication.context,
             this,
@@ -111,6 +104,11 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي به شما وجود ندارد."
         } else {
             binding.txtLock.visibility = View.INVISIBLE
+            if (MyApplication.prefManager.isFromGetServiceActivity)
+            {
+                MyApplication.prefManager.isFromGetServiceActivity = false
+                FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment()).replace()
+            }
         }
 
         binding.imgMenu.setOnClickListener {
