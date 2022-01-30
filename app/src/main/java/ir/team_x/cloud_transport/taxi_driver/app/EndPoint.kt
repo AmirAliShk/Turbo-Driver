@@ -7,8 +7,8 @@ class EndPoint {
         val IP = "http://transport.team-x.ir:7070"
         val HAWKEYE_IP = "http://transport.team-x.ir:7071"
         const val CRASH_REPORT = "http://api.arianadelivery.ir:6061/api/v1/crashReport"
-        val RULL = "http://arianadelivery.ir/rule/delivery"
-
+//        val RULL = "http://arianadelivery.ir/rule/delivery"
+        val RULL = "http://transport.team-x.ir:7073/rule/taxi"
         const val PUSH_ADDRESS = "http://api.arianadelivery.ir:6060"
         val BASE_PATH = "$IP/api/taxi/v1"
         private val FINANCIAL_PATH = "$BASE_PATH/financial"
