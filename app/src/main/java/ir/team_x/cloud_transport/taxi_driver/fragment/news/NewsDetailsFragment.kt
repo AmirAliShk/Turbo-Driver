@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.FragmentNewsDetailsBinding
 import ir.team_x.cloud_transport.taxi_driver.utils.StringHelper
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 
 import android.net.Uri
 

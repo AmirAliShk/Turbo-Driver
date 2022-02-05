@@ -55,7 +55,7 @@ public class DataGatheringService extends Service {
     public Location location;
     Context context;
     private PrefManager prefManager;
-    String CHANNEL_ID= "DrDGSForegroundServiceChannel";
+    String CHANNEL_ID = "DrDGSForegroundServiceChannel";
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -63,7 +63,7 @@ public class DataGatheringService extends Service {
     }
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
         broadcaster = LocalBroadcastManager.getInstance(this);
         context = this;
@@ -159,7 +159,7 @@ public class DataGatheringService extends Service {
 
 
     // Send Data to View with BroadCast
-    static final public String GDS_RESULT = "ir.team_x.cloud_transport.DataGatheringService";
+    static final public String GDS_RESULT = MyApplication.context.getPackageName();
     static final public String GDS_SPEED = "Service_SPD";
     static final public String GDS_LAT = "Service_lat";
     static final public String GDS_LON = "Service_lon";

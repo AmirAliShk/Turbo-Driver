@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.FragmentProfileBinding
-import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding

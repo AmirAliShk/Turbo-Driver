@@ -12,7 +12,7 @@ import ir.team_x.cloud_transport.taxi_driver.databinding.FragmentAccountReportBi
 import ir.team_x.cloud_transport.taxi_driver.model.AccountReportModel
 import ir.team_x.cloud_transport.taxi_driver.okHttp.RequestHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.DateHelper
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import org.json.JSONObject
 
 class AccountReportFragment : Fragment() {

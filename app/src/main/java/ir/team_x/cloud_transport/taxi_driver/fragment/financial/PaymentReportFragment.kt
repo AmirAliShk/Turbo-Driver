@@ -11,7 +11,7 @@ import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.FragmentPaymentReportBinding
 import ir.team_x.cloud_transport.taxi_driver.model.PaymentReportModel
 import ir.team_x.cloud_transport.taxi_driver.okHttp.RequestHelper
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import org.json.JSONObject
 
 class PaymentReportFragment : Fragment() {

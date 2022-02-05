@@ -15,7 +15,7 @@ import ir.team_x.cloud_transport.taxi_driver.databinding.FragmentOnlinePaymentBi
 import ir.team_x.cloud_transport.taxi_driver.push.AvaCrashReporter
 import ir.team_x.cloud_transport.taxi_driver.utils.StringHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtilJava
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 
 
 class OnlinePaymentFragment : Fragment() {

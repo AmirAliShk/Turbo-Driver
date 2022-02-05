@@ -11,7 +11,7 @@ import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.FragmentNewsBinding
 import ir.team_x.cloud_transport.taxi_driver.model.NewsModel
 import ir.team_x.cloud_transport.taxi_driver.okHttp.RequestHelper
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import org.json.JSONObject
 
 class NewsFragment : Fragment() {

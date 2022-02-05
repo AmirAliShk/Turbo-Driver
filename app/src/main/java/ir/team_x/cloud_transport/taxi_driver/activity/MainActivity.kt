@@ -3,12 +3,10 @@ package ir.team_x.cloud_transport.taxi_driver.activity
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.core.view.doOnPreDraw
 import androidx.drawerlayout.widget.DrawerLayout
 import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
@@ -19,7 +17,7 @@ import ir.team_x.cloud_transport.taxi_driver.fragment.news.NewsDetailsFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.news.NewsFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.services.ServiceHistoryFragment
 import ir.team_x.cloud_transport.taxi_driver.utils.*
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import ir.team_x.cloud_transport.taxi_driver.fragment.MapFragment
 
 

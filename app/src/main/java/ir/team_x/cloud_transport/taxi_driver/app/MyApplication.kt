@@ -17,7 +17,7 @@ import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.fragment.services.FreeLoadsFragment
 import ir.team_x.cloud_transport.taxi_driver.push.AvaFactory
 import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import org.acra.ACRA
 import org.acra.config.CoreConfigurationBuilder
 import org.acra.config.HttpSenderConfigurationBuilder
@@ -40,7 +40,7 @@ class MyApplication : Application() {
         val iranSans = "fonts/IRANSans.otf"
         val iranSansBold = "fonts/IRANSANS_BOLD.TTF"
         val iranSansMedium = "fonts/IRANSANS_MEDIUM.TTF"
-        val SOUND = "android.resource://ir.team_x.ariana.driver/";
+        lateinit var SOUND :String
         lateinit var iranSansTF: Typeface
         lateinit var iranSansBoldTF: Typeface
         lateinit var iranSansMediumTF: Typeface
@@ -102,7 +102,7 @@ class MyApplication : Application() {
         context = applicationContext
         handler = Handler()
         initTypeFace()
-
+        SOUND = "android.resource://${context.packageName}/"
         prefManager = PrefManager(context)
 
         val languageToLoad = "fa_IR"

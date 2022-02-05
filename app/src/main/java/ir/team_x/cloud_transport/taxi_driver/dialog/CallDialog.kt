@@ -16,7 +16,7 @@ import ir.team_x.cloud_transport.taxi_driver.okHttp.RequestHelper
 import ir.team_x.cloud_transport.taxi_driver.push.AvaCrashReporter
 import ir.team_x.cloud_transport.taxi_driver.utils.CallHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.KeyBoardHelper
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import org.json.JSONObject
 
 class CallDialog {

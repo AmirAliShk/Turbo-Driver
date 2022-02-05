@@ -15,10 +15,9 @@ import ir.team_x.cloud_transport.taxi_driver.app.DataHolder
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.ActivitySplashBinding
 import ir.team_x.cloud_transport.taxi_driver.dialog.OverlayPermissionDialog
-import ir.team_x.cloud_transport.taxi_driver.utils.AppVersionHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.KeyBoardHelper
 import ir.team_x.cloud_transport.taxi_driver.webServices.GetAppInfo
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import org.acra.ACRA
 
 class SplashActivity : AppCompatActivity() {

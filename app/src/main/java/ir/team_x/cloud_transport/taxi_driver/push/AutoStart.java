@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import ir.team_x.cloud_transport.taxi_driver.app.AppKeys;
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication;
 import ir.team_x.cloud_transport.taxi_driver.utils.NetworkUtil;
 import ir.team_x.cloud_transport.taxi_driver.utils.ServiceHelper;
@@ -27,15 +28,12 @@ public class AutoStart extends BroadcastReceiver {
           AvaLog.i("start push service by boot completed");
           ServiceHelper.start(context, AvaService.class);
           break;
-        case "ir.taxi1880.driver.PUSH_SERVICE_DESTROY":
-          MyApplication.handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-              if (!ServiceHelper.isRunning(context, AvaService.class)) {
-                ServiceHelper.start(context, AvaService.class);
-                AvaLog.i("start push service by on destroy listener");
+        case "PUSH_SERVICE_DESTROY":
+          MyApplication.handler.postDelayed(() -> {
+            if (!ServiceHelper.isRunning(context, AvaService.class)) {
+              ServiceHelper.start(context, AvaService.class);
+              AvaLog.i("start push service by on destroy listener");
 
-              }
             }
           }, 15000);
           break;

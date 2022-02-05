@@ -21,7 +21,7 @@ import ir.team_x.cloud_transport.taxi_driver.utils.StringHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtilJava
 import ir.team_x.cloud_transport.taxi_driver.room.CardNumber
 import ir.team_x.cloud_transport.taxi_driver.room.MyDB
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import org.json.JSONObject
 
 class ATMFragment : Fragment() {

@@ -14,7 +14,7 @@ public class Keys {
   static final int INTERNET_PROBLEM = -200;
 
   public static final String EVENT_PUSH = "push";
-  public static final String EVENT_ERROR = "ebtekar_error";
-  public static final String EVENT_CONFIG = "ebtekar_config";
+  public static final String EVENT_ERROR = "error";
+  public static final String EVENT_CONFIG = "config";
 
 }

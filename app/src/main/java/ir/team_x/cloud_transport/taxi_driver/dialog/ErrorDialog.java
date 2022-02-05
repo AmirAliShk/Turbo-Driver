@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication;
 import ir.team_x.cloud_transport.taxi_driver.databinding.DialogErrorBinding;
 import ir.team_x.cloud_transport.taxi_driver.push.AvaCrashReporter;
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil;
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil;
 
 public class ErrorDialog {
     static Dialog dialog;

@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication;
 import ir.team_x.cloud_transport.taxi_driver.databinding.DialogGeneralBinding;
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil;
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil;
 
 public class GeneralDialog {
 

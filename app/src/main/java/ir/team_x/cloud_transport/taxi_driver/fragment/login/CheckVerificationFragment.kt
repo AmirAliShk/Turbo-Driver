@@ -22,7 +22,7 @@ import ir.team_x.cloud_transport.taxi_driver.push.AvaCrashReporter
 import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.KeyBoardHelper
 import ir.team_x.cloud_transport.taxi_driver.webServices.GetAppInfo
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
 

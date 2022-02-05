@@ -12,26 +12,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.GravityCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
-import ir.team_x.cloud_transport.operator.utils.TypeFaceUtil
+import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import ir.team_x.cloud_transport.taxi_driver.R
-import ir.team_x.cloud_transport.taxi_driver.activity.MainActivity
 import ir.team_x.cloud_transport.taxi_driver.activity.MainActivity.Companion.openDrawer
 import ir.team_x.cloud_transport.taxi_driver.app.EndPoint
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
-import ir.team_x.cloud_transport.taxi_driver.databinding.FragmentChatBinding
 import ir.team_x.cloud_transport.taxi_driver.databinding.FragmentMapBinding
 import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog
 import ir.team_x.cloud_transport.taxi_driver.fragment.financial.FinancialFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.news.NewsFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.services.CurrentServiceFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.services.FreeLoadsFragment
-import ir.team_x.cloud_transport.taxi_driver.fragment.services.ServiceHistoryFragment
 import ir.team_x.cloud_transport.taxi_driver.gps.DataGatheringService
 import ir.team_x.cloud_transport.taxi_driver.gps.GPSEnable
 import ir.team_x.cloud_transport.taxi_driver.gps.LocationAssistant
@@ -44,8 +40,6 @@ import java.util.*
 import android.graphics.Bitmap
 
 import android.graphics.BitmapFactory
-import android.util.Log
-import android.view.KeyEvent
 
 
 class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
