@@ -62,7 +62,13 @@ class GetPriceDialog {
                 binding.edtPrice.requestFocus()
                 return@setOnClickListener
             }
-            finish(serId, binding.edtPrice.text.trim().toString())
+            GeneralDialog()
+                .message("از اتمام سرویس اطمینان دارید؟")
+                .firstButton("بله") {
+                    finish(serId, binding.edtPrice.text.trim().toString())
+                }
+                .secondButton("خیر") {}
+                .show()
         }
 
         dialog.show()
