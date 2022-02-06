@@ -6,21 +6,21 @@
     android:layoutDirection="rtl">
 
     <LinearLayout
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="160dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/_20sdp"
         android:background="@drawable/background4"
+        android:elevation="@dimen/_5sdp"
         android:orientation="vertical"
-        android:elevation="@dimen/_5sdp">
+        android:paddingVertical="@dimen/_10sdp">
 
         <TextView
             android:id="@+id/txtMessage"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
             android:gravity="bottom|center_horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:padding="@dimen/_10sdp"
             android:text="خطای عدم اتصال به اینترنت لطفا پس از بررسی ارتباط خود به اینترنت مجدد چک کنید"
             android:textColor="@color/colorBlack"
             android:textSize="19sp" />
@@ -28,8 +28,7 @@
         <LinearLayout
             android:id="@+id/llBtnView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -43,12 +42,11 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_weight="1"
-                android:textColor="@color/colorWhite"
                 android:background="@drawable/bg_green"
-                android:textSize="@dimen/_17sdp"
+                android:elevation="@dimen/_3sdp"
                 android:padding="@dimen/_5sdp"
-                android:elevation="@dimen/_3sdp"/>
-
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_17sdp" />
 
             <View
                 android:id="@+id/space"
@@ -56,24 +54,21 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.25" />
 
-
             <Button
                 android:id="@+id/btnNegative"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_weight="1"
-                android:textColor="@color/colorWhite"
                 android:background="@drawable/bg_redd"
-                android:textSize="@dimen/_17sdp"
+                android:elevation="@dimen/_3sdp"
                 android:padding="@dimen/_5sdp"
-                android:elevation="@dimen/_3sdp"/>
-
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_17sdp" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="0.25" />
-
 
         </LinearLayout>
 
