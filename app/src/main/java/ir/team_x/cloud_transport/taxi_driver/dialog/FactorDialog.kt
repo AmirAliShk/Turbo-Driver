@@ -46,7 +46,15 @@ class FactorDialog {
         this.finishServiceListener = finishServiceListener
 
         binding.imgClose.setOnClickListener { dismiss() }
-        binding.btnEndTrip.setOnClickListener { finish(serId, priceObj.getString("priceService")) }
+        binding.btnEndTrip.setOnClickListener {
+            GeneralDialog()
+                .message("از اتمام سرویس اطمینان دارید؟")
+                .firstButton("بله") {
+                    finish(serId, priceObj.getString("priceService"))
+                }
+                .secondButton("خیر") {}
+                .show()
+        }
         binding.txtTotalAmount.text =
             StringHelper.toPersianDigits(StringHelper.setComma(priceObj.getString("priceService")))
         binding.txtTax.text =
@@ -89,7 +97,7 @@ class FactorDialog {
                                 override fun getCharge(charge: String) {
                                 }
                             })
-                            GeneralDialog().message(message).firstButton("باشه"){
+                            GeneralDialog().message(message).firstButton("باشه") {
                                 MyApplication.currentActivity.onBackPressed()
                             }.show()
                             finishServiceListener.onFinishService(true)
