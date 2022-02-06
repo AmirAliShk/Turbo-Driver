@@ -137,7 +137,7 @@ class CheckVerificationFragment : Fragment() {
                         val repetitionTime = objData.getInt("repetitionTime")
                         MyApplication.prefManager.setRepetitionTime(repetitionTime)
                     } else {
-                        GeneralDialog().message(message).secondButton("باشه") {}.cancelable(false)
+                        GeneralDialog().message(message).secondButton("باشه") {}
                             .show()
                     }
 

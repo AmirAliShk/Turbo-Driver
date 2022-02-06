@@ -432,34 +432,12 @@ public class RequestHelper implements okhttp3.Callback {
 
     private void showMessage() {
         MyApplication.handler.post(() -> {
-            //TODO correct this in next version
-//    Unprocessable Entity{"message":"Unprocessable Entity","data":[{"field":"stationCode","message":"کد ایستگاه صحیح نیست"}],"success":false}
-//      try {
-//        JSONObject dataObj = new JSONObject(error);
-//        boolean success = dataObj.getBoolean("success");
-//        JSONArray dataArr = dataObj.getJSONArray("data");
-//        String message = "";
-//        if (!success) {
-//          for (int i = 0; i < dataArr.length(); i++) {
-//            JSONObject object = dataArr.getJSONObject(i);
-//            message = message + object.getString("message") + "\n";
-//          }
-
             new GeneralDialog()
-                    .title("هشدار")
                     .message("اطلاعات صحیح نمیباشد")
-                    .cancelable(false)
                     .firstButton("باشه", null)
                     .show();
-//        }
-
-//      } catch (JSONException e) {
-//        e.printStackTrace();
-//      }
         });
     }
-
-    private static ErrorDialog errorDialog;
 
     public void showError(final String message) {
         if (MyApplication.currentActivity == null || MyApplication.currentActivity.isFinishing())
@@ -470,16 +448,9 @@ public class RequestHelper implements okhttp3.Callback {
                 MyApplication.handler.post(() -> {
                     if (hideNetworkError)
                         return;
-                    if (errorDialog == null) {
-                        errorDialog = new ErrorDialog();
-                        errorDialog.titleText("خطایی رخ داده است");
-                        errorDialog.messageText(message);
-                        errorDialog.cancelable(false);
-                        errorDialog.closeBtnRunnable("بستن", () -> errorDialog.dismiss());
-                        errorDialog.tryAgainBtnRunnable("تلاش مجدد", () -> runnable.run());
-                    }
-                    ErrorDialog.dismiss();
-                    errorDialog.show();
+                    ErrorDialog.Companion.message(message);
+                    ErrorDialog.Companion.dismiss();
+                    ErrorDialog.Companion.show();
                 });
             } catch (Exception e) {
                 e.printStackTrace();

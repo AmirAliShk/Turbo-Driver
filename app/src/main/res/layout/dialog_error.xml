@@ -29,7 +29,7 @@
                 android:paddingVertical="@dimen/_15sdp">
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/txtMessage"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.35"
@@ -72,19 +72,8 @@
                         android:layout_weight="0.25"
                         android:visibility="gone" />
 
-
-                    <!--                    <ImageView-->
-                    <!--                        android:id="@+id/imgClose"-->
-                    <!--                        android:layout_width="0dp"-->
-                    <!--                        android:layout_height="@dimen/_35sdp"-->
-                    <!--                        android:layout_weight="1"-->
-                    <!--                        android:background="@drawable/bg_redd"-->
-                    <!--                        android:elevation="@dimen/_3sdp"-->
-                    <!--                        android:padding="@dimen/_10sdp"-->
-                    <!--                        android:src="@drawable/ic_canclee" />-->
-
                     <TextView
-                        android:id="@+id/imgClose"
+                        android:id="@+id/btnClose"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_weight="1"

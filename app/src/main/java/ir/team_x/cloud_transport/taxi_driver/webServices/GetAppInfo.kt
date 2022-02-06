@@ -151,7 +151,7 @@ class GetAppInfo {
                     MyApplication.currentActivity.finish()
                 }.secondButton("بستن") {
                     MyApplication.currentActivity.finish()
-                }.cancelable(false).show()
+                }.show()
         } else {
             GeneralDialog()
                 .message("برای برنامه نسخه جدیدی موجود است در صورت تمایل میتوانید برنامه را به روز رسانی کنید")
@@ -168,7 +168,7 @@ class GetAppInfo {
                         )
                     )
                     MyApplication.currentActivity.finish()
-                }.cancelable(false).show()
+                }.show()
         }
     }
 

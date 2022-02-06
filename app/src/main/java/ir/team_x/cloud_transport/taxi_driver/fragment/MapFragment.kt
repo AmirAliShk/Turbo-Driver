@@ -43,9 +43,10 @@ import android.graphics.BitmapFactory
 
 
 class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
-    companion object{
+    companion object {
         val TAG = MapFragment::class.java.simpleName
     }
+
     private lateinit var binding: FragmentMapBinding
     lateinit var googleMap: GoogleMap
     lateinit var locationAssistant: LocationAssistant
@@ -98,10 +99,10 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي به شما وجود ندارد."
         } else {
             binding.txtLock.visibility = View.INVISIBLE
-            if (MyApplication.prefManager.isFromGetServiceActivity)
-            {
+            if (MyApplication.prefManager.isFromGetServiceActivity) {
                 MyApplication.prefManager.isFromGetServiceActivity = false
-                FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment()).replace()
+                FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
+                    .replace()
             }
         }
 
@@ -111,7 +112,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
 
         binding.llServiceManagement.setOnClickListener {
             if (!MyApplication.prefManager.getDriverStatus()) {
-                GeneralDialog().message("لطفا فعال شوید").title("هشدار").firstButton("باشه") {}
+                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
                     .show()
                 return@setOnClickListener
             }
@@ -125,7 +126,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
 
         binding.llFreeLoads.setOnClickListener {
             if (!MyApplication.prefManager.getDriverStatus()) {
-                GeneralDialog().message("لطفا فعال شوید").title("هشدار").firstButton("باشه") {}
+                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
                     .show()
                 return@setOnClickListener
             }
@@ -150,52 +151,56 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         }
 
         binding.swEnterExit.setOnCheckedChangeListener { _, b ->
-            if (!GPSEnable.isOn()) {
-                turnOnGPSDialog()
-                binding.swEnterExit.isChecked = (!binding.swEnterExit.isChecked)
-                return@setOnCheckedChangeListener
-            }
-            binding.swEnterExit.isEnabled = false
-            if (b) { // i start to send driver location to server every 20 sec here
-                enterExit(1)
-            } else {// i stop to send location here
-                enterExit(0)
+            if (binding.swEnterExit.isPressed) {
+                if (!GPSEnable.isOn()) {
+                    turnOnGPSDialog()
+                    binding.swEnterExit.isChecked = (!binding.swEnterExit.isChecked)
+                    return@setOnCheckedChangeListener
+                }
+                binding.swEnterExit.isEnabled = false
+                if (b) { // i start to send driver location to server every 20 sec here
+                    enterExit(1)
+                } else {// i stop to send location here
+                    enterExit(0)
+                }
             }
         }
 
         binding.swStationRegister.setOnCheckedChangeListener { _, b ->
-            if (!GPSEnable.isOn()) {
-                turnOnGPSDialog()
-                binding.swStationRegister.isChecked = (!binding.swStationRegister.isChecked)
-                return@setOnCheckedChangeListener
-            }
-            binding.swStationRegister.isEnabled = false
-            if (b) {
-                val locationResult: MyLocation.LocationResult =
-                    object : MyLocation.LocationResult() {
-                        override fun gotLocation(location: Location) {
-                            try {
-                                if ((location.latitude == 0.0) || (location.longitude == 0.0)) {
-                                    if ((lastLocation.latitude == 0.0) || (lastLocation.longitude == 0.0)) {
-                                        MyApplication.Toast(
-                                            "درحال دریافت موقعیت لطفا بعد از چند ثانیه مجدد امتحان کنید",
-                                            Toast.LENGTH_SHORT
-                                        )
+            if (binding.swStationRegister.isPressed) {
+                if (!GPSEnable.isOn()) {
+                    turnOnGPSDialog()
+                    binding.swStationRegister.isChecked = (!binding.swStationRegister.isChecked)
+                    return@setOnCheckedChangeListener
+                }
+                binding.swStationRegister.isEnabled = false
+                if (b) {
+                    val locationResult: MyLocation.LocationResult =
+                        object : MyLocation.LocationResult() {
+                            override fun gotLocation(location: Location) {
+                                try {
+                                    if ((location.latitude == 0.0) || (location.longitude == 0.0)) {
+                                        if ((lastLocation.latitude == 0.0) || (lastLocation.longitude == 0.0)) {
+                                            MyApplication.Toast(
+                                                "درحال دریافت موقعیت لطفا بعد از چند ثانیه مجدد امتحان کنید",
+                                                Toast.LENGTH_SHORT
+                                            )
+                                        } else {
+                                            stationRegister(lastLocation)
+                                        }
                                     } else {
-                                        stationRegister(lastLocation)
+                                        stationRegister(location)
                                     }
-                                } else {
-                                    stationRegister(location)
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
                                 }
-                            } catch (e: Exception) {
-                                e.printStackTrace()
                             }
                         }
-                    }
-                val myLocation = MyLocation()
-                myLocation.getLocation(MyApplication.currentActivity, locationResult)
-            } else {
-                exitStation()
+                    val myLocation = MyLocation()
+                    myLocation.getLocation(MyApplication.currentActivity, locationResult)
+                } else {
+                    exitStation()
+                }
             }
         }
 
@@ -227,7 +232,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                     if (lastLocation.latitude in 20.0..40.0) {
                         animateToLocation(lastLocation.latitude, lastLocation.longitude)
                     }
-                        refreshMyLocationMarker()
+                    refreshMyLocationMarker()
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -256,27 +261,36 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         }
     }
 
-    fun refreshMyLocationMarker() = try{
+    fun refreshMyLocationMarker() = try {
         MyApplication.currentActivity.runOnUiThread {
             if (::myLocationMarker.isInitialized)
                 myLocationMarker.remove()
 
-            var bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,80,150))
+            var bitmapDescriptor =
+                BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow, 80, 150))
             if (active && register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.green,80,150))
+                bitmapDescriptor =
+                    BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.green, 80, 150))
             } else if (active && !register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.red,80,150))
+                bitmapDescriptor =
+                    BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.red, 80, 150))
             } else if (!active && !register) {
-                bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow,80,150))
+                bitmapDescriptor =
+                    BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow, 80, 150))
             }
             myLocationMarker = googleMap.addMarker(
                 MarkerOptions()
                     .icon(bitmapDescriptor)
                     .rotation(lastLocation.bearing)
-                    .position(LatLng(MyApplication.prefManager.getLastLocation().latitude, MyApplication.prefManager.getLastLocation().longitude))
+                    .position(
+                        LatLng(
+                            MyApplication.prefManager.getLastLocation().latitude,
+                            MyApplication.prefManager.getLastLocation().longitude
+                        )
+                    )
             )
         }
-    }catch (e : java.lang.Exception){
+    } catch (e: java.lang.Exception) {
         e.printStackTrace()
     }
 
@@ -379,6 +393,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
                 MyApplication.handler.post {
                     binding.swStationRegister.isEnabled = true
+                    binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
                 }
             }
         }
@@ -422,6 +437,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
                 binding.swStationRegister.isEnabled = true
+                binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
             }
         }
     }
@@ -579,7 +595,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 startActivity(intent)
             }
             .secondButton("انصراف") {}
-            .cancelable(false)
             .show()
     }
 

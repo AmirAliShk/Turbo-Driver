@@ -87,7 +87,7 @@ class VerificationFragment : Fragment() {
                             .replace()
                         MyApplication.Toast(message, Toast.LENGTH_SHORT)
                     } else {
-                        GeneralDialog().message(message).secondButton("باشه") {}.cancelable(false)
+                        GeneralDialog().message(message).secondButton("باشه") {}
                             .show()
                     }
 

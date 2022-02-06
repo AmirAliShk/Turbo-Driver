@@ -104,9 +104,11 @@ class FactorDialog {
                             dismiss()
                         } else {
                             finishServiceListener.onFinishService(false)
+                            GeneralDialog().message(message).secondButton("باشه") {}.show()
                         }
                     } else {
                         finishServiceListener.onFinishService(false)
+                        GeneralDialog().message(message).secondButton("باشه") {}.show()
                     }
 
                 } catch (e: Exception) {

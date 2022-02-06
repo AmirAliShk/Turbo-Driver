@@ -78,7 +78,11 @@ class CallDialog {
                             MyApplication.Toast(message, Toast.LENGTH_SHORT)
                             dismiss()
                             MyApplication.currentActivity.onBackPressed()
+                        }else{
+                            GeneralDialog().message(message).secondButton("باشه") {}.show()
                         }
+                    }else{
+                        GeneralDialog().message(message).secondButton("باشه") {}.show()
                     }
 
                 } catch (e: Exception) {
