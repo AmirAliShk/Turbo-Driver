@@ -88,10 +88,6 @@ class GetPriceDialog {
             MyApplication.handler.post {
                 try {
                     binding.vfEndService.displayedChild = 0
-                    MyApplication.handler.postDelayed({
-                        KeyBoardHelper.hideKeyboard()
-                    }, 100)
-
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -104,8 +100,10 @@ class GetPriceDialog {
                                 }
                             })
                             GeneralDialog().message(message).firstButton("باشه") {
+                                MyApplication.handler.postDelayed({
+                                    KeyBoardHelper.hideKeyboard()
+                                },300)
                                 MyApplication.currentActivity.onBackPressed()
-                                KeyBoardHelper.hideKeyboard()
                             }.show()
                             finishServiceListener.onFinishService(true)
                             dismiss()

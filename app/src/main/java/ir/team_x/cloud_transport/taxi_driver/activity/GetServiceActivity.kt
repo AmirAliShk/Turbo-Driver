@@ -66,7 +66,7 @@ class GetServiceActivity : AppCompatActivity() {
                     .firstButton("بله") {
                         binding.vfAcceptService.displayedChild = 1
                         AcceptService().accept(serviceId!!, object : AcceptService.Listener {
-                            override fun onSuccess() {
+                            override fun onSuccess(msg:String) {
                                 binding.vfAcceptService.displayedChild = 0
                                 MyApplication.prefManager.isFromGetServiceActivity = true
                                 val intent = Intent(MyApplication.context, SplashActivity::class.java)

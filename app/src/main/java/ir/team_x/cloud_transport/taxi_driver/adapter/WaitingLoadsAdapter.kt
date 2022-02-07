@@ -103,7 +103,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                 .firstButton("بله") {
                     holder.binding.vfAccept.displayedChild = 1
                     AcceptService().accept(model.id.toString(), object : AcceptService.Listener {
-                        override fun onSuccess() {
+                        override fun onSuccess(msg:String) {
                             holder.binding.vfAccept.displayedChild = 0
 
                             MyApplication.handler.postDelayed({

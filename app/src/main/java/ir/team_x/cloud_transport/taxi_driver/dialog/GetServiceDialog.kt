@@ -46,17 +46,26 @@ class GetServiceDialog() {
         binding.btnGetService.setOnClickListener {
             GeneralDialog()
                 .message("از دریافت سرویس اطمینان دارید؟")
-                .firstButton("بله") {
+                .firstButton("بله")  {
                     binding.vfAcceptService.displayedChild = 1
                     AcceptService().accept(serviceModel.serviceID, object : Listener {
-                        override fun onSuccess() {
+                        override fun onSuccess(msg: String) {
                             binding.vfAcceptService.displayedChild = 0
                             dismiss()
-                            if (CurrentServiceFragment.isRunning) {
-                                CurrentServiceFragment.getActiveService()
-                            }else {
-                                FragmentHelper.toFragment(MyApplication.currentActivity,CurrentServiceFragment()).replace()
+                            GeneralDialog().message(msg).firstButton("باشه") {
+                                MyApplication.handler.postDelayed({
+                                    if (CurrentServiceFragment.isRunning) {
+                                        CurrentServiceFragment.getActiveService()
+                                    } else {
+                                        FragmentHelper.toFragment(
+                                            MyApplication.currentActivity,
+                                            CurrentServiceFragment()
+                                        ).replace()
+                                    }
+                                }, 100)
                             }
+                                .show()
+
                         }
 
                         override fun onFailure() {

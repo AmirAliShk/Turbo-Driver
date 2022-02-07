@@ -10,7 +10,7 @@ import org.json.JSONObject
 class AcceptService {
 
     interface Listener {
-        fun onSuccess()
+        fun onSuccess(msg:String)
         fun onFailure()
     }
 
@@ -43,7 +43,7 @@ class AcceptService {
                                     MyApplication.prefManager.setCharge(charge)
                                 }
                             })
-                            listener.onSuccess()
+                            listener.onSuccess(msg)
                             GeneralDialog().message(msg).firstButton("باشه") {}.show()
                         }else{
                             listener.onFailure()
