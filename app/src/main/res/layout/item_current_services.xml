@@ -127,18 +127,57 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="3"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_voice"
-                    android:orientation="horizontal"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:gravity="left">
+                    android:layout_weight="3"
+                    android:background="@drawable/bg_voice"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
 
-                    <ImageView
+
+                    <ViewFlipper
+                        android:id="@+id/vfPlayPause"
                         android:layout_width="@dimen/_27sdp"
-                        android:layout_height="@dimen/_27sdp"
-                        android:src="@drawable/ic_play"
-                        android:padding="@dimen/_2sdp"/>
+                        android:layout_height="@dimen/_27sdp">
+
+
+
+
+
+
+
+
+                           <ImageView
+                            android:id="@+id/imgPlayVoice"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/_2sdp"
+                            android:src="@drawable/ic_play" />
+
+                        <ImageView
+                            android:id="@+id/imgPauseVoice"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/_2sdp"
+                            android:src="@drawable/ic_pause" />
+
+                    </ViewFlipper>
+
+                    <com.warkiz.widget.IndicatorSeekBar
+                        android:id="@+id/skbTimer"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        app:isb_seek_smoothly="true"
+                        app:isb_show_indicator="none"
+                        app:isb_thumb_color="@color/colorAccent"
+                        app:isb_thumb_size="10dp"
+                        app:isb_track_background_color="@color/grayLighter"
+                        app:isb_track_background_size="3dp"
+                        app:isb_track_progress_color="@color/grayDark"
+                        app:isb_track_progress_size="5dp" />
 
                 </LinearLayout>
 

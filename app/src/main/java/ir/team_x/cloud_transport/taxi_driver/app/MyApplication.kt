@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Environment
 import android.os.Handler
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -23,6 +24,8 @@ import org.acra.config.CoreConfigurationBuilder
 import org.acra.config.HttpSenderConfigurationBuilder
 import org.acra.data.StringFormat
 import org.acra.sender.HttpSender
+import java.io.File
+import java.io.IOException
 import java.util.*
 
 //
@@ -44,6 +47,10 @@ class MyApplication : Application() {
         lateinit var iranSansTF: Typeface
         lateinit var iranSansBoldTF: Typeface
         lateinit var iranSansMediumTF: Typeface
+
+        val DIR_ROOT = Environment.getExternalStorageDirectory().absolutePath + "/TaxiDriverCloudTransport/"
+        val VOICE_FOLDER_NAME = "voice/"
+
 
         fun showSnackBar(text: String) {
             val coordinatorLayout = currentActivity.findViewById(android.R.id.content) as View
@@ -104,6 +111,13 @@ class MyApplication : Application() {
         initTypeFace()
         SOUND = "android.resource://${context.packageName}/"
         prefManager = PrefManager(context)
+
+        val file = File(DIR_ROOT + VOICE_FOLDER_NAME + ".nomedia")
+        try {
+            file.createNewFile()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
 
         val languageToLoad = "fa_IR"
         val locale = Locale(languageToLoad)
