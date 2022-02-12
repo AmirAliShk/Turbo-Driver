@@ -465,6 +465,7 @@ public class RequestHelper implements okhttp3.Callback {
                     .toFragment(MyApplication.currentActivity, new VerificationFragment())
                     .setStatusBarColor(MyApplication.currentActivity.getResources().getColor(R.color.colorPrimary))
                     .setAddToBackStack(false)
+                    .setFrame(android.R.id.content)
                     .replace();
         });
     }

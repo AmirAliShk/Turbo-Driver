@@ -84,7 +84,6 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         binding.llCall.setOnClickListener {
             CallHelper.make(MyApplication.prefManager.supportNumber)
             binding.drawerLayout.closeDrawers()
-            CallHelper.make("05131832")
         }
 
         binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
@@ -147,7 +146,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
     }
 
     override fun refreshNotification() {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 
 }
