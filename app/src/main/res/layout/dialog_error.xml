@@ -31,8 +31,7 @@
                 <TextView
                     android:id="@+id/txtMessage"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.35"
+                    android:layout_height="wrap_content"
                     android:gravity="bottom|center_horizontal"
                     android:paddingLeft="10dp"
                     android:paddingTop="4dp"
@@ -44,8 +43,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.25"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -53,24 +51,6 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_weight="0.25" />
-
-
-                    <ImageView
-                        android:id="@+id/imgTryAgain"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/_35sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_green"
-                        android:elevation="@dimen/_3sdp"
-                        android:padding="@dimen/_8sdp"
-                        android:src="@drawable/ic_refresh"
-                        android:visibility="gone" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.25"
-                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/btnClose"
@@ -85,12 +65,10 @@
                         android:textColor="@color/colorWhite"
                         android:textSize="17sp" />
 
-
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_weight="0.25" />
-
 
                 </LinearLayout>
 
