@@ -118,13 +118,13 @@ class GetAppInfo {
                         }
 
                         MyApplication.avaStart()
+                        MyApplication.currentActivity.finish()
                         MyApplication.currentActivity.startActivity(
                             Intent(
                                 MyApplication.currentActivity,
                                 MainActivity::class.java
                             )
                         )
-                        MyApplication.currentActivity.finish()
                     }
 
                 } catch (e: Exception) {

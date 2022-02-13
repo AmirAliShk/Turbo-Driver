@@ -83,6 +83,7 @@ public class AuthenticationInterceptor implements Interceptor {
             JSONObject json = new JSONObject();
             try {
                 json.put("token", MyApplication.prefManager.getRefreshToken());
+                json.put("applicationId", MyApplication.context.getPackageName());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
