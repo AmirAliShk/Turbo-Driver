@@ -59,6 +59,7 @@ class GetAppInfo {
                 RequestHelper.builder(EndPoint.GET_APP_INFO)
                     .addParam("versionCode", AppVersionHelper(MyApplication.context).versionCode)
                     .addParam("deviceInfo", deviceInfo)
+                    .addParam("applicationId", MyApplication.context.packageName)
                     .listener(getAppInfoCallBack)
                     .post()
             }
