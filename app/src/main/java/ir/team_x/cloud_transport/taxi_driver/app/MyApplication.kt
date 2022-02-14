@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import ir.team_x.cloud_transport.taxi_driver.BuildConfig
 import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.fragment.services.FreeLoadsFragment
+import ir.team_x.cloud_transport.taxi_driver.push.AvaCrashReporter
 import ir.team_x.cloud_transport.taxi_driver.push.AvaFactory
 import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
@@ -26,6 +27,7 @@ import org.acra.data.StringFormat
 import org.acra.sender.HttpSender
 import java.io.File
 import java.io.IOException
+import java.lang.Exception
 import java.util.*
 
 //
@@ -43,12 +45,13 @@ class MyApplication : Application() {
         val iranSans = "fonts/IRANSans.otf"
         val iranSansBold = "fonts/IRANSANS_BOLD.TTF"
         val iranSansMedium = "fonts/IRANSANS_MEDIUM.TTF"
-        lateinit var SOUND :String
+        lateinit var SOUND: String
         lateinit var iranSansTF: Typeface
         lateinit var iranSansBoldTF: Typeface
         lateinit var iranSansMediumTF: Typeface
 
-        val DIR_ROOT = Environment.getExternalStorageDirectory().absolutePath + "/TaxiDriverCloudTransport/"
+        val DIR_ROOT =
+            Environment.getExternalStorageDirectory().absolutePath + "/TaxiDriverCloudTransport/"
         val VOICE_FOLDER_NAME = "voice/"
 
 
@@ -112,11 +115,16 @@ class MyApplication : Application() {
         SOUND = "android.resource://${context.packageName}/"
         prefManager = PrefManager(context)
 
-        val file = File(DIR_ROOT + VOICE_FOLDER_NAME + ".nomedia")
+        val file = File("$DIR_ROOT$VOICE_FOLDER_NAME.nomedia")
         try {
-            file.createNewFile()
-        } catch (e: IOException) {
+            if (!file.parentFile.exists())
+                file.parentFile.mkdirs()
+            if (!file.exists())
+                file.createNewFile()
+//            file.createNewFile();
+        } catch (e:Exception) {
             e.printStackTrace()
+            AvaCrashReporter.send(e, "MyApplication class, onCreate method ")
         }
 
         val languageToLoad = "fa_IR"
@@ -147,7 +155,7 @@ class MyApplication : Application() {
                 .setHttpHeaders(authHeaderMap)
                 .setEnabled(true)
         //        if (!BuildConfig.DEBUG)
-        ACRA.init(this,builder)
+        ACRA.init(this, builder)
     }
 
     fun initTypeFace() {

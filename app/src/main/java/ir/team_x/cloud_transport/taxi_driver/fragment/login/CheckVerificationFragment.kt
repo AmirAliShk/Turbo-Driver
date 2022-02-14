@@ -88,6 +88,7 @@ class CheckVerificationFragment : Fragment() {
             FragmentHelper
                 .toFragment(MyApplication.currentActivity, VerificationFragment())
                 .setAddToBackStack(false)
+                .setFrame(android.R.id.content)
                 .replace()
         }
 

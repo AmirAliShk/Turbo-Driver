@@ -196,7 +196,6 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/llChangeNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/_15sdp"
@@ -207,6 +206,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:id="@+id/llChangeNumber"
+                            android:padding="@dimen/_10sdp"
                             android:gravity="center"
                             android:orientation="horizontal">
 
@@ -237,7 +238,8 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="50dp"
+                                android:padding="@dimen/_5sdp"
+                                android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:orientation="horizontal">
 
