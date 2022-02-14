@@ -19,6 +19,12 @@ import ir.team_x.cloud_transport.taxi_driver.fragment.services.ServiceHistoryFra
 import ir.team_x.cloud_transport.taxi_driver.utils.*
 import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import ir.team_x.cloud_transport.taxi_driver.fragment.MapFragment
+import android.content.pm.PackageManager
+
+import android.content.ComponentName
+
+
+
 
 
 class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificationCount {
@@ -48,6 +54,11 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             window.statusBarColor = resources.getColor(R.color.colorBlack)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
         }
+
+        packageManager.setComponentEnabledSetting(
+            ComponentName("MainActvity", "ru.quickmessage.pa.MainActivity-Red"),
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP
+        )
 
         binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
         binding.txtDriverName.text = MyApplication.prefManager.getUserName()
