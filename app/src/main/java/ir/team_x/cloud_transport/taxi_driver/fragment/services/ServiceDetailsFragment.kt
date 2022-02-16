@@ -107,7 +107,17 @@ class ServiceDetailsFragment(
             CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
         }
         binding.txtFinish.setOnClickListener {
-            bill(serviceModel.id, serviceModel.priceService)
+            if(MyApplication.prefManager.pricing==1){
+                bill(serviceModel.id, serviceModel.priceService)
+            }else{
+                GetPriceDialog().show(serviceModel.id,
+                    object : GetPriceDialog.FinishServiceListener {
+                        override fun onFinishService(isFinish: Boolean) {
+                            cancelServiceListener.onFinishService(isFinish)
+                        }
+
+                    })
+            }
         }
 
         return binding.root

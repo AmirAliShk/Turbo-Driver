@@ -44,7 +44,16 @@ class PrefManager {
     private val CARD_NAME = "cardName"
     private val SUPPORT_NUMBER = "supportNumber"
     private val IS_FROM_GET_SERVICE_ACTIVITY = "IsFromGetServiceActivity"
+    private val PRICING = "pricing"
 
+    var pricing: Int
+        get() {
+            return sharedPreferences.getInt(PRICING, 0)
+        }
+        set(pricing) {
+            editor.putInt(PRICING, pricing)
+            editor.commit()
+        }
 
     var isFromGetServiceActivity: Boolean
         get() {

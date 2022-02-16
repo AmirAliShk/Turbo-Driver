@@ -101,6 +101,7 @@ class GetAppInfo {
                         MyApplication.prefManager.setCountNotification(dataObject.getInt("countNews"))
                         MyApplication.prefManager.cardNumber=dataObject.getString("accountCard")
                         MyApplication.prefManager.cardName=dataObject.getString("accountName")
+                        MyApplication.prefManager.pricing=dataObject.getInt("pricing")
                         MyApplication.prefManager.supportNumber="1880"
 
                         if (isActive == 0) {
