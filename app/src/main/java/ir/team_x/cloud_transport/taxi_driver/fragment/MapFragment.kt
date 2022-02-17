@@ -266,17 +266,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             if (::myLocationMarker.isInitialized)
                 myLocationMarker.remove()
 
-            var bitmapDescriptor =
-                BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow, 80, 150))
+            var bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.yellow)
             if (active && register) {
-                bitmapDescriptor =
-                    BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.green, 80, 150))
+                bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.green)
             } else if (active && !register) {
-                bitmapDescriptor =
-                    BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.red, 80, 150))
+                bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.red)
             } else if (!active && !register) {
-                bitmapDescriptor =
-                    BitmapDescriptorFactory.fromBitmap(resizeBitmap(R.mipmap.yellow, 80, 150))
+                bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.yellow)
             }
             myLocationMarker = googleMap.addMarker(
                 MarkerOptions()
