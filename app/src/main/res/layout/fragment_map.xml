@@ -23,16 +23,15 @@
         <TextView
             android:id="@+id/txtLock"
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="@dimen/_25sdp"
             android:background="@color/colorRed"
             android:ellipsize="marquee"
             android:focusable="true"
             android:freezesText="true"
             android:marqueeRepeatLimit="marquee_forever"
-            android:paddingLeft="15dip"
             android:paddingTop="5dp"
-            android:paddingRight="15dip"
             android:paddingBottom="5dp"
+            android:paddingHorizontal="@dimen/_15sdp"
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:textColor="@color/colorWhite"
@@ -219,12 +218,9 @@
             android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/background2"
             android:elevation="@dimen/_5sdp"
+            android:text="شما در محدوده ای ثبت نیستید"
             android:gravity="right|center_vertical"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_5sdp"
-            android:paddingTop="@dimen/_8sdp"
-            android:paddingRight="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_8sdp" />
+            android:padding="@dimen/_8sdp" />
 
     </LinearLayout>
 

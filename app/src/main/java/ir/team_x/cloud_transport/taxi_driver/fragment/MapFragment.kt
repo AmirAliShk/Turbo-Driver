@@ -74,7 +74,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         binding.map.onCreate(savedInstanceState)
         MapsInitializer.initialize(MyApplication.context)
         binding.map.getMapAsync(this)
-
+        binding.txtLock.isSelected = true
         locationAssistant = LocationAssistant(
             MyApplication.context,
             this,
