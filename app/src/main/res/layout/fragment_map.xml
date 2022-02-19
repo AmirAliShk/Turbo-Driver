@@ -29,11 +29,10 @@
             android:focusable="true"
             android:freezesText="true"
             android:marqueeRepeatLimit="marquee_forever"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             android:paddingHorizontal="@dimen/_15sdp"
             android:scrollHorizontally="true"
             android:singleLine="true"
+            android:gravity="center_vertical"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
             android:visibility="gone" />
