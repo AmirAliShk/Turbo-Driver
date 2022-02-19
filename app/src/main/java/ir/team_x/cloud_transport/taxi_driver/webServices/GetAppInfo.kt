@@ -99,10 +99,13 @@ class GetAppInfo {
                         MyApplication.prefManager.setDriverId(driverId)
                         MyApplication.prefManager.setDriverStatus(dataObject.getInt("isEnter") == 1)
                         MyApplication.prefManager.setCountNotification(dataObject.getInt("countNews"))
-                        MyApplication.prefManager.cardNumber=dataObject.getString("accountCard")
-                        MyApplication.prefManager.cardName=dataObject.getString("accountName")
-                        MyApplication.prefManager.pricing=dataObject.getInt("pricing")
-                        MyApplication.prefManager.supportNumber="1880"
+                        MyApplication.prefManager.cardNumber = dataObject.getString("accountCard")
+                        MyApplication.prefManager.cardName = dataObject.getString("accountName")
+                        MyApplication.prefManager.pricing = dataObject.getInt("pricing")
+                        MyApplication.prefManager.supportNumber = dataObject.getString("phoneNumberSupport")
+                        MyApplication.prefManager.onlineUrl = dataObject.getString("onlineUrl")
+                        MyApplication.prefManager.aboutUs = dataObject.getString("aboutUs")
+                        MyApplication.prefManager.pushUrl = dataObject.getString("pushUrl")
 
                         if (isActive == 0) {
                             GeneralDialog()

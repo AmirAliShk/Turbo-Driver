@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "ir.team_x.cloud_transport.taxi_driver",
+  "applicationId": "ir.transport_x.taxi.chabahar",
   "variantName": "release",
   "elements": [
     {

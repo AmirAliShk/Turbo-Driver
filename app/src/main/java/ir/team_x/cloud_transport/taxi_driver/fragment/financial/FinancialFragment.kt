@@ -51,6 +51,11 @@ class FinancialFragment : Fragment() {
         binding.txtNote2.text = StringHelper.toPersianDigits(getString(R.string.txt_financial_desc))
         binding.txtNote3.text = StringHelper.toPersianDigits(getString(R.string.txt_importance))
 
+        if(MyApplication.prefManager.onlineUrl!!.isEmpty()){
+            binding.llOnlinePayment.visibility=View.GONE
+        }else{
+            binding.llOnlinePayment.visibility=View.VISIBLE
+        }
 
         binding.llOnlinePayment.setOnClickListener {
             FragmentHelper.toFragment(

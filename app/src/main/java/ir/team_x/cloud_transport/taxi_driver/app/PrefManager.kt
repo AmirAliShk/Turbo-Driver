@@ -45,6 +45,37 @@ class PrefManager {
     private val SUPPORT_NUMBER = "supportNumber"
     private val IS_FROM_GET_SERVICE_ACTIVITY = "IsFromGetServiceActivity"
     private val PRICING = "pricing"
+    private val ONLINE_URL = "onlineUrl"
+    private val ABOUT_US = "aboutUs"
+    private val PUSH_URL = "pushUrl"
+
+    var pushUrl: String?
+        get() {
+            return sharedPreferences.getString(PUSH_URL, "")
+        }
+        set(pushUrl) {
+            editor.putString(PUSH_URL, pushUrl)
+            editor.commit()
+        }
+
+    var aboutUs: String?
+        get() {
+            return sharedPreferences.getString(ABOUT_US, "")
+        }
+        set(aboutUs) {
+            editor.putString(ABOUT_US, aboutUs)
+            editor.commit()
+        }
+
+    var onlineUrl: String?
+        get() {
+            return sharedPreferences.getString(ONLINE_URL, "")
+        }
+        set(onlineUrl) {
+            editor.putString(ONLINE_URL, onlineUrl)
+            editor.commit()
+        }
+
 
     var pricing: Int
         get() {
@@ -63,7 +94,6 @@ class PrefManager {
             editor.putBoolean(IS_FROM_GET_SERVICE_ACTIVITY, isFromGetServiceActivity)
             editor.commit()
         }
-
 
     var supportNumber: String?
         get() {

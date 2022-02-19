@@ -11,9 +11,6 @@ import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 
 class AboutUsFragment : Fragment() {
     private lateinit var binding: FragmentAboutUsBinding
-    val aboutUs = "با توجه به سند ملی سیستم های حمل و نقل هوشمند در ایران و نیز نقش و اهمیت فناوری اطلاعات در کسب و کارها، این مجموعه بر آن است تا از طریق توسعه و راه اندازی نرم افزارهای تخصصی تحت وب و مبتنی بر تلفن همراه به سهم خود گامی در جهت تحقق شعار شهر هوشمند و شهروند الکترونیک در حوزه ی حمل و نقل درون شهری و برون شهری بردارد.\n" +
-            "پیک موتوری آریانا با بیش از ۱۴ سال سابقه و ۱۵۰ نفر نیرو یکی از قدیمی\u200C\u200Cترین مجموعه\u200Cهای حمل و نقل درون شهری در شهر مقدّس مشهد می \u200Cباشد."
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +26,7 @@ class AboutUsFragment : Fragment() {
 
         binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
-        binding.txtAboutUs.text = "$aboutUs"
+        binding.txtAboutUs.text =MyApplication.prefManager.aboutUs
 
         return binding.root
     }
