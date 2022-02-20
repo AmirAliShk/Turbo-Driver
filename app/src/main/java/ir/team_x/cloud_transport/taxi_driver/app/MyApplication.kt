@@ -21,6 +21,7 @@ import ir.team_x.cloud_transport.taxi_driver.push.AvaFactory
 import ir.team_x.cloud_transport.taxi_driver.utils.FragmentHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtil
 import org.acra.ACRA
+import org.acra.annotation.AcraHttpSender
 import org.acra.config.CoreConfigurationBuilder
 import org.acra.config.HttpSenderConfigurationBuilder
 import org.acra.data.StringFormat
@@ -30,11 +31,7 @@ import java.io.IOException
 import java.lang.Exception
 import java.util.*
 
-//
-//@AcraHttpSender(
-//    uri = EndPoint.CRASH_REPORT,
-//    httpMethod = HttpSender.Method.POST
-//)
+@AcraHttpSender(uri = "http://transport.team-x.ir:6061/api/crashReport", httpMethod = HttpSender.Method.POST)
 class MyApplication : Application() {
 
     companion object {
@@ -140,22 +137,22 @@ class MyApplication : Application() {
     }
 
     private fun initACRA() {
-        val authHeaderMap: MutableMap<String, String?> = HashMap()
-        authHeaderMap["Authorization"] = prefManager.getAuthorization()
-        authHeaderMap["id_token"] = prefManager.getIdToken()
-        val builder: CoreConfigurationBuilder = CoreConfigurationBuilder(this)
-            .setBuildConfigClass(BuildConfig::class.java)
-            .setReportFormat(StringFormat.JSON)
-        val httpPluginConfigBuilder: HttpSenderConfigurationBuilder =
-            builder.getPluginConfigurationBuilder(
-                HttpSenderConfigurationBuilder::class.java
-            )
-                .setUri(EndPoint.CRASH_REPORT)
-                .setHttpMethod(HttpSender.Method.POST)
-                .setHttpHeaders(authHeaderMap)
-                .setEnabled(true)
+//        val authHeaderMap: MutableMap<String, String?> = HashMap()
+//        authHeaderMap["Authorization"] = prefManager.getAuthorization()
+//        authHeaderMap["id_token"] = prefManager.getIdToken()
+//        val builder: CoreConfigurationBuilder = CoreConfigurationBuilder(this)
+//            .setBuildConfigClass(BuildConfig::class.java)
+//            .setReportFormat(StringFormat.JSON)
+//        val httpPluginConfigBuilder: HttpSenderConfigurationBuilder =
+//            builder.getPluginConfigurationBuilder(
+//                HttpSenderConfigurationBuilder::class.java
+//            )
+//                .setUri(EndPoint.CRASH_REPORT)
+//                .setHttpMethod(HttpSender.Method.POST)
+//                .setHttpHeaders(authHeaderMap)
+//                .setEnabled(true)
         //        if (!BuildConfig.DEBUG)
-        ACRA.init(this, builder)
+        ACRA.init(this)
     }
 
     fun initTypeFace() {

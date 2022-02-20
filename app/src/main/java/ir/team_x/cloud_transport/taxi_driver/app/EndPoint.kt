@@ -6,7 +6,7 @@ class EndPoint {
     companion object {
         val IP = "http://transport.team-x.ir:7070"
         val HAWKEYE_IP = "http://transport.team-x.ir:7071"
-        const val CRASH_REPORT = "http://transport.team-x.ir:6061/api/v1/crashReport"
+        const val CRASH_REPORT = "http://transport.team-x.ir:6061/api/crashReport"
         val RULL = "http://transport.team-x.ir:7073/rule/taxi"
         const val PUSH_ADDRESS = "http://transport.team-x.ir:6060"
         val BASE_PATH = "$IP/api/taxi/v1"
