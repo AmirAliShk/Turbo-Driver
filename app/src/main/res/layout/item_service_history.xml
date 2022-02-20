@@ -9,19 +9,18 @@
         android:id="@+id/llStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_20sdp"
         android:background="@drawable/bg_redd"
         android:elevation="@dimen/_5sdp"
         android:gravity="center"
-        android:padding="@dimen/_9sdp"
-        android:layout_marginRight="@dimen/_30sdp"
-        android:layout_marginLeft="@dimen/_30sdp">
+        android:padding="@dimen/_9sdp">
 
         <ImageView
-            android:visibility="gone"
             android:layout_width="@dimen/_12sdp"
             android:layout_height="@dimen/_12sdp"
             android:layout_weight="0.13"
-            android:src="@drawable/ic_canclee" />
+            android:src="@drawable/ic_canclee"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtStatus"
@@ -34,7 +33,7 @@
 
         <TextView
             android:id="@+id/txtDate"
-            android:layout_width="139dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="left"
