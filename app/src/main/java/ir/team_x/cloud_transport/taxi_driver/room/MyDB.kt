@@ -24,8 +24,9 @@ abstract class MyDB : RoomDatabase() {
             // if it is, then create the database
             return Instance ?: synchronized(this) {
                 val instance =
-                    Room.databaseBuilder(context.applicationContext, MyDB::class.java, "ArianaDeliveryDB")
+                    Room.databaseBuilder(context.applicationContext, MyDB::class.java, "transport-x.taxiDB")
                         .allowMainThreadQueries()
+                        .fallbackToDestructiveMigration()
                         .build()
                 Instance = instance
                 instance
