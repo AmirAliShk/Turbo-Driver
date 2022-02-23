@@ -21,7 +21,7 @@ public class ApkInstallerHelper {
             String type = "application/vnd.android.package-archive";
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                Uri downloadedApk = FileProvider.getUriForFile(activity,"ir.transport_x", file);
+                Uri downloadedApk = FileProvider.getUriForFile(activity,"ir.transport_x.taxi", file);
                 intent.setDataAndType(downloadedApk, type);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             } else {

@@ -99,7 +99,7 @@
         <!-- TODO change authorities value for each project-->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="ir.transport_x"
+            android:authorities="ir.transport_x.taxi"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
