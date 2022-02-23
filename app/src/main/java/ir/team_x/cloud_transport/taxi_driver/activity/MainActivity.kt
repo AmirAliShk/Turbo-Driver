@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
 import ir.team_x.cloud_transport.taxi_driver.databinding.ActivityMainBinding
+import ir.team_x.cloud_transport.taxi_driver.dialog.AvailableServiceDialog
 import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog
 import ir.team_x.cloud_transport.taxi_driver.fragment.ProfileFragment
 import ir.team_x.cloud_transport.taxi_driver.fragment.news.NewsDetailsFragment
@@ -116,6 +117,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
     override fun onPause() {
         super.onPause()
         MyApplication.prefManager.setAppRun(false)
+        AvailableServiceDialog.dismiss()
     }
 
     override fun onDestroy() {

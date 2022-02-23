@@ -76,7 +76,7 @@ class CancelServiceActivity : AppCompatActivity() {
         MyApplication.handler.postDelayed({
             SoundHelper.stop()
             VibratorHelper.stopVibrator()
-        }, 1000)
+        }, 500)
 
     }
 }
