@@ -22,7 +22,7 @@ import org.acra.ACRA
 
 class SplashActivity : AppCompatActivity() {
     private val permission =
-        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,9 +51,8 @@ class SplashActivity : AppCompatActivity() {
 
     private fun checkPermission() {
         if (Build.VERSION.SDK_INT >= 23) {
-            val hasAudioPermission =
-                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            if ((hasAudioPermission != PackageManager.PERMISSION_GRANTED)) {
+            if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(
                     MyApplication.currentActivity,
                     permission,
