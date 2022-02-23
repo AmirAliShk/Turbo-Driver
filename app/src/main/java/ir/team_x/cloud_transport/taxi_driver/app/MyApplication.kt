@@ -47,10 +47,9 @@ class MyApplication : Application() {
         lateinit var iranSansBoldTF: Typeface
         lateinit var iranSansMediumTF: Typeface
 
-        val DIR_ROOT =
-            Environment.getExternalStorageDirectory().absolutePath + "/TaxiDriverCloudTransport/"
+        val DIR_ROOT = Environment.getExternalStorageDirectory().absolutePath + "/TaxiDriverCloudTransport/"
         val VOICE_FOLDER_NAME = "voice/"
-
+        val DIR_DOWNLOAD = "Download/"
 
         fun showSnackBar(text: String) {
             val coordinatorLayout = currentActivity.findViewById(android.R.id.content) as View
@@ -112,6 +111,7 @@ class MyApplication : Application() {
         SOUND = "android.resource://${context.packageName}/"
         prefManager = PrefManager(context)
 
+        File(DIR_ROOT + DIR_DOWNLOAD).mkdirs()
         val file = File("$DIR_ROOT$VOICE_FOLDER_NAME.nomedia")
         try {
             if (!file.parentFile.exists())

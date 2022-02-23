@@ -9,6 +9,7 @@ import ir.team_x.cloud_transport.taxi_driver.R
 import ir.team_x.cloud_transport.taxi_driver.activity.MainActivity
 import ir.team_x.cloud_transport.taxi_driver.app.EndPoint
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
+import ir.team_x.cloud_transport.taxi_driver.dialog.DownloadUpdateDialog
 import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog
 import ir.team_x.cloud_transport.taxi_driver.fragment.login.VerificationFragment
 import ir.team_x.cloud_transport.taxi_driver.okHttp.RequestHelper
@@ -80,9 +81,9 @@ class GetAppInfo {
                         val isActive = dataObject.getInt("isActive")
                         val isLock = dataObject.getInt("isLock")
                         val reasonDescription = dataObject.getString("reasonDescription")
-                        val updateAvialable = dataObject.getInt("updateAvialable")
+                        val updateAvialable = 1
                         val forceUpdate = dataObject.getInt("forceUpdate")
-                        val updateUrl = dataObject.getString("updateUrl")
+                        val updateUrl = "https://dl.dropboxusercontent.com/s/h9wx0rqc8lxn9zo/arianaDeli-11-release.apk?dl=1"
                         val driverId = dataObject.getInt("driverId")
                         MyApplication.prefManager.setUserName(
                             dataObject.getString("firstName") + " " + dataObject.getString(
@@ -150,10 +151,7 @@ class GetAppInfo {
             GeneralDialog()
                 .message("برای برنامه نسخه جدیدی موجود است لطفا برنامه را به روز رسانی کنید")
                 .firstButton("به روز رسانی") {
-                    val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(url)
-                    MyApplication.currentActivity.startActivity(i)
-                    MyApplication.currentActivity.finish()
+                    DownloadUpdateDialog().show(url)
                 }.secondButton("بستن") {
                     MyApplication.currentActivity.finish()
                 }.show()
@@ -161,10 +159,7 @@ class GetAppInfo {
             GeneralDialog()
                 .message("برای برنامه نسخه جدیدی موجود است در صورت تمایل میتوانید برنامه را به روز رسانی کنید")
                 .firstButton("به روز رسانی") {
-                    val i = Intent(Intent.ACTION_VIEW)
-                    i.data = Uri.parse(url)
-                    MyApplication.currentActivity.startActivity(i)
-                    MyApplication.currentActivity.finish()
+                    DownloadUpdateDialog().show(url)
                 }.secondButton("فعلا نه") {
                     MyApplication.currentActivity.startActivity(
                         Intent(
