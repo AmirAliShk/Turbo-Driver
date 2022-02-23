@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:gravity="right"
-                android:text="لطفا در تنظیمات دکمه دسترسی به مجوز را برای راننده حمل بار فعال نمایید.\nمانند عکس زیر:"
+                android:text="لطفا در تنظیمات دکمه دسترسی به مجوز را برای اپلیکیشن راننده فعال نمایید.\nمانند عکس زیر:"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
