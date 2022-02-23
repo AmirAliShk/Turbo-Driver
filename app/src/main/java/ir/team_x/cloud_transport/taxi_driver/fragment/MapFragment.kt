@@ -40,6 +40,7 @@ import java.util.*
 import android.graphics.Bitmap
 
 import android.graphics.BitmapFactory
+import ir.team_x.cloud_transport.taxi_driver.dialog.AvailableServiceDialog
 
 
 class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
@@ -82,12 +83,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             1000,
             true
         )
-
-        if (!isDriverActive()) {
-            binding.txtStatus.text = "برای وارد شدن فعال را بزنید"
-            binding.swStationRegister.visibility = View.INVISIBLE
-            binding.swEnterExit.isChecked = false
-        }
 
         handleStatusByServer()
 
@@ -605,6 +600,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     override fun onPause() {
         super.onPause()
         binding.map.onPause()
+        AvailableServiceDialog.dismiss()
     }
 
     override fun onDestroyView() {
@@ -612,12 +608,18 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         stopGetStatus()
         locationAssistant.stop()
         binding.map.onDestroy()
+        AvailableServiceDialog.dismiss()
     }
 
     override fun onResume() {
         super.onResume()
         binding.map.onResume()
         locationAssistant.start()
+        if (!isDriverActive()) {
+            binding.txtStatus.text = "برای وارد شدن فعال را بزنید"
+            binding.swStationRegister.visibility = View.INVISIBLE
+            binding.swEnterExit.isChecked = false
+        }
         startGetStatus()
         if (!GPSEnable.isOn()) {
             turnOnGPSDialog()

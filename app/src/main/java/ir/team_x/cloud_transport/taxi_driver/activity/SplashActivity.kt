@@ -90,7 +90,6 @@ class SplashActivity : AppCompatActivity() {
         super.onResume()
         MyApplication.currentActivity = this
         KeyBoardHelper.hideKeyboard()
-        MyApplication.prefManager.setAppRun(true)
     }
 
     override fun onStart() {
@@ -100,7 +99,6 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        MyApplication.prefManager.setAppRun(false)
     }
 
     override fun onBackPressed() {

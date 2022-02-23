@@ -2,9 +2,9 @@ package ir.team_x.cloud_transport.taxi_driver.webServices
 
 import ir.team_x.cloud_transport.taxi_driver.app.EndPoint
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication
+import ir.team_x.cloud_transport.taxi_driver.dialog.AvailableServiceDialog
 import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog
 import ir.team_x.cloud_transport.taxi_driver.okHttp.RequestHelper
-import ir.team_x.cloud_transport.taxi_driver.dialog.GetServiceDialog
 import org.json.JSONObject
 
 class AcceptService {
@@ -37,7 +37,7 @@ class AcceptService {
                         val msg = dataObj.getString("message")
                         val typeOut = dataObj.getInt("typeOut")
                         if(typeOut==1){
-                            GetServiceDialog().dismiss()
+                            AvailableServiceDialog.dismiss()
                             UpdateCharge().update(object:UpdateCharge.ChargeListener{
                                 override fun getCharge(charge: String) {
                                     MyApplication.prefManager.setCharge(charge)

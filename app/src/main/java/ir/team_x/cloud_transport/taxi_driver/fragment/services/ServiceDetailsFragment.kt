@@ -40,7 +40,6 @@ class ServiceDetailsFragment(
 
     val cancelServiceListener: CancelServiceListener = cancelServiceListener
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,6 +61,49 @@ class ServiceDetailsFragment(
         StringHelper.toPersianDigits(
             JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address")
         )
+
+        var stopTime = "بدون توقف"
+
+        when (serviceModel.stopTime) {
+            0 -> {
+                stopTime = "بدون توقف"
+            }
+            5 -> {
+                stopTime = "۵ دقیقه"
+            }
+            10 -> {
+                stopTime = "۱۰ دقیقه"
+            }
+            20 -> {
+                stopTime = "۲۰ دقیقه"
+            }
+            30 -> {
+                stopTime = "۳۰ دقیقه"
+            }
+            40 -> {
+                stopTime = "۴۰ دقیقه"
+            }
+            50 -> {
+                stopTime = "۵۰ دقیقه"
+            }
+            60 -> {
+                stopTime = "۱ ساعت"
+            }
+            90 -> {
+                stopTime = "۱.۵ ساعت"
+            }
+            120 -> {
+                stopTime = "۲ ساعت"
+            }
+            150 -> {
+                stopTime = "۲.۵ ساعت"
+            }
+            180 -> {
+                stopTime = "۳ ساعت"
+            }
+        }
+
+        binding.txtStopTime.text = stopTime
 
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)

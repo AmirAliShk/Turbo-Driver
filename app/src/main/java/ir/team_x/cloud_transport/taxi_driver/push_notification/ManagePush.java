@@ -23,13 +23,13 @@ import ir.team_x.cloud_transport.taxi_driver.activity.SplashActivity;
 import ir.team_x.cloud_transport.taxi_driver.app.AppStatusHelper;
 import ir.team_x.cloud_transport.taxi_driver.app.MyApplication;
 import ir.team_x.cloud_transport.taxi_driver.app.PrefManager;
+import ir.team_x.cloud_transport.taxi_driver.dialog.AvailableServiceDialog;
 import ir.team_x.cloud_transport.taxi_driver.dialog.GeneralDialog;
 import ir.team_x.cloud_transport.taxi_driver.model.RegisterModel;
 import ir.team_x.cloud_transport.taxi_driver.model.ServiceModel;
 import ir.team_x.cloud_transport.taxi_driver.push.PushDataHolder;
 import ir.team_x.cloud_transport.taxi_driver.utils.SoundHelper;
 import ir.team_x.cloud_transport.taxi_driver.utils.VibratorHelper;
-import ir.team_x.cloud_transport.taxi_driver.dialog.GetServiceDialog;
 
 public class ManagePush {
 
@@ -68,8 +68,7 @@ public class ManagePush {
                 SoundHelper.ringing(context, R.raw.service, false);
                 if (MyApplication.prefManager.isAppRun()) {
                     Log.i(TAG, "manage: app is running");
-                    GetServiceDialog dialog = new GetServiceDialog();
-                    dialog.show(getSerivceInfo(dataArray));
+                    AvailableServiceDialog.Companion.show(getSerivceInfo(dataArray));
                 } else {
                     Log.i(TAG, "manage: app is not running");
 
@@ -264,203 +263,4 @@ public class ManagePush {
         return serviceModel;
     }
 
-    private RegisterModel getRegisterModel(String[] dataArray) {
-
-        try {
-            String title = dataArray[1];
-            String message = dataArray[2];
-            String station = dataArray[3];
-
-            // Here send to view or notification
-            RegisterModel registerModel = new RegisterModel();
-            registerModel.setTitle(title);
-            registerModel.setMessage(message);
-            registerModel.setStation(station);
-            return registerModel;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private void getServiceTurbo(JSONObject object) {
-
-
-        try {
-            int acceptTime = object.getInt("acceptTime");
-            String serviceId = object.getInt("serviceId") + "";
-            String originAddress = object.getString("originAddress");
-            String lastDestAddress = object.getString("lastDestAddress");
-            int price = object.getInt("price");
-            int customerId = object.getInt("customerId");
-            double originLat = 0;
-            double originLng = 0;
-            double firstDestLat = 0;
-            double firstDestLng = 0;
-            double secondDestLat = 0;
-            double secondDestLng = 0;
-            try {
-                originLat = object.getDouble("originAddressLat");
-                originLng = object.getDouble("originAddressLng");
-                JSONArray array = object.getJSONArray("dests");
-
-                if (array.length() > 0) {
-                    firstDestLat = array.getJSONObject(0).getDouble("destLat");
-                    firstDestLng = array.getJSONObject(0).getDouble("destLng");
-                }
-                if (array.length() > 1) {
-                    secondDestLat = array.getJSONObject(1).getDouble("destLat");
-                    secondDestLng = array.getJSONObject(1).getDouble("destLng");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
-            String desc = object.getString("desc");
-
-            showServiceNoti(acceptTime, serviceId, MyApplication.context, false);
-
-//            if (AppStatusHelper.appIsRun(MyApplication.context)) {
-//                Log.i(TAG, "getServiceTurbo: activity is run");
-//                Intent in = new Intent(MyApplication.currentActivity, GetServiceActivityTurbo.class);
-//                in.putExtra("serviceId", serviceId);
-//                in.putExtra("acceptTime", acceptTime);
-//                in.putExtra("originAddress", originAddress);
-//                in.putExtra("lastDestAddress", lastDestAddress);
-//                in.putExtra("price", price);
-//                in.putExtra("desc", desc);
-//                in.putExtra("customerId", customerId);
-//                in.putExtra("originLat", originLat);
-//                in.putExtra("originLng", originLng);
-//                in.putExtra("firstDestLat", firstDestLat);
-//                in.putExtra("firstDestLng", firstDestLng);
-//                in.putExtra("secondDestLat", secondDestLat);
-//                in.putExtra("secondDestLng", secondDestLng);
-//                MyApplication.currentActivity.finish();
-//                MyApplication.currentActivity.startActivity(in);
-//
-//            } else {
-//                Log.i(TAG, "getServiceTurbo: activity is not run");
-//
-//                Intent in = new Intent(MyApplication.context, GetServiceActivityTurbo.class);
-//                in.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-//                in.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-//                in.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-//                in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-//                in.putExtra("serviceId", serviceId);
-//                in.putExtra("acceptTime", acceptTime);
-//                in.putExtra("originAddress", originAddress);
-//                in.putExtra("lastDestAddress", lastDestAddress);
-//                in.putExtra("price", price);
-//                in.putExtra("desc", desc);
-//                in.putExtra("customerId", customerId);
-//                in.putExtra("originLat", originLat);
-//                in.putExtra("originLng", originLng);
-//                in.putExtra("firstDestLat", firstDestLat);
-//                in.putExtra("firstDestLng", firstDestLng);
-//                in.putExtra("secondDestLat", secondDestLat);
-//                in.putExtra("secondDestLng", secondDestLng);
-//                MyApplication.context.startActivity(in);
-//            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void getServiceInfo(int serviceId) {
-//        LoadingDialog.makeLoader();
-//        RequestHelper.loadBalancingBuilder(EndPoints.TRIP_INFO)
-//                .addPath(serviceId + "")
-//                .listener(new RequestHelper.Callback() {
-//                    @Override
-//                    public void onResponse(Runnable reCall, Object... args) {
-//                        try {
-//                            LocalBroadcastManager broadcaster;
-//                            broadcaster = LocalBroadcastManager.getInstance(MyApplication.context);
-//                            Intent intent = new Intent(KeyContainer.GET_SERVICE_INFO);
-//                            intent.putExtra(KeyContainer.RESULT, args[0].toString());
-//                            broadcaster.sendBroadcast(intent);
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Runnable reCall, Exception e) {
-//
-//                    }
-//                })
-//                .get();
-    }
-
-    public static void showServiceNoti(int acceptTime, String serviceId, Context context, boolean cancelable) {
-
-        Intent in;
-        in = new Intent(context, GetServiceActivity.class);
-        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        in.putExtra("serviceId", serviceId);
-        in.putExtra("acceptTime", acceptTime);
-
-        final PendingIntent pendingIntent = PendingIntent.getActivity(context, 100, in, PendingIntent.FLAG_ONE_SHOT);
-
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.ic_x_blue)
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_x_blue))
-                .setContentIntent(pendingIntent)
-                .setContentTitle(context.getResources().getString(R.string.app_name))
-                .setContentText("سرویس جدید در انتظار شماست")
-                .setOngoing(!cancelable);
-
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(101 /* ID of notification */, notificationBuilder.build());
-
-        MyApplication.handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                SoundHelper.stop();
-                VibratorHelper.stopVibrator();
-                dismissServiceNoti();
-            }
-        }, acceptTime * 1000 + 30000);
-    }
-
-    public static void dismissServiceNoti() {
-        try {
-            NotificationManager notificationManager = (NotificationManager) MyApplication.context.getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.cancel(101);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void showGeneralNoti(String title, String message, Context context, boolean cancelable) {
-        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
-        Intent intent;
-        intent = new Intent(context, SplashActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-
-        Log.i(TAG, "showNotiForServer: start show noti on notibar");
-        final PendingIntent pendingIntent = PendingIntent.getActivity(context, 100, intent, PendingIntent.FLAG_ONE_SHOT);
-
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.ic_x_blue)
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_x_blue))
-                .setContentTitle(context.getResources().getString(R.string.app_name))
-                .setContentText(message)
-                .setContentIntent(pendingIntent)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
-                .setContentTitle(title)
-                .setOngoing(!cancelable)
-                .setVibrate(new long[]{1000, 1000, 200})
-                .setSound(Uri.parse(MyApplication.Companion.getSOUND() + R.raw.edit_sound));
-
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
-
-    }
 }
