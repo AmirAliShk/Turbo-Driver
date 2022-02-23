@@ -81,9 +81,9 @@ class GetAppInfo {
                         val isActive = dataObject.getInt("isActive")
                         val isLock = dataObject.getInt("isLock")
                         val reasonDescription = dataObject.getString("reasonDescription")
-                        val updateAvialable = 1
+                        val updateAvialable = dataObject.getInt("updateAvialable")
                         val forceUpdate = dataObject.getInt("forceUpdate")
-                        val updateUrl = "https://dl.dropboxusercontent.com/s/h9wx0rqc8lxn9zo/arianaDeli-11-release.apk?dl=1"
+                        val updateUrl = dataObject.getString("updateUrl")
                         val driverId = dataObject.getInt("driverId")
                         MyApplication.prefManager.setUserName(
                             dataObject.getString("firstName") + " " + dataObject.getString(
