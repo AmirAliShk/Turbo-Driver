@@ -85,7 +85,8 @@ class FreeLoadsFragment : Fragment() {
                                 dataObj.getString("stationName"),
                                 dataObj.getString("fixedMessage"),
                                 dataObj.getString("sourceAddress"),
-                                dataObj.getString("destinationAddress")
+                                dataObj.getString("destinationAddress"),
+                                dataObj.getInt("serviceTypeId"),
                             )
 
                             waitingServiceModels.add(model)

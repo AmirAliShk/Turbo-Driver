@@ -83,10 +83,18 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
             }
         }
 
+        if (model.serviceTypeId == 2 && MyApplication.prefManager.pricing == 1) {
+            holder.binding.txtAnnounce.visibility = View.VISIBLE
+        } else {
+            holder.binding.txtAnnounce.visibility = View.GONE
+        }
+
         holder.binding.txtCustomerName.text = StringHelper.toPersianDigits(model.customerName)
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.binding.txtFirstDestAddress.text =
-                        StringHelper.toPersianDigits(JSONArray(model.destinationAddress).getJSONObject(0).getString("address"))
+            StringHelper.toPersianDigits(
+                JSONArray(model.destinationAddress).getJSONObject(0).getString("address")
+            )
 
         holder.binding.txtPrice.text =
             "${StringHelper.toPersianDigits(StringHelper.setComma(model.price))} تومان "
@@ -103,7 +111,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                 .firstButton("بله") {
                     holder.binding.vfAccept.displayedChild = 1
                     AcceptService().accept(model.id.toString(), object : AcceptService.Listener {
-                        override fun onSuccess(msg:String) {
+                        override fun onSuccess(msg: String) {
                             holder.binding.vfAccept.displayedChild = 0
 
                             MyApplication.handler.postDelayed({

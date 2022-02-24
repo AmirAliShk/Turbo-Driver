@@ -21,5 +21,6 @@ data class WaitingLoadsModel(
     var sourceStationName:String,
     var fixedMessage:String,
     var sourceAddress:String,
-    var destinationAddress:String
+    var destinationAddress:String,
+    var serviceTypeId:Int
 )
