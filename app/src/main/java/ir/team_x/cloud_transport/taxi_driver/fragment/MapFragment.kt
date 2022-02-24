@@ -105,6 +105,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             openDrawer()
         }
 
+        if(MyApplication.prefManager.getCountNotification()>0){
+            binding.txtNewsCount.visibility=View.VISIBLE
+            binding.txtNewsCount.text = MyApplication.prefManager.getCountNotification().toString()
+        }else{
+            binding.txtNewsCount.visibility=View.GONE
+        }
+
         binding.llServiceManagement.setOnClickListener {
             if (!MyApplication.prefManager.getDriverStatus()) {
                 GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
