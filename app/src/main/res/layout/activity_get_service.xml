@@ -36,8 +36,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/_10sdp"
-        android:paddingHorizontal="@dimen/_15sdp">
+        android:paddingBottom="@dimen/_10sdp">
 
         <LinearLayout
             android:id="@+id/llDialog"
@@ -47,7 +46,18 @@
             android:layout_centerInParent="true"
             android:background="@drawable/background5"
             android:orientation="vertical"
-            android:padding="@dimen/_10sdp">
+            android:padding="@dimen/_15sdp">
+
+            <TextView
+                android:id="@+id/txtAnnounce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="توجه : سرویس در اختیار میباشد و مبلغ به روزرسانی میشود"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:visibility="gone"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/_12sdp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

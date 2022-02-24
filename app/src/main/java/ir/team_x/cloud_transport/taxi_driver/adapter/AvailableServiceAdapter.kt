@@ -16,10 +16,11 @@ import ir.team_x.cloud_transport.taxi_driver.utils.StringHelper
 import ir.team_x.cloud_transport.taxi_driver.utils.TypeFaceUtilJava
 import ir.team_x.cloud_transport.taxi_driver.webServices.AcceptService
 
-class AvailableServiceAdapter(list: ArrayList<ServiceModel>):RecyclerView.Adapter<AvailableServiceAdapter.ViewHolder>() {
+class AvailableServiceAdapter(list: ArrayList<ServiceModel>) :
+    RecyclerView.Adapter<AvailableServiceAdapter.ViewHolder>() {
 
     private val models = list
-    
+
     class ViewHolder(val binding: ItemAvailableServiceBinding) :
         RecyclerView.ViewHolder(binding.root) {}
 
@@ -37,7 +38,9 @@ class AvailableServiceAdapter(list: ArrayList<ServiceModel>):RecyclerView.Adapte
         val model = models[position]
 
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.originAddress)
-        holder.binding.txtPrice.text = StringHelper.toPersianDigits(StringHelper.setComma(model.servicePrice).toString() + " تومان")
+        holder.binding.txtPrice.text = StringHelper.toPersianDigits(
+            StringHelper.setComma(model.servicePrice).toString() + " تومان"
+        )
 
         if (model.description.trim() == "") {
             holder.binding.llDescription.visibility = View.GONE
@@ -45,7 +48,14 @@ class AvailableServiceAdapter(list: ArrayList<ServiceModel>):RecyclerView.Adapte
             holder.binding.llDescription.visibility = View.VISIBLE
             holder.binding.txtDescription.text = StringHelper.toPersianDigits(model.description)
         }
-        holder.binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(model.destinationDesc)
+        holder.binding.txtFirstDestAddress.text =
+            StringHelper.toPersianDigits(model.destinationDesc)
+
+        if (model.isInService && MyApplication.prefManager.pricing == 1) {
+            holder.binding.txtAnnounce.visibility = View.VISIBLE
+        } else {
+            holder.binding.txtAnnounce.visibility = View.GONE
+        }
 
         holder.binding.btnGetService.setOnClickListener {
             GeneralDialog()
@@ -93,6 +103,6 @@ class AvailableServiceAdapter(list: ArrayList<ServiceModel>):RecyclerView.Adapte
     }
 
     override fun getItemCount(): Int {
-       return models.size
+        return models.size
     }
 }

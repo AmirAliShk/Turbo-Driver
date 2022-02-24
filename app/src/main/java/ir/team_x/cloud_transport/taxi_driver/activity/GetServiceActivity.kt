@@ -54,7 +54,13 @@ class GetServiceActivity : AppCompatActivity() {
                 StringHelper.setComma(price).toString() + " تومان"
             )
 
-            binding.txtFirstDestAddress.text =StringHelper.toPersianDigits(destinationAddress)
+            if (inService && MyApplication.prefManager.pricing == 1) {
+                binding.txtAnnounce.visibility = View.VISIBLE
+            } else {
+                binding.txtAnnounce.visibility = View.GONE
+            }
+
+            binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinationAddress)
 
             binding.btnClose.setOnClickListener {
                 MyApplication.currentActivity.finish()
@@ -66,10 +72,11 @@ class GetServiceActivity : AppCompatActivity() {
                     .firstButton("بله") {
                         binding.vfAcceptService.displayedChild = 1
                         AcceptService().accept(serviceId!!, object : AcceptService.Listener {
-                            override fun onSuccess(msg:String) {
+                            override fun onSuccess(msg: String) {
                                 binding.vfAcceptService.displayedChild = 0
                                 MyApplication.prefManager.isFromGetServiceActivity = true
-                                val intent = Intent(MyApplication.context, SplashActivity::class.java)
+                                val intent =
+                                    Intent(MyApplication.context, SplashActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             }

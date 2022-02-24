@@ -251,7 +251,7 @@ public class ManagePush {
         ServiceModel serviceModel = new ServiceModel();
         serviceModel.setCallTime(time);
         serviceModel.setServiceID(serviceId);
-        serviceModel.setInService(serviceType.trim().equals("1"));
+        serviceModel.setInService(serviceType.trim().equals("2"));
         serviceModel.setOriginAddress(originAddress);
         serviceModel.setDestinationDesc(destinationAddress);
         serviceModel.setServicePrice(price);
