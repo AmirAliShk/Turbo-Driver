@@ -8,6 +8,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId 'ir.transport_x.taxi.chabahar'
+//        applicationId 'ir.transport_x.taxi.team_x'
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -52,8 +53,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation "androidx.room:room-ktx:2.3.0"
-    kapt "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-runtime:2.4.0-alpha03"
+    annotationProcessor "androidx.room:room-compiler:2.4.0-alpha03"
+    kapt 'androidx.room:room-compiler:2.4.0-alpha03'
 
     // Official Socket.io lib
     implementation('io.socket:socket.io-client:1.0.0') {
