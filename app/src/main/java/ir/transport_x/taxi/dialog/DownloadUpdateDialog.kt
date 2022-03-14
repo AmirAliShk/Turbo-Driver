@@ -48,9 +48,8 @@ class DownloadUpdateDialog {
         PRDownloader.download(url, DIR_ROOT + DIR_DOWNLOAD, "${HashHelper.md5Generator(url)}.apk")
             .build()
             .setOnProgressListener {
-                binding.updateProgress.max = 100
-                binding.updateProgress.progress = it.currentBytes.toInt().toString().substring(0,1).toInt()
-                binding.textProgress.text = it.currentBytes.toInt().toString().substring(0,2)
+                binding.updateProgress.progress = ((it.currentBytes * 100) / it.totalBytes).toInt()
+                binding.textProgress.text = "${((it.currentBytes * 100) / it.totalBytes).toInt()} %"
             }
             .start(object : OnDownloadListener {
                 override fun onDownloadComplete() {

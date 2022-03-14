@@ -7,12 +7,12 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId 'ir.transport_x.taxi.chabahar'
-//        applicationId 'ir.transport_x.taxi.team_x'
+        applicationId 'ir.transport_x.taxi.toosan'
+//        applicationId 'ir.transport_x.taxi.test'
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "0.0.1"
+        versionName "1.0.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

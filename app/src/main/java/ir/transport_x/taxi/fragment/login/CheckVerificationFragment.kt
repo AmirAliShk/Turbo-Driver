@@ -165,7 +165,7 @@ class CheckVerificationFragment : Fragment() {
             .addParam("phoneNumber", phoneNumber)
             .addParam("scope", AppKeys.SCOPE)
             .addParam("code", code)
-            .addParam("applicationId", MyApplication.context.packageName)
+            .addParam("domain", MyApplication.context.packageName)
             .listener(onCheckVerificationCallBack)
             .post()
     }

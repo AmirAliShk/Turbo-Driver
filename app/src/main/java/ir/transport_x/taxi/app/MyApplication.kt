@@ -107,17 +107,7 @@ class MyApplication : Application() {
         prefManager = PrefManager(context)
 
         File(DIR_ROOT + DIR_DOWNLOAD).mkdirs()
-        val file = File("$DIR_ROOT$VOICE_FOLDER_NAME.nomedia")
-        try {
-            if (!file.parentFile.exists())
-                file.parentFile.mkdirs()
-            if (!file.exists())
-                file.createNewFile()
-//            file.createNewFile();
-        } catch (e:Exception) {
-            e.printStackTrace()
-            AvaCrashReporter.send(e, "MyApplication class, onCreate method ")
-        }
+        File("$DIR_ROOT$VOICE_FOLDER_NAME.nomedia").mkdirs()
 
         val languageToLoad = "fa_IR"
         val locale = Locale(languageToLoad)

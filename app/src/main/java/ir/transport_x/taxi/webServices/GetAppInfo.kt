@@ -85,11 +85,7 @@ class GetAppInfo {
                         val forceUpdate = dataObject.getInt("forceUpdate")
                         val updateUrl = dataObject.getString("updateUrl")
                         val driverId = dataObject.getInt("driverId")
-                        MyApplication.prefManager.setUserName(
-                            dataObject.getString("firstName") + " " + dataObject.getString(
-                                "lastName"
-                            )
-                        )
+                        MyApplication.prefManager.setUserName(dataObject.getString("firstName") + " " + dataObject.getString("lastName"))
                         MyApplication.prefManager.setLockStatus(isLock)
                         MyApplication.prefManager.setLockReasons(reasonDescription)
                         MyApplication.prefManager.setIban(dataObject.getString("IBAN"))
