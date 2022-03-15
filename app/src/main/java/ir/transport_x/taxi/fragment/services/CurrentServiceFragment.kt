@@ -52,7 +52,7 @@ class CurrentServiceFragment : Fragment() {
                                     dataObj.getInt("carType"),
                                     dataObj.getInt("stopTime"),
                                     dataObj.getString("saveDate"),
-                                    dataObj.getInt("userId"),
+                                    0,
                                     dataObj.getInt("driverId"),
                                     dataObj.getString("finishDate"),
                                     dataObj.getString("voipId"),

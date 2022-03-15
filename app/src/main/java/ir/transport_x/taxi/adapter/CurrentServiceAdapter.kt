@@ -73,6 +73,7 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
         holder.binding.llCall.setOnClickListener {
             CallDialog().show(model.phoneNumber, model.mobile)
         }
+        holder.binding.txtPrice.text = "${StringHelper.toPersianDigits(StringHelper.setComma(model.price))} "
 
         holder.binding.txtDate.text = StringHelper.toPersianDigits(
             DateHelper.strPersianEghit(
