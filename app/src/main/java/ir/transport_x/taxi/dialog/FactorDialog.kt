@@ -60,10 +60,10 @@ class FactorDialog {
                 StringHelper.setComma(priceObj.getString("priceService")))
         binding.txtTax.text =
             StringHelper.toPersianDigits(
-                StringHelper.setComma(priceObj.getString("commission")))
+                StringHelper.setComma(priceObj.getString("tax")))
         binding.txtCompanyShare.text =
             StringHelper.toPersianDigits(
-                StringHelper.setComma(priceObj.getString("tax")))
+                StringHelper.setComma(priceObj.getString("commission")))
         binding.txtDiscount.text =
             StringHelper.toPersianDigits(
                 StringHelper.setComma(priceObj.getString("discount")))
