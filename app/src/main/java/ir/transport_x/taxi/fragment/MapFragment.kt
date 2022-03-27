@@ -21,6 +21,7 @@ import org.json.JSONObject
 import java.util.*
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.activity.MainActivity.Companion.openDrawer
 import ir.transport_x.taxi.app.EndPoint
@@ -44,6 +45,16 @@ import ir.transport_x.taxi.utils.TypeFaceUtil
 class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     companion object {
         val TAG = MapFragment::class.java.simpleName
+        private lateinit var timer: Timer
+        fun stopGetStatus() {
+            try {
+                Log.i(TAG, "stopGetStatus: stoooooooooooop")
+                timer.cancel()
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
+        }
+
     }
 
     private lateinit var binding: FragmentMapBinding
@@ -51,7 +62,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     lateinit var locationAssistant: LocationAssistant
     var lastLocation = Location("provider")
     lateinit var myLocationMarker: Marker
-    private lateinit var timer: Timer
+
     private val STATUS_PERIOD: Long = 20000
     private lateinit var circle: Circle
     var driverStatus = 0
@@ -447,6 +458,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 object : TimerTask() {
                     override fun run() {
                         MyApplication.currentActivity.runOnUiThread {
+                            Log.i(TAG, "run: staaaaaaaaaaaaaaart from timer")
                             getStatus()
                         }
                     }
@@ -454,14 +466,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 1000,
                 STATUS_PERIOD
             )
-        } catch (e: java.lang.Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun stopGetStatus() {
-        try {
-            timer.cancel()
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
@@ -594,14 +598,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             }
             .secondButton("انصراف") {}
             .show()
-    }
-
-    private val timerTask: TimerTask = object : TimerTask() {
-        override fun run() {
-            MyApplication.currentActivity.runOnUiThread(Runnable {
-                getStatus()
-            })
-        }
     }
 
     override fun onPause() {

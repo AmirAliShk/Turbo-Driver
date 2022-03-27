@@ -132,6 +132,8 @@ class CheckVerificationFragment : Fragment() {
                     val success = resObj.getBoolean("success")
                     val message = resObj.getString("message")
                     if (success) {
+                        binding.vfTime.displayedChild= 0
+                        startWaitingTime()
                         MyApplication.Toast(message, Toast.LENGTH_SHORT)
                         val objData = resObj.getJSONObject("data")
                         val repetitionTime = objData.getInt("repetitionTime")

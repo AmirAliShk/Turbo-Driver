@@ -49,6 +49,10 @@ class PrefManager {
     private val ABOUT_US = "aboutUs"
     private val PUSH_URL = "pushUrl"
 
+    fun cleanPrefManger() {
+        sharedPreferences.edit().clear().apply()
+    }
+
     var pushUrl: String?
         get() {
             return sharedPreferences.getString(PUSH_URL, "")

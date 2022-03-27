@@ -66,8 +66,10 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         }
 
         binding.llAccount.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, ProfileFragment())
-                .replace()
+            MyApplication.prefManager.setAuthorization("ksjdopsjflsdkjf")
+            MyApplication.prefManager.setRefreshToken("ksjdopsjflsdkjf")
+//            FragmentHelper.toFragment(MyApplication.currentActivity, ProfileFragment())
+//                .replace()
             binding.drawerLayout.closeDrawers()
         }
 

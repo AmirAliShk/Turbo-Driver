@@ -227,6 +227,9 @@
         android:id="@+id/llStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/background2"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:layout_alignParentBottom="true">
 
         <TextView
@@ -235,9 +238,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="@drawable/background2"
             android:elevation="@dimen/_5sdp"
             android:gravity="right|center_vertical"
             android:padding="@dimen/_8sdp"

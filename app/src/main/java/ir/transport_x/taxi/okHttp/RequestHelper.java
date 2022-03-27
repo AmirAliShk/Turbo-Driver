@@ -1,5 +1,6 @@
 package ir.transport_x.taxi.okHttp;
 
+import android.content.Intent;
 import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,13 +12,18 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import ir.transport_x.taxi.R;
+import ir.transport_x.taxi.activity.SplashActivity;
 import ir.transport_x.taxi.app.EndPoint;
 import ir.transport_x.taxi.app.MyApplication;
 import ir.transport_x.taxi.dialog.ErrorDialog;
 import ir.transport_x.taxi.dialog.GeneralDialog;
+import ir.transport_x.taxi.fragment.MapFragment;
 import ir.transport_x.taxi.fragment.login.VerificationFragment;
+import ir.transport_x.taxi.gps.DataGatheringService;
 import ir.transport_x.taxi.push.AvaCrashReporter;
+import ir.transport_x.taxi.push.AvaService;
 import ir.transport_x.taxi.utils.FragmentHelper;
+import ir.transport_x.taxi.utils.ServiceHelper;
 import ir.transport_x.taxi.utils.StringHelper;
 import okhttp3.Call;
 import okhttp3.Headers;
@@ -458,12 +464,12 @@ public class RequestHelper implements okhttp3.Callback {
 
     private void logout() {
         MyApplication.handler.post(() -> {
-            FragmentHelper
-                    .toFragment(MyApplication.currentActivity, new VerificationFragment())
-                    .setStatusBarColor(MyApplication.currentActivity.getResources().getColor(R.color.colorPrimary))
-                    .setAddToBackStack(false)
-                    .setFrame(android.R.id.content)
-                    .replace();
+            MyApplication.currentActivity.finish();
+            ServiceHelper.stop(MyApplication.context, DataGatheringService.class);
+            ServiceHelper.stop(MyApplication.context, AvaService.class);
+            MyApplication.prefManager.cleanPrefManger();
+            MapFragment.Companion.stopGetStatus();
+            MyApplication.currentActivity.startActivity(new Intent(MyApplication.currentActivity, SplashActivity.class));
         });
     }
 }
