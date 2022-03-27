@@ -81,6 +81,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         binding = FragmentMapBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtil.overrideFont(binding.txtStatus, MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtLoader, MyApplication.iranSansMediumTF)
         binding.map.onCreate(savedInstanceState)
         MapsInitializer.initialize(MyApplication.context)
         binding.map.getMapAsync(this)
@@ -186,6 +187,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                     return@setOnCheckedChangeListener
                 }
                 binding.swStationRegister.isEnabled = false
+                binding.vfStatus.displayedChild = 1
                 if (b) {
                     val locationResult: MyLocation.LocationResult =
                         object : MyLocation.LocationResult() {
@@ -309,6 +311,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     }
 
     private fun enterExit(status: Int) {
+        binding.vfStatus.displayedChild = 1
         driverStatus = status
         RequestHelper.builder(EndPoint.ENTER_EXIT)
             .listener(enterExitCallBack)
@@ -319,6 +322,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     private val enterExitCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
+                binding.vfStatus.displayedChild = 0
                 try {
                     binding.swEnterExit.isEnabled = true
                     val jsonObject = JSONObject(args[0].toString())
@@ -355,6 +359,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
+                binding.vfStatus.displayedChild = 0
                 binding.swEnterExit.isEnabled = true
             }
         }
@@ -396,11 +401,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
+                    binding.vfStatus.displayedChild = 0
                 }
             }
 
             override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
                 MyApplication.handler.post {
+                    binding.vfStatus.displayedChild = 0
                     binding.swStationRegister.isEnabled = true
                     binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
                 }
@@ -440,11 +447,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
+                binding.vfStatus.displayedChild = 0
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
+                binding.vfStatus.displayedChild = 0
                 binding.swStationRegister.isEnabled = true
                 binding.swStationRegister.isChecked = !binding.swStationRegister.isChecked
             }
@@ -545,7 +554,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         binding.swEnterExit.isChecked = false
         active = false
         register = false
-        binding.txtStatus.setText(R.string.update_driver_status)
         stopService()
         MyApplication.prefManager.setDriverStatus(false)
         MyApplication.prefManager.setStationRegisterStatus(false)
@@ -555,7 +563,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         binding.swStationRegister.isChecked = MyApplication.prefManager.getStationRegisterStatus()
         binding.swStationRegister.visibility = View.VISIBLE
         binding.swEnterExit.isChecked = true
-        binding.txtStatus.setText(R.string.update_driver_status)
         startService()
         MyApplication.prefManager.setDriverStatus(true)
     }

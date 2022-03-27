@@ -98,7 +98,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/llStatus"
+        android:layout_above="@id/vfStatus"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -223,26 +223,50 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/llStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background2"
-        android:layout_marginHorizontal="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:layout_alignParentBottom="true">
-
-        <TextView
-            android:id="@+id/txtStatus"
-            style="@style/text_title_black"
+        <ViewFlipper
+            android:id="@+id/vfStatus"
+            android:background="@drawable/background2"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:elevation="@dimen/_3sdp"
+            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:elevation="@dimen/_5sdp"
-            android:gravity="right|center_vertical"
-            android:padding="@dimen/_8sdp"
-            android:text="شما در محدوده ای ثبت نیستید" />
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/txtStatus"
+                style="@style/text_title_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="right|center_vertical"
+                android:padding="@dimen/_8sdp"
+                android:text="شما در محدوده ای ثبت نیستید" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    app:indicatorColor="@color/colorRed"
+                    app:indicatorName="BallBeatIndicator" />
+
+                <TextView
+                    android:id="@+id/txtLoader"
+                    style="@style/text_title_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.Medium"
+                    android:text="درحال به روز رسانی وضعیت، لطفا صبور باشید" />
+
+            </LinearLayout>
+
+        </ViewFlipper>
 
 </RelativeLayout>
