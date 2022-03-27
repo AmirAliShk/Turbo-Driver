@@ -198,7 +198,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1.25"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
@@ -230,8 +230,7 @@
 
                 <LinearLayout
                     android:id="@+id/llCall"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.65"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center"
@@ -246,12 +245,11 @@
 
                     <TextView
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/_2sdp"
                         android:layout_marginLeft="@dimen/_2sdp"
                         android:textColor="@color/colorWhite"
-                        android:layout_weight="0.25"
                         android:text="تماس با مسافر" />
 
                 </LinearLayout>

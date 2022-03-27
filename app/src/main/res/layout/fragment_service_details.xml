@@ -428,14 +428,14 @@
                     android:id="@+id/vfEndService"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_35sdp"
                     android:background="@drawable/bg_grye">
 
                     <TextView
                         android:id="@+id/txtFinish"
                         style="@style/text_title_white"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="@string/finish"
                         android:textStyle="bold" />
