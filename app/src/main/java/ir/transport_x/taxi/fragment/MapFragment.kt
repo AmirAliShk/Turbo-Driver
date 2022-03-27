@@ -2,26 +2,24 @@ package ir.transport_x.taxi.fragment
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
-import org.json.JSONObject
-import java.util.*
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Log
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.activity.MainActivity.Companion.openDrawer
 import ir.transport_x.taxi.app.EndPoint
@@ -41,6 +39,8 @@ import ir.transport_x.taxi.okHttp.RequestHelper
 import ir.transport_x.taxi.utils.FragmentHelper
 import ir.transport_x.taxi.utils.ServiceHelper
 import ir.transport_x.taxi.utils.TypeFaceUtil
+import org.json.JSONObject
+import java.util.*
 
 class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     companion object {
@@ -48,8 +48,8 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         private lateinit var timer: Timer
         fun stopGetStatus() {
             try {
-                Log.i(TAG, "stopGetStatus: stoooooooooooop")
-                timer.cancel()
+                if (this::timer.isInitialized)
+                    timer.cancel()
             } catch (e: java.lang.Exception) {
                 e.printStackTrace()
             }
@@ -116,11 +116,11 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             openDrawer()
         }
 
-        if(MyApplication.prefManager.getCountNotification()>0){
-            binding.txtNewsCount.visibility=View.VISIBLE
+        if (MyApplication.prefManager.getCountNotification() > 0) {
+            binding.txtNewsCount.visibility = View.VISIBLE
             binding.txtNewsCount.text = MyApplication.prefManager.getCountNotification().toString()
-        }else{
-            binding.txtNewsCount.visibility=View.GONE
+        } else {
+            binding.txtNewsCount.visibility = View.GONE
         }
 
         binding.llServiceManagement.setOnClickListener {
@@ -467,7 +467,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 object : TimerTask() {
                     override fun run() {
                         MyApplication.currentActivity.runOnUiThread {
-                            Log.i(TAG, "run: staaaaaaaaaaaaaaart from timer")
                             getStatus()
                         }
                     }
