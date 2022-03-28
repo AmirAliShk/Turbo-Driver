@@ -20,13 +20,12 @@ import ir.transport_x.taxi.room.CardNumber
 import ir.transport_x.taxi.room.MyDB
 import ir.transport_x.taxi.utils.FragmentHelper
 import ir.transport_x.taxi.utils.StringHelper
-import ir.transport_x.taxi.utils.TypeFaceUtil
 import ir.transport_x.taxi.utils.TypeFaceUtilJava
 import org.json.JSONObject
 
 class ATMFragment : Fragment() {
 
-    private lateinit var binding: FragmentAtmBinding
+    lateinit var binding: FragmentAtmBinding
     var dataBase: MyDB = MyDB.getDataBase(MyApplication.context)
 
     override fun onCreateView(
@@ -36,7 +35,7 @@ class ATMFragment : Fragment() {
     ): View? {
         binding = FragmentAtmBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root)
-        TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtTitle,MyApplication.iranSansMediumTF)
 
         fillCards()
         setCursorEnd(binding.root)
@@ -50,21 +49,19 @@ class ATMFragment : Fragment() {
                 .replace()
         }
 
-        binding.priceGroup.check(R.id.ten)
+        binding.priceGroup.check(R.id.first)
         binding.priceGroup.setOnItemClickListener { selectedId ->
-            var price = "30000"
+            var price = binding.first.text.toString()
             when (selectedId) {
-                R.id.ten -> price = "10000"
-                R.id.fifteen -> price = "15000"
-                R.id.twenty -> price = "20000"
-                R.id.twentyFive -> price = "25000"
-                R.id.thirty -> price = "30000"
-                R.id.thirtyFive -> price = "35000"
+                R.id.first -> price = (binding.first.text.toString())
+                R.id.second -> price = (binding.second.text.toString())
+                R.id.third -> price = (binding.third.text.toString())
+                R.id.forth -> price = (binding.forth.text.toString())
+                R.id.fifth -> price = (binding.fifth.text.toString())
+                R.id.sixth -> price = (binding.sixth.text.toString())
             }
-            binding.edtValueCredit.setText(StringHelper.setComma(price))
+            binding.edtValueCredit.setText(StringHelper.toPersianDigits(price))
         }
-
-//        StringHelper.setCharAfterOnTime(binding.edtCardNumber, "-", 4)
 
         binding.btnSubmit.setOnClickListener {
             val cardNumber = binding.edtCardNumber.text.trim().toString()
@@ -79,7 +76,7 @@ class ATMFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            if (cardNumber.length<16) {
+            if (cardNumber.length < 16) {
                 MyApplication.Toast("شماره کارت را اصلاح کنید", Toast.LENGTH_SHORT)
                 binding.edtCardNumber.requestFocus()
                 return@setOnClickListener
@@ -104,8 +101,9 @@ class ATMFragment : Fragment() {
             }
 
             val p = StringHelper.extractTheNumber(price).toInt()
-            if (p < 2000) {
-                binding.edtValueCredit.setText(StringHelper.setComma("2000"))
+            if (p < 10000) {
+                binding.edtValueCredit.setText(StringHelper.setComma("10000"))
+                binding.edtValueCredit.requestFocus()
                 MyApplication.Toast("مبلغ وارد شده کمتر حد مجاز میباشد", Toast.LENGTH_SHORT)
                 return@setOnClickListener
             }
@@ -144,7 +142,6 @@ class ATMFragment : Fragment() {
             // ignore
         }
     }
-
 
     private fun atmPayment(
         cardNumber: String,

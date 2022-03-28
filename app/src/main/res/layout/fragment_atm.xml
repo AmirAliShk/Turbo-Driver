@@ -29,16 +29,17 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/card_to_card"
-            android:textStyle="bold" />
+             />
 
         <TextView
             android:id="@+id/txtReport"
-            android:layout_width="?android:attr/actionBarSize"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:padding="10dp"
             android:text="پیگیری"
-            android:textColor="@color/colorWhite"
-            android:gravity="center"/>
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorWhite" />
 
     </RelativeLayout>
 
@@ -66,6 +67,7 @@
                     android:layout_height="wrap_content"
                     android:text="شماره کارت"
                     android:textColor="@color/grayDark"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_marginRight="@dimen/_10sdp"/>
 
                 <AutoCompleteTextView
@@ -78,7 +80,7 @@
                     android:background="@drawable/edit_text_style"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:gravity="left|center_vertical"
                     android:textColor="@color/colorBlack" />
 
@@ -95,6 +97,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="نام بانک"
+
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/grayDark"
                     android:layout_marginRight="@dimen/_10sdp"/>
 
@@ -124,6 +128,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="کد پیگیری"
+
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/grayDark"
                     android:layout_marginRight="@dimen/_10sdp"/>
 
@@ -135,7 +141,7 @@
                     android:background="@drawable/edit_text_style"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:nextFocusDown="@id/edtDesc"
                     android:gravity="left|center_vertical"
                     android:textColor="@color/colorBlack" />
@@ -153,6 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="توضیحات"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/grayDark"
                     android:layout_marginRight="@dimen/_10sdp"/>
 
@@ -178,13 +185,6 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:visibility="invisible"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_negative" />
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -193,33 +193,27 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:textSize="@dimen/_14sdp"
                         android:paddingBottom="@dimen/_10sdp"
                         android:textColor="@color/colorBlack"
                         android:layout_width="wrap_content"
                         android:text="مبلغ به تومان میباشد"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_height="wrap_content"/>
 
                     <EditText
                         android:id="@+id/edtValueCredit"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/_40sdp"
                         android:gravity="center"
+                        android:paddingHorizontal="@dimen/_10sdp"
                         android:hint="مبلغ دلخواه را اینجا وارد کنید"
                         android:background="@drawable/edit_text_style"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/colorBlack"
                         android:inputType="number"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColorHint="@color/grayMedium" />
 
                 </LinearLayout>
-
-                <ImageView
-                    android:visibility="invisible"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_plus" />
 
             </LinearLayout>
 
@@ -235,98 +229,97 @@
                 <TableRow>
 
                     <RadioButton
-                        android:id="@+id/ten"
+                        android:id="@+id/first"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:checked="true"
                         android:elevation="3dp"
                         android:gravity="center"
-                        android:text="10,000"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/fifteen"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_radio"
-                        android:button="@android:color/transparent"
-                        android:elevation="3dp"
-                        android:gravity="center"
-                        android:text="15,000"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/twenty"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_radio"
-                        android:button="@android:color/transparent"
-                        android:elevation="3dp"
-                        android:gravity="center"
                         android:text="20,000"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/colorBlack"/>
+
+                    <RadioButton
+                        android:id="@+id/second"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_radio"
+                        android:button="@android:color/transparent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:elevation="3dp"
+                        android:gravity="center"
+                        android:text="30,000"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold" />
+                         />
+
+                    <RadioButton
+                        android:id="@+id/third"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_radio"
+                        android:button="@android:color/transparent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:elevation="3dp"
+                        android:gravity="center"
+                        android:text="40,000"
+                        android:textColor="@color/colorBlack"
+                        />
                 </TableRow>
 
                 <TableRow>
 
                     <RadioButton
-                        android:id="@+id/twentyFive"
+                        android:id="@+id/forth"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:elevation="3dp"
                         android:gravity="center"
-                        android:text="25,000"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="50,000"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold" />
+                         />
 
                     <RadioButton
-                        android:id="@+id/thirty"
+                        android:id="@+id/fifth"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:elevation="3dp"
                         android:gravity="center"
-                        android:text="30,000"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="100,000"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold" />
+                         />
 
                     <RadioButton
-                        android:id="@+id/thirtyFive"
+                        android:id="@+id/sixth"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:elevation="3dp"
                         android:gravity="center"
-                        android:text="35,000"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="200,000"
                         android:textColor="@color/colorBlack"
-                        android:textStyle="bold" />
+                         />
                 </TableRow>
 
             </ir.transport_x.taxi.custom_view.GridRadioGroup>
@@ -349,10 +342,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
-                        android:text="پرداخت"
+                        android:text="ثبت فیش واریزی"
                         android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/_16ssp"
-                        android:textStyle="bold" />
+                        android:textAppearance="?android:attr/textAppearanceLarge"                         />
 
                     <com.wang.avi.AVLoadingIndicatorView
                         android:layout_width="30dp"
