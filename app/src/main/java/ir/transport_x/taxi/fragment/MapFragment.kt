@@ -112,6 +112,8 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             }
         }
 
+        binding.chbMuteNotifications.isChecked = MyApplication.prefManager.muteNotifications
+
         binding.imgMenu.setOnClickListener {
             openDrawer()
         }
@@ -217,6 +219,15 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                     exitStation()
                 }
             }
+        }
+
+        binding.chbMuteNotifications.setOnCheckedChangeListener { buttonView, isChecked ->
+            MyApplication.prefManager.muteNotifications = isChecked
+            Log.i(TAG, "onCreateView:OOOOOOOOOOOOO ${MyApplication.prefManager.muteNotifications}")
+        }
+
+        binding.llMuteNotification.setOnClickListener {
+            binding.chbMuteNotifications.isChecked = !MyApplication.prefManager.muteNotifications
         }
 
         return binding.root

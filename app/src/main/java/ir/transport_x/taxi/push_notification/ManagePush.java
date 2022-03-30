@@ -57,39 +57,44 @@ public class ManagePush {
                 break;
             case "2":
                 // getServiceTurbo info
-                SoundHelper.ringing(context, R.raw.service, false);
-                if (MyApplication.prefManager.isAppRun()) {
-                    Log.i(TAG, "manage: app is running");
-                    AvailableServiceDialog.Companion.show(getSerivceInfo(dataArray));
-                } else {
-                    Log.i(TAG, "manage: app is not running");
-
-                    if (MyApplication.currentActivity != null) {
-                        MyApplication.currentActivity.finish();
-                    }
-                    VibratorHelper.setVibrator(context, new long[]{100, 100, 100}, -1);
-                    Intent in = new Intent(context, GetServiceActivity.class);
-                    in.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                    in.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                    in.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    ServiceModel mdoel = getSerivceInfo(dataArray);
-                    in.putExtra("CallTime", mdoel.getCallTime());
-                    in.putExtra("ServiceType", mdoel.getServiceType());
-                    in.putExtra("ServiceID", mdoel.getServiceID());
-                    in.putExtra("OrginDesc", mdoel.getOrginDesc());
-                    in.putExtra("originAddress", mdoel.getOriginAddress());
-                    in.putExtra("destinationAddress", mdoel.getDestinationDesc());
-                    in.putExtra("price", mdoel.getServicePrice());
-                    in.putExtra("inService", mdoel.isInService());
-                    in.putExtra("carType", mdoel.getCarType());
-                    in.putExtra("cargoType", mdoel.getCargoType());
-                    in.putExtra("description", mdoel.getDescription());
-                    in.putExtra("fixesDescription", mdoel.getFixedDesc());
-                    in.putExtra("returnBack", mdoel.getReturnBack());
-                    context.startActivity(in);
+                if(MyApplication.prefManager.getMuteNotifications()){
+                    Log.i(TAG, "onCreateView:OOOOOOOOOOOOO returned");
+                    return;//when it is (true) it means notifications are muted
                 }
+                    SoundHelper.ringing(context, R.raw.service, false);
+                    if (MyApplication.prefManager.isAppRun()) {
+                        Log.i(TAG, "manage: app is running");
+                        AvailableServiceDialog.Companion.show(getSerivceInfo(dataArray));
+                    } else {
+                        Log.i(TAG, "manage: app is not running");
+
+                        if (MyApplication.currentActivity != null) {
+                            MyApplication.currentActivity.finish();
+                        }
+                        VibratorHelper.setVibrator(context, new long[]{100, 100, 100}, -1);
+                        Intent in = new Intent(context, GetServiceActivity.class);
+                        in.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                        in.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                        in.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                        ServiceModel mdoel = getSerivceInfo(dataArray);
+                        in.putExtra("CallTime", mdoel.getCallTime());
+                        in.putExtra("ServiceType", mdoel.getServiceType());
+                        in.putExtra("ServiceID", mdoel.getServiceID());
+                        in.putExtra("OrginDesc", mdoel.getOrginDesc());
+                        in.putExtra("originAddress", mdoel.getOriginAddress());
+                        in.putExtra("destinationAddress", mdoel.getDestinationDesc());
+                        in.putExtra("price", mdoel.getServicePrice());
+                        in.putExtra("inService", mdoel.isInService());
+                        in.putExtra("carType", mdoel.getCarType());
+                        in.putExtra("cargoType", mdoel.getCargoType());
+                        in.putExtra("description", mdoel.getDescription());
+                        in.putExtra("fixesDescription", mdoel.getFixedDesc());
+                        in.putExtra("returnBack", mdoel.getReturnBack());
+                        context.startActivity(in);
+                    }
+
                 break;
 
             case "3":

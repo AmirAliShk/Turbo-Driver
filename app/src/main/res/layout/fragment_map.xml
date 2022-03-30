@@ -91,34 +91,60 @@
                 app:kswThumbRangeRatio="1.4"
                 app:kswThumbWidth="@dimen/_25sdp" />
 
+            <LinearLayout
+                android:id="@+id/llMuteNotification"
+                android:layout_width="@dimen/_42sdp"
+                android:layout_height="@dimen/_42sdp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/chbMuteNotifications"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:background="@drawable/notification_selector"
+                    android:button="@null"
+                    android:checked="false" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llBtns"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/vfStatus"
-        android:gravity="center"
+        android:gravity="bottom"
         android:orientation="horizontal">
 
-        <com.dshantanu.androidsquareslib.AndroidSquares
-            android:id="@+id/llGPs"
+        <LinearLayout
             android:layout_width="0dip"
-            android:layout_height="0dip"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/_5sdp"
-                android:background="@drawable/circle_blue"
-                android:elevation="3dp"
-                android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_gps" />
+            <com.dshantanu.androidsquareslib.AndroidSquares
+                android:id="@+id/llGPs"
+                android:layout_width="wrap_content"
+                android:layout_height="0dip"
+                android:layout_weight="1">
 
-        </com.dshantanu.androidsquareslib.AndroidSquares>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/circle_blue"
+                    android:elevation="3dp"
+                    android:padding="@dimen/_10sdp"
+                    android:src="@drawable/ic_gps" />
+
+            </com.dshantanu.androidsquareslib.AndroidSquares>
+
+        </LinearLayout>
 
         <com.dshantanu.androidsquareslib.AndroidSquares
             android:id="@+id/llNews"
@@ -152,8 +178,8 @@
                     android:layout_height="@dimen/_25sdp"
                     android:background="@drawable/bg_red"
                     android:gravity="center"
-                    android:visibility="gone"
-                    android:textColor="@color/colorWhite" />
+                    android:textColor="@color/colorWhite"
+                    android:visibility="gone" />
 
 
             </RelativeLayout>
@@ -223,50 +249,50 @@
 
     </LinearLayout>
 
-        <ViewFlipper
-            android:id="@+id/vfStatus"
-            android:background="@drawable/background2"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:elevation="@dimen/_3sdp"
-            android:layout_alignParentBottom="true"
+    <ViewFlipper
+        android:id="@+id/vfStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/background2"
+        android:elevation="@dimen/_3sdp">
+
+        <TextView
+            android:id="@+id/txtStatus"
+            style="@style/text_title_black"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="right|center_vertical"
+            android:padding="@dimen/_8sdp"
+            android:text="شما در محدوده ای ثبت نیستید" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:paddingHorizontal="@dimen/_5sdp"
+                app:indicatorColor="@color/colorRed"
+                app:indicatorName="BallBeatIndicator" />
 
             <TextView
-                android:id="@+id/txtStatus"
+                android:id="@+id/txtLoader"
                 style="@style/text_title_black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="right|center_vertical"
-                android:padding="@dimen/_8sdp"
-                android:text="شما در محدوده ای ثبت نیستید" />
+                android:text="درحال به روز رسانی وضعیت، لطفا صبور باشید"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
+        </LinearLayout>
 
-                <com.wang.avi.AVLoadingIndicatorView
-                    android:layout_width="@dimen/_35sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_gravity="center"
-                    android:paddingHorizontal="@dimen/_5sdp"
-                    app:indicatorColor="@color/colorRed"
-                    app:indicatorName="BallBeatIndicator" />
-
-                <TextView
-                    android:id="@+id/txtLoader"
-                    style="@style/text_title_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@android:style/TextAppearance.Medium"
-                    android:text="درحال به روز رسانی وضعیت، لطفا صبور باشید" />
-
-            </LinearLayout>
-
-        </ViewFlipper>
+    </ViewFlipper>
 
 </RelativeLayout>

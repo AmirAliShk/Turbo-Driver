@@ -48,10 +48,23 @@ class PrefManager {
     private val ONLINE_URL = "onlineUrl"
     private val ABOUT_US = "aboutUs"
     private val PUSH_URL = "pushUrl"
+    private val MUTE_NOTIFICATIONS = "muteNotifications"
 
     fun cleanPrefManger() {
         sharedPreferences.edit().clear().apply()
     }
+
+    /**
+     * when it is (true) it means notifications are muted
+     **/
+    var muteNotifications: Boolean
+        get() {
+            return sharedPreferences.getBoolean(MUTE_NOTIFICATIONS, false)
+        }
+        set(muteNotifications) {
+            editor.putBoolean(MUTE_NOTIFICATIONS, muteNotifications)
+            editor.commit()
+        }
 
     var pushUrl: String?
         get() {
