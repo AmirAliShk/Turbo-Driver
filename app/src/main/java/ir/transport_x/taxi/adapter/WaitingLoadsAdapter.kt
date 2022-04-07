@@ -116,12 +116,12 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                     AcceptService().accept(model.id.toString(), object : AcceptService.Listener {
                         override fun onSuccess(msg: String) {
                             holder.binding.vfAccept.displayedChild = 0
-
-                            MyApplication.handler.postDelayed({
-                                models.removeAt(position)
-                                notifyDataSetChanged()
-                            }, 100)
-
+                            GeneralDialog().message(msg).firstButton("باشه") {
+                                MyApplication.handler.postDelayed({
+                                    models.removeAt(position)
+                                    notifyDataSetChanged()
+                                }, 100)
+                            }.show()
                         }
 
                         override fun onFailure() {

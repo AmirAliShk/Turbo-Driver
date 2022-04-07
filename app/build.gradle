@@ -9,6 +9,7 @@ android {
     defaultConfig {
         applicationId 'ir.transport_x.taxi.toosan'
 //        applicationId 'ir.transport_x.taxi.test'
+//        applicationId 'ir.taxi1880.driver'
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 2

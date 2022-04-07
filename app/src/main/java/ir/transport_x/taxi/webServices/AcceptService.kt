@@ -44,7 +44,6 @@ class AcceptService {
                                 }
                             })
                             listener.onSuccess(msg)
-                            GeneralDialog().message(msg).firstButton("باشه") {}.show()
                         }else{
                             listener.onFailure()
 
