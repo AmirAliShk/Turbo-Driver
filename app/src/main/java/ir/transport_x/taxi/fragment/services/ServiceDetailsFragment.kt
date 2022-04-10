@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.downloader.Progress
+import com.warkiz.widget.IndicatorSeekBar
+import com.warkiz.widget.OnSeekChangeListener
+import com.warkiz.widget.SeekParams
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentServiceDetailsBinding
@@ -238,6 +241,25 @@ class ServiceDetailsFragment(
                         binding.vfDownloadOrPlay.displayedChild = 2
                     }
                 })
+
+            binding.skbTimer.onSeekChangeListener = object : OnSeekChangeListener {
+                override fun onSeeking(seekParams: SeekParams) {
+                    val timeRemaining = seekParams.progress / 1000
+                    val strTimeRemaining = String.format(
+                        Locale("en_US"),
+                        "%02d:%02d",
+                        timeRemaining / 60,
+                        timeRemaining % 60
+                    )
+                    binding.txtTime.text = strTimeRemaining
+                }
+
+                override fun onStartTrackingTouch(seekBar: IndicatorSeekBar) {}
+                override fun onStopTrackingTouch(seekBar: IndicatorSeekBar) {
+                    seekBar.let { VoiceHelper.getInstance().staticMd()?.seekTo(it.progress) }
+                }
+            }
+
         }
 
         return binding.root
