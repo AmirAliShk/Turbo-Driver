@@ -3,6 +3,7 @@ package ir.transport_x.taxi.activity
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
@@ -130,11 +131,9 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             return
         }
-        var mapFragment = supportFragmentManager.findFragmentByTag(MapFragment.TAG) ?: return
-
-        if (supportFragmentManager.backStackEntryCount > 0 && !mapFragment.isVisible) {
+        if (supportFragmentManager.backStackEntryCount > 1) {
             super.onBackPressed()
-        }else if (mapFragment.isVisible) {
+        }else {
             GeneralDialog()
                 .message("آیا از خروج خود اطمینان دارید؟")
                 .firstButton("بله") {
