@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/actionBar"
+    android:background="@color/pageBackground"
     tools:context=".activity.SplashActivity">
 
     <ImageView
         android:layout_width="@dimen/_90sdp"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_team_x"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_team_x" />
 
 </RelativeLayout>

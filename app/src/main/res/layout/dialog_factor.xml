@@ -27,6 +27,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:elevation="@dimen/_5sdp"
+                android:layout_margin="@dimen/_5sdp"
                 android:background="@drawable/background4"
                 android:orientation="vertical">
 
@@ -35,7 +37,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="@dimen/_10sdp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -50,7 +52,7 @@
                         android:gravity="right"
                         android:text="فاکتور"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@color/colorDarkPurple"
                         android:textStyle="bold" />
 
                     <TextView
@@ -83,7 +85,7 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_5sdp"
+                                android:layout_marginRight="@dimen/_7sdp"
                                 android:layout_weight="1"
                                 android:gravity="right"
                                 android:text="مبلغ :"
@@ -94,7 +96,7 @@
                                 android:id="@+id/txtTotalAmount"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_weight="1.5"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/colorBlack" />
 
@@ -120,7 +122,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_11sdp"
                                 android:gravity="right"
                                 android:orientation="horizontal">
 
@@ -137,7 +139,7 @@
                                     android:id="@+id/txtDiscount"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:layout_weight="1.5"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/colorBlack" />
 
@@ -147,14 +149,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginBottom="@dimen/_12sdp"
                                 android:gravity="right"
                                 android:orientation="horizontal">
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_11sdp"
                                     android:layout_weight="1"
                                     android:gravity="right"
                                     android:text="عوارض شهرداری :"
@@ -165,7 +167,7 @@
                                     android:id="@+id/txtTax"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:layout_weight="1.5"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/colorBlack" />
 
@@ -178,7 +180,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp">>
 
                         <ImageView
                             android:layout_width="25dp"
@@ -188,7 +191,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_11sdp"
                             android:gravity="right"
                             android:orientation="horizontal">
 
@@ -206,7 +209,7 @@
                                 android:id="@+id/txtDriverShare"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_weight="1.5"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/colorBlack" />
 
@@ -218,17 +221,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_12sdp">
 
                         <ImageView
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
-                            android:src="@drawable/ic_destination_one" />
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:padding="@dimen/_5sdp"
+                            android:src="@drawable/ic_destination" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_7sdp"
                             android:layout_weight="1"
                             android:gravity="right"
                             android:text="سهم شرکت :"
@@ -239,7 +244,7 @@
                             android:id="@+id/txtCompanyShare"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.5"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/colorBlack" />
 
@@ -248,11 +253,14 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
+                        android:layout_marginTop="@dimen/_8sdp"
                         android:background="@drawable/bg_stroke"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
                         android:gravity="center"
+                        android:elevation="@dimen/_3sdp"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        android:padding="@dimen/_8sdp">
 
                         <TextView
                             android:layout_width="0dp"
@@ -307,7 +315,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_50sdp"
                     android:layout_margin="@dimen/_10sdp"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -318,7 +326,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
-                        android:background="@drawable/bg_grye">
+                        android:background="@drawable/bg_grye"
+                        android:elevation="@dimen/_4sdp"
+                        android:layout_margin="@dimen/_3sdp">
 
                         <Button
                             android:id="@+id/btnEndTrip"
@@ -328,7 +338,8 @@
                             android:gravity="center"
                             android:text="پایان سرویس"
                             android:textColor="@color/colorWhite"
-                            android:textSize="24sp" />
+                            android:textSize="24sp"
+                            android:textStyle="bold"/>
 
                         <com.wang.avi.AVLoadingIndicatorView
                             android:layout_width="wrap_content"

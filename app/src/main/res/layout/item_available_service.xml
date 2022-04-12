@@ -1,213 +1,378 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layoutDirection="rtl"
-    android:layout_height="wrap_content">
+    android:orientation="vertical"
+    android:paddingTop="@dimen/_12sdp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background4"
+        android:orientation="vertical"
+        android:elevation="@dimen/_4sdp"
         android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:padding="@dimen/_5sdp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/txtAnnounce"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="توجه : سرویس در اختیار میباشد و مبلغ به روزرسانی میشود"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:visibility="gone"
-            android:textColor="@color/colorRed"
-            android:textSize="@dimen/_12sdp"/>
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/background4">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top|right"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/title_details"
-                android:textColor="@color/title_detailes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/origin" />
-
-            <TextView
-                android:id="@+id/txtOriginAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|right"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:gravity="right|center_vertical"
-                android:textColor="@color/colorBlack"
-                android:paddingRight="@dimen/_10sdp"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/llServiceType"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:gravity="top|right">
-
-            <TextView
-                style="@style/title_details"
-                android:textColor="@color/title_detailes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/firstDestination" />
-
-            <TextView
-                android:id="@+id/txtFirstDestAddress"
-                style="@style/Details_answer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|right"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_weight="3"
-                android:textColor="@color/grayDark" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                android:background="@drawable/bg_grye"
-                android:padding="@dimen/_4sdp">
-
-                <ImageView
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:src="@drawable/ic_callll"/>
-
-                <TextView
-                    style="@style/Details_answer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:textColor="@color/colorWhite"
-                    android:layout_weight="3"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:text="تماس" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="0.25" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/title_details"
-                android:textColor="@color/title_detailes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/description" />
-
-            <TextView
-                android:id="@+id/txtDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right|center_vertical"
-                android:layout_gravity="top|right"
-                android:textColor="@color/colorBlack"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/title_details"
-                android:textColor="@color/title_detailes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/priceService" />
-
-            <TextView
-                android:id="@+id/txtPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right|center_vertical"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_10sdp">
 
             <ViewFlipper
-                android:id="@+id/vfAcceptService"
-                android:layout_width="0dp"
-                android:layout_weight="1.5"
-                android:layout_marginHorizontal="@dimen/_5sdp"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_green">
+                android:id="@+id/vfServiceType"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="6dp">
 
-                <Button
-                    android:id="@+id/btnGetService"
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/transparent"
-                    android:text="قبول سرویس"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorWhite" />
-
-                <com.wang.avi.AVLoadingIndicatorView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    app:indicatorColor="@color/colorWhite" />
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_error"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_4sdp"/>
 
             </ViewFlipper>
 
-            <Button
-                android:id="@+id/btnRejectService"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="@dimen/_5sdp"
+            <TextView
+                android:id="@+id/txtAnnounce"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="رد میکنم"
-                android:background="@drawable/bg_strock_grye"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorBlack" />
+                android:layout_marginTop="5dp"
+                android:text="سفر در اختیار میباشد و مبلغ به روزرسانی میشود."
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_25sdp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_13sdp"
+                        android:gravity="top|right"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_origin" />
+
+                        <TextView
+                            android:id="@+id/txtOriginAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|right"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:gravity="right|center_vertical"
+                            android:paddingRight="@dimen/_9sdp"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:gravity="top|right"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_destination" />
+
+                        <TextView
+                            android:id="@+id/txtFirstDestAddress"
+                            style="@style/Details_answer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top|right"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:layout_weight="3"
+                            android:textColor="@color/grayDark" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_grye"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_4sdp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:src="@drawable/ic_callll" />
+
+                            <TextView
+                                style="@style/Details_answer"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:layout_weight="3"
+                                android:text="تماس"
+                                android:textColor="@color/colorWhite" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="0.25" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llSecondDest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:gravity="top|right"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/title_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/secondDestination"
+                            android:textColor="@color/title_detailes" />
+
+                        <TextView
+                            android:id="@+id/txtSecondDestAddress"
+                            style="@style/Details_answer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:textColor="@color/grayDark" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_grye"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_4sdp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:src="@drawable/ic_callll" />
+
+                            <TextView
+                                style="@style/Details_answer"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:layout_weight="3"
+                                android:text="تماس"
+                                android:textColor="@color/colorWhite" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="0.25" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llThirdDest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:gravity="top|right"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/title_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/thirdDestination"
+                            android:textColor="@color/title_detailes" />
+
+                        <TextView
+                            android:id="@+id/txtThirdDestAddress"
+                            style="@style/Details_answer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:textColor="@color/grayDark" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_grye"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_4sdp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:src="@drawable/ic_callll" />
+
+                            <TextView
+                                style="@style/Details_answer"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:layout_weight="3"
+                                android:text="تماس"
+                                android:textColor="@color/colorWhite" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="0.25" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_10sdp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_description" />
+
+                        <TextView
+                            android:id="@+id/txtDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:gravity="right|center_vertical"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_money" />
+
+                        <TextView
+                            android:id="@+id/txtPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right|center_vertical"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorBlack"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ViewFlipper
+                        android:id="@+id/vfAcceptService"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.35"
+                        android:background="@drawable/bg_green"
+                        android:elevation="3dp">
+
+                        <Button
+                            android:id="@+id/btnGetService"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/transparent"
+                            android:gravity="center"
+                            android:text="قبول سرویس"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold"
+                            android:textSize="17sp"/>
+
+                        <com.wang.avi.AVLoadingIndicatorView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            app:indicatorColor="@color/colorWhite" />
+
+                    </ViewFlipper>
+
+                    <TextView
+                        android:id="@+id/txtRejectService"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="رد میکنم"
+                        android:textColor="@color/colorRed"
+                        android:textSize="19sp"
+                        android:paddingRight="@dimen/_13sdp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
 </LinearLayout>
+

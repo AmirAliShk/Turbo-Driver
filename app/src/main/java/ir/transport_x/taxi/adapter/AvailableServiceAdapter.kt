@@ -91,7 +91,7 @@ class AvailableServiceAdapter(list: ArrayList<ServiceModel>) :
                 .show()
         }
 
-        holder.binding.btnRejectService.setOnClickListener {
+        holder.binding.txtRejectService.setOnClickListener {
             models.removeAt(position)
             notifyDataSetChanged()
             if (models.size == 0) {

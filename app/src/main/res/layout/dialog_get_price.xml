@@ -30,14 +30,15 @@
             android:background="@drawable/edit_text_style"
             android:gravity="center"
             android:inputType="number"
-            android:padding="@dimen/_8sdp" />
+            android:padding="@dimen/_8sdp"
+            android:elevation="@dimen/_5sdp"/>
 
         <ViewFlipper
             android:id="@+id/vfEndService"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_15sdp"
-            android:background="@drawable/bg_grye">
+            android:background="@drawable/purple">
 
             <Button
                 android:id="@+id/btnEndTrip"
@@ -47,7 +48,9 @@
                 android:gravity="center"
                 android:text="پایان سرویس"
                 android:textColor="@color/colorWhite"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:elevation="@dimen/_2sdp"
+                android:layout_margin="@dimen/_4sdp"/>
 
             <com.wang.avi.AVLoadingIndicatorView
                 android:layout_width="wrap_content"

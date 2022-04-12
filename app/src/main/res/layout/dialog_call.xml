@@ -24,7 +24,6 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/_15sdp"
                 android:layout_weight="1"
-                android:background="@drawable/background1"
                 android:elevation="@dimen/_5sdp"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -35,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:layout_margin="20dp"
-                    android:background="@drawable/background4"
+                    android:background="@drawable/bg_dialog_button"
                     android:elevation="@dimen/_3sdp"
                     android:gravity="center"
                     android:orientation="horizontal"
@@ -45,8 +44,10 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/bg_green1"
-                        android:padding="@dimen/_5sdp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@drawable/bg_cirecle_green"
+                        android:elevation="@dimen/_5sdp"
+                        android:padding="@dimen/_8sdp"
                         android:src="@drawable/ic_calll" />
 
                     <TextView
@@ -68,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:layout_margin="20dp"
-                    android:background="@drawable/background4"
+                    android:background="@drawable/bg_dialog_button"
                     android:elevation="@dimen/_3sdp"
                     android:gravity="center"
                     android:orientation="horizontal"
@@ -78,8 +79,10 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/bg_green1"
-                        android:padding="@dimen/_5sdp"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@drawable/bg_cirecle_green"
+                        android:elevation="@dimen/_5sdp"
+                        android:padding="@dimen/_8sdp"
                         android:src="@drawable/ic_calll" />
 
 

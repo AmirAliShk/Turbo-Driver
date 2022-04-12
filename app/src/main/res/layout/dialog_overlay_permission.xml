@@ -63,12 +63,13 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="7dp"
-                android:background="@drawable/background3"
+                android:background="@drawable/purple"
                 android:gravity="center"
                 android:text="@string/setting"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/btnDismiss"
@@ -78,7 +79,8 @@
                 android:gravity="center"
                 android:text="رد کردن"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorRed"
+                android:textStyle="bold"
                 android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
