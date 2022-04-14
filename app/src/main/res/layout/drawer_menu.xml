@@ -17,6 +17,76 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:background="@color/colorWhite"
+                android:gravity="center_vertical|start"
+                android:orientation="vertical"
+                android:paddingRight="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:gravity="right"
+                        android:src="@drawable/ic_chargh"/>
+
+                    <TextView
+                        android:id="@+id/txtCharge"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:textSize="@dimen/_15sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:text="145,000"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="2"
+                        android:gravity="right"
+                        android:textColor="@color/grayLight"
+                        android:textStyle="bold"
+                        android:text="تومان"
+                        android:textSize="@dimen/_12sdp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|right"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_3sdp">
+
+                    <TextView
+                        android:id="@+id/txtDriverName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="سارابنی اسدی"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_11sdp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDivider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -169,46 +239,6 @@
                     android:background="@color/colorDivider" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="right"
-                    android:orientation="horizontal">
-
-                    <RelativeLayout
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:paddingRight="@dimen/_10sdp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_message" />
-
-                    </RelativeLayout>
-
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        style="@style/text_title_black"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="right|center_vertical"
-                        android:text="پیام ها"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.75dp"
-                    android:layout_marginRight="65dp"
-                    android:background="@color/colorDivider" />
-
-                <LinearLayout
                     android:id="@+id/llCall"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -225,7 +255,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_centerInParent="true"
-                            android:src="@drawable/ic_support" />
+                            android:src="@drawable/ic_call" />
 
                     </RelativeLayout>
 
@@ -238,7 +268,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="right|center_vertical"
-                        android:text="پشتیبانی"
+                        android:text="تماس با پشتیبانی"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textStyle="bold" />
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="true"
     android:layoutDirection="rtl"
     android:orientation="vertical">
@@ -97,8 +97,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/_20sdp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/_20sdp">
 
 
                     <LinearLayout
@@ -260,8 +260,8 @@
                             android:paddingLeft="10dp"
                             android:paddingRight="7dp"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorBlack"/>
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 

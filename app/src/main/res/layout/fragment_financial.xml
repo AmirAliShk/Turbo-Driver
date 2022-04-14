@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/_10sdp"
-            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardBackgroundColor="@color/colorWhite"
             app:cardCornerRadius="@dimen/_8sdp"
             app:contentPadding="@dimen/_10sdp">
 
@@ -58,7 +58,7 @@
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_gravity="center"
-                    app:indicatorColor="@color/colorWhite"
+                    app:indicatorColor="@color/colorDarkPurple"
                     app:indicatorName="BallBeatIndicator" />
 
                 <LinearLayout
@@ -66,13 +66,13 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/_10sdp">
+                    android:paddingLeft="@dimen/_10sdp">
 
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
-                        android:padding="@dimen/_3sdp"
-                        android:src="@drawable/ic_wallet" />
+                        android:src="@drawable/ic_money"
+                        android:padding="@dimen/_2sdp"/>
 
                     <TextView
                         style="@style/item_value"
@@ -89,7 +89,7 @@
                         android:layout_marginHorizontal="@dimen/_8sdp"
                         android:layout_weight="1"
                         android:gravity="left"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorBlack"
                         android:textStyle="bold" />
 
                     <TextView
@@ -121,29 +121,31 @@
             android:layout_margin="@dimen/_10sdp"
             app:cardBackgroundColor="@color/colorWhite"
             app:cardCornerRadius="@dimen/_8sdp"
-            app:contentPadding="@dimen/_10sdp">
+            app:contentPadding="@dimen/_8sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="right">
 
                 <TextView
                     android:id="@+id/txtCardName"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textColor="@color/colorBlue"
-                    android:textSize="@dimen/_16sdp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="right|top"
+                    android:textColor="@color/colorDarkPurple"
+                    android:textSize="@dimen/_15sdp"
+                    android:paddingBottom="@dimen/_5sdp"/>
 
                 <TextView
                     android:id="@+id/txtCardNumber"
                     style="@style/item_title_black"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:gravity="left"/>
+                    android:gravity="right|bottom"/>
 
             </LinearLayout>
 
@@ -152,7 +154,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.65"
             android:gravity="right|top"
             android:orientation="horizontal"
             android:paddingLeft="15dp"
@@ -296,14 +298,14 @@
                 <ImageView
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="@dimen/_25sdp"
-                    android:padding="@dimen/_5sdp"
+                    android:padding="@dimen/_4sdp"
                     android:src="@drawable/ic_account_report" />
 
                 <TextView
                     style="@style/item_title_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
                     android:text="گزارش حساب" />
 
             </LinearLayout>

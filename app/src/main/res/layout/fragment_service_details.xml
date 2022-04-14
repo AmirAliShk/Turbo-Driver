@@ -104,17 +104,17 @@
                     android:gravity="right|top"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="15dp"
+                    <TextView
+                        style="@style/title_details"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.20"
-                        android:paddingVertical="@dimen/_5sdp"
-                        android:src="@drawable/ic_origin" />
+                        android:text="@string/origin"
+                        android:textColor="@color/title_detailes" />
 
                     <TextView
                         android:id="@+id/txtOriginAddress"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_10sdp"
@@ -129,16 +129,17 @@
                     android:gravity="right|top"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="35dp"
-                        android:layout_weight="0.20"
-                        android:src="@drawable/ic_destination_one" />
+                    <TextView
+                        style="@style/title_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/firstDestination"
+                        android:textColor="@color/title_detailes" />
 
                     <TextView
                         android:id="@+id/txtFirstDestAddress"
                         style="@style/Details_answer"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/_10sdp"
@@ -328,12 +329,14 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:background="@drawable/bg_voice"
@@ -350,7 +353,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
+                                android:gravity="left|center"
                                 android:padding="@dimen/_4sdp"
                                 android:orientation="horizontal">
 
@@ -387,9 +390,9 @@
                                         android:layout_gravity="center"
                                         app:isb_seek_smoothly="true"
                                         app:isb_show_indicator="none"
-                                        app:isb_thumb_color="@color/colorAccent"
+                                        app:isb_thumb_color="@color/colorDarkPurple"
                                         app:isb_thumb_size="10dp"
-                                        app:isb_track_background_color="@color/grayLighter"
+                                        app:isb_track_background_color="@color/grayLight"
                                         app:isb_track_background_size="3dp"
                                         app:isb_track_progress_color="@color/grayDark"
                                         app:isb_track_progress_size="5dp" />

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.app.MyApplication
@@ -45,9 +46,12 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.navigationBarColor = resources.getColor(R.color.pageBackground)
-            window.statusBarColor = resources.getColor(R.color.colorBlack)
+            window.navigationBarColor = resources.getColor(R.color.colorPageBackground)
+            window.statusBarColor = resources.getColor(R.color.colorPageBackground)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            WindowInsetsControllerCompat(window, binding.root).isAppearanceLightStatusBars = true
+            WindowInsetsControllerCompat(window, binding.root).isAppearanceLightNavigationBars =
+                true
         }
 
         binding.txtAppVersion.text = AppVersionHelper(
@@ -94,9 +98,9 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
             override fun onDrawerOpened(drawerView: View) {
                 binding.txtCharge.text =
-                    "شارژ شما ${
-                        StringHelper.toPersianDigits(
-                            StringHelper.setComma(MyApplication.prefManager.getCharge()))} تومان "
+                    StringHelper.toPersianDigits(
+                        StringHelper.setComma(MyApplication.prefManager.getCharge())
+                    )
             }
 
             override fun onDrawerClosed(drawerView: View) {}
@@ -133,7 +137,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         }
         if (supportFragmentManager.backStackEntryCount > 1) {
             super.onBackPressed()
-        }else {
+        } else {
             GeneralDialog()
                 .message("آیا از خروج خود اطمینان دارید؟")
                 .firstButton("بله") {

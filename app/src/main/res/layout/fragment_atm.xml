@@ -241,7 +241,7 @@
                         android:elevation="3dp"
                         android:gravity="center"
                         android:text="20,000"
-                        android:textColor="@color/colorBlack"/>
+                        android:textColor="@color/colorWhite"/>
 
                     <RadioButton
                         android:id="@+id/second"
@@ -255,8 +255,7 @@
                         android:elevation="3dp"
                         android:gravity="center"
                         android:text="30,000"
-                        android:textColor="@color/colorBlack"
-                         />
+                        android:textColor="@color/colorBlack" />
 
                     <RadioButton
                         android:id="@+id/third"

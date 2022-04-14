@@ -10,6 +10,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.app.DataHolder
 import ir.transport_x.taxi.app.MyApplication
@@ -31,8 +32,10 @@ class SplashActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.navigationBarColor = resources.getColor(R.color.colorBlack)
-            window.statusBarColor = resources.getColor(R.color.colorBlack)
+            window.navigationBarColor = resources.getColor(R.color.pageBackground)
+            window.statusBarColor = resources.getColor(R.color.pageBackground)
+            WindowInsetsControllerCompat(window, binding.root).isAppearanceLightStatusBars = true
+            WindowInsetsControllerCompat(window, binding.root).isAppearanceLightNavigationBars = true
         }
         TypeFaceUtil.overrideFont(binding.root)
 

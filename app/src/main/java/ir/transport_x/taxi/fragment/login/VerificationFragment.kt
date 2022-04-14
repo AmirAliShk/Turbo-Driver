@@ -1,11 +1,15 @@
 package ir.transport_x.taxi.fragment.login
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
+import ir.transport_x.taxi.R
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentVerificationBinding
@@ -22,17 +26,27 @@ class VerificationFragment : Fragment() {
     lateinit var binding: FragmentVerificationBinding
     lateinit var mobileNumber: String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentVerificationBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window = activity?.window!!
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            window.navigationBarColor = resources.getColor(R.color.grayLighter)
+            window.statusBarColor = resources.getColor(R.color.actionBar)
+            WindowInsetsControllerCompat(
+                window,
+                binding.root
+            ).isAppearanceLightStatusBars = false
+            WindowInsetsControllerCompat(
+                window,
+                binding.root
+            ).isAppearanceLightNavigationBars = true
+        }
         binding.btnLogin.setOnClickListener {
             mobileNumber = binding.edtMobilNo.text.toString()
 

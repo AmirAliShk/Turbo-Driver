@@ -33,6 +33,8 @@
     <string name="Tracking_Code">کد پیگیری :</string>
     <string name="expense">هزینه :</string>
     <string name="name">نام</string>
+    <string name="active">فعال</string>
+    <string name="station">محدوده</string>
     <string name="father_name">نام پدر</string>
     <string name="id">شمارشناسنامه</string>
     <string name="National_code">کد ملی</string>

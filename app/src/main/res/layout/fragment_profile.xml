@@ -7,30 +7,32 @@
     android:layoutDirection="rtl"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_gravity="left"
+        android:paddingLeft="@dimen/_10ssp"
+        android:paddingTop="@dimen/_17sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:src="@drawable/ic_back_grye" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_alignParentLeft="true"
-            android:padding="15dp"
-            android:src="@drawable/ic_back_grye" />
 
         <LinearLayout
-            android:layout_marginTop="@dimen/_35sdp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_35sdp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_13sdp"
-                android:background="@drawable/background2"
+                android:background="@drawable/bg_white"
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/_35sdp"
                 android:paddingVertical="@dimen/_25sdp">
@@ -38,8 +40,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_35sdp">
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/txtName"
@@ -48,9 +50,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="سارا بنی اسدی"
                         android:textSize="@dimen/_17ssp"
-                        android:textStyle="bold"
-                        android:text="سارا بنی اسدی"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -134,7 +136,7 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -146,11 +148,10 @@
                     android:layout_width="@dimen/_90sdp"
                     android:layout_height="@dimen/_90sdp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_team_x"
-                    android:padding="@dimen/_7sdp"/>
+                    android:padding="@dimen/_7sdp"
+                    android:src="@drawable/ic_team_x" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 
@@ -161,15 +162,14 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="@dimen/_110sdp"
-                android:layout_height="@dimen/_110sdp"
+                android:layout_width="@dimen/_105sdp"
+                android:layout_height="@dimen/_105sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_account" />
+                android:src="@drawable/ic_account1" />
 
         </LinearLayout>
 
     </RelativeLayout>
-
 
 
 </LinearLayout>

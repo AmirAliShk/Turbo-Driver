@@ -16,10 +16,9 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_7sdp"
             android:layout_weight="0.13"
-            android:src="@drawable/ic_news" />
+            android:src="@drawable/ic_news_white" />
 
         <TextView
             android:id="@+id/txtDate"

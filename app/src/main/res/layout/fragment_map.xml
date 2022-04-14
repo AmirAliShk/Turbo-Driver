@@ -17,20 +17,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/_8sdp"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/txtLock"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/_25sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_20sdp"
             android:background="@color/colorRed"
             android:ellipsize="marquee"
             android:focusable="true"
             android:freezesText="true"
-            android:gravity="center_vertical"
             android:marqueeRepeatLimit="marquee_forever"
-            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingLeft="15dip"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingRight="15dip"
+            android:paddingBottom="@dimen/_5sdp"
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:textColor="@color/colorWhite"
@@ -41,209 +45,185 @@
             android:id="@+id/llSwitches"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_2sdp"
+            android:layout_marginRight="@dimen/_5sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imgMenu"
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp"
-                android:layout_marginRight="@dimen/_8sdp"
-                android:background="@drawable/circle_blue"
-                android:elevation="5dp"
-                android:padding="@dimen/_5sdp"
+                android:layout_width="@dimen/_42sdp"
+                android:layout_height="@dimen/_42sdp"
+                android:background="@drawable/white_circle_background"
+                android:padding="@dimen/_6sdp"
                 android:src="@drawable/ic_menu" />
 
-            <com.kyleduo.switchbutton.SwitchButton
-                android:id="@+id/swEnterExit"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:checked="false"
-                android:textColor="@color/grayLighter"
-                android:textSize="@dimen/_16ssp"
-                app:kswAnimationDuration="300"
-                app:kswBackDrawable="@drawable/switch_background"
-                app:kswTextOff="    فعال      "
-                app:kswTextOn="     فعال     "
-                app:kswThumbColor="@color/grayLighter"
-                app:kswThumbHeight="@dimen/_25sdp"
-                app:kswThumbMargin="@dimen/_5sdp"
-                app:kswThumbRangeRatio="1.4"
-                app:kswThumbWidth="@dimen/_25sdp" />
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <com.kyleduo.switchbutton.SwitchButton
-                android:id="@+id/swStationRegister"
+                <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/swEnterExit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="11dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="25sp"
+                    app:kswBackDrawable="@drawable/background_switch_button"
+                    app:kswTextExtra="70dp"
+                    app:kswTextOff="@string/active"
+                    app:kswTextOn="@string/active"
+                    app:kswThumbDrawable="@drawable/thumb_selector"
+                    app:kswThumbMargin="-2dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llStationRegister"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:checked="false"
-                android:textColor="@color/grayLighter"
-                android:textSize="@dimen/_16ssp"
-                android:visibility="invisible"
-                app:kswAnimationDuration="300"
-                app:kswBackDrawable="@drawable/switch_background"
-                app:kswTextOff="    محدوده   "
-                app:kswTextOn="    محدوده   "
-                app:kswThumbColor="@color/grayLighter"
-                app:kswThumbHeight="@dimen/_25sdp"
-                app:kswThumbMargin="@dimen/_5sdp"
-                app:kswThumbRangeRatio="1.4"
-                app:kswThumbWidth="@dimen/_25sdp" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/swStationRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="25sp"
+                    app:kswBackDrawable="@drawable/background_switch_button"
+                    app:kswTextExtra="50dp"
+                    app:kswTextOff="@string/station"
+                    app:kswTextOn="@string/station"
+                    app:kswThumbDrawable="@drawable/thumb_selector"
+                    app:kswThumbMargin="-2dp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llMuteNotification"
-                android:layout_width="@dimen/_42sdp"
-                android:layout_height="@dimen/_42sdp"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginLeft="@dimen/_9sdp"
                 android:gravity="center">
 
                 <CheckBox
                     android:id="@+id/chbMuteNotifications"
-                    android:layout_width="@dimen/_35sdp"
-                    android:layout_height="@dimen/_35sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_margin="@dimen/_4sdp"
                     android:background="@drawable/notification_selector"
                     android:button="@null"
-                    android:checked="false" />
+                    android:checked="false"
+                    android:elevation="@dimen/_6sdp" />
 
             </LinearLayout>
+
 
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llBtns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="match_parent"
         android:layout_above="@id/vfStatus"
-        android:gravity="bottom"
-        android:orientation="horizontal">
+        android:layout_marginBottom="@dimen/_7sdp"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <com.dshantanu.androidsquareslib.AndroidSquares
-                android:id="@+id/llGPs"
-                android:layout_width="wrap_content"
-                android:layout_height="0dip"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:background="@drawable/circle_blue"
-                    android:elevation="3dp"
-                    android:padding="@dimen/_10sdp"
-                    android:src="@drawable/ic_gps" />
-
-            </com.dshantanu.androidsquareslib.AndroidSquares>
-
-        </LinearLayout>
-
-        <com.dshantanu.androidsquareslib.AndroidSquares
-            android:id="@+id/llNews"
-            android:layout_width="0dip"
-            android:layout_height="0dip"
-            android:layout_margin="5dp"
-            android:layout_weight="1">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_5sdp"
-                        android:background="@drawable/circle_blue"
-                        android:elevation="3dp"
-                        android:padding="@dimen/_10sdp"
-                        android:src="@drawable/ic_news_white" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/txtNewsCount"
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_25sdp"
-                    android:background="@drawable/bg_red"
-                    android:gravity="center"
-                    android:textColor="@color/colorWhite"
-                    android:visibility="gone" />
-
-
-            </RelativeLayout>
-
-        </com.dshantanu.androidsquareslib.AndroidSquares>
-
-        <com.dshantanu.androidsquareslib.AndroidSquares
-            android:id="@+id/llFinancial"
-            android:layout_width="0dip"
-            android:layout_height="0dip"
-            android:layout_margin="5dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/_5sdp"
-                android:background="@drawable/circle_blue"
-                android:elevation="3dp"
-                android:padding="@dimen/_8sdp"
-                android:src="@drawable/ic_financial" />
-
-        </com.dshantanu.androidsquareslib.AndroidSquares>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <com.dshantanu.androidsquareslib.AndroidSquares
             android:id="@+id/llFreeLoads"
-            android:layout_width="0dip"
-            android:layout_height="0dip"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1">
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_marginStart="@dimen/_6sdp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/_5sdp"
-                android:background="@drawable/circle_blue"
-                android:elevation="3dp"
-                android:padding="@dimen/_8sdp"
+                android:background="@drawable/white_circle_background"
+                android:padding="@dimen/_10sdp"
                 android:src="@drawable/ic_free_loads" />
 
         </com.dshantanu.androidsquareslib.AndroidSquares>
 
         <com.dshantanu.androidsquareslib.AndroidSquares
             android:id="@+id/llServiceManagement"
-            android:layout_width="0dip"
-            android:layout_height="0dip"
-            android:layout_margin="5dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_weight="1">
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_marginStart="@dimen/_6sdp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/_5sdp"
-                android:background="@drawable/circle_blue"
-                android:elevation="3dp"
-                android:padding="@dimen/_8sdp"
+                android:background="@drawable/white_circle_background"
+                android:padding="@dimen/_12sdp"
                 android:src="@drawable/ic_service_management" />
+
+        </com.dshantanu.androidsquareslib.AndroidSquares>
+
+        <com.dshantanu.androidsquareslib.AndroidSquares
+            android:id="@+id/llNews"
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_marginStart="@dimen/_6sdp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/white_circle_background"
+                android:padding="@dimen/_13sdp"
+                android:src="@drawable/ic_news_white" />
+
+            <TextView
+                android:id="@+id/txtNewsCount"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/bg_red"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone" />
+
+
+        </com.dshantanu.androidsquareslib.AndroidSquares>
+
+        <com.dshantanu.androidsquareslib.AndroidSquares
+            android:id="@+id/llFinancial"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_6sdp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/white_circle_background"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_financial" />
+
+        </com.dshantanu.androidsquareslib.AndroidSquares>
+
+        <com.dshantanu.androidsquareslib.AndroidSquares
+            android:id="@+id/llGPs"
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_marginStart="@dimen/_6sdp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/white_circle_background"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_gps" />
 
         </com.dshantanu.androidsquareslib.AndroidSquares>
 
@@ -254,9 +234,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/background2"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:background="@color/colorPageBackground"
         android:elevation="@dimen/_3sdp">
 
         <TextView
@@ -285,14 +264,14 @@
 
             <TextView
                 android:id="@+id/txtLoader"
-                style="@style/text_title_black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="درحال به روز رسانی وضعیت، لطفا صبور باشید"
-                android:textAppearance="@android:style/TextAppearance.Medium" />
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </ViewFlipper>
-
 </RelativeLayout>

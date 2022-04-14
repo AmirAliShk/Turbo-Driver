@@ -10,10 +10,9 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -21,6 +20,7 @@ import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
 import ir.transport_x.taxi.R
+import ir.transport_x.taxi.activity.MainActivity
 import ir.transport_x.taxi.activity.MainActivity.Companion.openDrawer
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
@@ -68,16 +68,12 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     var driverStatus = 0
     var active = false
     var register = false
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    lateinit var window: Window
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMapBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtil.overrideFont(binding.txtStatus, MyApplication.iranSansMediumTF)
@@ -97,6 +93,22 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
 
         handleStatusByServer()
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window = activity?.window!!
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            window.navigationBarColor = resources.getColor(R.color.colorPageBackground)
+            window.statusBarColor = resources.getColor(R.color.colorPageBackground)
+            WindowInsetsControllerCompat(
+                window,
+                binding.root
+            ).isAppearanceLightStatusBars = true
+            WindowInsetsControllerCompat(
+                window,
+                binding.root
+            ).isAppearanceLightNavigationBars = true
+        }
+
         if (MyApplication.prefManager.getLockStatus() == 1) {
             binding.txtLock.visibility = View.VISIBLE
             binding.txtLock.setTextColor(resources.getColor(R.color.colorWhite))
@@ -104,7 +116,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             binding.txtLock.text =
                 "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي به شما وجود ندارد."
         } else {
-            binding.txtLock.visibility = View.INVISIBLE
+            binding.txtLock.visibility = View.GONE
             if (MyApplication.prefManager.isFromGetServiceActivity) {
                 MyApplication.prefManager.isFromGetServiceActivity = false
                 FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
@@ -621,6 +633,20 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         super.onPause()
         binding.map.onPause()
         AvailableServiceDialog.dismiss()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (window != null) {
+                window.statusBarColor = resources.getColor(R.color.actionBar)
+                window.navigationBarColor = resources.getColor(R.color.pageBackground)
+                WindowInsetsControllerCompat(
+                    window,
+                    binding.root
+                ).isAppearanceLightStatusBars = false
+                WindowInsetsControllerCompat(
+                    window,
+                    binding.root
+                ).isAppearanceLightNavigationBars = true
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -643,6 +669,21 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         startGetStatus()
         if (!GPSEnable.isOn()) {
             turnOnGPSDialog()
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window = activity?.window!!
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            window.navigationBarColor = resources.getColor(R.color.colorPageBackground)
+            window.statusBarColor = resources.getColor(R.color.colorPageBackground)
+            WindowInsetsControllerCompat(
+                window,
+                MainActivity.binding.root
+            ).isAppearanceLightStatusBars = true
+            WindowInsetsControllerCompat(
+                window,
+                MainActivity.binding.root
+            ).isAppearanceLightNavigationBars = true
         }
     }
 

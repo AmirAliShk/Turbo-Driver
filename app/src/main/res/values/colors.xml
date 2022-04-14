@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
 
+
     <color name="colorPrimary">#414141</color>
     <color name="colorPrimaryLight">#dfe5d7</color>
     <color name="colorPrimaryLighter">#ebeff0</color>
@@ -35,6 +36,8 @@
     <color name="colorPink">#851352</color>
     <color name="colorTransparent">#00FFB2B2</color>
     <color name="colorGreenLight">#31ce5a</color>
+    <color name="lighter_gray">#403f40</color>
+
 
     <color name="colorGolden">#ffe45d</color>
     <color name="colorSilver">#c5c6cb</color>

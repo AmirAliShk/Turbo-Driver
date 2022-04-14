@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_15sdp"
-        android:background="@drawable/background4"
+        android:background="@drawable/edit_text_style"
         android:elevation="@dimen/_5sdp"
         android:orientation="vertical"
         android:padding="@dimen/_15sdp">
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/edit_text_style"
+            android:background="@drawable/background4"
             android:gravity="center"
             android:inputType="number"
             android:padding="@dimen/_8sdp"

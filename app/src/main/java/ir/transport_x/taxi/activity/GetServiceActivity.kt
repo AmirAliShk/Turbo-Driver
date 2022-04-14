@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowInsetsControllerCompat
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.ActivityGetServiceBinding
@@ -29,9 +30,18 @@ class GetServiceActivity : AppCompatActivity() {
             window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
             window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD)
             window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
-            window.navigationBarColor = resources.getColor(R.color.pageBackground)
+            window.navigationBarColor = resources.getColor(R.color.grayLighter)
             window.statusBarColor = resources.getColor(R.color.actionBar)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            WindowInsetsControllerCompat(
+                window,
+                MainActivity.binding.root
+            ).isAppearanceLightStatusBars = false
+            WindowInsetsControllerCompat(
+                window,
+                MainActivity.binding.root
+            ).isAppearanceLightNavigationBars =
+                true
         }
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
 

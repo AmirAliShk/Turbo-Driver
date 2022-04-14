@@ -4,14 +4,18 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Paint
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
+import ir.transport_x.taxi.R
 import ir.transport_x.taxi.app.AppKeys
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
@@ -33,18 +37,27 @@ class CheckVerificationFragment : Fragment() {
     private lateinit var countDownTimer: CountDownTimer
     lateinit var code: String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCheckVerificationBinding.inflate(layoutInflater)
         TypeFaceUtil.overrideFont(binding.root)
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window = activity?.window!!
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            window.navigationBarColor = resources.getColor(R.color.grayLighter)
+            window.statusBarColor = resources.getColor(R.color.actionBar)
+            WindowInsetsControllerCompat(
+                window,
+                binding.root
+            ).isAppearanceLightStatusBars = false
+            WindowInsetsControllerCompat(
+                window,
+                binding.root
+            ).isAppearanceLightNavigationBars = true
+        }
         binding.txtRules.paintFlags = (Paint.UNDERLINE_TEXT_FLAG)
 
         val bundle = arguments
@@ -132,7 +145,7 @@ class CheckVerificationFragment : Fragment() {
                     val success = resObj.getBoolean("success")
                     val message = resObj.getString("message")
                     if (success) {
-                        binding.vfTime.displayedChild= 0
+                        binding.vfTime.displayedChild = 0
                         startWaitingTime()
                         MyApplication.Toast(message, Toast.LENGTH_SHORT)
                         val objData = resObj.getJSONObject("data")

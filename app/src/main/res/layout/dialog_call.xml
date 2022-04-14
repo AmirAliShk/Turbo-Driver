@@ -32,7 +32,7 @@
                 <LinearLayout
                     android:id="@+id/llNumber1"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
+                    android:layout_height="@dimen/_60sdp"
                     android:layout_margin="20dp"
                     android:background="@drawable/bg_dialog_button"
                     android:elevation="@dimen/_3sdp"
@@ -67,7 +67,7 @@
                 <LinearLayout
                     android:id="@+id/llNumber2"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
+                    android:layout_height="@dimen/_60sdp"
                     android:layout_margin="20dp"
                     android:background="@drawable/bg_dialog_button"
                     android:elevation="@dimen/_3sdp"

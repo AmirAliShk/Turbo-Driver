@@ -94,8 +94,9 @@
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="35dp"
+                android:paddingVertical="@dimen/_5sdp"
                 android:layout_weight="0.20"
-                android:src="@drawable/ic_destination_one" />
+                android:src="@drawable/ic_destination" />
 
             <TextView
                 android:id="@+id/txtFirstDestAddress"
@@ -119,10 +120,11 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.6"
+                android:layout_weight="0.5"
                 android:text="@string/customerName"
                 android:textColor="@color/title_detailes"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_12ssp"
+                android:paddingRight="@dimen/_5sdp"/>
 
             <TextView
                 android:id="@+id/txtCustomerName"
@@ -139,8 +141,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10sdp"
             android:gravity="center_vertical"
-            android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="0dp"
@@ -173,7 +175,8 @@
                 android:layout_weight="0.5"
                 android:text="@string/Tracking_Code"
                 android:textColor="@color/title_detailes"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_12ssp"
+                android:paddingRight="@dimen/_5sdp"/>
 
             <TextView
                 android:id="@+id/txtTraking"
@@ -190,7 +193,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_5sdp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingRight="@dimen/_5sdp">
 
             <TextView
                 android:layout_width="0dp"
