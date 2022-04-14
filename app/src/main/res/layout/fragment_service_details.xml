@@ -217,7 +217,7 @@
                     <TextView
                         style="@style/title_details"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="زمان توقف :" />
 
@@ -242,7 +242,7 @@
                     <TextView
                         style="@style/title_details"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="توضیحات :" />
 
@@ -267,7 +267,7 @@
                     <TextView
                         style="@style/title_details"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="تخفیف :" />
 
@@ -314,7 +314,7 @@
                     <TextView
                         style="@style/title_details"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="قیمت :" />
 

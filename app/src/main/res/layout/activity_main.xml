@@ -59,7 +59,7 @@
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:textSize="@dimen/_15sdp"
+                            android:textSize="@dimen/_18sdp"
                             android:textColor="@color/colorBlack"
                             android:textStyle="bold"
                             android:text="145,000"/>
@@ -73,7 +73,7 @@
                             android:textColor="@color/grayLight"
                             android:textStyle="bold"
                             android:text="تومان"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_14sdp"/>
 
                     </LinearLayout>
 
@@ -92,7 +92,7 @@
                             android:text="سارابنی اسدی"
                             android:textColor="@color/colorBlack"
                             android:textStyle="bold"
-                            android:textSize="@dimen/_11sdp"/>
+                            android:textSize="@dimen/_16sdp"/>
 
                     </LinearLayout>
 
@@ -115,9 +115,7 @@
                         android:layout_height="1dp"
                         android:background="@color/colorDivider" />
 
-
                     <LinearLayout
-                        android:id="@+id/llAccount"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="right"
@@ -130,10 +128,9 @@
                             android:paddingRight="@dimen/_10sdp">
 
                             <ImageView
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_40sdp"
-                                android:layout_centerInParent="true"
-                                android:src="@drawable/ic_account" />
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_hisstory" />
 
                         </RelativeLayout>
 
@@ -146,7 +143,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="right|center_vertical"
-                            android:text="حساب کاربری"
+                            android:text="مدیریت سرویس"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textStyle="bold" />
 
@@ -198,7 +195,6 @@
                         android:layout_height="0.75dp"
                         android:layout_marginRight="65dp"
                         android:background="@color/colorDivider" />
-
                     <LinearLayout
                         android:id="@+id/llNewsMenu"
                         android:layout_width="match_parent"
@@ -233,6 +229,89 @@
                             android:textStyle="bold" />
 
                     </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.75dp"
+                        android:layout_marginRight="65dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_news" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="مالی"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.75dp"
+                        android:layout_marginRight="65dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_account" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="حساب کاربری"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
 
                     <ImageView
                         android:layout_width="match_parent"

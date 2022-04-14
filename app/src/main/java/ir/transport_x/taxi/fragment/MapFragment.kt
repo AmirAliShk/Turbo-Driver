@@ -137,15 +137,15 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             binding.txtNewsCount.visibility = View.GONE
         }
 
-        binding.llServiceManagement.setOnClickListener {
-            if (!MyApplication.prefManager.getDriverStatus()) {
-                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
-                    .show()
-                return@setOnClickListener
-            }
-            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
-                .replace()
-        }
+//        binding.llServiceManagement.setOnClickListener {
+//            if (!MyApplication.prefManager.getDriverStatus()) {
+//                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
+//                    .show()
+//                return@setOnClickListener
+//            }
+//            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
+//                .replace()
+//        }
 
         binding.llNews.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
@@ -161,9 +161,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 .replace()
         }
 
-        binding.llFinancial.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment()).replace()
-        }
+//        binding.llFinancial.setOnClickListener {
+//            FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment()).replace()
+//        }
 
         binding.llGPs.setOnClickListener {
             if (!GPSEnable.isOn()) {
