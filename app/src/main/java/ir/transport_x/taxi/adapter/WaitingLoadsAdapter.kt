@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ir.transport_x.taxi.app.MyApplication
+import ir.transport_x.taxi.databinding.ItemFreeLoads1Binding
 import ir.transport_x.taxi.databinding.ItemFreeLoadsBinding
 import ir.transport_x.taxi.dialog.GeneralDialog
 import ir.transport_x.taxi.model.WaitingLoadsModel
@@ -20,11 +21,11 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     private val models = list
     lateinit var stopTime: String
 
-    class ViewHolder(val binding: ItemFreeLoadsBinding) :
+    class ViewHolder(val binding: ItemFreeLoads1Binding) :
         RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemFreeLoadsBinding.inflate(
+        val binding = ItemFreeLoads1Binding.inflate(
             LayoutInflater.from(MyApplication.context),
             parent,
             false

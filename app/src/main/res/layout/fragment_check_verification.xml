@@ -112,7 +112,7 @@
                             android:cursorVisible="true"
                             android:gravity="center"
                             android:inputType="number"
-                            android:itemBackground="@drawable/dark_bakground"
+                            android:itemBackground="@drawable/background4"
                             android:textColor="@color/colorBlack"
                             android:textSize="30sp"
                             android:textStyle="bold"
