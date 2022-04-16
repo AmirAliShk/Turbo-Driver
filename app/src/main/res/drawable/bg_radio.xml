@@ -7,7 +7,7 @@
                 android:radius="15dp"/>
 
             <solid
-                android:color="#380f69" />
+                android:color="#D81B60" />
 
 
         </shape>

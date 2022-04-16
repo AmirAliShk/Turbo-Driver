@@ -5,10 +5,11 @@
     <string name="chat">پیام ها</string>
     <string name="map">نقشه</string>
     <string name="free">سرویس های آزاد</string>
-    <string name="service_management">مدیریت سرویس</string>
+    <string name="service_management">مدیریت سفر</string>
     <string name="account_report">گزارش حساب</string>
     <string name="online_payment">پرداخت آنلاین</string>
     <string name="card_to_card">کارت به کارت</string>
+    <string name="Home">خانه</string>
     <string name="financial">مالی</string>
     <string name="Service_history">تاریخچه سرویس</string>
     <string name="profile">حساب کاربری</string>

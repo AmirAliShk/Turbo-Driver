@@ -57,7 +57,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
-                            android:layout_weight="1"
+                            android:layout_weight="1.5"
                             android:gravity="right"
                             android:textSize="@dimen/_18sdp"
                             android:textColor="@color/colorBlack"
@@ -130,7 +130,7 @@
                             <ImageView
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/ic_hisstory" />
+                                android:src="@drawable/ic_current_services" />
 
                         </RelativeLayout>
 
@@ -143,7 +143,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="right|center_vertical"
-                            android:text="مدیریت سرویس"
+                            android:text="مدیریت سفر"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textStyle="bold" />
 
@@ -184,7 +184,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="right|center_vertical"
-                            android:text="تاریخچه سرویس"
+                            android:text="تاریخچه سفر"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textStyle="bold" />
 
@@ -251,7 +251,7 @@
                             <ImageView
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/ic_news" />
+                                android:src="@drawable/ic_financial" />
 
                         </RelativeLayout>
 

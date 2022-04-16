@@ -12,15 +12,33 @@
         android:id="@+id/rlActionBar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/actionBar">
+        android:background="@color/colorPageBackground">
 
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="?android:attr/actionBarSize"
+        <LinearLayout
+            android:id="@+id/llBack"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:padding="15dp"
-            android:src="@drawable/ic_back" />
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/_5sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/service_management"
+                android:textColor="@color/grayDark"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_back" />
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtPageTitle"
@@ -32,6 +50,11 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -331,9 +354,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_5sdp">
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -354,8 +377,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="left|center"
-                                android:padding="@dimen/_4sdp"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_4sdp">
 
                                 <ViewFlipper
                                     android:id="@+id/vfPlayPause"
@@ -380,31 +403,30 @@
                                 </ViewFlipper>
 
 
-
-                                    <com.warkiz.widget.IndicatorSeekBar
-                                        android:id="@+id/skbTimer"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1"
-                                        android:layout_centerInParent="true"
-                                        android:layout_gravity="center"
-                                        app:isb_seek_smoothly="true"
-                                        app:isb_show_indicator="none"
-                                        app:isb_thumb_color="@color/colorDarkPurple"
-                                        app:isb_thumb_size="10dp"
-                                        app:isb_track_background_color="@color/grayLight"
-                                        app:isb_track_background_size="3dp"
-                                        app:isb_track_progress_color="@color/grayDark"
-                                        app:isb_track_progress_size="5dp" />
+                                <com.warkiz.widget.IndicatorSeekBar
+                                    android:id="@+id/skbTimer"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerInParent="true"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    app:isb_seek_smoothly="true"
+                                    app:isb_show_indicator="none"
+                                    app:isb_thumb_color="@color/colorDarkPurple"
+                                    app:isb_thumb_size="10dp"
+                                    app:isb_track_background_color="@color/grayLight"
+                                    app:isb_track_background_size="3dp"
+                                    app:isb_track_progress_color="@color/grayDark"
+                                    app:isb_track_progress_size="5dp" />
 
 
                                 <TextView
                                     android:id="@+id/txtTime"
-                                    android:textColor="@color/colorDarkPurple"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="00:00"
-                                    android:visibility="gone"/>
+                                    android:textColor="@color/colorDarkPurple"
+                                    android:visibility="gone" />
 
                             </LinearLayout>
 

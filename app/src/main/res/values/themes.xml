@@ -61,7 +61,7 @@
     </style>
 
     <style name="page_header">
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorBlack</item>
         <item name="android:textSize">@dimen/_18ssp</item>
     </style>
 

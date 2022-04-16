@@ -81,7 +81,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="9015693808"
-                            android:textColor="@color/colorDarkPurple"
+                            android:textColor="@color/colorPink"
                             android:textSize="15sp" />
 
                         <TextView
@@ -139,7 +139,7 @@
                                 android:id="@+id/cbRules"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:buttonTint="@color/colorDarkPurple" />
+                                android:buttonTint="@color/colorPink" />
 
                             <LinearLayout
                                 android:id="@+id/llRules"
@@ -183,7 +183,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/_3sdp"
                             android:layout_weight="4"
-                            android:background="@drawable/purple"
+                            android:background="@drawable/bg_pink"
                             android:elevation="@dimen/_2sdp">
 
                             <Button
@@ -277,7 +277,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:textColor="@color/colorDarkPurple"
+                                    android:textColor="@color/colorPink"
                                     android:textSize="18sp" />
 
                                 <TextView

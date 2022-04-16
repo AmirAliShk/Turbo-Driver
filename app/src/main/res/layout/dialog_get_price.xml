@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_15sdp"
-            android:background="@drawable/purple">
+            android:background="@drawable/bg_grye">
 
             <Button
                 android:id="@+id/btnEndTrip"

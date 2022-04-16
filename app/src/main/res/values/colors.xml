@@ -8,11 +8,11 @@
 
 
     <color name="colorPrimary">#414141</color>
+    <color name="colorPageBackground">#efefef</color>
     <color name="colorPrimaryLight">#dfe5d7</color>
     <color name="colorPrimaryLighter">#ebeff0</color>
     <color name="colorDarkPurple">#380f69</color>
     <color name="colorLightPurple">#a192aa</color>
-    <color name="colorPageBackground">#efefef</color>
     <color name="colorAccent">#1e88e5</color>
     <color name="colorDivider">#90ADACAC</color>
     <color name="colorWhite">#ffffff</color>
@@ -33,7 +33,7 @@
     <color name="colorRed">#f44336</color>
     <color name="colorRedDark">#e53935</color>
     <color name="colorRedLight">#ECC1C1</color>
-    <color name="colorPink">#851352</color>
+    <color name="colorPink">#D81B60</color>
     <color name="colorTransparent">#00FFB2B2</color>
     <color name="colorGreenLight">#31ce5a</color>
     <color name="lighter_gray">#403f40</color>

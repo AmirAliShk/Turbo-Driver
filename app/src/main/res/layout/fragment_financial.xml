@@ -12,15 +12,33 @@
         android:id="@+id/rlActionBar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/actionBar">
+        android:background="@color/colorPageBackground">
 
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="?android:attr/actionBarSize"
+        <LinearLayout
+            android:id="@+id/llBack"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:layout_alignParentLeft="true"
-            android:padding="15dp"
-            android:src="@drawable/ic_back" />
+            android:paddingLeft="@dimen/_5sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/Home"
+                android:textColor="@color/grayDark"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_back"
+                android:padding="@dimen/_2sdp"/>
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtTitle"
@@ -32,6 +50,11 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +81,7 @@
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_gravity="center"
-                    app:indicatorColor="@color/colorDarkPurple"
+                    app:indicatorColor="@color/colorPink"
                     app:indicatorName="BallBeatIndicator" />
 
                 <LinearLayout
@@ -71,7 +94,7 @@
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
                         android:layout_height="@dimen/_25sdp"
-                        android:src="@drawable/ic_money"
+                        android:src="@drawable/ic_wallet1"
                         android:padding="@dimen/_2sdp"/>
 
                     <TextView

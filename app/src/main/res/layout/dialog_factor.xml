@@ -52,7 +52,7 @@
                         android:gravity="right"
                         android:text="فاکتور"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/colorDarkPurple"
+                        android:textColor="@color/colorPink"
                         android:textStyle="bold" />
 
                     <TextView

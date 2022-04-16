@@ -63,7 +63,7 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="7dp"
-                android:background="@drawable/purple"
+                android:background="@drawable/bg_pink"
                 android:gravity="center"
                 android:text="@string/setting"
                 android:textAppearance="?android:attr/textAppearanceMedium"
