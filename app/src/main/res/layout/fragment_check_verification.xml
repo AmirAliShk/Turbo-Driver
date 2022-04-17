@@ -60,20 +60,18 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="5dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:gravity="center"
                             android:text="کد ارسال شده به شماره "
                             android:textColor="@color/grayDark"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/_13ssp" />
 
                         <TextView
                             android:id="@+id/txtPhoneNumber"
@@ -82,17 +80,17 @@
                             android:gravity="center"
                             android:text="9015693808"
                             android:textColor="@color/colorPink"
-                            android:textSize="15sp" />
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_marginHorizontal="@dimen/_3sdp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:gravity="center"
                             android:text="را وارد کنید."
                             android:textColor="@color/grayDark"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/_13ssp" />
 
                     </LinearLayout>
 
@@ -155,6 +153,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_marginBottom="2dp"
                                     android:gravity="center_vertical"
+                                    android:textSize="@dimen/_15ssp"
                                     android:text="قبول شرایط و قوانین"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/grayDark" />
@@ -278,7 +277,8 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:textColor="@color/colorPink"
-                                    android:textSize="18sp" />
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"

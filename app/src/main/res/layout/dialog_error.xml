@@ -41,7 +41,7 @@
                     android:paddingBottom="10dp"
                     android:text="خطای عدم اتصال به اینترنت لطفا پس از بررسی ارتباط خود به اینترنت مجدد چک کنید"
                     android:textColor="@color/colorBlack"
-                    android:textSize="17sp"
+                    android:textSize="@dimen/_15ssp"
                     android:layout_marginVertical="@dimen/_9sdp"/>
 
                 <LinearLayout

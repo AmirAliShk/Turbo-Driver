@@ -52,7 +52,7 @@
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:gravity="right|center_vertical"
                         android:textColor="@color/colorWhite"
-                        android:textSize="15sp" />
+                        android:textSize="@dimen/_17ssp" />
 
                 </LinearLayout>
 
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_18sdp"
-                android:gravity="top|right"
+                android:gravity="center_vertical|right"
                 android:orientation="horizontal"
                 android:paddingRight="@dimen/_18sdp">
 
@@ -84,14 +84,14 @@
                     android:layout_marginHorizontal="@dimen/_10sdp"
                     android:gravity="right|center_vertical"
                     android:textColor="@color/colorBlack"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/_17ssp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="top|right"
+                android:gravity="center_vertical|right"
                 android:orientation="horizontal"
                 android:paddingRight="@dimen/_18sdp"
                 android:layout_marginBottom="@dimen/_18sdp">
@@ -103,8 +103,8 @@
 
                 <TextView
                     android:id="@+id/txtFirstDestAddress"
-                    style="@style/Details_answer"
                     android:layout_width="match_parent"
+                    android:textSize="@dimen/_18ssp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|right"
                     android:layout_marginHorizontal="@dimen/_10sdp"
@@ -129,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="top|right"
+                    android:gravity="center_vertical|right"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -145,13 +145,13 @@
                         android:gravity="right|center_vertical"
                         android:layout_marginRight="@dimen/_10sdp"
                         android:textColor="@color/colorBlack"
-                        android:textSize="15sp" />
+                        android:textSize="@dimen/_17ssp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="تومان"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_12ssp" />
 
 
                 </LinearLayout>
@@ -291,7 +291,8 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5">
+                    android:layout_weight="1.5"
+                    android:gravity="center_vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -304,7 +305,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_10sdp"
                         android:textColor="@color/colorBlack"
-                        android:textSize="15sp" />
+                        android:textSize="@dimen/_17ssp" />
 
                 </LinearLayout>
 

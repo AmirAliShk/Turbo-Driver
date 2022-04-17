@@ -55,7 +55,7 @@
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/_14ssp" />
+                        android:textSize="@dimen/_17ssp" />
 
                 </LinearLayout>
 

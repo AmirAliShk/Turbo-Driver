@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_15sdp"
             android:textStyle="bold" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:gravity="left"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="@dimen/_15ssp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -46,7 +46,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:background="@drawable/background2"
         android:orientation="vertical"
         android:padding="@dimen/_10sdp">
@@ -80,7 +80,7 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_weight="3"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_17ssp" />
 
         </LinearLayout>
 
@@ -107,7 +107,7 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_weight="3"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_17ssp" />
 
         </LinearLayout>
 
@@ -121,8 +121,8 @@
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="35dp"
-                android:paddingVertical="@dimen/_5sdp"
                 android:layout_weight="0.20"
+                android:paddingVertical="@dimen/_5sdp"
                 android:src="@drawable/ic_destination" />
 
             <TextView
@@ -133,7 +133,7 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_weight="3"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_17ssp" />
 
         </LinearLayout>
 
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_17ssp" />
 
         </LinearLayout>
 
@@ -186,7 +186,7 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_weight="3"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_17ssp" />
 
         </LinearLayout>
 

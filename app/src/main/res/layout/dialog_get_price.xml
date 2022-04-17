@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="مبلغ دریافتی از مشتری را به تومان وارد کنید : "
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_13ssp"/>
 
         <EditText
             android:id="@+id/edtPrice"
@@ -30,6 +31,7 @@
             android:background="@drawable/background4"
             android:gravity="center"
             android:inputType="number"
+            android:hint="تومان"
             android:padding="@dimen/_8sdp"
             android:elevation="@dimen/_5sdp"/>
 

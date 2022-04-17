@@ -19,7 +19,7 @@
             android:layout_weight="1.5"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
-            android:textSize="@dimen/_12sdp"/>
+            android:textSize="@dimen/_17ssp"/>
 
         <TextView
             android:id="@+id/txtType"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorGreen"
             android:textStyle="bold"
-            android:textSize="@dimen/_12sdp"/>
+            android:textSize="@dimen/_17ssp"/>
 
         <TextView
             android:id="@+id/txtPrice"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:gravity="left"
-            android:textSize="@dimen/_12sdp"/>
+            android:textSize="@dimen/_17ssp"/>
 
     </LinearLayout>
 

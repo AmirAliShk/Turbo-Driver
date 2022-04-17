@@ -105,7 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_13sdp"
-                        android:gravity="top|right"
+                        android:gravity="center_vertical|right"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -122,7 +122,7 @@
                             android:gravity="right|center_vertical"
                             android:paddingRight="@dimen/_10sdp"
                             android:textColor="@color/colorBlack"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/_17ssp" />
 
                     </LinearLayout>
 
@@ -130,7 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:gravity="top|right"
+                        android:gravity="center_vertical|right"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -140,13 +140,13 @@
 
                         <TextView
                             android:id="@+id/txtFirstDestAddress"
-                            style="@style/Details_answer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top|right"
                             android:layout_marginHorizontal="@dimen/_10sdp"
                             android:layout_weight="3"
-                            android:textColor="@color/grayDark" />
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_17ssp"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -258,6 +258,7 @@
                             android:layout_gravity="center"
                             android:layout_marginHorizontal="@dimen/_10sdp"
                             android:paddingLeft="10dp"
+                            android:textSize="@dimen/_17ssp"
                             android:paddingRight="7dp"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/colorBlack"

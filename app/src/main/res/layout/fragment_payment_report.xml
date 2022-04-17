@@ -29,7 +29,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/Home"
                 android:textColor="@color/grayDark"
-                android:textSize="15sp" />
+                android:textSize="@dimen/_15ssp" />
 
             <ImageView
                 android:id="@+id/imgBack"
@@ -69,9 +69,9 @@
 
         <com.wang.avi.AVLoadingIndicatorView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_gravity="center"
-            app:indicatorColor="@color/colorBlack"
+            app:indicatorColor="@color/colorPink"
             app:indicatorName="BallBeatIndicator" />
 
         <TextView

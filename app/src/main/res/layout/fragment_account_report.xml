@@ -29,7 +29,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/financial"
                 android:textColor="@color/grayDark"
-                android:textSize="15sp" />
+                android:textSize="@dimen/_15ssp" />
 
             <ImageView
                 android:id="@+id/imgBack"

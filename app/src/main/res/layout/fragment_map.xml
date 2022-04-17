@@ -271,7 +271,7 @@
                 android:id="@+id/txtLoader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="درحال به روز رسانی وضعیت، لطفا صبور باشید"
+                android:text="درحال به روز رسانی وضعیت"
                 android:textAppearance="@android:style/TextAppearance.Medium"
                 android:textStyle="bold" />
 

@@ -53,7 +53,8 @@
                         android:text="فاکتور"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/colorPink"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_19ssp"/>
 
                     <TextView
                         android:id="@+id/txtAttentionCost"
@@ -83,6 +84,7 @@
                                 android:src="@drawable/ic_origin" />
 
                             <TextView
+                                style="@style/title_details"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/_7sdp"
@@ -95,6 +97,7 @@
                             <TextView
                                 android:id="@+id/txtTotalAmount"
                                 android:layout_width="0dp"
+                                android:textSize="@dimen/_18ssp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -127,6 +130,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                                    style="@style/title_details"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -137,6 +141,7 @@
 
                                 <TextView
                                     android:id="@+id/txtDiscount"
+                                    android:textSize="@dimen/_18ssp"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.5"
@@ -149,15 +154,16 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:layout_marginBottom="@dimen/_12sdp"
+                                android:layout_marginBottom="@dimen/_5sdp"
                                 android:gravity="right"
                                 android:orientation="horizontal">
 
                                 <TextView
+                                    style="@style/title_details"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_11sdp"
-                                    android:layout_weight="1"
+                                    android:layout_weight="1.5"
                                     android:gravity="right"
                                     android:text="عوارض شهرداری :"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -169,7 +175,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.5"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="@color/colorBlack" />
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_18ssp" />
 
                             </LinearLayout>
 
@@ -181,7 +188,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginBottom="10dp">>
+                        android:layout_marginBottom="10dp">
 
                         <ImageView
                             android:layout_width="25dp"
@@ -197,6 +204,7 @@
 
 
                             <TextView
+                                style="@style/title_details"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -211,7 +219,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/colorBlack" />
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/_18ssp" />
 
                         </LinearLayout>
 
@@ -231,6 +240,7 @@
                             android:src="@drawable/ic_destination" />
 
                         <TextView
+                            style="@style/title_details"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/_7sdp"
@@ -246,7 +256,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_18ssp" />
 
                     </LinearLayout>
 
@@ -265,12 +276,12 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="1.25"
                             android:gravity="center"
                             android:text="دریافتی از مسافر : "
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/colorBlack"
-                            android:textSize="17dp"
+                            android:textSize="@dimen/_17ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -280,7 +291,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/colorRedDark"
-                            android:textSize="25dp" />
+                            android:textSize="@dimen/_18ssp" />
 
                     </LinearLayout>
 

@@ -119,7 +119,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="4"
-                            android:background="@drawable/background3">
+                            android:background="@drawable/bg_pink">
 
                             <Button
                                 android:id="@+id/btnLogin"

@@ -57,8 +57,10 @@
 
     <style name="title_details">
         <item name="android:textColor">@color/title_detailes</item>
-        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
     </style>
+
+
 
     <style name="page_header">
         <item name="android:textColor">@color/colorBlack</item>
@@ -66,8 +68,8 @@
     </style>
 
     <style name="Details_answer">
-        <item name="android:textColor">@color/grayDark</item>
-        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">@dimen/_17ssp</item>
     </style>
 
     <style name="page_title">

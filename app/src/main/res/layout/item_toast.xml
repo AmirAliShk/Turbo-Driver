@@ -15,6 +15,7 @@
         android:id="@+id/text"
         android:gravity="center"
         android:textStyle="bold"
+        android:textSize="@dimen/_17ssp"
         android:textColor="@color/colorBlack"
         android:text="تست توست"
         android:textAppearance="?android:attr/textAppearanceLarge"
