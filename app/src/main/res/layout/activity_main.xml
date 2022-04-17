@@ -50,7 +50,7 @@
                             android:layout_width="@dimen/_25sdp"
                             android:layout_height="@dimen/_25sdp"
                             android:gravity="right"
-                            android:src="@drawable/ic_chargh"/>
+                            android:src="@drawable/ic_charge" />
 
                         <TextView
                             android:id="@+id/txtCharge"
@@ -59,10 +59,9 @@
                             android:layout_marginRight="10dp"
                             android:layout_weight="1.5"
                             android:gravity="right"
-                            android:textSize="@dimen/_18sdp"
                             android:textColor="@color/colorBlack"
-                            android:textStyle="bold"
-                            android:text="145,000"/>
+                            android:textSize="@dimen/_18sdp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -70,10 +69,10 @@
                             android:layout_marginRight="10dp"
                             android:layout_weight="2"
                             android:gravity="right"
-                            android:textColor="@color/grayLight"
-                            android:textStyle="bold"
                             android:text="تومان"
-                            android:textSize="@dimen/_15sdp"/>
+                            android:textColor="@color/grayLight"
+                            android:textSize="@dimen/_15sdp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -89,10 +88,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
-                            android:text="سارابنی اسدی"
                             android:textColor="@color/colorBlack"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/_17sdp"/>
+                            android:textSize="@dimen/_17sdp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -196,6 +194,7 @@
                         android:layout_height="0.75dp"
                         android:layout_marginRight="65dp"
                         android:background="@color/colorDivider" />
+
                     <LinearLayout
                         android:id="@+id/llNewsMenu"
                         android:layout_width="match_parent"
@@ -314,7 +313,6 @@
 
                     </LinearLayout>
 
-
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -386,25 +384,24 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:layout_weight="1"
                         android:gravity="left"
                         android:text="ورژن"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:textSize="@dimen/_15ssp"/>
-
+                        android:textSize="@dimen/_15ssp" />
 
                     <TextView
                         android:id="@+id/txtAppVersion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:layout_weight="1"
                         android:gravity="right"
                         android:text="1.0.0"
                         android:textColor="@color/colorBlack"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:textSize="@dimen/_16ssp"/>
+                        android:textSize="@dimen/_16ssp" />
 
                 </LinearLayout>
 

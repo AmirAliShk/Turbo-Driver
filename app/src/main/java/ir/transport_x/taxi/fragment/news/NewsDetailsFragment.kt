@@ -22,20 +22,15 @@ class NewsDetailsFragment(link: String, title: String, text: String) : Fragment(
     private val newsText = text
     private var link = link
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNewsDetailsBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtil.overrideFont(binding.txtPageTitle, MyApplication.iranSansMediumTF)
 
-        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtTitle.text = StringHelper.toPersianDigits(newsTitle)
         binding.txtText.text = StringHelper.toPersianDigits(newsText)
 

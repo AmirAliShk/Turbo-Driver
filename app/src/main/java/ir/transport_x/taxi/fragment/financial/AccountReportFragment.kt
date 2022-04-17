@@ -16,24 +16,19 @@ import ir.transport_x.taxi.utils.TypeFaceUtil
 import org.json.JSONObject
 
 class AccountReportFragment : Fragment() {
- private lateinit var binding : FragmentAccountReportBinding
+    private lateinit var binding: FragmentAccountReportBinding
     var models: ArrayList<AccountReportModel> = ArrayList()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding =  FragmentAccountReportBinding.inflate(inflater, container, false)
+        binding = FragmentAccountReportBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
 
-        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
         getReport()
         return binding.root
@@ -43,12 +38,18 @@ class AccountReportFragment : Fragment() {
         binding.vfReport.displayedChild = 0
         RequestHelper.builder(EndPoint.ACCOUNT_REP)
             .listener(getReportCallBack)
-            .addParam("fromDate",
+            .addParam(
+                "fromDate",
                 DateHelper.strPersianFive(
-                    DateHelper.getBeforeDays(7).time).substring(0,10))
-            .addParam("toDate",
+                    DateHelper.getBeforeDays(7).time
+                ).substring(0, 10)
+            )
+            .addParam(
+                "toDate",
                 DateHelper.strPersianFive(
-                    DateHelper.getCurrentGregorianDate().time).substring(0,10))
+                    DateHelper.getCurrentGregorianDate().time
+                ).substring(0, 10)
+            )
             .post()
     }
 
@@ -79,9 +80,9 @@ class AccountReportFragment : Fragment() {
                             )
                             models.add(accountReportModel)
                         }
-                        if (models.size==0){
+                        if (models.size == 0) {
                             binding.vfReport.displayedChild = 1
-                        }else{
+                        } else {
                             binding.vfReport.displayedChild = 3
                             val adapter = AccountReportAdapter(models)
                             binding.listReport.adapter = adapter

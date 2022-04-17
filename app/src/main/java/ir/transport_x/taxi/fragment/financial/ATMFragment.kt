@@ -32,17 +32,17 @@ class ATMFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAtmBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root)
-        TypeFaceUtilJava.overrideFonts(binding.txtTitle,MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtTitle, MyApplication.iranSansMediumTF)
 
         fillCards()
         setCursorEnd(binding.root)
 
         StringHelper.setCommaOnTime(binding.edtValueCredit)
 
-        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
         binding.txtReport.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, PaymentReportFragment())

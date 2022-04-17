@@ -25,20 +25,15 @@ class FreeLoadsFragment : Fragment() {
     private lateinit var binding: FragmentFreeLoadsBinding
     var waitingServiceModels: ArrayList<WaitingLoadsModel> = ArrayList()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFreeLoadsBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
 
-        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         waiting()
 
         return binding.root

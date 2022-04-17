@@ -13,10 +13,7 @@ import com.warkiz.widget.SeekParams
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentServiceDetailsBinding
-import ir.transport_x.taxi.dialog.CallDialog
-import ir.transport_x.taxi.dialog.FactorDialog
-import ir.transport_x.taxi.dialog.GeneralDialog
-import ir.transport_x.taxi.dialog.GetPriceDialog
+import ir.transport_x.taxi.dialog.*
 import ir.transport_x.taxi.model.ServiceDataModel
 import ir.transport_x.taxi.okHttp.RequestHelper
 import ir.transport_x.taxi.utils.*
@@ -47,12 +44,12 @@ class ServiceDetailsFragment(
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
 
-        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtDate.text = StringHelper.toPersianDigits(
             DateHelper.strPersianEghit(
                 DateHelper.parseFormat(
@@ -142,17 +139,16 @@ class ServiceDetailsFragment(
             binding.llDiscount.visibility = View.VISIBLE
             binding.txtDiscount.text =
                 StringHelper.toPersianDigits(
-                    StringHelper.setComma(serviceModel.discount))
+                    StringHelper.setComma(serviceModel.discount)
+                )
         }
 
         binding.llCancel.setOnClickListener {
-            GeneralDialog()
-                .message("از لغو سرویس اطمینان دارید؟")
-                .firstButton("بله") {
-                    cancel(serviceModel.id, 1)
+            CancelServiceDialog(object : CancelServiceDialog.CancelServiceListener {
+                override fun onCanceled(isCancel: Boolean) {
+                    cancelServiceListener.onCanceled(isCancel)
                 }
-                .secondButton("خیر") {}
-                .show()
+            }).show(serviceModel)
         }
         binding.llCall.setOnClickListener {
             CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
@@ -184,7 +180,7 @@ class ServiceDetailsFragment(
 
                     override fun onProgressDownload(progress: Progress?) {
                         val percent =
-                            (progress!!.currentBytes / progress!!.totalBytes.toDouble() * 100).toInt()
+                            (progress!!.currentBytes / progress.totalBytes.toDouble() * 100).toInt()
                         Log.i("ServiceDetailsFragment", "onProgress: $percent")
 
                         binding.progressBar.progress = percent
@@ -263,59 +259,6 @@ class ServiceDetailsFragment(
         }
 
         return binding.root
-    }
-
-    private fun cancel(serviceId: Int, reasonCancelId: Int) {
-        binding.vfCancel.displayedChild = 1
-        RequestHelper.builder(EndPoint.CANCEL)
-            .listener(cancelCallBack)
-            .addParam("serviceId", serviceId)
-            .addParam("reasonCancelId", reasonCancelId)
-            .post()
-    }
-
-    private val cancelCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
-        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
-            MyApplication.handler.post {
-                try {
-                    binding.vfCancel.displayedChild = 0
-                    val jsonObject = JSONObject(args[0].toString())
-                    val success = jsonObject.getBoolean("success")
-                    val message = jsonObject.getString("message")
-                    if (success) {
-                        val dataObj = jsonObject.getJSONObject("data")
-                        val dataMsg = dataObj.getString("message")
-                        val result = dataObj.getBoolean("result")
-                        if (result) {
-                            GeneralDialog().message(dataMsg).firstButton("باشه") {}.show()
-                            FragmentHelper.taskFragment(MyApplication.currentActivity, TAG).remove()
-                            cancelServiceListener.onCanceled(true)
-                            UpdateCharge().update(object : UpdateCharge.ChargeListener {
-                                override fun getCharge(charge: String) {
-                                    MyApplication.prefManager.setCharge(charge)
-                                }
-                            })
-                        } else {
-                            GeneralDialog().message(dataMsg).secondButton("باشه") {}.show()
-                            cancelServiceListener.onCanceled(false)
-                        }
-                    } else {
-                        GeneralDialog().message(message).secondButton("باشه") {}.show()
-                        cancelServiceListener.onCanceled(false)
-                    }
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    binding.vfCancel.displayedChild = 0
-                }
-            }
-        }
-
-        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
-            MyApplication.handler.post {
-                binding.vfCancel.displayedChild = 0
-            }
-        }
     }
 
     private fun bill(serviceId: Int, price: String) {

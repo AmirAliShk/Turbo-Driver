@@ -20,23 +20,18 @@ class PaymentReportFragment : Fragment() {
     private lateinit var binding: FragmentPaymentReportBinding
     var models: ArrayList<PaymentReportModel> = ArrayList()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentPaymentReportBinding.inflate(inflater, container, false)
-        binding.imgBack.setOnClickListener {
+        binding.llBack.setOnClickListener {
             MyApplication.currentActivity.onBackPressed()
         }
         TypeFaceUtil.overrideFont(binding.root)
-        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
 
         getReport()
 

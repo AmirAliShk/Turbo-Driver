@@ -19,20 +19,15 @@ class ServiceHistoryFragment : Fragment() {
     private lateinit var binding: FragmentServiceHistoryBinding
     var finishedModels: ArrayList<FinishedModel> = ArrayList()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentServiceHistoryBinding.inflate(inflater, container, false)
-        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         TypeFaceUtil.overrideFont(binding.root)
-        TypeFaceUtil.overrideFont(binding.txtTitle,MyApplication.iranSansMediumTF)
+        TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
 
         serviceHistory()
 
@@ -90,7 +85,7 @@ class ServiceHistoryFragment : Fragment() {
                 } catch (e: Exception) {
                     e.printStackTrace()
                     binding.vfServiceHistory.displayedChild = 2
-                    AvaCrashReporter.send(e,"ServiceHistoryFragment,serviceHistoryCallBack")
+                    AvaCrashReporter.send(e, "ServiceHistoryFragment,serviceHistoryCallBack")
                 }
             }
         }

@@ -19,20 +19,16 @@ import ir.transport_x.taxi.utils.TypeFaceUtilJava
 
 class OnlinePaymentFragment : Fragment() {
     private lateinit var binding: FragmentOnlinePaymentBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentOnlinePaymentBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root)
         TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
 
-        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         setCursorEnd(binding.root)
         StringHelper.setCommaOnTime(binding.edtValueCredit)
         binding.priceGroup.check(R.id.ten)
@@ -100,7 +96,7 @@ class OnlinePaymentFragment : Fragment() {
             }
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
-           AvaCrashReporter.send(e, "OnlinePaymentFragment class, setCursorEnd method")
+            AvaCrashReporter.send(e, "OnlinePaymentFragment class, setCursorEnd method")
             // ignore
         }
     }
