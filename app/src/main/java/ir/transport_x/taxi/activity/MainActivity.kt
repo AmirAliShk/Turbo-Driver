@@ -18,8 +18,10 @@ import ir.transport_x.taxi.dialog.AvailableServiceDialog
 import ir.transport_x.taxi.dialog.GeneralDialog
 import ir.transport_x.taxi.fragment.MapFragment
 import ir.transport_x.taxi.fragment.ProfileFragment
+import ir.transport_x.taxi.fragment.financial.FinancialFragment
 import ir.transport_x.taxi.fragment.news.NewsDetailsFragment
 import ir.transport_x.taxi.fragment.news.NewsFragment
+import ir.transport_x.taxi.fragment.services.CurrentServiceFragment
 import ir.transport_x.taxi.fragment.services.ServiceHistoryFragment
 import ir.transport_x.taxi.utils.*
 
@@ -92,6 +94,24 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             CallHelper.make(MyApplication.prefManager.supportNumber)
             binding.drawerLayout.closeDrawers()
         }
+
+        binding.llServiceManagement.setOnClickListener {
+            if (!MyApplication.prefManager.getDriverStatus()) {
+                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
+                    .show()
+                return@setOnClickListener
+            }
+            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
+                .replace()
+            binding.drawerLayout.closeDrawers()
+
+        }
+
+        binding.llFinancial.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment()).replace()
+            binding.drawerLayout.closeDrawers()
+        }
+
 
         binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
