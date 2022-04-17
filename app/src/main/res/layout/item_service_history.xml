@@ -70,6 +70,33 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.20"
                 android:paddingVertical="@dimen/_5sdp"
+                android:src="@drawable/ic_user" />
+
+            <TextView
+                android:id="@+id/txtCustomerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_weight="3"
+                android:textColor="@color/grayDark"
+                android:textSize="@dimen/_12ssp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:gravity="right|top"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.20"
+                android:paddingVertical="@dimen/_5sdp"
                 android:src="@drawable/ic_origin" />
 
             <TextView
@@ -115,32 +142,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10sdp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/customerName"
-                android:textColor="@color/title_detailes"
-                android:textSize="@dimen/_12ssp"
-                android:paddingRight="@dimen/_5sdp"/>
-
-            <TextView
-                android:id="@+id/txtCustomerName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:textColor="@color/grayDark"
-                android:textSize="@dimen/_12ssp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:visibility="gone">
 
@@ -162,53 +163,28 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:gravity="center_vertical"
+            android:gravity="right|top"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="0dp"
+            <ImageView
+                android:layout_width="15dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/Tracking_Code"
-                android:textColor="@color/title_detailes"
-                android:textSize="@dimen/_12ssp"
-                android:paddingRight="@dimen/_5sdp"/>
-
-            <TextView
-                android:id="@+id/txtTraking"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:textColor="@color/grayDark"
-                android:textSize="@dimen/_12ssp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingRight="@dimen/_5sdp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/expense"
-                android:textColor="@color/title_detailes"
-                android:textSize="@dimen/_12ssp" />
+                android:layout_weight="0.20"
+                android:paddingVertical="@dimen/_5sdp"
+                android:src="@drawable/ic_money2" />
 
             <TextView
                 android:id="@+id/txtPrice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_weight="3"
                 android:textColor="@color/grayDark"
                 android:textSize="@dimen/_12ssp" />
 

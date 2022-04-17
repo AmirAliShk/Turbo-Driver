@@ -635,12 +635,12 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         AvailableServiceDialog.dismiss()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (window != null) {
-                window.statusBarColor = resources.getColor(R.color.actionBar)
+                window.statusBarColor = resources.getColor(R.color.colorPageBackground)
                 window.navigationBarColor = resources.getColor(R.color.pageBackground)
                 WindowInsetsControllerCompat(
                     window,
                     binding.root
-                ).isAppearanceLightStatusBars = false
+                ).isAppearanceLightStatusBars = true
                 WindowInsetsControllerCompat(
                     window,
                     binding.root

@@ -59,7 +59,7 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
         holder.binding.txtDate.text = StringHelper.toPersianDigits("$date $time")
         holder.binding.txtOriginAddress.text = StringHelper.toPersianDigits(model.sourceAddress)
         holder.binding.txtCreditCustomer.text = model.isCreditCustomerStr
-        holder.binding.txtTraking.text = StringHelper.toPersianDigits(model.id.toString())
+//        holder.binding.txtTraking.text = StringHelper.toPersianDigits(model.id.toString())
         holder.binding.txtPrice.text =
             StringHelper.toPersianDigits(
                 StringHelper.setComma(model.price))
