@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/pageBackground"
     android:clickable="true"
     android:layoutDirection="rtl"
@@ -18,14 +18,14 @@
             android:id="@+id/llBack"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_alignParentLeft="true"
+            android:orientation="horizontal"
             android:paddingLeft="@dimen/_5sdp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                android:gravity="left|center"
                 android:text="@string/Home"
                 android:textColor="@color/grayDark"
                 android:textSize="@dimen/_15ssp" />
@@ -35,8 +35,8 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:src="@drawable/ic_back"
-                android:padding="@dimen/_2sdp"/>
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_back" />
 
 
         </LinearLayout>
@@ -44,9 +44,9 @@
         <TextView
             android:id="@+id/txtTitle"
             style="@style/page_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text="@string/card_to_card" />
 
         <TextView
@@ -69,10 +69,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
         android:fillViewport="true"
-        android:scrollbars="none"
         android:paddingHorizontal="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,29 +82,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
                     android:text="شماره کارت"
-                    android:textColor="@color/grayDark"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_marginRight="@dimen/_10sdp"/>
+                    android:textColor="@color/grayDark" />
 
                 <AutoCompleteTextView
                     android:id="@+id/edtCardNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/edit_text_style"
+                    android:gravity="left|center_vertical"
+                    android:inputType="phone"
                     android:maxLength="19"
                     android:nextFocusDown="@id/edtBankName"
-                    android:background="@drawable/edit_text_style"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
-                    android:inputType="phone"
-                    android:gravity="left|center_vertical"
                     android:textColor="@color/colorBlack" />
 
             </LinearLayout>
@@ -112,18 +112,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/_10sdp"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:paddingTop="@dimen/_10sdp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="نام بانک"
+                    android:layout_marginRight="@dimen/_10sdp"
 
+                    android:text="نام بانک"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/grayDark"
-                    android:layout_marginRight="@dimen/_10sdp"/>
+                    android:textColor="@color/grayDark" />
 
                 <EditText
                     android:id="@+id/edtBankName"
@@ -131,11 +131,11 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/edit_text_style"
-                    android:padding="@dimen/_8sdp"
-                    android:singleLine="true"
+                    android:gravity="right|center_vertical"
                     android:inputType="text"
                     android:nextFocusDown="@id/edtTrackingCode"
-                    android:gravity="right|center_vertical"
+                    android:padding="@dimen/_8sdp"
+                    android:singleLine="true"
                     android:textColor="@color/colorBlack" />
 
             </LinearLayout>
@@ -143,18 +143,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/_10sdp"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:paddingTop="@dimen/_10sdp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="کد پیگیری"
+                    android:layout_marginRight="@dimen/_10sdp"
 
+                    android:text="کد پیگیری"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/grayDark"
-                    android:layout_marginRight="@dimen/_10sdp"/>
+                    android:textColor="@color/grayDark" />
 
                 <EditText
                     android:id="@+id/edtTrackingCode"
@@ -162,11 +162,11 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/edit_text_style"
-                    android:padding="@dimen/_8sdp"
-                    android:singleLine="true"
+                    android:gravity="left|center_vertical"
                     android:inputType="phone"
                     android:nextFocusDown="@id/edtDesc"
-                    android:gravity="left|center_vertical"
+                    android:padding="@dimen/_8sdp"
+                    android:singleLine="true"
                     android:textColor="@color/colorBlack" />
 
             </LinearLayout>
@@ -174,17 +174,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/_10sdp"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:paddingTop="@dimen/_10sdp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
                     android:text="توضیحات"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/grayDark"
-                    android:layout_marginRight="@dimen/_10sdp"/>
+                    android:textColor="@color/grayDark" />
 
                 <EditText
                     android:id="@+id/edtDesc"
@@ -192,10 +192,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/edit_text_style"
-                    android:padding="@dimen/_8sdp"
-                    android:nextFocusDown="@id/edtValueCredit"
                     android:gravity="right|center_vertical"
                     android:inputType="text"
+                    android:nextFocusDown="@id/edtValueCredit"
+                    android:padding="@dimen/_8sdp"
                     android:singleLine="true"
                     android:textColor="@color/colorBlack" />
 
@@ -204,8 +204,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_80sdp"
-                android:gravity="center"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -216,24 +216,24 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:paddingBottom="@dimen/_10sdp"
-                        android:textColor="@color/colorBlack"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/_10sdp"
                         android:text="مبلغ به تومان میباشد"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:layout_height="wrap_content"/>
+                        android:textColor="@color/colorBlack" />
 
                     <EditText
                         android:id="@+id/edtValueCredit"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_40sdp"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/_10sdp"
-                        android:hint="مبلغ دلخواه را اینجا وارد کنید"
                         android:background="@drawable/edit_text_style"
-                        android:textColor="@color/colorBlack"
+                        android:gravity="center"
+                        android:hint="مبلغ دلخواه را اینجا وارد کنید"
                         android:inputType="number"
+                        android:paddingHorizontal="@dimen/_10sdp"
                         android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/colorBlack"
                         android:textColorHint="@color/grayMedium" />
 
                 </LinearLayout>
@@ -244,8 +244,8 @@
                 android:id="@+id/priceGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingVertical="@dimen/_10sdp">
 
@@ -259,12 +259,12 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:checked="true"
                         android:elevation="3dp"
                         android:gravity="center"
                         android:text="20,000"
-                        android:textColor="@color/colorWhite"/>
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/colorWhite" />
 
                     <RadioButton
                         android:id="@+id/second"
@@ -274,10 +274,10 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:elevation="3dp"
                         android:gravity="center"
                         android:text="30,000"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/colorBlack" />
 
                     <RadioButton
@@ -288,12 +288,11 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:elevation="3dp"
                         android:gravity="center"
                         android:text="40,000"
-                        android:textColor="@color/colorBlack"
-                        />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/colorBlack" />
                 </TableRow>
 
                 <TableRow>
@@ -306,12 +305,11 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:elevation="3dp"
                         android:gravity="center"
                         android:text="50,000"
-                        android:textColor="@color/colorBlack"
-                         />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/colorBlack" />
 
                     <RadioButton
                         android:id="@+id/fifth"
@@ -321,12 +319,11 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:elevation="3dp"
                         android:gravity="center"
                         android:text="100,000"
-                        android:textColor="@color/colorBlack"
-                         />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/colorBlack" />
 
                     <RadioButton
                         android:id="@+id/sixth"
@@ -336,12 +333,11 @@
                         android:layout_weight="1"
                         android:background="@drawable/bg_radio"
                         android:button="@android:color/transparent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:elevation="3dp"
                         android:gravity="center"
                         android:text="200,000"
-                        android:textColor="@color/colorBlack"
-                         />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/colorBlack" />
                 </TableRow>
 
             </ir.transport_x.taxi.custom_view.GridRadioGroup>
@@ -365,8 +361,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
                         android:text="ثبت فیش واریزی"
-                        android:textColor="@color/colorWhite"
-                        android:textAppearance="?android:attr/textAppearanceLarge"                         />
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/colorWhite" />
 
                     <com.wang.avi.AVLoadingIndicatorView
                         android:layout_width="30dp"

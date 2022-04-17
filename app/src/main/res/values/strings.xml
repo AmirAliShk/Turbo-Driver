@@ -4,16 +4,16 @@
     <string name="announcement">اطلاعیه</string>
     <string name="chat">پیام ها</string>
     <string name="map">نقشه</string>
-    <string name="free">سرویس های آزاد</string>
+    <string name="free">سفر های آزاد</string>
     <string name="service_management">مدیریت سفر</string>
     <string name="account_report">گزارش حساب</string>
     <string name="online_payment">پرداخت آنلاین</string>
     <string name="card_to_card">کارت به کارت</string>
     <string name="Home">خانه</string>
     <string name="financial">مالی</string>
-    <string name="Service_history">تاریخچه سرویس</string>
+    <string name="Service_history">تاریخچه سفر</string>
     <string name="profile">حساب کاربری</string>
-    <string name="service_history">تاریخچه سرویس</string>
+    <string name="service_history">تاریخچه سفر</string>
     <string name="payment_report">گزارش پرداخت</string>
     <string name="news">اخبار</string>
     <string name="support">پشتیبانی</string>
@@ -44,8 +44,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="service_details">جزییات سرویس</string>
-    <string name="finish">پایان سرویس</string>
+    <string name="service_details">جزییات سفر</string>
+    <string name="finish">پایان سفر</string>
     <string name="time">ساعت : </string>
     <string name="customer">به محل مهمان رسیدم</string>
     <string name="date_time">تاریخ و ساعت : </string>
@@ -68,7 +68,7 @@
     <string name="thirdDestination">مقصد۳ : </string>
     <string name="carType">نوع خودرو : </string>
     <string name="cargoType">نوع بار : </string>
-    <string name="priceService">هزینه سرویس : </string>
+    <string name="priceService">هزینه سفر : </string>
     <string name="description">توضیحات : </string>
     <string name="cargoCost">ارزش مرسوله : </string>
     <string name="desCount">تعداد مقصد ها : </string>

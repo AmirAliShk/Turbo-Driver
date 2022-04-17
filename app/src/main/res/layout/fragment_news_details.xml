@@ -23,9 +23,9 @@
             android:paddingLeft="@dimen/_5sdp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|left"
                 android:text="@string/Home"
                 android:textColor="@color/grayDark"
                 android:textSize="@dimen/_15ssp" />
@@ -52,11 +52,10 @@
         <TextView
             android:id="@+id/txtPageTitle"
             style="@style/page_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="خبر"
-            android:textStyle="bold" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="خبر" />
 
     </RelativeLayout>
 
@@ -88,6 +87,14 @@
                 android:layout_weight="0.13"
                 android:src="@drawable/ic_news_white" />
 
+            <TextView
+                android:id="@+id/txtDate"
+                android:textSize="@dimen/_17ssp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:textColor="@color/colorBlack" />
 
         </LinearLayout>
 
@@ -107,16 +114,14 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/_5sdp" />
+                    android:layout_marginTop="@dimen/_20sdp" />
 
                 <TextView
                     android:id="@+id/txtTitle"
                     style="@style/Details_answer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:textSize="@dimen/_15sdp"
-                    android:textStyle="bold" />
+                    android:layout_marginRight="@dimen/_10sdp" />
 
                 <TextView
                     android:id="@+id/txtText"

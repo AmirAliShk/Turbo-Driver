@@ -134,24 +134,9 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/white_circle_background"
                 android:padding="@dimen/_10sdp"
-                android:src="@drawable/ic_free_loads" />
+                android:src="@drawable/ic_free" />
 
         </com.dshantanu.androidsquareslib.AndroidSquares>
-
-<!--        <com.dshantanu.androidsquareslib.AndroidSquares-->
-<!--            android:id="@+id/llServiceManagement"-->
-<!--            android:layout_width="@dimen/_47sdp"-->
-<!--            android:layout_height="@dimen/_47sdp"-->
-<!--            android:layout_marginStart="@dimen/_6sdp">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:background="@drawable/white_circle_background"-->
-<!--                android:padding="@dimen/_12sdp"-->
-<!--                android:src="@drawable/ic_service_management" />-->
-
-<!--        </com.dshantanu.androidsquareslib.AndroidSquares>-->
 
 
         <com.dshantanu.androidsquareslib.AndroidSquares

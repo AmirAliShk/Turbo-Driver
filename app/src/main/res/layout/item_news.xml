@@ -16,12 +16,14 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_7sdp"
+            android:layout_marginLeft="@dimen/_11sdp"
+            android:layout_marginRight="@dimen/_11sdp"
             android:layout_weight="0.13"
             android:src="@drawable/ic_news_white" />
 
         <TextView
             android:id="@+id/txtDate"
+            android:textSize="@dimen/_17ssp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -60,18 +62,18 @@
             style="@style/Details_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_marginRight="@dimen/_10sdp" />
+            android:layout_marginRight="@dimen/_10sdp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtNew"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:textColor="@color/colorAccent"
+            android:text="خبر جدید"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:visibility="invisible"
-            android:text="خبر جدید"/>
+            android:textColor="@color/colorAccent"
+            android:visibility="invisible" />
 
     </LinearLayout>
 

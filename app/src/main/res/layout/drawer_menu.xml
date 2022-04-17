@@ -385,9 +385,8 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:text="1.0.0"
-                android:textColor="@color/colorBlack"
                 android:layout_marginRight="@dimen/_5sdp"
-                    android:textSize="@dimen/_16ssp"/>
+                android:textSize="@dimen/_16ssp"/>
 
             </LinearLayout>
 

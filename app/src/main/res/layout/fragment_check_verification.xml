@@ -245,7 +245,7 @@
                                 android:shadowRadius="3"
                                 android:text="همراه جدید"
                                 android:textColor="@color/colorBlack"
-                                android:textSize="18sp"
+                                android:textSize="@dimen/_17ssp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -268,7 +268,7 @@
                                     android:gravity="center"
                                     android:text="تلاش مجدد پس از : "
                                     android:textColor="@color/colorBlack"
-                                    android:textSize="18sp"
+                                    android:textSize="@dimen/_18ssp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -277,7 +277,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:textColor="@color/colorPink"
-                                    android:textSize="18sp"
+                                    android:textSize="@dimen/_19ssp"
                                     android:textStyle="bold"/>
 
                                 <TextView
@@ -286,7 +286,7 @@
                                     android:gravity="center"
                                     android:text=" ثانیه"
                                     android:textColor="@color/colorBlack"
-                                    android:textSize="18sp"
+                                    android:textSize="@dimen/_18sdp"
                                     android:textStyle="bold" />
 
                             </LinearLayout>

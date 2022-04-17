@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:gravity="left"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_15ssp"
+            android:textSize="@dimen/_16ssp"
             android:textStyle="bold" />
 
     </LinearLayout>

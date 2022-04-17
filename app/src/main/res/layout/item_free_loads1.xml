@@ -75,7 +75,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="@dimen/_8sdp"
                         android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/_14ssp" />
+                        android:textSize="@dimen/_17ssp" />
 
                     <TextView
                         android:id="@+id/txtDate"

@@ -73,7 +73,6 @@
 
                     <TextView
                         android:id="@+id/txtDriverCode"
-                        style="@style/Details_answer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -98,7 +97,6 @@
 
                     <TextView
                         android:id="@+id/txtNationalCode"
-                        style="@style/Details_answer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -123,7 +121,6 @@
 
                     <TextView
                         android:id="@+id/txtIben"
-                        style="@style/Details_answer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

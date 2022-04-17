@@ -10,17 +10,20 @@ import android.net.Uri
 import android.content.Intent
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentNewsDetailsBinding
+import ir.transport_x.taxi.utils.DateHelper
 import ir.transport_x.taxi.utils.StringHelper
 import ir.transport_x.taxi.utils.TypeFaceUtil
 import java.lang.Exception
 
-class NewsDetailsFragment(link: String, title: String, text: String) : Fragment() {
+class NewsDetailsFragment(link: String, title: String, text: String, saveDate: String) :
+    Fragment() {
 
     private lateinit var binding: FragmentNewsDetailsBinding
 
     private val newsTitle = title
     private val newsText = text
     private var link = link
+    val saveDate = saveDate
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +40,14 @@ class NewsDetailsFragment(link: String, title: String, text: String) : Fragment(
         if (link.trim().isEmpty()) {
             binding.imgLink.visibility = View.GONE
         }
+
+        val date = DateHelper.strPersianTen(
+            DateHelper.parseFormat(saveDate + "", null)
+        )
+        val time = DateHelper.strPersianFour1(
+            DateHelper.parseFormat(saveDate + "", null)
+        )
+        binding.txtDate.text = date + " " + time
 
         binding.imgLink.setOnClickListener {
             try {

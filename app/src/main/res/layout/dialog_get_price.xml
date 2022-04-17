@@ -48,7 +48,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/transparent"
                 android:gravity="center"
-                android:text="پایان سرویس"
+                android:text="پایان سفر"
                 android:textColor="@color/colorWhite"
                 android:textSize="24sp"
                 android:elevation="@dimen/_2sdp"

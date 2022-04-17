@@ -24,9 +24,9 @@
             android:paddingLeft="@dimen/_5sdp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|left"
                 android:text="@string/Home"
                 android:textColor="@color/grayDark"
                 android:textSize="@dimen/_15ssp" />
@@ -45,9 +45,10 @@
         <TextView
             android:id="@+id/txtTitle"
             style="@style/page_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="@string/payment_report"
             android:textStyle="bold" />
 
