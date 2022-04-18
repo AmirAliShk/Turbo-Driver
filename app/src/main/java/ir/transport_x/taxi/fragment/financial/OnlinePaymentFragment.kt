@@ -8,17 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import ir.transport_x.taxi.R
+import ir.transport_x.taxi.adapter.ValueAdapter
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentOnlinePaymentBinding
+import ir.transport_x.taxi.model.ValueModel
 import ir.transport_x.taxi.push.AvaCrashReporter
 import ir.transport_x.taxi.utils.StringHelper
 import ir.transport_x.taxi.utils.TypeFaceUtil
 import ir.transport_x.taxi.utils.TypeFaceUtilJava
+import org.json.JSONArray
 
-class OnlinePaymentFragment : Fragment() {
+class OnlinePaymentFragment(private val onlineObj: String) : Fragment() {
     private lateinit var binding: FragmentOnlinePaymentBinding
+    var price = "0"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,37 +33,40 @@ class OnlinePaymentFragment : Fragment() {
 
         binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         setCursorEnd(binding.root)
-        StringHelper.setCommaOnTime(binding.edtValueCredit)
-        binding.priceGroup.check(R.id.ten)
-        binding.priceGroup.setOnItemClickListener { selectedId ->
-            var price = "30000"
-            when (selectedId) {
-                R.id.ten -> price = "10000"
-                R.id.fifteen -> price = "15000"
-                R.id.twenty -> price = "20000"
-                R.id.twentyFive -> price = "25000"
-                R.id.thirty -> price = "30000"
-                R.id.thirtyFive -> price = "35000"
-            }
-            binding.edtValueCredit.setText(StringHelper.setComma(price))
+
+        val priceArr = JSONArray(onlineObj)
+        val values: ArrayList<ValueModel> = ArrayList()
+        for (i in 0 until priceArr.length()) {
+            val item: String = priceArr.getString(i)
+            val model = ValueModel(item, false)
+            values.add(model)
         }
+        val valueAdapter = ValueAdapter(values, object : ValueAdapter.SelectedValue {
+            override fun getSelected(s: String) {
+                price = s
+                binding.edtValueCredit.setText(price)
+            }
+        })
+        binding.gridView.adapter = valueAdapter
+
+        StringHelper.setCommaOnTime(binding.edtValueCredit)
 
         binding.btnSubmit.setOnClickListener {
 
             if (binding.edtValueCredit.text.toString() == "") {
-                binding.edtValueCredit.error = "مبلغ وارد نشده است"
+                binding.edtValueCredit.error = "مبلغ وارد نشده است."
                 return@setOnClickListener
             }
 
             val price = StringHelper.extractTheNumber(binding.edtValueCredit.text.toString())
             if (price.toInt() < 10000) {
-                binding.edtValueCredit.error = "حداقل مبلغ ورودی 10,000 تومان میباشد"
+                binding.edtValueCredit.error = "حداقل مبلغ ورودی 10,000 تومان میباشد."
                 binding.edtValueCredit.setText(StringHelper.setComma("5000"))
                 return@setOnClickListener
             }
 
             if (price.toInt() > 100000) {
-                binding.edtValueCredit.error = "حداکثر مبلغ ورودی 100,000 تومان میباشد"
+                binding.edtValueCredit.error = "حداکثر مبلغ ورودی 100,000 تومان میباشد."
                 binding.edtValueCredit.setText(StringHelper.setComma("100000"))
                 return@setOnClickListener
             }
@@ -96,10 +102,14 @@ class OnlinePaymentFragment : Fragment() {
             }
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
-            AvaCrashReporter.send(e, "OnlinePaymentFragment class, setCursorEnd method")
+            AvaCrashReporter.send(e, "$TAG class, setCursorEnd method")
             // ignore
         }
     }
 
+    companion object {
+        @JvmField
+        val TAG = OnlinePaymentFragment::class.java.simpleName
+    }
 
 }

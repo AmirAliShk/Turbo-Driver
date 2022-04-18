@@ -69,7 +69,7 @@
     <string name="carType">نوع خودرو : </string>
     <string name="cargoType">نوع بار : </string>
     <string name="priceService">هزینه سفر : </string>
-    <string name="description">توضیحات : </string>
+    <string name="description">توضیحات</string>
     <string name="cargoCost">ارزش مرسوله : </string>
     <string name="desCount">تعداد مقصد ها : </string>
     <string name="setting">تنظیمات</string>
@@ -80,5 +80,16 @@
     1.پرداخت آنلاین \t
         2.واریز به کارت \n
     در صورت واریز به کارت، فیش آن را ثبت نمایید.</string>
+    <string name="Toman">تومان</string>
+    <string name="charge">شارژ</string>
+    <string name="financial_report">گزارش حساب</string>
+    <string name="register_deposit">ثبت واریزی</string>
+    <string name="track_deposit">پیگیری واریزی</string>
+    <string name="tracking">پیگیری</string>
+    <string name="card_number">شماره کارت</string>
+    <string name="bank_name">نام بانک</string>
+    <string name="tracking_code">کد پیگیری</string>
+    <string name="register_deposit_slip">ثبت فیش واریزی</string>
+    <string name="ID">شناسه</string>
 
 </resources>

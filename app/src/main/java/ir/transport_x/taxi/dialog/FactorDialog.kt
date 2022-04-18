@@ -100,7 +100,7 @@ class FactorDialog {
                         val result = dataObj.getBoolean("result")
                         if (result) {
                             UpdateCharge().update(object : UpdateCharge.ChargeListener {
-                                override fun getCharge(charge: String) {
+                                override fun getCharge(charge: String, response: String) {
                                 }
                             })
                             GeneralDialog().message(message).firstButton("باشه") {

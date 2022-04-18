@@ -12,9 +12,14 @@ import ir.transport_x.taxi.utils.FragmentHelper
 import ir.transport_x.taxi.utils.StringHelper
 import ir.transport_x.taxi.utils.TypeFaceUtil
 import ir.transport_x.taxi.webServices.UpdateCharge
+import org.json.JSONObject
 
 class FinancialFragment : Fragment() {
     private lateinit var binding: FragmentFinancialBinding
+    var ATMObj: String = ""
+    var onlineObj: String = ""
+    var cardNum = ""
+    var cardOwner = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,34 +29,10 @@ class FinancialFragment : Fragment() {
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
         TypeFaceUtil.overrideFont(binding.txtCharge, MyApplication.iranSansMediumTF)
-        TypeFaceUtil.overrideFont(binding.txtCardName, MyApplication.iranSansMediumTF)
 
         binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
 
-        binding.txtCardNumber.text =
-            StringHelper.setCharAfter(MyApplication.prefManager.cardNumber, "-", 4)
-        binding.txtCardName.text = MyApplication.prefManager.cardName
-
-        UpdateCharge().update(object : UpdateCharge.ChargeListener {
-            override fun getCharge(charge: String) {
-                if (charge.isNotEmpty()) {
-                    binding.vfCharge.displayedChild = 1
-                    binding.txtCharge.text = StringHelper.toPersianDigits(
-                        StringHelper.setComma(charge)
-                    )
-                } else {
-                    binding.vfCharge.displayedChild = 0
-                }
-            }
-        })
-
-        binding.txtNote1.text = StringHelper.toPersianDigits(
-            getString(
-                R.string.txt_increase_charge
-            )
-        )
-        binding.txtNote2.text = StringHelper.toPersianDigits(getString(R.string.txt_financial_desc))
-        binding.txtNote3.text = StringHelper.toPersianDigits(getString(R.string.txt_importance))
+        getCharge()
 
         if (MyApplication.prefManager.onlineUrl!!.isEmpty()) {
             binding.llOnlinePayment.visibility = View.GONE
@@ -60,17 +41,27 @@ class FinancialFragment : Fragment() {
         }
 
         binding.llOnlinePayment.setOnClickListener {
+            if (onlineObj == "") {
+                getCharge()
+                return@setOnClickListener
+            }
             FragmentHelper.toFragment(
                 MyApplication.currentActivity,
-                OnlinePaymentFragment()
+                OnlinePaymentFragment(JSONObject(onlineObj).getJSONArray("onlinPrice").toString())
             ).replace()
         }
 
         binding.llCardToCard.setOnClickListener {
+            if (ATMObj == "") {
+                getCharge()
+                return@setOnClickListener
+            }
             FragmentHelper.toFragment(
                 MyApplication.currentActivity,
-                ATMFragment()
-            ).replace()
+                DepositAttentionFragment(cardNum, cardOwner, JSONObject(ATMObj))
+            )
+                .setFrame(R.id.frame_container)
+                .replace()
         }
 
         binding.llReport.setOnClickListener {
@@ -83,5 +74,32 @@ class FinancialFragment : Fragment() {
         return binding.root
     }
 
+    private fun getCharge() {
+        UpdateCharge().update(object : UpdateCharge.ChargeListener {
+            override fun getCharge(charge: String, response: String) {
+                if (charge.isNotEmpty()) {
+                    binding.vfCharge.displayedChild = 1
+                    binding.txtCharge.text = StringHelper.toPersianDigits(
+                        StringHelper.setComma(charge)
+                    )
+                    val dataObj = JSONObject(response)
+                    cardNum = MyApplication.prefManager.cardNumber.toString()
+                    cardOwner = MyApplication.prefManager.cardName.toString()
+                    ATMObj = JSONObject(dataObj.getString("ATMObj")).toString()
+                    onlineObj = JSONObject(dataObj.getString("onlineObj")).toString()
+                    binding.txtNote1.text = dataObj.getString("guidTxt")
+                    binding.txtNote2.text = JSONObject(onlineObj).getString("attentionTxt")
+                    if (JSONObject(ATMObj).getString("attentionTxt") == "") {
+                        binding.llNote2.visibility = View.GONE
+                    }
+                    if (dataObj.getString("guidTxt") == "") {
+                        binding.llNote3.visibility = View.GONE
+                    }
+                } else {
+                    binding.vfCharge.displayedChild = 0
+                }
+            }
+        })
+    }
 
 }

@@ -39,7 +39,7 @@ class AcceptService {
                         if(typeOut==1){
                             AvailableServiceDialog.dismiss()
                             UpdateCharge().update(object:UpdateCharge.ChargeListener{
-                                override fun getCharge(charge: String) {
+                                override fun getCharge(charge: String, response: String) {
                                     MyApplication.prefManager.setCharge(charge)
                                 }
                             })

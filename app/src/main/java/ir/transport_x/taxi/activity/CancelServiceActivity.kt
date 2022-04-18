@@ -75,7 +75,7 @@ class CancelServiceActivity : AppCompatActivity() {
         lock.disableKeyguard()
 
         UpdateCharge().update(object : UpdateCharge.ChargeListener {
-            override fun getCharge(charge: String) {
+            override fun getCharge(charge: String, response: String) {
             }
         })
 

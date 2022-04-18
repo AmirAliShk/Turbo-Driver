@@ -21,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,7 +49,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="سارا بنی اسدی"
                         android:textSize="@dimen/_17ssp"
                         android:textStyle="bold" />
 
@@ -68,7 +66,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.25"
-                        android:text="شناسه"
+                        android:text="@string/ID"
                         android:textSize="@dimen/_16ssp" />
 
                     <TextView
@@ -167,6 +165,5 @@
         </LinearLayout>
 
     </RelativeLayout>
-
 
 </LinearLayout>
