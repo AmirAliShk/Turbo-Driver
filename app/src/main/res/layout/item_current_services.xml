@@ -59,6 +59,31 @@
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_18sdp"
+                android:gravity="center_vertical|right"
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/_18sdp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_user" />
+
+                <TextView
+                    android:id="@+id/txtCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_17ssp" />
+
+            </LinearLayout>
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,36 +146,6 @@
                 android:orientation="horizontal"
                 android:paddingRight="@dimen/_18sdp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|right"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_money2" />
-
-                    <TextView
-                        android:id="@+id/txtPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|right"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:gravity="right|center_vertical"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_17ssp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="تومان"
-                        android:textSize="@dimen/_12ssp" />
-
-
-                </LinearLayout>
 
                 <View
                     android:layout_width="0dp"
@@ -267,14 +262,7 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="0.25" />
-
-
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -287,21 +275,31 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:gravity="center_vertical">
+                    android:layout_weight="1.25"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_user" />
+                        android:src="@drawable/ic_money2" />
 
                     <TextView
-                        android:id="@+id/txtCustomerName"
-                        android:layout_width="match_parent"
+                        android:id="@+id/txtPrice"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_gravity="top|right"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:gravity="right|center_vertical"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_17ssp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="تومان"
+                        android:textSize="@dimen/_12ssp" />
+
 
                 </LinearLayout>
 

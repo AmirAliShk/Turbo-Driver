@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pageBackground"
-    android:layoutDirection="rtl"
     android:clickable="true"
+    android:layoutDirection="rtl"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -18,15 +18,15 @@
             android:id="@+id/llBack"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_alignParentLeft="true"
+            android:orientation="horizontal"
             android:paddingLeft="@dimen/_5sdp">
 
             <TextView
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|left"
-                android:text="@string/Home"
+                android:text="@string/news"
                 android:textColor="@color/grayDark"
                 android:textSize="@dimen/_15ssp" />
 
@@ -35,19 +35,37 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:src="@drawable/ic_back"
-                android:padding="@dimen/_2sdp"/>
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_back" />
 
 
         </LinearLayout>
 
-        <ImageView
+        <LinearLayout
             android:id="@+id/imgLink"
-            android:layout_width="?android:attr/actionBarSize"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:padding="12dp"
-            android:src="@drawable/ic_round_insert_link_24" />
+            android:orientation="vertical"
+          android:layout_marginRight="@dimen/_15sdp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_round_insert_link_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="لینک"
+                android:textColor="@color/colorPink"
+                android:layout_marginBottom="@dimen/_5sdp"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtPageTitle"
@@ -89,12 +107,12 @@
 
             <TextView
                 android:id="@+id/txtDate"
-                android:textSize="@dimen/_17ssp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/_8sdp"
-                android:textColor="@color/colorBlack" />
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_17ssp" />
 
         </LinearLayout>
 

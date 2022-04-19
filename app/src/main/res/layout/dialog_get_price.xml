@@ -33,6 +33,7 @@
             android:inputType="number"
             android:hint="تومان"
             android:padding="@dimen/_8sdp"
+            android:textSize="@dimen/_18ssp"
             android:elevation="@dimen/_5sdp"/>
 
         <ViewFlipper

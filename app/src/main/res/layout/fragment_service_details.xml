@@ -471,7 +471,7 @@
                     android:id="@+id/vfCancel"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_35sdp"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.25"
                     android:background="@drawable/bg_redd">
 
                     <LinearLayout

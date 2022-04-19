@@ -141,6 +141,46 @@
                     android:background="@color/colorDivider" />
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/_10sdp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_free" />
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        style="@style/text_title_black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="right|center_vertical"
+                        android:text="سفرهای آزاد"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.75dp"
+                    android:layout_marginRight="65dp"
+                    android:background="@color/colorDivider" />
+
+                <LinearLayout
                     android:id="@+id/llServiceHistory"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
