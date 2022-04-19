@@ -32,6 +32,7 @@ class DepositAttentionFragment(
     ): View {
         binding = FragmentFinancialAttentionBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
+        TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
         TAG = DepositAttentionFragment::class.java.simpleName
 
         val ATMPRice = ATMObj.getJSONArray("ATMPrice")
@@ -72,7 +73,7 @@ class DepositAttentionFragment(
         }
 
         binding.btnFollowRecord.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment())
+            FragmentHelper.toFragment(MyApplication.currentActivity, PaymentReportFragment())
                 .setFrame(R.id.frame_container)
                 .replace()
         }

@@ -24,12 +24,12 @@
             android:paddingLeft="@dimen/_5sdp">
 
             <TextView
-                android:layout_width="@dimen/_40sdp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|left"
-                android:text="@string/Home"
+                android:text="@string/card_to_card"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_15ssp" />
+                android:textSize="@dimen/_12ssp" />
 
             <ImageView
                 android:id="@+id/imgBack"
