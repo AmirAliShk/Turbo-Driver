@@ -156,6 +156,7 @@
                         android:background="@color/colorDivider" />
 
                     <LinearLayout
+                        android:id="@+id/llFreeService"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="right"

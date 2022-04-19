@@ -22,6 +22,7 @@ import ir.transport_x.taxi.fragment.financial.FinancialFragment
 import ir.transport_x.taxi.fragment.news.NewsDetailsFragment
 import ir.transport_x.taxi.fragment.news.NewsFragment
 import ir.transport_x.taxi.fragment.services.CurrentServiceFragment
+import ir.transport_x.taxi.fragment.services.FreeLoadsFragment
 import ir.transport_x.taxi.fragment.services.ServiceHistoryFragment
 import ir.transport_x.taxi.utils.*
 
@@ -92,6 +93,17 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
         binding.llCall.setOnClickListener {
             CallHelper.make(MyApplication.prefManager.supportNumber)
+            binding.drawerLayout.closeDrawers()
+        }
+
+        binding.llFreeService.setOnClickListener {
+            if (!MyApplication.prefManager.getDriverStatus()) {
+                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
+                    .show()
+                return@setOnClickListener
+            }
+            FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment())
+                .replace()
             binding.drawerLayout.closeDrawers()
         }
 

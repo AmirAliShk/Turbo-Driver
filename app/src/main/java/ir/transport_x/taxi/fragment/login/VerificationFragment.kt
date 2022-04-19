@@ -73,6 +73,7 @@ class VerificationFragment : Fragment() {
         binding.vfSubmit.displayedChild = 1
         RequestHelper.builder(EndPoint.VERIFICATION)
             .addParam("phoneNumber", phoneNumber)
+            .addParam("domain", MyApplication.context.packageName)
             .listener(onVerificationCallBack)
             .post()
     }
