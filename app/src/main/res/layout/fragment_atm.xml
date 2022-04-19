@@ -23,12 +23,13 @@
             android:paddingLeft="@dimen/_5sdp">
 
             <TextView
-                android:layout_width="@dimen/_40sdp"
+                android:layout_width="@dimen/_80sdp"
                 android:layout_height="match_parent"
                 android:gravity="left|center"
-                android:text="@string/financial"
+                android:text="@string/card_to_card"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_15ssp" />
+                android:textSize="@dimen/_12ssp" />
+
             <ImageView
                 android:id="@+id/imgBack"
                 android:layout_width="30dp"
@@ -45,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/card_to_card" />
+            android:text="@string/register_deposit" />
 
         <TextView
             android:id="@+id/txtReport"

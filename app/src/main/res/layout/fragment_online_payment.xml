@@ -27,7 +27,7 @@
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|left"
-                android:text="@string/Home"
+                android:text="@string/financial"
                 android:textColor="@color/grayDark"
                 android:textSize="@dimen/_15ssp" />
 

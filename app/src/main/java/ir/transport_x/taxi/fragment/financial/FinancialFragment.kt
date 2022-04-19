@@ -93,7 +93,7 @@ class FinancialFragment : Fragment() {
                         binding.llNote2.visibility = View.GONE
                     }
                     if (dataObj.getString("guidTxt") == "") {
-                        binding.llNote3.visibility = View.GONE
+                        binding.txtNote1.visibility = View.GONE
                     }
                 } else {
                     binding.vfCharge.displayedChild = 0

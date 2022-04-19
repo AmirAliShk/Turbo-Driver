@@ -137,65 +137,37 @@
             android:textColor="@color/grayDark"
             android:textSize="@dimen/_16sdp" />
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:id="@+id/llNote2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.65"
             android:gravity="right|top"
-            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardCornerRadius="@dimen/_8sdp"
             android:paddingLeft="15dp"
             android:paddingTop="10dp"
             android:paddingRight="15dp">
 
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/ic_error" />
+                <ImageView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_attention" />
 
-            <TextView
-                android:id="@+id/txtNote2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right|top"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColor="@color/grayDark"
-                android:textSize="@dimen/_16ssp" />
+                <TextView
+                    android:id="@+id/txtNote2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="@dimen/_30sdp"
+                    android:textColor="@color/grayDark"
+                    android:textSize="@dimen/_18ssp" />
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/llNote3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right|top"
-            android:orientation="horizontal"
-            android:paddingLeft="15dp"
-            android:paddingTop="15dp"
-            android:paddingRight="15dp">
-
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/ic_error" />
-
-            <TextView
-                android:id="@+id/txtNote3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right|top"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColor="@color/grayDark"
-                android:textSize="@dimen/_16ssp" />
-
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

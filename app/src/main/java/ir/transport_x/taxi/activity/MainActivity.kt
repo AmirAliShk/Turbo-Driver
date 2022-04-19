@@ -96,6 +96,17 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             binding.drawerLayout.closeDrawers()
         }
 
+        binding.llServiceManagement.setOnClickListener {
+            if (!MyApplication.prefManager.getDriverStatus()) {
+                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
+                    .show()
+                return@setOnClickListener
+            }
+            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
+                .replace()
+            binding.drawerLayout.closeDrawers()
+        }
+
         binding.llFreeService.setOnClickListener {
             if (!MyApplication.prefManager.getDriverStatus()) {
                 GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
@@ -105,25 +116,13 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment())
                 .replace()
             binding.drawerLayout.closeDrawers()
+
         }
 
-//        binding.llServiceManagement.setOnClickListener {
-//            if (!MyApplication.prefManager.getDriverStatus()) {
-//                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
-//                    .show()
-//                return@setOnClickListener
-//            }
-//            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
-//                .replace()
-//            binding.drawerLayout.closeDrawers()
-//
-//        }
-
-//        binding.llFinancial.setOnClickListener {
-//            FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment()).replace()
-//            binding.drawerLayout.closeDrawers()
-//        }
-
+        binding.llFinancial.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment()).replace()
+            binding.drawerLayout.closeDrawers()
+        }
 
         binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
