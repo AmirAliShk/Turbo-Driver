@@ -16,7 +16,8 @@
         android:layout_marginHorizontal="14dp"
         android:background="@drawable/bg_strock_corner"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp">
 
         <TextView
             android:id="@+id/title"
@@ -25,7 +26,8 @@
             android:gravity="center"
             android:minHeight="?android:attr/actionBarSize"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/grayDark" />
+            android:textColor="@color/grayDark"
+            android:textSize="@dimen/_17sdp"/>
 
         <TextView
             android:id="@+id/msg"
@@ -37,7 +39,8 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorBlack"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:textSize="@dimen/_17sdp"/>
 
         <TextView
             android:id="@+id/msg1"
@@ -49,7 +52,8 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#dc2121"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:textSize="@dimen/_17sdp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reasonList"
@@ -65,13 +69,15 @@
             android:id="@+id/cancel"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:layout_margin="5dp"
-            android:background="@drawable/bg_blue"
+            android:background="@drawable/bg_green"
+            android:layout_marginVertical="@dimen/_15sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
             android:gravity="center"
             android:text="سفر را ادامه میدهم"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorWhite"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="@dimen/_18sdp"/>
 
     </LinearLayout>
 

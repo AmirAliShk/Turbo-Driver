@@ -147,6 +147,10 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
 //                .replace()
 //        }
 
+        binding.llSuggestionStation.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, SuggestionStationFragment()).replace()
+        }
+
         binding.llNews.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, NewsFragment()).replace()
         }

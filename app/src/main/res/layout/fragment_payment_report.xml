@@ -29,7 +29,7 @@
                 android:gravity="center_vertical|left"
                 android:text="@string/card_to_card"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_14ssp" />
 
             <ImageView
                 android:id="@+id/imgBack"
@@ -78,6 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:textSize="@dimen/_17sdp"
             android:text="موردی موجود نیست"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorBlack" />
@@ -86,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:textSize="@dimen/_17sdp"
             android:text="متاسفانه هنگام دریافت اطلاعات از سرور به مشکل خوردیم \n پس از چند لحظه مجدد تلاش کنید"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorBlack" />

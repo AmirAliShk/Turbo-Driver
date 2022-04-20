@@ -133,11 +133,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/white_circle_background"
-                android:padding="@dimen/_4sdp"
+                android:padding="@dimen/_7sdp"
                 android:src="@drawable/ic_free_service" />
 
         </com.dshantanu.androidsquareslib.AndroidSquares>
 
+        <com.dshantanu.androidsquareslib.AndroidSquares
+            android:id="@+id/llSuggestionStation"
+            android:layout_width="@dimen/_47sdp"
+            android:layout_height="@dimen/_47sdp"
+            android:layout_marginStart="@dimen/_6sdp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/white_circle_background"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_medal_best" />
+
+        </com.dshantanu.androidsquareslib.AndroidSquares>
 
         <com.dshantanu.androidsquareslib.AndroidSquares
             android:id="@+id/llNews"

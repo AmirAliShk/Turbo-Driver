@@ -41,11 +41,7 @@ class ATMFragment(private var ATMObj: JSONObject, var price: String) : Fragment(
         setCursorEnd(binding.root)
 
         binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
-
-        binding.txtReport.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, PaymentReportFragment())
-                .replace()
-        }
+        
 
         binding.txtAttention.text = StringHelper.toPersianDigits(ATMObj.getString("warningTxt"))
         binding.txtWarning.text = StringHelper.toPersianDigits(ATMObj.getString("warningTxt2"))

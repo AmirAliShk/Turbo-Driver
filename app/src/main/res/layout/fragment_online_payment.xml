@@ -128,7 +128,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_15sdp"
         android:layout_weight="1"
         android:gravity="bottom"
         android:orientation="horizontal">
@@ -142,9 +141,10 @@
             android:id="@+id/vfSubmit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_3sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
             android:layout_weight="1"
-            android:background="@drawable/bg_green">
+            android:background="@drawable/bg_green"
+            android:elevation="3dp">
 
             <Button
                 android:id="@+id/btnSubmit"
@@ -153,7 +153,7 @@
                 android:background="@color/transparent"
                 android:text="پرداخت"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_18sdp"
                 android:textStyle="bold" />
 
             <com.wang.avi.AVLoadingIndicatorView

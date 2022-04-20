@@ -36,24 +36,26 @@
 
         <LinearLayout
             android:id="@+id/llBack"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|left"
+            android:layout_alignParentLeft="true"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/_5sdp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_40sdp"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|left"
                 android:text="@string/financial"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_15ssp" />
 
             <ImageView
-                android:layout_width="@dimen/_20sdp"
+                android:id="@+id/imgBack"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:padding="@dimen/_2sdp"
                 android:src="@drawable/ic_back" />
 
         </LinearLayout>
@@ -104,7 +106,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="match_parent"
                     android:padding="@dimen/_2sdp"
-                    android:src="@drawable/ic_error" />
+                    android:src="@drawable/ic_attention" />
 
                 <TextView
                     android:id="@+id/justifiedTextViewImportance"
@@ -143,8 +145,9 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:gravity="right|top"
+                        android:text="سارا بنی اسدی"
                         android:paddingBottom="@dimen/_5sdp"
-                        android:textColor="@color/colorDarkPurple"
+                        android:textColor="@color/colorPink"
                         android:textSize="@dimen/_15sdp" />
 
                     <TextView
@@ -153,6 +156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:text="6104 3389 0352 3906"
                         android:gravity="right|bottom" />
 
                 </LinearLayout>
@@ -174,10 +178,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:visibility="gone"
+                    android:layout_margin="@dimen/_5sdp"
                     app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="@dimen/_8sdp">
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -197,7 +201,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/_10sdp"
-                            android:text="@string/register_deposit" />
+                            android:text="@string/register_deposit"
+                            android:layout_marginLeft="@dimen/_10sdp"/>
 
                     </LinearLayout>
 

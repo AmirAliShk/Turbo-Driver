@@ -24,17 +24,16 @@
 
             <TextView
                 android:layout_width="@dimen/_80sdp"
-                android:layout_height="match_parent"
-                android:gravity="left|center"
+                android:layout_height="@dimen/_40sdp"
                 android:text="@string/card_to_card"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_14ssp"
+                android:gravity="center|left"/>
 
             <ImageView
                 android:id="@+id/imgBack"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
                 android:padding="@dimen/_2sdp"
                 android:src="@drawable/ic_back" />
 
@@ -47,16 +46,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/register_deposit" />
-
-        <TextView
-            android:id="@+id/txtReport"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="@string/tracking"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorBlack" />
 
     </RelativeLayout>
 
@@ -122,12 +111,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/title_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:text="@string/card_number"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/grayDark" />
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <AutoCompleteTextView
                     android:id="@+id/edtCardNumber"
@@ -135,7 +124,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/edit_text_style"
-                    android:gravity="left|center_vertical"
+                    android:gravity="right|center_vertical"
+                    android:hint="شماره کارت خود را وارد نمایید"
                     android:inputType="phone"
                     android:maxLength="19"
                     android:nextFocusDown="@id/edtBankName"
@@ -153,13 +143,12 @@
                 android:paddingTop="@dimen/_10sdp">
 
                 <TextView
+                    style="@style/title_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_10sdp"
-
                     android:text="@string/bank_name"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/grayDark" />
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/edtBankName"
@@ -169,6 +158,8 @@
                     android:background="@drawable/edit_text_style"
                     android:gravity="right|center_vertical"
                     android:inputType="text"
+                    android:hint="نام بانک خود را وارد نمایید"
+
                     android:nextFocusDown="@id/edtTrackingCode"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
@@ -184,12 +175,12 @@
                 android:paddingTop="@dimen/_10sdp">
 
                 <TextView
+                    style="@style/title_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:text="@string/tracking_code"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/grayDark" />
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/edtTrackingCode"
@@ -214,12 +205,12 @@
                 android:paddingTop="@dimen/_10sdp">
 
                 <TextView
+                    style="@style/title_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:text="@string/description"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/grayDark" />
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/edtDesc"
@@ -344,7 +335,8 @@
                     android:id="@+id/vfSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_3sdp"
+                    android:elevation="@dimen/_3sdp"
+                    android:layout_marginVertical="@dimen/_10sdp"
                     android:background="@drawable/bg_green">
 
                     <Button
@@ -354,7 +346,9 @@
                         android:background="@color/transparent"
                         android:text="@string/register_deposit_slip"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/colorWhite" />
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_18sdp"
+                        android:textStyle="bold"/>
 
                     <com.wang.avi.AVLoadingIndicatorView
                         android:layout_width="30dp"
