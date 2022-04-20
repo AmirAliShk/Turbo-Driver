@@ -42,11 +42,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:layout_weight="1.5"
+                        android:layout_weight="3"
                         android:gravity="right"
                         android:text="145,000"
                         android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_18sdp"
+                        android:textSize="@dimen/_17sdp"
                         android:textStyle="bold" />
 
                     <TextView
