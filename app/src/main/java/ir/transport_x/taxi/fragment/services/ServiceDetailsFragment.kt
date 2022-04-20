@@ -154,7 +154,7 @@ class ServiceDetailsFragment(
         }
         binding.txtFinish.setOnClickListener {
             if (MyApplication.prefManager.pricing == 1) {
-                bill(serviceModel.id, serviceModel.priceService,serviceModel.acceptDate,serviceModel.carType,serviceModel.cityId,serviceModel.charter)
+                bill(serviceModel.id, serviceModel.priceService,serviceModel.acceptDate,serviceModel.carType,serviceModel.cityId,serviceModel.serviceTypeId)
             } else {
                 GetPriceDialog().show(serviceModel.id,
                     object : GetPriceDialog.FinishServiceListener {
@@ -260,7 +260,7 @@ class ServiceDetailsFragment(
         return binding.root
     }
 
-    private fun bill(serviceId: Int, price: String, acceptedTime:String, carType:Int, cityId: Int, isCharter: Short) {
+    private fun bill(serviceId: Int, price: String, acceptedTime:String, carType:Int, cityId: Int, serviceTypeId: Short) {
         binding.vfEndService.displayedChild = 1
         RequestHelper.builder(EndPoint.BILL)
             .listener(billCallBack)
@@ -269,7 +269,8 @@ class ServiceDetailsFragment(
             .addPath(acceptedTime)
             .addPath(carType.toString())
             .addPath(cityId.toString())
-            .addPath(isCharter.toString())
+            .addPath(serviceTypeId
+                .toString())
             .get()
     }
 
