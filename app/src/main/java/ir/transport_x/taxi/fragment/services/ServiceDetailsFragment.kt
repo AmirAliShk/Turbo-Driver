@@ -17,7 +17,6 @@ import ir.transport_x.taxi.dialog.*
 import ir.transport_x.taxi.model.ServiceDataModel
 import ir.transport_x.taxi.okHttp.RequestHelper
 import ir.transport_x.taxi.utils.*
-import ir.transport_x.taxi.webServices.UpdateCharge
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
@@ -155,7 +154,7 @@ class ServiceDetailsFragment(
         }
         binding.txtFinish.setOnClickListener {
             if (MyApplication.prefManager.pricing == 1) {
-                bill(serviceModel.id, serviceModel.priceService)
+                bill(serviceModel.id, serviceModel.priceService,serviceModel.acceptDate,serviceModel.carType,serviceModel.cityId,serviceModel.charter)
             } else {
                 GetPriceDialog().show(serviceModel.id,
                     object : GetPriceDialog.FinishServiceListener {
@@ -261,12 +260,16 @@ class ServiceDetailsFragment(
         return binding.root
     }
 
-    private fun bill(serviceId: Int, price: String) {
+    private fun bill(serviceId: Int, price: String, acceptedTime:String, carType:Int, cityId: Int, isCharter: Short) {
         binding.vfEndService.displayedChild = 1
         RequestHelper.builder(EndPoint.BILL)
             .listener(billCallBack)
             .addPath(serviceId.toString())
             .addPath(price)
+            .addPath(acceptedTime)
+            .addPath(carType.toString())
+            .addPath(cityId.toString())
+            .addPath(isCharter.toString())
             .get()
     }
 
@@ -290,6 +293,7 @@ class ServiceDetailsFragment(
                             })
 
                     } else {
+                        GeneralDialog().message(message).secondButton("باشه"){}.show()
                         cancelServiceListener.onCanceled(false)
                     }
 

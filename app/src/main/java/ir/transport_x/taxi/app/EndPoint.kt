@@ -5,6 +5,7 @@ class EndPoint {
 
     companion object {
         val IP = "http://transport-x.ir:7070"
+//        val IP = "192.168.2.34:7073"
         val HAWKEYE_IP = "http://transport-x.ir:7071"
         const val CRASH_REPORT = "http://transport-x.ir:6061/api/crashReport"
         val RULL = "http://transport-x.ir:7073/rule/taxi"
@@ -44,7 +45,7 @@ class EndPoint {
         val CHARGE = "$FINANCIAL_PATH/charge"
 
         val ACCOUNT_REP = "$FINANCIAL_PATH"
-        val BILL = "$FINANCIAL_PATH/bill"
+        val BILL = "$FINANCIAL_PATH/v1/bill"
         val ATM = "$FINANCIAL_PAY_PATH/ATM"
         val GET_ATM = "$FINANCIAL_PAYS_PATH/ATM"
         val ACTIVES = "$SERVICE_PATH/actives"
