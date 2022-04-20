@@ -27,4 +27,6 @@ data class ServiceDataModel(
     var cancelCount: Int,
     var punishmentPrice: Int,
     var timeRequiredCancellation: Int,
+    var cityId: Int,
+    var charter: Short
 )
