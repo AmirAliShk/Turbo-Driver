@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:layout_margin="5dp"
-        android:background="@drawable/bg_voice"
+        android:background="@drawable/bg_red2"
         android:orientation="horizontal">
 
         <TextView
@@ -20,7 +20,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:minHeight="?android:attr/actionBarSize"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/_13sdp"
+            android:textColor="@color/colorWhite"/>
 
     </RelativeLayout>
 

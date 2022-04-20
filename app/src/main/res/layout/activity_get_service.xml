@@ -80,7 +80,7 @@
                         android:layout_marginTop="5dp"
                         android:text="سفر در اختیار میباشد و مبلغ به روزرسانی میشود."
                         android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_14ssp"
+                        android:textSize="@dimen/_16sdp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -122,7 +122,7 @@
                             android:gravity="right|center_vertical"
                             android:paddingRight="@dimen/_10sdp"
                             android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/_17ssp" />
+                            android:textSize="@dimen/_17sdp" />
 
                     </LinearLayout>
 
@@ -146,7 +146,7 @@
                             android:layout_marginHorizontal="@dimen/_10sdp"
                             android:layout_weight="3"
                             android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/_17ssp"/>
+                            android:textSize="@dimen/_17sdp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -258,10 +258,10 @@
                             android:layout_gravity="center"
                             android:layout_marginHorizontal="@dimen/_10sdp"
                             android:paddingLeft="10dp"
-                            android:textSize="@dimen/_17ssp"
                             android:paddingRight="7dp"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_18sdp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -300,16 +300,15 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="0.12" />
+                android:layout_weight="0.5" />
 
             <ImageButton
                 android:id="@+id/btnClose"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_15sdp"
-                android:background="@drawable/bg_redd"
-                android:src="@drawable/ic_canclee" />
+                android:src="@drawable/ic_cancle" />
 
         </LinearLayout>
 

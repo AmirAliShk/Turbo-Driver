@@ -58,10 +58,10 @@ class FinancialFragment : Fragment() {
             }
             FragmentHelper.toFragment(
                 MyApplication.currentActivity,
-                DepositAttentionFragment(cardNum, cardOwner, JSONObject(ATMObj))
+                FinancialAttentionFragment (cardNum, cardOwner, JSONObject(ATMObj))
             )
-                .setFrame(R.id.frame_container)
-                .replace()
+            .setFrame(R.id.frame_container)
+            .replace()
         }
 
         binding.llReport.setOnClickListener {

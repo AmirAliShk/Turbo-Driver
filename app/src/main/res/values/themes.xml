@@ -26,7 +26,7 @@
 
     <style name="item_title_black">
         <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textSize">@dimen/_20sdp</item>
     </style>
 
     <style name="item_title_white">
@@ -36,7 +36,7 @@
 
     <style name="item_value">
         <item name="android:textColor">@color/grayMedium</item>
-        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:textSize">@dimen/_18sdp</item>
     </style>
 
     <style name="dialog_title">
@@ -56,7 +56,7 @@
     </style>
 
     <style name="title_details">
-        <item name="android:textColor">@color/title_detailes</item>
+        <item name="android:textColor">@color/grayDark</item>
         <item name="android:textSize">@dimen/_18ssp</item>
     </style>
 
@@ -74,7 +74,7 @@
 
     <style name="page_title">
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textSize">@dimen/_20ssp</item>
+        <item name="android:textSize">@dimen/_18sdp</item>
     </style>
 
     <style name="text_main_black">

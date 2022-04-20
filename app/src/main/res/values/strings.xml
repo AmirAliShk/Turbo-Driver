@@ -6,6 +6,7 @@
     <string name="map">نقشه</string>
     <string name="free">سفر های آزاد</string>
     <string name="service_management">مدیریت سفر</string>
+    <string name="suggest_station">پیشنهاد ما برای ثبت محدوده</string>
     <string name="account_report">گزارش حساب</string>
     <string name="online_payment">پرداخت آنلاین</string>
     <string name="card_to_card">کارت به کارت</string>
@@ -37,6 +38,7 @@
     <string name="active">فعال</string>
     <string name="station">محدوده</string>
     <string name="father_name">نام پدر</string>
+    <string name="station_info">اطلاعات محدوده</string>
     <string name="id">شمارشناسنامه</string>
     <string name="National_code">کد ملی</string>
     <string name="Shaba_number">شماره شبا</string>
@@ -86,8 +88,8 @@
     <string name="register_deposit">ثبت واریزی</string>
     <string name="track_deposit">پیگیری واریزی</string>
     <string name="tracking">پیگیری</string>
-    <string name="card_number">شماره کارت</string>
-    <string name="bank_name">نام بانک</string>
+    <string name="card_number">شماره کارت مبدا</string>
+    <string name="bank_name">نام بانک مبدا</string>
     <string name="tracking_code">کد پیگیری</string>
     <string name="register_deposit_slip">ثبت فیش واریزی</string>
     <string name="ID">شناسه</string>

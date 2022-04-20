@@ -11,12 +11,11 @@ import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentFinancialAttentionBinding
 import ir.transport_x.taxi.model.ValueModel
 import ir.transport_x.taxi.utils.FragmentHelper
-import ir.transport_x.taxi.utils.StringHelper
 import ir.transport_x.taxi.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
 
-class DepositAttentionFragment(
+class FinancialAttentionFragment(
     var cardNum: String,
     var cardOwner: String,
     var ATMObj: JSONObject
@@ -33,7 +32,7 @@ class DepositAttentionFragment(
         binding = FragmentFinancialAttentionBinding.inflate(inflater, container, false)
         TypeFaceUtil.overrideFont(binding.root)
         TypeFaceUtil.overrideFont(binding.txtTitle, MyApplication.iranSansMediumTF)
-        TAG = DepositAttentionFragment::class.java.simpleName
+        TAG = FinancialAttentionFragment::class.java.simpleName
 
         val ATMPRice = ATMObj.getJSONArray("ATMPrice")
         val values = ArrayList<ValueModel>()
@@ -44,6 +43,7 @@ class DepositAttentionFragment(
         }
         val valueAdapter = ValueAdapter(values, object : ValueAdapter.SelectedValue {
             override fun getSelected(s: String) {
+
                 price = s
                 if (s == "0") {
                     binding.cvCardDetails.visibility = View.GONE
@@ -59,9 +59,9 @@ class DepositAttentionFragment(
         binding.txtCardNumber.typeface = MyApplication.iranSansMediumTF
         binding.txtCardName.typeface = MyApplication.iranSansMediumTF
 
-        binding.txtCardNumber.text =
-            StringHelper.toPersianDigits(StringHelper.setCharAfter(cardNum, " - ", 4))
-        binding.txtCardName.text = cardOwner
+//        binding.txtCardNumber.text =
+//            StringHelper.toPersianDigits(StringHelper.setCharAfter(cardNum, " - ", 4))
+//        binding.txtCardName.text = cardOwner
 
         binding.btnRegRecord.setOnClickListener {
             FragmentHelper.toFragment(

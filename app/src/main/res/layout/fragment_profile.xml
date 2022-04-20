@@ -67,14 +67,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.25"
                         android:text="@string/ID"
-                        android:textSize="@dimen/_16ssp" />
+                        android:textSize="@dimen/_18sdp" />
 
                     <TextView
                         android:id="@+id/txtDriverCode"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="@dimen/_16ssp" />
+                        android:textSize="@dimen/_17sdp" />
 
                 </LinearLayout>
 
@@ -91,14 +91,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.30"
                         android:text="@string/National_code"
-                        android:textSize="@dimen/_16ssp" />
+                        android:textSize="@dimen/_18sdp" />
 
                     <TextView
                         android:id="@+id/txtNationalCode"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="@dimen/_16ssp" />
+                        android:textSize="@dimen/_17sdp" />
 
                 </LinearLayout>
 
@@ -115,14 +115,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.45"
                         android:text="@string/Shaba_number"
-                        android:textSize="@dimen/_16ssp" />
+                        android:textSize="@dimen/_18sdp" />
 
                     <TextView
                         android:id="@+id/txtIben"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="@dimen/_16ssp" />
+                        android:textSize="@dimen/_17sdp" />
 
                 </LinearLayout>
 

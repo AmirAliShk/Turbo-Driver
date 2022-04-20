@@ -75,6 +75,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="موردی موجود نیست"
+            android:textSize="@dimen/_17sdp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorBlack" />
 
@@ -82,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:textSize="@dimen/_17sdp"
             android:text="متاسفانه هنگام دریافت اطلاعات از سرور به مشکل خوردیم \n پس از چند لحظه مجدد تلاش کنید"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorBlack" />
