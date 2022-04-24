@@ -2,6 +2,7 @@ package ir.transport_x.taxi.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,8 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.gms.maps.model.CircleOptions
+import com.google.android.gms.maps.model.LatLng
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.adapter.NewsAdapter
 import ir.transport_x.taxi.app.EndPoint
@@ -84,23 +87,12 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             GeneralDialog()
                 .message("آیا از خروج از حساب کاربری اطمینان دارید؟")
                 .firstButton("بله"){
-                    MyApplication.currentActivity.finish()
-                    ServiceHelper.stop(MyApplication.context, DataGatheringService::class.java)
-                    ServiceHelper.stop(MyApplication.context, AvaService::class.java)
-                    MyApplication.prefManager.cleanPrefManger()
-                    stopGetStatus()
-                    MyApplication.currentActivity.startActivity(
-                        Intent(
-                            MyApplication.currentActivity,
-                            SplashActivity::class.java
-                        )
-                    )
+                 exit()
                 }
                 .secondButton("خیر"){
 
                 }
                 .show()
-            binding.drawerLayout.closeDrawers()
         }
 
         binding.llServiceHistory.setOnClickListener {
@@ -139,7 +131,8 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
     }
 
     private fun exit () {
-        RequestHelper.builder(EndPoint.GET_NEWS)
+        binding.vfExit.displayedChild = 1
+        RequestHelper.builder(EndPoint.EXIT_ACCOUNT)
             .listener(exitCallBack)
             .get()
     }
@@ -147,7 +140,26 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
     private val exitCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
         override fun onResponse(reCall: Runnable?, vararg args: Any?) {
             MyApplication.handler.post {
+                binding.vfExit.displayedChild = 0
                 try {
+                    val jsonObject = JSONObject(args[0].toString())
+                    val success = jsonObject.getBoolean("success")
+                    val message = jsonObject.getString("message")
+                    if (success) {
+                        MyApplication.currentActivity.finish()
+                        ServiceHelper.stop(MyApplication.context, DataGatheringService::class.java)
+                        ServiceHelper.stop(MyApplication.context, AvaService::class.java)
+                        MyApplication.prefManager.cleanPrefManger()
+                        stopGetStatus()
+                        MyApplication.currentActivity.startActivity(
+                            Intent(
+                                MyApplication.currentActivity,
+                                SplashActivity::class.java
+                            )
+                        )
+                    }else{
+                        GeneralDialog().message(message).secondButton("باشه") {}.show()
+                    }
 
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -157,6 +169,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
+                binding.vfExit.displayedChild = 0
             }
         }
     }

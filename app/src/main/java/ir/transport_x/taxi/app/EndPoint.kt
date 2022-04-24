@@ -28,6 +28,7 @@ class EndPoint {
 
         /******************************** Driver Path *********************************/
         val GET_APP_INFO = "$BASE_PATH/appInfo"
+        val EXIT_ACCOUNT = "$BASE_PATH/exit"
         val ACCEPT_SERVICE = "$BASE_PATH/acceptService"
         val STATION_REGISTER = "$BASE_PATH/stationRegister"
         val EXIT_STATION = "$BASE_PATH/exitStationRegister"
