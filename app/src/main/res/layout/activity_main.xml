@@ -161,6 +161,30 @@
                 android:text="1.0.0" />
 
             <LinearLayout
+                android:id="@+id/llExit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@drawable/bg_red2"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/_8sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/ic_round_exit_to_app_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="خروج از حساب کاربری"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/llCall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

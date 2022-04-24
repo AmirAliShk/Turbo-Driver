@@ -1,25 +1,33 @@
 package ir.transport_x.taxi.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import ir.transport_x.taxi.R
+import ir.transport_x.taxi.adapter.NewsAdapter
+import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.ActivityMainBinding
 import ir.transport_x.taxi.dialog.AvailableServiceDialog
 import ir.transport_x.taxi.dialog.GeneralDialog
 import ir.transport_x.taxi.fragment.MapFragment
+import ir.transport_x.taxi.fragment.MapFragment.Companion.stopGetStatus
 import ir.transport_x.taxi.fragment.ProfileFragment
 import ir.transport_x.taxi.fragment.news.NewsDetailsFragment
 import ir.transport_x.taxi.fragment.news.NewsFragment
 import ir.transport_x.taxi.fragment.services.ServiceHistoryFragment
+import ir.transport_x.taxi.gps.DataGatheringService
+import ir.transport_x.taxi.model.NewsModel
+import ir.transport_x.taxi.okHttp.RequestHelper
+import ir.transport_x.taxi.push.AvaService
 import ir.transport_x.taxi.utils.*
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificationCount {
 
@@ -72,6 +80,29 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             binding.drawerLayout.closeDrawers()
         }
 
+        binding.llExit.setOnClickListener {
+            GeneralDialog()
+                .message("آیا از خروج از حساب کاربری اطمینان دارید؟")
+                .firstButton("بله"){
+                    MyApplication.currentActivity.finish()
+                    ServiceHelper.stop(MyApplication.context, DataGatheringService::class.java)
+                    ServiceHelper.stop(MyApplication.context, AvaService::class.java)
+                    MyApplication.prefManager.cleanPrefManger()
+                    stopGetStatus()
+                    MyApplication.currentActivity.startActivity(
+                        Intent(
+                            MyApplication.currentActivity,
+                            SplashActivity::class.java
+                        )
+                    )
+                }
+                .secondButton("خیر"){
+
+                }
+                .show()
+            binding.drawerLayout.closeDrawers()
+        }
+
         binding.llServiceHistory.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment())
                 .replace()
@@ -95,7 +126,9 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                 binding.txtCharge.text =
                     "شارژ شما ${
                         StringHelper.toPersianDigits(
-                            StringHelper.setComma(MyApplication.prefManager.getCharge()))} تومان "
+                            StringHelper.setComma(MyApplication.prefManager.getCharge())
+                        )
+                    } تومان "
             }
 
             override fun onDrawerClosed(drawerView: View) {}
@@ -103,6 +136,29 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             override fun onDrawerStateChanged(newState: Int) {}
         })
 
+    }
+
+    private fun exit () {
+        RequestHelper.builder(EndPoint.GET_NEWS)
+            .listener(exitCallBack)
+            .get()
+    }
+
+    private val exitCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
+        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
+            MyApplication.handler.post {
+                try {
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
+            MyApplication.handler.post {
+            }
+        }
     }
 
     override fun onResume() {
@@ -134,7 +190,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
         if (supportFragmentManager.backStackEntryCount > 0 && !mapFragment.isVisible) {
             super.onBackPressed()
-        }else if (mapFragment.isVisible) {
+        } else if (mapFragment.isVisible) {
             GeneralDialog()
                 .message("آیا از خروج خود اطمینان دارید؟")
                 .firstButton("بله") {
