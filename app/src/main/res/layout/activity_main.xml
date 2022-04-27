@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pageBackground"
+    android:background="@color/colorPageBackground"
     android:clickable="true"
     android:layoutDirection="rtl"
     android:orientation="vertical"
@@ -25,201 +25,547 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/actionBar"
+            android:background="@color/colorPageBackground"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/item_title_white"
-                    android:id="@+id/txtCharge"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:padding="@dimen/_10sdp"/>
+                    android:layout_height="110dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center_vertical|start"
+                    android:orientation="vertical"
+                    android:paddingRight="@dimen/_10sdp">
 
-                <TextView
-                    style="@style/item_title_white"
-                    android:id="@+id/txtDriverName"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:gravity="right"
+                            android:src="@drawable/ic_charge" />
+
+                        <TextView
+                            android:id="@+id/txtCharge"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="3"
+                            android:gravity="right"
+                            android:text="145,000"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_17sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="2"
+                            android:gravity="right"
+                            android:text="تومان"
+                            android:textColor="@color/grayLight"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|right"
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/_3sdp">
+
+                        <TextView
+                            android:id="@+id/txtDriverName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:text="سارابنی اسدی"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:padding="@dimen/_10sdp"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:background="@color/grayLight" />
-
-            <LinearLayout
-                android:id="@+id/llAccount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:src="@drawable/ic_profile" />
-
-                <TextView
-                    style="@style/item_title_white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:text="@string/profile" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:background="@color/grayLight" />
-
-            <LinearLayout
-                android:id="@+id/llServiceHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:src="@drawable/ic_service_history" />
-
-                <TextView
-                    style="@style/item_title_white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:text="@string/service_history" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:background="@color/grayLight" />
-
-            <LinearLayout
-                android:id="@+id/llNewsMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:src="@drawable/ic_news" />
-
-                <TextView
-                    style="@style/item_title_white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:text="@string/news" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:background="@color/grayLight" />
-
-            <TextView
-                android:id="@+id/txtAppVersion"
-                style="@style/item_title_white"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="bottom|center_horizontal"
-                android:text="1.0.0" />
-
-            <ViewFlipper
-                android:id="@+id/vfExit"
-                android:background="@drawable/bg_red2"
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="@dimen/_15sdp"
-                android:layout_height="wrap_content">
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
 
                 <LinearLayout
-                    android:id="@+id/llExit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/_8sdp">
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:src="@drawable/ic_round_exit_to_app_24" />
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llServiceManagement"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_current_services" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="مدیریت سفر"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.75dp"
+                        android:layout_marginRight="65dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llFreeService"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_free" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="سفرهای آزاد"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.75dp"
+                        android:layout_marginRight="65dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llServiceHistory"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_hisstory" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="تاریخچه سفر"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_suggest_station" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="پیشنهاد ثبت محدوده"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.75dp"
+                        android:layout_marginRight="65dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llNewsMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_news" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="اخبار"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDivider" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llFinancial"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_financial" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="مالی"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_account" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="حساب کاربری"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider" />
+
+                    <LinearLayout
+                        android:id="@+id/llCall"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_call" />
+
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            style="@style/text_title_black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="تماس با پشتیبانی"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorDivider" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="خروج از حساب کاربری"
-                        android:textColor="@color/colorWhite"
-                        android:textSize="@dimen/_13sdp" />
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="ورژن"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <TextView
+                        android:id="@+id/txtAppVersion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="1.0.0"
+                        android:textSize="@dimen/_16ssp" />
+
+                    <ViewFlipper
+                        android:id="@+id/vfExit"
+                        android:background="@drawable/bg_red2"
+                        android:layout_width="match_parent"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/llExit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_8sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:src="@drawable/ic_round_exit_to_app_24" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="خروج از حساب کاربری"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_13sdp" />
+
+                        </LinearLayout>
+
+                        <com.wang.avi.AVLoadingIndicatorView
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_gravity="center"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            app:indicatorColor="@color/colorWhite"
+                            app:indicatorName="BallBeatIndicator" />
+
+                    </ViewFlipper>
 
                 </LinearLayout>
-
-                <com.wang.avi.AVLoadingIndicatorView
-                    android:layout_width="@dimen/_35sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_gravity="center"
-                    android:paddingHorizontal="@dimen/_5sdp"
-                    app:indicatorColor="@color/colorWhite"
-                    app:indicatorName="BallBeatIndicator" />
-
-            </ViewFlipper>
-
-            <LinearLayout
-                android:id="@+id/llCall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_15sdp"
-                android:background="@drawable/bg_green"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="@dimen/_8sdp">
-
-                <ImageView
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:src="@drawable/ic_calll" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="تماس با پشتیبانی"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_15sdp" />
 
             </LinearLayout>
 

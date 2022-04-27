@@ -10,6 +10,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.app.DataHolder
 import ir.transport_x.taxi.app.MyApplication
@@ -22,7 +23,10 @@ import org.acra.ACRA
 
 class SplashActivity : AppCompatActivity() {
     private val permission =
-        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,14 +35,19 @@ class SplashActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.navigationBarColor = resources.getColor(R.color.colorBlack)
-            window.statusBarColor = resources.getColor(R.color.colorBlack)
+            window.navigationBarColor = resources.getColor(R.color.pageBackground)
+            window.statusBarColor = resources.getColor(R.color.pageBackground)
+            WindowInsetsControllerCompat(window, binding.root).isAppearanceLightStatusBars = true
+            WindowInsetsControllerCompat(window, binding.root).isAppearanceLightNavigationBars =
+                true
         }
         TypeFaceUtil.overrideFont(binding.root)
 
-        ACRA.getErrorReporter().putCustomData("LineCode", MyApplication.prefManager.getDriverId().toString())
+        ACRA.getErrorReporter()
+            .putCustomData("LineCode", MyApplication.prefManager.getDriverId().toString())
         ACRA.getErrorReporter().putCustomData("DriverName", MyApplication.prefManager.getUserName())
-        ACRA.getErrorReporter().putCustomData("projectId", MyApplication.prefManager.getAvaPID().toString())
+        ACRA.getErrorReporter()
+            .putCustomData("projectId", MyApplication.prefManager.getAvaPID().toString())
 
 //        binding.txtAppVersion.text = AppVersionHelper(MyApplication.context).versionName
         MyApplication.avaStart()
@@ -51,8 +60,15 @@ class SplashActivity : AppCompatActivity() {
 
     private fun checkPermission() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)||
-                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if ((ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED) ||
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 ActivityCompat.requestPermissions(
                     MyApplication.currentActivity,
                     permission,

@@ -2,16 +2,14 @@ package ir.transport_x.taxi.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.gms.maps.model.CircleOptions
-import com.google.android.gms.maps.model.LatLng
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.adapter.NewsAdapter
 import ir.transport_x.taxi.app.EndPoint
@@ -22,11 +20,13 @@ import ir.transport_x.taxi.dialog.GeneralDialog
 import ir.transport_x.taxi.fragment.MapFragment
 import ir.transport_x.taxi.fragment.MapFragment.Companion.stopGetStatus
 import ir.transport_x.taxi.fragment.ProfileFragment
+import ir.transport_x.taxi.fragment.financial.FinancialFragment
 import ir.transport_x.taxi.fragment.news.NewsDetailsFragment
 import ir.transport_x.taxi.fragment.news.NewsFragment
+import ir.transport_x.taxi.fragment.services.CurrentServiceFragment
+import ir.transport_x.taxi.fragment.services.FreeLoadsFragment
 import ir.transport_x.taxi.fragment.services.ServiceHistoryFragment
 import ir.transport_x.taxi.gps.DataGatheringService
-import ir.transport_x.taxi.model.NewsModel
 import ir.transport_x.taxi.okHttp.RequestHelper
 import ir.transport_x.taxi.push.AvaService
 import ir.transport_x.taxi.utils.*
@@ -55,9 +55,12 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.navigationBarColor = resources.getColor(R.color.pageBackground)
-            window.statusBarColor = resources.getColor(R.color.colorBlack)
+            window.navigationBarColor = resources.getColor(R.color.colorPageBackground)
+            window.statusBarColor = resources.getColor(R.color.colorPageBackground)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            WindowInsetsControllerCompat(window, binding.root).isAppearanceLightStatusBars = true
+            WindowInsetsControllerCompat(window, binding.root).isAppearanceLightNavigationBars =
+                true
         }
 
         binding.txtAppVersion.text = AppVersionHelper(
@@ -72,10 +75,6 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         }, 100)
 
         binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-
-        binding.txtAppVersion.setOnClickListener {
-            binding.drawerLayout.closeDrawers()
-        }
 
         binding.llAccount.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, ProfileFragment())
@@ -111,16 +110,40 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             binding.drawerLayout.closeDrawers()
         }
 
+        binding.llServiceManagement.setOnClickListener {
+            if (!MyApplication.prefManager.getDriverStatus()) {
+                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
+                    .show()
+                return@setOnClickListener
+            }
+            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
+                .replace()
+            binding.drawerLayout.closeDrawers()
+        }
+
+        binding.llFreeService.setOnClickListener {
+            if (!MyApplication.prefManager.getDriverStatus()) {
+                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
+                    .show()
+                return@setOnClickListener
+            }
+            FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment())
+                .replace()
+            binding.drawerLayout.closeDrawers()
+
+        }
+
+        binding.llFinancial.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment()).replace()
+            binding.drawerLayout.closeDrawers()
+        }
+
         binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
 
             override fun onDrawerOpened(drawerView: View) {
                 binding.txtCharge.text =
-                    "شارژ شما ${
-                        StringHelper.toPersianDigits(
-                            StringHelper.setComma(MyApplication.prefManager.getCharge())
-                        )
-                    } تومان "
+                    "شارژ شما ${StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))} تومان "
             }
 
             override fun onDrawerClosed(drawerView: View) {}
@@ -199,11 +222,9 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             return
         }
-        var mapFragment = supportFragmentManager.findFragmentByTag(MapFragment.TAG) ?: return
-
-        if (supportFragmentManager.backStackEntryCount > 0 && !mapFragment.isVisible) {
+        if (supportFragmentManager.backStackEntryCount > 1) {
             super.onBackPressed()
-        } else if (mapFragment.isVisible) {
+        }  else {
             GeneralDialog()
                 .message("آیا از خروج خود اطمینان دارید؟")
                 .firstButton("بله") {

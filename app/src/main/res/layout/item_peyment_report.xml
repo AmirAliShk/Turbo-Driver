@@ -31,7 +31,7 @@
 
             <TextView
                 android:id="@+id/txtDate"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_17ssp"
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
                 android:layout_weight="3"
@@ -50,7 +50,7 @@
 
             <TextView
                 android:id="@+id/txtCardNo"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_17ssp"
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
                 android:layout_weight="3"
@@ -69,7 +69,7 @@
 
             <TextView
                 android:id="@+id/txtPrice"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_17ssp"
                 android:textColor="@color/grayDark"
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
@@ -109,7 +109,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_17ssp"
                 android:textStyle="bold" />
 
 

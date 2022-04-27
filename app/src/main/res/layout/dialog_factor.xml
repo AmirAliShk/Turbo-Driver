@@ -27,6 +27,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:elevation="@dimen/_5sdp"
+                android:layout_margin="@dimen/_5sdp"
                 android:background="@drawable/background4"
                 android:orientation="vertical">
 
@@ -35,7 +37,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="@dimen/_10sdp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -44,14 +46,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="right"
                         android:text="فاکتور"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold" />
+                        android:textColor="@color/colorPink"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_19ssp"/>
 
                     <TextView
                         android:id="@+id/txtAttentionCost"
@@ -66,7 +68,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/_8sdp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -77,13 +80,14 @@
                             <ImageView
                                 android:layout_width="@dimen/_25sdp"
                                 android:layout_height="@dimen/_25sdp"
-                                android:padding="@dimen/_5sdp"
+                                android:padding="@dimen/_3sdp"
                                 android:src="@drawable/ic_origin" />
 
                             <TextView
+                                style="@style/title_details"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_5sdp"
+                                android:layout_marginRight="@dimen/_7sdp"
                                 android:layout_weight="1"
                                 android:gravity="right"
                                 android:text="مبلغ :"
@@ -93,8 +97,11 @@
                             <TextView
                                 android:id="@+id/txtTotalAmount"
                                 android:layout_width="0dp"
+                                android:textSize="@dimen/_18ssp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_weight="1.5"
+                                android:gravity="left"
+                                android:layout_marginLeft="@dimen/_10sdp"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/colorBlack" />
 
@@ -105,7 +112,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_8sdp">
 
                         <LinearLayout
                             android:layout_width="25dp"
@@ -120,11 +128,12 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_11sdp"
                                 android:gravity="right"
                                 android:orientation="horizontal">
 
                                 <TextView
+                                    style="@style/title_details"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -135,9 +144,12 @@
 
                                 <TextView
                                     android:id="@+id/txtDiscount"
+                                    android:textSize="@dimen/_18ssp"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:layout_weight="1.5"
+                                    android:gravity="left"
+                                    android:layout_marginLeft="@dimen/_10sdp"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/colorBlack" />
 
@@ -147,15 +159,16 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginBottom="@dimen/_5sdp"
                                 android:gravity="right"
                                 android:orientation="horizontal">
 
                                 <TextView
+                                    style="@style/title_details"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="@dimen/_10sdp"
-                                    android:layout_weight="1"
+                                    android:layout_marginRight="@dimen/_11sdp"
+                                    android:layout_weight="1.85"
                                     android:gravity="right"
                                     android:text="عوارض شهرداری :"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -165,9 +178,12 @@
                                     android:id="@+id/txtTax"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
+                                    android:layout_weight="1.5"
+                                    android:gravity="left"
+                                    android:layout_marginLeft="@dimen/_10sdp"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="@color/colorBlack" />
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_18ssp" />
 
                             </LinearLayout>
 
@@ -178,7 +194,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/_8sdp">
 
                         <ImageView
                             android:layout_width="25dp"
@@ -188,12 +205,13 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_11sdp"
                             android:gravity="right"
                             android:orientation="horizontal">
 
 
                             <TextView
+                                style="@style/title_details"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -206,9 +224,12 @@
                                 android:id="@+id/txtDriverShare"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_weight="1.5"
+                                android:gravity="left"
+                                android:layout_marginLeft="@dimen/_10sdp"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/colorBlack" />
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/_18ssp" />
 
                         </LinearLayout>
 
@@ -218,17 +239,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/_12sdp">
 
                         <ImageView
-                            android:layout_width="@dimen/_25sdp"
-                            android:layout_height="@dimen/_25sdp"
-                            android:src="@drawable/ic_destination_one" />
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:padding="@dimen/_3sdp"
+                            android:src="@drawable/ic_destination" />
 
                         <TextView
+                            style="@style/title_details"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_7sdp"
                             android:layout_weight="1"
                             android:gravity="right"
                             android:text="سهم شرکت :"
@@ -239,30 +263,37 @@
                             android:id="@+id/txtCompanyShare"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.5"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/colorBlack" />
+                            android:textColor="@color/colorBlack"
+                            android:gravity="left"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:textSize="@dimen/_18ssp" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
+                        android:layout_marginTop="@dimen/_8sdp"
                         android:background="@drawable/bg_stroke"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="center"
+                        android:elevation="@dimen/_3sdp"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        android:padding="@dimen/_8sdp">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="1.25"
                             android:gravity="center"
                             android:text="دریافتی از مسافر : "
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/colorBlack"
-                            android:textSize="17dp"
+                            android:textSize="@dimen/_17ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -270,9 +301,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center"
+                            android:gravity="left"
                             android:textColor="@color/colorRedDark"
-                            android:textSize="25dp" />
+                            android:textSize="@dimen/_18ssp" />
 
                     </LinearLayout>
 
@@ -307,7 +338,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_50sdp"
                     android:layout_margin="@dimen/_10sdp"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -318,7 +349,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
-                        android:background="@drawable/bg_grye">
+                        android:background="@drawable/bg_grye"
+                        android:elevation="@dimen/_4sdp"
+                        android:layout_margin="@dimen/_3sdp">
 
                         <Button
                             android:id="@+id/btnEndTrip"
@@ -326,9 +359,10 @@
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
                             android:gravity="center"
-                            android:text="پایان سرویس"
+                            android:text="پایان سفر"
                             android:textColor="@color/colorWhite"
-                            android:textSize="24sp" />
+                            android:textSize="24sp"
+                            android:textStyle="bold"/>
 
                         <com.wang.avi.AVLoadingIndicatorView
                             android:layout_width="wrap_content"

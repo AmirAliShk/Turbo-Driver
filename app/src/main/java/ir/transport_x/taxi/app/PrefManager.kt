@@ -49,6 +49,7 @@ class PrefManager {
     private val ABOUT_US = "aboutUs"
     private val PUSH_URL = "pushUrl"
     private val MUTE_NOTIFICATIONS = "muteNotifications"
+    private val CANCEL_REASON = "cancelReason"
 
     fun cleanPrefManger() {
         sharedPreferences.edit().clear().apply()
@@ -136,6 +137,15 @@ class PrefManager {
         }
         set(cardName) {
             editor.putString(CARD_NAME, cardName)
+            editor.commit()
+        }
+
+    var cancelReason: String?
+        get() {
+            return sharedPreferences.getString(CANCEL_REASON, "")
+        }
+        set(cancelReason) {
+            editor.putString(CANCEL_REASON, cancelReason)
             editor.commit()
         }
 

@@ -8,7 +8,7 @@ import org.json.JSONObject
 class UpdateCharge {
 
     interface ChargeListener {
-        fun getCharge(charge:String)
+        fun getCharge(charge: String, response: String)
     }
 
     lateinit var listener: ChargeListener
@@ -31,21 +31,21 @@ class UpdateCharge {
                     if (success) {
                         val dataObj = jsonObject.getJSONObject("data")
                         val charge = dataObj.getString("charge")
-                        listener.getCharge(charge)
+                        listener.getCharge(charge, dataObj.toString())
                         MyApplication.prefManager.setCharge(charge)
-                    }else{
-                        listener.getCharge("")
+                    } else {
+                        listener.getCharge("","")
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    listener.getCharge("")
+                    listener.getCharge("","")
                 }
             }
         }
 
         override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
             MyApplication.handler.post {
-                listener.getCharge("")
+                listener.getCharge("","")
             }
         }
     }

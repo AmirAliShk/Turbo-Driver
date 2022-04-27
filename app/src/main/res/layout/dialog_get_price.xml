@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_15sdp"
-        android:background="@drawable/background4"
+        android:background="@drawable/edit_text_style"
         android:elevation="@dimen/_5sdp"
         android:orientation="vertical"
         android:padding="@dimen/_15sdp">
@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="مبلغ دریافتی از مشتری را به تومان وارد کنید : "
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_13ssp"/>
 
         <EditText
             android:id="@+id/edtPrice"
@@ -27,17 +28,20 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/edit_text_style"
+            android:background="@drawable/background4"
             android:gravity="center"
             android:inputType="number"
-            android:padding="@dimen/_8sdp" />
+            android:hint="تومان"
+            android:padding="@dimen/_8sdp"
+            android:textSize="@dimen/_18ssp"
+            android:elevation="@dimen/_5sdp"/>
 
         <ViewFlipper
             android:id="@+id/vfEndService"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_15sdp"
-            android:background="@drawable/bg_grye">
+            android:background="@drawable/bg_pink">
 
             <Button
                 android:id="@+id/btnEndTrip"
@@ -45,9 +49,11 @@
                 android:layout_height="match_parent"
                 android:background="@color/transparent"
                 android:gravity="center"
-                android:text="پایان سرویس"
+                android:text="پایان سفر"
                 android:textColor="@color/colorWhite"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:elevation="@dimen/_2sdp"
+                android:layout_margin="@dimen/_4sdp"/>
 
             <com.wang.avi.AVLoadingIndicatorView
                 android:layout_width="wrap_content"

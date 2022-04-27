@@ -1,26 +1,25 @@
 package ir.transport_x.taxi.fragment.services
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.downloader.Progress
+import com.warkiz.widget.IndicatorSeekBar
+import com.warkiz.widget.OnSeekChangeListener
+import com.warkiz.widget.SeekParams
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentServiceDetailsBinding
-import ir.transport_x.taxi.dialog.CallDialog
-import ir.transport_x.taxi.dialog.FactorDialog
-import ir.transport_x.taxi.dialog.GeneralDialog
-import ir.transport_x.taxi.dialog.GetPriceDialog
+import ir.transport_x.taxi.dialog.*
 import ir.transport_x.taxi.model.ServiceDataModel
 import ir.transport_x.taxi.okHttp.RequestHelper
-import ir.transport_x.taxi.utils.DateHelper
-import ir.transport_x.taxi.utils.FragmentHelper
-import ir.transport_x.taxi.utils.StringHelper
-import ir.transport_x.taxi.utils.TypeFaceUtilJava
-import ir.transport_x.taxi.webServices.UpdateCharge
+import ir.transport_x.taxi.utils.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.*
 
 class ServiceDetailsFragment(
     serviceModel: ServiceDataModel,
@@ -32,6 +31,7 @@ class ServiceDetailsFragment(
 
     private val serviceModel = serviceModel
     private lateinit var binding: FragmentServiceDetailsBinding
+    var lastTime: Long = 0
 
     interface CancelServiceListener {
         fun onCanceled(isCancel: Boolean)
@@ -43,12 +43,12 @@ class ServiceDetailsFragment(
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentServiceDetailsBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
 
-        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
         binding.txtDate.text = StringHelper.toPersianDigits(
             DateHelper.strPersianEghit(
                 DateHelper.parseFormat(
@@ -107,14 +107,16 @@ class ServiceDetailsFragment(
 
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
-        binding.txtPrice.text =  "${
+        binding.txtPrice.text = "${
             StringHelper.toPersianDigits(
-                StringHelper.setComma(serviceModel.price))} تومان "
+                StringHelper.setComma(serviceModel.price)
+            )
+        } تومان "
         binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(
             JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address")
         )
-        binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
-        binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
+//        binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
+//        binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
         if (serviceModel.description.trim() == "" && serviceModel.fixedDescription.trim() == "") {
             binding.llDesc.visibility = View.GONE
         } else {
@@ -136,25 +138,24 @@ class ServiceDetailsFragment(
             binding.llDiscount.visibility = View.VISIBLE
             binding.txtDiscount.text =
                 StringHelper.toPersianDigits(
-                    StringHelper.setComma(serviceModel.discount))
+                    StringHelper.setComma(serviceModel.discount)
+                )
         }
 
         binding.llCancel.setOnClickListener {
-            GeneralDialog()
-                .message("از لغو سرویس اطمینان دارید؟")
-                .firstButton("بله") {
-                    cancel(serviceModel.id, 1)
+            CancelServiceDialog(object : CancelServiceDialog.CancelServiceListener {
+                override fun onCanceled(isCancel: Boolean) {
+                    cancelServiceListener.onCanceled(isCancel)
                 }
-                .secondButton("خیر") {}
-                .show()
+            }).show(serviceModel)
         }
         binding.llCall.setOnClickListener {
             CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
         }
         binding.txtFinish.setOnClickListener {
-            if(MyApplication.prefManager.pricing==1){
-                bill(serviceModel.id, serviceModel.priceService)
-            }else{
+            if (MyApplication.prefManager.pricing == 1) {
+                bill(serviceModel.id, serviceModel.priceService,serviceModel.acceptDate,serviceModel.carType,serviceModel.cityId,serviceModel.serviceTypeId)
+            } else {
                 GetPriceDialog().show(serviceModel.id,
                     object : GetPriceDialog.FinishServiceListener {
                         override fun onFinishService(isFinish: Boolean) {
@@ -165,68 +166,111 @@ class ServiceDetailsFragment(
             }
         }
 
+        binding.imgPlayVoice.setOnClickListener {
+            val voiceName = "voipId.mp3"
+            VoiceHelper.getInstance()
+                .autoplay("", voiceName, "voipId", object : VoiceHelper.OnVoiceListener {
+                    override fun onFileExist() {
+                    }
+
+                    override fun onStartDownload() {
+                        binding.vfDownloadOrPlay.displayedChild = 1
+                    }
+
+                    override fun onProgressDownload(progress: Progress?) {
+                        val percent =
+                            (progress!!.currentBytes / progress.totalBytes.toDouble() * 100).toInt()
+                        Log.i("ServiceDetailsFragment", "onProgress: $percent")
+
+                        binding.progressBar.progress = percent
+                        if (Calendar.getInstance().timeInMillis - lastTime > 500) {
+                            binding.textProgress.text = "$percent %"
+                            lastTime = Calendar.getInstance().timeInMillis
+                        }
+                    }
+
+                    override fun onDownloadCompleted() {
+                        binding.vfDownloadOrPlay.displayedChild = 0
+                        binding.vfPlayPause.displayedChild = 1
+                    }
+
+                    override fun onDownloadError() {
+                    }
+
+                    override fun onDownload401Error() {
+                    }
+
+                    override fun onDownload404Error() {
+                        binding.vfDownloadOrPlay.displayedChild = 2
+                    }
+
+                    override fun onDuringInit() {
+//                        binding.skbTimer.setProgress(0f)
+                    }
+
+                    override fun onEndOfInit(maxDuration: Int) {
+                        binding.skbTimer.max = maxDuration.toFloat()
+                    }
+
+                    override fun onPlayVoice() {
+                        binding.vfPlayPause.displayedChild = 1
+                    }
+
+                    override fun onTimerTask(currentDuration: Int) {
+                        binding.skbTimer.setProgress(currentDuration.toFloat())
+                        val timeRemaining: Int = currentDuration / 1000
+                        val strTimeRemaining = String.format(
+                            Locale("en_US"),
+                            "%02d:%02d",
+                            timeRemaining / 60,
+                            timeRemaining % 60
+                        )
+                        binding.txtTime.text = strTimeRemaining
+                    }
+
+                    override fun onPauseVoice() {
+                        binding.vfPlayPause.displayedChild = 0
+                    }
+
+                    override fun onVoipIdEqual0() {
+                        binding.vfDownloadOrPlay.displayedChild = 2
+                    }
+                })
+
+            binding.skbTimer.onSeekChangeListener = object : OnSeekChangeListener {
+                override fun onSeeking(seekParams: SeekParams) {
+                    val timeRemaining = seekParams.progress / 1000
+                    val strTimeRemaining = String.format(
+                        Locale("en_US"),
+                        "%02d:%02d",
+                        timeRemaining / 60,
+                        timeRemaining % 60
+                    )
+                    binding.txtTime.text = strTimeRemaining
+                }
+
+                override fun onStartTrackingTouch(seekBar: IndicatorSeekBar) {}
+                override fun onStopTrackingTouch(seekBar: IndicatorSeekBar) {
+                    seekBar.let { VoiceHelper.getInstance().staticMd()?.seekTo(it.progress) }
+                }
+            }
+
+        }
+
         return binding.root
     }
 
-    private fun cancel(serviceId: Int, reasonCancelId: Int) {
-        binding.vfCancel.displayedChild = 1
-        RequestHelper.builder(EndPoint.CANCEL)
-            .listener(cancelCallBack)
-            .addParam("serviceId", serviceId)
-            .addParam("reasonCancelId", reasonCancelId)
-            .post()
-    }
-
-    private val cancelCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
-        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
-            MyApplication.handler.post {
-                try {
-                    binding.vfCancel.displayedChild = 0
-                    val jsonObject = JSONObject(args[0].toString())
-                    val success = jsonObject.getBoolean("success")
-                    val message = jsonObject.getString("message")
-                    if (success) {
-                        val dataObj = jsonObject.getJSONObject("data")
-                        val dataMsg = dataObj.getString("message")
-                        val result = dataObj.getBoolean("result")
-                        if (result) {
-                            GeneralDialog().message(dataMsg).firstButton("باشه") {}.show()
-                            FragmentHelper.taskFragment(MyApplication.currentActivity, TAG).remove()
-                            cancelServiceListener.onCanceled(true)
-                            UpdateCharge().update(object : UpdateCharge.ChargeListener {
-                                override fun getCharge(charge: String) {
-                                    MyApplication.prefManager.setCharge(charge)
-                                }
-                            })
-                        } else {
-                            GeneralDialog().message(dataMsg).secondButton("باشه") {}.show()
-                            cancelServiceListener.onCanceled(false)
-                        }
-                    } else {
-                        GeneralDialog().message(message).secondButton("باشه") {}.show()
-                        cancelServiceListener.onCanceled(false)
-                    }
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    binding.vfCancel.displayedChild = 0
-                }
-            }
-        }
-
-        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
-            MyApplication.handler.post {
-                binding.vfCancel.displayedChild = 0
-            }
-        }
-    }
-
-    private fun bill(serviceId: Int, price: String) {
+    private fun bill(serviceId: Int, price: String, acceptedTime:String, carType:Int, cityId: Int, serviceTypeId: Short) {
         binding.vfEndService.displayedChild = 1
         RequestHelper.builder(EndPoint.BILL)
             .listener(billCallBack)
             .addPath(serviceId.toString())
             .addPath(price)
+            .addPath(acceptedTime)
+            .addPath(carType.toString())
+            .addPath(cityId.toString())
+            .addPath(serviceTypeId
+                .toString())
             .get()
     }
 
@@ -250,6 +294,7 @@ class ServiceDetailsFragment(
                             })
 
                     } else {
+                        GeneralDialog().message(message).secondButton("باشه"){}.show()
                         cancelServiceListener.onCanceled(false)
                     }
 

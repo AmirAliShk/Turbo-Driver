@@ -56,9 +56,11 @@ class GetAppInfo {
                 deviceInfo?.put("ANDROID_ID", android_id)
 
                 RequestHelper.builder(EndPoint.GET_APP_INFO)
-                    .addParam("versionCode", AppVersionHelper(
-                        MyApplication.context
-                    ).versionCode)
+                    .addParam(
+                        "versionCode", AppVersionHelper(
+                            MyApplication.context
+                        ).versionCode
+                    )
                     .addParam("deviceInfo", deviceInfo)
                     .addParam("applicationId", MyApplication.context.packageName)
                     .listener(getAppInfoCallBack)
@@ -81,11 +83,15 @@ class GetAppInfo {
                         val isActive = dataObject.getInt("isActive")
                         val isLock = dataObject.getInt("isLock")
                         val reasonDescription = dataObject.getString("reasonDescription")
-                        val updateAvialable = dataObject.getInt("updateAvialable")
+                        val updateAvailable = dataObject.getInt("updateAvialable")
                         val forceUpdate = dataObject.getInt("forceUpdate")
                         val updateUrl = dataObject.getString("updateUrl")
                         val driverId = dataObject.getInt("driverId")
-                        MyApplication.prefManager.setUserName(dataObject.getString("firstName") + " " + dataObject.getString("lastName"))
+                        MyApplication.prefManager.setUserName(
+                            dataObject.getString("firstName") + " " + dataObject.getString(
+                                "lastName"
+                            )
+                        )
                         MyApplication.prefManager.setLockStatus(isLock)
                         MyApplication.prefManager.setLockReasons(reasonDescription)
                         MyApplication.prefManager.setIban(dataObject.getString("IBAN"))
@@ -99,10 +105,12 @@ class GetAppInfo {
                         MyApplication.prefManager.cardNumber = dataObject.getString("accountCard")
                         MyApplication.prefManager.cardName = dataObject.getString("accountName")
                         MyApplication.prefManager.pricing = dataObject.getInt("pricing")
-                        MyApplication.prefManager.supportNumber = dataObject.getString("phoneNumberSupport")
+                        MyApplication.prefManager.supportNumber =
+                            dataObject.getString("phoneNumberSupport")
                         MyApplication.prefManager.onlineUrl = dataObject.getString("onlineUrl")
                         MyApplication.prefManager.aboutUs = dataObject.getString("aboutUs")
                         MyApplication.prefManager.pushUrl = dataObject.getString("pushUrl")
+                        MyApplication.prefManager.cancelReason = dataObject.getString("reasonCancel")
 
                         if (isActive == 0) {
                             GeneralDialog()
@@ -114,7 +122,7 @@ class GetAppInfo {
                             return@post
                         }
 
-                        if (updateAvialable == 1) {
+                        if (updateAvailable == 1) {
                             update(forceUpdate == 1, updateUrl)
                             return@post
                         }

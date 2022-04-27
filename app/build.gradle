@@ -79,6 +79,8 @@ dependencies {
     implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
     implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
     implementation 'com.mindorks.android:prdownloader:0.6.0'
+    implementation 'com.romainpiel.shimmer:library:1.4.0@aar'
+
 
 
 

@@ -4,15 +4,17 @@
     <string name="announcement">اطلاعیه</string>
     <string name="chat">پیام ها</string>
     <string name="map">نقشه</string>
-    <string name="free">سرویس های آزاد</string>
-    <string name="service_management">مدیریت سرویس</string>
+    <string name="free">سفر های آزاد</string>
+    <string name="service_management">مدیریت سفر</string>
+    <string name="suggest_station">پیشنهاد ما برای ثبت محدوده</string>
     <string name="account_report">گزارش حساب</string>
     <string name="online_payment">پرداخت آنلاین</string>
     <string name="card_to_card">کارت به کارت</string>
+    <string name="Home">خانه</string>
     <string name="financial">مالی</string>
-    <string name="Service_history">تاریخچه سرویس</string>
+    <string name="Service_history">تاریخچه سفر</string>
     <string name="profile">حساب کاربری</string>
-    <string name="service_history">تاریخچه سرویس</string>
+    <string name="service_history">تاریخچه سفر</string>
     <string name="payment_report">گزارش پرداخت</string>
     <string name="news">اخبار</string>
     <string name="support">پشتیبانی</string>
@@ -33,7 +35,10 @@
     <string name="Tracking_Code">کد پیگیری :</string>
     <string name="expense">هزینه :</string>
     <string name="name">نام</string>
+    <string name="active">فعال</string>
+    <string name="station">محدوده</string>
     <string name="father_name">نام پدر</string>
+    <string name="station_info">اطلاعات محدوده</string>
     <string name="id">شمارشناسنامه</string>
     <string name="National_code">کد ملی</string>
     <string name="Shaba_number">شماره شبا</string>
@@ -41,8 +46,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="service_details">جزییات سرویس</string>
-    <string name="finish">پایان سرویس</string>
+    <string name="service_details">جزییات سفر</string>
+    <string name="finish">پایان سفر</string>
     <string name="time">ساعت : </string>
     <string name="customer">به محل مهمان رسیدم</string>
     <string name="date_time">تاریخ و ساعت : </string>
@@ -65,8 +70,8 @@
     <string name="thirdDestination">مقصد۳ : </string>
     <string name="carType">نوع خودرو : </string>
     <string name="cargoType">نوع بار : </string>
-    <string name="priceService">هزینه سرویس : </string>
-    <string name="description">توضیحات : </string>
+    <string name="priceService">هزینه سفر : </string>
+    <string name="description">توضیحات</string>
     <string name="cargoCost">ارزش مرسوله : </string>
     <string name="desCount">تعداد مقصد ها : </string>
     <string name="setting">تنظیمات</string>
@@ -77,5 +82,16 @@
     1.پرداخت آنلاین \t
         2.واریز به کارت \n
     در صورت واریز به کارت، فیش آن را ثبت نمایید.</string>
+    <string name="Toman">تومان</string>
+    <string name="charge">شارژ</string>
+    <string name="financial_report">گزارش حساب</string>
+    <string name="register_deposit">ثبت واریزی</string>
+    <string name="track_deposit">پیگیری واریزی</string>
+    <string name="tracking">پیگیری</string>
+    <string name="card_number">شماره کارت مبدا</string>
+    <string name="bank_name">نام بانک مبدا</string>
+    <string name="tracking_code">کد پیگیری</string>
+    <string name="register_deposit_slip">ثبت فیش واریزی</string>
+    <string name="ID">شناسه</string>
 
 </resources>

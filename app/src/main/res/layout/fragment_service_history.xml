@@ -13,26 +13,50 @@
         android:id="@+id/rlActionBar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/actionBar">
+        android:background="@color/colorPageBackground">
 
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="?android:attr/actionBarSize"
-            android:layout_alignParentLeft="true"
+        <LinearLayout
+            android:id="@+id/llBack"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:padding="15dp"
-            android:src="@drawable/ic_back" />
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="@dimen/_5sdp">
+
+            <TextView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:text="@string/Home"
+                android:textColor="@color/grayDark"
+                android:textSize="@dimen/_15ssp" />
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_back"
+                android:padding="@dimen/_2sdp"/>
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtTitle"
             style="@style/page_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/service_history"
+            android:gravity="center"
             android:textStyle="bold" />
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider" />
 
     <ViewFlipper
         android:id="@+id/vfServiceHistory"
@@ -43,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:indicatorColor="@color/colorBlack"
+            app:indicatorColor="@color/colorPink"
             app:indicatorName="BallBeatIndicator" />
 
         <TextView
@@ -52,12 +76,14 @@
             android:gravity="center"
             android:text="سرویسی موجود نیست"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_17sdp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:textSize="@dimen/_17sdp"
             android:text="متاسفانه هنگام دریافت اطلاعات از سرور به مشکل خوردیم \n پس از چند لحظه مجدد تلاش کنید"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorBlack" />

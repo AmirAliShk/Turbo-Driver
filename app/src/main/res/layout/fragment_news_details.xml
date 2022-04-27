@@ -4,42 +4,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pageBackground"
-    android:layoutDirection="rtl"
     android:clickable="true"
+    android:layoutDirection="rtl"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/rlActionBar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/actionBar">
+        android:background="@color/colorPageBackground">
 
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="?android:attr/actionBarSize"
+        <LinearLayout
+            android:id="@+id/llBack"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:padding="15dp"
-            android:src="@drawable/ic_back" />
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/_5sdp">
 
-        <ImageView
+            <TextView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:text="@string/news"
+                android:textColor="@color/grayDark"
+                android:textSize="@dimen/_15ssp" />
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_back" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/imgLink"
-            android:layout_width="?android:attr/actionBarSize"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:padding="12dp"
-            android:src="@drawable/ic_round_insert_link_24" />
+            android:layout_marginRight="@dimen/_15sdp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_round_insert_link_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="لینک"
+                android:textColor="@color/colorPink" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtPageTitle"
             style="@style/page_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="خبر"
-            android:textStyle="bold" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="خبر" />
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider" />
 
 
     <RelativeLayout
@@ -62,8 +104,16 @@
                 android:layout_marginLeft="@dimen/_11sdp"
                 android:layout_marginRight="@dimen/_11sdp"
                 android:layout_weight="0.13"
-                android:src="@drawable/ic_news" />
+                android:src="@drawable/ic_news_white" />
 
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_17ssp" />
 
         </LinearLayout>
 
@@ -83,16 +133,14 @@
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/_5sdp" />
+                    android:layout_marginTop="@dimen/_20sdp" />
 
                 <TextView
                     android:id="@+id/txtTitle"
                     style="@style/Details_answer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:textSize="@dimen/_15sdp"
-                    android:textStyle="bold" />
+                    android:layout_marginRight="@dimen/_10sdp" />
 
                 <TextView
                     android:id="@+id/txtText"

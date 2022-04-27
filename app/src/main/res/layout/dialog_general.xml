@@ -23,7 +23,7 @@
             android:padding="@dimen/_10sdp"
             android:text="خطای عدم اتصال به اینترنت لطفا پس از بررسی ارتباط خود به اینترنت مجدد چک کنید"
             android:textColor="@color/colorBlack"
-            android:textSize="19sp" />
+            android:textSize="@dimen/_18ssp" />
 
         <LinearLayout
             android:id="@+id/llBtnView"

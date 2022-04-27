@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/pageBackground"
     android:clickable="true"
     android:layoutDirection="rtl"
@@ -12,26 +13,50 @@
         android:id="@+id/rlActionBar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/actionBar">
+        android:background="@color/colorPageBackground">
 
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="?android:attr/actionBarSize"
+        <LinearLayout
+            android:id="@+id/llBack"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:padding="15dp"
-            android:src="@drawable/ic_back" />
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/_5sdp">
+
+            <TextView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|left"
+                android:text="@string/financial"
+                android:textColor="@color/grayDark"
+                android:textSize="@dimen/_15ssp" />
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_back" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtTitle"
             style="@style/page_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:text="@string/online_payment"
             android:textStyle="bold" />
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider" />
 
     <View
         android:layout_width="wrap_content"
@@ -40,16 +65,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_20sdp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/_20sdp">
 
         <ImageView
-            android:visibility="invisible"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_negative" />
+            android:src="@drawable/ic_negative"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -59,150 +84,50 @@
             android:orientation="vertical">
 
             <TextView
-                android:textSize="@dimen/_14sdp"
-                android:padding="@dimen/_10sdp"
-                android:textColor="@color/colorBlack"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
                 android:text="مبلغ به تومان میباشد"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_14sdp" />
 
             <EditText
                 android:id="@+id/edtValueCredit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_style"
                 android:gravity="center"
                 android:hint="مبلغ دلخواه را اینجا وارد کنید"
-                android:background="@drawable/edit_text_style"
+                android:inputType="number"
                 android:padding="@dimen/_10sdp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorBlack"
-                android:inputType="number"
                 android:textColorHint="@color/grayMedium" />
 
         </LinearLayout>
 
         <ImageView
-            android:visibility="invisible"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_plus" />
+            android:src="@drawable/ic_plus"
+            android:visibility="invisible" />
 
     </LinearLayout>
-    
-    <ir.transport_x.taxi.custom_view.GridRadioGroup
-        android:id="@+id/priceGroup"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="@dimen/_10sdp"
-        android:gravity="center"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:orientation="horizontal">
-
-        <TableRow>
-
-            <RadioButton
-                android:id="@+id/ten"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_radio"
-                android:button="@android:color/transparent"
-                android:checked="true"
-                android:elevation="3dp"
-                android:gravity="center"
-                android:text="10,000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold" />
-
-            <RadioButton
-                android:id="@+id/fifteen"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_radio"
-                android:button="@android:color/transparent"
-                android:elevation="3dp"
-                android:gravity="center"
-                android:text="15,000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold" />
-
-            <RadioButton
-                android:id="@+id/twenty"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_radio"
-                android:button="@android:color/transparent"
-                android:elevation="3dp"
-                android:gravity="center"
-                android:text="20,000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow>
-
-            <RadioButton
-                android:id="@+id/twentyFive"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_radio"
-                android:button="@android:color/transparent"
-                android:elevation="3dp"
-                android:gravity="center"
-                android:text="25,000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold" />
-
-            <RadioButton
-                android:id="@+id/thirty"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_radio"
-                android:button="@android:color/transparent"
-                android:elevation="3dp"
-                android:gravity="center"
-                android:text="30,000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold" />
-
-            <RadioButton
-                android:id="@+id/thirtyFive"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_radio"
-                android:button="@android:color/transparent"
-                android:elevation="3dp"
-                android:gravity="center"
-                android:text="35,000"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold" />
-        </TableRow>
-
-    </ir.transport_x.taxi.custom_view.GridRadioGroup>
+        android:padding="@dimen/_10sdp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        tools:itemCount="6"
+        tools:listitem="@layout/item_value" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_15sdp"
         android:layout_weight="1"
         android:gravity="bottom"
         android:orientation="horizontal">
@@ -216,9 +141,10 @@
             android:id="@+id/vfSubmit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_3sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
             android:layout_weight="1"
-            android:background="@drawable/bg_green">
+            android:background="@drawable/bg_green"
+            android:elevation="3dp">
 
             <Button
                 android:id="@+id/btnSubmit"
@@ -227,7 +153,7 @@
                 android:background="@color/transparent"
                 android:text="پرداخت"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_18sdp"
                 android:textStyle="bold" />
 
             <com.wang.avi.AVLoadingIndicatorView

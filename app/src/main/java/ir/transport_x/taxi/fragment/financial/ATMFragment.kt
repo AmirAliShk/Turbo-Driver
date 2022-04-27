@@ -23,7 +23,7 @@ import ir.transport_x.taxi.utils.StringHelper
 import ir.transport_x.taxi.utils.TypeFaceUtilJava
 import org.json.JSONObject
 
-class ATMFragment : Fragment() {
+class ATMFragment(private var ATMObj: JSONObject, var price: String) : Fragment() {
 
     lateinit var binding: FragmentAtmBinding
     var dataBase: MyDB = MyDB.getDataBase(MyApplication.context)
@@ -32,42 +32,40 @@ class ATMFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAtmBinding.inflate(inflater, container, false)
         TypeFaceUtilJava.overrideFonts(binding.root)
-        TypeFaceUtilJava.overrideFonts(binding.txtTitle,MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.txtTitle, MyApplication.iranSansMediumTF)
 
         fillCards()
         setCursorEnd(binding.root)
 
-        StringHelper.setCommaOnTime(binding.edtValueCredit)
+        binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        
 
-        binding.imgBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
+        binding.txtAttention.text = StringHelper.toPersianDigits(ATMObj.getString("warningTxt"))
+        binding.txtWarning.text = StringHelper.toPersianDigits(ATMObj.getString("warningTxt2"))
+        binding.justifiedTextViewImportance.text =
+            StringHelper.toPersianDigits(ATMObj.getString("attentionTxt"))
+        binding.txtPrice.text = StringHelper.toPersianDigits(price)
 
-        binding.txtReport.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, PaymentReportFragment())
-                .replace()
+        if (ATMObj.getString("warningTxt") == "") {
+            binding.llAttention.visibility = View.GONE
+        }
+        if (ATMObj.getString("warningTxt2") == "") {
+            binding.llWarning.visibility = View.GONE
+        }
+        if (ATMObj.getString("attentionTxt") == "") {
+            binding.llJustifiedTextViewImportance.visibility = View.GONE
         }
 
-        binding.priceGroup.check(R.id.first)
-        binding.priceGroup.setOnItemClickListener { selectedId ->
-            var price = binding.first.text.toString()
-            when (selectedId) {
-                R.id.first -> price = (binding.first.text.toString())
-                R.id.second -> price = (binding.second.text.toString())
-                R.id.third -> price = (binding.third.text.toString())
-                R.id.forth -> price = (binding.forth.text.toString())
-                R.id.fifth -> price = (binding.fifth.text.toString())
-                R.id.sixth -> price = (binding.sixth.text.toString())
-            }
-            binding.edtValueCredit.setText(StringHelper.toPersianDigits(price))
-        }
+        StringHelper.setCharAfterOnTime(binding.edtCardNumber, " - ", 4)
 
         binding.btnSubmit.setOnClickListener {
             val cardNumber = binding.edtCardNumber.text.trim().toString()
             val bankName = binding.edtBankName.text.trim().toString()
             val tracking = binding.edtTrackingCode.text.trim().toString()
-            val price = binding.edtValueCredit.text.trim().toString()
+            val price = binding.txtPrice.text.trim().toString()
             val desc = binding.edtDesc.text.trim().toString()
 
             if (cardNumber.isEmpty()) {
@@ -96,15 +94,15 @@ class ATMFragment : Fragment() {
 
             if (price.isEmpty()) {
                 MyApplication.Toast("مبلغ را وارد کنید", Toast.LENGTH_SHORT)
-                binding.edtValueCredit.requestFocus()
+                binding.txtPrice.requestFocus()
                 return@setOnClickListener
             }
 
             val p = StringHelper.extractTheNumber(price).toInt()
             if (p < 10000) {
-                binding.edtValueCredit.setText(StringHelper.setComma("10000"))
-                binding.edtValueCredit.requestFocus()
-                MyApplication.Toast("مبلغ وارد شده کمتر حد مجاز میباشد", Toast.LENGTH_SHORT)
+                binding.txtPrice.text = StringHelper.setComma("10000")
+                binding.txtPrice.requestFocus()
+                MyApplication.Toast("مبلغ وارد شده کمتر حد مجاز میباشد.", Toast.LENGTH_SHORT)
                 return@setOnClickListener
             }
 

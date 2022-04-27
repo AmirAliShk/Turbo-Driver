@@ -1,5 +1,6 @@
 package ir.transport_x.taxi.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
 
     private val models = list
     var pos = 0
+    var saveDate = ""
 
     class ViewHolder(val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {}
@@ -31,12 +33,13 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
             parent,
             false
         )
-        TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
+        TypeFaceUtilJava.overrideFonts(binding.root)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
+
         val date = DateHelper.strPersianTen(
             DateHelper.parseFormat(model.saveDate + "", null))
         val time = DateHelper.strPersianFour1(
@@ -51,6 +54,7 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
         }
 
         holder.itemView.setOnClickListener {
+            this.saveDate = model.saveDate
             this.pos = position
             newsDetails(model.id)
         }
@@ -85,7 +89,8 @@ class NewsAdapter(list: ArrayList<NewsModel>) :
                             MyApplication.currentActivity,
                             NewsDetailsFragment(dataObj.getString("link"),
                                 dataObj.getString("title"),
-                                dataObj.getString("message")
+                                dataObj.getString("message"),
+                                saveDate
                             )
                         ).add()
 

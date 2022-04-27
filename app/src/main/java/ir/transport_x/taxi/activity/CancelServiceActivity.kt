@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowInsetsControllerCompat
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.ActivityCancelServiceBinding
@@ -34,8 +35,17 @@ class CancelServiceActivity : AppCompatActivity() {
             window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD)
             window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
             window.navigationBarColor = resources.getColor(R.color.pageBackground)
-            window.statusBarColor = resources.getColor(R.color.actionBar)
+            window.statusBarColor = resources.getColor(R.color.pageBackground)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+            WindowInsetsControllerCompat(
+                window,
+                MainActivity.binding.root
+            ).isAppearanceLightStatusBars = true
+            WindowInsetsControllerCompat(
+                window,
+                MainActivity.binding.root
+            ).isAppearanceLightNavigationBars =
+                true
         }
 
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
@@ -54,17 +64,18 @@ class CancelServiceActivity : AppCompatActivity() {
         }
 
         binding.btnSubmit.setOnClickListener {
-            val intent = Intent(MyApplication.context,SplashActivity::class.java)
+            val intent = Intent(MyApplication.context, SplashActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        val manager = MyApplication.currentActivity.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+        val manager =
+            MyApplication.currentActivity.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
         val lock = manager.newKeyguardLock("CancelServiceActivityKeyGuard")
         lock.disableKeyguard()
 
         UpdateCharge().update(object : UpdateCharge.ChargeListener {
-            override fun getCharge(charge: String) {
+            override fun getCharge(charge: String, response: String) {
             }
         })
 
