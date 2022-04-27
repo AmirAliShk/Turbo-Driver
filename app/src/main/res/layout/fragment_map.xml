@@ -138,7 +138,9 @@
 
         </com.dshantanu.androidsquareslib.AndroidSquares>
 
+<!--        todo visible this later-->
         <com.dshantanu.androidsquareslib.AndroidSquares
+            android:visibility="gone"
             android:id="@+id/llSuggestionStation"
             android:layout_width="@dimen/_47sdp"
             android:layout_height="@dimen/_47sdp"

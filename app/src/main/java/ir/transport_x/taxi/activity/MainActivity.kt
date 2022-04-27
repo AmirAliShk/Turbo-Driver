@@ -63,9 +63,8 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                 true
         }
 
-        binding.txtAppVersion.text = AppVersionHelper(
-            MyApplication.context
-        ).versionName
+        binding.txtAppVersion.text =" نسخه ${ AppVersionHelper(MyApplication.context).versionName}"
+
         binding.txtDriverName.text = MyApplication.prefManager.getUserName()
 
         MyApplication.handler.postDelayed({

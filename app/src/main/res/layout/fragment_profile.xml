@@ -33,7 +33,7 @@
                 android:layout_margin="@dimen/_13sdp"
                 android:background="@drawable/bg_white"
                 android:orientation="vertical"
-                android:paddingHorizontal="@dimen/_35sdp"
+                android:paddingHorizontal="@dimen/_15sdp"
                 android:paddingVertical="@dimen/_25sdp">
 
                 <LinearLayout

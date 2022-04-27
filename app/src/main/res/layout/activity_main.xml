@@ -60,20 +60,8 @@
                             android:layout_marginRight="10dp"
                             android:layout_weight="3"
                             android:gravity="right"
-                            android:text="145,000"
                             android:textColor="@color/colorBlack"
                             android:textSize="@dimen/_17sdp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:layout_weight="2"
-                            android:gravity="right"
-                            android:text="تومان"
-                            android:textColor="@color/grayLight"
-                            android:textSize="@dimen/_14sdp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -90,7 +78,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
-                            android:text="سارابنی اسدی"
                             android:textColor="@color/colorBlack"
                             android:textSize="@dimen/_16sdp"
                             android:textStyle="bold" />
@@ -252,10 +239,12 @@
                         android:layout_height="1dp"
                         android:background="@color/colorDivider" />
 
+<!--                    todo visible this later-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="right"
+                        android:visibility="gone"
                         android:orientation="horizontal">
 
                         <RelativeLayout
@@ -502,35 +491,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:gravity="left"
-                        android:text="ورژن"
-                        android:textSize="@dimen/_15ssp" />
-
-                    <TextView
-                        android:id="@+id/txtAppVersion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="1.0.0"
-                        android:textSize="@dimen/_16ssp" />
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ViewFlipper
                         android:id="@+id/vfExit"
                         android:background="@drawable/bg_red2"
-                        android:layout_width="match_parent"
-                        android:layout_marginHorizontal="@dimen/_15sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
                         android:layout_height="wrap_content">
 
                         <LinearLayout
@@ -564,6 +532,17 @@
                             app:indicatorName="BallBeatIndicator" />
 
                     </ViewFlipper>
+
+                    <TextView
+                        android:id="@+id/txtAppVersion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grayDark"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:gravity="right"
+                        android:text="1.0.0"
+                        android:textSize="@dimen/_14ssp" />
 
                 </LinearLayout>
 
