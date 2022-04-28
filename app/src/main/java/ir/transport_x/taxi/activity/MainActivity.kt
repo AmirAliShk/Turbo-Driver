@@ -140,8 +140,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
 
             override fun onDrawerOpened(drawerView: View) {
-                binding.txtCharge.text =
-                    "شارژ شما ${StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))} تومان "
+                binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
             }
 
             override fun onDrawerClosed(drawerView: View) {}
