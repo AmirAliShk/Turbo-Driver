@@ -136,7 +136,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="right"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -144,8 +144,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:gravity="right|top"
-                        android:text="سارا بنی اسدی"
                         android:paddingBottom="@dimen/_5sdp"
                         android:textColor="@color/colorPink"
                         android:textSize="@dimen/_15sdp" />
@@ -156,8 +154,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="6104 3389 0352 3906"
-                        android:gravity="right|bottom" />
+                        android:gravity="center" />
 
                 </LinearLayout>
 

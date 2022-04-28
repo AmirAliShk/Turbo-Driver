@@ -1,10 +1,6 @@
 package ir.transport_x.taxi.fragment
 
-import android.content.DialogInterface
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
+import android.content.*
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
@@ -14,6 +10,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
@@ -22,12 +19,12 @@ import com.google.android.gms.maps.model.*
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.activity.MainActivity
 import ir.transport_x.taxi.activity.MainActivity.Companion.openDrawer
+import ir.transport_x.taxi.app.AppKeys
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentMapBinding
 import ir.transport_x.taxi.dialog.AvailableServiceDialog
 import ir.transport_x.taxi.dialog.GeneralDialog
-import ir.transport_x.taxi.fragment.financial.FinancialFragment
 import ir.transport_x.taxi.fragment.news.NewsFragment
 import ir.transport_x.taxi.fragment.services.CurrentServiceFragment
 import ir.transport_x.taxi.fragment.services.FreeLoadsFragment
@@ -39,14 +36,16 @@ import ir.transport_x.taxi.okHttp.RequestHelper
 import ir.transport_x.taxi.utils.FragmentHelper
 import ir.transport_x.taxi.utils.ServiceHelper
 import ir.transport_x.taxi.utils.TypeFaceUtil
+import ir.transport_x.taxi.webServices.GetStatus
 import org.json.JSONObject
 import java.util.*
 
 class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     companion object {
         val TAG = MapFragment::class.java.simpleName
-        private lateinit var timer: Timer
+        lateinit var timer: Timer
         fun stopGetStatus() {
+            Log.i(TAG, "stopGetStatus: ")
             try {
                 if (this::timer.isInitialized)
                     timer.cancel()
@@ -62,9 +61,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     lateinit var locationAssistant: LocationAssistant
     var lastLocation = Location("provider")
     lateinit var myLocationMarker: Marker
-
-    private val STATUS_PERIOD: Long = 20000
-    private lateinit var circle: Circle
+    private val STATUS_PERIOD: Long = 5000
     var driverStatus = 0
     var active = false
     var register = false
@@ -114,7 +111,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             binding.txtLock.setTextColor(resources.getColor(R.color.colorWhite))
             binding.txtLock.background = resources.getDrawable(R.color.colorRed)
             binding.txtLock.text =
-                "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي به شما وجود ندارد."
+                "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي وجود ندارد."
         } else {
             binding.txtLock.visibility = View.GONE
             if (MyApplication.prefManager.isFromGetServiceActivity) {
@@ -122,6 +119,12 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
                     .replace()
             }
+        }
+
+        if (MyApplication.prefManager.getStationRegisterStatus()) {
+            startGetStatus()
+        } else {
+            stopGetStatus()
         }
 
         binding.chbMuteNotifications.isChecked = MyApplication.prefManager.muteNotifications
@@ -137,18 +140,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             binding.txtNewsCount.visibility = View.GONE
         }
 
-//        binding.llServiceManagement.setOnClickListener {
-//            if (!MyApplication.prefManager.getDriverStatus()) {
-//                GeneralDialog().message("لطفا فعال شوید").secondButton("باشه") {}
-//                    .show()
-//                return@setOnClickListener
-//            }
-//            FragmentHelper.toFragment(MyApplication.currentActivity, CurrentServiceFragment())
-//                .replace()
-//        }
-
         binding.llSuggestionStation.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, SuggestionStationFragment()).replace()
+            FragmentHelper.toFragment(MyApplication.currentActivity, SuggestionStationFragment())
+                .replace()
         }
 
         binding.llNews.setOnClickListener {
@@ -164,10 +158,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             FragmentHelper.toFragment(MyApplication.currentActivity, FreeLoadsFragment())
                 .replace()
         }
-
-//        binding.llFinancial.setOnClickListener {
-//            FragmentHelper.toFragment(MyApplication.currentActivity, FinancialFragment()).replace()
-//        }
 
         binding.llGPs.setOnClickListener {
             if (!GPSEnable.isOn()) {
@@ -198,6 +188,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         }
 
         binding.swStationRegister.setOnCheckedChangeListener { _, b ->
+            if (!b) {
+                stopGetStatus()
+            }
             if (binding.swStationRegister.isPressed) {
                 if (!GPSEnable.isOn()) {
                     turnOnGPSDialog()
@@ -247,6 +240,51 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         }
 
         return binding.root
+    }
+
+    var statusReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val result = intent.getStringExtra(AppKeys.BROADCAST_STATUS_VALUE)
+            System.gc()
+            MyApplication.handler.postDelayed({ setStatus(result) }, 500)
+        }
+    }
+
+    fun setStatus(intent: String) {
+        try {
+            val response = JSONObject(intent)
+            val statusObj = response.getJSONObject("status")
+            val active = statusObj.getBoolean("active")
+            val register = statusObj.getBoolean("register")
+            val statusMessage = statusObj.getString("message")
+            val stationObj = statusObj.getJSONObject("station")
+            MyApplication.prefManager.setDriverStatus(active)
+            MyApplication.prefManager.setStationRegisterStatus(register)
+            handleStatusByServer()
+            binding.txtStatus.text = statusMessage
+            binding.vfStatus.displayedChild = 0
+            if (active && register) {
+                val distance = stationObj.getInt("distance")
+                val lat = stationObj.getDouble("lat")
+                val lng = stationObj.getDouble("lng")
+                val code = stationObj.getInt("code")
+                val borderLimit = stationObj.getInt("borderLimit")
+                binding.swEnterExit.isChecked = true
+                binding.swStationRegister.isChecked = true
+                binding.swStationRegister.visibility = View.VISIBLE
+            } else if (active && !register) {
+                binding.swEnterExit.isChecked = true
+                binding.swStationRegister.isChecked = false
+                binding.swStationRegister.visibility = View.VISIBLE
+            } else if (!active && !register) {
+                binding.swEnterExit.isChecked = false
+                binding.swStationRegister.isChecked = false
+                binding.swStationRegister.visibility = View.INVISIBLE
+            }
+
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onMapReady(p0: GoogleMap) {
@@ -332,11 +370,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         e.printStackTrace()
     }
 
-    private fun resizeBitmap(res: Int, width: Int, height: Int): Bitmap? {
-        val imageBitmap = BitmapFactory.decodeResource(resources, res)
-        return Bitmap.createScaledBitmap(imageBitmap, width, height, false)
-    }
-
     private fun enterExit(status: Int) {
         binding.vfStatus.displayedChild = 1
         driverStatus = status
@@ -357,7 +390,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                     val message = jsonObject.getString("message")
 
                     if (success) {
-                        getStatus()
                         val dataObj = jsonObject.getJSONObject("data")
                         val status = dataObj.getBoolean("result")
                         if (status) {
@@ -411,7 +443,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                         val message = jsonObject.getString("message")
 
                         if (success) {
-                            getStatus()
+                            startGetStatus()
                             val dataObj = jsonObject.getJSONObject("data")
                             val status = dataObj.getBoolean("result")
                             if (status) {
@@ -458,10 +490,10 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                     val message = jsonObject.getString("message")
 
                     if (success) {
-                        getStatus()
                         val dataObj = jsonObject.getJSONObject("data")
                         val status = dataObj.getBoolean("result")
                         if (status) {
+                            disableStatus()
                             MyApplication.prefManager.setStationRegisterStatus(false)
                         } else {
                             binding.swStationRegister.isChecked =
@@ -488,90 +520,23 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     }
 
     private fun startGetStatus() {
+        Log.i(TAG, "startGetStatus: ")
+        stopGetStatus()
         try {
             timer = Timer()
             timer.scheduleAtFixedRate(
                 object : TimerTask() {
                     override fun run() {
                         MyApplication.currentActivity.runOnUiThread {
-                            getStatus()
+                            GetStatus().getStatus()
                         }
                     }
                 },
-                1000,
+                2000,
                 STATUS_PERIOD
             )
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
-        }
-    }
-
-    fun getStatus() {
-        RequestHelper.builder(EndPoint.STATUS)
-            .listener(statusCallBack)
-            .get()
-    }
-
-    private val statusCallBack: RequestHelper.Callback = object : RequestHelper.Callback() {
-        override fun onResponse(reCall: Runnable?, vararg args: Any?) {
-            MyApplication.handler.post {
-                try {
-//                    {"success":true,"message":"عملیات با موفقیت انجام شد.","data":[{"active":1,"stationId":2,"distance":10,"stationName":"کلاهدوز","stationLat":36.29866,"stationLong":59.572666,"borderLimit":200}]}
-                    val jsonObject = JSONObject(args[0].toString())
-                    val success = jsonObject.getBoolean("success")
-                    val message = jsonObject.getString("message")
-                    if (success) {
-                        val dataObj = jsonObject.getJSONObject("data")
-                        val statusObj = dataObj.getJSONObject("status")
-                        active = statusObj.getBoolean("active")
-                        register = statusObj.getBoolean("register")
-                        val statusMessage = statusObj.getString("message")
-                        val stationObj = statusObj.getJSONObject("station")
-                        MyApplication.prefManager.setDriverStatus(active)
-                        MyApplication.prefManager.setStationRegisterStatus(register)
-                        handleStatusByServer()
-                        refreshMyLocationMarker()
-                        binding.txtStatus.text = statusMessage
-                        if (::circle.isInitialized)
-                            circle.remove()
-                        if (active && register) {
-                            val distance = stationObj.getInt("distance")
-                            val lat = stationObj.getDouble("lat")
-                            val lng = stationObj.getDouble("lng")
-                            val code = stationObj.getInt("code")
-                            val borderLimit = stationObj.getInt("borderLimit")
-                            binding.swEnterExit.isChecked = true
-                            binding.swStationRegister.isChecked = true
-                            binding.swStationRegister.visibility = View.VISIBLE
-
-                            val circleOptions = CircleOptions()
-                                .center(LatLng(lat, lng)) //set center
-                                .radius(distance.toDouble()) //set radius in meters
-                                .fillColor(Color.parseColor("#110000ff")) //default
-                                .strokeColor(Color.BLUE)
-                                .strokeWidth(5f)
-                            circle = googleMap.addCircle(circleOptions)
-
-                        } else if (active && !register) {
-                            binding.swEnterExit.isChecked = true
-                            binding.swStationRegister.isChecked = false
-                            binding.swStationRegister.visibility = View.VISIBLE
-                        } else if (!active && !register) {
-                            binding.swEnterExit.isChecked = false
-                            binding.swStationRegister.isChecked = false
-                            binding.swStationRegister.visibility = View.INVISIBLE
-                        }
-                    }
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
-
-        override fun onFailure(reCall: Runnable?, e: java.lang.Exception?) {
-            MyApplication.handler.post {
-            }
         }
     }
 
@@ -580,7 +545,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         binding.swEnterExit.isChecked = false
         active = false
         register = false
+        binding.txtStatus.text = "لطفا فعال شوید"
         stopService()
+        stopGetStatus()
         MyApplication.prefManager.setDriverStatus(false)
         MyApplication.prefManager.setStationRegisterStatus(false)
     }
@@ -589,8 +556,15 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         binding.swStationRegister.isChecked = MyApplication.prefManager.getStationRegisterStatus()
         binding.swStationRegister.visibility = View.VISIBLE
         binding.swEnterExit.isChecked = true
+        binding.txtStatus.text = "در محدوده ای ثبت نیستید"
         startService()
         MyApplication.prefManager.setDriverStatus(true)
+    }
+
+    fun disableStatus() {
+        binding.swStationRegister.isChecked = false
+        binding.txtStatus.text = "در محدوده ای ثبت نیستید"
+        stopGetStatus()
     }
 
     private fun startService() {
@@ -637,25 +611,25 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         super.onPause()
         binding.map.onPause()
         AvailableServiceDialog.dismiss()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (window != null) {
-                window.statusBarColor = resources.getColor(R.color.colorPageBackground)
-                window.navigationBarColor = resources.getColor(R.color.pageBackground)
-                WindowInsetsControllerCompat(
-                    window,
-                    binding.root
-                ).isAppearanceLightStatusBars = true
-                WindowInsetsControllerCompat(
-                    window,
-                    binding.root
-                ).isAppearanceLightNavigationBars = true
-            }
+        stopGetStatus()
+        if (statusReceiver != null) LocalBroadcastManager.getInstance(MyApplication.currentActivity)
+            .unregisterReceiver(statusReceiver)
+        if (window != null) {
+            window.statusBarColor = resources.getColor(R.color.colorPageBackground)
+            window.navigationBarColor = resources.getColor(R.color.pageBackground)
+            WindowInsetsControllerCompat(
+                window,
+                binding.root
+            ).isAppearanceLightStatusBars = true
+            WindowInsetsControllerCompat(
+                window,
+                binding.root
+            ).isAppearanceLightNavigationBars = true
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        stopGetStatus()
         locationAssistant.stop()
         binding.map.onDestroy()
         AvailableServiceDialog.dismiss()
@@ -665,30 +639,38 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         super.onResume()
         binding.map.onResume()
         locationAssistant.start()
+        if (statusReceiver != null) LocalBroadcastManager.getInstance(MyApplication.currentActivity)
+            .registerReceiver(
+                statusReceiver, IntentFilter(AppKeys.BROADCAST_STATUS_KEY)
+            )
+
+        if (MyApplication.prefManager.getStationRegisterStatus()) {
+            startGetStatus()
+        } else {
+            stopGetStatus()
+        }
+
         if (!isDriverActive()) {
-            binding.txtStatus.text = "برای وارد شدن فعال را بزنید"
+            binding.txtStatus.text = "لطفا فعال شوید"
             binding.swStationRegister.visibility = View.INVISIBLE
             binding.swEnterExit.isChecked = false
         }
-        startGetStatus()
         if (!GPSEnable.isOn()) {
             turnOnGPSDialog()
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window = activity?.window!!
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-            window.navigationBarColor = resources.getColor(R.color.colorPageBackground)
-            window.statusBarColor = resources.getColor(R.color.colorPageBackground)
-            WindowInsetsControllerCompat(
-                window,
-                MainActivity.binding.root
-            ).isAppearanceLightStatusBars = true
-            WindowInsetsControllerCompat(
-                window,
-                MainActivity.binding.root
-            ).isAppearanceLightNavigationBars = true
-        }
+        window = activity?.window!!
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        window.navigationBarColor = resources.getColor(R.color.colorPageBackground)
+        window.statusBarColor = resources.getColor(R.color.colorPageBackground)
+        WindowInsetsControllerCompat(
+            window,
+            MainActivity.binding.root
+        ).isAppearanceLightStatusBars = true
+        WindowInsetsControllerCompat(
+            window,
+            MainActivity.binding.root
+        ).isAppearanceLightNavigationBars = true
     }
 
     override fun onNeedLocationPermission() {}

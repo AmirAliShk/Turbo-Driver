@@ -11,6 +11,7 @@ import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentFinancialAttentionBinding
 import ir.transport_x.taxi.model.ValueModel
 import ir.transport_x.taxi.utils.FragmentHelper
+import ir.transport_x.taxi.utils.StringHelper
 import ir.transport_x.taxi.utils.TypeFaceUtil
 import org.json.JSONObject
 import java.util.*
@@ -59,9 +60,9 @@ class FinancialAttentionFragment(
         binding.txtCardNumber.typeface = MyApplication.iranSansMediumTF
         binding.txtCardName.typeface = MyApplication.iranSansMediumTF
 
-//        binding.txtCardNumber.text =
-//            StringHelper.toPersianDigits(StringHelper.setCharAfter(cardNum, " - ", 4))
-//        binding.txtCardName.text = cardOwner
+        binding.txtCardNumber.text =
+            StringHelper.toPersianDigits(StringHelper.setCharAfter(cardNum, " - ", 4))
+        binding.txtCardName.text = cardOwner
 
         binding.btnRegRecord.setOnClickListener {
             FragmentHelper.toFragment(

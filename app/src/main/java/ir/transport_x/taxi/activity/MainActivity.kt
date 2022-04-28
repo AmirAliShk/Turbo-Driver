@@ -11,7 +11,6 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import ir.transport_x.taxi.R
-import ir.transport_x.taxi.adapter.NewsAdapter
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.ActivityMainBinding
