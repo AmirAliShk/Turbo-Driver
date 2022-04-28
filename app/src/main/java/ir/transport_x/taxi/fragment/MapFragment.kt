@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.*
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
@@ -61,7 +63,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     lateinit var locationAssistant: LocationAssistant
     var lastLocation = Location("provider")
     lateinit var myLocationMarker: Marker
-    private val STATUS_PERIOD: Long = 5000
+    private val STATUS_PERIOD: Long = 60000
     var driverStatus = 0
     var active = false
     var register = false
@@ -133,12 +135,11 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             openDrawer()
         }
 
-        if (MyApplication.prefManager.getCountNotification() > 0) {
-            binding.txtNewsCount.visibility = View.VISIBLE
-            binding.txtNewsCount.text = MyApplication.prefManager.getCountNotification().toString()
-        } else {
-            binding.txtNewsCount.visibility = View.GONE
-        }
+        MyApplication.handler.postDelayed({
+            if (MyApplication.prefManager.getCountNotification() > 0) {
+                newsNotification()
+            }
+        }, 2000)
 
         binding.llSuggestionStation.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, SuggestionStationFragment())
@@ -240,6 +241,21 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         }
 
         return binding.root
+    }
+
+    private fun newsNotification() {
+        binding.cRedNews.visibility = View.VISIBLE
+        val anim = AnimationUtils.loadAnimation(MyApplication.context, R.anim.fade_in_out)
+        anim.repeatCount = 5
+        binding.cRedNews.startAnimation(anim)
+        anim.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) {}
+            override fun onAnimationEnd(animation: Animation) {
+                binding.cRedNews.visibility = View.GONE
+            }
+
+            override fun onAnimationRepeat(animation: Animation) {}
+        })
     }
 
     var statusReceiver: BroadcastReceiver = object : BroadcastReceiver() {
