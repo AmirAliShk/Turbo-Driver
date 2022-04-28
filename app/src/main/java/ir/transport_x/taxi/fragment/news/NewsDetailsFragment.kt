@@ -37,7 +37,7 @@ class NewsDetailsFragment(link: String, title: String, text: String, saveDate: S
         binding.txtTitle.text = StringHelper.toPersianDigits(newsTitle)
         binding.txtText.text = StringHelper.toPersianDigits(newsText)
 
-        if (link.trim().isEmpty()) {
+        if (link.trim().isEmpty()||link.trim() == "0") {
             binding.imgLink.visibility = View.GONE
         }
 

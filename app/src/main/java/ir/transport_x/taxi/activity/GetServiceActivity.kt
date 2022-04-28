@@ -63,10 +63,19 @@ class GetServiceActivity : AppCompatActivity() {
                 StringHelper.setComma(price).toString() + " تومان"
             )
 
+            if (description != null) {
+                if (description.trim() == "") {
+                    binding.llDescription.visibility = View.GONE
+                } else {
+                    binding.llDescription.visibility = View.VISIBLE
+                    binding.txtDescription.text = StringHelper.toPersianDigits(description)
+                }
+            }
+
             if (inService && MyApplication.prefManager.pricing == 1) {
-                binding.txtAnnounce.visibility = View.VISIBLE
+                binding.llServiceType.visibility = View.VISIBLE
             } else {
-                binding.txtAnnounce.visibility = View.GONE
+                binding.llServiceType.visibility = View.GONE
             }
 
             binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(destinationAddress)

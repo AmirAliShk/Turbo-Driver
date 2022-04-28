@@ -89,7 +89,7 @@ class CancelServiceAdapter(
 
                 3 -> {
                     GeneralDialog().message(
-                        "همکار گرامی خوب دقت نمایید در صورت اعلام اشتباه، مبلغ " + StringHelper.setComma(
+                        "همکار گرامی, دقت نمایید در صورت اعلام اشتباه، مبلغ " + StringHelper.setComma(
                             serviceModel.punishmentPrice.toString()
                         ) + " تومان جریمه به شما تعلق خواهد گرفت."
                     ).firstButton("کنسل کردن") {

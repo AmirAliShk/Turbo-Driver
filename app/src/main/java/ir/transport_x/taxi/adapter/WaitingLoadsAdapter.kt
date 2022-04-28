@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ir.transport_x.taxi.app.MyApplication
-import ir.transport_x.taxi.databinding.ItemFreeLoads1Binding
 import ir.transport_x.taxi.databinding.ItemFreeLoadsBinding
 import ir.transport_x.taxi.dialog.GeneralDialog
 import ir.transport_x.taxi.model.WaitingLoadsModel
@@ -21,11 +20,11 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     private val models = list
     lateinit var stopTime: String
 
-    class ViewHolder(val binding: ItemFreeLoads1Binding) :
+    class ViewHolder(val binding: ItemFreeLoadsBinding) :
         RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemFreeLoads1Binding.inflate(
+        val binding = ItemFreeLoadsBinding.inflate(
             LayoutInflater.from(MyApplication.context),
             parent,
             false
@@ -86,9 +85,9 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
         }
 
         if (model.serviceTypeId == 2 && MyApplication.prefManager.pricing == 1) {
-            holder.binding.txtAnnounce.visibility = View.VISIBLE
+            holder.binding.llServiceType.visibility = View.VISIBLE
         } else {
-            holder.binding.txtAnnounce.visibility = View.GONE
+            holder.binding.llServiceType.visibility = View.GONE
         }
 
         holder.binding.txtCustomerName.text = StringHelper.toPersianDigits(model.customerName)

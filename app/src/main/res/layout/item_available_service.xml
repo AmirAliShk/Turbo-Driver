@@ -10,38 +10,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:elevation="@dimen/_4sdp"
         android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_5sdp"
-        android:background="@drawable/background4">
+        android:background="@drawable/background4"
+        android:elevation="@dimen/_4sdp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/llServiceType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:gravity="center"
             android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_8sdp"
-            android:layout_marginBottom="@dimen/_10sdp">
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:orientation="horizontal">
 
-            <ViewFlipper
-                android:id="@+id/vfServiceType"
-                android:layout_width="@dimen/_20sdp"
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="6dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_error"
-                    android:layout_gravity="right"
-                    android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_4sdp"/>
-
-            </ViewFlipper>
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_error" />
 
             <TextView
                 android:id="@+id/txtAnnounce"
@@ -58,8 +47,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
             android:paddingHorizontal="@dimen/_25sdp">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,128 +99,12 @@
                         <TextView
                             android:id="@+id/txtFirstDestAddress"
                             android:layout_width="match_parent"
-                            android:textSize="@dimen/_17ssp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top|right"
                             android:layout_marginHorizontal="@dimen/_10sdp"
                             android:layout_weight="3"
-                            android:textColor="@color/grayDark" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_grye"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_4sdp"
-                            android:visibility="gone">
-
-                            <ImageView
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:src="@drawable/ic_callll" />
-
-                            <TextView
-                                style="@style/Details_answer"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:layout_weight="3"
-                                android:text="تماس"
-                                android:textColor="@color/colorWhite" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="0.25" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/llSecondDest"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:gravity="top|right"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-
-                        <TextView
-                            style="@style/title_details"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/secondDestination"
-                            android:textColor="@color/title_detailes" />
-
-                        <TextView
-                            android:id="@+id/txtSecondDestAddress"
-                            style="@style/Details_answer"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:textColor="@color/grayDark" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_grye"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_4sdp"
-                            android:visibility="gone">
-
-                            <ImageView
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:src="@drawable/ic_callll" />
-
-                            <TextView
-                                style="@style/Details_answer"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:layout_weight="3"
-                                android:text="تماس"
-                                android:textColor="@color/colorWhite" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="0.25" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/llThirdDest"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:gravity="top|right"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-
-                        <TextView
-                            style="@style/title_details"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/thirdDestination"
-                            android:textColor="@color/title_detailes" />
-
-                        <TextView
-                            android:id="@+id/txtThirdDestAddress"
-                            style="@style/Details_answer"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:textColor="@color/grayDark" />
+                            android:textColor="@color/grayDark"
+                            android:textSize="@dimen/_17ssp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -270,9 +143,9 @@
                         android:id="@+id/llDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_10sdp">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -308,12 +181,12 @@
                             android:id="@+id/txtPrice"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="right|center_vertical"
                             android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:gravity="right|center_vertical"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textStyle="bold"
+                            android:textColor="@color/colorBlack"
                             android:textSize="@dimen/_17ssp"
-                            android:textColor="@color/colorBlack"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -342,8 +215,8 @@
                             android:gravity="center"
                             android:text="قبول سرویس"
                             android:textColor="@color/colorWhite"
-                            android:textStyle="bold"
-                            android:textSize="17sp"/>
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
 
                         <com.wang.avi.AVLoadingIndicatorView
                             android:layout_width="40dp"
@@ -359,10 +232,10 @@
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:paddingRight="@dimen/_13sdp"
                         android:text="رد میکنم"
                         android:textColor="@color/colorRed"
-                        android:textSize="19sp"
-                        android:paddingRight="@dimen/_13sdp"/>
+                        android:textSize="19sp" />
 
                 </LinearLayout>
 

@@ -51,9 +51,9 @@ class AvailableServiceAdapter(list: ArrayList<ServiceModel>) :
             StringHelper.toPersianDigits(model.destinationDesc)
 
         if (model.isInService && MyApplication.prefManager.pricing == 1) {
-            holder.binding.txtAnnounce.visibility = View.VISIBLE
+            holder.binding.llServiceType.visibility = View.VISIBLE
         } else {
-            holder.binding.txtAnnounce.visibility = View.GONE
+            holder.binding.llServiceType.visibility = View.GONE
         }
 
         holder.binding.btnGetService.setOnClickListener {

@@ -95,7 +95,7 @@
             android:layout_height="match_parent"
             android:divider="@null"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_free_loads1" />
+            tools:listitem="@layout/item_free_loads" />
 
     </ViewFlipper>
 

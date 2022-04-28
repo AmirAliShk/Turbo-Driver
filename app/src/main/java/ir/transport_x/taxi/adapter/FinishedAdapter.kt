@@ -37,23 +37,25 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
-        var date: String
-        var time: String
+        var date = ""
+        var time = ""
 
         if (model.finishDate == "0000-00-00 00:00:00") {
-            date = DateHelper.strPersianTen(
-                DateHelper.parseFormat(model.cancelDate + "", null))
-            time = DateHelper.strPersianFour1(
-                DateHelper.parseFormat(model.cancelDate + "", null))
+            if (model.cancelDate == "0000-00-00 00:00:00") {
+                holder.binding.txtDate.text = "ثبت نشده"
+            } else {
+                date = DateHelper.strPersianTen(DateHelper.parseFormat(model.cancelDate + "", null))
+                time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.cancelDate + "", null))
+            }
         } else {
-            date = DateHelper.strPersianTen(
-                DateHelper.parseFormat(model.finishDate + "", null))
-            time = DateHelper.strPersianFour1(
-                DateHelper.parseFormat(model.finishDate + "", null))
+            date = DateHelper.strPersianTen(DateHelper.parseFormat(model.finishDate + "", null))
+            time = DateHelper.strPersianFour1(DateHelper.parseFormat(model.finishDate + "", null))
         }
 
         holder.binding.txtFirstDestAddress.text =
-            StringHelper.toPersianDigits(JSONArray(model.destinationAddress).getJSONObject(0).getString("address"))
+            StringHelper.toPersianDigits(
+                JSONArray(model.destinationAddress).getJSONObject(0).getString("address")
+            )
 
         holder.binding.txtCustomerName.text = model.customerName
         holder.binding.txtDate.text = StringHelper.toPersianDigits("$date $time")
@@ -62,7 +64,8 @@ class FinishedAdapter(list: ArrayList<FinishedModel>) :
 //        holder.binding.txtTraking.text = StringHelper.toPersianDigits(model.id.toString())
         holder.binding.txtPrice.text =
             StringHelper.toPersianDigits(
-                StringHelper.setComma(model.price))
+                StringHelper.setComma(model.price)
+            )
         holder.binding.txtStatus.text = model.statusDes
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

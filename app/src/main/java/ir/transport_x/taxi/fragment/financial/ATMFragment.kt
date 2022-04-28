@@ -59,7 +59,7 @@ class ATMFragment(private var ATMObj: JSONObject, var price: String) : Fragment(
             binding.llJustifiedTextViewImportance.visibility = View.GONE
         }
 
-        StringHelper.setCharAfterOnTime(binding.edtCardNumber, " - ", 4)
+        StringHelper.setCharAfterOnTime(binding.edtCardNumber, "-", 4)
 
         binding.btnSubmit.setOnClickListener {
             val cardNumber = binding.edtCardNumber.text.trim().toString()

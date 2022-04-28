@@ -61,7 +61,7 @@ class FinancialAttentionFragment(
         binding.txtCardName.typeface = MyApplication.iranSansMediumTF
 
         binding.txtCardNumber.text =
-            StringHelper.toPersianDigits(StringHelper.setCharAfter(cardNum, " - ", 4))
+            StringHelper.toPersianDigits(StringHelper.setCharAfter(cardNum, "-", 4))
         binding.txtCardName.text = cardOwner
 
         binding.btnRegRecord.setOnClickListener {
