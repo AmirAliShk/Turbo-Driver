@@ -76,7 +76,7 @@ public class VoiceHelper {
         return instance.mediaPlayer;
     }
 
-    public void autoplay(String webUrl, String voiceName, String voipId, OnVoiceListener onVoiceListener) {
+    public void autoplay(String webUrl, String voiceName, OnVoiceListener onVoiceListener) {
         instance.onVoiceListener = onVoiceListener;
         instance.file = new File(MyApplication.Companion.getDIR_ROOT() + MyApplication.Companion.getVOICE_FOLDER_NAME() + voiceName);
         if (instance.mediaPlayer != null && instance.mediaPlayer.isPlaying()) {
@@ -86,7 +86,7 @@ public class VoiceHelper {
             initVoice(Uri.fromFile(instance.file));
             playVoice();
             instance.onVoiceListener.onFileExist();
-        } else if (voipId.equals("0")) {
+        } else if (webUrl.equals("")) {
             instance.onVoiceListener.onVoipIdEqual0();
         } else {
             startDownload(webUrl, voiceName);

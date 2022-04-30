@@ -238,12 +238,12 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:textColor="@color/title_detailes"
-                        android:textSize="@dimen/_18sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="right"
-                        android:text="توضیحات :" />
+                        android:text="توضیحات :"
+                        android:textColor="@color/title_detailes"
+                        android:textSize="@dimen/_18sdp" />
 
                     <TextView
                         android:id="@+id/txtDescriptionDetail"
@@ -265,12 +265,12 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:textColor="@color/title_detailes"
-                        android:textSize="@dimen/_18sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="right"
-                        android:text="تخفیف :" />
+                        android:text="تخفیف :"
+                        android:textColor="@color/title_detailes"
+                        android:textSize="@dimen/_18sdp" />
 
                     <TextView
                         android:id="@+id/txtDiscount"
@@ -315,12 +315,12 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:textColor="@color/title_detailes"
-                        android:textSize="@dimen/_18sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="right"
-                        android:text="قیمت :" />
+                        android:text="قیمت :"
+                        android:textColor="@color/title_detailes"
+                        android:textSize="@dimen/_18sdp" />
 
                     <TextView
                         android:id="@+id/txtPrice"
@@ -332,14 +332,13 @@
 
                 </LinearLayout>
 
-                <!--                todo = visible this later-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -348,7 +347,6 @@
                         android:background="@drawable/bg_voice"
                         android:layoutDirection="ltr"
                         android:orientation="horizontal">
-
 
                         <ViewFlipper
                             android:id="@+id/vfDownloadOrPlay"
@@ -375,6 +373,15 @@
                                         android:padding="@dimen/_2sdp"
                                         android:src="@drawable/ic_play" />
 
+                                    <com.wang.avi.AVLoadingIndicatorView
+                                        android:id="@+id/avl"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:padding="@dimen/_5sdp"
+                                        app:indicatorColor="#D81B60"
+                                        app:indicatorName="BallBeatIndicator" />
+
                                     <ImageView
                                         android:id="@+id/imgPauseVoice"
                                         android:layout_width="match_parent"
@@ -382,9 +389,7 @@
                                         android:padding="@dimen/_2sdp"
                                         android:src="@drawable/ic_pause" />
 
-
                                 </ViewFlipper>
-
 
                                 <com.warkiz.widget.IndicatorSeekBar
                                     android:id="@+id/skbTimer"
@@ -402,7 +407,6 @@
                                     app:isb_track_progress_color="@color/grayDark"
                                     app:isb_track_progress_size="5dp" />
 
-
                                 <TextView
                                     android:id="@+id/txtTime"
                                     android:layout_width="wrap_content"
@@ -410,42 +414,6 @@
                                     android:text="00:00"
                                     android:textColor="@color/colorDarkPurple"
                                     android:visibility="gone" />
-
-                            </LinearLayout>
-
-                            <!--downloading-->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:paddingHorizontal="@dimen/_5sdp">
-
-                                <!--                    <com.wang.avi.AVLoadingIndicatorView-->
-                                <!--                        android:id="@+id/avl"-->
-                                <!--                        android:layout_width="wrap_content"-->
-                                <!--                        android:layout_height="wrap_content"-->
-                                <!--                        android:layout_gravity="center"-->
-                                <!--                        app:indicatorColor="@color/PurpleHigh"-->
-                                <!--                        app:indicatorName="BallBeatIndicator" />-->
-
-                                <TextView
-                                    android:id="@+id/textProgress"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true"
-                                    android:text="0%"
-                                    android:textAppearance="?android:attr/textAppearanceSmall"
-                                    android:textColor="@color/colorDarkPurple"
-                                    android:textStyle="bold" />
-
-                                <ProgressBar
-                                    android:id="@+id/progressBar"
-                                    style="?android:attr/progressBarStyleHorizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:indeterminate="false"
-                                    android:progress="80" />
 
                             </LinearLayout>
 

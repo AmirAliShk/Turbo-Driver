@@ -16,7 +16,10 @@ import ir.transport_x.taxi.databinding.FragmentServiceDetailsBinding
 import ir.transport_x.taxi.dialog.*
 import ir.transport_x.taxi.model.ServiceDataModel
 import ir.transport_x.taxi.okHttp.RequestHelper
-import ir.transport_x.taxi.utils.*
+import ir.transport_x.taxi.utils.DateHelper
+import ir.transport_x.taxi.utils.StringHelper
+import ir.transport_x.taxi.utils.TypeFaceUtilJava
+import ir.transport_x.taxi.utils.VoiceHelper
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
@@ -105,7 +108,6 @@ class ServiceDetailsFragment(
         }
 
         binding.txtStopTime.text = stopTime
-
         binding.txtCustomerName.text = serviceModel.customerName
         binding.txtOriginAddress.text = StringHelper.toPersianDigits(serviceModel.sourceAddress)
         binding.txtPrice.text = "${
@@ -116,8 +118,6 @@ class ServiceDetailsFragment(
         binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(
             JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address")
         )
-//        binding.txtTell.text = StringHelper.toPersianDigits(serviceModel.phoneNumber)
-//        binding.txtMobile.text = StringHelper.toPersianDigits(serviceModel.mobile)
         if (serviceModel.description.trim() == "" && serviceModel.fixedDescription.trim() == "") {
             binding.llDesc.visibility = View.GONE
         } else {
@@ -144,18 +144,30 @@ class ServiceDetailsFragment(
         }
 
         binding.llCancel.setOnClickListener {
+            VoiceHelper.getInstance().pauseVoice()
             CancelServiceDialog(object : CancelServiceDialog.CancelServiceListener {
                 override fun onCanceled(isCancel: Boolean) {
                     cancelServiceListener.onCanceled(isCancel)
                 }
             }).show(serviceModel)
         }
+
         binding.llCall.setOnClickListener {
+            VoiceHelper.getInstance().pauseVoice()
             CallDialog().show(serviceModel.phoneNumber, serviceModel.mobile)
         }
+
         binding.txtFinish.setOnClickListener {
+            VoiceHelper.getInstance().pauseVoice()
             if (MyApplication.prefManager.pricing == 1) {
-                bill(serviceModel.id, serviceModel.priceService,serviceModel.acceptDate,serviceModel.carType,serviceModel.cityId,serviceModel.serviceTypeId)
+                bill(
+                    serviceModel.id,
+                    serviceModel.priceService,
+                    serviceModel.acceptDate,
+                    serviceModel.carType,
+                    serviceModel.cityId,
+                    serviceModel.serviceTypeId
+                )
             } else {
                 GetPriceDialog().show(serviceModel.id,
                     object : GetPriceDialog.FinishServiceListener {
@@ -168,75 +180,67 @@ class ServiceDetailsFragment(
         }
 
         binding.imgPlayVoice.setOnClickListener {
-            val voiceName = "voipId.mp3"
             VoiceHelper.getInstance()
-                .autoplay("", voiceName, "voipId", object : VoiceHelper.OnVoiceListener {
-                    override fun onFileExist() {
-                    }
-
-                    override fun onStartDownload() {
-                        binding.vfDownloadOrPlay.displayedChild = 1
-                    }
-
-                    override fun onProgressDownload(progress: Progress?) {
-                        val percent =
-                            (progress!!.currentBytes / progress.totalBytes.toDouble() * 100).toInt()
-                        Log.i("ServiceDetailsFragment", "onProgress: $percent")
-
-                        binding.progressBar.progress = percent
-                        if (Calendar.getInstance().timeInMillis - lastTime > 500) {
-                            binding.textProgress.text = "$percent %"
-                            lastTime = Calendar.getInstance().timeInMillis
+                .autoplay("http://simotel.transport-x.ir:1884/api/voice/caldX:23V3moshnee2/1643661051.3076694/2022-02-01", // TODO
+                    serviceModel.id.toString(), object : VoiceHelper.OnVoiceListener {
+                        override fun onFileExist() {
+                            binding.vfPlayPause.displayedChild = 2
                         }
-                    }
 
-                    override fun onDownloadCompleted() {
-                        binding.vfDownloadOrPlay.displayedChild = 0
-                        binding.vfPlayPause.displayedChild = 1
-                    }
+                        override fun onStartDownload() {
+                            binding.vfPlayPause.displayedChild = 1
+                        }
 
-                    override fun onDownloadError() {
-                    }
+                        override fun onProgressDownload(progress: Progress?) {
+                            val percent = (progress!!.currentBytes / progress.totalBytes.toDouble() * 100).toInt()
+                            Log.i("ServiceDetailsFragment", "onProgress: $percent")
+                        }
 
-                    override fun onDownload401Error() {
-                    }
+                        override fun onDownloadCompleted() {
+                            binding.vfPlayPause.displayedChild = 2
+                        }
 
-                    override fun onDownload404Error() {
-                        binding.vfDownloadOrPlay.displayedChild = 2
-                    }
+                        override fun onDownloadError() {}
 
-                    override fun onDuringInit() {
-//                        binding.skbTimer.setProgress(0f)
-                    }
+                        override fun onDownload401Error() {}
 
-                    override fun onEndOfInit(maxDuration: Int) {
-                        binding.skbTimer.max = maxDuration.toFloat()
-                    }
+                        override fun onDownload404Error() {
+                            binding.vfPlayPause.displayedChild = 0
+                            Log.i("onDownload404Error", "onDownload404Error")
+                        }
 
-                    override fun onPlayVoice() {
-                        binding.vfPlayPause.displayedChild = 1
-                    }
+                        override fun onDuringInit() {
+                            binding.vfPlayPause.displayedChild = 1
+                        }
 
-                    override fun onTimerTask(currentDuration: Int) {
-                        binding.skbTimer.setProgress(currentDuration.toFloat())
-                        val timeRemaining: Int = currentDuration / 1000
-                        val strTimeRemaining = String.format(
-                            Locale("en_US"),
-                            "%02d:%02d",
-                            timeRemaining / 60,
-                            timeRemaining % 60
-                        )
-                        binding.txtTime.text = strTimeRemaining
-                    }
+                        override fun onEndOfInit(maxDuration: Int) {
+                            binding.skbTimer.max = maxDuration.toFloat()
+                        }
 
-                    override fun onPauseVoice() {
-                        binding.vfPlayPause.displayedChild = 0
-                    }
+                        override fun onPlayVoice() {
+                            binding.vfPlayPause.displayedChild = 1
+                        }
 
-                    override fun onVoipIdEqual0() {
-                        binding.vfDownloadOrPlay.displayedChild = 2
-                    }
-                })
+                        override fun onTimerTask(currentDuration: Int) {
+                            binding.skbTimer.setProgress(currentDuration.toFloat())
+                            val timeRemaining: Int = currentDuration / 1000
+                            val strTimeRemaining = String.format(
+                                Locale("en_US"),
+                                "%02d:%02d",
+                                timeRemaining / 60,
+                                timeRemaining % 60
+                            )
+                            binding.txtTime.text = strTimeRemaining
+                        }
+
+                        override fun onPauseVoice() {
+                            binding.vfPlayPause.displayedChild = 0
+                        }
+
+                        override fun onVoipIdEqual0() {
+                            binding.vfDownloadOrPlay.displayedChild = 1
+                        }
+                    })
 
             binding.skbTimer.onSeekChangeListener = object : OnSeekChangeListener {
                 override fun onSeeking(seekParams: SeekParams) {
@@ -258,10 +262,27 @@ class ServiceDetailsFragment(
 
         }
 
+        binding.imgPauseVoice.setOnClickListener {
+            VoiceHelper.getInstance().pauseVoice()
+            binding.vfPlayPause.displayedChild = 0
+        }
+
         return binding.root
     }
 
-    private fun bill(serviceId: Int, price: String, acceptedTime:String, carType:Int, cityId: Int, serviceTypeId: Short) {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        VoiceHelper.getInstance().pauseVoice()
+    }
+
+    private fun bill(
+        serviceId: Int,
+        price: String,
+        acceptedTime: String,
+        carType: Int,
+        cityId: Int,
+        serviceTypeId: Short
+    ) {
         binding.vfEndService.displayedChild = 1
         RequestHelper.builder(EndPoint.BILL)
             .listener(billCallBack)
@@ -270,8 +291,10 @@ class ServiceDetailsFragment(
             .addPath(acceptedTime)
             .addPath(carType.toString())
             .addPath(cityId.toString())
-            .addPath(serviceTypeId
-                .toString())
+            .addPath(
+                serviceTypeId
+                    .toString()
+            )
             .get()
     }
 
@@ -295,7 +318,7 @@ class ServiceDetailsFragment(
                             })
 
                     } else {
-                        GeneralDialog().message(message).secondButton("باشه"){}.show()
+                        GeneralDialog().message(message).secondButton("باشه") {}.show()
                         cancelServiceListener.onCanceled(false)
                     }
 
