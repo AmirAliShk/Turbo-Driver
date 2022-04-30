@@ -57,7 +57,7 @@ class CurrentServiceFragment : Fragment() {
                                         dataObj.getInt("userId"),
                                         dataObj.getInt("driverId"),
                                         dataObj.getString("finishDate"),
-                                        dataObj.getString("voipId"),
+                                        dataObj.getString("voipLink"),
                                         dataObj.getString("acceptDate"),
                                         dataObj.getString("price"),
                                         dataObj.getString("customerName"),
