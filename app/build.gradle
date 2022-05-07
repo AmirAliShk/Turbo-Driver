@@ -7,8 +7,8 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId 'ir.transport_x.taxi.toosan' //code = 4 name = 2.0.1
-//        applicationId 'ir.transport_x.taxi.test'
+//        applicationId 'ir.transport_x.taxi.toosan' //code = 4 name = 2.0.1
+        applicationId 'ir.transport_x.taxi.test'
 //        applicationId 'ir.taxi1880.driver'
         minSdkVersion 21
         targetSdkVersion 29

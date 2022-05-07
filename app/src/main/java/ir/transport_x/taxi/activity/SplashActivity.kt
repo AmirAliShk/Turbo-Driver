@@ -112,10 +112,6 @@ class SplashActivity : AppCompatActivity() {
         MyApplication.currentActivity = this
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
     override fun onBackPressed() {
         if (fragmentManager.backStackEntryCount > 0 || supportFragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
