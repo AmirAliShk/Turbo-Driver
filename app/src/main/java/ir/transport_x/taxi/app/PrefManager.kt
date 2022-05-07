@@ -50,6 +50,8 @@ class PrefManager {
     private val PUSH_URL = "pushUrl"
     private val MUTE_NOTIFICATIONS = "muteNotifications"
     private val CANCEL_REASON = "cancelReason"
+    private val GPS_INTERVAL = "gpsInterval"
+    private val GET_STATUS_INTERVAL = "getStatusInterval"
 
     fun cleanPrefManger() {
         sharedPreferences.edit().clear().apply()
@@ -94,6 +96,23 @@ class PrefManager {
             editor.commit()
         }
 
+    var getStatusInterval: Int
+        get() {
+            return sharedPreferences.getInt(GET_STATUS_INTERVAL, 60000)
+        }
+        set(getStatusInterval) {
+            editor.putInt(GET_STATUS_INTERVAL, getStatusInterval)
+            editor.commit()
+        }
+
+    var gpsInterval: Int
+        get() {
+            return sharedPreferences.getInt(GPS_INTERVAL, 30000)
+        }
+        set(gpsInterval) {
+            editor.putInt(GPS_INTERVAL, gpsInterval)
+            editor.commit()
+        }
 
     var pricing: Int
         get() {

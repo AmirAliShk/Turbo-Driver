@@ -63,7 +63,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
     lateinit var locationAssistant: LocationAssistant
     var lastLocation = Location("provider")
     lateinit var myLocationMarker: Marker
-    private val STATUS_PERIOD: Long = 60000
+    private val STATUS_PERIOD: Long = MyApplication.prefManager.getStatusInterval.toLong()
     var driverStatus = 0
     var active = false
     var register = false

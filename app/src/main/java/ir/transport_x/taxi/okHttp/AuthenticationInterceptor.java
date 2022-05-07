@@ -95,7 +95,7 @@ public class AuthenticationInterceptor implements Interceptor {
             try {
                 response = client.newCall(request).execute();
 
-                Log.i(TAG, " url " + request.url().toString() + "refreshToken : input " + json.toString());
+                Log.i(TAG, " url " + request.url().toString() + " = refreshToken : input " + json.toString());
 
 
                 if (response != null) {

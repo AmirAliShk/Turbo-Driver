@@ -87,11 +87,7 @@ class GetAppInfo {
                         val forceUpdate = dataObject.getInt("forceUpdate")
                         val updateUrl = dataObject.getString("updateUrl")
                         val driverId = dataObject.getInt("driverId")
-                        MyApplication.prefManager.setUserName(
-                            dataObject.getString("firstName") + " " + dataObject.getString(
-                                "lastName"
-                            )
-                        )
+                        MyApplication.prefManager.setUserName(dataObject.getString("firstName") + " " + dataObject.getString("lastName"))
                         MyApplication.prefManager.setLockStatus(isLock)
                         MyApplication.prefManager.setLockReasons(reasonDescription)
                         MyApplication.prefManager.setIban(dataObject.getString("IBAN"))
@@ -105,12 +101,13 @@ class GetAppInfo {
                         MyApplication.prefManager.cardNumber = dataObject.getString("accountCard")
                         MyApplication.prefManager.cardName = dataObject.getString("accountName")
                         MyApplication.prefManager.pricing = dataObject.getInt("pricing")
-                        MyApplication.prefManager.supportNumber =
-                            dataObject.getString("phoneNumberSupport")
+                        MyApplication.prefManager.supportNumber = dataObject.getString("phoneNumberSupport")
                         MyApplication.prefManager.onlineUrl = dataObject.getString("onlineUrl")
                         MyApplication.prefManager.aboutUs = dataObject.getString("aboutUs")
                         MyApplication.prefManager.pushUrl = dataObject.getString("pushUrl")
                         MyApplication.prefManager.cancelReason = dataObject.getString("reasonCancel")
+                        MyApplication.prefManager.gpsInterval = dataObject.getInt("gpsInterval")
+                        MyApplication.prefManager.getStatusInterval = dataObject.getInt("statusInterval")
 
                         if (isActive == 0) {
                             GeneralDialog()

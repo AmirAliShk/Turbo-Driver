@@ -42,7 +42,7 @@ import ir.transport_x.taxi.okHttp.RequestHelper;
 public class DataGatheringService extends Service {
 
     private static final String TAG = DataGatheringService.class.getSimpleName();
-    private static long SEND_DATA_TO_VIEW = 30000;
+    private int SEND_DATA_TO_VIEW;
     LocalBroadcastManager broadcaster;
     protected LocationManager locationManager;
     public static Location network_location;
@@ -82,9 +82,7 @@ public class DataGatheringService extends Service {
 //        MyApplication.prefManager.incrementResetLocationServiceCount();
 
         prefManager = new PrefManager(this);
-
-//        SEND_DATA_TO_VIEW = prefManager.getGpsTimeInterval() * 1000;// TODO uncomment
-        SEND_DATA_TO_VIEW = 15000;
+        SEND_DATA_TO_VIEW = prefManager.getGpsInterval();
         startSendDataToActivity();
 
         // if service restart on background we must fill the variable with current context
