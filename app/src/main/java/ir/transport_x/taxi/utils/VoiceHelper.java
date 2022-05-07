@@ -161,9 +161,7 @@ public class VoiceHelper {
                     })
                     .setOnCancelListener(() -> {
                     })
-                    .setOnProgressListener(progress -> {
-                        instance.onVoiceListener.onProgressDownload(progress);
-                    })
+                    .setOnProgressListener(progress -> instance.onVoiceListener.onProgressDownload(progress))
 
                     .start(new OnDownloadListener() {
 

@@ -181,7 +181,7 @@ class ServiceDetailsFragment(
 
         binding.imgPlayVoice.setOnClickListener {
             VoiceHelper.getInstance()
-                .autoplay("http://simotel.transport-x.ir:1884/api/voice/caldX:23V3moshnee2/1643661051.3076694/2022-02-01", // TODO
+                .autoplay(serviceModel.voipId, // TODO
                     serviceModel.id.toString(), object : VoiceHelper.OnVoiceListener {
                         override fun onFileExist() {
                             binding.vfPlayPause.displayedChild = 2
@@ -192,7 +192,8 @@ class ServiceDetailsFragment(
                         }
 
                         override fun onProgressDownload(progress: Progress?) {
-                            val percent = (progress!!.currentBytes / progress.totalBytes.toDouble() * 100).toInt()
+                            val percent =
+                                (progress!!.currentBytes / progress.totalBytes.toDouble() * 100).toInt()
                             Log.i("ServiceDetailsFragment", "onProgress: $percent")
                         }
 
