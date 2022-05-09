@@ -27,7 +27,7 @@
             android:minHeight="?android:attr/actionBarSize"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/grayDark"
-            android:textSize="@dimen/_17sdp"/>
+            android:textSize="@dimen/_17sdp" />
 
         <TextView
             android:id="@+id/msg"
@@ -39,8 +39,8 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorBlack"
-            android:visibility="gone"
-            android:textSize="@dimen/_17sdp"/>
+            android:textSize="@dimen/_17sdp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/msg1"
@@ -52,8 +52,8 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#dc2121"
-            android:visibility="gone"
-            android:textSize="@dimen/_17sdp"/>
+            android:textSize="@dimen/_17sdp"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reasonList"
@@ -69,15 +69,15 @@
             android:id="@+id/cancel"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@drawable/bg_green"
-            android:layout_marginVertical="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_15sdp"
+            android:background="@drawable/bg_green"
             android:gravity="center"
             android:text="سفر را ادامه میدهم"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:textSize="@dimen/_18sdp"/>
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

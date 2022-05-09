@@ -52,8 +52,8 @@
 
             <ImageView
                 android:id="@+id/imgMenu"
-                android:layout_width="@dimen/_42sdp"
-                android:layout_height="@dimen/_42sdp"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
                 android:background="@drawable/white_circle_background"
                 android:padding="@dimen/_6sdp"
                 android:src="@drawable/ic_menu" />
@@ -122,7 +122,6 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-
         <com.dshantanu.androidsquareslib.AndroidSquares
             android:id="@+id/llFreeLoads"
             android:layout_width="@dimen/_47sdp"
@@ -138,13 +137,13 @@
 
         </com.dshantanu.androidsquareslib.AndroidSquares>
 
-<!--        todo visible this later-->
+        <!--        todo visible this later-->
         <com.dshantanu.androidsquareslib.AndroidSquares
-            android:visibility="gone"
             android:id="@+id/llSuggestionStation"
             android:layout_width="@dimen/_47sdp"
             android:layout_height="@dimen/_47sdp"
-            android:layout_marginStart="@dimen/_6sdp">
+            android:layout_marginStart="@dimen/_6sdp"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -185,29 +184,29 @@
 
         </com.dshantanu.androidsquareslib.AndroidSquares>
 
-<!--        <com.dshantanu.androidsquareslib.AndroidSquares-->
-<!--            android:id="@+id/llFinancial"-->
-<!--            android:layout_width="@dimen/_45sdp"-->
-<!--            android:layout_height="@dimen/_45sdp"-->
-<!--            android:layout_marginStart="@dimen/_6sdp">-->
+        <!--        <com.dshantanu.androidsquareslib.AndroidSquares-->
+        <!--            android:id="@+id/llFinancial"-->
+        <!--            android:layout_width="@dimen/_45sdp"-->
+        <!--            android:layout_height="@dimen/_45sdp"-->
+        <!--            android:layout_marginStart="@dimen/_6sdp">-->
 
-<!--            <ImageView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:background="@drawable/white_circle_background"-->
-<!--                android:padding="@dimen/_10sdp"-->
-<!--                android:src="@drawable/ic_financial" />-->
+        <!--            <ImageView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/white_circle_background"-->
+        <!--                android:padding="@dimen/_10sdp"-->
+        <!--                android:src="@drawable/ic_financial" />-->
 
-<!--        </com.dshantanu.androidsquareslib.AndroidSquares>-->
+        <!--        </com.dshantanu.androidsquareslib.AndroidSquares>-->
 
         <LinearLayout
             android:id="@+id/llMuteNotification"
             android:layout_width="@dimen/_47sdp"
             android:layout_height="@dimen/_47sdp"
+            android:layout_marginStart="@dimen/_6sdp"
             android:layout_marginLeft="@dimen/_9sdp"
-            android:gravity="center"
             android:background="@drawable/white_circle_background"
-            android:layout_marginStart="@dimen/_6sdp">
+            android:gravity="center">
 
             <CheckBox
                 android:id="@+id/chbMuteNotifications"
@@ -255,8 +254,8 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:padding="@dimen/_8sdp"
-            android:textStyle="bold"
-            android:text="در محدوده ای ثبت نیستید" />
+            android:text="در محدوده ای ثبت نیستید"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -273,8 +272,8 @@
                 app:indicatorName="BallBeatIndicator" />
 
             <TextView
-                style="@style/text_title_black"
                 android:id="@+id/txtLoader"
+                style="@style/text_title_black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="درحال به روز رسانی وضعیت"

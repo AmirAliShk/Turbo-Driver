@@ -25,10 +25,10 @@
             <TextView
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_40sdp"
+                android:gravity="center|left"
                 android:text="@string/card_to_card"
                 android:textColor="@color/grayDark"
-                android:textSize="@dimen/_14ssp"
-                android:gravity="center|left"/>
+                android:textSize="@dimen/_14ssp" />
 
             <ImageView
                 android:id="@+id/imgBack"
@@ -126,7 +126,7 @@
                     android:background="@drawable/edit_text_style"
                     android:gravity="right|center_vertical"
                     android:hint="شماره کارت خود را وارد نمایید"
-                    android:inputType="phone"
+                    android:inputType="numberDecimal"
                     android:maxLength="19"
                     android:nextFocusDown="@id/edtBankName"
                     android:padding="@dimen/_8sdp"
@@ -157,9 +157,8 @@
                     android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/edit_text_style"
                     android:gravity="right|center_vertical"
-                    android:inputType="text"
                     android:hint="نام بانک خود را وارد نمایید"
-
+                    android:inputType="text"
                     android:nextFocusDown="@id/edtTrackingCode"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
@@ -189,7 +188,7 @@
                     android:layout_margin="@dimen/_5sdp"
                     android:background="@drawable/edit_text_style"
                     android:gravity="left|center_vertical"
-                    android:inputType="phone"
+                    android:inputType="numberDecimal"
                     android:nextFocusDown="@id/edtDesc"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
@@ -335,9 +334,9 @@
                     android:id="@+id/vfSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:elevation="@dimen/_3sdp"
                     android:layout_marginVertical="@dimen/_10sdp"
-                    android:background="@drawable/bg_green">
+                    android:background="@drawable/bg_green"
+                    android:elevation="@dimen/_3sdp">
 
                     <Button
                         android:id="@+id/btnSubmit"
@@ -348,7 +347,7 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/colorWhite"
                         android:textSize="@dimen/_18sdp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <com.wang.avi.AVLoadingIndicatorView
                         android:layout_width="30dp"

@@ -69,7 +69,7 @@ class NewsFragment : Fragment() {
                         } else {
                             binding.vfNews.displayedChild = 3
                             val adapter = NewsAdapter(newsModels)
-                            binding.lisetNews.adapter = adapter
+                            binding.listNews.adapter = adapter
                         }
                     }
 

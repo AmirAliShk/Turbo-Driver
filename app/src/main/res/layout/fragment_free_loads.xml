@@ -19,8 +19,8 @@
             android:id="@+id/llBack"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_alignParentLeft="true"
+            android:orientation="horizontal"
             android:paddingLeft="@dimen/_5sdp">
 
             <TextView
@@ -36,11 +36,10 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:src="@drawable/ic_back"
-                android:padding="@dimen/_2sdp"/>
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_back" />
 
         </LinearLayout>
-
 
         <TextView
             android:id="@+id/txtTitle"
@@ -49,7 +48,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/free"
+            android:text="@string/free_service"
             android:textStyle="bold" />
 
     </RelativeLayout>
@@ -76,18 +75,18 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="سرویسی موجود نیست"
-            android:textSize="@dimen/_17sdp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_17sdp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="@dimen/_17sdp"
             android:text="متاسفانه هنگام دریافت اطلاعات از سرور به مشکل خوردیم \n پس از چند لحظه مجدد تلاش کنید"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_17sdp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listWaitingLoads"

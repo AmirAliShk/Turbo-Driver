@@ -4,7 +4,7 @@
     <string name="announcement">اطلاعیه</string>
     <string name="chat">پیام ها</string>
     <string name="map">نقشه</string>
-    <string name="free">سفر های آزاد</string>
+    <string name="free_service">سفر های آزاد</string>
     <string name="service_management">مدیریت سفر</string>
     <string name="suggest_station">پیشنهاد ما برای ثبت محدوده</string>
     <string name="account_report">گزارش حساب</string>
@@ -12,7 +12,6 @@
     <string name="card_to_card">کارت به کارت</string>
     <string name="Home">خانه</string>
     <string name="financial">مالی</string>
-    <string name="Service_history">تاریخچه سفر</string>
     <string name="profile">حساب کاربری</string>
     <string name="service_history">تاریخچه سفر</string>
     <string name="payment_report">گزارش پرداخت</string>
@@ -93,5 +92,9 @@
     <string name="tracking_code">کد پیگیری</string>
     <string name="register_deposit_slip">ثبت فیش واریزی</string>
     <string name="ID">شناسه</string>
+    <string name="accept_service">قبول سفر</string>
+    <string name="call_support">تماس با پشتیبانی</string>
+    <string name="login">ورود</string>
+    <string name="link">لینک</string>
 
 </resources>

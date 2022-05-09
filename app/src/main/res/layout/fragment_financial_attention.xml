@@ -153,9 +153,9 @@
                         style="@style/item_title_black"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:textDirection="ltr"
                         android:layout_weight="1"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textDirection="ltr" />
 
                 </LinearLayout>
 
@@ -175,11 +175,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/colorWhite"
-                    app:cardCornerRadius="@dimen/_8sdp"
-                    android:visibility="gone">
+                    app:cardCornerRadius="@dimen/_8sdp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -198,9 +198,9 @@
                             style="@style/item_title_black"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
                             android:layout_marginRight="@dimen/_10sdp"
-                            android:text="@string/register_deposit"
-                            android:layout_marginLeft="@dimen/_10sdp"/>
+                            android:text="@string/register_deposit" />
 
                     </LinearLayout>
 
@@ -210,8 +210,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
                     app:cardBackgroundColor="@color/colorWhite"
                     app:cardCornerRadius="@dimen/_8sdp">
 

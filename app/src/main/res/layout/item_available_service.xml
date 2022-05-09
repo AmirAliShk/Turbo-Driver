@@ -21,9 +21,9 @@
             android:id="@+id/llServiceType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -135,7 +135,6 @@
                             android:layout_width="0dp"
                             android:layout_height="1dp"
                             android:layout_weight="0.25" />
-
 
                     </LinearLayout>
 

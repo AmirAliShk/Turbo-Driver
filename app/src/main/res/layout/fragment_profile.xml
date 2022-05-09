@@ -15,7 +15,7 @@
         android:paddingLeft="@dimen/_10ssp"
         android:paddingTop="@dimen/_17sdp"
         android:paddingBottom="@dimen/_12sdp"
-        android:src="@drawable/ic_back_grye" />
+        android:src="@drawable/ic_back_gray" />
 
     <RelativeLayout
         android:layout_width="match_parent"

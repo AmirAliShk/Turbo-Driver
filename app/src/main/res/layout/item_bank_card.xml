@@ -6,4 +6,4 @@
     android:gravity="center"
     android:padding="@dimen/_5sdp"
     android:textAppearance="?android:attr/textAppearanceMedium"
-    android:textColor="@color/colorBlack"/>
+    android:textColor="@color/colorBlack" />

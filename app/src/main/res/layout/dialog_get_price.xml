@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="مبلغ دریافتی از مشتری را به تومان وارد کنید : "
             android:textColor="@color/colorBlack"
-            android:textSize="@dimen/_13ssp"/>
+            android:textSize="@dimen/_13ssp" />
 
         <EditText
             android:id="@+id/edtPrice"
@@ -29,12 +29,12 @@
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/background4"
+            android:elevation="@dimen/_5sdp"
             android:gravity="center"
+            android:hint="@string/Toman"
             android:inputType="number"
-            android:hint="تومان"
             android:padding="@dimen/_8sdp"
-            android:textSize="@dimen/_18ssp"
-            android:elevation="@dimen/_5sdp"/>
+            android:textSize="@dimen/_18ssp" />
 
         <ViewFlipper
             android:id="@+id/vfEndService"
@@ -47,13 +47,13 @@
                 android:id="@+id/btnEndTrip"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/_4sdp"
                 android:background="@color/transparent"
-                android:gravity="center"
-                android:text="پایان سفر"
-                android:textColor="@color/colorWhite"
-                android:textSize="24sp"
                 android:elevation="@dimen/_2sdp"
-                android:layout_margin="@dimen/_4sdp"/>
+                android:gravity="center"
+                android:text="@string/finish"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp" />
 
             <com.wang.avi.AVLoadingIndicatorView
                 android:layout_width="wrap_content"

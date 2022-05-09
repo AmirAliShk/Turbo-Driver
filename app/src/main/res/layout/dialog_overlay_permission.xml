@@ -60,16 +60,16 @@
             <Button
                 android:id="@+id/btnGoToSetting"
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="7dp"
+                android:layout_weight="1"
                 android:background="@drawable/bg_pink"
                 android:gravity="center"
                 android:text="@string/setting"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnDismiss"
@@ -80,8 +80,8 @@
                 android:text="رد کردن"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/grayDark"
-                android:textStyle="bold"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

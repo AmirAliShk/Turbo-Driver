@@ -27,9 +27,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="@dimen/_5sdp"
                 android:layout_margin="@dimen/_5sdp"
                 android:background="@drawable/background4"
+                android:elevation="@dimen/_5sdp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -52,8 +52,8 @@
                         android:text="فاکتور"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/colorPink"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_19ssp"/>
+                        android:textSize="@dimen/_19ssp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtAttentionCost"
@@ -68,8 +68,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_marginBottom="@dimen/_8sdp">
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:gravity="center">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -97,13 +97,13 @@
                             <TextView
                                 android:id="@+id/txtTotalAmount"
                                 android:layout_width="0dp"
-                                android:textSize="@dimen/_18ssp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_10sdp"
                                 android:layout_weight="1.5"
                                 android:gravity="left"
-                                android:layout_marginLeft="@dimen/_10sdp"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/colorBlack" />
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/_18ssp" />
 
                         </LinearLayout>
 
@@ -112,8 +112,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_8sdp">
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="25dp"
@@ -144,14 +144,14 @@
 
                                 <TextView
                                     android:id="@+id/txtDiscount"
-                                    android:textSize="@dimen/_18ssp"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_10sdp"
                                     android:layout_weight="1.5"
                                     android:gravity="left"
-                                    android:layout_marginLeft="@dimen/_10sdp"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="@color/colorBlack" />
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/_18ssp" />
 
                             </LinearLayout>
 
@@ -178,9 +178,9 @@
                                     android:id="@+id/txtTax"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_10sdp"
                                     android:layout_weight="1.5"
                                     android:gravity="left"
-                                    android:layout_marginLeft="@dimen/_10sdp"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:textColor="@color/colorBlack"
                                     android:textSize="@dimen/_18ssp" />
@@ -194,8 +194,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_marginBottom="@dimen/_8sdp">
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:gravity="center">
 
                         <ImageView
                             android:layout_width="25dp"
@@ -224,9 +224,9 @@
                                 android:id="@+id/txtDriverShare"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_10sdp"
                                 android:layout_weight="1.5"
                                 android:gravity="left"
-                                android:layout_marginLeft="@dimen/_10sdp"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_18ssp" />
@@ -238,9 +238,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_12sdp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_12sdp">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/_24sdp"
@@ -263,11 +263,11 @@
                             android:id="@+id/txtCompanyShare"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
                             android:layout_weight="1.5"
+                            android:gravity="left"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/colorBlack"
-                            android:gravity="left"
-                            android:layout_marginLeft="@dimen/_10sdp"
                             android:textSize="@dimen/_18ssp" />
 
                     </LinearLayout>
@@ -275,13 +275,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:background="@drawable/bg_stroke"
                         android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
                         android:layout_marginRight="@dimen/_4sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:gravity="center"
+                        android:background="@drawable/bg_stroke"
                         android:elevation="@dimen/_3sdp"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="@dimen/_8sdp">
 
@@ -312,9 +312,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:gravity="center"
-                        android:visibility="gone"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        android:padding="5dp"
+                        android:visibility="gone">
 
                         <ImageView
                             android:layout_width="@dimen/_15sdp"
@@ -348,10 +348,10 @@
                         android:id="@+id/vfEndService"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_3sdp"
                         android:layout_weight="3"
                         android:background="@drawable/bg_grye"
-                        android:elevation="@dimen/_4sdp"
-                        android:layout_margin="@dimen/_3sdp">
+                        android:elevation="@dimen/_4sdp">
 
                         <Button
                             android:id="@+id/btnEndTrip"
@@ -362,7 +362,7 @@
                             android:text="پایان سفر"
                             android:textColor="@color/colorWhite"
                             android:textSize="24sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <com.wang.avi.AVLoadingIndicatorView
                             android:layout_width="wrap_content"

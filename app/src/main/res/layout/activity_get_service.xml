@@ -1,278 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
     android:layoutDirection="rtl"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/rlActionBar"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/_100sdp"
+        android:background="@color/actionBar" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
-            android:background="@color/actionBar" />
+    <ImageView
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/background2"
+        android:elevation="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_x_purple" />
 
-        <ImageView
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@drawable/background2"
-            android:elevation="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            android:src="@drawable/ic_x_purple" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:background="@drawable/background_login"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_10sdp">
 
         <LinearLayout
-            android:id="@+id/hohooh"
+            android:id="@+id/llDialog"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:background="@drawable/background_login"
-            android:gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/_15sdp"
-            android:paddingBottom="@dimen/_10sdp">
+            android:paddingTop="@dimen/_30sdp">
 
             <LinearLayout
-                android:id="@+id/llDialog"
+                android:id="@+id/llServiceType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_error" />
+
+                <TextView
+                    android:id="@+id/txtAnnounce"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="سفر در اختیار میباشد و مبلغ به روزرسانی میشود."
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtTimer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorBlack"
+                android:textSize="20dp"
+                android:visibility="gone" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingTop="@dimen/_30sdp">
-
+                android:paddingHorizontal="@dimen/_20sdp">
 
                 <LinearLayout
-                    android:id="@+id/llServiceType"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_30sdp"
-                    android:layout_marginBottom="@dimen/_30sdp"
-                    android:gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/_13sdp"
+                    android:gravity="center_vertical|right"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:padding="@dimen/_5sdp"
-                        android:src="@drawable/ic_error" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_origin" />
 
                     <TextView
-                        android:id="@+id/txtAnnounce"
+                        android:id="@+id/txtOriginAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="سفر در اختیار میباشد و مبلغ به روزرسانی میشود."
+                        android:layout_gravity="top|right"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:gravity="right|center_vertical"
+                        android:paddingRight="@dimen/_10sdp"
                         android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_16sdp"
+                        android:textSize="@dimen/_17sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_destination" />
+
+                    <TextView
+                        android:id="@+id/txtFirstDestAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|right"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_weight="3"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_17sdp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_grye"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_4sdp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/ic_callll" />
+
+                        <TextView
+                            style="@style/Details_answer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_weight="3"
+                            android:text="تماس"
+                            android:textColor="@color/colorWhite" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="0.25" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_description" />
+
+                    <TextView
+                        android:id="@+id/txtDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:gravity="right|center_vertical"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_17ssp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/txtTimer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20dp"
-                    android:visibility="gone" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/_20sdp">
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_money" />
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/txtPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_13sdp"
-                        android:gravity="center_vertical|right"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_origin" />
-
-                        <TextView
-                            android:id="@+id/txtOriginAddress"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="top|right"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:gravity="right|center_vertical"
-                            android:paddingRight="@dimen/_10sdp"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/_17sdp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:gravity="center_vertical|right"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_destination" />
-
-                        <TextView
-                            android:id="@+id/txtFirstDestAddress"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="top|right"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:layout_weight="3"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/_17sdp" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_grye"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_4sdp"
-                            android:visibility="gone">
-
-                            <ImageView
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:src="@drawable/ic_callll" />
-
-                            <TextView
-                                style="@style/Details_answer"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:layout_weight="3"
-                                android:text="تماس"
-                                android:textColor="@color/colorWhite" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="0.25" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/llDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_description" />
-
-                        <TextView
-                            android:id="@+id/txtDescription"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/_11sdp"
-                            android:gravity="right|center_vertical"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/_17ssp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_money" />
-
-                        <TextView
-                            android:id="@+id/txtPrice"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="@dimen/_10sdp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="7dp"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/_18sdp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="7dp"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_18sdp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <ViewFlipper
-                android:id="@+id/vfAcceptService"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_2sdp"
-                android:background="@drawable/bg_green">
-
-                <Button
-                    android:id="@+id/btnGetService"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/transparent"
-                    android:text="قبول سفر"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_16ssp"
-                    android:textStyle="bold" />
-
-                <com.wang.avi.AVLoadingIndicatorView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    app:indicatorColor="@color/colorWhite" />
-
-            </ViewFlipper>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="0.5" />
-
-            <ImageButton
-                android:id="@+id/btnClose"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/_15sdp"
-                android:background="@color/transparent"
-                android:src="@drawable/ic_cancle" />
-
         </LinearLayout>
 
-    </RelativeLayout>
+        <ViewFlipper
+            android:id="@+id/vfAcceptService"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_weight="0.3"
+            android:background="@drawable/bg_green">
 
-</LinearLayout>
+            <Button
+                android:id="@+id/btnGetService"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:text="@string/accept_service"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                app:indicatorColor="@color/colorWhite" />
+
+        </ViewFlipper>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.5" />
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_cancle" />
+
+    </LinearLayout>
+
+</RelativeLayout>

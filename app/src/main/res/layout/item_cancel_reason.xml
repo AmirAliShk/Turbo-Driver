@@ -21,8 +21,8 @@
             android:gravity="center"
             android:minHeight="?android:attr/actionBarSize"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="@dimen/_13sdp"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_13sdp" />
 
     </RelativeLayout>
 

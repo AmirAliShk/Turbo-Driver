@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/pageBackground"
     android:clickable="true"
     android:layoutDirection="rtl"
@@ -19,8 +19,8 @@
             android:id="@+id/llBack"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_alignParentLeft="true"
+            android:orientation="horizontal"
             android:paddingLeft="@dimen/_5sdp">
 
             <TextView
@@ -36,9 +36,8 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:src="@drawable/ic_back"
-                android:padding="@dimen/_2sdp"/>
-
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_back" />
 
         </LinearLayout>
 
@@ -59,7 +58,6 @@
         android:layout_height="1dp"
         android:background="@color/colorDivider" />
 
-
     <ViewFlipper
         android:id="@+id/vfCurrentService"
         android:layout_width="match_parent"
@@ -75,27 +73,27 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="هم اکنون هیچ سفر فعالی ندارید"
             android:gravity="center"
-            android:textSize="@dimen/_17sdp"
+            android:text="هم اکنون هیچ سفر فعالی ندارید"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_17sdp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="متاسفانه هنگام دریافت اطلاعات از سرور به مشکل خوردیم \n پس از چند لحظه مجدد تلاش کنید"
             android:gravity="center"
-            android:textSize="@dimen/_17sdp"
+            android:text="متاسفانه هنگام دریافت اطلاعات از سرور به مشکل خوردیم \n پس از چند لحظه مجدد تلاش کنید"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/colorBlack" />
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_17sdp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listCurrentService"
             android:layout_width="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_current_services"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_current_services" />
 
     </ViewFlipper>
 

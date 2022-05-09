@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/pageBackground"
     android:clickable="true"
     android:gravity="center"
@@ -25,8 +25,8 @@
                 android:id="@+id/llBack"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_alignParentLeft="true"
+                android:orientation="horizontal"
                 android:paddingLeft="@dimen/_5sdp">
 
                 <TextView
@@ -42,8 +42,8 @@
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
-                    android:src="@drawable/ic_back"
-                    android:padding="@dimen/_2sdp"/>
+                    android:padding="@dimen/_2sdp"
+                    android:src="@drawable/ic_back" />
 
             </LinearLayout>
 
@@ -67,15 +67,15 @@
         <com.warkiz.widget.IndicatorStayLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_3sdp"
-            android:layout_marginBottom="@dimen/_5sdp">
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:paddingHorizontal="@dimen/_10sdp">
 
             <com.warkiz.widget.IndicatorSeekBar
                 android:id="@+id/skbDistance"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_3sdp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
                 app:isb_indicator_color="@color/colorPink"
                 app:isb_indicator_top_content_layout="@layout/item_skb_suggest_station"
                 app:isb_seek_smoothly="true"
@@ -137,9 +137,9 @@
                 <ListView
                     android:id="@+id/lstSuggestStation"
                     android:layout_width="match_parent"
-                    tools:listitem="@layout/item_suggest_station"
                     android:layout_height="match_parent"
-                    android:divider="@null" />
+                    android:divider="@null"
+                    tools:listitem="@layout/item_suggest_station" />
 
             </LinearLayout>
 
@@ -169,7 +169,6 @@
             </LinearLayout>
 
         </ViewFlipper>
-
 
     </LinearLayout>
 

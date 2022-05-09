@@ -107,12 +107,12 @@
                     <TextView
                         android:id="@+id/txtCharge"
                         android:layout_width="wrap_content"
-                        android:textSize="@dimen/_18sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_8sdp"
                         android:layout_weight="1"
                         android:gravity="left"
                         android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_18sdp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -132,13 +132,13 @@
             android:id="@+id/txtNote1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
             android:gravity="right"
             android:padding="@dimen/_5sdp"
-            android:layout_marginRight="@dimen/_15sdp"
             android:textColor="@color/grayDark"
-            android:textSize="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_15sdp"/>
+            android:textSize="@dimen/_16sdp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/llNote2"
@@ -165,10 +165,10 @@
                     android:id="@+id/txtNote2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:layout_margin="@dimen/_5sdp"
+                    android:gravity="center_vertical"
                     android:textColor="@color/grayDark"
-                    android:textSize="@dimen/_17sdp"/>
+                    android:textSize="@dimen/_17sdp" />
 
             </LinearLayout>
 

@@ -56,9 +56,7 @@
 
                 </LinearLayout>
 
-
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -82,7 +80,6 @@
                     android:textSize="@dimen/_17ssp" />
 
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -132,11 +129,6 @@
                     android:textColor="@color/grayDark"
                     android:textSize="@dimen/_18ssp" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="0.25" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -145,7 +137,6 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingRight="@dimen/_18sdp">
-
 
                 <View
                     android:layout_width="0dp"
@@ -199,7 +190,7 @@
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginRight="@dimen/_10sdp"
                         android:layout_weight="3"
-                        android:text="تماس"
+                        android:text="@string/call"
                         android:textColor="@color/colorWhite" />
 
                 </LinearLayout>
@@ -208,7 +199,6 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="0.25" />
-
 
             </LinearLayout>
 
@@ -257,7 +247,7 @@
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginRight="@dimen/_10sdp"
                         android:layout_weight="3"
-                        android:text="تماس"
+                        android:text="@string/call"
                         android:textColor="@color/colorWhite" />
 
                 </LinearLayout>
@@ -297,7 +287,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="تومان"
+                        android:text="@string/Toman"
                         android:textSize="@dimen/_12ssp" />
 
 
@@ -313,7 +303,7 @@
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_margin="@dimen/_4sdp"
-                        android:background="@drawable/bg_cirecle_green"
+                        android:background="@drawable/bg_circle_green"
                         android:elevation="@dimen/_4sdp"
                         android:padding="@dimen/_10sdp"
                         android:src="@drawable/ic_calll" />

@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layoutDirection="rtl"
-    android:layout_margin="@dimen/_12sdp">
+    android:layout_margin="@dimen/_12sdp"
+    android:layoutDirection="rtl">
 
     <LinearLayout
         android:id="@+id/llStatus"
@@ -18,8 +18,8 @@
         <TextView
             android:id="@+id/txtStatus"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="right"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16ssp"
@@ -28,8 +28,8 @@
         <TextView
             android:id="@+id/txtDate"
             android:layout_width="0dp"
-            android:layout_weight="1.5"
             android:layout_height="wrap_content"
+            android:layout_weight="1.5"
             android:gravity="left"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16ssp"
