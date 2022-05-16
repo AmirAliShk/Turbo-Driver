@@ -105,6 +105,7 @@ public class VoiceHelper {
 
     private void playVoice() {
         try {
+            if(!MyApplication.prefManager.getAllowToPlayVoice()) return;
             if (!instance.isPlaying && instance.mediaPlayer != null && !instance.mediaPlayer.isPlaying()) {
                 instance.mediaPlayer.start();
                 instance.isPlaying = true;

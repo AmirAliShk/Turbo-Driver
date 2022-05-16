@@ -180,8 +180,9 @@ class ServiceDetailsFragment(
         }
 
         binding.imgPlayVoice.setOnClickListener {
+            MyApplication.prefManager.allowToPlayVoice = true
             VoiceHelper.getInstance()
-                .autoplay(serviceModel.voipId, // TODO
+                .autoplay("http://simotel.transport-x.ir:1884/api/voice/caldX:23V3moshnee2/1652632558.15031403/20220515", // TODO
                     serviceModel.id.toString(), object : VoiceHelper.OnVoiceListener {
                         override fun onFileExist() {
                             binding.vfPlayPause.displayedChild = 2
@@ -201,9 +202,13 @@ class ServiceDetailsFragment(
                             binding.vfPlayPause.displayedChild = 2
                         }
 
-                        override fun onDownloadError() {}
+                        override fun onDownloadError() {
+                            binding.vfPlayPause.displayedChild = 0
+                        }
 
-                        override fun onDownload401Error() {}
+                        override fun onDownload401Error() {
+                            binding.vfPlayPause.displayedChild = 0
+                        }
 
                         override fun onDownload404Error() {
                             binding.vfPlayPause.displayedChild = 0
@@ -219,7 +224,7 @@ class ServiceDetailsFragment(
                         }
 
                         override fun onPlayVoice() {
-                            binding.vfPlayPause.displayedChild = 1
+                            binding.vfPlayPause.displayedChild = 2
                         }
 
                         override fun onTimerTask(currentDuration: Int) {
@@ -274,6 +279,13 @@ class ServiceDetailsFragment(
     override fun onDestroyView() {
         super.onDestroyView()
         VoiceHelper.getInstance().pauseVoice()
+        MyApplication.prefManager.allowToPlayVoice = false
+    }
+
+    override fun onPause() {
+        super.onPause()
+        VoiceHelper.getInstance().pauseVoice()
+        MyApplication.prefManager.allowToPlayVoice = false
     }
 
     private fun bill(

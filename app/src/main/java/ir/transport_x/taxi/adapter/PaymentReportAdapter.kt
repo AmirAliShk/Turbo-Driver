@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.app.MyApplication
-import ir.transport_x.taxi.databinding.ItemPeymentReportBinding
+import ir.transport_x.taxi.databinding.ItemPaymentReportBinding
 import ir.transport_x.taxi.model.PaymentReportModel
 import ir.transport_x.taxi.utils.DateHelper
 import ir.transport_x.taxi.utils.StringHelper
@@ -16,11 +16,11 @@ class PaymentReportAdapter(list: ArrayList<PaymentReportModel>) :
 
     private val models = list
 
-    class ViewHolder(val binding: ItemPeymentReportBinding) :
+    class ViewHolder(val binding: ItemPaymentReportBinding) :
         RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemPeymentReportBinding.inflate(
+        val binding = ItemPaymentReportBinding.inflate(
             LayoutInflater.from(MyApplication.context),
             parent,
             false

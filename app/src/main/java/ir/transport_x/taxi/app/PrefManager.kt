@@ -52,6 +52,16 @@ class PrefManager {
     private val CANCEL_REASON = "cancelReason"
     private val GPS_INTERVAL = "gpsInterval"
     private val GET_STATUS_INTERVAL = "getStatusInterval"
+    private val ALLOW_TO_PLAY_VOICE = "allowToPlayVoice"
+
+    var allowToPlayVoice: Boolean
+        get() {
+            return sharedPreferences.getBoolean(ALLOW_TO_PLAY_VOICE, true)
+        }
+        set(allowToPlayVoice) {
+            editor.putBoolean(ALLOW_TO_PLAY_VOICE, allowToPlayVoice)
+            editor.commit()
+        }
 
     fun cleanPrefManger() {
         sharedPreferences.edit().clear().apply()

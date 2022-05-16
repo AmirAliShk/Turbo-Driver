@@ -1,5 +1,6 @@
 package ir.transport_x.taxi.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -24,6 +25,7 @@ public class LoadingDialog {
         return this;
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     public static void makeLoader() {
         if (ldialog != null) return;
         try {
