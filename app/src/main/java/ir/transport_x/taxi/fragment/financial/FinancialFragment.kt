@@ -31,7 +31,7 @@ class FinancialFragment : Fragment() {
         TypeFaceUtil.overrideFont(binding.txtCharge, MyApplication.iranSansMediumTF)
 
         binding.llBack.setOnClickListener { MyApplication.currentActivity.onBackPressed() }
-
+        binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
         getCharge()
 
         if (MyApplication.prefManager.onlineUrl!!.isEmpty()) {

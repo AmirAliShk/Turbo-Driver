@@ -72,24 +72,25 @@
             app:cardCornerRadius="@dimen/_8sdp"
             app:contentPadding="@dimen/_10sdp">
 
-            <ViewFlipper
-                android:id="@+id/vfCharge"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/_10sdp">
 
-                <com.wang.avi.AVLoadingIndicatorView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_gravity="center"
-                    app:indicatorColor="@color/colorPink"
-                    app:indicatorName="BallBeatIndicator" />
+                <ViewFlipper
+                    android:id="@+id/vfCharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/_10sdp">
+                    <com.wang.avi.AVLoadingIndicatorView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        app:indicatorColor="@color/colorPink"
+                        app:indicatorName="BallBeatIndicator" />
 
                     <ImageView
                         android:layout_width="@dimen/_25sdp"
@@ -97,34 +98,34 @@
                         android:padding="@dimen/_2sdp"
                         android:src="@drawable/ic_wallet1" />
 
-                    <TextView
-                        style="@style/item_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingHorizontal="@dimen/_5sdp"
-                        android:text="@string/charge" />
+                </ViewFlipper>
 
-                    <TextView
-                        android:id="@+id/txtCharge"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_8sdp"
-                        android:layout_weight="1"
-                        android:gravity="left"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_18sdp"
-                        android:textStyle="bold" />
+                <TextView
+                    style="@style/item_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:text="@string/charge" />
 
-                    <TextView
-                        style="@style/item_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingRight="@dimen/_5sdp"
-                        android:text="@string/Toman" />
+                <TextView
+                    android:id="@+id/txtCharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
 
-                </LinearLayout>
+                <TextView
+                    style="@style/item_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text="@string/Toman" />
 
-            </ViewFlipper>
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 

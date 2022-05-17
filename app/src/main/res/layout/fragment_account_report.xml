@@ -62,30 +62,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <com.wang.avi.AVLoadingIndicatorView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            app:indicatorColor="@color/colorPink"-->
-<!--            app:indicatorName="BallBeatIndicator" />-->
+        <com.wang.avi.AVLoadingIndicatorView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:indicatorColor="@color/colorPink"
+            app:indicatorName="BallBeatIndicator" />
 
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:gravity="center"-->
-<!--            android:text="موردی موجود نیست"-->
-<!--            android:textAppearance="?android:attr/textAppearanceMedium"-->
-<!--            android:textColor="@color/colorBlack"-->
-<!--            android:textSize="@dimen/_17sdp" />-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="موردی موجود نیست"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_17sdp" />
 
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:gravity="center"-->
-<!--            android:text="متاسفانه هنگام دریافت اطلاعات از سرور به مشکل خوردیم. \n پس از چند لحظه مجدد تلاش کنید."-->
-<!--            android:textAppearance="?android:attr/textAppearanceMedium"-->
-<!--            android:textColor="@color/colorBlack"-->
-<!--            android:textSize="@dimen/_17sdp" />-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="متاسفانه هنگام دریافت اطلاعات از سرور به مشکل خوردیم. \n پس از چند لحظه مجدد تلاش کنید."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_17sdp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listReport"
