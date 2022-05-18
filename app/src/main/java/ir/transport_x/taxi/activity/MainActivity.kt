@@ -35,11 +35,9 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
     companion object {
         lateinit var binding: ActivityMainBinding
-
         fun openDrawer() {
             binding.drawerLayout.openDrawer(GravityCompat.START, true)
         }
-
     }
 
     @SuppressLint("MissingPermission")
@@ -62,7 +60,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                 true
         }
 
-        binding.txtAppVersion.text =" نسخه ${ AppVersionHelper(MyApplication.context).versionName}"
+        binding.txtAppVersion.text = " نسخه ${AppVersionHelper(MyApplication.context).versionName}"
 
         binding.txtDriverName.text = MyApplication.prefManager.getUserName()
 
@@ -83,10 +81,10 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         binding.llExit.setOnClickListener {
             GeneralDialog()
                 .message("آیا از خروج از حساب کاربری اطمینان دارید؟")
-                .firstButton("بله"){
-                 exit()
+                .firstButton("بله") {
+                    exit()
                 }
-                .secondButton("خیر"){
+                .secondButton("خیر") {
 
                 }
                 .show()
@@ -140,7 +138,8 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
 
             override fun onDrawerOpened(drawerView: View) {
-                binding.txtCharge.text = StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
+                binding.txtCharge.text =
+                    StringHelper.toPersianDigits(StringHelper.setComma(MyApplication.prefManager.getCharge()))
             }
 
             override fun onDrawerClosed(drawerView: View) {}
@@ -150,7 +149,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
 
     }
 
-    private fun exit () {
+    private fun exit() {
         binding.vfExit.displayedChild = 1
         RequestHelper.builder(EndPoint.EXIT_ACCOUNT)
             .listener(exitCallBack)
@@ -177,7 +176,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
                                 SplashActivity::class.java
                             )
                         )
-                    }else{
+                    } else {
                         GeneralDialog().message(message).secondButton("باشه") {}.show()
                     }
 
@@ -221,7 +220,7 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         }
         if (supportFragmentManager.backStackEntryCount > 1) {
             super.onBackPressed()
-        }  else {
+        } else {
             GeneralDialog()
                 .message("آیا از خروج خود اطمینان دارید؟")
                 .firstButton("بله") {

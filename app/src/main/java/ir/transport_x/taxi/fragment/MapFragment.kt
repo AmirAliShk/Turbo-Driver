@@ -55,7 +55,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                 e.printStackTrace()
             }
         }
-
     }
 
     private lateinit var binding: FragmentMapBinding
@@ -277,7 +276,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             MyApplication.prefManager.setDriverStatus(active)
             MyApplication.prefManager.setStationRegisterStatus(register)
             handleStatusByServer()
-            refreshMyLocationMarker(active,register)
+            refreshMyLocationMarker(active, register)
             binding.txtStatus.text = statusMessage
             binding.vfStatus.displayedChild = 0
             if (active && register) {
@@ -329,7 +328,10 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                     if (lastLocation.latitude in 20.0..40.0) {
                         animateToLocation(lastLocation.latitude, lastLocation.longitude)
                     }
-                    refreshMyLocationMarker(MyApplication.prefManager.getDriverStatus(),MyApplication.prefManager.getStationRegisterStatus())
+                    refreshMyLocationMarker(
+                        MyApplication.prefManager.getDriverStatus(),
+                        MyApplication.prefManager.getStationRegisterStatus()
+                    )
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -356,7 +358,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         }
     }
 
-    fun refreshMyLocationMarker(active :Boolean, register:Boolean) = try {
+    fun refreshMyLocationMarker(active: Boolean, register: Boolean) = try {
         MyApplication.currentActivity.runOnUiThread {
             if (::myLocationMarker.isInitialized)
                 myLocationMarker.remove()
@@ -415,7 +417,10 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                                 binding.swStationRegister.visibility = View.VISIBLE
                                 driverEnable()
                             }
-                            refreshMyLocationMarker(MyApplication.prefManager.getDriverStatus(), MyApplication.prefManager.getStationRegisterStatus())
+                            refreshMyLocationMarker(
+                                MyApplication.prefManager.getDriverStatus(),
+                                MyApplication.prefManager.getStationRegisterStatus()
+                            )
                         } else {
                             GeneralDialog().message(message).secondButton("باشه") {}.show()
                             binding.swEnterExit.isChecked = !binding.swEnterExit.isChecked
@@ -511,7 +516,10 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
                         if (status) {
                             disableStatus()
                             MyApplication.prefManager.setStationRegisterStatus(false)
-                            refreshMyLocationMarker(MyApplication.prefManager.getDriverStatus(), MyApplication.prefManager.getStationRegisterStatus())
+                            refreshMyLocationMarker(
+                                MyApplication.prefManager.getDriverStatus(),
+                                MyApplication.prefManager.getStationRegisterStatus()
+                            )
                         } else {
                             binding.swStationRegister.isChecked =
                                 !binding.swStationRegister.isChecked
@@ -605,9 +613,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
 
     private fun handleStatusByServer() {
         if (MyApplication.prefManager.getDriverStatus()) {
-                driverEnable()
+            driverEnable()
         } else {
-                driverDisable()
+            driverDisable()
         }
     }
 

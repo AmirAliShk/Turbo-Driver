@@ -162,7 +162,7 @@ public class ManagePush {
                     } else {
 //                        SoundHelper.ringing(context, R.raw.service, !prefManager.isMuteFreeServiceAlarm());
 //                        PushDataHolder.getInstance().setFreeServiceMessage(freeService);
-                        sendNotification("به بخش بار های ازاد مراجه کنید.", context, false, 2, true);                    }
+                        sendNotification("به بخش سرویس های ازاد مراجه کنید.", context, false, 2, true);                    }
 //                }
                 break;
 
