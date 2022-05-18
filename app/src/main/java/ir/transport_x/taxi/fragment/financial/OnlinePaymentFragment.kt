@@ -73,7 +73,7 @@ class OnlinePaymentFragment(private val onlineObj: String) : Fragment() {
             try {
                 val browserIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse(EndPoint.PAYMENT + StringHelper.toEnglishDigits(price) + "/" + MyApplication.prefManager.getDriverId())
+                    Uri.parse(MyApplication.prefManager.onlineUrl + StringHelper.toEnglishDigits(price) + "/" + MyApplication.prefManager.getDriverId())
                 )
                 startActivity(browserIntent)
             } catch (e: Exception) {

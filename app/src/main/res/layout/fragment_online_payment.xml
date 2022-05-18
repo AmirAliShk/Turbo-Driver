@@ -100,7 +100,7 @@
                 android:hint="مبلغ دلخواه را اینجا وارد کنید"
                 android:inputType="number"
                 android:padding="@dimen/_10sdp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grayMedium" />
 
