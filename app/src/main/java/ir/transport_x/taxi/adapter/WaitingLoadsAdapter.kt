@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.ItemFreeLoadsBinding
 import ir.transport_x.taxi.dialog.GeneralDialog
+import ir.transport_x.taxi.fragment.services.CurrentServiceFragment
 import ir.transport_x.taxi.model.WaitingLoadsModel
-import ir.transport_x.taxi.utils.DateHelper
+import ir.transport_x.taxi.utils.FragmentHelper
 import ir.transport_x.taxi.utils.StringHelper
 import ir.transport_x.taxi.utils.TypeFaceUtilJava
 import ir.transport_x.taxi.webServices.AcceptService
@@ -35,14 +36,6 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
-        holder.binding.txtDate.text = StringHelper.toPersianDigits(
-            DateHelper.strPersianEghit(
-                DateHelper.parseFormat(
-                    model.saveDate + "",
-                    null
-                )
-            )
-        )
 
         stopTime = "بدون توقف"
         when (model.stopTime) {
@@ -100,7 +93,9 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
         holder.binding.txtPrice.text =
             "${
                 StringHelper.toPersianDigits(
-                    StringHelper.setComma(model.price))} تومان "
+                    StringHelper.setComma(model.price)
+                )
+            } تومان "
 
         if (model.description.trim() == "") {
             holder.binding.llDescription.visibility = View.GONE
@@ -120,6 +115,15 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                                 MyApplication.handler.postDelayed({
                                     models.removeAt(position)
                                     notifyDataSetChanged()
+
+                                    if (CurrentServiceFragment.isRunning) {
+                                        CurrentServiceFragment.getActiveService()
+                                    } else {
+                                        FragmentHelper.toFragment(
+                                            MyApplication.currentActivity,
+                                            CurrentServiceFragment()
+                                        ).replace()
+                                    }
                                 }, 100)
                             }.show()
                         }

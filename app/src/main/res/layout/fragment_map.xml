@@ -18,26 +18,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/_8sdp"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/txtLock"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="wrap_content"
             android:background="@color/colorRed"
             android:ellipsize="marquee"
             android:focusable="true"
             android:freezesText="true"
             android:marqueeRepeatLimit="marquee_forever"
-            android:paddingLeft="15dip"
-            android:paddingTop="@dimen/_5sdp"
-            android:paddingRight="15dip"
-            android:paddingBottom="@dimen/_5sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_5sdp"
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_20sdp"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -46,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginRight="@dimen/_5sdp"
             android:gravity="center"
             android:orientation="horizontal">

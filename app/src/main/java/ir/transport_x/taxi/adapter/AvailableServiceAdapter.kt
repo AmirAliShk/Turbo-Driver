@@ -78,7 +78,6 @@ class AvailableServiceAdapter(list: ArrayList<ServiceModel>) :
                                 }, 100)
                             }
                                 .show()
-
                         }
 
                         override fun onFailure() {
