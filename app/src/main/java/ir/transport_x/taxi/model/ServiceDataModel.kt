@@ -28,5 +28,6 @@ data class ServiceDataModel(
     var punishmentPrice: Int,
     var timeRequiredCancellation: Int,
     var cityId: Int,
-    var serviceTypeId: Short
+    var serviceTypeId: Short,
+    var voipLink: String,
 )

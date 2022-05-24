@@ -180,9 +180,13 @@ class ServiceDetailsFragment(
         }
 
         binding.imgPlayVoice.setOnClickListener {
+            if(serviceModel.voipId == "0"){
+                binding.vfDownloadOrPlay.displayedChild = 1
+                return@setOnClickListener
+            }
             MyApplication.prefManager.allowToPlayVoice = true
             VoiceHelper.getInstance()
-                .autoplay("http://simotel.transport-x.ir:1884/api/voice/caldX:23V3moshnee2/1652632558.15031403/20220515", // TODO
+                .autoplay(serviceModel.voipLink,
                     serviceModel.id.toString(), object : VoiceHelper.OnVoiceListener {
                         override fun onFileExist() {
                             binding.vfPlayPause.displayedChild = 2

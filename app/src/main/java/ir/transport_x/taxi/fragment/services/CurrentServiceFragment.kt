@@ -57,7 +57,7 @@ class CurrentServiceFragment : Fragment() {
                                         dataObj.getInt("userId"),
                                         dataObj.getInt("driverId"),
                                         dataObj.getString("finishDate"),
-                                        dataObj.getString("voipLink"),
+                                        dataObj.getString("voipId"),
                                         dataObj.getString("acceptDate"),
                                         dataObj.getString("price"),
                                         dataObj.getString("customerName"),
@@ -72,7 +72,8 @@ class CurrentServiceFragment : Fragment() {
                                         dataObj.getInt("punishmentPrice"),
                                         dataObj.getInt("timeRequiredCancellation"),
                                         dataObj.getInt("cityId"),
-                                        dataObj.getInt("serviceTypeId").toShort()
+                                        dataObj.getInt("serviceTypeId").toShort(),
+                                        dataObj.getString("voipLink"),
                                     )
 
                                     serviceModels.add(model)
