@@ -7,161 +7,168 @@
     android:layoutDirection="rtl"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/rlActionBar"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <View
+        <RelativeLayout
+            android:id="@+id/rlActionBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
-            android:background="@color/actionBar" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@drawable/background2"
-            android:elevation="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            android:src="@drawable/ic_x_purple" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:background="@color/actionBar" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:scrollbars="none">
+            <ImageView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/background2"
+                android:elevation="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_x_purple" />
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:background="@drawable/background_login"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingBottom="@dimen/_10sdp">
+                android:fillViewport="true"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.75" />
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:background="@drawable/background_login"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingBottom="@dimen/_10sdp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
                             android:layout_weight="0.75" />
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:elevation="5dp"
-                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center_horizontal"
                             android:orientation="vertical">
 
-                            <TextView
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.75" />
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_7sdp"
-                                android:gravity="right"
-                                android:padding="5dp"
-                                android:text="شماره همراه"
-                                android:textSize="18sp" />
+                                android:layout_margin="10dp"
+                                android:elevation="5dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                            <EditText
-                                android:id="@+id/edtMobilNo"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_7sdp"
+                                    android:gravity="right"
+                                    android:padding="5dp"
+                                    android:text="شماره همراه"
+                                    android:textSize="18sp" />
+
+                                <EditText
+                                    android:id="@+id/edtMobilNo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="55dp"
+                                    android:layout_margin="@dimen/_4sdp"
+                                    android:layout_marginHorizontal="32dp"
+                                    android:background="@drawable/background4"
+                                    android:elevation="3dp"
+                                    android:gravity="left|center_vertical"
+                                    android:inputType="number"
+                                    android:maxLength="11"
+                                    android:padding="10dp"
+                                    android:singleLine="true"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="@color/colorBlack"
+                                    android:textDirection="ltr" />
+
+                            </LinearLayout>
+
+                            <View
                                 android:layout_width="match_parent"
-                                android:layout_height="55dp"
-                                android:layout_margin="@dimen/_4sdp"
-                                android:layout_marginHorizontal="32dp"
-                                android:background="@drawable/background4"
-                                android:elevation="3dp"
-                                android:gravity="left|center_vertical"
-                                android:inputType="number"
-                                android:maxLength="11"
-                                android:padding="10dp"
-                                android:singleLine="true"
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/colorBlack"
-                                android:textDirection="ltr" />
+                                android:layout_height="0dp"
+                                android:layout_weight="0.5" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <ViewFlipper
+                                    android:id="@+id/vfSubmit"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="4"
+                                    android:background="@drawable/bg_pink">
+
+                                    <Button
+                                        android:id="@+id/btnLogin"
+                                        style="@style/page_title"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/transparent"
+                                        android:text="ارسال کد" />
+
+                                    <com.wang.avi.AVLoadingIndicatorView
+                                        android:layout_width="30sp"
+                                        android:layout_height="30sp"
+                                        android:layout_gravity="center"
+                                        app:indicatorColor="@color/grayLighter" />
+
+                                </ViewFlipper>
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
                         <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="0.5" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:orientation="horizontal">
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1" />
-
-                            <ViewFlipper
-                                android:id="@+id/vfSubmit"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:background="@drawable/bg_pink">
-
-                                <Button
-                                    android:id="@+id/btnLogin"
-                                    style="@style/page_title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="@color/transparent"
-                                    android:text="ارسال کد" />
-
-                                <com.wang.avi.AVLoadingIndicatorView
-                                    android:layout_width="30sp"
-                                    android:layout_height="30sp"
-                                    android:layout_gravity="center"
-                                    app:indicatorColor="@color/grayLighter" />
-
-                            </ViewFlipper>
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1" />
-
-                        </LinearLayout>
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.75" />
 
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.75" />
-
                 </LinearLayout>
 
-            </LinearLayout>
+            </ScrollView>
 
-        </ScrollView>
+        </RelativeLayout>
 
-    </RelativeLayout>
+    </ScrollView>
 
 </LinearLayout>

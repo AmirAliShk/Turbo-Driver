@@ -7,326 +7,333 @@
     android:layoutDirection="rtl"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/rlActionBar"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <View
+        <RelativeLayout
+            android:id="@+id/rlActionBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
-            android:background="@color/actionBar" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@drawable/background2"
-            android:elevation="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            android:src="@drawable/ic_x_purple" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:background="@color/actionBar" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:scrollbars="none">
+            <ImageView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/background2"
+                android:elevation="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_x_purple" />
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:background="@drawable/background_login"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingBottom="@dimen/_10sdp">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5" />
+                android:fillViewport="true"
+                android:scrollbars="none">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:background="@drawable/background_login"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingBottom="@dimen/_10sdp">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginBottom="@dimen/_10sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="کد ارسال شده به شماره "
-                            android:textColor="@color/grayDark"
-                            android:textSize="@dimen/_13ssp" />
-
-                        <TextView
-                            android:id="@+id/txtPhoneNumber"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/_3sdp"
-                            android:gravity="center"
-                            android:text="9015693808"
-                            android:textColor="@color/colorPink"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="را وارد کنید."
-                            android:textColor="@color/grayDark"
-                            android:textSize="@dimen/_13ssp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <com.chaos.view.PinView
-                            android:id="@+id/pin"
-                            style="@style/PinWidget.PinView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:layout_marginVertical="@dimen/_15sdp"
-                            android:cursorVisible="true"
-                            android:gravity="center"
-                            android:inputType="number"
-                            android:itemBackground="@drawable/background4"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="30sp"
-                            android:textStyle="bold"
-                            app:cursorColor="@color/colorAccent"
-                            app:cursorWidth="2dp"
-                            app:hideLineWhenFilled="true"
-                            app:itemCount="5"
-                            app:itemHeight="48dp"
-                            app:itemRadius="12dp"
-                            app:itemSpacing="5dp"
-                            app:itemWidth="48dp"
-                            app:lineColor="@color/grayMedium"
-                            app:lineWidth="0dp"
-                            app:viewType="rectangle" />
-
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginVertical="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:gravity="center"
                             android:orientation="horizontal">
 
-                            <CheckBox
-                                android:id="@+id/cbRules"
+                            <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:buttonTint="@color/colorPink" />
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="کد ارسال شده به شماره "
+                                android:textColor="@color/grayDark"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <TextView
+                                android:id="@+id/txtPhoneNumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/_3sdp"
+                                android:gravity="center"
+                                android:text="9015693808"
+                                android:textColor="@color/colorPink"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="را وارد کنید."
+                                android:textColor="@color/grayDark"
+                                android:textSize="@dimen/_13ssp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <com.chaos.view.PinView
+                                android:id="@+id/pin"
+                                style="@style/PinWidget.PinView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_marginVertical="@dimen/_15sdp"
+                                android:cursorVisible="true"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:itemBackground="@drawable/background4"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="30sp"
+                                android:textStyle="bold"
+                                app:cursorColor="@color/colorAccent"
+                                app:cursorWidth="2dp"
+                                app:hideLineWhenFilled="true"
+                                app:itemCount="5"
+                                app:itemHeight="48dp"
+                                app:itemRadius="12dp"
+                                app:itemSpacing="5dp"
+                                app:itemWidth="48dp"
+                                app:lineColor="@color/grayMedium"
+                                app:lineWidth="0dp"
+                                app:viewType="rectangle" />
 
                             <LinearLayout
-                                android:id="@+id/llRules"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="5dp"
-                                android:orientation="vertical"
-                                android:padding="@dimen/_5sdp">
+                                android:layout_marginVertical="@dimen/_15sdp"
+                                android:orientation="horizontal">
 
-                                <TextView
-                                    android:id="@+id/txtRules"
-                                    android:layout_width="match_parent"
+                                <CheckBox
+                                    android:id="@+id/cbRules"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_marginBottom="2dp"
-                                    android:gravity="center_vertical"
-                                    android:text="قبول شرایط و قوانین"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:textColor="@color/grayDark"
-                                    android:textSize="@dimen/_15ssp" />
+                                    android:buttonTint="@color/colorPink" />
+
+                                <LinearLayout
+                                    android:id="@+id/llRules"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="5dp"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_5sdp">
+
+                                    <TextView
+                                        android:id="@+id/txtRules"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginBottom="2dp"
+                                        android:gravity="center_vertical"
+                                        android:text="قبول شرایط و قوانین"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="@color/grayDark"
+                                        android:textSize="@dimen/_15ssp" />
+
+                                </LinearLayout>
 
                             </LinearLayout>
 
                         </LinearLayout>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_15sdp"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
-
-                        <ViewFlipper
-                            android:id="@+id/vfSubmit"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_3sdp"
-                            android:layout_weight="4"
-                            android:background="@drawable/bg_pink"
-                            android:elevation="@dimen/_2sdp">
-
-                            <Button
-                                android:id="@+id/btnLogin"
-                                style="@style/page_title"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/transparent"
-                                android:text="@string/login" />
-
-                            <com.wang.avi.AVLoadingIndicatorView
-                                android:layout_width="30sp"
-                                android:layout_height="30sp"
-                                android:layout_gravity="center"
-                                app:indicatorColor="@color/grayLighter" />
-
-                        </ViewFlipper>
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_15sdp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/_15sdp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="10sp">
-
                         <LinearLayout
-                            android:id="@+id/llChangeNumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_10sdp">
+                            android:layout_marginVertical="@dimen/_15sdp"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
 
-                            <ImageView
-                                android:layout_width="20sp"
-                                android:layout_height="20sp"
-                                android:layout_marginLeft="5sp"
-                                android:elevation="15sp"
-                                android:src="@drawable/ic_mobile" />
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
 
-                            <TextView
-                                android:id="@+id/edtMobilNo"
-                                android:layout_width="wrap_content"
+                            <ViewFlipper
+                                android:id="@+id/vfSubmit"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:shadowColor="@color/grayLighter"
-                                android:shadowDy="3"
-                                android:shadowRadius="3"
-                                android:text="همراه جدید"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/_17ssp"
-                                android:textStyle="bold" />
+                                android:layout_margin="@dimen/_3sdp"
+                                android:layout_weight="4"
+                                android:background="@drawable/bg_pink"
+                                android:elevation="@dimen/_2sdp">
+
+                                <Button
+                                    android:id="@+id/btnLogin"
+                                    style="@style/page_title"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/transparent"
+                                    android:text="@string/login" />
+
+                                <com.wang.avi.AVLoadingIndicatorView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center"
+                                    app:indicatorColor="@color/grayLighter" />
+
+                            </ViewFlipper>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
 
                         </LinearLayout>
 
-                        <ViewFlipper
-                            android:id="@+id/vfTime"
+                        <View
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="@dimen/_15sdp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_15sdp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="10sp">
 
                             <LinearLayout
+                                android:id="@+id/llChangeNumber"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:padding="@dimen/_10sdp">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="تلاش مجدد پس از : "
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/_18ssp"
-                                    android:textStyle="bold" />
+                                <ImageView
+                                    android:layout_width="20sp"
+                                    android:layout_height="20sp"
+                                    android:layout_marginLeft="5sp"
+                                    android:elevation="15sp"
+                                    android:src="@drawable/ic_mobile" />
 
                                 <TextView
-                                    android:id="@+id/txtResendCode"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:textColor="@color/colorPink"
-                                    android:textSize="@dimen/_19ssp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text=" ثانیه"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/_18sdp"
-                                    android:textStyle="bold" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/llResendCode"
-                                android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:gravity="center">
-
-                                <TextView
+                                    android:id="@+id/edtMobilNo"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:shadowColor="@color/grayLighter"
                                     android:shadowDy="3"
                                     android:shadowRadius="3"
-                                    android:text="ارسال مجدد کد احراز هویت"
+                                    android:text="همراه جدید"
                                     android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/_18sdp" />
+                                    android:textSize="@dimen/_17ssp"
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
 
-                            <com.wang.avi.AVLoadingIndicatorView
-                                android:layout_width="30sp"
-                                android:layout_height="30sp"
-                                android:layout_gravity="center"
-                                app:indicatorColor="@color/colorPink" />
+                            <ViewFlipper
+                                android:id="@+id/vfTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                        </ViewFlipper>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:padding="@dimen/_10sdp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="تلاش مجدد پس از : "
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="@dimen/_18ssp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/txtResendCode"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:textColor="@color/colorPink"
+                                        android:textSize="@dimen/_19ssp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text=" ثانیه"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="@dimen/_18sdp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/llResendCode"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:shadowColor="@color/grayLighter"
+                                        android:shadowDy="3"
+                                        android:shadowRadius="3"
+                                        android:text="ارسال مجدد کد احراز هویت"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="@dimen/_18sdp" />
+
+                                </LinearLayout>
+
+                                <com.wang.avi.AVLoadingIndicatorView
+                                    android:layout_width="30sp"
+                                    android:layout_height="30sp"
+                                    android:layout_gravity="center"
+                                    app:indicatorColor="@color/colorPink" />
+
+                            </ViewFlipper>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5" />
+
                 </LinearLayout>
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5" />
+            </ScrollView>
 
-            </LinearLayout>
+        </RelativeLayout>
 
-        </ScrollView>
-
-    </RelativeLayout>
+    </ScrollView>
 
 </LinearLayout>
