@@ -1,6 +1,5 @@
 package ir.transport_x.taxi.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -67,7 +66,11 @@ class CancelServiceAdapter(
                             ) + " تومان جریمه به شما تعلق می گیرد"
                         }
                     ).firstButton("کنسل کردن") {
-                        if (serviceModel.timeRequiredCancellation * 60000 < DateHelper.getCurrentGregorianDate().time) {
+                        if ((DateHelper.parseFormat(
+                                serviceModel.saveDate,
+                                null
+                            ).time + (serviceModel.timeRequiredCancellation * 60000)) < DateHelper.getCurrentGregorianDate().time
+                        ) {
                             val msg11 =
                                 "با توجه به اینکه از زمان دریافت سفر بیشتراز ${serviceModel.timeRequiredCancellation} دقیقه گذشته و سفر را زمانبر نموده اید در صورت لغو سفر مشمول " + StringHelper.setComma(
                                     serviceModel.punishmentPrice.toString()
@@ -82,6 +85,15 @@ class CancelServiceAdapter(
                                                 model.id
                                             )
                                         }.show()
+                                }.show()
+                        } else {
+                            GeneralDialog().message("آیا از کنسل کردن به دلیل ${model.name} اطمینان دارید؟")
+                                .secondButton("بازگشت", null)
+                                .firstButton("لغو سفر") {
+                                    cancel(
+                                        serviceModel.id,
+                                        model.id
+                                    )
                                 }.show()
                         }
                     }.secondButton("منصرف شدم", null).show()
@@ -99,7 +111,7 @@ class CancelServiceAdapter(
 
                 12 -> {
                     val periodPerService: Date =
-                        DateHelper.parseFormat(serviceModel.acceptDate, null)
+                        DateHelper.parseFormat(serviceModel.saveDate, null)
                     if (periodPerService.time + (serviceModel.timeRequiredCancellation * 60000) > DateHelper.getCurrentGregorianDate().time
                     ) {
                         val periodTime =

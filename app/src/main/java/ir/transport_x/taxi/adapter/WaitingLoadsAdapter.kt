@@ -22,7 +22,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
     lateinit var stopTime: String
 
     class ViewHolder(val binding: ItemFreeLoadsBinding) :
-        RecyclerView.ViewHolder(binding.root) {}
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemFreeLoadsBinding.inflate(
@@ -116,14 +116,10 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
                                     models.removeAt(position)
                                     notifyDataSetChanged()
 
-                                    if (CurrentServiceFragment.isRunning) {
-                                        CurrentServiceFragment.getActiveService()
-                                    } else {
-                                        FragmentHelper.toFragment(
-                                            MyApplication.currentActivity,
-                                            CurrentServiceFragment()
-                                        ).replace()
-                                    }
+                                    FragmentHelper.toFragment(
+                                        MyApplication.currentActivity,
+                                        CurrentServiceFragment()
+                                    ).replace()
                                 }, 100)
                             }.show()
                         }
