@@ -27,7 +27,7 @@ class ErrorDialog {
         fun show() {
             dialog = Dialog(MyApplication.currentActivity)
             dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
-            binding = DialogErrorBinding.inflate(LayoutInflater.from(MyApplication.context))
+            binding = DialogErrorBinding.inflate(LayoutInflater.from(dialog?.context))
             dialog?.setContentView(binding.root)
             TypeFaceUtil.overrideFont(binding.root, MyApplication.iranSansMediumTF)
             dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

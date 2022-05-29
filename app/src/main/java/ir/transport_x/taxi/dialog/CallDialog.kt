@@ -27,7 +27,7 @@ class CallDialog {
     fun show(number1: String, number2: String) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
-        binding = DialogCallBinding.inflate(LayoutInflater.from(MyApplication.context))
+        binding = DialogCallBinding.inflate(LayoutInflater.from(dialog.context))
         dialog.setContentView(binding.root)
         TypeFaceUtil.overrideFont(binding.root)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

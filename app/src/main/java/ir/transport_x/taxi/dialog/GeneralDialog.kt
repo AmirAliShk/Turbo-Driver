@@ -14,11 +14,9 @@ class GeneralDialog {
     lateinit var dialog: Dialog
     lateinit var binding: DialogGeneralBinding
     var cancelable = false
-    var firstButtonText = ""
-    var firstButtonRunnable: Runnable? = null
-    var secondButtonText = ""
-    var secondButtonRunnable: Runnable? = null
     var message = ""
+    private lateinit var _firstButton: ButtonModel
+    private lateinit var _secondButton: ButtonModel
 
     fun setCancelable(cancelable: Boolean): GeneralDialog {
         this.cancelable = cancelable
@@ -26,14 +24,12 @@ class GeneralDialog {
     }
 
     fun firstButton(text: String, runnable: Runnable?): GeneralDialog {
-        this.firstButtonText = text
-        this.firstButtonRunnable = runnable
+        _firstButton = ButtonModel(text, runnable)
         return this
     }
 
     fun secondButton(text: String, runnable: Runnable?): GeneralDialog {
-        this.secondButtonText = text
-        this.secondButtonRunnable = runnable
+        _secondButton = ButtonModel(text, runnable)
         return this
     }
 
@@ -45,7 +41,7 @@ class GeneralDialog {
     fun show() {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
-        binding = DialogGeneralBinding.inflate(LayoutInflater.from(MyApplication.context))
+        binding = DialogGeneralBinding.inflate(LayoutInflater.from(dialog.context))
         dialog.setContentView(binding.root)
         TypeFaceUtil.overrideFont(binding.root, MyApplication.iranSansMediumTF)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -58,28 +54,28 @@ class GeneralDialog {
 
         binding.txtMessage.text = message
 
-        if (firstButtonRunnable == null && firstButtonText.isEmpty()) {
+        if (::_firstButton.isInitialized) {
+            binding.btnPositive.text = _firstButton.text
+        } else {
             binding.btnPositive.visibility = View.GONE
             binding.space.visibility = View.GONE
-        }else{
-            binding.btnPositive.text = firstButtonText
         }
 
-        if (secondButtonRunnable == null && secondButtonText.isEmpty()) {
+        if (::_secondButton.isInitialized) {
+            binding.btnNegative.text = _secondButton.text
+        } else {
             binding.btnNegative.visibility = View.GONE
             binding.space.visibility = View.GONE
-        }else{
-            binding.btnNegative.text = secondButtonText
         }
 
         binding.btnPositive.setOnClickListener {
             dismiss()
-            firstButtonRunnable?.run()
+            _firstButton.body?.run()
         }
 
         binding.btnNegative.setOnClickListener {
             dismiss()
-            secondButtonRunnable?.run()
+            _secondButton.body?.run()
         }
 
         dialog.show()
@@ -95,5 +91,7 @@ class GeneralDialog {
             AvaCrashReporter.send(e, "GeneralDialog class, dismiss method")
         }
     }
+
+    data class ButtonModel(val text: String, val body: Runnable?)
 
 }

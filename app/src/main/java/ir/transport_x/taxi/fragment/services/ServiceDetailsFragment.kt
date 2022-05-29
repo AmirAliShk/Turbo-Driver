@@ -203,7 +203,7 @@ class ServiceDetailsFragment(
                         }
 
                         override fun onDownloadCompleted() {
-                            binding.vfPlayPause.displayedChild = 2
+                            binding.vfPlayPause.displayedChild = 0
                         }
 
                         override fun onDownloadError() {

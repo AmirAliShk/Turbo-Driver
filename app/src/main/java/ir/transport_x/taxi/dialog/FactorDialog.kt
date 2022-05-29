@@ -31,7 +31,7 @@ class FactorDialog {
     fun show(priceObj: JSONObject, serId: Int, finishServiceListener: FinishServiceListener) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
-        binding = DialogFactorBinding.inflate(LayoutInflater.from(MyApplication.context))
+        binding = DialogFactorBinding.inflate(LayoutInflater.from(dialog.context))
         dialog.setContentView(binding.root)
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
         TypeFaceUtilJava.overrideFonts(binding.txtCreditType, MyApplication.iranSansTF)

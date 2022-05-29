@@ -33,7 +33,7 @@ class GetPriceDialog {
     fun show(serId: Int, finishServiceListener: FinishServiceListener) {
         dialog = Dialog(MyApplication.currentActivity)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        binding = DialogGetPriceBinding.inflate(LayoutInflater.from(MyApplication.context))
+        binding = DialogGetPriceBinding.inflate(LayoutInflater.from(dialog.context))
         dialog.setContentView(binding.root)
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

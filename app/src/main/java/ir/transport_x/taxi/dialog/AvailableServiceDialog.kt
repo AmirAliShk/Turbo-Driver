@@ -28,7 +28,7 @@ class AvailableServiceDialog {
                 dialog = Dialog(MyApplication.currentActivity)
                 dialog!!.window?.requestFeature(Window.FEATURE_NO_TITLE)
                 binding =
-                    DialogAvailableServiceBinding.inflate(LayoutInflater.from(MyApplication.context))
+                    DialogAvailableServiceBinding.inflate(LayoutInflater.from(dialog!!.context))
                 dialog!!.setContentView(binding.root)
                 TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
                 dialog!!.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
