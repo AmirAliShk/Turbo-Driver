@@ -48,7 +48,6 @@ class CurrentServiceFragment : Fragment() {
                                         dataObj.getInt("id"),
                                         dataObj.getInt("customerId"),
                                         dataObj.getInt("sourceAddressId"),
-                                        dataObj.getInt("count"),
                                         dataObj.getString("description"),
                                         dataObj.getString("fixedMessage"),
                                         dataObj.getInt("carType"),
@@ -74,6 +73,7 @@ class CurrentServiceFragment : Fragment() {
                                         dataObj.getInt("cityId"),
                                         dataObj.getInt("serviceTypeId").toShort(),
                                         dataObj.getString("voipLink"),
+                                        dataObj.getInt("delayCancelTime")
                                     )
 
                                     serviceModels.add(model)

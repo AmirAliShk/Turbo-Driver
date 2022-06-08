@@ -50,102 +50,65 @@ class CancelServiceAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
-
         holder.binding.desc.text = model.name
-
         holder.binding.autocompeleteRow.setOnClickListener {
-            when (model.id) {
-
-                1 -> {
-                    GeneralDialog().message(
-                        if (serviceModel.cancelCount > 0) {
-                            "شما فقط مجاز به لغو ${serviceModel.count} سفر دیگر در این ماه هستید در صورت گذر از حد مجاز مشمول جریمه میشوید"
-                        } else {
-                            "درخواست های شما برای لغو سفر از حد مجاز رد شده است. درصورت درخواست لغو برای این سفر مبلغ " + StringHelper.setComma(
-                                serviceModel.punishmentPrice.toString()
-                            ) + " تومان جریمه به شما تعلق می گیرد"
-                        }
-                    ).firstButton("کنسل کردن") {
-                        if ((DateHelper.parseFormat(
-                                serviceModel.saveDate,
-                                null
-                            ).time + (serviceModel.timeRequiredCancellation * 60000)) < DateHelper.getCurrentGregorianDate().time
-                        ) {
-                            val msg11 =
-                                "با توجه به اینکه از زمان دریافت سفر بیشتراز ${serviceModel.timeRequiredCancellation} دقیقه گذشته و سفر را زمانبر نموده اید در صورت لغو سفر مشمول " + StringHelper.setComma(
-                                    serviceModel.punishmentPrice.toString()
-                                ).toString() + " تومان جریمه می شوید."
-                            GeneralDialog().message(msg11).secondButton("بازگشت", null)
-                                .firstButton("می پذیرم") {
-                                    GeneralDialog().message("آیا از کنسل کردن به دلیل ${model.name} اطمینان دارید؟")
+            GeneralDialog().message(
+                if (serviceModel.cancelCount > 0) {
+                    "شما فقط مجاز به لغو ${serviceModel.cancelCount} سفر دیگر در این ماه هستید در صورت گذر از حد مجاز مشمول جریمه میشوید"
+                } else {
+                    "درخواست های شما برای لغو سفر از حد مجاز رد شده است. درصورت درخواست لغو برای این سفر مبلغ " + StringHelper.setComma(serviceModel.punishmentPrice.toString()) + " تومان جریمه به شما تعلق می گیرد"
+                })
+                .firstButton("کنسل کردن"){
+                    when(model.id){
+                        1 -> {
+                            if(serviceModel.delayCancelTime == 0){
+                                showCancelDialog(model.name,model.id)
+                            }else{
+                                if((DateHelper.parseFormat(serviceModel.acceptDate, null).time + (serviceModel.delayCancelTime * 60000)) < DateHelper.getCurrentGregorianDate().time){
+                                    val msg = "با توجه به اینکه از زمان دریافت سفر بیشتراز ${serviceModel.delayCancelTime} دقیقه گذشته و سفر را زمانبر نموده اید در صورت لغو سفر مشمول " + StringHelper.setComma(serviceModel.punishmentPrice.toString()).toString() + " تومان جریمه می شوید."
+                                    GeneralDialog().message(msg)
+                                        .firstButton("می پذیرم") {
+                                            showCancelDialog(model.name,model.id)
+                                        }
                                         .secondButton("بازگشت", null)
-                                        .firstButton("لغو سفر") {
-                                            cancel(
-                                                serviceModel.id,
-                                                model.id
-                                            )
-                                        }.show()
-                                }.show()
-                        } else {
-                            GeneralDialog().message("آیا از کنسل کردن به دلیل ${model.name} اطمینان دارید؟")
-                                .secondButton("بازگشت", null)
-                                .firstButton("لغو سفر") {
-                                    cancel(
-                                        serviceModel.id,
-                                        model.id
-                                    )
-                                }.show()
+                                        .show()
+                                }else{
+                                    showCancelDialog(model.name,model.id)
+                                }
+                            }
                         }
-                    }.secondButton("منصرف شدم", null).show()
-                }
 
-                3 -> {
-                    GeneralDialog().message(
-                        "همکار گرامی, دقت نمایید در صورت اعلام اشتباه، مبلغ " + StringHelper.setComma(
-                            serviceModel.punishmentPrice.toString()
-                        ) + " تومان جریمه به شما تعلق خواهد گرفت."
-                    ).firstButton("کنسل کردن") {
-                        cancel(serviceModel.id, model.id)
-                    }.secondButton("منصرف شدم", null).show()
-                }
-
-                12 -> {
-                    val periodPerService: Date =
-                        DateHelper.parseFormat(serviceModel.saveDate, null)
-                    if (periodPerService.time + (serviceModel.timeRequiredCancellation * 60000) > DateHelper.getCurrentGregorianDate().time
-                    ) {
-                        val periodTime =
-                            ((periodPerService.time + serviceModel.timeRequiredCancellation * 60000 - DateHelper.getCurrentGregorianDate().time) / 60000).toInt() + 1
-                        val msg11 =
-                            "شما مجاز به استفاده از این گزینه در " + (if (periodTime == 0) 1 else periodTime) + " دقیقه آینده می باشید."
-                        GeneralDialog()
-                            .message("آیا از کنسل کردن به دلیل ${model.name} اطمینان دارید؟")
-                            .secondButton("بازگشت", null)
-                            .firstButton("لغو سفر") {
+                        12 -> {
+                            val periodPerService: Date = DateHelper.parseFormat(serviceModel.acceptDate, null)
+                            if (periodPerService.time + (serviceModel.timeRequiredCancellation * 60000) > DateHelper.getCurrentGregorianDate().time) {
+                                val periodTime = ((periodPerService.time + serviceModel.timeRequiredCancellation * 60000 - DateHelper.getCurrentGregorianDate().time) / 60000).toInt() + 1
+                                val msg1 = "شما مجاز به استفاده از این گزینه در " + (if (periodTime == 0) 1 else periodTime) + " دقیقه آینده می باشید."
                                 GeneralDialog()
-                                    .message(msg11)
+                                    .message(msg1)
                                     .secondButton("بازگشت", null)
                                     .show()
+                            } else {
+                                showCancelDialog(model.name,model.id)
                             }
-                            .show()
-                    } else {
-                        GeneralDialog()
-                            .message("آیا از کنسل کردن به دلیل ${model.name} اطمینان دارید؟")
-                            .secondButton("بازگشت", null)
-                            .firstButton("لغو سفر") { cancel(serviceModel.id, model.id) }
-                            .show()
+                        }
+
+                        else -> {
+                           showCancelDialog(model.name,model.id)
+                        }
                     }
                 }
-
-                else -> {
-                    GeneralDialog().message("آیا از کنسل کردن به دلیل ${model.name} اطمینان دارید؟")
-                        .firstButton("کنسل کردن") {
-                            cancel(serviceModel.id, model.id)
-                        }.secondButton("منصرف شدم", null).show()
-                }
-            }
+                .secondButton("منصرف شدم"){}
+                .show()
         }
+    }
 
+    private fun showCancelDialog(name:String, id:Int){
+        GeneralDialog()
+            .message("آیا از کنسل کردن به دلیل $name اطمینان دارید؟")
+            .firstButton("لغو سفر") {
+                cancel(serviceModel.id, id)
+            }.secondButton("منصرف شدم", null)
+            .show()
     }
 
     private fun cancel(serviceId: Int, reasonCancelId: Int) {

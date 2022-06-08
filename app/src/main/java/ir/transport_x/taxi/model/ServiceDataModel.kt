@@ -4,7 +4,6 @@ data class ServiceDataModel(
     var id: Int,
     var customerId: Int,
     var sourceAddressId: Int,
-    var count: Int,
     var description: String,
     var fixedDescription: String,
     var carType: Int, // like economy....
@@ -30,4 +29,5 @@ data class ServiceDataModel(
     var cityId: Int,
     var serviceTypeId: Short,
     var voipLink: String,
+    var delayCancelTime: Int,
 )
