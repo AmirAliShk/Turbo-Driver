@@ -79,7 +79,7 @@ class CancelServiceAdapter(
                         }
 
                         12 -> {
-                            val periodPerService: Date = DateHelper.parseFormat(serviceModel.acceptDate, null)
+                            val periodPerService: Date = DateHelper.parseFormat(serviceModel.saveDate, null)
                             if (periodPerService.time + (serviceModel.timeRequiredCancellation * 60000) > DateHelper.getCurrentGregorianDate().time) {
                                 val periodTime = ((periodPerService.time + serviceModel.timeRequiredCancellation * 60000 - DateHelper.getCurrentGregorianDate().time) / 60000).toInt() + 1
                                 val msg1 = "شما مجاز به استفاده از این گزینه در " + (if (periodTime == 0) 1 else periodTime) + " دقیقه آینده می باشید."

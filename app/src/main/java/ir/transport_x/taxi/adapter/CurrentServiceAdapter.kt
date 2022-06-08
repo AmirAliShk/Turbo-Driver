@@ -78,7 +78,7 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
         holder.binding.txtDate.text = StringHelper.toPersianDigits(
             DateHelper.strPersianEghit(
                 DateHelper.parseFormat(
-                    model.saveDate + "",
+                    model.acceptDate,
                     null
                 )
             )
