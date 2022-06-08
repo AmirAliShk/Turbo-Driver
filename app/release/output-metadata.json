@@ -4,14 +4,14 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "ir.taxi1880.driver",
+  "applicationId": "ir.transport_x.taxi.teamx",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 4,
-      "versionName": "2.0.1",
+      "versionCode": 104,
+      "versionName": "2.0.2",
       "outputFile": "app-release.apk"
     }
   ]
