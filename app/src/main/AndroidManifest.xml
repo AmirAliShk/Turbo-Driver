@@ -59,7 +59,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="teamx.ariana.driver" />
+                <data android:scheme="ir.transport_x.taxi.teamx" />
             </intent-filter>
         </activity>
 
