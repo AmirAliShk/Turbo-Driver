@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "ir.transport_x.taxi.teamx",
+  "applicationId": "ir.transport_x.taxi.test",
   "variantName": "release",
   "elements": [
     {
