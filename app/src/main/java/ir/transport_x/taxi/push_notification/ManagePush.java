@@ -166,6 +166,10 @@ public class ManagePush {
 //                }
                 break;
 
+            case "5":
+                //todo for edit internet Service
+                break;
+
         }
     }
 

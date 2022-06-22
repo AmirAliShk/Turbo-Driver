@@ -13,7 +13,6 @@ import androidx.core.view.WindowInsetsControllerCompat
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.ActivityCancelServiceBinding
-import ir.transport_x.taxi.utils.KeyBoardHelper
 import ir.transport_x.taxi.utils.SoundHelper
 import ir.transport_x.taxi.utils.TypeFaceUtilJava
 import ir.transport_x.taxi.utils.VibratorHelper
@@ -40,11 +39,11 @@ class CancelServiceActivity : AppCompatActivity() {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
             WindowInsetsControllerCompat(
                 window,
-                MainActivity.binding.root
+                binding.root
             ).isAppearanceLightStatusBars = true
             WindowInsetsControllerCompat(
                 window,
-                MainActivity.binding.root
+                binding.root
             ).isAppearanceLightNavigationBars =
                 true
         }
