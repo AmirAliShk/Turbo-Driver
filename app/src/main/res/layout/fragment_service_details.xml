@@ -78,9 +78,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_weight="2"
                     android:gravity="right|top"
                     android:orientation="horizontal">
 
@@ -104,9 +103,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_weight="2"
                     android:gravity="right"
                     android:orientation="horizontal">
 
@@ -129,9 +127,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_weight="2"
                     android:gravity="right|top"
                     android:orientation="horizontal">
 
@@ -155,9 +152,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_weight="2"
                     android:gravity="right|top"
                     android:orientation="horizontal">
 
@@ -201,9 +197,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_weight="2"
                     android:gravity="right"
                     android:orientation="horizontal">
 
@@ -228,10 +223,9 @@
                 <LinearLayout
                     android:id="@+id/llDesc"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_weight="2"
-                    android:gravity="right"
+                    android:gravity="right|top"
                     android:orientation="horizontal">
 
                     <TextView
@@ -255,9 +249,8 @@
                 <LinearLayout
                     android:id="@+id/llDiscount"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_weight="2"
                     android:gravity="right"
                     android:orientation="horizontal">
 
@@ -281,9 +274,8 @@
                 <!--for credit customer option in future-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_weight="1.5"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:visibility="gone">
@@ -305,9 +297,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:layout_weight="2"
                     android:gravity="right"
                     android:orientation="horizontal">
 
