@@ -59,7 +59,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="ir.transport-x.taxi.teamx" />
+                <data android:scheme="ir.transport-x.taxi.teamx" />  <!-- todo change scheme for every company -->
             </intent-filter>
         </activity>
 
