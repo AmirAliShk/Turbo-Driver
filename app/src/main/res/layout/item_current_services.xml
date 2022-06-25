@@ -83,13 +83,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_18sdp"
-                android:gravity="center_vertical|right"
+                android:gravity="top|right"
                 android:orientation="horizontal"
                 android:paddingRight="@dimen/_18sdp">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:src="@drawable/ic_origin" />
 
                 <TextView
@@ -108,13 +109,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_18sdp"
-                android:gravity="center_vertical|right"
+                android:gravity="top|right"
                 android:orientation="horizontal"
                 android:paddingRight="@dimen/_18sdp">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:src="@drawable/ic_destination" />
 
                 <TextView
