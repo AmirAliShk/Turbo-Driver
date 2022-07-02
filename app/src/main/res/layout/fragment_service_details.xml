@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/customerName"
-                        android:textColor="@color/title_detailes"
+                        android:textColor="@color/title_details"
                         android:textSize="@dimen/_18sdp" />
 
                     <TextView
@@ -112,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="زمان قبول سرویس : "
-                        android:textColor="@color/title_detailes"
+                        android:textColor="@color/title_details"
                         android:textSize="@dimen/_18sdp" />
 
                     <TextView
@@ -136,7 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/origin"
-                        android:textColor="@color/title_detailes"
+                        android:textColor="@color/title_details"
                         android:textSize="@dimen/_18sdp" />
 
                     <TextView
@@ -161,7 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/firstDestination"
-                        android:textColor="@color/title_detailes"
+                        android:textColor="@color/title_details"
                         android:textSize="@dimen/_18sdp" />
 
                     <TextView
@@ -207,7 +207,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="زمان توقف :"
-                        android:textColor="@color/title_detailes"
+                        android:textColor="@color/title_details"
                         android:textSize="@dimen/_18sdp" />
 
                     <TextView
@@ -233,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="توضیحات :"
-                        android:textColor="@color/title_detailes"
+                        android:textColor="@color/title_details"
                         android:textSize="@dimen/_18sdp" />
 
                     <TextView
@@ -259,7 +259,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="تخفیف :"
-                        android:textColor="@color/title_detailes"
+                        android:textColor="@color/title_details"
                         android:textSize="@dimen/_18sdp" />
 
                     <TextView
@@ -307,7 +307,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="right"
                         android:text="قیمت :"
-                        android:textColor="@color/title_detailes"
+                        android:textColor="@color/title_details"
                         android:textSize="@dimen/_18sdp" />
 
                     <TextView

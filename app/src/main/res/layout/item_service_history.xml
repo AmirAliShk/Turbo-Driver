@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
                 android:text="@string/creditCustomer"
-                android:textColor="@color/title_detailes"
+                android:textColor="@color/title_details"
                 android:textSize="@dimen/_12ssp" />
 
             <TextView

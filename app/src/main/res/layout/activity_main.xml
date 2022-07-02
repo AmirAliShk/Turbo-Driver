@@ -225,13 +225,12 @@
                     android:layout_height="@dimen/_1sdp"
                     android:background="@color/colorDivider" />
 
-                <!--                    todo visible this later-->
                 <LinearLayout
+                    android:id="@+id/llSuggestStation"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:gravity="right"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="@dimen/_40sdp"
@@ -258,8 +257,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
                     android:layout_marginRight="@dimen/_50sdp"
-                    android:background="@color/colorDivider"
-                    android:visibility="gone" />
+                    android:background="@color/colorDivider" />
 
                 <LinearLayout
                     android:id="@+id/llNewsMenu"

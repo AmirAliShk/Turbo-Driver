@@ -141,7 +141,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
         }, 2000)
 
         binding.llSuggestionStation.setOnClickListener {
-            FragmentHelper.toFragment(MyApplication.currentActivity, SuggestionStationFragment())
+            FragmentHelper.toFragment(MyApplication.currentActivity, SuggestStationFragment())
                 .replace()
         }
 

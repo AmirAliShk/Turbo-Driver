@@ -19,6 +19,7 @@ import ir.transport_x.taxi.dialog.GeneralDialog
 import ir.transport_x.taxi.fragment.MapFragment
 import ir.transport_x.taxi.fragment.MapFragment.Companion.stopGetStatus
 import ir.transport_x.taxi.fragment.ProfileFragment
+import ir.transport_x.taxi.fragment.SuggestStationFragment
 import ir.transport_x.taxi.fragment.financial.FinancialFragment
 import ir.transport_x.taxi.fragment.news.NewsDetailsFragment
 import ir.transport_x.taxi.fragment.news.NewsFragment
@@ -93,6 +94,11 @@ class MainActivity : AppCompatActivity(), NewsDetailsFragment.RefreshNotificatio
         binding.llServiceHistory.setOnClickListener {
             FragmentHelper.toFragment(MyApplication.currentActivity, ServiceHistoryFragment())
                 .replace()
+            binding.drawerLayout.closeDrawers()
+        }
+
+        binding.llSuggestStation.setOnClickListener {
+            FragmentHelper.toFragment(MyApplication.currentActivity, SuggestStationFragment()).replace()
             binding.drawerLayout.closeDrawers()
         }
 
