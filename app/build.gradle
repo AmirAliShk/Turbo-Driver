@@ -7,8 +7,8 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId 'ir.transport_x.taxi.toosan' //code = 4 name = 2.0.1
-//        applicationId 'ir.transport_x.taxi.test'
+//        applicationId 'ir.transport_x.taxi.toosan' //code = 4 name = 2.0.1
+        applicationId 'ir.transport_x.taxi.test'
 //        applicationId 'ir.transport_x.taxi.teamx' // this is for General company
 //        applicationId 'ir.taxi1880.driver'
         minSdkVersion 21
@@ -18,6 +18,12 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    //just for 1880turbo{
+    // use driver1880.jks
+//    storePassword "47421parsian47421"
+//    keyAlias "parsian"
+//    }
 
 //    sign key pass = 47421cloudTaxi47421
 //    sign key name = cloudTaxi

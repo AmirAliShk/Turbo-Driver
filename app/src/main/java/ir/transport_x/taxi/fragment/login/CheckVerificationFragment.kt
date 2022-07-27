@@ -132,6 +132,8 @@ class CheckVerificationFragment : Fragment() {
     private fun verification(phoneNumber: String) {
         RequestHelper.builder(EndPoint.VERIFICATION)
             .addParam("phoneNumber", phoneNumber)
+            .addParam("scope", AppKeys.SCOPE)
+            .addParam("domain", MyApplication.context.packageName)
             .listener(onVerificationCallBack)
             .post()
     }

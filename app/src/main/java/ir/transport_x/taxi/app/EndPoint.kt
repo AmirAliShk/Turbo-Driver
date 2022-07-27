@@ -24,7 +24,7 @@ class EndPoint {
         /******************************** refresh token Api *********************************/
         val REFRESH_TOKEN = "${HAWKEYE_TOKEN_PATH}token"
         val CHECK = "${HAWKEYE_LOGIN_PATH}check"
-        val VERIFICATION = "${HAWKEYE_LOGIN_PATH}verification"
+        val VERIFICATION = "${HAWKEYE_LOGIN_PATH}verification/v1"
 
         /******************************** Driver Path *********************************/
         val GET_APP_INFO = "$BASE_PATH/appInfo"

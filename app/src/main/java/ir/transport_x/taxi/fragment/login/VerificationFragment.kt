@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import ir.transport_x.taxi.R
+import ir.transport_x.taxi.app.AppKeys
 import ir.transport_x.taxi.app.EndPoint
 import ir.transport_x.taxi.app.MyApplication
 import ir.transport_x.taxi.databinding.FragmentVerificationBinding
@@ -74,6 +75,7 @@ class VerificationFragment : Fragment() {
         RequestHelper.builder(EndPoint.VERIFICATION)
             .addParam("phoneNumber", phoneNumber)
             .addParam("domain", MyApplication.context.packageName)
+            .addParam("scope", AppKeys.SCOPE)
             .listener(onVerificationCallBack)
             .post()
     }
