@@ -112,7 +112,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationAssistant.Listener {
             binding.txtLock.setTextColor(resources.getColor(R.color.colorWhite))
             binding.txtLock.background = resources.getDrawable(R.color.colorRed)
             binding.txtLock.text =
-                "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و امکان سرويس دهي وجود ندارد."
+                "همکار گرامی کد شما به دلیل " + MyApplication.prefManager.getLockReasons() + " قفل گردید و تا " + MyApplication.prefManager.lockDays + " روز دیگر امکان سرويس دهي وجود ندارد."
         } else {
             binding.txtLock.visibility = View.GONE
             if (MyApplication.prefManager.isFromGetServiceActivity) {

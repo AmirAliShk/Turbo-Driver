@@ -34,6 +34,7 @@ class PrefManager {
     private val CHARGE = "charge"
     private val LOCK_STATUS = "LockStatus"
     private val LOCK_REASONES = "lockReasons"
+    private val LOCK_DAYS = "lockDays"
     private val IBAN = "iban"
     private val NATIONAL_CODE = "nationlCode"
     private val REPEAT_TIME = "repeatTime"
@@ -130,6 +131,15 @@ class PrefManager {
         }
         set(pricing) {
             editor.putInt(PRICING, pricing)
+            editor.commit()
+        }
+
+    var lockDays: Int
+        get() {
+            return sharedPreferences.getInt(LOCK_DAYS, 0)
+        }
+        set(lockDays) {
+            editor.putInt(LOCK_DAYS, lockDays)
             editor.commit()
         }
 
