@@ -159,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/secondDestination"
-                    android:textColor="@color/title_detailes" />
+                    android:textColor="@color/title_details" />
 
                 <TextView
                     android:id="@+id/txtSecondDestAddress"
@@ -216,7 +216,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/thirdDestination"
-                    android:textColor="@color/title_detailes" />
+                    android:textColor="@color/title_details" />
 
                 <TextView
                     android:id="@+id/txtThirdDestAddress"

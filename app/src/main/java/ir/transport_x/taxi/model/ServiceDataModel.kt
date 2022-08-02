@@ -30,4 +30,5 @@ data class ServiceDataModel(
     var serviceTypeId: Short,
     var voipLink: String,
     var delayCancelTime: Int,
+    var countServiceCustomer: Int,
 )

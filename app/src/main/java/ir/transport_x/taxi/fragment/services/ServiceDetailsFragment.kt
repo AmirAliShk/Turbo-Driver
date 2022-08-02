@@ -25,14 +25,13 @@ import org.json.JSONObject
 import java.util.*
 
 class ServiceDetailsFragment(
-    serviceModel: ServiceDataModel,
-    cancelServiceListener: CancelServiceListener
+    val serviceModel: ServiceDataModel,
+    val cancelServiceListener: CancelServiceListener
 ) : Fragment() {
     companion object {
         val TAG: String = ServiceDetailsFragment::class.java.simpleName
     }
 
-    private val serviceModel = serviceModel
     private lateinit var binding: FragmentServiceDetailsBinding
     var lastTime: Long = 0
 
@@ -40,8 +39,6 @@ class ServiceDetailsFragment(
         fun onCanceled(isCancel: Boolean)
         fun onFinishService(isFinish: Boolean)
     }
-
-    val cancelServiceListener: CancelServiceListener = cancelServiceListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -118,6 +115,14 @@ class ServiceDetailsFragment(
         binding.txtFirstDestAddress.text = StringHelper.toPersianDigits(
             JSONArray(serviceModel.destinationAddress).getJSONObject(0).getString("address")
         )
+
+        if (serviceModel.countServiceCustomer == 1) {
+            binding.txtServiceCount.text = "اولین"
+        } else {
+            binding.txtServiceCount.text =
+                StringHelper.toPersianDigits(serviceModel.countServiceCustomer.toString())
+        }
+
         if (serviceModel.description.trim() == "" && serviceModel.fixedDescription.trim() == "") {
             binding.llDesc.visibility = View.GONE
         } else {
@@ -180,7 +185,7 @@ class ServiceDetailsFragment(
         }
 
         binding.imgPlayVoice.setOnClickListener {
-            if(serviceModel.voipId == "0"){
+            if (serviceModel.voipId == "0") {
                 binding.vfDownloadOrPlay.displayedChild = 1
                 return@setOnClickListener
             }

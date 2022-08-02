@@ -81,7 +81,7 @@ public class DataGatheringService extends Service {
 
 //        MyApplication.prefManager.incrementResetLocationServiceCount();
 
-        prefManager = new PrefManager(this);
+        prefManager = new PrefManager();
         SEND_DATA_TO_VIEW = prefManager.getGpsInterval();
         startSendDataToActivity();
 

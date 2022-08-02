@@ -115,6 +115,7 @@ class GetAppInfo {
                         MyApplication.prefManager.gpsInterval = dataObject.getInt("gpsInterval")
                         MyApplication.prefManager.getStatusInterval =
                             dataObject.getInt("statusInterval")
+                        MyApplication.prefManager.lockDays = dataObject.getInt("countDayLock")
 
                         if (isActive == 0) {
                             GeneralDialog()

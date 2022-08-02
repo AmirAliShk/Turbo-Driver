@@ -88,6 +88,7 @@ class GetPriceDialog {
             MyApplication.handler.post {
                 try {
                     binding.vfEndService.displayedChild = 0
+// {"success":true,"message":"عملیات با موفقیت انجام شد.","data":{"result":"true","mobile":"09015693808","discount":0,"tax":0,"commission":52,"isCreditCustomer":0,"customerId":1,"inputServiceType":1}}
                     val jsonObject = JSONObject(args[0].toString())
                     val success = jsonObject.getBoolean("success")
                     val message = jsonObject.getString("message")
@@ -102,7 +103,7 @@ class GetPriceDialog {
                             GeneralDialog().message(message).firstButton("باشه") {
                                 MyApplication.handler.postDelayed({
                                     KeyBoardHelper.hideKeyboard()
-                                },300)
+                                }, 300)
                                 MyApplication.currentActivity.onBackPressed()
                             }.show()
                             finishServiceListener.onFinishService(true)
