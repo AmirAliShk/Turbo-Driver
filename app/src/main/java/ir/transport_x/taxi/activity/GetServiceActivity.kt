@@ -46,18 +46,14 @@ class GetServiceActivity : AppCompatActivity() {
         TypeFaceUtilJava.overrideFonts(binding.root, MyApplication.iranSansMediumTF)
 
         MyApplication.handler.postDelayed({
-            val callTime = intent.extras!!.getString("CallTime")
             val serviceId = intent.extras!!.getString("ServiceID")
-            val originDesc = intent.extras!!.getString("OrginDesc")
             val originAddress = intent.extras!!.getString("originAddress")
             val destinationAddress = intent.extras!!.getString("destinationAddress")
             val price = intent.extras!!.getString("price")
+            val serviceTypeId = intent.extras!!.getInt("ServiceType")
+            val carTypeId = intent.extras!!.getInt("carType")
             val inService = intent.extras!!.getBoolean("inService")
-            val carType = intent.extras!!.getString("carType")
-            val cargoType = intent.extras!!.getString("cargoType")
             val description = intent.extras!!.getString("description")
-            val fixesDescription = intent.extras!!.getString("fixesDescription")
-            val returnBack = intent.extras!!.getString("returnBack")
             binding.txtOriginAddress.text = StringHelper.toPersianDigits(originAddress)
             binding.txtPrice.text = StringHelper.toPersianDigits(
                 StringHelper.setComma(price).toString() + " تومان"
@@ -89,7 +85,7 @@ class GetServiceActivity : AppCompatActivity() {
                     .message("از دریافت سرویس اطمینان دارید؟")
                     .firstButton("بله") {
                         binding.vfAcceptService.displayedChild = 1
-                        AcceptService().accept(serviceId!!, object : AcceptService.Listener {
+                        AcceptService().accept(serviceId!!, serviceTypeId, carTypeId , object : AcceptService.Listener {
                             override fun onSuccess(msg: String) {
                                 binding.vfAcceptService.displayedChild = 0
                                 MyApplication.prefManager.isFromGetServiceActivity = true

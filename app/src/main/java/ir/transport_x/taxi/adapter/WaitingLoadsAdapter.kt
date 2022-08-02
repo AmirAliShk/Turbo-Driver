@@ -108,7 +108,7 @@ class WaitingLoadsAdapter(list: ArrayList<WaitingLoadsModel>) :
             GeneralDialog().message("از دریافت سرویس اطمینان دارید؟")
                 .firstButton("بله") {
                     holder.binding.vfAccept.displayedChild = 1
-                    AcceptService().accept(model.id.toString(), object : AcceptService.Listener {
+                    AcceptService().accept(model.id.toString(), model.serviceTypeId, model.carType, object : AcceptService.Listener {
                         override fun onSuccess(msg: String) {
                             holder.binding.vfAccept.displayedChild = 0
                             GeneralDialog().message(msg).firstButton("باشه") {

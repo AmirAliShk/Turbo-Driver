@@ -15,10 +15,12 @@ class AcceptService {
     }
 
     lateinit var listener: Listener
-    fun accept(serviceId: String, listener: Listener) {
+    fun accept(serviceId: String, serviceTypeId:Int, carTypeId:Int, listener: Listener) {
         this.listener = listener
         RequestHelper.builder(EndPoint.ACCEPT)
             .addParam("serviceId", serviceId)
+            .addParam("carTypeId", carTypeId)
+            .addParam("serviceTypeId", serviceTypeId)
             .listener(acceptCallBack)
             .post()
     }

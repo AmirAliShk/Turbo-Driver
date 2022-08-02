@@ -80,7 +80,7 @@ public class ManagePush {
                         in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         ServiceModel mdoel = getSerivceInfo(dataArray);
                         in.putExtra("CallTime", mdoel.getCallTime());
-                        in.putExtra("ServiceType", mdoel.getServiceType());
+                        in.putExtra("ServiceType", mdoel.getServiceTypeId());
                         in.putExtra("ServiceID", mdoel.getServiceID());
                         in.putExtra("OrginDesc", mdoel.getOrginDesc());
                         in.putExtra("originAddress", mdoel.getOriginAddress());
@@ -233,34 +233,57 @@ public class ManagePush {
         String originAddress = dataArray[4];
         String destinationAddress = dataArray[5];
         String price = dataArray[6];
-        String carType = dataArray[7];
         String cargoStr = dataArray[8];
         String returnBack = dataArray[9];
         String describeService = dataArray[10];
         String fixDescribeService = dataArray[11];
+        String serviceTypeName = dataArray[12];
+        String carTypeId = dataArray[13];
 
-        Log.i(TAG, "getSerivceInfo:\n 1:time: " + time + "\n‌" + "2:serviceId: " + serviceId + "\n" + "3:serviceType: " + serviceType + "\n"
-                + "4:originAddress: " + originAddress + "\n" +
-                "5:destinationAddress: " + destinationAddress + "\n" + "6:price: " + price
-                + "\n" + "7:carType: " + carType
+//        2                        0
+//        ^13:00:00                1
+//        ^${params.serviceId}      2
+//        ^${params.serviceType}    3
+//        ^${params.address}        4
+//        ^${params.destination}    5
+//        ^${params.price}          6
+//        ^${params.carTypeStr}     7
+//        ^${params.cargoStr}       8
+//        ^${params.returnBack}     9
+//        ^${params.describeService}10
+//        ^${params.fixedMessage}   11
+//        ^${params.serviceTypeName}12
+//        ^${params.carTypeId}      13
+
+        Log.i(TAG, "getSerivceInfo:\n 1:time: " + time
+                + "\n‌" + "2:serviceId: " + serviceId
+                + "\n" + "3:serviceType: " + serviceType
+                + "\n" + "4:originAddress: " + originAddress
+                + "\n" + "5:destinationAddress: " + destinationAddress
+                + "\n" + "6:price: " + price
+                + "\n" + "7:carTypeStr: i clean it "
                 + "\n" + "8:cargoStr: " + cargoStr
                 + "\n" + "9:returnBack: " + returnBack
                 + "\n" + "10:describeService: " + describeService
                 + "\n" + "11:fixDescribeService: " + fixDescribeService
+                + "\n" + "12:serviceTypeName: " + serviceTypeName
+                + "\n" + "13:carTypeId: " + carTypeId
         );
 
         ServiceModel serviceModel = new ServiceModel();
         serviceModel.setCallTime(time);
         serviceModel.setServiceID(serviceId);
         serviceModel.setInService(serviceType.trim().equals("2"));
+        serviceModel.setServiceTypeId(Integer.parseInt(serviceType));
         serviceModel.setOriginAddress(originAddress);
         serviceModel.setDestinationDesc(destinationAddress);
         serviceModel.setServicePrice(price);
-        serviceModel.setCarType(carType);
         serviceModel.setCargoType(cargoStr);
         serviceModel.setReturnBack(returnBack);
         serviceModel.setDescription(describeService);
         serviceModel.setFixedDesc(fixDescribeService);
+        serviceModel.setServiceTypeName(serviceTypeName);
+        serviceModel.setCarType(Integer.parseInt(carTypeId));
         return serviceModel;
     }
 

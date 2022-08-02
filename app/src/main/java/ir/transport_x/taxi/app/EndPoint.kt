@@ -49,7 +49,7 @@ class EndPoint {
         val ATM = "$FINANCIAL_PAY_PATH/ATM"
         val GET_ATM = "$FINANCIAL_PAYS_PATH/ATM"
         val ACTIVES = "$SERVICE_PATH/actives"
-        val ACCEPT = "$SERVICE_PATH/accept"
+        val ACCEPT = "$SERVICE_PATH/accept/v1"
         val FINISH = "$SERVICE_PATH/finish"
         val FINISHED = "$SERVICE_PATH/finished"
         val CANCEL = "$SERVICE_PATH/cancel"

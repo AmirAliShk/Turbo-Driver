@@ -31,7 +31,8 @@ public class ServiceModel {
   private int count;
   private String ponishmentPrice;
   private String rewardPrice;
-  private boolean isAInternetService;
+  private int serviceTypeId;
+  private String serviceTypeName;
   private String guestServiceCount;
   private String cityLName;
   private String cityPName;
@@ -64,7 +65,7 @@ public class ServiceModel {
   private String discount;
 
   private String cargoType;
-  private String carType;
+  private int carType;
   private String returnBack;
   private String derviceDescription;
   private String fixedDesc;
@@ -85,11 +86,11 @@ public class ServiceModel {
     this.cargoType = cargoType;
   }
 
-  public String getCarType() {
+  public int getCarType() {
     return carType;
   }
 
-  public void setCarType(String carType) {
+  public void setCarType(int carType) {
     this.carType = carType;
   }
 
@@ -491,12 +492,20 @@ public class ServiceModel {
     this.sendTime = sendTime;
   }
 
-  public void setServiceType(boolean isAInternetService) {
-    this.isAInternetService = isAInternetService;
+  public void setServiceTypeId(int serviceTypeId) {
+    this.serviceTypeId = serviceTypeId;
   }
 
-  public boolean getServiceType() {
-    return this.isAInternetService;
+  public int getServiceTypeId() {
+    return this.serviceTypeId;
+  }
+
+  public void setServiceTypeName(String serviceTypeName) {
+    this.serviceTypeName = serviceTypeName;
+  }
+
+  public String getServiceTypeName() {
+    return this.serviceTypeName;
   }
 
   public String getGuestServiceCount() {

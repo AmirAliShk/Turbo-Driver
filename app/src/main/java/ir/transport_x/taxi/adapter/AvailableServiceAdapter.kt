@@ -61,7 +61,7 @@ class AvailableServiceAdapter(list: ArrayList<ServiceModel>) :
                 .message("از دریافت سرویس اطمینان دارید؟")
                 .firstButton("بله") {
                     holder.binding.vfAcceptService.displayedChild = 1
-                    AcceptService().accept(model.serviceID, object : AcceptService.Listener {
+                    AcceptService().accept(model.serviceID , model.serviceTypeId, model.carType.toInt(), object : AcceptService.Listener {
                         override fun onSuccess(msg: String) {
                             holder.binding.vfAcceptService.displayedChild = 0
 //                            dismiss()
