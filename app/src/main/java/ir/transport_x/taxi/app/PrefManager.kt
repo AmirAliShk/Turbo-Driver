@@ -1,21 +1,14 @@
 package ir.transport_x.taxi.app
 
-import android.content.Context
 import android.content.SharedPreferences
 import com.google.android.gms.maps.model.LatLng
 
 class PrefManager {
 
-    private var _context: Context? = null
     private val prefName = MyApplication.context.applicationInfo.name
-    private var sharedPreferences: SharedPreferences
-    private val editor: SharedPreferences.Editor
-
-    constructor(context: Context) {
-        this._context = context
-        sharedPreferences = MyApplication.context.getSharedPreferences(prefName, 0)
-        editor = sharedPreferences.edit()
-    }
+    private var sharedPreferences: SharedPreferences =
+        MyApplication.context.getSharedPreferences(prefName, 0)
+    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
     private val USER_NAME = "userName"
     private val REFRESH_TOKEN = "refreshToken"

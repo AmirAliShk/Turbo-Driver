@@ -32,7 +32,7 @@ public class ManagePush {
         Log.i(TAG, "onPushReceived: message received node : " + pushMessage);
         String[] dataArray = pushMessage.split("\\^");
         final String type = dataArray[0];
-        final PrefManager prefManager = new PrefManager(context);
+        final PrefManager prefManager = new PrefManager();
         Log.i(TAG, "onPushReceived: type : " + type);
 
         MyApplication.context = context;

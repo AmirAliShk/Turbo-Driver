@@ -15,7 +15,6 @@ import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import ir.transport_x.taxi.R
 import ir.transport_x.taxi.fragment.services.FreeLoadsFragment
-import ir.transport_x.taxi.push.AvaCrashReporter
 import ir.transport_x.taxi.push.AvaFactory
 import ir.transport_x.taxi.utils.FragmentHelper
 import ir.transport_x.taxi.utils.TypeFaceUtil
@@ -23,7 +22,6 @@ import org.acra.ACRA
 import org.acra.annotation.AcraHttpSender
 import org.acra.sender.HttpSender
 import java.io.File
-import java.lang.Exception
 import java.util.*
 
 @AcraHttpSender(uri = "http://transport.team-x.ir:6061/api/crashReport", httpMethod = HttpSender.Method.POST)
@@ -104,7 +102,7 @@ class MyApplication : Application() {
         handler = Handler()
         initTypeFace()
         SOUND = "android.resource://${context.packageName}/"
-        prefManager = PrefManager(context)
+        prefManager = PrefManager()
 
         File(DIR_ROOT + DIR_DOWNLOAD).mkdirs()
         File("$DIR_ROOT$VOICE_FOLDER_NAME.nomedia").mkdirs()
