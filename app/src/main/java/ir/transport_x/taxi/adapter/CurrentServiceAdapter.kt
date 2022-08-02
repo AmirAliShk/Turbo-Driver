@@ -104,11 +104,6 @@ class CurrentServiceAdapter() : RecyclerView.Adapter<CurrentServiceAdapter.ViewH
                             if (isFinish) {
                                 serviceModels.removeAt(position)
                                 notifyDataSetChanged()
-                            } else {
-                                GeneralDialog()
-                                    .message("خطایی پیش امده، لطفا مجدد امتحان کنید")
-                                    .secondButton("باشه") {}
-                                    .show()
                             }
                         }
                     })
